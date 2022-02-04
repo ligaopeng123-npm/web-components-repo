@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>screenshot-upload</title>
+</head>
+<body style="margin: 0px;">
+<div style="display: flex;align-items: center;justify-content: center;margin-top: 100px;">
+    <image-upload
+            id="upload"
+            list-type="picture"
+            picture-width="64"
+            picture-height="64"
+            max-count="4"
+            width="400px">
+    </image-upload>
+</div>
+<script>
+    window.onload = () => {
+        // 支持的数据格式
+        const fileList = [{
+            name: 'tttt.png',
+            url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        }, {
+            name: 'aaaa.png',
+            url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        }, {
+            name: '666.png',
+            url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        }];
+        const upload = document.querySelector('#upload');
+        upload.setAttribute('file-list', JSON.stringify(fileList));
+        upload.addEventListener('uploadChange', ({detail}) => {
+            console.log(detail);
+        });
+        upload.addEventListener('afterUpload', ({detail}) => {
+            console.log(detail);
+        });
+        upload.addEventListener('afterDelete', ({detail}) => {
+            console.log(detail);
+        });
+    }
+</script>
+</body>
+</html>

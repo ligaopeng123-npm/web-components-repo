@@ -1,0 +1,22 @@
+{
+    "name": "web-components-repo",
+    "private": true,
+    "scripts": {
+        "build": "lerna exec --ignore=@gaopeng123/utils -- npm run build",
+        "test": "lerna exec --ignore=@gaopeng123/utils -- npm run test",
+        "push": "lerna publish"
+    },
+    "dependencies": {
+        "@gaopeng123/utils.file": "^0.3.4",
+        "@gaopeng123/utils.object": "^0.3.4",
+        "@gaopeng123/utils.types": "^0.3.4"
+    },
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    },
+    "workspaces": [
+        "packages/image-upload",
+        "packages/message",
+        "packages/rc-image-upload"
+    ]
+}

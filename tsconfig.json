@@ -1,0 +1,28 @@
+{
+    "exclude": [
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "module": "esnext",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "target": "es6",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        // transpile JSX to React.createElement
+        "jsx": "react",
+        // 本地定义未使用报错
+        "noUnusedParameters": false,
+        "paths": {
+            "@gaopeng123/message": [
+                "./packages/message/src"
+            ]
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "strict": true,
+        "declaration": true,
+        "declarationDir": "dist",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "importHelpers": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "outDir": "./dist/",
+        "baseUrl": "./",
+        "newLine": "lf",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "plugins": [
+            {
+                "transform": "@zerollup/ts-transform-paths",
+                "exclude": [
+                    "*"
+                ]
+            }
+        ],
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
+    }
+}
