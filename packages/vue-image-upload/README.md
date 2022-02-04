@@ -1,11 +1,50 @@
-# `vue-image-upload`
+# vue-image-upload
 
-> TODO: description
+> 图片上传
 
 ## Usage
 
-```
-const vueImageUpload = require('vue-image-upload');
+```vue
+<script lang="ts">
+import Vue from 'vue';
+import VueImageUpload from '@gaopeng123/vue-image-upload';
+    
+/*
+// 可配置参数
+type VueImageUploadProps = {
+    id: string;
+    width?: string | number;
+    height?: string | number;
+    pictureWidth?: string | number; // 图片宽高
+    pictureHeight?: string | number;
+    action?: string; // 上传的路径
+    listType?: 'picture-card' | 'picture';
+    multiple?: boolean; // 是否支持多选
+    accept?: string; // 支持类型 默认.png,.jpg,.jpeg
+    maxCount?: number; // 最大上传个数
+    fileList?: any[]; // 上传列表
+    onUploadChange?: (e: UploadEvent) => void; // 上传事件
+    onAfterUpload?: (e: UploadEvent) => void; // 上传后事件
+    onAfterDelete?: (e: UploadEvent) => void; // 删除后事件
+};*/
 
-// TODO: DEMONSTRATE API
+export default Vue.extend({
+    name: 'ServeDev',
+    components: {
+        VueImageUpload
+    },
+    methods: {
+        onUploadChange(e: any) {
+            console.log(e);
+        }
+    }
+});
+</script>
+
+<template>
+    <div id="app">
+        <vue-image-upload @onUploadChange="onUploadChange"/>
+    </div>
+</template>
 ```
+
