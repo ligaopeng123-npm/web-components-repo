@@ -1,9 +1,8 @@
 <script lang="ts">
 import Vue from 'vue';
-import "@gaopeng123/image-upload";
-import {AfterUpload} from "@gaopeng123/image-upload";
 
-type UploadEvent = AfterUpload;
+
+type UploadEvent = {};
 
 export default /*#__PURE__*/Vue.extend({
     name: 'VueImageUpload', // vue component name

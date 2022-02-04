@@ -22,10 +22,10 @@
     "scripts": {
         "start": "vue-cli-service serve dev/serve.ts",
         "prebuild": "rimraf ./dist",
-        "build": "set NODE_ENV=production rollup --config build/rollup.config.js",
-        "build:ssr": "set NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
-        "build:es": "set NODE_ENV=production rollup --config build/rollup.config.js --format es",
-        "build:unpkg": "set NODE_ENV=production rollup --config build/rollup.config.js --format iife",
+        "build": "set NODE_ENV=production && rollup --config rollup.config.js",
+        "build:ssr": "set NODE_ENV=production rollup --config rollup.config.js --format cjs",
+        "build:es": "set NODE_ENV=production rollup --config rollup.config.js --format es",
+        "build:unpkg": "set NODE_ENV=production rollup --config rollup.config.js --format iife",
         "postbuild": "rimraf ./dist/types/dev ./dist/src/entry.d.ts",
         "test": "echo \"Error: run tests from root\" && exit 1"
     },
