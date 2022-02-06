@@ -64,6 +64,10 @@ export const template = (config: ImageUploadConfig) => {
                     margin-left: 16px;
 				}
 				
+				.target-text {
+				    user-select: none;
+				}
+				
 				#screenshot-upload-list {
 				    display: flex;
 				    margin-top: 60px;
@@ -155,7 +159,7 @@ export const template = (config: ImageUploadConfig) => {
 			<div class="screenshot-upload">
 			    <div id="screenshot-upload-target" class="target" 
 			         readonly="true" contenteditable="true">
-			         <span>
+			         <span class="target-text">
 			             光标选中后“Ctrl + V”粘贴图片
                      </span>
                     </div>
