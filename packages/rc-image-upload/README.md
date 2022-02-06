@@ -1,6 +1,8 @@
 # rc-image-upload
 
-> 图片上传
+> 图片上传，支持粘贴上传
+
+![image-20220206113110933](C:\Users\pgli\AppData\Roaming\Typora\typora-user-images\image-20220206113110933.png)
 
 ## Usage
 

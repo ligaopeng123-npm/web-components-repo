@@ -191,11 +191,11 @@ export default class ImageUpload extends HTMLElement {
      */
     previewProcessing = (base64: string, file: File) => {
         this.insertPicture(base64, file);
+        this.fileList.push(file);
         this.uploadFetch(file);
         this.dispatchEvent(new CustomEvent('uploadChange', {
             detail: {file: file, fileList: this.fileList}
         }));
-        this.fileList.push(file);
     }
     /**
      * 处理上传
@@ -354,6 +354,12 @@ export default class ImageUpload extends HTMLElement {
         this.imageUploadList.removeChild(rPicture);
         this.dispatchEvent(new CustomEvent('afterDelete', {
             detail: {file: delFile, fileList: this.fileList}
+        }));
+        /**
+         * 图片删除 也调用下uploadChange 发送消息
+         */
+        this.dispatchEvent(new CustomEvent('uploadChange', {
+            detail: {file: null, fileList: this.fileList}
         }));
     }
 
