@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/message",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "message",
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
@@ -72,6 +72,6 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^0.0.3"
+        "@gaopeng123/image-upload": "^0.0.4"
     }
 }
