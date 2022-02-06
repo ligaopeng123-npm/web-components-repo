@@ -1,11 +1,12 @@
 <script lang="ts">
 import Vue from 'vue';
-
+import "@gaopeng123/image-upload";
 
 type UploadEvent = {};
 
 export default /*#__PURE__*/Vue.extend({
     name: 'VueImageUpload', // vue component name
+    components: {},
     props: {
         id: {
             type: String,
