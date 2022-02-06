@@ -136,6 +136,7 @@ export const template = (config: ImageUploadConfig) => {
 				    position: absolute;
 				    right: 16px;
                     top: 16px;
+                    user-select: none;
 				}
 				
 				#upload-bth {

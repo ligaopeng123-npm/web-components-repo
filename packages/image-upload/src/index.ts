@@ -226,15 +226,19 @@ export default class ImageUpload extends HTMLElement {
         // @ts-ignore
         const pasteData = event.clipboardData || window.clipboardData;
         //获取图片内容
-        const blob = pasteData.items[0].getAsFile();
-        //判断是不是图片，最好通过文件类型判断
-        const isImg = (blob && 1) || -1;
-        if (isImg < 0) {
-            return;
+        const blob = pasteData?.items[0]?.getAsFile();
+        if (blob) {
+            //判断是不是图片，最好通过文件类型判断
+            const isImg = (blob && 1) || -1;
+            if (isImg < 0) {
+                return;
+            }
+            blob2Base64(blob).then((base64_str) => {
+                this.previewProcessing(base64_str, blob);
+            });
+        } else {
+            console.warn(`粘贴板上不是图片！`)
         }
-        blob2Base64(blob).then((base64_str) => {
-            this.previewProcessing(base64_str, blob);
-        });
     }
     /**
      * 图片点击事件

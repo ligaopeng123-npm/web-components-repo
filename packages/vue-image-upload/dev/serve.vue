@@ -9,7 +9,7 @@ export default Vue.extend({
     },
     methods: {
         onUploadChange(e: any) {
-            console.log(e);
+            console.log(e.detail.fileList);
         }
     }
 });
