@@ -69,6 +69,7 @@ export const template = (config: ImageUploadConfig) => {
 				}
 				
 				#screenshot-upload-list {
+                    user-select: none;
 				    display: flex;
 				    margin-top: 60px;
 				    z-index: 1;

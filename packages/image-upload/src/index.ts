@@ -155,8 +155,8 @@ export default class ImageUpload extends HTMLElement {
     /**
      * 是否达到最大值
      */
-    isMax() {
-        if (this.fileList.length >= this.maxCount) {
+    isMax(len = 0) {
+        if ((this.fileList.length + len) > this.maxCount) {
             this.qmsg.info(`上传图片不能多于${this.maxCount}张`);
             return true;
         }
@@ -223,21 +223,23 @@ export default class ImageUpload extends HTMLElement {
      */
     onPaste = (event: any) => {
         event.preventDefault();
-        // @ts-ignore
-        const pasteData = event.clipboardData || window.clipboardData;
-        //获取图片内容
-        const blob = pasteData?.items[0]?.getAsFile();
-        if (blob) {
-            //判断是不是图片，最好通过文件类型判断
-            const isImg = (blob && 1) || -1;
-            if (isImg < 0) {
-                return;
+        if (!this.isMax(1)) {
+            // @ts-ignore
+            const pasteData = event.clipboardData || window.clipboardData;
+            //获取图片内容
+            const blob = pasteData?.items[0]?.getAsFile();
+            if (blob) {
+                //判断是不是图片，最好通过文件类型判断
+                const isImg = (blob && 1) || -1;
+                if (isImg < 0) {
+                    return;
+                }
+                blob2Base64(blob).then((base64_str) => {
+                    this.previewProcessing(base64_str, blob);
+                });
+            } else {
+                console.warn(`粘贴板上不是图片！`)
             }
-            blob2Base64(blob).then((base64_str) => {
-                this.previewProcessing(base64_str, blob);
-            });
-        } else {
-            console.warn(`粘贴板上不是图片！`)
         }
     }
     /**
@@ -271,7 +273,7 @@ export default class ImageUpload extends HTMLElement {
     onUploadChange = (event: Event) => {
         // @ts-ignore
         const files = event.target.files;
-        if (!this.isMax() && (files.length + this.fileList.length) <= this.maxCount) {
+        if (!this.isMax(files.length)) {
             const promises = [];
             for (let i = 0; i < files.length; i++) {
                 promises.push(blob2Base64(files[i]));
@@ -281,8 +283,6 @@ export default class ImageUpload extends HTMLElement {
                     this.previewProcessing(base64_str, files[index]);
                 })
             });
-        } else {
-            this.qmsg.info(`上传图片不能多于${this.maxCount}张`);
         }
     }
 

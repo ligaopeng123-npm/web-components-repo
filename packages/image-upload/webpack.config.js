@@ -12,7 +12,6 @@
 const {merge} = require('webpack-merge');
 // @ts-ignore
 const base = require('../../webpack.base.config');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(base(__dirname), {
     devServer: {
