@@ -10,6 +10,10 @@ import Vue from 'vue';
 import VueImageUpload from '@gaopeng123/vue-image-upload';
     
 /*
+type FileItem = {
+	name: string,
+	url: string,
+}
 // 可配置参数
 type VueImageUploadProps = {
     id: string;
@@ -22,7 +26,7 @@ type VueImageUploadProps = {
     multiple?: boolean; // 是否支持多选
     accept?: string; // 支持类型 默认.png,.jpg,.jpeg
     maxCount?: number; // 最大上传个数
-    fileList?: any[]; // 上传列表
+    fileList?: FileItem[]; // 上传列表
     onUploadChange?: (e: UploadEvent) => void; // 上传事件
     onAfterUpload?: (e: UploadEvent) => void; // 上传后事件
     onAfterDelete?: (e: UploadEvent) => void; // 删除后事件
