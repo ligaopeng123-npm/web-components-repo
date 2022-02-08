@@ -62,9 +62,9 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "@gaopeng123/message": "^0.0.5",
-        "@gaopeng123/utils.file": "^0.3.4",
-        "@gaopeng123/utils.object": "^0.3.4",
-        "@gaopeng123/utils.types": "^0.3.4"
+        "@gaopeng123/message": "^0.0.6",
+        "@gaopeng123/utils.file": "latest",
+        "@gaopeng123/utils.object": "latest",
+        "@gaopeng123/utils.types": "latest"
     }
 }

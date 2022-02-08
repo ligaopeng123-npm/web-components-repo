@@ -15,10 +15,9 @@
             "dom",
             "esnext"
         ],
-        // transpile JSX to React.createElement
         "jsx": "react",
-        // 本地定义未使用报错
         "noUnusedParameters": false,
+        "baseUrl": "./",
         "paths": {
             "@gaopeng123/message": [
                 "./packages/message/src"

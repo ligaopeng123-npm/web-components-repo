@@ -10,11 +10,12 @@
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
     "license": "MIT",
-    "main": "dist/index.esm.js",
-    "browser": "dist/index.esm.js",
-    "module": "dist/index.esm.js",
+    "main": "dist/index.js",
+    "browser": "dist/index.js",
+    "module": "dist/index.js",
     "unpkg": "dist/index.min.js",
-    "types": "dist/src/index.vue.d.ts",
+    "types": "dist/index.vue.d.ts",
+    "typings": "dist/index.vue.d.ts",
     "private": false,
     "publishConfig": {
         "access": "public"
@@ -46,7 +47,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^0.0.5"
+        "@gaopeng123/image-upload": "^0.0.6"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",

@@ -1,0 +1,97 @@
+{
+  "_from": "xy-ui",
+  "_id": "xy-ui@1.10.2",
+  "_inBundle": false,
+  "_integrity": "sha512-EOG8F0YCKDGRLA/ka1r9xt/RvrNGKZDAnc/nu6mrR+mESk3uGlvVwVjJNLQb2GbkdHsVugkhQT0h9ztZXztZ5Q==",
+  "_location": "/xy-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "xy-ui",
+    "name": "xy-ui",
+    "escapedName": "xy-ui",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/xy-ui/-/xy-ui-1.10.2.tgz",
+  "_shasum": "34a540c1edecf8fc4231df6d019a06739fd841ae",
+  "_spec": "xy-ui",
+  "_where": "D:\\code\\share-login",
+  "author": {
+    "name": "XboxYan"
+  },
+  "bugs": {
+    "url": "https://github.com/XboxYan/xy-ui/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "a front end cross-framework ui library based on web-components",
+  "directories": {
+    "doc": "docs"
+  },
+  "files": [
+    "index.js",
+    "components",
+    "iconfont",
+    "utils"
+  ],
+  "homepage": "https://github.com/XboxYan/xy-ui#readme",
+  "keywords": [
+    "web-components",
+    "ui",
+    "shadow-dom",
+    "keyboard",
+    "custom-elements",
+    "html5",
+    "css3",
+    "javascript",
+    "xy-button",
+    "xy-icon",
+    "xy-slider",
+    "xy-select",
+    "xy-loading",
+    "xy-switch",
+    "xy-checkbox",
+    "xy-radio",
+    "xy-tab",
+    "xy-layout",
+    "xy-tips",
+    "xy-message",
+    "xy-dialog",
+    "xy-input",
+    "xy-img",
+    "xy-rate",
+    "xy-popover",
+    "xy-color-picker",
+    "xy-color-pane",
+    "xy-form",
+    "xy-pagination",
+    "xy-date-picker",
+    "xy-date-pane",
+    "xy-table",
+    "xy-text",
+    "xy-view",
+    "xy-datalist"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "name": "xy-ui",
+  "publishConfig": {
+    "registry1": "https://npm.pkg.github.com/@XboxYan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XboxYan/xy-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.10.2"
+}

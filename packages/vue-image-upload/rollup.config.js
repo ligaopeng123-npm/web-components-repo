@@ -1,5 +1,6 @@
 // rollup.config.js
 import fs from 'fs';
+import fs_extra from 'fs-extra';
 import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
@@ -11,6 +12,23 @@ import {terser} from 'rollup-plugin-terser';
 import ttypescript from 'ttypescript';
 import typescript from 'rollup-plugin-typescript2';
 import minimist from 'minimist';
+import tsconfig from './tsconfig.json';
+
+function writeCjsEntryFile(name) {
+    const baseLine = `module.exports = require('./${name}`;
+    const contents = `
+'use strict'
+
+if (process.env.NODE_ENV === 'production') {
+  ${baseLine}.esm.production.min.js')
+} else {
+  ${baseLine}.esm.development.js')
+}
+`;
+    return fs_extra.outputFile(path.join('dist', 'index.js'), contents);
+}
+
+writeCjsEntryFile('index');
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -24,8 +42,6 @@ const babelPresetEnvConfig = require('./babel.config')
 
 const argv = minimist(process.argv.slice(2));
 
-const projectRoot = __dirname;
-
 const baseConfig = {
     input: 'src/entry.ts',
     plugins: {
@@ -34,7 +50,7 @@ const baseConfig = {
                 entries: [
                     {
                         find: '@',
-                        replacement: `${path.resolve(projectRoot, 'src')}`,
+                        replacement: `${path.resolve(__dirname, 'src')}`,
                     },
                 ],
             }),
@@ -67,7 +83,8 @@ const baseConfig = {
 const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
-    'vue',
+    "vue",
+    "@gaopeng123/image-upload"
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -86,7 +103,7 @@ if (!argv.format || argv.format === 'es') {
         input: 'src/entry.esm.ts',
         external,
         output: {
-            file: 'dist/index.esm.js',
+            file: 'dist/index.development.esm.js',
             format: 'esm',
             exports: 'named',
         },
@@ -99,6 +116,7 @@ if (!argv.format || argv.format === 'es') {
             // do actual js transformations
             typescript({
                 typescript: ttypescript,
+                tsconfig: path.resolve(__dirname, 'tsconfig.json'),
                 useTsconfigDeclarationDir: true,
                 emitDeclarationOnly: true,
             }),
@@ -154,7 +172,7 @@ if (!argv.format || argv.format === 'iife') {
         external,
         output: {
             compact: true,
-            file: 'dist/index.min.js',
+            file: 'dist/index.esm.production.min.js',
             format: 'iife',
             name: 'VueImageUpload',
             exports: 'auto',

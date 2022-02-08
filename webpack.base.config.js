@@ -5,8 +5,8 @@ const NODE_ENV = process.env.NODE_ENV.trimEnd();
 
 module.exports = function (dirname = __dirname) {
     return {
-        mode: NODE_ENV === 'production' ? 'production' : 'development',// 环境管理
-        devtool: NODE_ENV == 'production' ? false : 'inline-source-map',
+        mode: 'development',// 环境管理
+        devtool: 'eval-source-map',
         entry: './src/index.ts',
         resolve: {
             extensions: ['.tsx', '.ts', '.js']

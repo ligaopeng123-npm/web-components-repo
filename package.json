@@ -1,15 +1,24 @@
 {
     "name": "web-components-repo",
     "private": true,
+    "changelog": {
+        "labels": {
+            "feat": ":rocket: New Feature",
+            "bug": ":bug: Bug Fix",
+            "doc": ":memo: Documentation",
+            "internal": ":house: Internal",
+            "breaking": ":boom: Breaking Change"
+        }
+    },
     "scripts": {
         "build": "lerna exec --ignore=@gaopeng123/utils -- npm run build",
         "test": "lerna exec --ignore=@gaopeng123/utils -- npm run test",
         "push": "lerna publish"
     },
     "dependencies": {
-        "@gaopeng123/utils.file": "^0.3.4",
-        "@gaopeng123/utils.object": "^0.3.4",
-        "@gaopeng123/utils.types": "^0.3.4"
+        "@gaopeng123/utils.file": "latest",
+        "@gaopeng123/utils.object": "latest",
+        "@gaopeng123/utils.types": "latest"
     },
     "devDependencies": {
         "lerna": "^4.0.0"
@@ -17,6 +26,8 @@
     "workspaces": [
         "packages/image-upload",
         "packages/message",
-        "packages/rc-image-upload"
+        "packages/rc-image-upload",
+        "packages/login-module",
+        "packages/rc-login-module"
     ]
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loginModule</title>
+</head>
+<body style="margin: 0px;">
+<script type="module" src="../dist/login-module.esm.js" ></script>
+<login-module
+        user="userId"
+        password="password"
+        publickey=""
+        method="GET"
+        url="/assets/login.json"
+        id="form"
+        main-style="background-image: url(./assets/background.jpg)"
+        body-style="right: 200px;"
+        keeplogged="true"
+        agreement-proprietary="干饭人集团"
+        my-title="食堂管理系统">
+</login-module>
+<!--<login-module-->
+<!--url="http://***"-->
+<!--method="POST"-->
+<!--user="account"-->
+<!--password="password"-->
+<!--id="form"-->
+<!--publickey="***"-->
+<!--item-style="padding:24px;"-->
+<!--body-style="right: 200px;"-->
+<!--title="系统">-->
+<!--</login-module>-->
+<script>
+	const form = document.querySelector('#form');
+	form.addEventListener('submit', (data) => {
+		console.log(data);
+	});
+
+	form.addEventListener('afterSubmit', (data) => {
+		// console.log(data);
+	});
+
+	form.addEventListener('submitError', (data) => {
+		console.log(data.detail.data);
+	});
+
+	form.addEventListener('captchaClick', (data) => {
+		console.log(data);
+		form.setAttribute('captchasrc', '/iconfont/test.svg');
+	});
+</script>
+</body>
+</html>
