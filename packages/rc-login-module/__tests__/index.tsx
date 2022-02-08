@@ -7,6 +7,18 @@ const App = () => {
         <div>
             {/*@ts-ignore*/}
             <RcLoginModule
+                onSubmit={(e) => {
+                    console.log(e);
+                }}
+                onAfterSubmit={(e) => {
+                    console.log(e);
+                }}
+                onSubmitError={(e) => {
+                    console.log(e);
+                }}
+                onCaptchaClick={(e) => {
+                    console.log(e);
+                }}
                 id={`test`}
                 user="userId"
                 password="password"
