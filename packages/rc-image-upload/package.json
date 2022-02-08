@@ -73,5 +73,6 @@
     },
     "dependencies": {
         "@gaopeng123/image-upload": "^0.0.6"
-    }
+    },
+    "gitHead": "7f5ac096f324179b56a094a6a2ea283a70cb89dc"
 }

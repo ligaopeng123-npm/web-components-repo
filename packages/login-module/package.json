@@ -7,6 +7,9 @@
     "keywords": [
         "login"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
     "license": "MIT",
@@ -58,5 +61,6 @@
         "webpack-cli": "^4.7.0",
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.8.0"
-    }
+    },
+    "gitHead": "7f5ac096f324179b56a094a6a2ea283a70cb89dc"
 }

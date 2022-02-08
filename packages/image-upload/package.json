@@ -66,5 +66,6 @@
         "@gaopeng123/utils.file": "latest",
         "@gaopeng123/utils.object": "latest",
         "@gaopeng123/utils.types": "latest"
-    }
+    },
+    "gitHead": "7f5ac096f324179b56a094a6a2ea283a70cb89dc"
 }
