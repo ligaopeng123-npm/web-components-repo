@@ -103,7 +103,7 @@ if (!argv.format || argv.format === 'es') {
         input: 'src/entry.esm.ts',
         external,
         output: {
-            file: 'dist/index.development.esm.js',
+            file: 'dist/index.esm.development.js',
             format: 'esm',
             exports: 'named',
         },

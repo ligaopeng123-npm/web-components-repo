@@ -55,7 +55,7 @@ export default /*#__PURE__*/Vue.extend({
             }
         }
     },
-    mounted: function () {
+    mounted() {
         const me: any = this;
         const upload: any = document.querySelector(`#${me.id}`);
         if (upload) {

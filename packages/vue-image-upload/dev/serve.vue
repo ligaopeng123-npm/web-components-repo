@@ -7,6 +7,9 @@ export default Vue.extend({
     components: {
         VueImageUpload
     },
+    data: {
+        id: `upload-${Date.now()}`
+    },
     methods: {
         onUploadChange(e: any) {
             console.log(e.detail.fileList);
@@ -17,6 +20,6 @@ export default Vue.extend({
 
 <template>
     <div id="app">
-        <vue-image-upload @onUploadChange="onUploadChange"/>
+        <vue-image-upload :id="id" @onUploadChange="onUploadChange"/>
     </div>
 </template>
