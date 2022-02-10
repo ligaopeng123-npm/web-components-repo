@@ -20,6 +20,6 @@ export default Vue.extend({
 
 <template>
     <div id="app">
-        <vue-image-upload :id="id" @onUploadChange="onUploadChange"/>
+        <vue-image-upload maxCount="3" :id="id" @onUploadChange="onUploadChange"/>
     </div>
 </template>
