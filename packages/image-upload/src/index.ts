@@ -3,6 +3,7 @@ import {parentByExpected} from '@gaopeng123/utils.object';
 import {blob2Base64} from "@gaopeng123/utils.file";
 import {isDelIcon, isPictureImg, isPictureItem, openToPreviewBase64} from "./utils";
 import {pictureTemplate, template} from "./template";
+// @ts-ignore
 import initMsg from '@gaopeng123/message';
 import {ImageUploadProps} from "./interface";
 
