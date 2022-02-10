@@ -11,7 +11,7 @@
  **********************************************************************/
 import {getSize} from "./utils";
 import {delIcon, uploadIcon} from "./assets";
-import {ImageUploadProps} from "./index";
+import {ImageUploadProps} from "./interface";
 
 export const template = (config: ImageUploadProps) => {
     const {width, height, accept, multiple} = config;
@@ -181,7 +181,7 @@ export const pictureTemplate = (url: string, config: ImageUploadProps, file?: Fi
     const pictureHeight = config['picture-height'];
     const div = document.createElement('div');
     div.classList.add('picture-item');
-    const title = file.name || url;
+    const title = file?.name || url || '';
     div.setAttribute('title', title)
     const pictureTemplate = `
             <img class="picture-img" width="${getSize(pictureWidth)}" height="${getSize(pictureHeight)}" alt="图片" src="${url}"/>

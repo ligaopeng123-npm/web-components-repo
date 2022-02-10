@@ -35,7 +35,7 @@ export const isPictureImg = (dom: any) => {
  * 尺寸设置
  * @param size
  */
-export const getSize = (size: number | string) => {
+export const getSize = (size?: number | string) => {
     if (`${size}`.endsWith('%') || `${size}`.endsWith('px')) {
         return size;
     } else {

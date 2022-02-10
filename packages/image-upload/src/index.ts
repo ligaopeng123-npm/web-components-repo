@@ -4,23 +4,7 @@ import {blob2Base64} from "@gaopeng123/utils.file";
 import {isDelIcon, isPictureImg, isPictureItem, openToPreviewBase64} from "./utils";
 import {pictureTemplate, template} from "./template";
 import initMsg from '@gaopeng123/message';
-
-/**
- * 处理react tsx中直接使用web components报错问题
- */
-export interface ImageUploadProps {
-    id?: string;
-    width?: string | number;
-    height?: string | number;
-    'picture-width'?: string | number;
-    'picture-height'?: string | number;
-    action?: string;
-    'list-type'?: 'picture-card' | 'picture';
-    multiple?: boolean;
-    accept?: string;
-    'max-count': number; // 最大上传个数
-    'file-list'?: any[];
-}
+import {ImageUploadProps} from "./interface";
 
 type UploadChangeDetails = {
     fileList: any[],
@@ -219,7 +203,7 @@ export default class ImageUpload extends HTMLElement {
         }
     }
 
-    onMouseover = (event: any) => {
+    onMouseover = () => {
         this.imageUploadTarget.focus();
     }
     /**
