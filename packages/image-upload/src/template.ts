@@ -11,21 +11,9 @@
  **********************************************************************/
 import {getSize} from "./utils";
 import {delIcon, uploadIcon} from "./assets";
+import {ImageUploadProps} from "./index";
 
-export type ImageUploadConfig = {
-    width?: string | number;
-    height?: string | number;
-    'picture-width'?: string | number;
-    'picture-height'?: string | number;
-    action?: string;
-    'list-type'?: 'picture-card' | 'picture';
-    multiple?: boolean;
-    accept?: string;
-    'max-count'?: number;
-    'file-list'?: any[];
-}
-
-export const template = (config: ImageUploadConfig) => {
+export const template = (config: ImageUploadProps) => {
     const {width, height, accept, multiple} = config;
     // list展示类型
     const listType = config['list-type'];
@@ -157,7 +145,7 @@ export const template = (config: ImageUploadConfig) => {
 				}
 				
 			</style>
-			<div class="screenshot-upload">
+			<div id="image-upload" class="screenshot-upload">
 			    <div id="screenshot-upload-target" class="target" 
 			         readonly="true" contenteditable="true">
 			         <span class="target-text">
@@ -187,7 +175,7 @@ export const template = (config: ImageUploadConfig) => {
  * 图片模板
  * @param config
  */
-export const pictureTemplate = (url: string, config: ImageUploadConfig, file?: File) => {
+export const pictureTemplate = (url: string, config: ImageUploadProps, file?: File) => {
     const listType = config['list-type'];
     const pictureWidth = config['picture-width'];
     const pictureHeight = config['picture-height'];

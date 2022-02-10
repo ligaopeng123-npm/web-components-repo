@@ -2,13 +2,12 @@ import {isString} from '@gaopeng123/utils.types';
 import {parentByExpected} from '@gaopeng123/utils.object';
 import {blob2Base64} from "@gaopeng123/utils.file";
 import {isDelIcon, isPictureImg, isPictureItem, openToPreviewBase64} from "./utils";
-import {pictureTemplate, template, ImageUploadConfig} from "./template";
+import {pictureTemplate, template} from "./template";
 import initMsg from '@gaopeng123/message';
 
 /**
  * 处理react tsx中直接使用web components报错问题
  */
-// @ts-ignore
 export interface ImageUploadProps {
     id?: string;
     width?: string | number;
@@ -49,7 +48,7 @@ export default class ImageUpload extends HTMLElement {
     /**
      * 保存配置信息
      */
-    __config: ImageUploadConfig = {
+    __config: ImageUploadProps = {
         width: '100%',
         height: 200,
         'picture-width': 48,
@@ -127,6 +126,7 @@ export default class ImageUpload extends HTMLElement {
     }
 
     addEvent() {
+        this.addMouseoverEvent();
         this.addPasteEvent();
         this.addPictureClick();
         this.addUploadClick();
@@ -134,6 +134,7 @@ export default class ImageUpload extends HTMLElement {
     }
 
     removeEvent() {
+        this.removeMouseoverEvent();
         this.removePasteEvent();
         this.removePictureClick();
         this.removeUploadClick();
@@ -217,6 +218,10 @@ export default class ImageUpload extends HTMLElement {
                 });
         }
     }
+
+    onMouseover = (event: any) => {
+        this.imageUploadTarget.focus();
+    }
     /**
      * 监听粘贴事件
      * @param event
@@ -294,6 +299,15 @@ export default class ImageUpload extends HTMLElement {
         this.imageUploadTarget.removeEventListener('paste', this.onPaste);
     }
 
+    // image-upload
+    addMouseoverEvent() {
+        this.imageUpload.addEventListener('mouseenter', this.onMouseover);
+    }
+
+    removeMouseoverEvent() {
+        this.imageUpload.removeEventListener('mouseenter', this.onMouseover);
+    }
+
     addPictureClick() {
         this.imageUploadList.addEventListener('click', this.onPictureClick);
     }
@@ -316,6 +330,10 @@ export default class ImageUpload extends HTMLElement {
 
     removeUploadChange() {
         this.uploadInput.removeEventListener('change', this.onUploadChange);
+    }
+
+    get imageUpload() {
+        return this.shadow.querySelector('#image-upload');
     }
 
     get imageUploadTarget() {
