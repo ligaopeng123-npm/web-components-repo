@@ -12,7 +12,6 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import "@gaopeng123/image-upload";
-// @ts-ignore
 import {AfterUpload, ImageUploadProps} from "@gaopeng123/image-upload";
 
 type UploadEvent = AfterUpload;

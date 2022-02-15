@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import RcLoginModule from "../src";
+import {RcLoginModule} from "../src";
 
 const App = () => {
     return (

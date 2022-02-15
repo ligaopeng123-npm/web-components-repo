@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import RcImageUpload from '../src';
+import {RcImageUpload} from '../src';
 
 const App = () => {
     const uploadChange = (e: any) => {

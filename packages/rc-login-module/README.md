@@ -7,7 +7,7 @@
 ```react
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import RcLoginModule from "@gaopeng123/rc-login-module";
+import {RcLoginModule} from "@gaopeng123/rc-login-module";
 
 const App = () => {
     return (

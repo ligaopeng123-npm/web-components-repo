@@ -7,6 +7,8 @@ import {pictureTemplate, template} from "./template";
 import initMsg from '@gaopeng123/message';
 import {ImageUploadProps} from "./interface";
 
+export {ImageUploadProps} from "./interface";
+
 type UploadChangeDetails = {
     fileList: any[],
     file?: File | string,
