@@ -110,7 +110,7 @@ export default class LogInModule extends HTMLElement {
      */
     get title() {
         const title = this.getConfig()['my-title'];
-        return title || this.shadow.getAttribute('title');
+        return title || this.getAttribute('title');
     }
 
     create = () => {
