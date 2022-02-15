@@ -10,4 +10,5 @@
  *
  **********************************************************************/
 export {LoginModuleProps, AfterSubmit, Submit, SubmitError} from "@gaopeng123/login-module";
+// webpack转换exports.default有问题 使用RcLoginModule导出
 export {default as RcLoginModule} from "./RcLoginModule";
