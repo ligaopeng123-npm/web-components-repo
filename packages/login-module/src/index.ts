@@ -110,6 +110,7 @@ export default class LogInModule extends HTMLElement {
      */
     get title() {
         const title = this.getConfig()['my-title'];
+        // 兼容以前的处理
         return title || this.getAttribute('title');
     }
 
