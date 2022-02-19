@@ -118,6 +118,7 @@ export default class ImageUpload extends HTMLElement {
         this.addPictureClick();
         this.addUploadClick();
         this.addUploadChange();
+        this.addDragEvent();
     }
 
     removeEvent() {
@@ -126,6 +127,35 @@ export default class ImageUpload extends HTMLElement {
         this.removePictureClick();
         this.removeUploadClick();
         this.removeUploadChange();
+        this.removeDragEvent();
+    }
+
+    /**
+     * 添加拖拽事件
+     */
+    addDragEvent() {
+        // 拖离事件
+        // this.imageUpload.addEventListener('dragenter', () => {
+        //
+        // }, false);
+        // 拖进事件
+        // this.imageUpload.addEventListener('dragleave', () => {
+        //
+        // }, false);
+        // 拖动过程 todo 必须阻止冒泡否则会触发浏览器的默认行为
+        this.imageUpload.addEventListener('dragover', (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+        }, false);
+        // 拖拽方下
+        this.imageUpload.addEventListener('drop', this.onUploadChange, false);
+    }
+
+    /**
+     * 移除拖拽事件
+     */
+    removeDragEvent() {
+        this.imageUpload.removeEventListener('drop', this.onUploadChange, false);
     }
 
     /**
@@ -263,11 +293,18 @@ export default class ImageUpload extends HTMLElement {
      * @param event
      */
     onUploadChange = (event: Event) => {
+        event.preventDefault();
+        event.stopPropagation();
         // @ts-ignore
-        const files = event.target.files;
+        const files = event.target.files || event.dataTransfer.files;
         if (!this.isMax(files.length)) {
             const promises = [];
             for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.indexOf('image') === -1) {
+                    this.qmsg.info(`仅支持上传图片，非图片类型已被禁止！`);
+                    continue;
+                }
                 promises.push(blob2Base64(files[i]));
             }
             Promise.all(promises).then((urls) => {
