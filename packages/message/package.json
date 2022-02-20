@@ -12,8 +12,7 @@
         "access": "public"
     },
     "files": [
-        "dist",
-        "src"
+        "dist"
     ],
     "engines": {
         "node": ">=10"

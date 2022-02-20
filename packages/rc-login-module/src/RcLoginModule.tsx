@@ -13,10 +13,10 @@ import * as React from 'react';
 import {useEffect} from 'react';
 import "@gaopeng123/login-module";
 // @ts-ignore
-import {LoginModuleProps, AfterSubmit, Submit, SubmitError} from "@gaopeng123/login-module";
+import type {LoginModuleProps, AfterSubmit, Submit, SubmitError} from "@gaopeng123/login-module";
 import {obj2css} from "@gaopeng123/utils.file";
 
-type RcLoginModuleProps = {
+export type RcLoginModuleProps = {
     id?: string, // 标识 可不传
     title?: string, // 标题
     mainStyle?: any, // 主样式 用于更改背景图等

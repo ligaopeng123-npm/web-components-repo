@@ -9,5 +9,5 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-export {AfterUpload, ImageUploadProps} from "@gaopeng123/image-upload";
+export type {AfterUpload, ImageUploadProps} from "@gaopeng123/image-upload";
 export {default as RcImageUpload} from "./RcImageUpload";
