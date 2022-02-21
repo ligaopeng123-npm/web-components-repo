@@ -1,6 +1,6 @@
 # rc-image-upload
 
-> 图片上传，支持粘贴上传
+> 图片上传，截图上传插件，支持点击上传、截图粘贴上传、拖拽上传 
 
 ![image-20220206113110933](C:\Users\pgli\AppData\Roaming\Typora\typora-user-images\image-20220206113110933.png)
 
