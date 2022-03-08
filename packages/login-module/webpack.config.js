@@ -15,6 +15,6 @@ const base = require('../../webpack.base.config');
 
 module.exports = merge(base(__dirname), {
 	devServer: {
-		port: 5002
+		port: 5002,
 	}
 });
