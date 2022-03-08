@@ -805,7 +805,7 @@ export default class LogInModule extends HTMLElement {
 					</xy-form-item>
 					` + (captcha ? `
 	                    <xy-form-item id="captchaItem" style="${config['item-style']}" class="item">
-	                        <xy-input errortips="请输入验证码" style="width: 70%;" id="captcha" icon="message" name="${captcha}" required type="captcha" placeholder="请输入验证码"></xy-input>
+	                        <xy-input errortips="请输入验证码" style="width: calc(100% - 80px);" id="captcha" icon="message" name="${captcha}" required type="captcha" placeholder="请输入验证码"></xy-input>
 	                        <img id="captchaImg" width="24" height="24" alt="验证码"
 	                        style="width: 80px;height: 37px;float: right;border-radius: 4px;" />
 	                    </xy-form-item>
