@@ -94,11 +94,11 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             url={url}
             user={user}
             password={password}
-            public-key={publicKey}
+            publickey={publicKey}
             captcha={captcha}
-            captcha-src={captchaSrc}
-            captcha-url={captchaUrl}
-            captcha-method={captchaMethod}
+            captchasrc={captchaSrc}
+            captchaurl={captchaUrl}
+            captchamethod={captchaMethod}
             keeplogged={keeplogged}
             agreement-proprietary={agreementProprietary}
         />

@@ -1,12 +1,22 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {RcLoginModule} from "../src";
+import {useEffect, useState} from "react";
 
 const App = () => {
+    const [captchaSrc, setCaptchaSrc] = useState('');
+
+    useEffect(()=> {
+        setTimeout(()=> {
+            setCaptchaSrc(`12121`)
+        }, 2000);
+    }, [])
     return (
         <div>
             {/*@ts-ignore*/}
             <RcLoginModule
+                captcha={'captcha'}
+                captchaSrc={captchaSrc}
                 onSubmit={(e) => {
                     console.log(e);
                 }}
