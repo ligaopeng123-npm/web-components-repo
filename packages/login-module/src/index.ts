@@ -559,7 +559,6 @@ export default class LogInModule extends HTMLElement {
     currentSubmitTimmer: any = null;
     onSubmit = () => {
         if (this.currentSubmitTimmer) {
-            console.log(this.currentSubmitTimmer);
             if (Date.now() - this.currentSubmitTimmer < 200) {
                 this.currentSubmitTimmer = Date.now();
                 return;

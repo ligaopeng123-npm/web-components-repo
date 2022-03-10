@@ -240,7 +240,6 @@ export default class XyForm extends HTMLElement {
         });
         if (!this.novalidate) {
             this.elements.forEach((el) => {
-                console.log('el', el)
                 if (el.tagName == 'XY-INPUT') {
                     el.addEventListener('input', () => {
                         this.invalid = !this.validity;
