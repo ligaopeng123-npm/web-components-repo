@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-login-module",
-    "version": "0.2.13",
+    "version": "0.2.14",
     "description": "登录模块",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -67,7 +67,7 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@gaopeng123/login-module": "^0.2.13",
+        "@gaopeng123/login-module": "^0.2.14",
         "@gaopeng123/utils.file": "^0.4.3"
     },
     "gitHead": "112924c1e94b8497fc1ce020257c3f77a956eeff"
