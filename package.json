@@ -28,6 +28,8 @@
         "packages/message",
         "packages/rc-image-upload",
         "packages/login-module",
-        "packages/rc-login-module"
+        "packages/rc-login-module",
+        "packages/multi-player",
+        "packages/rc-multi-player"
     ]
 }
