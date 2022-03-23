@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-multi-player",
-    "version": "0.0.1",
+    "version": "0.2.15",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -67,6 +67,6 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/multi-player": "^0.0.1"
+        "@gaopeng123/multi-player": "^0.2.15"
     }
 }
