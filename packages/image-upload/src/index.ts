@@ -3,8 +3,7 @@ import {parentByExpected} from '@gaopeng123/utils.object';
 import {blob2Base64} from "@gaopeng123/utils.file";
 import {isDelIcon, isPictureImg, isPictureItem, openToPreviewBase64} from "./utils";
 import {pictureTemplate, template} from "./template";
-// @ts-ignore
-import initMsg from '@gaopeng123/message';
+import {initMsg} from '@gaopeng123/message';
 import {ImageUploadProps} from "./interface";
 
 export type {ImageUploadProps} from "./interface";
@@ -56,7 +55,7 @@ export default class ImageUpload extends HTMLElement {
         super();
         this.shadow = this.attachShadow({mode: 'closed'});
         // @ts-ignore
-        this.qmsg = (initMsg.default || initMsg)(this);
+        this.qmsg = initMsg(this);
         this.qmsg.config({
             showClose: true
         });

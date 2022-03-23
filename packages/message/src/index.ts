@@ -35,7 +35,7 @@ type MsgSTATES = {
  * 避免生成全局变量
  * @param global
  */
-const initMsg = (global: any) => {
+export const initMsg = (global: any) => {
     addMessageCss();
     /**
      * 声明插件名称

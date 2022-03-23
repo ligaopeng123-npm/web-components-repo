@@ -5,8 +5,12 @@
         "node_modules"
     ],
     "compilerOptions": {
+        "outDir": "/dist",
+        "rootDir": "./",
+        "baseUrl": "./packages",
         "module": "esnext",
-        "sourceMap": true,
+        "declaration": true,
+        "sourceMap": false,
         "noImplicitAny": true,
         "target": "es6",
         "allowJs": true,

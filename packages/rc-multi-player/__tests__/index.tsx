@@ -1,14 +1,8 @@
-# `rc-multi-player`
-
-> react 播放器，依赖@gaopeng123/multi-player
-
-## Usage
-
-```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {RcMultiPlayer} from "../src";
 import {useEffect, useState} from "react";
+
 
 const App = () => {
     const [mediaDataSource, setMediaDataSource] = useState<any>({});
@@ -26,5 +20,3 @@ const App = () => {
 };
 
 ReactDOM.render(<App/>, document.getElementById('root'));
-
-```

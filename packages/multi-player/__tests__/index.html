@@ -5,10 +5,22 @@
     <title>multi-player</title>
 </head>
 <body style="margin: 0px;">
-<script type="module" src="../dist/multi-player.esm.js"></script>
+<multi-player
+        id="player"
+        media-data-source='{"url": "/flv/5956007-1-31882"}'>
 
-<script>
+</multi-player>
 
+<script type="module">
+    import {MultiPlayerEvent} from '../';
+
+    window.onload = () => {
+        console.log('STATISTICS_INFO', MultiPlayerEvent.STATISTICS_INFO)
+        const player = document.querySelector('#player');
+        player.addEventListener(MultiPlayerEvent.STATISTICS_INFO, ({detail}) => {
+            console.log(detail);
+        });
+    }
 </script>
 </body>
 </html>
