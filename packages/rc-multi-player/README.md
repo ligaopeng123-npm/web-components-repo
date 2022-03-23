@@ -15,7 +15,7 @@ const App = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            setMediaDataSource({url: '/flv/5956007-1-31882'})
+            setMediaDataSource({url: 'https://xxx/flv/xxx'})
         }, 2000);
     }, [])
     return (

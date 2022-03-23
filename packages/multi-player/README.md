@@ -62,7 +62,7 @@ player.addEventListener(MultiPlayerError.NETWORK_ERROR, ({detail}) => {
 ```ts
 <multi-player
         id="player"
-        media-data-source='{"url": "/flv/5956007-1-31882"}'>
+        media-data-source='{"url": "https://xxx/flv/xxx"}'>
 </multi-player>
 
 const player = document.querySelector('#player');
