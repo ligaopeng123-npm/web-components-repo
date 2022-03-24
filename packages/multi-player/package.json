@@ -65,5 +65,6 @@
         "@gaopeng123/utils.function": "^0.4.9",
         "@gaopeng123/utils.string": "^0.4.12",
         "mpegts.js": "^1.6.10"
-    }
+    },
+    "gitHead": "24aed7b11c99660834e7b6d41f63b25f4b430575"
 }
