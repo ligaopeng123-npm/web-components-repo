@@ -61,14 +61,9 @@ module.exports = function (dirname = __dirname) {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: '登录',
+                // title: '登录',
                 template: './__tests__/index.html'
             }),
-            // new CopyPlugin({
-            //     patterns: [
-            //         {from: './src/typing.ts', to: './typing.ts'},
-            //     ]
-            // })
         ],
         experiments: {
             outputModule: true // 让模块可以使用import导入使用

@@ -1,9 +1,11 @@
 {
     "extends": "../../tsconfig.json",
     "include": [
-        "src",
-        "types"
+        "src/index.ts",
+        "__tests__/index.tsx"
     ],
     "compilerOptions": {
+        "outDir": "./dist/",
+        "rootDir": "./"
     }
 }

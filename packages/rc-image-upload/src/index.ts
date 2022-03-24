@@ -10,4 +10,4 @@
  *
  **********************************************************************/
 export type {AfterUpload, ImageUploadProps} from "@gaopeng123/image-upload";
-export {default as RcImageUpload} from "./RcImageUpload";
+export {default as RcImageUpload} from './RcImageUpload';

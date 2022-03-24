@@ -9,7 +9,11 @@ const App = () => {
     return (
         <div>
             <RcImageUpload
-                id={`test`} height={600} width={400} pictureHeight={64} pictureWidth={64}
+                id={`test`}
+                height={600}
+                width={400}
+                pictureHeight={64}
+                pictureWidth={64}
                 fileList={[]}
                 maxCount={4}
                 onUploadChange={uploadChange}
