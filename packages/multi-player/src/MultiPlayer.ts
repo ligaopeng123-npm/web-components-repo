@@ -260,11 +260,11 @@ export default class MultiPlayer extends HTMLElement {
      */
     destroyPlayer = () => {
         if (!this.player) return;
+        this.playerEvent.destroy();
         this.player.pause();
         this.player.unload();
         this.player.detachMediaElement();
         this.player.destroy();
-        this.playerEvent.destroy();
         this.player = null;
     }
     // https://github.com/xqq/mpegts.js/blob/master/docs/api.md
