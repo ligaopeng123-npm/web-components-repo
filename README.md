@@ -3,11 +3,12 @@ web组件仓库
 
 ### 安装依赖 
 
-`确保全局安装了lerna`
+`确保全局安装了`[lerna](https://lerna.js.org/)
 
+```js
+npm install --global lerna
 lerna bootstrap
-
-`vue-image-upload 由于使用webpack4，无法共用依赖，需要单独安装依赖`
+```
 
 ### 启动
 

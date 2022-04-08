@@ -19,12 +19,6 @@
         "lerna": "^4.0.0"
     },
     "workspaces": [
-        "packages/image-upload",
-        "packages/message",
-        "packages/rc-image-upload",
-        "packages/login-module",
-        "packages/rc-login-module",
-        "packages/multi-player",
-        "packages/rc-multi-player"
+        "packages/*"
     ]
 }
