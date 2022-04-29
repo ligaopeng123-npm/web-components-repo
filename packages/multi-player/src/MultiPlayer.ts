@@ -32,7 +32,7 @@ export default class MultiPlayer extends HTMLElement {
     /**
      * 保存配置信息
      */
-    obj_props = ['media-data-source', 'config'];
+    obj_props = ['media-data-source', 'config', 'robustness'];
     __defaultConfig: MultiPlayerComProps = {
         width: '100%',
         height: '100%',

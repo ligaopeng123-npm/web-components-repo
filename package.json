@@ -4,7 +4,7 @@
     "changelog": {
         "labels": {
             "feat": ":rocket: 1、增加rc-login-jsencrypt 和 useFeishuLogin",
-            "bug": ":bug: Bug Fix",
+            "bug": ":bug: robustness参数覆盖问题",
             "doc": ":memo: Documentation",
             "internal": ":house: Internal",
             "breaking": ":boom: Breaking Change"
