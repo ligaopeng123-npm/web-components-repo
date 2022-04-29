@@ -3,7 +3,7 @@
     "private": true,
     "changelog": {
         "labels": {
-            "feat": ":rocket: New Feature",
+            "feat": ":rocket: 1、增加rc-login-jsencrypt 和 useFeishuLogin",
             "bug": ":bug: Bug Fix",
             "doc": ":memo: Documentation",
             "internal": ":house: Internal",

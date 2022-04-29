@@ -1,0 +1,67 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import {RCLoginCaptchaProps, RCLoginJSEncrypt} from "../src";
+import {get, post} from "@gaopeng123/fetch";
+import {useFeishuLogin} from "@gaopeng123/rc-login-module";
+import {useEffect} from "react";
+
+const encryptPublicKey = 'xxx';
+
+const headers = {
+    clientId: 'xxx',
+    secret: 'xxx',
+};
+
+const App = () => {
+    const [code, setCode] = useFeishuLogin({
+        id: 'testapp',
+        url: 'https://xxx',
+        app_id: 'xxx',
+        redirect_uri: 'https://xxx'
+    });
+
+    useEffect(() => {
+        if (code) {
+            // 调用服务端接口去交换token 交换完成后最好在调用下setCode();
+            // 登录成功或者失败后 code就不能用了 所以要调用下
+            setCode();
+        }
+    }, [code]);
+    return (
+        <RCLoginJSEncrypt
+            encryptPublicKey={encryptPublicKey}
+            clientId={headers.clientId}
+            secret={headers.secret}
+            getCaptcha={async () => {
+                return new Promise<RCLoginCaptchaProps>((resolve, reject) => {
+                    get(`https://pj-feedback.sany.com.cn/testAuth/api/nebula/auth/token/v1/captcha`, {
+                        params: {
+                            width: 80,
+                            height: 30
+                        },
+                        headers: headers
+                    }).then((res: any) => {
+                        resolve(res)
+                    })
+                })
+            }}
+            handleSubmit={({headers, body}) => {
+                return new Promise((resolve, reject) => {
+                    post(`https://pj-feedback.sany.com.cn/testAuth/api/nebula/auth/token/v1/shrLogin`, {
+                        headers: headers,
+                        body: body
+                    }).then((res) => {
+                        console.log(res);
+                    });
+                    resolve(true)
+                })
+            }}
+            mainStyle={{backgroundImage: 'url(./assets/background.jpg)'}}
+            bodyStyle={{right: '200px;'}}
+            keeplogged={true}
+            title="食堂管理系统"
+        />
+    );
+};
+
+ReactDOM.render(<App/>, document.getElementById('root'));
