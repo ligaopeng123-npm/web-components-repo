@@ -46,18 +46,13 @@ export class PlayerEvent {
     init() {
         // https://github.com/xqq/mpegts.js/blob/master/docs/api.md#mpegtsevents
         this.addEvent();
-        this.addError();
+        // this.addError();
     }
 
     destroy() {
         for (const event of events) {
             // @ts-ignore
             this.player.off(event, this.onEvents);
-        }
-
-        for (const event of errors) {
-            // @ts-ignore
-            this.player.off(event, this.onErrors);
         }
     }
 
@@ -76,17 +71,22 @@ export class PlayerEvent {
     }
 
 
-    onEvents = (event: MultiPlayerEventType, err: any, info: any) => {
-        this.__onEvent && this.__onEvent(event, err, info);
-        // @ts-ignore
-        this[`on${event}`] && this[`on${event}`](err, info);
+    onEvents = (event: MultiPlayerEventType, info: any) => {
+        // 如果是错误信息 走错误信息模块处理
+        if (event === mpegts.Events.ERROR) {
+            this.onErrors(event, info)
+        } else {
+            this.__onEvent && this.__onEvent(event, info);
+            // @ts-ignore
+            this[`on${event}`] && this[`on${event}`](err, info);
+        }
     }
 
-    onErrors = (event: string, err: any, info: any) => {
+    onErrors = (event: string, info: any) => {
         // NETWORK_ERROR  网络错误
         // MEDIA_ERROR    流媒体错误
         // OTHER_ERROR    未知错误
-        this.__onError && this.__onError(event, err, info);
+        this.__onError && this.__onError(event, info);
         // @ts-ignore
         this[`on${event}`] && this[`on${event}`](err, info);
     }
