@@ -151,10 +151,10 @@ export default class MultiPlayer extends HTMLElement {
         this.player.play().then(() => {
             console.log(`${this.mediaDataSource.url} start playing`);
             this.loopAdjustBuffer();
-            this.onPlayEvent();
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
         });
+        this.onPlayEvent();
     };
 
     onVisibilitychange = () => {
@@ -167,7 +167,7 @@ export default class MultiPlayer extends HTMLElement {
      */
     __resetTimes: number = 0;
     restart = () => {
-        if (this.robustness.maxResetTimes <= this.__resetTimes) {
+        if (this.__resetTimes <= this.robustness.maxResetTimes) {
             this.clearAdjustBuffer();
             this.destroyPlayer();
             this.handleAttributeChanged();
@@ -208,7 +208,7 @@ export default class MultiPlayer extends HTMLElement {
             const currentTime = this.player.currentTime;
             if (this.__lastCurrentTime && currentTime - this.__lastCurrentTime < 1) {
                 // 发loading消息
-                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_IMG, (currentTime - this.__lastCurrentTime) + '', 'almost complete loading')
+                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_IMG, (currentTime - this.__lastCurrentTime) + 'almost complete loading')
             }
             //获取当前缓冲区buffered值
             const end = this.player.buffered.end(0);
@@ -235,9 +235,9 @@ export default class MultiPlayer extends HTMLElement {
         );
     }
 
-    onEvent = (event: MultiPlayerEventType, e: string, info: any) => {
-        this.dispatchEvent(new CustomEvent(event, {
-            detail: {event: e, info: info}
+    onEvent = (eventType: MultiPlayerEventType, info: any) => {
+        this.dispatchEvent(new CustomEvent(eventType, {
+            detail: {event: eventType, info: info}
         }));
     }
 
@@ -247,7 +247,12 @@ export default class MultiPlayer extends HTMLElement {
             this.q_msg?.warning(`${event}: 网络连接失败，请稍后重试`);
         }
         this.dispatchEvent(new CustomEvent(event, {
-            detail: {error: err, info: info}
+            detail: {
+                error: err,
+                info: info,
+                resetTimes: this.__resetTimes,
+                maxResetTimes: this.robustness.maxResetTimes
+            }
         }));
     }
 
@@ -260,7 +265,7 @@ export default class MultiPlayer extends HTMLElement {
      */
     destroyPlayer = () => {
         if (!this.player) return;
-        this.playerEvent.destroy();
+        this.playerEvent?.destroy();
         this.player.pause();
         this.player.unload();
         this.player.detachMediaElement();
