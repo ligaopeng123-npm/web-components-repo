@@ -191,6 +191,7 @@ export default class LogInModule extends HTMLElement {
         id: 'login-module',
         'body-style': '',
         'main-style': '',
+        'item-style': '',
         method: 'POST', // POST GET
         url: null, // 默认不支持传参
         user: 'user',
@@ -778,9 +779,9 @@ export default class LogInModule extends HTMLElement {
                     height: 2px;
                     overflow: hidden;
                     display: block;
-                    left: 110px;
+                    left: 0px;
                     position: absolute;
-                    width: calc(100% - 110px);
+                    width: 100%;
                     background: var(--login-module-agreement-proprietary-color, #42b983);
                     transform: scaleX(0);
                     transition: all 0.5s;
@@ -789,7 +790,7 @@ export default class LogInModule extends HTMLElement {
 					cursor: pointer;
 					user-select: none;
 					color: var(--login-module-agreement-proprietary-color, #42b983);
-					vertical-align: 1px;
+					/*vertical-align: 1px;*/
 				}
 				#agreement-proprietary-text:hover::after {
 					transform: scaleX(1);
@@ -828,9 +829,11 @@ export default class LogInModule extends HTMLElement {
                    
                      ` +
             (agreementProprietary
-                ? `<xy-form-item style="${config['item-style']};position: relative;" class="item">
+                ? `<xy-form-item style="${config['item-style']}" class="item">
                        <xy-checkbox checked id="agreement-proprietary">已阅读并同意</xy-checkbox>
-                       <span id="agreement-proprietary-text">${title}服务协议</span>
+                       <span style="position: relative;bottom: 1px;">
+                           <span id="agreement-proprietary-text">${title}服务协议</span>
+                       </span>
                     </xy-form-item>` : '') +
             `
                 </xy-form>
