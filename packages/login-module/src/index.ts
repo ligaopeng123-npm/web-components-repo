@@ -301,7 +301,7 @@ export default class LogInModule extends HTMLElement {
             const loginBth = this.shadow && this.shadow.querySelector
                 ? this.shadow.querySelector(`#bth-login`)
                 : null;
-            if (loginBth && loginBth.getAttribute('loading') !== '') {
+            if (loginBth && loginBth.getAttribute('loading') !== '' && loginBth.disabled !== true) {
                 loginBth.click();
             }
         }, 10);
@@ -831,7 +831,7 @@ export default class LogInModule extends HTMLElement {
             (agreementProprietary
                 ? `<xy-form-item style="${config['item-style']}" class="item">
                        <xy-checkbox checked id="agreement-proprietary">已阅读并同意</xy-checkbox>
-                       <span style="position: relative;bottom: 1px;">
+                       <span style="position: relative;bottom: 2px;">
                            <span id="agreement-proprietary-text">${title}服务协议</span>
                        </span>
                     </xy-form-item>` : '') +
