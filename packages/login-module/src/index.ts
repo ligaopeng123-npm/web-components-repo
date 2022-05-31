@@ -760,32 +760,39 @@ export default class LogInModule extends HTMLElement {
 				}
 				
 				.login-title {
-					color: #333;
+					color: var(--login-module-login-title-color, #333);
 					text-align: center;
-				}
-				.login-title {
-					color: #333;
-					text-align: center;
-					font-size: 28px;
-					font-family: PingFangSC-Semibold, PingFang SC;
-					font-weight: 600;
+					font-size: var(--login-module-login-title-fontSize, 28px);
+					font-family: var(--login-module-login-title-fontFamily, PingFangSC-Semibold, PingFang SC);
+					font-weight: var(--login-module-login-title-fontSize, 600);
 				}
 				.login-manipulate {
-					margin-bottom: 24px;
 					color: #666;
 					margin-left: 24px;
 				}
 				#captchaImg {
 					cursor: pointer;
 				}
-				/*#42b983;*/
+                #agreement-proprietary-text::after{
+                    content: "";
+                    height: 2px;
+                    overflow: hidden;
+                    display: block;
+                    left: 110px;
+                    position: absolute;
+                    width: calc(100% - 110px);
+                    background: var(--login-module-agreement-proprietary-color, #42b983);
+                    transform: scaleX(0);
+                    transition: all 0.5s;
+                }
 				#agreement-proprietary-text {
 					cursor: pointer;
 					user-select: none;
-					color: #42b983;
+					color: var(--login-module-agreement-proprietary-color, #42b983);
+					vertical-align: 1px;
 				}
-				#agreement-proprietary-text:hover {
-					background-color: rgba(66,185,131,0.10);;
+				#agreement-proprietary-text:hover::after {
+					transform: scaleX(1);
 				}
 			</style>
 			<div class="login-module ${config[`main-style`] ? '' : 'login-module-bg'}" id="login" style="${config[`main-style`]}">
@@ -810,18 +817,18 @@ export default class LogInModule extends HTMLElement {
 	                    </xy-form-item>
 	                ` : '')
             + (keeplogged
-                ? `<xy-form-item >
-						<div class="login-manipulate">
+                ? `<xy-form-item style="${config['item-style']}">
+						<div style="${config['item-style']}" class="login-manipulate">
 							<xy-checkbox id="checked">记住我</xy-checkbox>
 						</div>
 					</xy-form-item>` : '') + `
-                    <xy-form-item class="item">
+                    <xy-form-item style="${config['item-style']}" class="item">
                         <xy-button id="bth-login" type="primary" htmltype="submit">登录</xy-button>
                     </xy-form-item>
                    
                      ` +
             (agreementProprietary
-                ? `<xy-form-item class="item">
+                ? `<xy-form-item style="${config['item-style']};position: relative;" class="item">
                        <xy-checkbox checked id="agreement-proprietary">已阅读并同意</xy-checkbox>
                        <span id="agreement-proprietary-text">${title}服务协议</span>
                     </xy-form-item>` : '') +

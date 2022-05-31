@@ -2,7 +2,7 @@
 
 登录模块，统一管理登录逻辑
 
-##### 属性配置
+## 属性配置
 
 | 属性       | 说明                                                    | 类型   | 默认值       |
 | ---------- | ------------------------------------------------------- | ------ | ------------ |
@@ -24,9 +24,9 @@
 | keeplogged | 支持记住密码 | boolean | false |
 | agreement-proprietary | 用户协议的主题<br />（主要体现的解释权）例如：干饭人集团<br />用户协议中，会将title和“干饭人集团”进行拼接 | string | '' |
 
+## 事件配置 
 
-
-##### 事件配置 （注意webpace5摇树配置会导致导入不可用时，请直接使用import  ‘@gaopeng123/login-module’ 导入)
+`（注意webpace5摇树配置会导致导入不可用时，请直接使用import  ‘@gaopeng123/login-module’ 导入)`
 
 ```
 submit事件 在点击登录时触发，传递的登录信息在，detail字段中
@@ -75,4 +75,14 @@ captchaClick 在点击验证码的时候触发
 		});
     </script>
 ```
+
+## CSS variables
+
+| 变量名                                     | 含义                      | 默认值                           |
+| ------------------------------------------ | ------------------------- | -------------------------------- |
+| --login-module-login-title-color           | title颜色                 | #333333                          |
+| --login-module-login-title-fontSize        | title字体fontSize         | 28px                             |
+| --login-module-login-title-fontWeight      | title字体fontWeight       | 600                              |
+| --login-module-login-title-fontFamily      | title字体fontFamily       | PingFangSC-Semibold, PingFang SC |
+| --login-module-agreement-proprietary-color | agreement-proprietary颜色 | #42b983                          |
 
