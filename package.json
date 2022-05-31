@@ -3,8 +3,8 @@
     "private": true,
     "changelog": {
         "labels": {
-            "feat": ":rocket: 1、增加rc-login-jsencrypt 和 useFeishuLogin",
-            "bug": ":bug: robustness参数覆盖问题",
+            "feat": ":rocket: 1、rc-br",
+            "bug": ":bug: 登录模块",
             "doc": ":memo: Documentation",
             "internal": ":house: Internal",
             "breaking": ":boom: Breaking Change"
