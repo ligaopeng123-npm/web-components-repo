@@ -227,7 +227,7 @@ class XyDialog extends HTMLElement {
             color:color
         }
     }
-    
+
     connectedCallback() {
         this.remove = false;
         this.autoclose = true;
@@ -244,7 +244,7 @@ class XyDialog extends HTMLElement {
                     this.input.focus();
                 }else{
                     this.btnSubmit.focus();
-                }  
+                }
             }
         })
         this.shadowRoot.addEventListener('transitionend',(ev)=>{
@@ -257,7 +257,8 @@ class XyDialog extends HTMLElement {
             }
         })
         this.addEventListener('wheel',(ev)=>{
-            ev.preventDefault();
+            // modified by pgli at 2022年6月1日11:35:13 for 鼠标滑轮滑动失效
+            // ev.preventDefault();
         })
         this.btnClose.addEventListener('click',()=>{
             this.open = false;
