@@ -41,7 +41,7 @@
         "@babel/preset-env": "^7.14.4",
         "@size-limit/preset-small-lib": "^5.0.1",
         "babel-loader": "^8.2.2",
-        "copy-webpack-plugin": "^9.0.1",
+        "copy-webpack-plugin": "^11.0.0",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.3.1",
         "size-limit": "^5.0.1",

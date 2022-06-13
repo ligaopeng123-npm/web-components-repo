@@ -13,6 +13,7 @@ import * as React from 'react';
 import {useEffect, useState} from "react";
 import JSEncrypt from "jsencrypt";
 import {RcLoginModule, RcLoginModuleProps} from "@gaopeng123/rc-login-module";
+import {SubmitData} from '@gaopeng123/login-module';
 
 type HandleSubmitProps = {
     header: any;
@@ -27,12 +28,19 @@ export type RCLoginJSEncryptProps = {
     encryptPublicKey: string;
     clientId: string;
     secret: string;
+    forgotPasswordUrl: boolean;
+    phoneLoginUrl: boolean;
     getCaptcha?: () => Promise<RCLoginCaptchaProps>;
     handleSubmit?: (HandleSubmitProps: any) => Promise<any>;
+    onResetPasswordSubmit?: (data: SubmitData) => Promise<boolean>;
 } & RcLoginModuleProps;
 
 const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
-    const {encryptPublicKey, clientId, secret, getCaptcha, handleSubmit} = props;
+    const {
+        encryptPublicKey, clientId, secret, getCaptcha, handleSubmit,
+        forgotPasswordUrl, phoneLoginUrl, onResetPasswordSubmit
+    } = props;
+
     const [encryptor, setEncryptor] = useState<any>();
     /**
      * 处理加密
@@ -79,6 +87,15 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
         }
     };
 
+    const _onResetPasswordSubmit = async (data: SubmitData) => {
+        onResetPasswordSubmit && onResetPasswordSubmit(data).then((res: boolean) => {
+            if (res) {
+                // @ts-ignore
+                document.getElementById('#RcLoginModule-form')?.success();
+            }
+        })
+    }
+
     /**
      * 菜单的第一项 默认为初始页面
      */
@@ -118,7 +135,12 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
             password="password"
             captcha="inputCode"
             captchaSrc={captcha?.image}
-            id="form"
+            id="RcLoginModule-form"
+            forgotPasswordUrl={forgotPasswordUrl || true}
+            phoneLoginUrl={phoneLoginUrl || true}
+            onResetPasswordSubmit={(data: SubmitData) => {
+                _onResetPasswordSubmit(data);
+            }}
         >
         </RcLoginModule>
     )

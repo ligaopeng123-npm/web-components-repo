@@ -12,10 +12,11 @@
 const {merge} = require('webpack-merge');
 // @ts-ignore
 const base = require('../../webpack.base.config');
+const path = require("path");
 
 module.exports = merge(base(__dirname), {
 	devServer: {
-		port: 5002
+		port: 5002,
 	}
 });
 

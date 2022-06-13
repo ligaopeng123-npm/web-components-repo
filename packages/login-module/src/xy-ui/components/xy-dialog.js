@@ -3,7 +3,7 @@ import './xy-input.js';
 
 class XyDialog extends HTMLElement {
 
-    static get observedAttributes() { return ['open','title','oktext','canceltext','loading','type'] }
+    static get observedAttributes() { return ['open','title','icon', 'oktext','canceltext','loading','type'] }
 
     constructor({type}={}) {
         super();
@@ -134,6 +134,10 @@ class XyDialog extends HTMLElement {
         `
     }
 
+    get content () {
+        return this.shadowRoot.querySelector('.dialog-content');
+    }
+
     get open() {
         return this.getAttribute('open')!==null;
     }
@@ -176,6 +180,10 @@ class XyDialog extends HTMLElement {
 
     set canceltext(value) {
         this.setAttribute('canceltext', value);
+    }
+
+    set icon(value) {
+        this.setAttribute('icon', value);
     }
 
     set open(value) {
@@ -311,6 +319,16 @@ class XyDialog extends HTMLElement {
                 this.dialogType.color = this.typeMap(newValue).color;
             }
         }
+        if( name == 'icon' && this.dialogType){
+            if(newValue!==null){
+                const dialog = this.shadowRoot.querySelector('.dialog');
+                const dialogContent = this.shadowRoot.querySelector('.dialog-content');
+                const icon = document.createElement('div');
+                icon.innerHTML = newValue;
+                dialog.insertBefore(icon, dialogContent);
+                dialog.removeChild(dialog.querySelector('#dialog-type'))
+            }
+        }
     }
 }
 
@@ -431,11 +449,12 @@ export default {
         dialog.remove = true;
         dialog.btnCancel.style.visibility = 'visible';
         if( typeof arguments[0] === 'object' ){
-            const { type, title, content, oktext, canceltext, ok, cancel} = arguments[0];
+            const { type, title, content, oktext,icon, canceltext, ok, cancel} = arguments[0];
             dialog.type = type||'confirm';
             dialog.title = title||'Confirm';
             dialog.oktext = oktext||'确 定';
             dialog.canceltext = canceltext||'取 消';
+            dialog.icon = icon||null;
             dialog.innerHTML = content||'';
             dialog.onsubmit = ok||null;
             dialog.oncancel = cancel||null;

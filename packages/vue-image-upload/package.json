@@ -62,6 +62,7 @@
         "@vue/cli-plugin-typescript": "^5.0.4",
         "@vue/cli-service": "^5.0.4",
         "@zerollup/ts-transform-paths": "1.7.18",
+        "copy-webpack-plugin": "^11.0.0",
         "minimist": "^1.2.5",
         "rimraf": "^3.0.2",
         "rollup": "^2.52.8",

@@ -63,6 +63,7 @@
     "devDependencies": {
         "@size-limit/preset-small-lib": "^5.0.1",
         "@types/node": "^16.4.6",
+        "copy-webpack-plugin": "^11.0.0",
         "husky": "^7.0.0",
         "size-limit": "^5.0.1",
         "tsdx": "^0.14.1",

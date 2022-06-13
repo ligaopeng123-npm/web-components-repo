@@ -37,6 +37,9 @@ export type RcLoginModuleProps = {
     onAfterSubmit?: (data: AfterSubmit) => void, // 提交后回调
     onSubmitError?: (data: Submit) => void, // 提交错误回调
     onCaptchaClick?: (data: any) => void, // 点击验证码回调
+    forgotPasswordUrl?: string | boolean; // 短信登录功能
+    phoneLoginUrl?: string | boolean; // 短信登录功能
+    onResetPasswordSubmit?:  (data: Submit) => void, // 密码修改功能
 };
 
 /**
@@ -56,7 +59,8 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
         method, url, user, password, publicKey,
         captcha, captchaSrc, captchaUrl, captchaMethod,
         keeplogged, agreementProprietary,
-        onSubmit, onAfterSubmit, onSubmitError, onCaptchaClick
+        onSubmit, onAfterSubmit, onSubmitError, onCaptchaClick,
+        onResetPasswordSubmit, phoneLoginUrl, forgotPasswordUrl
     } = props;
     const _id = id || 'rc-login-module';
     useEffect(() => {
@@ -66,12 +70,14 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
         const _onAfterSubmit = (e: AfterSubmit) => onAfterSubmit && onAfterSubmit(e);
         const _onSubmitError = (e: SubmitError) => onSubmitError && onSubmitError(e);
         const _onCaptchaClick = (e: any) => onCaptchaClick && onCaptchaClick(e);
+        const _onResetPasswordSubmit = (e: any) => onResetPasswordSubmit && onResetPasswordSubmit(e);
 
         if (form) {
             form.addEventListener('submit', _onSubmit);
             form.addEventListener('afterSubmit', _onAfterSubmit);
             form.addEventListener('submitError', _onSubmitError);
             form.addEventListener('captchaClick', _onCaptchaClick)
+            form.addEventListener('resetPasswordSubmit', _onResetPasswordSubmit)
         }
         return () => {
             if (form) {
@@ -79,6 +85,7 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
                 form.removeEventListener('afterSubmit', _onAfterSubmit);
                 form.removeEventListener('submitError', _onSubmitError);
                 form.removeEventListener('captchaClick', _onCaptchaClick);
+                form.removeEventListener('resetPasswordSubmit', _onResetPasswordSubmit);
             }
         }
     }, []);
@@ -101,6 +108,8 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             captchamethod={captchaMethod}
             keeplogged={keeplogged}
             agreement-proprietary={agreementProprietary}
+            phone-login-url={phoneLoginUrl}
+            forgot-password-url={forgotPasswordUrl}
         />
     )
 };

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV.trimEnd();
 
+
 module.exports = function (dirname = __dirname) {
     return {
         mode: 'development',// 环境管理
@@ -64,6 +65,14 @@ module.exports = function (dirname = __dirname) {
                 // title: '登录',
                 template: './__tests__/index.html'
             }),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(dirname, './__tests__/assets'),//想要复制的文件夹
+                        to: path.resolve(dirname, './dist/assets') //复制在哪个文件夹
+                    }
+                ]
+            })
         ],
         experiments: {
             outputModule: true // 让模块可以使用import导入使用

@@ -45,6 +45,7 @@ export default class XyForm extends HTMLElement {
             return true;
         }
         const elements = [...this.elements].reverse();
+
         let validity = true;
         elements.forEach(el => {
             if (el.checkValidity && !el.checkValidity()) {
@@ -148,8 +149,10 @@ export default class XyForm extends HTMLElement {
         const jsondata = {};
         if (!this.disabled) {
             this.elements.forEach(el => {
-                formdata.set(el.name, el.value);
-                jsondata[el.name] = el.value;
+                if (el.name) {
+                    formdata.set(el.name, el.value?.trim());
+                    jsondata[el.name] = el.value?.trim();
+                }
             });
         }
         formdata.json = jsondata;

@@ -24,11 +24,14 @@
         id="form"
         main-style="background-image: url(./assets/background.jpg)"
         body-style="right: 200px;"
-        item-style="margin:16px;"
         keeplogged="true"
         agreement-proprietary="干饭人集团"
+        forgot-password-url="true"
+        phone-login-url="true"
         my-title="食堂管理系统"
-        captcha="true"
+        captcha="captcha"
+        captchaurl="/assets/img.png"
+        captchamethod="GET"
 >
 </login-module>
 <!--<login-module-->
@@ -43,7 +46,7 @@
 <!--title="系统">-->
 <!--</login-module>-->
 <script>
-    const form = document.querySelector('#form');
+    const form = document.querySelector('login-module');
     form.addEventListener('submit', (data) => {
         console.log(data);
     });
@@ -59,6 +62,12 @@
     form.addEventListener('captchaClick', (data) => {
         console.log(data);
         form.setAttribute('captchasrc', '/iconfont/test.svg');
+    });
+
+    form.addEventListener('resetPasswordSubmit', (data) => {
+        console.log('resetPasswordSubmit', data);
+        // 关闭窗口
+        form.success();
     });
 </script>
 </body>
