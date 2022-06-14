@@ -204,6 +204,9 @@ class AgreementProprietary extends HTMLElement {
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (oldValue !== newValue) {
             this.__config[name] = newValue;
+            if (name === 'my-title' && this.agreementProprietaryText) {
+                this.agreementProprietaryText.innerText = `${newValue}服务协议`;
+            }
         }
     }
 
@@ -212,17 +215,22 @@ class AgreementProprietary extends HTMLElement {
     }
 
     addEvents() {
-        this.shadow.querySelector('#agreement-proprietary-text')
+        this.agreementProprietaryText
             ?.addEventListener('click', this.agreementClick);
         this.shadow.querySelector('#agreement-proprietary')
             ?.addEventListener('change', this.onChange);
     }
 
     removeEvent() {
-        this.shadow.querySelector('#agreement-proprietary-text')
+        this.agreementProprietaryText
             ?.removeEventListener('click', this.agreementClick);
         this.shadow.querySelector('#agreement-proprietary')
             ?.removeEventListener('change', this.onChange);
+    }
+
+
+    get agreementProprietaryText() {
+        return this.shadow.querySelector('#agreement-proprietary-text')
     }
 
     /**
@@ -239,6 +247,10 @@ class AgreementProprietary extends HTMLElement {
         this.dispatchEvent(new CustomEvent('change', {
             detail: e.detail
         }));
+    }
+
+    changeTemplate = () => {
+
     }
 
     /**
