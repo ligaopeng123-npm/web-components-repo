@@ -214,13 +214,15 @@ class AgreementProprietary extends HTMLElement {
     addEvents() {
         this.shadow.querySelector('#agreement-proprietary-text')
             ?.addEventListener('click', this.agreementClick);
-        this.shadow.querySelector('#agreement-proprietary').addEventListener('change', this.onChange)
+        this.shadow.querySelector('#agreement-proprietary')
+            ?.addEventListener('change', this.onChange);
     }
 
     removeEvent() {
         this.shadow.querySelector('#agreement-proprietary-text')
             ?.removeEventListener('click', this.agreementClick);
-        this.shadow.querySelector('#agreement-proprietary').removeEventListener('change', this.onChange)
+        this.shadow.querySelector('#agreement-proprietary')
+            ?.removeEventListener('change', this.onChange);
     }
 
     /**

@@ -41,11 +41,14 @@ const App = () => {
                         },
                         headers: headers
                     }).then((res: any) => {
+                        console.log(res)
                         resolve(res)
                     })
                 })
             }}
-            handleSubmit={({headers, body}) => {
+            phoneLoginUrl={true}
+            handleSubmit={({headers, body, loginType, data, encryptor}) => {
+                console.log(headers, body, loginType, data, encryptor);
                 return new Promise((resolve, reject) => {
                     post(`https://pj-feedback.sany.com.cn/testAuth/api/nebula/auth/token/v1/shrLogin`, {
                         headers: headers,
@@ -55,6 +58,18 @@ const App = () => {
                     });
                     resolve(true)
                 })
+            }}
+            forgotPasswordUrl={true}
+            onResetPasswordSubmit={(data) => {
+                console.log(data);
+                return new Promise((resolve, reject)=> {
+                    setTimeout(()=> {
+                        // 范围true关闭窗口 false不关闭
+                        resolve(false);
+                    }, 2000);
+                }).catch(()=> {
+
+                });
             }}
             mainStyle={{backgroundImage: 'url(./assets/background.jpg)'}}
             bodyStyle={{right: '200px;'}}

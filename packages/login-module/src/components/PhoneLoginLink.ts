@@ -28,14 +28,14 @@ class PhoneLoginLink extends HTMLElement {
 
     connectedCallback() {
         this.shadow.innerHTML = this.getTemplate();
-        this.link.addEventListener('click', this.onChange);
+        this.link?.addEventListener('click', this.onChange);
     }
 
     /**
      * 移除文档流
      */
     disconnectedCallback() {
-        this.link.removeEventListener('click', this.onChange);
+        this.link?.removeEventListener('click', this.onChange);
     }
 
     get link() {

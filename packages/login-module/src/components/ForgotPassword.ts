@@ -38,7 +38,11 @@ class ForgotPassword extends HTMLElement {
 
     destroy = () => {
         this.removeEvent();
-        this.dialog.open = false;
+        if (this.dialog) this.dialog.open = false;
+    }
+
+    fail = () => {
+        if (this.dialog) this.dialog.loading = false;
     }
 
     /**

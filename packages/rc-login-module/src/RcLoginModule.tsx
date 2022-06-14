@@ -76,8 +76,8 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             form.addEventListener('submit', _onSubmit);
             form.addEventListener('afterSubmit', _onAfterSubmit);
             form.addEventListener('submitError', _onSubmitError);
-            form.addEventListener('captchaClick', _onCaptchaClick)
-            form.addEventListener('resetPasswordSubmit', _onResetPasswordSubmit)
+            form.addEventListener('captchaClick', _onCaptchaClick);
+            form.addEventListener('resetPasswordSubmit', _onResetPasswordSubmit);
         }
         return () => {
             if (form) {

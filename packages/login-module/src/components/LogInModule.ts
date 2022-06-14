@@ -79,7 +79,7 @@ export default class LogInModule extends HTMLElement {
         return this.shadow.querySelector('verification-code')?.captchaRef;
     }
 
-    get captchaImgShadow() {
+    get captchaImg() {
         return this.shadow.querySelector('verification-code')?.captchaImg;
     }
 
@@ -147,8 +147,8 @@ export default class LogInModule extends HTMLElement {
         /**
          * 设置验证码地址
          */
-        captcha && captchasrc && this.checkChange(this.captchaImgShadow.getAttribute('src'), captchasrc, () => {
-            this.captchaImgShadow.setAttribute('src', captchasrc);
+        captcha && captchasrc && this.checkChange(this.captchaImg.getAttribute('src'), captchasrc, () => {
+            this.captchaImg.setAttribute('src', captchasrc);
         });
     };
     /**
@@ -233,6 +233,7 @@ export default class LogInModule extends HTMLElement {
         this.removeKeyWordEvents();
         this.shadow.querySelector('phone-login-link').removeEventListener('change', this.linkChange);
         this.shadow.querySelector('forgot-password')?.removeEventListener('resetPasswordSubmit', this.onResetPasswordSubmit)
+        this.shadow.querySelector('verification-code')?.removeEventListener('captchaClick', this.onCaptchaClick);
     }
 
     addEvents() {
@@ -241,6 +242,7 @@ export default class LogInModule extends HTMLElement {
         this.addKeyWordEvents();
         this.shadow.querySelector('phone-login-link').addEventListener('change', this.linkChange);
         this.shadow.querySelector('forgot-password')?.addEventListener('resetPasswordSubmit', this.onResetPasswordSubmit)
+        this.shadow.querySelector('verification-code')?.addEventListener('captchaClick', this.onCaptchaClick);
     }
 
     addLoginEvent = () => {
@@ -368,6 +370,15 @@ export default class LogInModule extends HTMLElement {
             detail: ev?.detail
         }));
     }
+    /**
+     * 验证码点击事件
+     * @param ev
+     */
+    onCaptchaClick = (ev: any) => {
+        this.dispatchEvent(new CustomEvent('captchaClick', {
+            detail: ev?.detail
+        }));
+    }
 
     /**
      * 提交回调 给外部提供的接口
@@ -411,6 +422,12 @@ export default class LogInModule extends HTMLElement {
      */
     success = () => {
         this.shadow.querySelector('forgot-password')?.destroy();
+    }
+    /**
+     * 失败处理
+     */
+    fail = () => {
+        this.shadow.querySelector('forgot-password')?.fail();
     }
     /**
      * 监听提交事件
@@ -504,7 +521,7 @@ export default class LogInModule extends HTMLElement {
                     </xy-form-item>
                      <!--验证码功能-->
                     <verification-code required ${captcha ? 'name="${captcha}"' : ''}  style="${config['item-style']}" class="item" item-style="${config['item-style']}"
-                        captcha="${captcha}" captchasrc="${config.captchasrc}" captchaurl="${config.captchaurl}"
+                        captcha="${captcha}" captchasrc="${config.captchasrc || ''}" captchaurl="${config.captchaurl || ''}"
                         captchamethod="${config.captchamethod}"></verification-code>
                     <!--记住我-->
                     <keep-logged keeplogged="${config.keeplogged}" style="${config['item-style']}" class="item" item-style="${config['item-style']}"></keep-logged>
