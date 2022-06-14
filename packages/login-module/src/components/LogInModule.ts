@@ -141,14 +141,14 @@ export default class LogInModule extends HTMLElement {
         /**
          * 验证码绑定
          */
-        captcha && this.checkChange(this.captchaShadow.getAttribute('name'), captcha, () => {
-            this.captchaShadow.setAttribute('name', captcha);
+        captcha && this.checkChange(this.captchaShadow?.getAttribute('name'), captcha, () => {
+            this.captchaShadow?.setAttribute('name', captcha);
         });
         /**
          * 设置验证码地址
          */
-        captcha && captchasrc && this.checkChange(this.captchaImg.getAttribute('src'), captchasrc, () => {
-            this.captchaImg.setAttribute('src', captchasrc);
+        captcha && captchasrc && this.checkChange(this.captchaImg?.getAttribute('src'), captchasrc, () => {
+            this.captchaImg?.setAttribute('src', captchasrc);
         });
     };
     /**
