@@ -41,8 +41,8 @@ class ForgotPassword extends HTMLElement {
         this.codeDom.removeEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
         this.codeDom.destroy();
     }
+
     destroy = () => {
-        this.removeEvent();
         this.concelHandle();
     }
 

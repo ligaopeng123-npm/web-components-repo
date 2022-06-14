@@ -65,7 +65,7 @@ const App = () => {
                 return new Promise((resolve, reject)=> {
                     setTimeout(()=> {
                         // 范围true关闭窗口 false不关闭
-                        resolve(false);
+                        resolve(true);
                     }, 2000);
                 }).catch(()=> {
 
