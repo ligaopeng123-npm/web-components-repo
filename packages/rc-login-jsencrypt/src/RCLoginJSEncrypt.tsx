@@ -53,6 +53,10 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
 
     const [encryptor, setEncryptor] = useState<any>();
     /**
+     * 修改密码能力
+     */
+    const [resetPasswordData, setResetPasswordData] = useState<ResetPasswordSubmitProps>();
+    /**
      * 处理加密
      */
     useEffect(() => {
@@ -96,17 +100,26 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
         }
     };
 
-    const _onResetPasswordSubmit = async (data: any) => {
-        const value: SubmitData = data.detail;
-        onResetPasswordSubmit && onResetPasswordSubmit(value).then((res: boolean) => {
-            const form: any = document.querySelector('#RcLoginModule-form');
-            if (res) {
-                form?.success();
-            } else {
-                form?.fail();
-            }
-        })
-    }
+
+    useEffect(() => {
+        if (encryptor && resetPasswordData) {
+            const value: ResetPasswordSubmitDetail = resetPasswordData.detail;
+            const unencryptedData = value.data;
+            onResetPasswordSubmit && onResetPasswordSubmit(Object.assign({
+                body: Object.assign({}, unencryptedData, {
+                    password: encryptor.encrypt(unencryptedData.password)
+                }),
+                encryptor: encryptor
+            }, value)).then((res: boolean) => {
+                const form: any = document.querySelector('#RcLoginModule-form');
+                if (res) {
+                    form?.success();
+                } else {
+                    form?.fail();
+                }
+            })
+        }
+    }, [encryptor, resetPasswordData]);
 
     /**
      * 菜单的第一项 默认为初始页面
@@ -148,7 +161,7 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
                 getCurrentCaptcha();
             }}
             onResetPasswordSubmit={(data: ResetPasswordSubmitProps) => {
-                _onResetPasswordSubmit(data);
+                setResetPasswordData(data);
             }}
             onSendSMSVerificationCode={(data: SendSMSVerificationCodeProps) => {
                 onSendSMSVerificationCode && onSendSMSVerificationCode(data?.detail);
