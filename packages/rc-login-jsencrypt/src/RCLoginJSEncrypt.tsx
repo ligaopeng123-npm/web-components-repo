@@ -17,7 +17,6 @@ import {
     RcLoginModuleProps, ResetPasswordSubmitDetail,
     ResetPasswordSubmitProps, SendSMSVerificationCodeDetail,
     SendSMSVerificationCodeProps,
-    SubmitData,
 } from "@gaopeng123/rc-login-module";
 
 type HandleSubmitProps = {
@@ -26,6 +25,12 @@ type HandleSubmitProps = {
     loginType?: any;
     data?: any;
     encryptor?: JSEncrypt;
+}
+
+type ResetPasswordProps = {
+    body: any;
+    data: any;
+    encryptor: JSEncrypt;
 }
 
 export type RCLoginCaptchaProps = {
@@ -41,7 +46,7 @@ export type RCLoginJSEncryptProps = {
     phoneLoginUrl?: boolean | string;
     getCaptcha?: () => Promise<RCLoginCaptchaProps>;
     handleSubmit?: (handleSubmitProps: HandleSubmitProps) => Promise<any>;
-    onResetPasswordSubmit?: (data: ResetPasswordSubmitDetail) => Promise<any>;
+    onResetPasswordSubmit?: (data: ResetPasswordProps) => Promise<any>;
     onSendSMSVerificationCode?: (data: SendSMSVerificationCodeDetail) => void;
 } & RcLoginModuleProps;
 
