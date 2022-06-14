@@ -12,8 +12,8 @@
 import XyDialog from '../xy-ui/components/xy-dialog.js';
 import {isFalse} from "../utils";
 import PhoneLogin from "./PhoneLogin";
+import {SendSMSVerificationCodeProps} from "../typing";
 import './PhoneLogin';
-import * as console from "console";
 
 class ForgotPassword extends HTMLElement {
     shadow: any = null;
@@ -36,9 +36,14 @@ class ForgotPassword extends HTMLElement {
         this.removeEvent();
     }
 
+    concelHandle = () => {
+        if (this.dialog) this.dialog.open = false;
+        this.codeDom.removeEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
+        this.codeDom.destroy();
+    }
     destroy = () => {
         this.removeEvent();
-        if (this.dialog) this.dialog.open = false;
+        this.concelHandle();
     }
 
     fail = () => {
@@ -88,6 +93,11 @@ class ForgotPassword extends HTMLElement {
         return document.querySelector('phone-login');
     }
 
+    sendSMSVerificationCode = (ev: SendSMSVerificationCodeProps | any) => {
+        this.dispatchEvent(new CustomEvent('sendSMSVerificationCode', {
+            detail: Object.assign(ev.detail, {type: 'reset'})
+        }));
+    }
     dialog: any;
 
     forgotPasswordClick = () => {
@@ -116,8 +126,7 @@ class ForgotPassword extends HTMLElement {
             },
             concel: () => {
                 // 销毁窗口
-                dialog.open = false;
-                this.codeDom.destroy();
+                this.concelHandle();
             },
             content: `
                 <phone-login has-password="true"></phone-login>
@@ -125,6 +134,7 @@ class ForgotPassword extends HTMLElement {
         });
         setTimeout(() => {
             this.codeDom.init();
+            this.codeDom.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
         });
         this.dialog = dialog;
     }

@@ -10,6 +10,7 @@
  *
  ********************************************************************* */
 import {isNumber} from "@gaopeng123/utils.types";
+import {SendSMSVerificationCodeProps} from "../typing";
 
 const phone_reg = `^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$`;
 
@@ -54,7 +55,7 @@ class PhoneLogin extends HTMLElement {
     }
 
     addEvents() {
-        this.codeDom?.addEventListener('click', this.sendVerificationCode);
+        this.codeDom?.addEventListener('click', this.sendSMSVerificationCode);
     }
 
     init() {
@@ -62,7 +63,7 @@ class PhoneLogin extends HTMLElement {
     }
 
     removeEvent() {
-        this.codeDom?.removeEventListener('click', this.sendVerificationCode);
+        this.codeDom?.removeEventListener('click', this.sendSMSVerificationCode);
         this.setCodeDisabled(false);
     }
 
@@ -114,10 +115,17 @@ class PhoneLogin extends HTMLElement {
         }, 1000);
     }
 
-    sendVerificationCode = (timeer: any) => {
-        if (new RegExp(phone_reg).test(this.shadow.querySelector('#phone').value)) {
+    sendSMSVerificationCode = (timeer: any) => {
+        const phoneVal = this.shadow.querySelector('#phone')?.value;
+        if (new RegExp(phone_reg).test(phoneVal)) {
             this.setCodeDisabled(true);
             this.showTimmer(timeer);
+            this.dispatchEvent(new CustomEvent('sendSMSVerificationCode', {
+                detail: {
+                    phone: phoneVal,
+                    type: 'login'
+                }
+            } as SendSMSVerificationCodeProps));
         } else {
             this.checkValidity();
         }

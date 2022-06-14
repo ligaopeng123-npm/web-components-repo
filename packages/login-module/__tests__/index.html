@@ -69,6 +69,12 @@
         // 关闭窗口
         form.success();
     });
+    /**
+     * 短信验证码接口
+     */
+    form.addEventListener('sendSMSVerificationCode', (data) => {
+        console.log('sendSMSVerificationCode', data);
+    });
 </script>
 </body>
 </html>

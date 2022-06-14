@@ -9,7 +9,17 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-export type {LoginModuleProps, AfterSubmit, Submit, SubmitError, SubmitData} from "@gaopeng123/login-module";
+export type {
+    LoginModuleProps,
+    AfterSubmit,
+    Submit,
+    SubmitError,
+    SubmitData,
+    ResetPasswordSubmitProps,
+    SendSMSVerificationCodeProps,
+    ResetPasswordSubmitDetail,
+    SendSMSVerificationCodeDetail
+} from "@gaopeng123/login-module";
 export type {RcLoginModuleProps as RcLoginModuleProps} from "./RcLoginModule";
 // webpack转换exports.default有问题 使用RcLoginModule导出
 export {default as RcLoginModule} from "./RcLoginModule";

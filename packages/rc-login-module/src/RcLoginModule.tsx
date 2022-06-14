@@ -12,8 +12,14 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import "@gaopeng123/login-module";
-// @ts-ignore
-import type {LoginModuleProps, AfterSubmit, Submit, SubmitError} from "@gaopeng123/login-module";
+import type {
+    LoginModuleProps,
+    AfterSubmit,
+    Submit,
+    SubmitError,
+    ResetPasswordSubmitProps,
+    SendSMSVerificationCodeProps,
+} from "@gaopeng123/login-module";
 import {obj2css} from "@gaopeng123/utils.file";
 
 export type RcLoginModuleProps = {
@@ -39,7 +45,8 @@ export type RcLoginModuleProps = {
     onCaptchaClick?: (data: any) => void, // 点击验证码回调
     forgotPasswordUrl?: string | boolean; // 短信登录功能
     phoneLoginUrl?: string | boolean; // 短信登录功能
-    onResetPasswordSubmit?:  (data: Submit) => void, // 密码修改功能
+    onResetPasswordSubmit?: (data: ResetPasswordSubmitProps) => void, // 密码修改功能
+    onSendSMSVerificationCode?: (data: SendSMSVerificationCodeProps) => void, // 密码修改功能
 };
 
 /**
@@ -60,7 +67,8 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
         captcha, captchaSrc, captchaUrl, captchaMethod,
         keeplogged, agreementProprietary,
         onSubmit, onAfterSubmit, onSubmitError, onCaptchaClick,
-        onResetPasswordSubmit, phoneLoginUrl, forgotPasswordUrl
+        onResetPasswordSubmit, phoneLoginUrl, forgotPasswordUrl,
+        onSendSMSVerificationCode
     } = props;
     const _id = id || 'rc-login-module';
     useEffect(() => {
@@ -71,6 +79,7 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
         const _onSubmitError = (e: SubmitError) => onSubmitError && onSubmitError(e);
         const _onCaptchaClick = (e: any) => onCaptchaClick && onCaptchaClick(e);
         const _onResetPasswordSubmit = (e: any) => onResetPasswordSubmit && onResetPasswordSubmit(e);
+        const _onSendSMSVerificationCode = (e: any) => onSendSMSVerificationCode && onSendSMSVerificationCode(e);
 
         if (form) {
             form.addEventListener('submit', _onSubmit);
@@ -78,6 +87,7 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             form.addEventListener('submitError', _onSubmitError);
             form.addEventListener('captchaClick', _onCaptchaClick);
             form.addEventListener('resetPasswordSubmit', _onResetPasswordSubmit);
+            form.addEventListener('sendSMSVerificationCode', _onSendSMSVerificationCode);
         }
         return () => {
             if (form) {
@@ -86,6 +96,7 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
                 form.removeEventListener('submitError', _onSubmitError);
                 form.removeEventListener('captchaClick', _onCaptchaClick);
                 form.removeEventListener('resetPasswordSubmit', _onResetPasswordSubmit);
+                form.removeEventListener('sendSMSVerificationCode', _onSendSMSVerificationCode);
             }
         }
     }, []);

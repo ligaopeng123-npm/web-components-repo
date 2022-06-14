@@ -66,3 +66,27 @@ export declare type AfterSubmit = {
     detail: AfterSubmitDetail,
     [propName: string]: any,
 }
+
+export type SendSMSVerificationCodeDetail = {
+    phone: string,
+    type: 'reset' | 'login'
+}
+
+export type SendSMSVerificationCodeProps = {
+    detail: SendSMSVerificationCodeDetail,
+    [propName: string]: any,
+
+}
+
+export type ResetPasswordSubmitDetail = {
+    data: {
+        phone: string,
+        password: string,
+        code: string
+    }
+}
+
+export type ResetPasswordSubmitProps = {
+    detail: ResetPasswordSubmitDetail,
+    [propName: string]: any,
+}

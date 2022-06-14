@@ -75,6 +75,7 @@ const App = () => {
             bodyStyle={{right: '200px;'}}
             keeplogged={true}
             title="食堂管理系统"
+            agreementProprietary={`协议`}
         />
     );
 };
