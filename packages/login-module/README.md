@@ -58,30 +58,36 @@ captchaClick 在点击验证码的时候触发
 // 事件订阅
 <script>
         const form = document.querySelector('#form');
-		// 提交事件
-        form.addEventListener('submit', (data)=> {
-        	console.log(data)
-        });
-        // fetch请求响应后
-        form.addEventListener('afterSubmit', (data)=> {
-	        console.log(data)
-        });
-        // fetch请求失败后
-        form.addEventListener('submitError', (data)=> {
-            console.log(data)
-        });
-		// 点击验证码触发事件
-		form.addEventListener('captchaClick', (data) => {
-			console.log(data);
-			form.setAttribute('captchasrc', '/iconfont/test.svg')   
-		});
-		// 密码重置
- 		form.addEventListener('resetPasswordSubmit', (data) => {
-        	console.log('resetPasswordSubmit', data);
-            // 关闭窗口
-        	form.success();
-    	});
-    </script>
+    // 提交事件
+    form.addEventListener('submit', (data)=> {
+        console.log(data)
+    });
+    // fetch请求响应后
+    form.addEventListener('afterSubmit', (data)=> {
+        console.log(data)
+    });
+    // fetch请求失败后
+    form.addEventListener('submitError', (data)=> {
+        console.log(data)
+    });
+    // 点击验证码触发事件
+    form.addEventListener('captchaClick', (data) => {
+        console.log(data);
+        form.setAttribute('captchasrc', '/iconfont/test.svg')   
+    });
+    // 密码重置
+    form.addEventListener('resetPasswordSubmit', (data) => {
+        console.log('resetPasswordSubmit', data);
+        // 关闭窗口
+        form.success();
+    });
+    /**
+    * 短信验证码接口
+    */
+    form.addEventListener('sendSMSVerificationCode', (data) => {
+        console.log('sendSMSVerificationCode', data);
+    });
+</script>
 ```
 
 ## CSS variables

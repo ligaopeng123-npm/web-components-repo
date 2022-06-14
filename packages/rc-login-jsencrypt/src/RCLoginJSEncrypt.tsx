@@ -12,7 +12,13 @@
 import * as React from 'react';
 import {useEffect, useState} from "react";
 import JSEncrypt from "jsencrypt";
-import {RcLoginModule, RcLoginModuleProps, SubmitData} from "@gaopeng123/rc-login-module";
+import {
+    RcLoginModule,
+    RcLoginModuleProps, ResetPasswordSubmitDetail,
+    ResetPasswordSubmitProps, SendSMSVerificationCodeDetail,
+    SendSMSVerificationCodeProps,
+    SubmitData,
+} from "@gaopeng123/rc-login-module";
 
 type HandleSubmitProps = {
     headers: any;
@@ -35,14 +41,14 @@ export type RCLoginJSEncryptProps = {
     phoneLoginUrl?: boolean | string;
     getCaptcha?: () => Promise<RCLoginCaptchaProps>;
     handleSubmit?: (handleSubmitProps: HandleSubmitProps) => Promise<any>;
-    onResetPasswordSubmit?: (data: SubmitData) => Promise<any>;
+    onResetPasswordSubmit?: (data: ResetPasswordSubmitDetail) => Promise<any>;
+    onSendSMSVerificationCode?: (data: SendSMSVerificationCodeDetail) => void;
 } & RcLoginModuleProps;
 
 const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
     const {
         encryptPublicKey, clientId, secret, getCaptcha, handleSubmit,
-        forgotPasswordUrl, phoneLoginUrl, onResetPasswordSubmit,
-        agreementProprietary
+        onResetPasswordSubmit, onSendSMSVerificationCode
     } = props;
 
     const [encryptor, setEncryptor] = useState<any>();
@@ -141,17 +147,17 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
             onCaptchaClick={() => {
                 getCurrentCaptcha();
             }}
+            onResetPasswordSubmit={(data: ResetPasswordSubmitProps) => {
+                _onResetPasswordSubmit(data);
+            }}
+            onSendSMSVerificationCode={(data: SendSMSVerificationCodeProps) => {
+                onSendSMSVerificationCode && onSendSMSVerificationCode(data?.detail);
+            }}
             user="username"
             password="password"
             captcha="inputCode"
             captchaSrc={captcha?.image}
             id="RcLoginModule-form"
-            forgotPasswordUrl={forgotPasswordUrl ? forgotPasswordUrl : ''}
-            phoneLoginUrl={phoneLoginUrl ? phoneLoginUrl : ''}
-            onResetPasswordSubmit={(data: SubmitData) => {
-                _onResetPasswordSubmit(data);
-            }}
-            agreementProprietary={agreementProprietary || ''}
         >
         </RcLoginModule>
     )

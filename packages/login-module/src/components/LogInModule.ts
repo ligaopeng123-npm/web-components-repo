@@ -20,7 +20,7 @@ import "./PhoneLogin";
 import "./PhoneLoginLink";
 import {removeUrlParams} from '@gaopeng123/utils.file';
 import {isTrue} from "../utils";
-import {LoginType} from "../typing";
+import {LoginType, SendSMSVerificationCodeProps} from "../typing";
 
 export default class LogInModule extends HTMLElement {
     shadow: any = null;
@@ -228,11 +228,13 @@ export default class LogInModule extends HTMLElement {
     removeEvents() {
         this.form.removeEventListener('submit', this.watchSubmit);
         this.form.removeEventListener('submitError', this.submitError);
+        this.form.removeEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
         this.shadow.querySelector(`#bth-login`).removeEventListener('click', this.onSubmit);
         this.agreementProprietary?.removeEventListener('change', this.agreementChange);
         this.removeKeyWordEvents();
         this.shadow.querySelector('phone-login-link').removeEventListener('change', this.linkChange);
-        this.shadow.querySelector('forgot-password')?.removeEventListener('resetPasswordSubmit', this.onResetPasswordSubmit)
+        this.shadow.querySelector('forgot-password')?.removeEventListener('resetPasswordSubmit', this.onResetPasswordSubmit);
+        this.shadow.querySelector('forgot-password')?.removeEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
         this.shadow.querySelector('verification-code')?.removeEventListener('captchaClick', this.onCaptchaClick);
     }
 
@@ -242,6 +244,7 @@ export default class LogInModule extends HTMLElement {
         this.addKeyWordEvents();
         this.shadow.querySelector('phone-login-link').addEventListener('change', this.linkChange);
         this.shadow.querySelector('forgot-password')?.addEventListener('resetPasswordSubmit', this.onResetPasswordSubmit)
+        this.shadow.querySelector('forgot-password')?.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
         this.shadow.querySelector('verification-code')?.addEventListener('captchaClick', this.onCaptchaClick);
     }
 
@@ -249,6 +252,7 @@ export default class LogInModule extends HTMLElement {
         this.shadow.querySelector(`#bth-login`).addEventListener('click', this.onSubmit);
         this.form.addEventListener('submit', this.watchSubmit);
         this.form.addEventListener('submitError', this.submitError);
+        this.form.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
     }
 
     onkeydown = (event: any) => {
@@ -376,6 +380,15 @@ export default class LogInModule extends HTMLElement {
      */
     onCaptchaClick = (ev: any) => {
         this.dispatchEvent(new CustomEvent('captchaClick', {
+            detail: ev?.detail
+        }));
+    }
+    /**
+     * 验证码发送
+     * @param ev
+     */
+    sendSMSVerificationCode = (ev: SendSMSVerificationCodeProps) => {
+        this.dispatchEvent(new CustomEvent('sendSMSVerificationCode', {
             detail: ev?.detail
         }));
     }
