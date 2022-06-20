@@ -1,6 +1,15 @@
 # `rc-br`
 
-> 将textArea数据换行展示
+> 换行插件，将textArea数据换行展示
+
+## 参数
+
+| 参数   | 属性                       | 默认值 |
+| ------ | -------------------------- | ------ |
+| text   | string\|Array<any>         | ''     |
+| render | （）=> ReactNode \| string | null   |
+
+
 
 ## Usage
 
