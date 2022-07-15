@@ -515,10 +515,7 @@ export default class LogInModule extends HTMLElement {
         const passwordText = config['password-text'];
         return loginType === 'phone'
             ? `<phone-login id="${this.formId}">
-                    <!--记住我-->
-<!--                    <keep-logged keeplogged="${config.keeplogged}" style="display: block;margin: 16px 0px;${config['item-style']}" class="item" item-style="${config['item-style']}"></keep-logged>-->
-                    <!--登录按钮-->
-                    <xy-form-item style="display: block;margin: 16px 0px;${config['item-style']}" class="item">
+                    <xy-form-item style="display: block;margin: 16px 16px;${config['item-style']}" class="item">
                         <xy-button id="bth-login" type="primary" htmltype="submit">登录</xy-button>
                     </xy-form-item>
                 </phone-login>`

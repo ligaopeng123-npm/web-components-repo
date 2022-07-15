@@ -1,0 +1,34 @@
+.br {
+    height: 4px;
+    content: "";
+    display: block;
+}
+
+.more {
+    cursor: pointer;
+    text-decoration: auto;
+}
+
+.hasMore {
+    &:extend(.more);
+
+
+
+    &:after {
+        content: '更多';
+    }
+}
+
+.putAway {
+    &:extend(.more);
+
+    &:before {
+        content: '∧';
+        width: 12px;
+        height: 12px;
+    }
+
+    &:after {
+        content: '收起';
+    }
+}

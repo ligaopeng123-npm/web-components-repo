@@ -6,6 +6,7 @@ const App = () => {
     return (
         <RcBr
             text={'aaaaaa\nbbbbbbbbb\ncccccc'}
+            maxRow={2}
             render={(row) => {
                 return <span>{row}</span>
             }}
