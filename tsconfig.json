@@ -26,5 +26,6 @@
                 "./packages/message/src"
             ]
         }
-    }
+    },
+    "include": ["./declaration.d.ts"]
 }

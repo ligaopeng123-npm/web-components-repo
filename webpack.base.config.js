@@ -57,7 +57,19 @@ module.exports = function (dirname = __dirname) {
                         outputPath: 'assets/', // 为你的文件配置自定义 output 输出目录 ; 用来处理图片路径问题
                         publicPath: 'assets/' // 为你的文件配置自定义 public 发布目录 ; 用来处理图片路径问题
                     }
-                }
+                },
+                {
+                    test: /\.less$/,
+                    use: ['style-loader', 'css-loader',
+                        {
+                            loader: 'less-loader',
+                            options: {
+                                lessOptions: {
+                                    javascriptEnabled: true,
+                                }
+                            }
+                        }],
+                },
             ]
         },
         plugins: [
