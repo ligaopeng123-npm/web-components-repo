@@ -8,6 +8,7 @@ const cssUrl = require('postcss-url');
 
 module.exports = function (config, options) {
     config.plugins = [
+        images({include: ['**/*.png', '**/*.jpg', '**/*.svg']}),
         ...config.plugins,
         postcss({
             extensions: ['.less'],
@@ -29,8 +30,7 @@ module.exports = function (config, options) {
             css: true,
             less: true, // 是否使用less,
             sass: true, // 是否使用sass
-        }),
-        // images({include: ['**/*.png', '**/*.jpg', '**/*.svg']}),
+        })
     ]
     config.output.sourcemap = false;
     return config
