@@ -9,6 +9,8 @@
  * @date: 2022/6/13 14:23
  *
  **********************************************************************/
+import {isTrue} from "../utils";
+
 class Keeplogged extends HTMLElement {
     shadow: any = null;
     __config: any = {};
@@ -60,7 +62,7 @@ class Keeplogged extends HTMLElement {
 
     getTemplate() {
         const config = this.__config;
-        const keeplogged = config['keeplogged'];
+        const keeplogged = isTrue(config['keeplogged']);
         return keeplogged ? `
             <xy-form-item style="${config['item-style']}">
                 <div class="login-manipulate">
