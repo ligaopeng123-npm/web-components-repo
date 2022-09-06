@@ -44,6 +44,7 @@ export default class MultiPlayer extends HTMLElement {
             hasVideo: true,
         },
         config: {
+            // 缓存帧大小
             stashInitialSize: 10
         },
         robustness: {
