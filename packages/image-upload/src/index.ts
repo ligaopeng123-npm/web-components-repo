@@ -1,4 +1,4 @@
-import { isFile, isObject, isString, isUndefined } from '@gaopeng123/utils.types';
+import { isFile, isString, isUndefined } from '@gaopeng123/utils.types';
 import { parentByExpected } from '@gaopeng123/utils.object';
 import { blob2Base64 } from "@gaopeng123/utils.file";
 import { isDelIcon, isPictureImg, isPictureItem, isPreviewIcon, isTrue, openToPreviewBase64 } from "./utils";
@@ -350,8 +350,9 @@ export default class ImageUpload extends HTMLElement {
                 promises.push(blob2Base64(files[i]));
             }
             Promise.all(promises).then((urls) => {
+                const baseLen = this.fileList.length;
                 urls.forEach((base64_str, index) => {
-                    this.previewProcessing(base64_str, files[index], index);
+                    this.previewProcessing(base64_str, files[index], baseLen + index);
                 })
             });
         }
@@ -422,7 +423,9 @@ export default class ImageUpload extends HTMLElement {
      * 插入图片
      */
     insertPicture = (url: string, file?: File) => {
-        this.imageUploadList.appendChild(pictureTemplate(url, this.config, file));
+        if (this.imageUploadList) {
+            this.imageUploadList.appendChild(pictureTemplate(url, this.config, file));
+        }
     }
 
     /**
