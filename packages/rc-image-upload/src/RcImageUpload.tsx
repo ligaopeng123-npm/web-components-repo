@@ -10,9 +10,9 @@
  *
  **********************************************************************/
 import * as React from 'react';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import "@gaopeng123/image-upload";
-import {AfterUpload, ImageUploadProps} from "@gaopeng123/image-upload";
+import { AfterUpload, ImageUploadProps } from "@gaopeng123/image-upload";
 
 type UploadEvent = AfterUpload;
 
@@ -32,6 +32,8 @@ type RcImageUploadProps = {
     accept?: string; // 支持类型 默认.png,.jpg,.jpeg
     maxCount?: number; // 最大上传个数
     fileList?: FileItem[]; // 上传列表
+    preventPreview?: boolean; // 阻止默认预览
+    onPreview?: (e: FileItem) => void; // 预览事件
     onUploadChange?: (e: UploadEvent) => void; // 上传事件
     onAfterUpload?: (e: UploadEvent) => void; // 上传后事件
     onAfterDelete?: (e: UploadEvent) => void; // 删除后事件;
@@ -50,15 +52,18 @@ declare global {
 
 const RcImageUpload: React.FC<RcImageUploadProps> = (props) => {
     const {
-        id, width, height, pictureWidth, pictureHeight,
+        id, width, height, pictureWidth, pictureHeight, preventPreview,
         listType, action, maxCount, multiple, accept, fileList,
-        onUploadChange, onAfterUpload, onAfterDelete
+        onUploadChange, onAfterUpload, onAfterDelete, onPreview
     } = props;
 
     const _id = id || 'rc-image-upload';
     useEffect(() => {
         const upload: any = document.querySelector(`#${id}`);
 
+        const _preview = (e: FileItem) => {
+            onPreview && onPreview(e);
+        };
         const _uploadChange = (e: UploadEvent) => {
             onUploadChange && onUploadChange(e);
         };
@@ -70,12 +75,14 @@ const RcImageUpload: React.FC<RcImageUploadProps> = (props) => {
         };
 
         if (upload) {
+            upload.addEventListener('onPreview', _preview);
             upload.addEventListener('uploadChange', _uploadChange);
             upload.addEventListener('afterUpload', _afterUpload);
             upload.addEventListener('afterDelete', _afterDelete);
         }
 
         return () => {
+            upload.removeEventListener('onPreview', _preview);
             upload.removeEventListener('uploadChange', _uploadChange);
             upload.removeEventListener('afterUpload', _afterUpload);
             upload.removeEventListener('afterDelete', _afterDelete);
@@ -88,6 +95,7 @@ const RcImageUpload: React.FC<RcImageUploadProps> = (props) => {
             width={width}
             height={height}
             picture-width={pictureWidth}
+            prevent-preview={preventPreview}
             picture-height={pictureHeight}
             action={action}
             multiple={multiple}

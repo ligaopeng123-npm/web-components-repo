@@ -1,10 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {RcImageUpload} from '../src';
+import { FileItem } from "@gaopeng123/image-upload";
 
 const App = () => {
     const uploadChange = (e: any) => {
         console.log(e)
+    }
+
+    const onPreview = (e: FileItem)=> {
+        console.log(e);
     }
     return (
         <div>
@@ -16,6 +21,8 @@ const App = () => {
                 pictureWidth={64}
                 fileList={[]}
                 maxCount={4}
+                preventPreview={true}
+                onPreview={onPreview}
                 onUploadChange={uploadChange}
                 onAfterUpload={uploadChange}
                 onAfterDelete={uploadChange}

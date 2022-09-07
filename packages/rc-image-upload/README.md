@@ -29,6 +29,8 @@ type RcImageUploadProps = {
     accept?: string; // 支持类型 默认.png,.jpg,.jpeg
     maxCount?: number; // 最大上传个数
     fileList?: FileItem[]; // 上传列表
+    preventPreview?: boolean; // 阻止默认预览
+    onPreview?: (e: FileItem) => void; // 预览事件
     onUploadChange?: (e: UploadEvent) => void; // 上传事件
     onAfterUpload?: (e: UploadEvent) => void; // 上传后事件
     onAfterDelete?: (e: UploadEvent) => void; // 删除后事件
@@ -38,11 +40,16 @@ const App = () => {
     const uploadChange = (e: any) => {
         console.log(e)
     }
+    const onPreview = (e: FileItem)=> {
+        console.log(e);
+    }
     return (
         <RcImageUpload
                 id={`test`} height={600} width={400} pictureHeight={64} pictureWidth={64}
                 fileList={[]}
                 maxCount={4}
+				preventPreview={true}
+                onPreview={onPreview}
                 onUploadChange={uploadChange}
                 onAfterUpload={uploadChange}
                 onAfterDelete={uploadChange}

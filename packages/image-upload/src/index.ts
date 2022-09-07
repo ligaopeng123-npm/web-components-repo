@@ -1,16 +1,17 @@
-import {isString} from '@gaopeng123/utils.types';
-import {parentByExpected} from '@gaopeng123/utils.object';
-import {blob2Base64} from "@gaopeng123/utils.file";
-import {isDelIcon, isPictureImg, isPictureItem, openToPreviewBase64} from "./utils";
-import {pictureTemplate, template} from "./template";
-import {initMsg} from '@gaopeng123/message';
-import {ImageUploadProps} from "./interface";
+import { isFile, isObject, isString, isUndefined } from '@gaopeng123/utils.types';
+import { parentByExpected } from '@gaopeng123/utils.object';
+import { blob2Base64 } from "@gaopeng123/utils.file";
+import { isDelIcon, isPictureImg, isPictureItem, isPreviewIcon, isTrue, openToPreviewBase64 } from "./utils";
+import { pictureTemplate, template } from "./template";
+import { initMsg } from '@gaopeng123/message';
+import { ImageUploadProps } from "./interface";
 
-export type {ImageUploadProps} from "./interface";
+export type { ImageUploadProps } from "./interface";
 
+export type FileItem = { url: string, name: string };
 export type UploadChangeDetails = {
-    fileList: any[],
-    file?: File | string,
+    fileList: Array<FileItem | File>,
+    file?: FileItem | File,
     response?: Response;
 }
 export type UploadChange = {
@@ -37,6 +38,7 @@ export default class ImageUpload extends HTMLElement {
     __config: ImageUploadProps = {
         width: '100%',
         height: 200,
+        'prevent-preview': false,
         'picture-width': 48,
         'picture-height': 48,
         action: '', // 上传地址
@@ -92,8 +94,9 @@ export default class ImageUpload extends HTMLElement {
             'accept',
             'multiple',
             'action',
+            'prevent-preview',
             'max-count',
-            'file-list'
+            'file-list',
         ];
     }
 
@@ -206,19 +209,21 @@ export default class ImageUpload extends HTMLElement {
     /**
      * 预览处理
      */
-    previewProcessing = (base64: string, file: File) => {
+    previewProcessing = (base64: string, file: File, index: number) => {
         this.insertPicture(base64, file);
         this.fileList.push(file);
-        this.uploadFetch(file);
-        this.dispatchEvent(new CustomEvent('uploadChange', {
-            detail: {file: file, fileList: this.fileList}
-        }));
+        this.uploadFetch(file, index);
+        if (!this.config.action) {
+            this.dispatchEvent(new CustomEvent('uploadChange', {
+                detail: {file: file, fileList: this.fileList}
+            }));
+        }
     }
     /**
      * 处理上传
      * @param file
      */
-    uploadFetch = (file: File) => {
+    uploadFetch = (file: File, index: number) => {
         if (this.config.action) {
             const formData = new FormData();
             formData.append('file', file);
@@ -228,8 +233,15 @@ export default class ImageUpload extends HTMLElement {
             })
                 .then(response => response.json())
                 .then((data) => {
+                    const currentFile = this.fileList[isUndefined(index) ? this.fileList.length : index];
+                    if (currentFile) {
+                        currentFile.response = data;
+                    }
                     this.dispatchEvent(new CustomEvent('afterUpload', {
                         detail: {response: data, fileList: this.fileList}
+                    }));
+                    this.dispatchEvent(new CustomEvent('uploadChange', {
+                        detail: {file: file, fileList: this.fileList}
                     }));
                 });
         }
@@ -256,12 +268,22 @@ export default class ImageUpload extends HTMLElement {
                     return;
                 }
                 blob2Base64(blob).then((base64_str) => {
-                    this.previewProcessing(base64_str, blob);
+                    this.previewProcessing(base64_str, blob, undefined);
                 });
             } else {
-                console.warn(`粘贴板上不是图片！`)
+                console.warn(`粘贴板上不是图片！`);
+                this.qmsg.warning(`粘贴板上不是图片！`);
             }
         }
+    }
+    /**
+     * 获取预览图片
+     * @param target
+     */
+    getPreviewImageFormTarget = (target: EventTarget): string => {
+        // @ts-ignore
+        const img = target.querySelector('img') || target;
+        return img.getAttribute('src');
     }
     /**
      * 图片点击事件
@@ -270,13 +292,34 @@ export default class ImageUpload extends HTMLElement {
     onPictureClick = (event: any) => {
         // 点击的是picture-item
         if (isPictureItem(event.target) || isPictureImg(event.target)) {
-            const img = event.target.querySelector('img') || event.target;
-            const base64 = img.getAttribute('src');
+            const base64 = this.getPreviewImageFormTarget(event.target);
             openToPreviewBase64(base64);
         }
         // 点击的删除按钮
         else if (isDelIcon(event.target)) {
             this.removePicture(event.target);
+        }
+        // 点击的删除按钮
+        else if (isPreviewIcon(event.target)) {
+            const picture = this.getPreviewPicture(event.target);
+            if (picture) {
+                const preview = (file: FileItem) => {
+                    const preventPreview = this.config['prevent-preview'];
+                    if (!isTrue(preventPreview)) {
+                        openToPreviewBase64(file.url); // preventPreview
+                    }
+                    this.dispatchEvent(new CustomEvent('onPreview', {
+                        detail: {file: file, fileList: this.fileList}
+                    }));
+                }
+                if (isFile(picture)) {
+                    blob2Base64(picture).then((str: string) => {
+                        preview({url: str, name: picture.name})
+                    })
+                } else {
+                    preview(picture)
+                }
+            }
         }
     }
     /**
@@ -308,7 +351,7 @@ export default class ImageUpload extends HTMLElement {
             }
             Promise.all(promises).then((urls) => {
                 urls.forEach((base64_str, index) => {
-                    this.previewProcessing(base64_str, files[index]);
+                    this.previewProcessing(base64_str, files[index], index);
                 })
             });
         }
@@ -380,6 +423,20 @@ export default class ImageUpload extends HTMLElement {
      */
     insertPicture = (url: string, file?: File) => {
         this.imageUploadList.appendChild(pictureTemplate(url, this.config, file));
+    }
+
+    /**
+     * 获取
+     * @param target
+     */
+    getPreviewPicture(target: any) {
+        const rPicture = this.findRemovePicture(target);
+        const pictureList = this.imageUploadList.querySelectorAll('.picture-item');
+        for (let i = 0; i < pictureList.length; i++) {
+            if (rPicture === pictureList[i]) {
+                return this.fileList[i];
+            }
+        }
     }
 
     /**

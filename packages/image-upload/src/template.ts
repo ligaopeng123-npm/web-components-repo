@@ -9,9 +9,9 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import {getSize} from "./utils";
-import {delIcon, uploadIcon} from "./assets";
-import {ImageUploadProps} from "./interface";
+import { getSize } from "./utils";
+import { delIcon, previewIcon, uploadIcon } from "./assets";
+import { ImageUploadProps } from "./interface";
 
 export const template = (config: ImageUploadProps) => {
     const {width, height, accept, multiple} = config;
@@ -48,16 +48,27 @@ export const template = (config: ImageUploadProps) => {
 				.target > span {
                     line-height: 60px;
                     font-size: 16px;
-                    user-select: none;
                     margin-left: 16px;
+                    position: absolute;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    pointer-events: none;
 				}
 				
 				.target-text {
-				    user-select: none;
+				     user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
 				}
 				
 				#screenshot-upload-list {
                     user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
 				    display: flex;
 				    margin-top: 60px;
 				    z-index: 1;
@@ -98,19 +109,46 @@ export const template = (config: ImageUploadProps) => {
 				.picture > .picture-item {
 				    border-top: 1px solid #d9d9d9;
 				}
-				.picture > .picture-item > .del-bth {
+				.picture > .picture-item > .bth-icon {
 				    margin-right: 16px;
 				    margin-left: auto;
 				}
-				.picture-card > .picture-item > .del-bth {
+				.picture-card > .picture-item > .bth-icon {
 				    position: absolute;
                     top: calc(50% - 8px);
-                    left: calc(50% - 8px);
+                    left: calc(50% - 16px);
                     opacity: 0;
+                    display: flex;
+                    justify-content: center;
 				}
 				
-				.picture-card > .picture-item > .del-bth:hover {
+				.picture-card > .picture-item > .bth-icon > .del-icon {
+				    margin-left: 12px;
+				}
+				
+				.picture-card > .picture-item > .bth-icon > .preview-icon {
+				    height: 20px;
+				    width: 20px;
+				}
+				
+				.picture-card > .picture-item:before {
+				    position: absolute;
+                    z-index: 1;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #00000080;
+                    opacity: 0;
+                    transition: all .3s;
+                    content: " ";
+				}
+				
+				.picture-card > .picture-item:hover:before {
 				    opacity: 1;
+				}
+				
+				.picture-card > .picture-item:hover > .bth-icon {
+				    opacity: 1;
+				    z-index: 1;
 				}
 				
 				.picture-card > .picture-item {
@@ -130,6 +168,9 @@ export const template = (config: ImageUploadProps) => {
 				    right: 16px;
                     top: 16px;
                     user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
 				}
 				
 				#upload-bth {
@@ -149,7 +190,7 @@ export const template = (config: ImageUploadProps) => {
 			    <div id="screenshot-upload-target" class="target" 
 			         readonly="true" contenteditable="true">
 			         <span class="target-text">
-			             光标选中后“Ctrl + V”粘贴图片
+			             光标选中(移动或点击)后“Ctrl + V”粘贴图片
                      </span>
                     </div>
 			    <div id="screenshot-upload-bth">
@@ -188,8 +229,9 @@ export const pictureTemplate = (url: string, config: ImageUploadProps, file?: Fi
             ` + (listType === 'picture'
         ? `<span class="picture-item-title" style="width: calc(100% - ${(Number(pictureWidth) + 46)}px)">${title}</span>`
         : ``) + `
-            <span class="del-bth" title="删除">
-                <img class="del-icon" width="16" height="16" src="${delIcon}"/>
+            <span class="bth-icon">
+                <img title="预览" class="preview-icon" width="18" height="18" src="${previewIcon}"/>
+                <img title="删除" class="del-icon" width="16" height="16" src="${delIcon}"/>
             </span>
         `;
     div.innerHTML = pictureTemplate;

@@ -22,6 +22,7 @@ export interface ImageUploadProps {
     'list-type'?: 'picture-card' | 'picture';
     multiple?: boolean;
     accept?: string;
+    'prevent-preview'?: boolean;
     'max-count': number; // 最大上传个数
     'file-list'?: any[];
 }
