@@ -233,7 +233,7 @@ export default class ImageUpload extends HTMLElement {
             })
                 .then(response => response.json())
                 .then((data) => {
-                    const currentFile = this.fileList[isUndefined(index) ? this.fileList.length : index];
+                    const currentFile = this.fileList[isUndefined(index) ? this.fileList.length - 1 : index];
                     if (currentFile) {
                         currentFile.response = data;
                     }
