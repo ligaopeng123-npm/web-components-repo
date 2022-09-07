@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/image-upload",
-    "version": "0.4.8",
+    "version": "0.4.9",
     "description": "图片上传",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
