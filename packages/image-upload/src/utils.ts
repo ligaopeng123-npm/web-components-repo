@@ -70,3 +70,5 @@ export const openToPreviewBase64 = (base64URL: string) => {
 export const isTrue = (val: any) => {
     return isString(val) ? val === 'true' : val;
 }
+
+export const targetText = `光标选中后“Ctrl + V”粘贴图片`

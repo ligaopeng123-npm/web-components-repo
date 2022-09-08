@@ -1,7 +1,15 @@
 import { isFile, isString, isUndefined } from '@gaopeng123/utils.types';
 import { parentByExpected } from '@gaopeng123/utils.object';
 import { blob2Base64 } from "@gaopeng123/utils.file";
-import { isDelIcon, isPictureImg, isPictureItem, isPreviewIcon, isTrue, openToPreviewBase64 } from "./utils";
+import {
+    isDelIcon,
+    isPictureImg,
+    isPictureItem,
+    isPreviewIcon,
+    isTrue,
+    openToPreviewBase64,
+    targetText
+} from "./utils";
 import { pictureTemplate, template } from "./template";
 import { initMsg } from '@gaopeng123/message';
 import { ImageUploadProps } from "./interface";
@@ -121,6 +129,7 @@ export default class ImageUpload extends HTMLElement {
         this.addUploadClick();
         this.addUploadChange();
         this.addDragEvent();
+        this.addEnterEvent();
     }
 
     removeEvent() {
@@ -130,6 +139,27 @@ export default class ImageUpload extends HTMLElement {
         this.removeUploadClick();
         this.removeUploadChange();
         this.removeDragEvent();
+        this.removeEnterEvent();
+    }
+
+    /**
+     * 输入事件
+     * @param e
+     */
+    onInput = (e: any) => {
+        // 替换掉输入的文案 不支持用户输入其他文本
+        this.targetText.innerText = targetText;
+    }
+
+    /**
+     * 输入事件
+     */
+    addEnterEvent() {
+        this.imageUploadTarget.addEventListener('input', this.onInput)
+    }
+
+    removeEnterEvent() {
+        this.imageUploadTarget.removeEventListener('input', this.onInput);
     }
 
     /**
@@ -256,6 +286,10 @@ export default class ImageUpload extends HTMLElement {
      */
     onPaste = (event: any) => {
         event.preventDefault();
+        // clipboard 需要用户授权 有点影响体验 暂时不支持
+        // navigator.clipboard.read().then((res) => {
+        //     console.log(111, res);
+        // });
         if (!this.isMax(1)) {
             // @ts-ignore
             const pasteData = event.clipboardData || window.clipboardData;
@@ -397,6 +431,10 @@ export default class ImageUpload extends HTMLElement {
 
     removeUploadChange() {
         this.uploadInput.removeEventListener('change', this.onUploadChange);
+    }
+
+    get targetText() {
+        return this.shadow.querySelector('.target-text');
     }
 
     get imageUpload() {

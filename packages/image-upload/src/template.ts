@@ -9,7 +9,7 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { getSize } from "./utils";
+import { getSize, targetText } from "./utils";
 import { delIcon, previewIcon, uploadIcon } from "./assets";
 import { ImageUploadProps } from "./interface";
 
@@ -112,6 +112,7 @@ export const template = (config: ImageUploadProps) => {
 				.picture > .picture-item > .bth-icon {
 				    margin-right: 16px;
 				    margin-left: auto;
+				    display: flex;
 				}
 				.picture-card > .picture-item > .bth-icon {
 				    position: absolute;
@@ -119,10 +120,10 @@ export const template = (config: ImageUploadProps) => {
                     left: calc(50% - 16px);
                     opacity: 0;
                     display: flex;
-                    justify-content: center;
+                    align-items: center;
 				}
 				
-				.picture-card > .picture-item > .bth-icon > .del-icon {
+				.picture-item > .bth-icon > .del-icon {
 				    margin-left: 12px;
 				}
 				
@@ -175,6 +176,11 @@ export const template = (config: ImageUploadProps) => {
 				
 				#upload-bth {
 				    cursor: pointer;
+				    opacity: .8;
+				}
+
+                #upload-bth:hover {
+				    opacity: 1;
 				}
 				
 				.picture-item-title {
@@ -190,7 +196,7 @@ export const template = (config: ImageUploadProps) => {
 			    <div id="screenshot-upload-target" class="target" 
 			         readonly="true" contenteditable="true">
 			         <span class="target-text">
-			             光标选中(移动或点击)后“Ctrl + V”粘贴图片
+			             ${targetText}
                      </span>
                     </div>
 			    <div id="screenshot-upload-bth">
