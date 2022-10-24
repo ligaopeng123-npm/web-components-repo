@@ -1,0 +1,586 @@
+{
+    "defaultSelected": "4",
+    "data": [
+        {
+            "name": "1分屏",
+            "key": "1",
+            "stream": "mainStream",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAANUlEQVRIS+3SsQkAAAwCwbj/0GaEr1LlrQXhMG07h4kDpCsRCY1EEqEAFnyRRCiABV/0gGgBj4BfuRanDZkAAAAASUVORK5CYII=",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "100%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "key": "0",
+                            "width": 24,
+                            "height": "100%"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "4分屏",
+            "key": "4",
+            "icon": "data:image/g;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAeklEQVRIS2P8////fwbiQQMDAwMIEw0YRy0gFFajQUQohBhGg2hwBFE9QWdQoIDUSOZkYGD4Top9pFogwcDA8IKWFqgzMDDcpKUFZgwMDKdoaYEbAwPDLlpaEMrAwLCalhakMDAwzKGlBcUMDAy9tLRgtE4mGLokBxEAWbp2OaL7UUIAAAAASUVORK5CYII=",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "50%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "key": "0",
+                            "width": 12
+                        },
+                        {
+                            "type": "col",
+                            "key": "1",
+                            "width": 12
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "50%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "key": "2",
+                            "width": 12
+                        },
+                        {
+                            "type": "col",
+                            "key": "3",
+                            "width": 12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "6分屏",
+            "key": "6",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAArElEQVRIS+3Tqw7CQBCF4a+GBAS8EkEgkUgkEslDIJFIJBJJwuWJuAgCrqRJm6C2gXbBdJOTmWx259/snEnSNE19v07oh64nDaD5ojJ//cRFwUfUYdMrCt3QRa9QHYBm0II9/ImL/t+DPR545vE9z/ZaaKOTxywvlJRNYmbTY+DQAYOSInecccn10RzMsQgAKjd5hmVMwBSrmIAJ1jEBY2xiAkbYxgQMsasCeAFpiYuxF7ZEFQAAAABJRU5ErkJggg==",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "66.66666666%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 16,
+                            "key": "0"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "children": [
+                                {
+                                    "type": "row",
+                                    "height": "100%",
+                                    "children": [
+                                        {
+                                            "type": "col",
+                                            "width": 24,
+                                            "key": "1",
+                                            "height": "50%"
+                                        },
+                                        {
+                                            "type": "col",
+                                            "width": 24,
+                                            "height": "50%",
+                                            "key": "2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "33.3333333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "3"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "4"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "8分屏",
+            "key": "8",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAuUlEQVRIS+2VoQ7CQAyGvz0Adg+DIiFZ8LPg0fAA8ALzuIlpPIaAQPMQBIWdwxxpchMsveSaBTPuksr2S//+12bOOcfwd/UlZv1SWQJ4ScYh0V7zShpyp8o4hizd/PQndzJ9mSm56E9cdBl+b8IVxEUa4AzMlTSx4hR4+WgDpSdALhGy6RaolGTZmNrWrIEHsIs9mWvgYABIxzcLYAU0BoBIdwc2sR2UwNEIeALLWMACOBkBb6Do53wAJ7KJ838GpCwAAAAASUVORK5CYII=",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "75%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "height": "100%",
+                            "key": "0",
+                            "width": 18
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "height": "100%",
+                            "children": [
+                                {
+                                    "type": "row",
+                                    "height": "100%",
+                                    "children": [
+                                        {
+                                            "type": "col",
+                                            "width": 24,
+                                            "key": "1",
+                                            "height": "33.333333333%"
+                                        },
+                                        {
+                                            "type": "col",
+                                            "width": 24,
+                                            "key": "2",
+                                            "height": "33.333333333%"
+                                        },
+                                        {
+                                            "type": "col",
+                                            "width": 24,
+                                            "key": "3",
+                                            "height": "33.333333333%"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "key": "4",
+                            "width": 6
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "5"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "6"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "9分屏",
+            "key": "9",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABAklEQVRIS7XVL0gEQRiG8d/ZVNAgWGwWwWgSk4gIFqPBYLQIxstymIyCxWgwGC2CiprEZBQsNovgv3DFsjKwB1tuFhm+gZfZ5WPnGWa/Z7dTVVVl+FjDVaZ+j+VMXacFsIGLSMAmziMB2ziNBOzgJBKwh6NIQBeHpYC7zAK3WMm1YVsttek1PvFVz7+Nhw6wjzGM1hlcp3kE3438YAKTg7R5MI330iPKmTyHl0jAIh4jAeu4jARs4SwSsIvjUkDOgxustvV62+c650EPKannm0lOpPs0+g2Pkkv/8mC8XmDYJot/OFP4KH0HOdFm8BYJmMVrJGAez5GABTxFApbwUAL4A7sDmrHi+FH1AAAAAElFTkSuQmCC",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "0"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "1"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "3"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "4"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "5"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "6"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "7"
+                        },
+                        {
+                            "type": "col",
+                            "width": 8,
+                            "key": "8"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "12分屏",
+            "key": "12",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "0"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "1"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "2"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "3"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "4"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "5"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "6"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "7"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "33.33333333%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "8"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "9"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "10"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "11"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "13分屏",
+            "key": "13",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAYCAYAAACfpi8JAAAAz0lEQVRIS+2V0QmCMRCDv38S3UA30E10E3UCHUEnUTfQDXQDnaAS6NOPdy20PggX6FMDDWlyN6SUEjauwBY4O5xdvtu0cIYQMrIvHBnnSY4snZC9gAcwdzi6F6YtHAnxGnEHjsDeeaTm6pRJK4vcIyM1QooVDyHfwto6Wbt9jUa4BTVCxwt0rZALYDZUGfF2xLOzkEW0JjsQ9R1HocoRpdnCLY/4Q001HI7WhLD2wmomGXjn1sycR9QsYdLC6THii7YDRU4I+cWuKdr+V1/zAVWpsrwtNJ3PAAAAAElFTkSuQmCC",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "0"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "1"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "2"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "3"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "50%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "children": [
+                                {
+                                    "type": "row",
+                                    "height": "100%",
+                                    "children": [
+                                        {
+                                            "type": "col",
+                                            "height": "50%",
+                                            "width": 24,
+                                            "key": "4"
+                                        },
+                                        {
+                                            "type": "col",
+                                            "height": "50%",
+                                            "width": 24,
+                                            "key": "5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "col",
+                            "width": 12,
+                            "key": "6"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "children": [
+                                {
+                                    "type": "row",
+                                    "height": "100%",
+                                    "children": [
+                                        {
+                                            "type": "col",
+                                            "height": "50%",
+                                            "width": 24,
+                                            "key": "7"
+                                        },
+                                        {
+                                            "type": "col",
+                                            "height": "50%",
+                                            "width": 24,
+                                            "key": "8"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "9"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "10"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "11"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "12"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "16分屏",
+            "key": "16",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABZklEQVRIS7XWP0hWYRTH8c+7q0OD4JqDTc1N5SS0CEE4NTQEgTS51BIJgig4SpOQODu1lEIU0SAECeKgQwaSJA4KUgQ5vPLAXbqeI/fC+x54lt/z58t5fufc+3S63W7X1biPd4E+izLq8akSxusTnQTwEOv9BDzGaj8Bz7DcT8BzLPYKcC84qGdSZvINnAaUTF/CH7xqWkW3sBcAMn0NP9oA7uJzAMj09/iKl00zyPog00uj7eNpU8A0XgcZZHoBnOFBBLhiTM9KCFkVDeB3AMr0eVy0MfkmDgJApq/gqA3gDrYCQKa/xXYbwCTKpnpkejF5F+Ub9l9kHjxBSbsemV4AJ5iKAB+DgzYx0UJPC69ksIHjavytVs5FXYkFvKjWlD9hJzl5EMNlZFc0hPNg81jVsfWpNzhsY/IIfgWAcm3l+urxAV/aAEbxvaXJ3zDTtIpuYycAXPeq+IlHTQFZQ10H+BdV3iXft7Dz+OemEQAAAABJRU5ErkJggg==",
+            "children": [
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "0"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "1"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "2"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "3"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "4"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "5"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "6"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "7"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "8"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "9"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "10"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "11"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "height": "25%",
+                    "children": [
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "12"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "13"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "14"
+                        },
+                        {
+                            "type": "col",
+                            "width": 6,
+                            "key": "15"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

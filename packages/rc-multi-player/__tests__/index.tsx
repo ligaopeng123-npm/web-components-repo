@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {RcMultiPlayer} from "../src";
+import {RcMultiPlayer, MultiScreenPlayer} from "../src";
 import {useEffect, useState} from "react";
 
 
@@ -13,9 +13,7 @@ const App = () => {
         }, 2000);
     }, [])
     return (
-        <RcMultiPlayer
-            mediaDataSource={mediaDataSource}
-        />
+        <MultiScreenPlayer defaultSelectedScreen={4} />
     );
 };
 

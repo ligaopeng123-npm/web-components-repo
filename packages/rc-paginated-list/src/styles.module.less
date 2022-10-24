@@ -1,0 +1,111 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.downLoading {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 24px;
+
+    div {
+        position: absolute;
+        top: 6px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #fff;
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+        &:nth-child(1) {
+            left: 8px;
+            animation: lds-ellipsis1 0.6s infinite;
+        }
+
+        &:nth-child(2) {
+            left: 8px;
+            animation: lds-ellipsis2 0.6s infinite;
+        }
+
+        &:nth-child(3) {
+            left: 32px;
+            animation: lds-ellipsis2 0.6s infinite;
+        }
+
+        &:nth-child(4) {
+            left: 56px;
+            animation: lds-ellipsis3 0.6s infinite;
+        }
+    }
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+.topLoading {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 24px;
+
+    div {
+        display: inline-block;
+        position: absolute;
+        left: 8px;
+        width: 8px;
+        background: #fff;
+        animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+
+        &:nth-child(1) {
+            left: 8px;
+            animation-delay: -0.24s;
+        }
+
+        &:nth-child(2) {
+            left: 24px;
+            animation-delay: -0.12s;
+        }
+
+        &:nth-child(3) {
+            left: 40px;
+            animation-delay: 0s;
+        }
+    }
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 0px;
+        height: 24px;
+    }
+    50%, 100% {
+        top: 6px;
+        height: 12px;
+    }
+}

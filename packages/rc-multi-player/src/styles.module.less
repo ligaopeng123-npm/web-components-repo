@@ -1,0 +1,95 @@
+// 选中主要颜色
+@multi-player-primary-color: #52c41a;
+// 背景色
+@multi-player-background-color: #333;
+// 文字颜色
+@multi-player-text-color: #fff;
+// 边框颜色
+@multi-player-border-color: #000;
+
+:root {
+    --multi-player-primary-color: #52c41a;
+    --multi-player-background-color: #333;
+    --multi-player-text-color: #fff;
+    --multi-player-border-color: #000;
+}
+
+.main {
+    background-color: var(--multi-player-background-color, @multi-player-background-color);
+    height: 100%;
+
+    .bottomMain {
+        height: 30px;
+        @WIDTH: 32px;
+
+        //&:after {
+        //    content: '';
+        //    height: 1px;
+        //    width: calc(100% - @WIDTH);
+        //    background-color: var(--multi-player-border-color, @multi-player-border-color);
+        //    opacity: .2;
+        //    display: flex;
+        //    margin: 0px @WIDTH / 2;
+        //}
+
+        .bottom {
+            min-width: 32px;
+            color: var(--multi-player-text-color, @multi-player-text-color);
+        }
+
+        .bottomContent {
+            display: flex;
+            padding: 0px @WIDTH / 2;
+
+            .left {
+                min-width: 1px;
+                display: flex;
+            }
+
+            .right {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        .hr {
+            border-color: var(--multi-player-border-color, @multi-player-border-color);
+        }
+    }
+
+    .content {
+        height: calc(100% - 30px);
+
+        .item {
+            border-right: .5px solid var(--multi-player-border-color, @multi-player-border-color);
+            border-top: .5px solid var(--multi-player-border-color, @multi-player-border-color);
+            //margin: -1px;
+        }
+
+        .selected {
+            border: .5px solid var(--multi-player-primary-color, @multi-player-primary-color);
+            //margin: -1px;
+            //width: calc(100% - 1px);
+            //height: calc(100% - 1px);
+        }
+    }
+}
+
+.menu {
+    :global .MuiButtonBase-root.MuiMenuItem-root.Mui-selected  {
+        //background-color: var(--multi-player-primary-color, @multi-player-primary-color);
+        //color: var(--multi-player-text-color, @multi-player-text-color);
+    }
+
+    .menuItem {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 8px;
+        }
+    }
+}
+
+

@@ -1,20 +1,21 @@
 {
-    "name": "@gaopeng123/rc-multi-player",
-    "version": "0.4.8",
-    "description": "多功能播放器",
+    "name": "@gaopeng123/rc-paginated-list",
+    "version": "0.4.11",
+    "description": "分页加载列表",
+    "keywords": [
+        "h5",
+        "pagination",
+        "list"
+    ],
+    "author": "ligaopeng123 <gaopeng@123>",
+    "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
+    "license": "MIT",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "private": false,
     "publishConfig": {
         "access": "public"
     },
-    "keywords": [
-        "video",
-        "player"
-    ],
-    "author": "ligaopeng123 <gaopeng@123>",
-    "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
-    "license": "MIT",
     "directories": {
         "lib": "src",
         "test": "__tests__"
@@ -66,21 +67,12 @@
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.8.0"
     },
-    "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-    },
     "bugs": {
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@emotion/react": "^11.10.4",
-        "@emotion/styled": "^11.10.4",
-        "@gaopeng123/multi-player": "^0.4.8",
-        "@gaopeng123/utils": "^0.5.8",
-        "@mui/icons-material": "^5.10.9",
-        "@mui/material": "^5.10.10",
-        "material-ui-popup-state": "^4.1.0"
-    },
-    "gitHead": "24aed7b11c99660834e7b6d41f63b25f4b430575"
+        "@gaopeng123/hooks.use-boolean": "^0.5.0",
+        "@gaopeng123/hooks.use-pagination": "^0.5.0",
+        "react-window": "^1.8.7"
+    }
 }
