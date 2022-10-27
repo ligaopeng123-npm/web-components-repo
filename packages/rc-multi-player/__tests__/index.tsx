@@ -7,7 +7,7 @@ const RcMultiPlayerTest = () => {
 
     React.useEffect(() => {
         setTimeout(() => {
-            setMediaDataSource({ url: '/flv/5956007-1-31882' })
+            setMediaDataSource({ url: 'http://localhost:5007/live/40491879758-1-30002.flv' })
         }, 2000);
     }, [])
     return (

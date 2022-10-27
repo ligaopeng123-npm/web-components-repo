@@ -9,8 +9,8 @@
  * @版权所有: pgli
  *
  ********************************************************************* */
-import {initMsg} from "@gaopeng123/message";
-import {template} from "./template";
+import { initMsg } from "@gaopeng123/message";
+import { template } from "./template";
 import mpegts from 'mpegts.js';
 // import mpegts from "flv.js";
 import {
@@ -18,9 +18,10 @@ import {
     MultiPlayerError,
     MultiPlayerErrorType,
     MultiPlayerEvent,
-    MultiPlayerEventType
+    MultiPlayerEventType,
+    ObjectFit
 } from "./typing";
-import {debounce} from "@gaopeng123/utils.function";
+import { debounce } from "@gaopeng123/utils.function";
 import PlayerEvent from "./PlayerEvent";
 
 export default class MultiPlayer extends HTMLElement {
@@ -34,6 +35,7 @@ export default class MultiPlayer extends HTMLElement {
      */
     obj_props = ['media-data-source', 'config', 'robustness'];
     __defaultConfig: MultiPlayerComProps = {
+        objectFit: 'fill',
         width: '100%',
         height: '100%',
         'media-data-source': {
@@ -78,7 +80,7 @@ export default class MultiPlayer extends HTMLElement {
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'closed'});
+        this.shadow = this.attachShadow({ mode: 'closed' });
         this.q_msg = initMsg(this);
         this.q_msg.config({
             showClose: true
@@ -183,6 +185,16 @@ export default class MultiPlayer extends HTMLElement {
         this.player.pause();
     };
     /**
+     * 处理视频撑开的状态
+     * @param type
+     */
+    objectFit = (type: ObjectFit) => {
+        const video = this.shadow.querySelector(`#multi-player`);
+        if (video) {
+            video.style['object-fit'] = type;
+        }
+    }
+    /**
      * 清理缓存器
      */
     clearAdjustBuffer = () => {
@@ -238,7 +250,7 @@ export default class MultiPlayer extends HTMLElement {
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {
         this.dispatchEvent(new CustomEvent(eventType, {
-            detail: {event: eventType, info: info}
+            detail: { event: eventType, info: info }
         }));
     }
 

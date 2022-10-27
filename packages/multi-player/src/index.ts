@@ -7,4 +7,4 @@ export type {
     MultiPlayerRobustness
 } from "./typing";
 
-export {MultiPlayerError, MultiPlayerEvent} from "./typing";
+export { MultiPlayerError, MultiPlayerEvent, ObjectFit } from "./typing";

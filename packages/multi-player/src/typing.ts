@@ -12,16 +12,19 @@
 import mpegts from 'mpegts.js';
 
 export type MultiPlayerRobustness = {
-    bufferTime: DOMTimeStamp;     //    播放过程中缓冲器最小矫正的时间 默认为1000ms
-    loopBufferTime: DOMTimeStamp; // 多场时间探测一次 默认5000ms
+    bufferTime: DOMHighResTimeStamp;     //    播放过程中缓冲器最小矫正的时间 默认为1000ms
+    loopBufferTime: DOMHighResTimeStamp; // 多场时间探测一次 默认5000ms
     maxResetTimes: number;        // 最大断线重连次数 默认为 5 次
 };
 
 export type MediaDataSource = mpegts.MediaDataSource;
 export type Config = mpegts.Config;
 
+export type ObjectFit = 'fill' | 'contain ' | 'cover ' | 'scale-down ' | 'none ' | 'initial ' | 'inherit';
 export type MultiPlayerComProps = {
     id?: string;
+    // 视频填充方式
+    objectFit?: ObjectFit;
     width?: string | number;
     height?: string | number;
     // 视频播放配置

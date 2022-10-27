@@ -11,10 +11,9 @@
  **********************************************************************/
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { MultiStoreEnum, Props } from "../MultiTyping";
-import styles from '../styles.module.less';
-import { LayoutJsonItemRows } from "./LayoutButton";
-import LayoutContentItem from "./LayoutContentItem";
+import { LayoutJsonItemRows, MultiStoreEnum, Props } from "../MultiTyping";
+import styles from "../styles.module.less";
+import MainPlayer from "../Player/MainPlayer";
 
 type LayoutContentProps = {} & Props;
 
@@ -35,7 +34,9 @@ const LayoutContentGrid = ({ layout, dispatch, state }: any) => {
                         {
                             item?.children?.map((colItem: LayoutJsonItemRows, index: number) => {
                                 return colItem?.children?.length
-                                    ? <Grid key={colItem.key || index} className={styles.item} item
+                                    ? <Grid key={colItem.key || index}
+                                            item
+                                            style={{ height: colItem.height }}
                                             xs={colItem.width / 2}>
                                         <LayoutContentGrid state={state} dispatch={dispatch} layout={colItem}/>
                                     </Grid>
@@ -47,8 +48,10 @@ const LayoutContentGrid = ({ layout, dispatch, state }: any) => {
                                         id={`multi-screen-player-item-${colItem.key}`}
                                         key={colItem.key || index}
                                         className={`${styles.item} ${selectedPlayer === colItem.key ? styles.selected : ''} multi-screen-player-item`}
-                                        xs={colItem.width / 2}>
-                                        {colItem.key}
+                                        xs={colItem.width / 2}
+                                        style={{ height: colItem.height }}
+                                    >
+                                        <MainPlayer />
                                     </Grid>
                             })
                         }

@@ -16,23 +16,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 import styles from '../styles.module.less';
-import { MultiStoreEnum, Props } from "../MultiTyping";
+import { LayoutButtonProps, LayoutJsonItem, MultiStoreEnum, Props } from "../MultiTyping";
 import { AssetsIcon, LayoutJson } from "../assets";
 import AppsIcon from '@mui/icons-material/Apps';
-
-export type LayoutJsonItemRows = {
-    height?: string;
-    type?: 'row' | 'col';
-    width?: number;
-    key?: string;
-    children?: Array<LayoutJsonItemRows>
-}
-type LayoutJsonItem = { name: string; key: string; icon: string; stream: string, children: Array<any> }
-
-type LayoutButtonProps = {
-    className?: string;
-    style?: React.CSSProperties;
-} & Props;
 
 const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
     const { state, dispatch } = props;

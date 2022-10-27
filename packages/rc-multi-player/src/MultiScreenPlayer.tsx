@@ -10,12 +10,12 @@
  *
  **********************************************************************/
 import React, { useReducer } from 'react';
-import ActionColumn from "./components/ActionColumn";
 import styles from './styles.module.less';
 import { reducer, State } from "./MultiStore";
-import LayoutContent from "./components/LayoutContent";
+import LayoutContent from "./Layout/LayoutContent";
 import { MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
+import MultiScreenPlayerAction from "./Action/MultiScreenPlayerAction";
 
 type MultiScreenPlayerProps = {
     actionPlacement?: 'top' | 'bottom';
@@ -37,7 +37,7 @@ const RcMultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
     });
     return (
         <div className={styles.main} id="multi-screen-player">
-            <ActionColumn state={state} dispatch={dispatch}/>
+            <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
             <LayoutContent state={state} dispatch={dispatch}/>
         </div>
     )

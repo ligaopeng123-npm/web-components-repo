@@ -13,6 +13,8 @@
 /**
  * store类型系统定义
  */
+import * as React from "react";
+
 export enum MultiStoreEnum {
     // 布局数据
     layout = 'layout',
@@ -37,3 +39,17 @@ export type Props = {
     dispatch: Fn;
     [propName: string]: any;
 }
+
+export type LayoutJsonItemRows = {
+    height?: string;
+    type?: 'row' | 'col';
+    width?: number;
+    key?: string;
+    children?: Array<LayoutJsonItemRows>
+}
+export type LayoutJsonItem = { name: string; key: string; icon: string; stream: string, children: Array<any> }
+
+export type LayoutButtonProps = {
+    className?: string;
+    style?: React.CSSProperties;
+} & Props;

@@ -10,6 +10,10 @@ module.exports = merge(base(__dirname), {
                 target: 'http://49.233.99.253:8000',
                 // pathRewrite: {'^/api': ''}
             },
+            '/live': {
+                target: 'http://49.233.99.253:9580',
+                // pathRewrite: {'^/api': ''}
+            },
             '/testShare/': {
                 changeOrigin: true,
                 target: 'https://ops.sany.com.cn/',
