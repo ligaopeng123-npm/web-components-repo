@@ -14,6 +14,7 @@ import Grid from '@mui/material/Grid';
 import { MultiStoreEnum, Props } from "../MultiTyping";
 import styles from '../styles.module.less';
 import { LayoutJsonItemRows } from "./LayoutButton";
+import LayoutContentItem from "./LayoutContentItem";
 
 type LayoutContentProps = {} & Props;
 
@@ -25,7 +26,6 @@ const LayoutContentGrid = ({ layout, dispatch, state }: any) => {
             value: key
         })
     }
-
     return (
         <>
             {

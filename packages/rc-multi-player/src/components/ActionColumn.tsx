@@ -9,26 +9,29 @@
  * @date: 2022/10/19 11:48
  *
  **********************************************************************/
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles.module.less';
 import LayoutButton from "./LayoutButton";
 import { Props } from "../MultiTyping";
 import FullScreenButton from "./FullScreenButton";
 import Divider from "@mui/material/Divider";
+import Hidden from "./Hidden";
 
 type ActionColumnProps = {} & Props;
 const ActionColumn: React.FC<ActionColumnProps> = (props) => {
     const { state, dispatch } = props;
+    const [hidden, setHidden] = useState(false);
     return (
         <div className={styles.bottomMain}>
             <div className={styles.bottomContent}>
-                <div className={styles.left}>
-
-                </div>
+                <div className={styles.left}></div>
+                <div className={styles.center}></div>
                 <div className={styles.right}>
-                    <FullScreenButton/>
+                    <Hidden hide={hidden}>
+                        <LayoutButton state={state} dispatch={dispatch}/>
+                    </Hidden>
                     <Divider classes={{ root: styles.hr }} orientation="vertical" variant="middle" flexItem/>
-                    <LayoutButton state={state} dispatch={dispatch}/>
+                    <FullScreenButton setHidden={setHidden}/>
                 </div>
             </div>
         </div>

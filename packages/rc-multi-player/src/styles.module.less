@@ -46,6 +46,11 @@
                 display: flex;
             }
 
+            .center {
+                min-width: 1px;
+                display: flex;
+            }
+
             .right {
                 flex: 1;
                 display: flex;
@@ -74,10 +79,14 @@
             //height: calc(100% - 1px);
         }
     }
+
+    .hidden {
+        display: none;
+    }
 }
 
 .menu {
-    :global .MuiButtonBase-root.MuiMenuItem-root.Mui-selected  {
+    :global .MuiButtonBase-root.MuiMenuItem-root.Mui-selected {
         //background-color: var(--multi-player-primary-color, @multi-player-primary-color);
         //color: var(--multi-player-text-color, @multi-player-text-color);
     }

@@ -76,6 +76,7 @@
     "dependencies": {
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
+        "@gaopeng123/hooks.use-resize": "^0.5.0",
         "@gaopeng123/multi-player": "^0.4.8",
         "@gaopeng123/utils": "^0.5.8",
         "@mui/icons-material": "^5.10.9",

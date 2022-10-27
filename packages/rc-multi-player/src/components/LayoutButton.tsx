@@ -10,11 +10,11 @@
  *
  **********************************************************************/
 import * as React from 'react';
+import { useRef } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import PopupState, { bindTrigger, bindHover, bindMenu } from 'material-ui-popup-state';
-import HoverMenu from 'material-ui-popup-state/HoverMenu';
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 import styles from '../styles.module.less';
 import { MultiStoreEnum, Props } from "../MultiTyping";
 import { AssetsIcon, LayoutJson } from "../assets";
@@ -29,10 +29,14 @@ export type LayoutJsonItemRows = {
 }
 type LayoutJsonItem = { name: string; key: string; icon: string; stream: string, children: Array<any> }
 
-type LayoutButtonProps = {} & Props;
+type LayoutButtonProps = {
+    className?: string;
+    style?: React.CSSProperties;
+} & Props;
 
 const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
     const { state, dispatch } = props;
+    const bthRef = useRef();
     const onMenuClick = (item: LayoutJsonItem, popupState: any) => {
         const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
         if (+selectedPlayer > +item.key) {
@@ -52,14 +56,17 @@ const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
         popupState.close();
     }
     return (
+        // @ts-ignore
         <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState: any) => (
                 <React.Fragment>
-                    <Button startIcon={<AppsIcon/>} size="small" className={styles.bottom}
+                    <Button style={props.style} ref={bthRef} startIcon={<AppsIcon/>}
+                            size="small"
+                            className={`${styles.bottom} ${props.className}`}
                             color="info" {...bindTrigger(popupState)}>
                         分屏
                     </Button>
-                    <Menu {...bindMenu(popupState)} className={styles.menu}>
+                    <Menu {...bindMenu(popupState)} className={styles.menu} anchorEl={bthRef.current}>
                         {
                             LayoutJson?.data?.map((item: LayoutJsonItem) => {
                                 return <MenuItem

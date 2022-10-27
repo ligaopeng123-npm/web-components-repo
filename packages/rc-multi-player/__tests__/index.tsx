@@ -1,19 +1,50 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {RcMultiPlayer, MultiScreenPlayer} from "../src";
-import {useEffect, useState} from "react";
+import { RcMultiPlayer, RcMultiScreenPlayer } from "../src";
 
+const RcMultiPlayerTest = () => {
+    const [mediaDataSource, setMediaDataSource] = React.useState<any>({});
 
-const App = () => {
-    const [mediaDataSource, setMediaDataSource] = useState<any>({});
-
-    useEffect(() => {
+    React.useEffect(() => {
         setTimeout(() => {
-            setMediaDataSource({url: '/flv/5956007-1-31882'})
+            setMediaDataSource({ url: '/flv/5956007-1-31882' })
         }, 2000);
     }, [])
     return (
-        <MultiScreenPlayer defaultSelectedScreen={4} />
+        <RcMultiPlayer
+            mediaDataSource={mediaDataSource}
+        />
+    );
+}
+
+const RcMultiScreenPlayerTest = () => {
+    return (
+        <RcMultiScreenPlayer defaultSelectedScreen={4}/>
+    )
+}
+const App = () => {
+    const [type, setType] = React.useState('RcMultiScreenPlayer');
+    return (
+        <div>
+            <div style={{paddingBottom: 12}}>
+                <a className={'a'} onClick={() => setType('RcMultiPlayer')}>RcMultiPlayer</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a className={'a'} onClick={() => setType('RcMultiScreenPlayer')}>RcMultiScreenPlayer</a>
+            </div>
+            <div id="rootContent">
+                {
+                    (() => {
+                        switch (type) {
+                            case 'RcMultiPlayer':
+                                return <RcMultiPlayerTest/>
+                            case 'RcMultiScreenPlayer':
+                                return <RcMultiScreenPlayerTest/>
+                            default:
+                                return null
+                        }
+                    })()
+                }
+            </div>
+        </div>
     );
 };
 

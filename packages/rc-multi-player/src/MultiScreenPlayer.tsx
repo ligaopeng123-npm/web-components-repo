@@ -22,7 +22,7 @@ type MultiScreenPlayerProps = {
     defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
 };
 
-const MultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
+const RcMultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
     const { defaultSelectedScreen } = props; //selectedScreen
     /**
      * 根据配置 初始化参数
@@ -43,4 +43,4 @@ const MultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
     )
 };
 
-export default MultiScreenPlayer;
+export default RcMultiScreenPlayer;
