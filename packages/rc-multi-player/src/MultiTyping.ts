@@ -61,9 +61,10 @@ export type LayoutButtonProps = {
 
 
 export type MultiScreenPlayerProps = {
+    proxy?: string; // 代理地址
     actionPlacement?: 'top' | 'bottom';
     defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
     extraParams?: any;
-    onError?: (index: string, extraParams?: any) => {};
+    onReLoad?: (index: string, extraParams?: any) => {};
     playerConfig: { protocol?: Protocol, title?: string }
 } & RcMultiPlayerProps;

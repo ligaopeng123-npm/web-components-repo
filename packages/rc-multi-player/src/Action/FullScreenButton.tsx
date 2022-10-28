@@ -15,7 +15,7 @@ import styles from "../styles.module.less";
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
-import { useResize } from "@gaopeng123/hooks.use-resize";
+import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
 
 type FullScreenButtonProps = {

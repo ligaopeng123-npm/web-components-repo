@@ -97,4 +97,6 @@ export enum MultiPlayerEvent {
     STATISTICS_INFO = mpegts.Events.STATISTICS_INFO,
     // 缓冲区数据过少，开始
     LOADING_COMPLETE_IMG = 'loading_complete_img',
+    // 开始加载数据
+    LOAD_START = 'load_start',
 }

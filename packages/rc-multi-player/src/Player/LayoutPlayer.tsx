@@ -1,8 +1,8 @@
 /**********************************************************************
  *
- * @模块名称: MainPlayer
+ * @模块名称: LayoutPlayer
  *
- * @模块用途: MainPlayer  基础播放器
+ * @模块用途: LayoutPlayer  多屏播放器
  *
  * @创建人: pgli
  *
@@ -10,19 +10,21 @@
  *
  **********************************************************************/
 import React from 'react';
-import { RcMultiPlayerProps } from "../RcMultiPlayer";
 import MainPlayer from "./MainPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps } from "./PlayerTyping";
 
-// type: 'flv',
-// url: '/live/40491879758-1-30002.flv',
-// cors: true
 const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
-    const { playerConfig, selected, mediaDataSource } = props;
-    console.log(111, mediaDataSource, playerConfig, playerConfig?.title);
+    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch } = props;
+    const onClose = () => {
+        dispatch({
+            index: layoutIndex,
+            value: null
+        })
+    }
     return (
         <MainPlayer
+            onClose={onClose}
             mediaDataSource={mediaDataSource}
             protocol={playerConfig?.protocol}
             title={playerConfig?.title}

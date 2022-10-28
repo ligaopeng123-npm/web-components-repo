@@ -6,6 +6,7 @@
 
 'use strict';
 const PORT = 3008;
+
 export function SrsError(name, message) {
     this.name = name;
     this.message = message;
@@ -133,15 +134,16 @@ export function SrsRtcPublisherAsync() {
             if (api.lastIndexOf('/') !== api.length - 1) {
                 api += '/';
             }
-
-            apiUrl = schema + '//' + urlObject.server + ':' + port + api;
+            let apiUrl;
+            apiUrl = api;
+            // apiUrl = schema + '//' + urlObject.server + ':' + port + api;
             for (var key in urlObject.user_query) {
                 if (key !== 'api' && key !== 'play') {
                     apiUrl += '&' + key + '=' + urlObject.user_query[key];
                 }
             }
             // Replace /rtc/v1/play/&k=v to /rtc/v1/play/?k=v
-            var apiUrl = apiUrl.replace(api + '&', api + '?');
+            apiUrl = apiUrl.replace(api + '&', api + '?');
 
             var streamUrl = urlObject.url;
 
@@ -210,7 +212,8 @@ export function SrsRtcPublisherAsync() {
             var ret = {
                 url: url,
                 schema: schema,
-                server: a.hostname, port: port,
+                server: a.hostname,
+                port: port,
                 vhost: vhost, app: app, stream: stream
             };
             self.__internal.fill_query(a.search, ret);
@@ -266,13 +269,12 @@ export function SrsRtcPublisherAsync() {
     // @see https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addStream#Migrating_to_addTrack
     // @see https://webrtc.org/getting-started/media-devices
     self.stream = new MediaStream();
-
     return self;
 }
 
 // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
 // Async-await-promise based SRS RTC Player.
-export function SrsRtcPlayerAsync() {
+export function SrsRtcPlayerAsync({ onmute, proxy }) {
     var self = {};
 
     // @see https://github.com/rtcdn/rtcdn-draft
@@ -299,7 +301,7 @@ export function SrsRtcPlayerAsync() {
     //      webrtc://r.ossrs.net/live/livestream?vhost=xxx
     //      webrtc://r.ossrs.net/live/livestream?token=xxx
     self.play = async function (url) {
-        var conf = self.__internal.prepareUrl(url);
+        var conf = self.__internal.prepareUrl(url, proxy);
         self.pc.addTransceiver("audio", { direction: "recvonly" });
         self.pc.addTransceiver("video", { direction: "recvonly" });
         //self.pc.addTransceiver("video", {direction: "recvonly"});
@@ -345,13 +347,19 @@ export function SrsRtcPlayerAsync() {
     // Note that the onaddstream is deprecated, @see https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/onaddstream
     self.ontrack = function (event) {
         // https://webrtc.org/getting-started/remote-streams
+        /**
+         * 监听流中断事件
+         */
+        event.track.onmute = (e) => {
+            if (onmute) onmute(e);
+        }
         self.stream.addTrack(event.track);
     };
 
     // Internal APIs.
     self.__internal = {
         defaultPath: '/rtc/v1/play/',
-        prepareUrl: function (webrtcUrl) {
+        prepareUrl: function (webrtcUrl, proxy) {
             var urlObject = self.__internal.parse(webrtcUrl);
 
             // If user specifies the schema, use it as API schema.
@@ -368,8 +376,12 @@ export function SrsRtcPlayerAsync() {
             if (api.lastIndexOf('/') !== api.length - 1) {
                 api += '/';
             }
+            /**
+             * 如果是本地开发 允许其配置跨域代理解决跨域问题
+             * @type {string}
+             */
+            apiUrl = proxy ? proxy + api : schema + '//' + urlObject.server + ':' + port + api;
 
-            apiUrl = schema + '//' + urlObject.server + ':' + port + api;
             for (var key in urlObject.user_query) {
                 if (key !== 'api' && key !== 'play') {
                     apiUrl += '&' + key + '=' + urlObject.user_query[key];
@@ -445,7 +457,8 @@ export function SrsRtcPlayerAsync() {
             var ret = {
                 url: url,
                 schema: schema,
-                server: a.hostname, port: port,
+                server: a.hostname,
+                port: port,
                 vhost: vhost, app: app, stream: stream
             };
             self.__internal.fill_query(a.search, ret);

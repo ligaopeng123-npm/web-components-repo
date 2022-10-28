@@ -37,7 +37,6 @@ const RcMultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
      *
      */
     useEffect(() => {
-        console.log(state[MultiStoreEnum.selectedPlayer])
         if (playerConfig && mediaDataSource) {
             dispatch({
                 type: MultiStoreEnum.playerList,

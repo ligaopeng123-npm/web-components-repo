@@ -9,7 +9,7 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from '../styles.module.less';
 import FlvPlayer from "./FlvPlayer";
 import WebRTCPlayer from "./WebRTCPlayer";
@@ -20,6 +20,7 @@ import FullScreenButton from "../Action/FullScreenButton";
 import Paper from "@mui/material/Paper";
 import ReplayLoad from "../Action/ReplayLoad";
 import { RcMultiPlayerProps } from "../RcMultiPlayer";
+import { useBoolean } from "@gaopeng123/hooks";
 
 type MainPlayerProps = {
     protocol?: 'FLV' | 'WebRTC'; // 协议 默认为flv
@@ -31,10 +32,34 @@ type MainPlayerProps = {
 const MainPlayer: React.FC<MainPlayerProps> = (props) => {
     const { protocol, title, mediaDataSource, className, onClose } = props;
     const divRef = useRef<HTMLDivElement>();
+    const loadRef = useRef(null);
+    const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
     const onCloseClick = (e: any) => {
         e?.stopPropagation();
+        if (mediaDataSource) {
+            loadRef.current.show();
+        }
+        setLoadTypeFalse();
         if (onClose) {
             onClose();
+        }
+    }
+    /**
+     * 重新加载时的处理
+     */
+    useEffect(() => {
+        if (!loadType) {
+            setLoadTypeTrue();
+        }
+        loadRef.current.hide();
+    }, [mediaDataSource]);
+
+    /**
+     * 事件监听
+     */
+    const playerEvents = {
+        onLoadStart: () => {
+            loadRef.current.hide();
         }
     }
 
@@ -57,17 +82,25 @@ const MainPlayer: React.FC<MainPlayerProps> = (props) => {
                     </IconButton>
                 </>}/>
             <div className={styles.playerContent}>
-                <ReplayLoad>
+                <ReplayLoad
+                    ref={loadRef}
+                    onClick={() => {
+                        if (mediaDataSource) {
+                            setLoadTypeTrue();
+                        }
+                    }}>
                     {
-                        mediaDataSource
+                        mediaDataSource && loadType
                             ? <>
                                 {
                                     protocol === 'WebRTC'
                                         ? <WebRTCPlayer
+                                            events={playerEvents}
                                             objectFit={'fill'}
                                             mediaDataSource={mediaDataSource}
                                         />
                                         : <FlvPlayer
+                                            events={playerEvents}
                                             objectFit={'fill'}
                                             mediaDataSource={mediaDataSource}
                                         />
@@ -79,9 +112,10 @@ const MainPlayer: React.FC<MainPlayerProps> = (props) => {
             </div>
             <ActionColumn
                 className={`${styles.hoverShow} ${styles.bottom}`}
-                right={<>
+                right={
                     <FullScreenButton el={divRef.current} type={'icon'}/>
-                </>}/>
+                }
+            />
         </Paper>
     )
 };

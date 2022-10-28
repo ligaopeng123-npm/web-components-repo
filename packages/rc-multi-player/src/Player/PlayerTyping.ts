@@ -38,4 +38,9 @@ export type LayoutPlayerProps = {
     playerConfig: PlayerConfig;
     selected?: boolean; // 是否是当前选中颜色
     layoutIndex?: string; // 当前是多屏中的第几个视频
-} & RcMultiPlayerProps;
+} & RcMultiPlayerProps & PlayerProps;
+
+
+export type PlayerEvents = {
+    onLoadStart?: ()=> void ;
+}

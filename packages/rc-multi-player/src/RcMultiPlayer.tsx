@@ -9,15 +9,17 @@
  * @date: 2022/3/23 16:54
  *
  **********************************************************************/
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "@gaopeng123/multi-player";
 import {
     MultiPlayerComProps,
     MediaDataSource,
     Config,
     MultiPlayerRobustness,
-    ObjectFit,
+    ObjectFit, MultiPlayerEvent,
 } from "@gaopeng123/multi-player";
+import { uuid } from "@gaopeng123/utils";
+import { PlayerEvents } from "./Player/PlayerTyping";
 
 /**
  * 处理react tsx中直接使用web components报错问题
@@ -41,15 +43,33 @@ export type RcMultiPlayerProps = {
     config?: Config,
     // 健壮性配置
     robustness?: MultiPlayerRobustness;
+    // 事件集合
+    events?: PlayerEvents,
 };
 const RcMultiPlayer: React.FC<RcMultiPlayerProps | any> = (props) => {
-    const { width, height, mediaDataSource, config, robustness, objectFit, style } = props;
+    const { width, height, mediaDataSource, config, robustness, objectFit, style, events } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
+    const [id, setId] = useState(uuid());
+    useEffect(() => {
+        const video = document.querySelector(`#${id}`);
+        const _onLoad = () => {
+            if (events?.onLoadStart) {
+                events?.onLoadStart();
+            }
+        }
+        if (video) {
+            video.addEventListener(MultiPlayerEvent.LOAD_START, _onLoad);
+        }
+
+        return () => {
+            video.removeEventListener(MultiPlayerEvent.LOAD_START, _onLoad);
+        }
+    }, []);
     return (
         <multi-player
             // @ts-ignore
             style={Object.assign({ width: '100%', height: '100%' }, style)}
-            id="rc-multi-player"
+            id={id}
             objectFit={objectFit}
             width={width}
             height={height}

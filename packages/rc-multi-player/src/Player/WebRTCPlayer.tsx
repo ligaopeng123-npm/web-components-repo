@@ -13,39 +13,52 @@ import React, { useEffect, useRef } from 'react';
 import { RcMultiPlayerProps } from "../RcMultiPlayer";
 import { SrsRtcPlayerAsync } from '../assets/sdk';
 import { Property } from "csstype";
+import { PlayerEvents } from "./PlayerTyping";
 
-type WebRtcPlayerProps = {} & RcMultiPlayerProps;
+type WebRtcPlayerProps = {
+    events?: PlayerEvents;
+} & RcMultiPlayerProps;
 const WebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
-    const { mediaDataSource, height, width, objectFit } = props;
+    const { mediaDataSource, height, width, objectFit, events } = props;
     const videoRef = useRef<HTMLVideoElement>();
     useEffect(() => {
         let sdk: any = null;
+        const video = videoRef.current;
+        /**
+         * 异常事件监听
+         * @param e
+         */
+        let onmute = (e: any) => {
+            console.log('onError', e);
+        }
+
         if (mediaDataSource?.url) {
             // @ts-ignore
-            sdk = new SrsRtcPlayerAsync();
-            console.log('sdk', sdk.stream)
-            // @ts-ignore
-            // videoRef.current.setAttribute('srcObject', sdk.stream);
-            videoRef.current.srcObject = sdk.stream;
-            sdk.play(mediaDataSource?.url).then(function (session: any) {
-                console.log(session)
-            }).catch(function (error: Error) {
-                sdk.close();
-                console.error(error);
-            });
+            sdk = new SrsRtcPlayerAsync({ onmute: onmute });
 
-            console.log(sdk)
+            video.srcObject = sdk.stream;
+
+            sdk.play(mediaDataSource?.url)
+                .then(function (session: any) {
+                    console.info(session);
+                    if (events?.onLoadStart) {
+                        events?.onLoadStart();
+                    }
+                })
+                .catch(function (error: Error) {
+                    sdk.close();
+                });
         }
         return () => {
             if (sdk) {
                 sdk.close();
                 sdk = null;
+                onmute = null;
             }
         }
     }, [mediaDataSource]);
     return (
         <video
-            id="rtc_media_player"
             ref={videoRef}
             autoPlay={true}
             style={{

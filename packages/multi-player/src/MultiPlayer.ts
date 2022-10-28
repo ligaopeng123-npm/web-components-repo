@@ -156,6 +156,7 @@ export default class MultiPlayer extends HTMLElement {
             this.loopAdjustBuffer();
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
+            this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start')
         });
         this.onPlayEvent();
     };

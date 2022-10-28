@@ -53,9 +53,11 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList }: any) => {
                                         style={{ height: colItem.height }}
                                     >
                                         <LayoutPlayer
+                                            state={state}
+                                            dispatch={dispatch}
+                                            layoutIndex={colItem.key}
                                             playerConfig={playerList[+colItem.key]?.playerConfig}
                                             mediaDataSource={playerList[+colItem.key]?.mediaDataSource}
-                                            layoutIndex={colItem.key}
                                             selected={selectedPlayer === colItem.key}/>
                                     </Grid>
                             })
