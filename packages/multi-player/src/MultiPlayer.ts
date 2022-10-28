@@ -40,7 +40,7 @@ export default class MultiPlayer extends HTMLElement {
         height: '100%',
         'media-data-source': {
             type: 'flv',  // 'mse', 'mpegts', 'm2ts', 'flv' or 'mp4'
-            cors: false,
+            cors: true, // 默认为true吧
             withCredentials: false,
             hasAudio: false,
             hasVideo: true,

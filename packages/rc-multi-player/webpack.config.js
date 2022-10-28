@@ -1,4 +1,4 @@
-const {merge} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const base = require("../../webpack.base.config");
 
 module.exports = merge(base(__dirname), {
@@ -12,6 +12,11 @@ module.exports = merge(base(__dirname), {
             },
             '/live': {
                 target: 'http://49.233.99.253:9580',
+                // pathRewrite: {'^/api': ''}
+            },
+            '/rtc': {
+                // http://xingtu.ubsense.cn:1985/rtc/v1/play/
+                target: 'http://xingtu.ubsense.cn:3008',
                 // pathRewrite: {'^/api': ''}
             },
             '/testShare/': {

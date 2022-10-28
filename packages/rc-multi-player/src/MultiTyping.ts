@@ -14,6 +14,8 @@
  * store类型系统定义
  */
 import * as React from "react";
+import { Protocol } from "./Player/PlayerTyping";
+import { RcMultiPlayerProps } from "./RcMultiPlayer";
 
 export enum MultiStoreEnum {
     // 布局数据
@@ -22,7 +24,10 @@ export enum MultiStoreEnum {
     selectedScreen = 'selectedScreen',
     // 选中的播放器
     selectedPlayer = 'selectedPlayer',
+    // 刷新控制
     refresh = 'refresh',
+    // 播放器集合
+    playerList = 'playerList',
 }
 
 export type Action = {
@@ -53,3 +58,12 @@ export type LayoutButtonProps = {
     className?: string;
     style?: React.CSSProperties;
 } & Props;
+
+
+export type MultiScreenPlayerProps = {
+    actionPlacement?: 'top' | 'bottom';
+    defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
+    extraParams?: any;
+    onError?: (index: string, extraParams?: any) => {};
+    playerConfig: { protocol?: Protocol, title?: string }
+} & RcMultiPlayerProps;

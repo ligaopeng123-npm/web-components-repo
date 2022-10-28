@@ -12,7 +12,8 @@
 import { Action, MultiStoreEnum } from "./MultiTyping";
 
 export const State = {
-    [MultiStoreEnum.selectedPlayer]: '0'
+    [MultiStoreEnum.selectedPlayer]: '0',
+    [MultiStoreEnum.playerList]: [] as any[],
 };
 
 export const init = (state: any) => {
@@ -29,6 +30,14 @@ export const reducer = (state: any, action: Action) => {
             return Object.assign({}, state, { [MultiStoreEnum.selectedPlayer]: action.value });
         case MultiStoreEnum.refresh:
             return Object.assign({}, state, { [MultiStoreEnum.refresh]: action.value });
+        case MultiStoreEnum.playerList:
+            const playerList = state[MultiStoreEnum.playerList];
+            const { index, data } = action.value;
+            if (playerList[index] !== data) {
+                playerList[index] = data;
+                return Object.assign({}, state, { [MultiStoreEnum.playerList]: playerList });
+            }
+            return state;
         default:
             return state;
     }

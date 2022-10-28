@@ -16,11 +16,12 @@ type ActionColumnProps = {
     left?: ReactNode;
     center?: ReactNode;
     right?: ReactNode;
+    className?: string;
 };
 const ActionColumn: React.FC<ActionColumnProps> = (props) => {
-    const { left, center, right } = props;
+    const { left, center, right, className } = props;
     return (
-        <div className={styles.bottomMain}>
+        <div className={`${styles.bottomMain} ${className}`}>
             <div className={styles.bottomContent}>
                 <div className={styles.left}>
                     {left}

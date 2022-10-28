@@ -1,7 +1,7 @@
 // 选中主要颜色
 @multi-player-primary-color: #52c41a;
 // 背景色
-@multi-player-background-color: #333;
+@multi-player-background-color: #121212;
 // 文字颜色
 @multi-player-text-color: #fff;
 // 边框颜色
@@ -10,7 +10,7 @@
 @ACTION-HEIGHT: 30px;
 :root {
     --multi-player-primary-color: #52c41a;
-    --multi-player-background-color: #333;
+    --multi-player-background-color: #121212;
     --multi-player-text-color: #fff;
     --multi-player-border-color: #000;
 }
@@ -26,16 +26,6 @@
         position: relative;
         z-index: 1;
 
-        //&:after {
-        //    content: '';
-        //    height: 1px;
-        //    width: calc(100% - @WIDTH);
-        //    background-color: var(--multi-player-border-color, @multi-player-border-color);
-        //    opacity: .2;
-        //    display: flex;
-        //    margin: 0px @WIDTH / 2;
-        //}
-
         .bottom {
             min-width: 32px;
             color: var(--multi-player-text-color, @multi-player-text-color);
@@ -44,6 +34,7 @@
         .bottomContent {
             display: flex;
             padding: 0px @WIDTH / 2;
+            align-items: center;
 
             .left {
                 min-width: 1px;
@@ -72,16 +63,28 @@
 
         .item {
             height: 100%;
-            border-right: .5px solid var(--multi-player-border-color, @multi-player-border-color);
-            border-top: .5px solid var(--multi-player-border-color, @multi-player-border-color);
-            //margin: -1px;
-        }
+            #playerBase() {
+                border-radius: 0px;
+                border-width: .5px;
+                background-color: transparent;
+                width: calc(100% - 1px);
+                height: calc(100% - 1px);
+            }
+            // 播放器样式
+            .player {
+                #playerBase();
+            }
 
-        .selected {
-            border: .5px solid var(--multi-player-primary-color, @multi-player-primary-color);
-            //margin: -1px;
-            //width: calc(100% - 1px);
-            //height: calc(100% - 1px);
+            .playerContent {
+                //margin-top: -@ACTION-HEIGHT;
+                width: calc(100% - 1px);
+                height: calc(100% - 1px);
+            }
+
+            .selected {
+                #playerBase();
+                border: .5px solid var(--multi-player-primary-color, @multi-player-primary-color);
+            }
         }
     }
 
@@ -106,14 +109,28 @@
     }
 }
 
+// 播放器
+.mainPlayer {
+    position: relative;
 
-.player {
-    height: 100%;
-    width: 100%;
-
-    .playerContent {
-        margin-top: -@ACTION-HEIGHT;
-        height: 100%;
+    #hoverShowBase() {
+        position: absolute;
         width: 100%;
+    }
+
+    .hoverShow {
+        display: none;
+        #hoverShowBase();
+    }
+
+    &:hover {
+        .hoverShow {
+            display: block;
+            #hoverShowBase();
+        }
+    }
+
+    .bottom {
+        bottom: 4px;
     }
 }

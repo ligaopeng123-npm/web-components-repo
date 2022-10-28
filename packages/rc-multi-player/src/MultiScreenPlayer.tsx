@@ -9,21 +9,18 @@
  * @date: 2022/10/19 11:10
  *
  **********************************************************************/
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import styles from './styles.module.less';
 import { reducer, State } from "./MultiStore";
 import LayoutContent from "./Layout/LayoutContent";
-import { MultiStoreEnum } from "./MultiTyping";
+import { MultiScreenPlayerProps, MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
 import MultiScreenPlayerAction from "./Action/MultiScreenPlayerAction";
-
-type MultiScreenPlayerProps = {
-    actionPlacement?: 'top' | 'bottom';
-    defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
-};
+import { ThemeProvider } from "@mui/material";
+import { DefaultTheme } from "./Theme";
 
 const RcMultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
-    const { defaultSelectedScreen } = props; //selectedScreen
+    const { defaultSelectedScreen, mediaDataSource, playerConfig } = props; //selectedScreen
     /**
      * 根据配置 初始化参数
      */
@@ -33,13 +30,35 @@ const RcMultiScreenPlayer: React.FC<MultiScreenPlayerProps> = (props) => {
         return Object.assign({}, currentState, {
             [MultiStoreEnum.selectedScreen]: currentDefaultSelectedScreen,
             [MultiStoreEnum.layout]: currentSelectedLayout[0] || {},
+            [MultiStoreEnum.playerList]: new Array(currentDefaultSelectedScreen),
         });
     });
+    /**
+     *
+     */
+    useEffect(() => {
+        console.log(state[MultiStoreEnum.selectedPlayer])
+        if (playerConfig && mediaDataSource) {
+            dispatch({
+                type: MultiStoreEnum.playerList,
+                value: {
+                    index: state[MultiStoreEnum.selectedPlayer],
+                    data: {
+                        mediaDataSource,
+                        playerConfig
+                    }
+                }
+            })
+        }
+    }, [playerConfig, mediaDataSource]);
+
     return (
-        <div className={styles.main} id="multi-screen-player">
-            <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
-            <LayoutContent state={state} dispatch={dispatch}/>
-        </div>
+        <ThemeProvider theme={DefaultTheme}>
+            <div className={styles.main} id="multi-screen-player">
+                <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
+                <LayoutContent state={state} dispatch={dispatch}/>
+            </div>
+        </ThemeProvider>
     )
 };
 

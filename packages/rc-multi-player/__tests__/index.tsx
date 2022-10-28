@@ -1,34 +1,35 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { RcMultiPlayer, RcMultiScreenPlayer } from "../src";
+import RcMultiPlayerTest from "./RcMultiPlayerTest";
+import RcMultiScreenPlayerTest from "./RcMultiScreenPlayerTest";
+import { Link } from "@mui/material";
+import WebRTCPlayerTest from "./WebRTCPlayerTest";
 
-const RcMultiPlayerTest = () => {
-    const [mediaDataSource, setMediaDataSource] = React.useState<any>({});
-
-    React.useEffect(() => {
-        setTimeout(() => {
-            setMediaDataSource({ url: 'http://localhost:5007/live/40491879758-1-30002.flv' })
-        }, 2000);
-    }, [])
-    return (
-        <RcMultiPlayer
-            mediaDataSource={mediaDataSource}
-        />
-    );
-}
-
-const RcMultiScreenPlayerTest = () => {
-    return (
-        <RcMultiScreenPlayer defaultSelectedScreen={4}/>
-    )
-}
 const App = () => {
     const [type, setType] = React.useState('RcMultiScreenPlayer');
+    const LinkText = ({ label, value }: any) => {
+        return (
+            <>
+                <Link
+                    sx={{ p: [1, 2] }}
+                    component="button"
+                    variant="body2"
+                    onClick={() => {
+                        setType(value || label)
+                    }}
+                >
+                    {label || value}
+                </Link>
+            </>
+        )
+    }
     return (
         <div>
-            <div style={{paddingBottom: 12}}>
-                <a className={'a'} onClick={() => setType('RcMultiPlayer')}>RcMultiPlayer</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a className={'a'} onClick={() => setType('RcMultiScreenPlayer')}>RcMultiScreenPlayer</a>
+            <div>
+                <LinkText label={'RcMultiPlayer'}/>
+                <LinkText label={'RcMultiScreenPlayer'}/>
+                <LinkText label={'WebRTCPlayer'}/>
             </div>
             <div id="rootContent">
                 {
@@ -38,6 +39,8 @@ const App = () => {
                                 return <RcMultiPlayerTest/>
                             case 'RcMultiScreenPlayer':
                                 return <RcMultiScreenPlayerTest/>
+                            case 'WebRTCPlayer':
+                                return <WebRTCPlayerTest/>
                             default:
                                 return null
                         }

@@ -31,22 +31,24 @@ declare global {
 }
 
 export type RcMultiPlayerProps = {
+    style?: React.CSSProperties;
     width?: string | number;
     height?: string | number;
     // 视频填充方式
     objectFit?: ObjectFit;
-    mediaDataSource: MediaDataSource;
+    mediaDataSource?: MediaDataSource;
     // 播放器配置
     config?: Config,
     // 健壮性配置
     robustness?: MultiPlayerRobustness;
 };
 const RcMultiPlayer: React.FC<RcMultiPlayerProps | any> = (props) => {
-    const { width, height, mediaDataSource, config, robustness, objectFit } = props;
+    const { width, height, mediaDataSource, config, robustness, objectFit, style } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
     return (
         <multi-player
-            style={{width: '100%', height: '100%'}}
+            // @ts-ignore
+            style={Object.assign({ width: '100%', height: '100%' }, style)}
             id="rc-multi-player"
             objectFit={objectFit}
             width={width}
