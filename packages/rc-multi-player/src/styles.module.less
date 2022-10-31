@@ -121,6 +121,7 @@
     .hoverShow {
         display: none;
         #hoverShowBase();
+        animation: gradual-display .3s;
     }
 
     &:hover {
@@ -132,5 +133,21 @@
 
     .bottom {
         bottom: 4px;
+    }
+}
+
+// 渐渐显示
+@keyframes gradual-display {
+    0% {
+        opacity: .3;
+    }
+    50% {
+        opacity: .6;
+    }
+    75% {
+        opacity: .9;
+    }
+    100% {
+        opacity: 1;
     }
 }
