@@ -10,16 +10,12 @@
  *
  **********************************************************************/
 import React, { useEffect, useRef } from 'react';
-import { RcMultiPlayerProps } from "../RcMultiPlayer";
 import { SrsRtcPlayerAsync } from '../assets/sdk';
 import { Property } from "csstype";
-import { PlayerEvents } from "./PlayerTyping";
+import { WebRtcPlayerProps } from "./PlayerTyping";
 
-type WebRtcPlayerProps = {
-    events?: PlayerEvents;
-} & RcMultiPlayerProps;
-const WebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
-    const { mediaDataSource, height, width, objectFit, events } = props;
+const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
+    const { mediaDataSource, height, width, objectFit, events, extraParams } = props;
     const videoRef = useRef<HTMLVideoElement>();
     useEffect(() => {
         let sdk: any = null;
@@ -29,7 +25,9 @@ const WebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
          * @param e
          */
         let onmute = (e: any) => {
-            console.log('onError', e);
+            if (events?.onReLoad) {
+                events.onReLoad({ extraParams, });
+            }
         }
 
         if (mediaDataSource?.url) {
@@ -46,6 +44,7 @@ const WebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
                     }
                 })
                 .catch(function (error: Error) {
+                    console.log('error', error)
                     sdk.close();
                 });
         }
@@ -70,4 +69,4 @@ const WebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
     )
 };
 
-export default WebRTCPlayer;
+export default RcWebRTCPlayer;

@@ -56,10 +56,10 @@ const ReplayLoad: React.FC<ReplayLoadProps> = forwardRef<ReplayLoadRef, ReplayLo
                                 color="iconButton"
                                 size={'small'}>
                                 <div>
-                                    <CircularProgress
+                                    <ReplayIcon
                                         style={{ height: 20, width: 20 }}
                                         color="inherit"/>
-                                    <div>重新加载</div>
+                                    <div>点击重新加载</div>
                                 </div>
                             </IconButton>
                         </div>

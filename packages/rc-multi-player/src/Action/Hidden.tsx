@@ -14,6 +14,7 @@ import React, { Children, cloneElement } from 'react';
 type HiddenProps = {
     children: any;
     hide: boolean;
+    style?: React.CSSProperties;
 };
 const Hidden = (props: HiddenProps) => {
     return (
@@ -21,7 +22,7 @@ const Hidden = (props: HiddenProps) => {
             {
                 Children.map(props.children, (child) => {
                     return cloneElement(child, {
-                        style: props.hide ? { display: 'none' } : {}
+                        style: props.hide ? { display: 'none' } : props.style
                     })
                 })
             }

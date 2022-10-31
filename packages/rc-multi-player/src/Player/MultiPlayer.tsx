@@ -9,39 +9,36 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../styles.module.less';
-import FlvPlayer from "./FlvPlayer";
-import WebRTCPlayer from "./WebRTCPlayer";
 import ActionColumn from "../Action/ActionColumn";
-import CloseIcon from '@mui/icons-material/Close';
-import IconButton from "@mui/material/IconButton";
 import FullScreenButton from "../Action/FullScreenButton";
 import Paper from "@mui/material/Paper";
 import ReplayLoad from "../Action/ReplayLoad";
-import { RcMultiPlayerProps } from "../RcMultiPlayer";
 import { useBoolean } from "@gaopeng123/hooks";
+import HideFullScreen from "../Action/HideFullScreen";
+import IconCloseButton from "../Action/IconCloseButton";
+import RcFlvPlayer from "./FlvPlayer";
+import Title from "../components/Title";
+import { RcMultiPlayerProps } from "./PlayerTyping";
+import RcWebRTCPlayer from "./WebRTCPlayer";
 
-type MainPlayerProps = {
-    protocol?: 'FLV' | 'WebRTC'; // 协议 默认为flv
-    className?: string;
-    title?: string | ReactNode;
-    onClose?: () => void;
-} & RcMultiPlayerProps;
-
-const MainPlayer: React.FC<MainPlayerProps> = (props) => {
-    const { protocol, title, mediaDataSource, className, onClose } = props;
-    const divRef = useRef<HTMLDivElement>();
+const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
+    const { protocol, title, mediaDataSource, className, events, extraParams } = props;
+    const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
+    /**
+     * 事件监听  关闭视频处理
+     */
     const onCloseClick = (e: any) => {
         e?.stopPropagation();
         if (mediaDataSource) {
             loadRef.current.show();
         }
         setLoadTypeFalse();
-        if (onClose) {
-            onClose();
+        if (events?.onClose) {
+            events.onClose({ extraParams, protocol });
         }
     }
     /**
@@ -57,34 +54,36 @@ const MainPlayer: React.FC<MainPlayerProps> = (props) => {
     /**
      * 事件监听
      */
-    const playerEvents = {
+    const playerEvents = Object.assign({}, events, {
         onLoadStart: () => {
             loadRef.current.hide();
-        }
-    }
+            if (events?.onLoadStart) {
+                events?.onLoadStart({ extraParams, protocol });
+            }
+        },
+    });
 
     return (
         <Paper
-            elevation={0} variant="outlined" ref={divRef}
+            elevation={0}
+            variant="outlined"
+            ref={(el) => {
+                setDivCurrent(el);
+            }}
             classes={{ root: `${styles.mainPlayer} ${className}` }}>
             <ActionColumn
                 className={styles.hoverShow}
-                left={title}
-                right={<>
-                    <IconButton
-                        onClick={onCloseClick}
-                        size={'small'}
-                        // @ts-ignore
-                        color="iconButton"
-                        aria-label="close video"
-                        component="label">
-                        <CloseIcon/>
-                    </IconButton>
-                </>}/>
+                left={<Title>{title}</Title>}
+                right={<HideFullScreen>
+                    <IconCloseButton onClick={onCloseClick}/>
+                </HideFullScreen>}/>
             <div className={styles.playerContent}>
                 <ReplayLoad
                     ref={loadRef}
                     onClick={() => {
+                        if (playerEvents?.onReLoad) {
+                            playerEvents.onReLoad({ extraParams, protocol });
+                        }
                         if (mediaDataSource) {
                             setLoadTypeTrue();
                         }
@@ -94,12 +93,14 @@ const MainPlayer: React.FC<MainPlayerProps> = (props) => {
                             ? <>
                                 {
                                     protocol === 'WebRTC'
-                                        ? <WebRTCPlayer
+                                        ? <RcWebRTCPlayer
+                                            extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={'fill'}
                                             mediaDataSource={mediaDataSource}
                                         />
-                                        : <FlvPlayer
+                                        : <RcFlvPlayer
+                                            extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={'fill'}
                                             mediaDataSource={mediaDataSource}
@@ -113,11 +114,13 @@ const MainPlayer: React.FC<MainPlayerProps> = (props) => {
             <ActionColumn
                 className={`${styles.hoverShow} ${styles.bottom}`}
                 right={
-                    <FullScreenButton el={divRef.current} type={'icon'}/>
+                    <HideFullScreen>
+                        <FullScreenButton el={divCurrent} type={'icon'}/>
+                    </HideFullScreen>
                 }
             />
         </Paper>
     )
 };
 
-export default MainPlayer;
+export default RcMultiPlayer;

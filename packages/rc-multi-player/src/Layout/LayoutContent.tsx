@@ -14,10 +14,11 @@ import Grid from '@mui/material/Grid';
 import { LayoutJsonItemRows, MultiStoreEnum, Props } from "../MultiTyping";
 import styles from "../styles.module.less";
 import LayoutPlayer from "../Player/LayoutPlayer";
+import { PlayerEvents } from "../Player/PlayerTyping";
 
-type LayoutContentProps = {} & Props;
+type LayoutContentProps = { events?: PlayerEvents } & Props;
 
-const LayoutContentGrid = ({ layout, dispatch, state, playerList }: any) => {
+const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any) => {
     const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
     const onItemClick = (key: string) => {
         dispatch({
@@ -38,8 +39,12 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList }: any) => {
                                             item
                                             style={{ height: colItem.height }}
                                             xs={colItem.width / 2}>
-                                        <LayoutContentGrid state={state} dispatch={dispatch} layout={colItem}
-                                                           playerList={playerList}/>
+                                        <LayoutContentGrid
+                                            events={events}
+                                            state={state}
+                                            dispatch={dispatch}
+                                            layout={colItem}
+                                            playerList={playerList}/>
                                     </Grid>
                                     : <Grid
                                         onClick={() => {
@@ -53,6 +58,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList }: any) => {
                                         style={{ height: colItem.height }}
                                     >
                                         <LayoutPlayer
+                                            events={events}
                                             state={state}
                                             dispatch={dispatch}
                                             layoutIndex={colItem.key}
@@ -69,12 +75,17 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList }: any) => {
     )
 }
 const LayoutContent: React.FC<LayoutContentProps> = (props) => {
-    const { state, dispatch } = props;
+    const { state, dispatch, events } = props;
     const layoutVal = state[MultiStoreEnum.layout];
     const playerList = state[MultiStoreEnum.playerList];
     return (
         <div className={styles.content}>
-            <LayoutContentGrid playerList={playerList} layout={layoutVal} dispatch={dispatch} state={state}/>
+            <LayoutContentGrid
+                events={events}
+                playerList={playerList}
+                layout={layoutVal}
+                dispatch={dispatch}
+                state={state}/>
         </div>
     )
 };

@@ -10,8 +10,8 @@
  *
  **********************************************************************/
 import * as React from 'react';
-import { RcMultiPlayer, RcMultiScreenPlayer } from "../src";
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { RcMultiPlayer } from "../src";
+import { Button, FormControl, TextField } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 
 type RcMultiPlayerTestProps = {};

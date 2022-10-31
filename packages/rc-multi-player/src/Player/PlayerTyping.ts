@@ -9,7 +9,9 @@
  * @date: 2022-10-20 13:48:15
  *
  **********************************************************************/
-import { RcMultiPlayerProps } from "../RcMultiPlayer";
+
+import React, { ReactNode } from "react";
+import { Config, MediaDataSource, MultiPlayerRobustness, ObjectFit } from "@gaopeng123/multi-player";
 
 export enum PlayerStoreEnum {
     // 报错信息
@@ -21,6 +23,7 @@ export type Action = {
     type: PlayerStoreEnum
 }
 
+
 /**
  * StoreProps参数
  */
@@ -31,16 +34,51 @@ export type PlayerProps = {
     [propName: string]: any;
 }
 
-export type Protocol = 'FLV' | 'WebRTC'; // 协议 默认为flv
-
-export type  PlayerConfig = { protocol?: Protocol, title?: string };
-export type LayoutPlayerProps = {
-    playerConfig: PlayerConfig;
-    selected?: boolean; // 是否是当前选中颜色
-    layoutIndex?: string; // 当前是多屏中的第几个视频
-} & RcMultiPlayerProps & PlayerProps;
+export type RcFlvPlayerProps = {
+    extraParams?: any;
+    style?: React.CSSProperties;
+    width?: string | number;
+    height?: string | number;
+    // 视频填充方式
+    objectFit?: ObjectFit;
+    mediaDataSource?: MediaDataSource;
+    // 播放器配置
+    config?: Config,
+    // 健壮性配置
+    robustness?: MultiPlayerRobustness;
+    // 事件集合
+    events?: PlayerEvents,
+};
 
 
 export type PlayerEvents = {
-    onLoadStart?: ()=> void ;
+    onLoadStart?: (playerConfig?: PlayerConfig) => void;
+    onReLoad?: (playerConfig?: PlayerConfig) => void;
+    onClose?: (playerConfig?: PlayerConfig) => void;
 }
+
+export type Protocol = 'FLV' | 'WebRTC'; // 协议 默认为flv
+
+export type  PlayerConfig = {
+    protocol?: Protocol,
+    title?: string,
+    // 额外参数
+    extraParams?: any
+};
+// 多屏播放器
+export type LayoutPlayerProps = {
+    playerConfig?: PlayerConfig;
+    selected?: boolean; // 是否是当前选中颜色
+    layoutIndex?: string; // 当前是多屏中的第几个视频
+    events?: PlayerEvents;
+} & RcMultiPlayerProps & PlayerProps;
+
+export type RcMultiPlayerProps = {
+    protocol?: 'FLV' | 'WebRTC'; // 协议 默认为flv
+    className?: string;
+    title?: string | ReactNode;
+    extraParams?: any;
+} & RcFlvPlayerProps;
+
+
+export type WebRtcPlayerProps = {} & RcFlvPlayerProps;

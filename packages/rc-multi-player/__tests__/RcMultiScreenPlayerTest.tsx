@@ -13,6 +13,7 @@ import * as React from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { RcMultiScreenPlayer } from "../src";
 import Snackbar from "@mui/material/Snackbar";
+import { useRef } from "react";
 
 type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
@@ -20,15 +21,17 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     const [open, setOpen] = React.useState(false);
     const [mediaDataSource, setMediaDataSource] = React.useState<any>();
     const [playerConfig, setPlayerConfig] = React.useState<any>();
+    const screenRef = useRef(null);
     const handleChange = (v: any) => {
         setProtocol(v?.target?.value);
     }
     const onClick = () => {
+        console.log(222, screenRef.current.getScreenConfig())
         // @ts-ignore
         const url = document.querySelector('#outlined-basic')?.value;
         if (url) {
             setMediaDataSource({ url: url, type: 'flv', });
-            setPlayerConfig({ protocol: protocol, title: '你好色彩' });
+            setPlayerConfig({ protocol: protocol, title: '你好色彩', extraParams: { test: 1 } });
         } else {
             setOpen(true)
         }
@@ -65,6 +68,15 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
                     <RcMultiScreenPlayer
+                        events={{
+                            onReLoad: (e) => {
+                                console.log(111, e);
+                            },
+                            onClose: (e) => {
+                                console.log(222, e);
+                            }
+                        }}
+                        ref={screenRef}
                         playerConfig={playerConfig}
                         mediaDataSource={mediaDataSource}
                         defaultSelectedScreen={4}/>

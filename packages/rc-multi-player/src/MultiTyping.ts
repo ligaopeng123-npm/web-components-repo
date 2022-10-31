@@ -14,8 +14,7 @@
  * store类型系统定义
  */
 import * as React from "react";
-import { Protocol } from "./Player/PlayerTyping";
-import { RcMultiPlayerProps } from "./RcMultiPlayer";
+import { PlayerEvents, Protocol, RcFlvPlayerProps } from "./Player/PlayerTyping";
 
 export enum MultiStoreEnum {
     // 布局数据
@@ -24,10 +23,12 @@ export enum MultiStoreEnum {
     selectedScreen = 'selectedScreen',
     // 选中的播放器
     selectedPlayer = 'selectedPlayer',
-    // 刷新控制
-    refresh = 'refresh',
     // 播放器集合
     playerList = 'playerList',
+    // 打开配置drawer
+    drawer = 'drawer',
+    // 流媒体协议
+    screenConfig = 'screenConfig',
 }
 
 export type Action = {
@@ -59,12 +60,31 @@ export type LayoutButtonProps = {
     style?: React.CSSProperties;
 } & Props;
 
+type PlayerConfig = {
+    protocol?: Protocol,
+    title?: string,
+    // 额外的参数
+    extraParams?: any,
+    // 第几路视频
+    layoutIndex?: string;
+};
+// 分屏视频类型
+export type ScreenConfigProps = {
+    selectedScreen: any,
+    selectedPlayer: string,
+} & PlayerConfig;
 
 export type MultiScreenPlayerProps = {
+    id?: string;
     proxy?: string; // 代理地址
     actionPlacement?: 'top' | 'bottom';
     defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
-    extraParams?: any;
-    onReLoad?: (index: string, extraParams?: any) => {};
-    playerConfig: { protocol?: Protocol, title?: string }
-} & RcMultiPlayerProps;
+    events?: PlayerEvents,
+    playerConfig: PlayerConfig,
+} & RcFlvPlayerProps;
+
+
+export type MultiScreenPlayerRef = {
+    // 获取协议类型
+    getScreenConfig: () => ScreenConfigProps;
+};

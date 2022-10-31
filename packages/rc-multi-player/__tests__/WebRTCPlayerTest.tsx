@@ -11,7 +11,7 @@
  **********************************************************************/
 import * as React from 'react';
 import { Button, FormControl, TextField } from "@mui/material";
-import { WebRTCPlayer } from "../src";
+import { RcWebRTCPlayer } from "../src";
 import Snackbar from "@mui/material/Snackbar";
 
 type WebRTCPlayerTestProps = {};
@@ -48,7 +48,7 @@ const WebRTCPlayerTest: React.FC<WebRTCPlayerTestProps> = (props) => {
                     </div>
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
-                    <WebRTCPlayer
+                    <RcWebRTCPlayer
                         mediaDataSource={mediaDataSource}
                     />
                 </div>

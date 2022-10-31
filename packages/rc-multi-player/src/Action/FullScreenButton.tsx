@@ -22,10 +22,11 @@ type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
     el?: HTMLElement;
     type?: 'icon' | 'auto';
+    style?: React.CSSProperties;
 };
 
 const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
-    const { el, onChange, type } = props;
+    const { el, onChange, type, style } = props;
     const [fullType, setFullType] = useState<boolean>(isFullscreen());
     const onClick = (e: any) => {
         e?.stopPropagation();
@@ -54,13 +55,17 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
                         onClick={onClick}
                         // @ts-ignore
                         color="iconButton"
-                        size={'small'}>
+                        size={'small'}
+                        style={style}
+                    >
                         {fullType ? <FullscreenExitIcon/> : <FullscreenIcon/>}
                     </IconButton>
                     : <Button
                         onClick={onClick}
                         startIcon={fullType ? <FullscreenExitIcon/> : <FullscreenIcon/>}
-                        size="small" className={styles.bottom}>
+                        size="small" className={styles.bottom}
+                        style={style}
+                    >
                         {fullType ? '退出全屏' : '全屏'}
                     </Button>
             }

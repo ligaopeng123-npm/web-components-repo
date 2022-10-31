@@ -10,23 +10,39 @@
  *
  **********************************************************************/
 import React from 'react';
-import MainPlayer from "./MainPlayer";
+import MultiPlayer from "./MultiPlayer";
 import styles from '../styles.module.less';
-import { LayoutPlayerProps } from "./PlayerTyping";
+import { LayoutPlayerProps, PlayerConfig, } from "./PlayerTyping";
 
 const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
-    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch } = props;
+    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch, events } = props;
     const onClose = () => {
         dispatch({
             index: layoutIndex,
             value: null
         })
     }
+
+    const playerEvents = Object.assign({}, events, {
+        onClose: (playerConfig: PlayerConfig) => {
+            onClose();
+            if (events?.onClose) {
+                events?.onClose(playerConfig);
+            }
+        },
+        onReLoad: (playerConfig: PlayerConfig) => {
+            if (events?.onReLoad) {
+                events?.onReLoad(Object.assign({ layoutIndex }, playerConfig));
+            }
+        }
+    });
+
     return (
-        <MainPlayer
-            onClose={onClose}
+        <MultiPlayer
+            events={playerEvents}
             mediaDataSource={mediaDataSource}
             protocol={playerConfig?.protocol}
+            extraParams={playerConfig?.extraParams}
             title={playerConfig?.title}
             className={selected ? styles.selected : styles.player}
         />

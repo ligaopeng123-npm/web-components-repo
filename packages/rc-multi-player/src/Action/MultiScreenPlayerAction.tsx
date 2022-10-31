@@ -9,28 +9,29 @@
  * @date: 2022/10/27 14:51
  *
  **********************************************************************/
-
-import React, { useState } from 'react';
+import React from 'react';
 import LayoutButton from "./LayoutButton";
 import { Props } from "../MultiTyping";
 import FullScreenButton from "./FullScreenButton";
 import Divider from "@mui/material/Divider";
-import Hidden from "./Hidden";
 import ActionColumn from "./ActionColumn";
 import styles from "../styles.module.less";
+import HideFullScreen from "./HideFullScreen";
+import { MultiScreenDrawerButton } from "./MultiScreenDrawer";
 
 type MultiScreenPlayerActionProps = {} & Props;
 const MultiScreenPlayerAction: React.FC<MultiScreenPlayerActionProps> = (props) => {
     const { state, dispatch } = props;
-    const [hidden, setHidden] = useState(false);
     return (
         <ActionColumn
             right={<>
-                <Hidden hide={hidden}>
+                <HideFullScreen>
                     <LayoutButton state={state} dispatch={dispatch}/>
-                </Hidden>
+                </HideFullScreen>
                 <Divider classes={{ root: styles.hr }} orientation="vertical" variant="middle" flexItem/>
-                <FullScreenButton onChange={setHidden}/>
+                <MultiScreenDrawerButton state={state} dispatch={dispatch}/>
+                <Divider classes={{ root: styles.hr }} orientation="vertical" variant="middle" flexItem/>
+                <FullScreenButton/>
             </>
             }
         />
