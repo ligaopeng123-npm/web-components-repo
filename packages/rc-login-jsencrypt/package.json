@@ -76,5 +76,6 @@
     "dependencies": {
         "@gaopeng123/rc-login-module": "^0.5.0",
         "jsencrypt": "^3.2.1"
-    }
+    },
+    "gitHead": "3b2227cf183683b5636e3c5e1f09266a000de6da"
 }

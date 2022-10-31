@@ -74,5 +74,6 @@
         "@gaopeng123/hooks.use-boolean": "^0.5.0",
         "@gaopeng123/hooks.use-pagination": "^0.5.0",
         "react-window": "^1.8.7"
-    }
+    },
+    "gitHead": "3b2227cf183683b5636e3c5e1f09266a000de6da"
 }
