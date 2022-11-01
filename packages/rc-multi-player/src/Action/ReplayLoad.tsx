@@ -13,7 +13,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import ReplayIcon from '@mui/icons-material/Replay';
 import IconButton from "@mui/material/IconButton";
 import CircularProgress from '@mui/material/CircularProgress';
-import styles from "./styles.modules.less";
+import styles from "./styles.module.less";
 import { useBoolean } from "@gaopeng123/hooks";
 import Hidden from "./Hidden";
 

@@ -13,7 +13,7 @@ import * as React from 'react';
 import Drawer from "@mui/material/Drawer";
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
 import styles from "../styles.module.less";
-import styles2 from "./styles.modules.less";
+import styles2 from "./styles.module.less";
 import Button from "@mui/material/Button";
 import { MultiStoreEnum, Props } from "../MultiTyping";
 import ActionColumn from "./ActionColumn";
