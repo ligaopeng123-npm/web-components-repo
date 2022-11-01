@@ -69,7 +69,9 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
         }
         return () => {
             if (sdk) {
-                sdk.close();
+                if (sdk?.close) {
+                    sdk?.close();
+                }
                 sdk = null;
                 onmute = null;
                 onunmute = null;

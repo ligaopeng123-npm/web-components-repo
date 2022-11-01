@@ -71,6 +71,13 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         events={{
                             onReload: (e) => {
                                 console.log(111, e);
+                                setMediaDataSource({
+                                    // @ts-ignore
+                                    url: document.querySelector('#outlined-basic')?.value,
+                                    type: 'flv',
+                                });
+                                // @ts-ignore
+                                setPlayerConfig({ protocol: protocol, title: '你好色彩', layoutIndex: e?.layoutIndex });
                             },
                             onClose: (e) => {
                                 console.log(222, e);
