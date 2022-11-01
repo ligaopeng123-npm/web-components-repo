@@ -24,7 +24,7 @@ import { RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
-    const { protocol, title, mediaDataSource, className, events, extraParams } = props;
+    const { protocol, title, mediaDataSource, robustness, className, events, extraParams } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
@@ -97,12 +97,14 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                             extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={'fill'}
+                                            robustness={robustness}
                                             mediaDataSource={mediaDataSource}
                                         />
                                         : <RcFlvPlayer
                                             extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={'fill'}
+                                            robustness={robustness}
                                             mediaDataSource={mediaDataSource}
                                         />
                                 }

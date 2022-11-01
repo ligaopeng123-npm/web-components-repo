@@ -9,15 +9,21 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SrsRtcPlayerAsync } from '../assets/sdk';
 import { Property } from "csstype";
 import { WebRtcPlayerProps } from "./PlayerTyping";
+import { DEFAULT_ROBUSTNESS } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
-    const { mediaDataSource, height, width, objectFit, events, extraParams } = props;
+    const { mediaDataSource, robustness, height, width, objectFit, events, extraParams } = props;
     const videoRef = useRef<HTMLVideoElement>();
+    /**
+     * 最多重试次数
+     */
+    const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
     useEffect(() => {
+        const { maxResetTimes } = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
         let sdk: any = null;
         const video = videoRef.current;
         /**
@@ -25,9 +31,13 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
          * @param e
          */
         let onmute = (e: any) => {
-            if (events?.onReload) {
+            if (currentMaxResetTimes < maxResetTimes && events?.onReload) {
                 events.onReload({ extraParams, });
             }
+            // 最多重试次数
+            setCurrentMaxResetTimes((currentVal) => {
+                return currentVal + 1;
+            });
         }
 
         if (mediaDataSource?.url) {
@@ -39,6 +49,7 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
             sdk.play(mediaDataSource?.url)
                 .then(function (session: any) {
                     console.info(session);
+                    setCurrentMaxResetTimes(0);
                     if (events?.onLoadStart) {
                         events?.onLoadStart();
                     }
