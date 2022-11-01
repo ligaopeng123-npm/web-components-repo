@@ -42,21 +42,22 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
                 }
             }
             // 最多重试次数
-            setCurrentMaxResetTimes((currentVal) => {
-                return currentVal + 1;
-            });
+            setCurrentMaxResetTimes(currentMaxResetTimes + 1);
+        }
+
+        let onunmute = () => {
+            setCurrentMaxResetTimes(0);
         }
 
         if (mediaDataSource?.url) {
             // @ts-ignore
-            sdk = new SrsRtcPlayerAsync({ onmute: onmute });
+            sdk = new SrsRtcPlayerAsync({ onmute: onmute, onunmute: onunmute });
 
             video.srcObject = sdk.stream;
 
             sdk.play(mediaDataSource?.url)
                 .then(function (session: any) {
-                    console.info(session);
-                    setCurrentMaxResetTimes(0);
+                    console.log('sdk play session', session)
                     if (events?.onLoadStart) {
                         events?.onLoadStart();
                     }
@@ -71,6 +72,7 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
                 sdk.close();
                 sdk = null;
                 onmute = null;
+                onunmute = null;
             }
         }
     }, [mediaDataSource]);

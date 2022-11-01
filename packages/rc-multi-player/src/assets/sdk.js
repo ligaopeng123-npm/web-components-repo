@@ -353,6 +353,12 @@ export function SrsRtcPlayerAsync({ onmute, proxy }) {
         event.track.onmute = (e) => {
             if (onmute) onmute(e);
         }
+        /**
+         * 监听流重连事件
+         */
+        event.track.onunmute = (e) => {
+            if (onunmute) onunmute(e);
+        }
         self.stream.addTrack(event.track);
     };
 
