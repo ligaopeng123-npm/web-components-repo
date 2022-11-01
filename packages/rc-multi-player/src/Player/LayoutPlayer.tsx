@@ -34,6 +34,11 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
             if (events?.onReload) {
                 events?.onReload(Object.assign({ layoutIndex }, playerConfig));
             }
+        },
+        onMaxReload: (playerConfig: PlayerConfig) => {
+            if (events?.onMaxReload) {
+                events?.onMaxReload(Object.assign({ layoutIndex }, playerConfig));
+            }
         }
     });
 

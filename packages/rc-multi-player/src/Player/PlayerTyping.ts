@@ -54,6 +54,8 @@ export type RcFlvPlayerProps = {
 export type PlayerEvents = {
     onLoadStart?: (playerConfig?: PlayerConfig) => void;
     onReload?: (playerConfig?: PlayerConfig) => void;
+    // 最大重试次数
+    onMaxReload?: (playerConfig?: PlayerConfig) => void;
     onClose?: (playerConfig?: PlayerConfig) => void;
 }
 

@@ -31,8 +31,15 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
          * @param e
          */
         let onmute = (e: any) => {
-            if (currentMaxResetTimes < maxResetTimes && events?.onReload) {
-                events.onReload({ extraParams, });
+            // 最大次数监听
+            if (currentMaxResetTimes >= maxResetTimes) {
+                if (events?.onMaxReload) {
+                    events.onMaxReload({ extraParams });
+                }
+            } else {
+                if (events?.onReload) {
+                    events.onReload({ extraParams, });
+                }
             }
             // 最多重试次数
             setCurrentMaxResetTimes((currentVal) => {
