@@ -15,7 +15,6 @@ import {
     MultiPlayerComProps,
     MultiPlayerEvent,
 } from "@gaopeng123/multi-player";
-import { uuid } from "@gaopeng123/utils";
 import { RcFlvPlayerProps } from "./PlayerTyping";
 
 /**
@@ -32,7 +31,7 @@ declare global {
 const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
     const { width, height, mediaDataSource, config, robustness, objectFit, style, events, extraParams } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
-    const [id,] = useState(uuid());
+    const [id,] = useState(`multi-player-${Date.now()}`);
     useEffect(() => {
         const video = document.querySelector(`#${id}`);
         const eventsInfo = {
