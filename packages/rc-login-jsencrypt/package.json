@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-login-jsencrypt",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "基于jsencrypt加密登录",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -74,7 +74,7 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@gaopeng123/rc-login-module": "^0.5.0",
+        "@gaopeng123/rc-login-module": "^0.5.1",
         "jsencrypt": "^3.2.1"
     },
     "gitHead": "3b2227cf183683b5636e3c5e1f09266a000de6da"
