@@ -81,8 +81,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 <ReplayLoad
                     ref={loadRef}
                     onClick={() => {
-                        if (playerEvents?.onReLoad) {
-                            playerEvents.onReLoad({ extraParams, protocol });
+                        if (playerEvents?.onReload) {
+                            playerEvents.onReload({ extraParams, protocol });
                         }
                         if (mediaDataSource) {
                             setLoadTypeTrue();

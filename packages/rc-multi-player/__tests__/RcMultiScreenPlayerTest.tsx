@@ -69,7 +69,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                 <div style={{ flex: 3, height: 600 }}>
                     <RcMultiScreenPlayer
                         events={{
-                            onReLoad: (e) => {
+                            onReload: (e) => {
                                 console.log(111, e);
                             },
                             onClose: (e) => {

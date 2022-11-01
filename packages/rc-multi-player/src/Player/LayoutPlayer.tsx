@@ -31,8 +31,8 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
             }
         },
         onReLoad: (playerConfig: PlayerConfig) => {
-            if (events?.onReLoad) {
-                events?.onReLoad(Object.assign({ layoutIndex }, playerConfig));
+            if (events?.onReload) {
+                events?.onReload(Object.assign({ layoutIndex }, playerConfig));
             }
         }
     });

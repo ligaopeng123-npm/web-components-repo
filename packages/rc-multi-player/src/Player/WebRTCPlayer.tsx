@@ -25,8 +25,8 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
          * @param e
          */
         let onmute = (e: any) => {
-            if (events?.onReLoad) {
-                events.onReLoad({ extraParams, });
+            if (events?.onReload) {
+                events.onReload({ extraParams, });
             }
         }
 

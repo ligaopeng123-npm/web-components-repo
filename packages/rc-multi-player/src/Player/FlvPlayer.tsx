@@ -49,8 +49,8 @@ const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
         }
 
         const _onError = (ev: any, info?: any) => {
-            if (events?.onReLoad) {
-                events?.onReLoad(eventsInfo);
+            if (events?.onReload) {
+                events?.onReload(eventsInfo);
             }
         }
         if (video) {

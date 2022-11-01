@@ -53,7 +53,7 @@ export type RcFlvPlayerProps = {
 
 export type PlayerEvents = {
     onLoadStart?: (playerConfig?: PlayerConfig) => void;
-    onReLoad?: (playerConfig?: PlayerConfig) => void;
+    onReload?: (playerConfig?: PlayerConfig) => void;
     onClose?: (playerConfig?: PlayerConfig) => void;
 }
 
