@@ -274,7 +274,7 @@ export function SrsRtcPublisherAsync() {
 
 // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
 // Async-await-promise based SRS RTC Player.
-export function SrsRtcPlayerAsync({ onmute, proxy }) {
+export function SrsRtcPlayerAsync({ onmute, proxy, onunmute }) {
     var self = {};
 
     // @see https://github.com/rtcdn/rtcdn-draft
