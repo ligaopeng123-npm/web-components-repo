@@ -19,10 +19,17 @@ import {
     MultiPlayerErrorType,
     MultiPlayerEvent,
     MultiPlayerEventType,
+    MultiPlayerRobustness,
     ObjectFit
 } from "./typing";
 import { debounce } from "@gaopeng123/utils.function";
 import PlayerEvent from "./PlayerEvent";
+
+export const DEFAULT_ROBUSTNESS: MultiPlayerRobustness = {
+    bufferTime: 1000,
+    loopBufferTime: 5000,
+    maxResetTimes: 5,
+}
 
 export default class MultiPlayer extends HTMLElement {
     shadow: any = null;
@@ -49,11 +56,7 @@ export default class MultiPlayer extends HTMLElement {
             // 缓存帧大小
             stashInitialSize: 10
         },
-        robustness: {
-            bufferTime: 1000,
-            loopBufferTime: 5000,
-            maxResetTimes: 5,
-        }
+        robustness: DEFAULT_ROBUSTNESS
     };
 
     get defaultConfig() {

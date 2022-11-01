@@ -1,5 +1,7 @@
 import "./MultiPlayer";
 
+export { DEFAULT_ROBUSTNESS } from './MultiPlayer';
+
 export type {
     MultiPlayerComProps,
     MediaDataSource,
