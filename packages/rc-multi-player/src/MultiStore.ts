@@ -1,6 +1,6 @@
 /**********************************************************************
  *
- * @模块名称: Store
+ * @模块名称: MultiStore
  *
  * @模块用途: Multi Store 状态管理
  *
@@ -60,7 +60,7 @@ export const reducer = (state: any, action: Action) => {
         case MultiStoreEnum.playerList:
             const playerList = state[MultiStoreEnum.playerList];
             const { index, data } = action.value;
-            if (playerList[index] !== data) {
+            if (JSON.stringify(playerList[index]) !== JSON.stringify(data)) {
                 playerList[index] = data;
                 return Object.assign({}, state, { [MultiStoreEnum.playerList]: playerList });
             }
@@ -77,4 +77,3 @@ export const reducer = (state: any, action: Action) => {
             return state;
     }
 };
-

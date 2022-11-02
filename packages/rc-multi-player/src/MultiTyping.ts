@@ -1,6 +1,6 @@
 /**********************************************************************
  *
- * @模块名称: typing
+ * @模块名称: MultiTyping
  *
  * @模块用途: Multi 类型系统
  *
@@ -15,6 +15,7 @@
  */
 import * as React from "react";
 import { PlayerEvents, Protocol, RcFlvPlayerProps } from "./Player/PlayerTyping";
+import { MediaDataSource } from "@gaopeng123/multi-player";
 
 export enum MultiStoreEnum {
     // 布局数据
@@ -80,7 +81,10 @@ export type MultiScreenPlayerProps = {
     actionPlacement?: 'top' | 'bottom';
     defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
     events?: PlayerEvents,
-    playerConfig: PlayerConfig,
+    currentConfig?: {
+        playerConfig: PlayerConfig,
+        mediaDataSource?: MediaDataSource
+    }
 } & RcFlvPlayerProps;
 
 

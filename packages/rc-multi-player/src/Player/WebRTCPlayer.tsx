@@ -16,14 +16,14 @@ import { WebRtcPlayerProps } from "./PlayerTyping";
 import { DEFAULT_ROBUSTNESS } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
-    const { mediaDataSource, robustness, height, width, objectFit, events, extraParams } = props;
+    const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
     const videoRef = useRef<HTMLVideoElement>();
     /**
      * 最多重试次数
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
     useEffect(() => {
-        const { maxResetTimes } = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
+        const {maxResetTimes} = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
         let sdk: any = null;
         const video = videoRef.current;
         /**
@@ -34,11 +34,11 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
             // 最大次数监听
             if (currentMaxResetTimes >= maxResetTimes) {
                 if (events?.onMaxReload) {
-                    events.onMaxReload({ extraParams });
+                    events.onMaxReload({extraParams});
                 }
             } else {
                 if (events?.onReload) {
-                    events.onReload({ extraParams, });
+                    events.onReload({extraParams,});
                 }
             }
             // 最多重试次数
@@ -49,9 +49,15 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
             setCurrentMaxResetTimes(0);
         }
 
+        let onerror = () => {
+            if (events?.onError) {
+                events.onError({extraParams,});
+            }
+        }
+
         if (mediaDataSource?.url) {
             // @ts-ignore
-            sdk = new SrsRtcPlayerAsync({ onmute: onmute, onunmute: onunmute });
+            sdk = new SrsRtcPlayerAsync({onmute: onmute, onunmute: onunmute, onerror: onerror});
 
             video.srcObject = sdk.stream;
 

@@ -67,6 +67,12 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 events?.onMaxReload({ extraParams, protocol });
             }
         },
+        onLoadError: ()=> {
+            loadRef.current.show();
+            if (events?.onError) {
+                events?.onError({ extraParams, protocol });
+            }
+        }
     });
 
     return (

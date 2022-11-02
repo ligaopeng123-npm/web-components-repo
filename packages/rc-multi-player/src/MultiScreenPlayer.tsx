@@ -24,7 +24,7 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
     /**
      * 默认参数 selectedScreen
      */
-    const { defaultSelectedScreen, mediaDataSource, playerConfig, id, events } = props;
+    const {defaultSelectedScreen, currentConfig, id, events} = props;
     /**
      * 唯一标识
      */
@@ -42,7 +42,9 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
         return Object.assign({}, currentState, {
             [MultiStoreEnum.selectedScreen]: currentDefaultSelectedScreen,
             [MultiStoreEnum.layout]: currentSelectedLayout[0] || {},
-            [MultiStoreEnum.playerList]: new Array(currentDefaultSelectedScreen),
+            [MultiStoreEnum.playerList]: new Array(currentDefaultSelectedScreen)?.fill(0)?.map(() => {
+                return {}
+            }),
             [MultiStoreEnum.screenConfig]: screenConfig.getConfig(),
         });
     });
@@ -50,19 +52,22 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
      * 发送单个视频的配置
      */
     useEffect(() => {
-        if (playerConfig && mediaDataSource) {
-            dispatch({
-                type: MultiStoreEnum.playerList,
-                value: {
-                    index: playerConfig?.layoutIndex || state[MultiStoreEnum.selectedPlayer],
-                    data: {
-                        mediaDataSource,
-                        playerConfig,
+        if (currentConfig) {
+            const {playerConfig, mediaDataSource} = currentConfig;
+            if (playerConfig && mediaDataSource) {
+                dispatch({
+                    type: MultiStoreEnum.playerList,
+                    value: {
+                        index: playerConfig?.layoutIndex || state[MultiStoreEnum.selectedPlayer],
+                        data: {
+                            mediaDataSource,
+                            playerConfig,
+                        }
                     }
-                }
-            })
+                })
+            }
         }
-    }, [playerConfig, mediaDataSource]);
+    }, [currentConfig]);
 
     // 暴露数据
     useImperativeHandle(ref, () => ({

@@ -274,7 +274,7 @@ export function SrsRtcPublisherAsync() {
 
 // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
 // Async-await-promise based SRS RTC Player.
-export function SrsRtcPlayerAsync({ onmute, proxy, onunmute }) {
+export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror }) {
     var self = {};
 
     // @see https://github.com/rtcdn/rtcdn-draft
@@ -324,6 +324,11 @@ export function SrsRtcPlayerAsync({ onmute, proxy, onunmute }) {
                 const data = JSON.parse(xhr.responseText);
                 console.log("Got answer: ", data);
                 return data.code ? reject(xhr) : resolve(data);
+            }
+            xhr.onerror = function (err) {
+                if (onerror) {
+                    onerror(err)
+                }
             }
             xhr.open('POST', conf.apiUrl, true);
             xhr.setRequestHeader('Content-type', 'application/json');
