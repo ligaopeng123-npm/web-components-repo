@@ -20,6 +20,7 @@ import Title from "./Title";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     '& .MuiToggleButtonGroup-grouped': {
+        textTransform: 'capitalize',
         margin: theme.spacing(0.5),
         marginLeft: 0,
         marginRight: 12,

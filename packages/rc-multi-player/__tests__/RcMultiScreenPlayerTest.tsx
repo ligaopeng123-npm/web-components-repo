@@ -20,7 +20,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     const [protocol, setProtocol] = React.useState<any>('FLV');
     const [open, setOpen] = React.useState(false);
     const [mediaDataSource, setMediaDataSource] = React.useState<any>();
-    const [playerConfig, setPlayerConfig] = React.useState<any>();
+    const [currentConfig, setCurrentConfig] = React.useState<any>();
     const screenRef = useRef(null);
     const handleChange = (v: any) => {
         setProtocol(v?.target?.value);
@@ -30,8 +30,10 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         // @ts-ignore
         const url = document.querySelector('#outlined-basic')?.value;
         if (url) {
-            setMediaDataSource({ url: url, type: 'flv', });
-            setPlayerConfig({ protocol: protocol, title: '你好色彩', extraParams: { test: 1 } });
+            setCurrentConfig({
+                mediaDataSource: { url: url, type: 'flv', },
+                playerConfig: { protocol: protocol, title: '你好色彩', extraParams: { test: 1 } }
+            });
         } else {
             setOpen(true)
         }
@@ -84,8 +86,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             }
                         }}
                         ref={screenRef}
-                        playerConfig={playerConfig}
-                        mediaDataSource={mediaDataSource}
+                        currentConfig={currentConfig}
                         defaultSelectedScreen={4}/>
                 </div>
             </div>
