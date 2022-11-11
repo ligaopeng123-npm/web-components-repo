@@ -31,6 +31,14 @@ export const DEFAULT_ROBUSTNESS: MultiPlayerRobustness = {
     maxResetTimes: 5,
 }
 
+export const DEFAULT_MEDIA_DATA_SOURCE = {
+    type: 'flv',  // 'mse', 'mpegts', 'm2ts', 'flv' or 'mp4'
+    cors: true, // 默认为true吧
+    withCredentials: false,
+    hasAudio: false,
+    hasVideo: true,
+}
+
 export default class MultiPlayer extends HTMLElement {
     shadow: any = null;
     /**
@@ -42,19 +50,17 @@ export default class MultiPlayer extends HTMLElement {
      */
     obj_props = ['media-data-source', 'config', 'robustness'];
     __defaultConfig: MultiPlayerComProps = {
-        objectFit: 'fill',
+        "object-fit": 'fill',
         width: '100%',
         height: '100%',
-        'media-data-source': {
-            type: 'flv',  // 'mse', 'mpegts', 'm2ts', 'flv' or 'mp4'
-            cors: true, // 默认为true吧
-            withCredentials: false,
-            hasAudio: false,
-            hasVideo: true,
-        },
+        'media-data-source': DEFAULT_MEDIA_DATA_SOURCE,
         config: {
             // 缓存帧大小
-            stashInitialSize: 10
+            stashInitialSize: 10,
+            enableWorker: true, // 启用web worker
+            liveBufferLatencyChasing: true, // 追踪 HTMLMediaElement 内部缓冲区导致的直播延迟。
+            autoCleanupSourceBuffer: true, // 对 SourceBuffer 进行自动清理
+            lazyLoadMaxDuration: 5 * 60, // 指示要保留多少秒的数据lazyLoad
         },
         robustness: DEFAULT_ROBUSTNESS
     };
@@ -69,6 +75,10 @@ export default class MultiPlayer extends HTMLElement {
 
     get mediaDataSource() {
         return this.defaultConfig['media-data-source'];
+    }
+
+    initMediaDataSource() {
+        this.__defaultConfig['media-data-source'] = DEFAULT_MEDIA_DATA_SOURCE;
     }
 
     get robustness() {
@@ -118,7 +128,8 @@ export default class MultiPlayer extends HTMLElement {
             'height',
             'media-data-source',
             'config',
-            'robustness'
+            'robustness',
+            'object-fit'
         ];
     }
 
@@ -128,6 +139,9 @@ export default class MultiPlayer extends HTMLElement {
      */
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (oldValue !== newValue) {
+            if (name === 'media-data-source') {
+                this.initMediaDataSource();
+            }
             // @ts-ignore
             this.__defaultConfig[name] = this.obj_props.includes(name) ? Object.assign({}, this.__defaultConfig[name], JSON.parse(newValue)) : newValue;
         }
@@ -144,6 +158,10 @@ export default class MultiPlayer extends HTMLElement {
      * 创建播放器
      */
     createPlayer = () => {
+        /**
+         * 创建前先销毁
+         */
+        this.destroyPlayer();
         /**
          * 避免插件打包把flvjs打没了
          */
@@ -188,16 +206,21 @@ export default class MultiPlayer extends HTMLElement {
     pause = () => {
         this.player.pause();
     };
+
+    get video() {
+        return this.shadow.querySelector(`#multi-player`);
+    }
+
     /**
      * 处理视频撑开的状态
      * @param type
      */
-    objectFit = (type: ObjectFit) => {
-        const video = this.shadow.querySelector(`#multi-player`);
-        if (video) {
-            video.style['object-fit'] = type;
+    set objectFit(val: ObjectFit) {
+        if (this.video) {
+            this.video.style['object-fit'] = val;
         }
     }
+
     /**
      * 清理缓存器
      */
@@ -263,6 +286,7 @@ export default class MultiPlayer extends HTMLElement {
             this.restart();
             this.q_msg?.warning(`${event}: 网络连接失败，请稍后重试`);
         }
+        console.error(new Date(), 'err', err, info);
         this.dispatchEvent(new CustomEvent(event, {
             detail: {
                 error: err,

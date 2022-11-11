@@ -12,15 +12,14 @@
 import { addBoxSizeUnit } from "@gaopeng123/utils.string";
 import { MultiPlayerComProps } from "./typing";
 
-
 export const template = (config: MultiPlayerComProps) => {
-    const { width, height, objectFit } = config;
+    const { width, height } = config;
     return `
 			<style>
                 .multi-player {
                    width: ${addBoxSizeUnit(width)};
                    height: ${addBoxSizeUnit(height)};
-                   object-fit: ${objectFit}
+                   object-fit: ${config['object-fit']}
                 }
 			</style>
 			<video id="multi-player" class="multi-player" muted="muted" autoplay="autoplay">

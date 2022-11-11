@@ -20,12 +20,12 @@ export type MultiPlayerRobustness = {
 export type MediaDataSource = mpegts.MediaDataSource;
 export type Config = mpegts.Config;
 
-export type ObjectFit = 'fill' | 'contain ' | 'cover ' | 'scale-down ' | 'none ' | 'initial ' | 'inherit';
+export type ObjectFit = 'fill' | 'contain ' | 'cover ' | 'scale-down' | 'none ' | 'initial ' | 'inherit';
 export type MultiPlayerComProps = {
     style?: any;
     id?: string;
     // 视频填充方式
-    objectFit?: ObjectFit;
+    'object-fit'?: ObjectFit;
     width?: string | number;
     height?: string | number;
     // 视频播放配置
