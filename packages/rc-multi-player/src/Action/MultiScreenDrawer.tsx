@@ -19,11 +19,13 @@ import { MultiStoreEnum, Props } from "../MultiTyping";
 import ActionColumn from "./ActionColumn";
 import IconCloseButton from "./IconCloseButton";
 import FormItem from "../components/FormItem";
+import { max } from "@gaopeng123/utils";
+import { ObjectFit } from "@gaopeng123/multi-player";
 
 type MultiScreenDrawerProps = {} & Props;
 
 const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
-    const { state, dispatch } = props;
+    const { state, dispatch, screenKey } = props;
     const toggleDrawer = (open: boolean) => {
         dispatch({
             type: MultiStoreEnum.drawer,
@@ -39,6 +41,32 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                 value: v
             }
         });
+    }
+
+    const changeObjectFit = (val: ObjectFit) => {
+        const videoList = document.querySelectorAll(`#${screenKey}`);
+        const multiPlayer = document.querySelectorAll('multi-player');
+        for (let i = 0; i < max(videoList.length, multiPlayer.length); i++) {
+            if (videoList[i]) {
+                // @ts-ignore
+                videoList[i].style['object-fit'] = val;
+            }
+            if (multiPlayer[i]) {
+                // console.log(multiPlayer[i].objectFit)
+                // @ts-ignore
+                multiPlayer[i].objectFit = val;
+            }
+        }
+    }
+    const onObjectFitSelectChange = (v: any) => {
+        // dispatch({
+        //     type: MultiStoreEnum.screenConfig,
+        //     value: {
+        //         type: 'objectFit',
+        //         value: v
+        //     }
+        // });
+        changeObjectFit(v);
     }
 
     return (
@@ -62,6 +90,15 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                         options={[
                             { label: 'HTTP-FLV', value: 'FLV' },
                             { label: 'WebRTC', value: 'WebRTC' }
+                        ]}/>
+                    <FormItem
+                        defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
+                        onChange={onObjectFitSelectChange}
+                        label={'视频比例'}
+                        options={[
+                            { label: '拉伸铺满', value: 'fill' },
+                            { label: '裁剪铺满', value: 'cover' },
+                            { label: '原始尺寸', value: 'contain' },
                         ]}/>
                 </div>
             </Drawer>

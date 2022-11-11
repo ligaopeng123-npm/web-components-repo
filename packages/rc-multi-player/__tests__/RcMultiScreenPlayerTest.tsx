@@ -19,20 +19,18 @@ type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
     const [protocol, setProtocol] = React.useState<any>('FLV');
     const [open, setOpen] = React.useState(false);
-    const [mediaDataSource, setMediaDataSource] = React.useState<any>();
     const [currentConfig, setCurrentConfig] = React.useState<any>();
     const screenRef = useRef(null);
     const handleChange = (v: any) => {
         setProtocol(v?.target?.value);
     }
-    const onClick = () => {
-        console.log(222, screenRef.current.getScreenConfig())
+    const onClick = (e: any) => {
         // @ts-ignore
         const url = document.querySelector('#outlined-basic')?.value;
         if (url) {
             setCurrentConfig({
                 mediaDataSource: { url: url, type: 'flv', },
-                playerConfig: { protocol: protocol, title: '你好色彩', extraParams: { test: 1 } }
+                playerConfig: { protocol: protocol, title: '你好色彩', extraParams: { test: 1 }, layoutIndex: 0 }
             });
         } else {
             setOpen(true)
@@ -72,19 +70,13 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     <RcMultiScreenPlayer
                         events={{
                             onReload: (e) => {
-                                console.log(111, e);
-                                setMediaDataSource({
-                                    // @ts-ignore
-                                    url: document.querySelector('#outlined-basic')?.value,
-                                    type: 'flv',
-                                });
-                                // @ts-ignore
-                                setPlayerConfig({ protocol: protocol, title: '你好色彩', layoutIndex: e?.layoutIndex });
+                                onClick(e);
                             },
                             onClose: (e) => {
                                 console.log(222, e);
                             }
                         }}
+                        defaultPlayerConfig={{ protocol: 'WebRTC' }}
                         ref={screenRef}
                         currentConfig={currentConfig}
                         defaultSelectedScreen={4}/>

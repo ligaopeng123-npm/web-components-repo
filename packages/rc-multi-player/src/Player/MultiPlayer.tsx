@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import React, { useEffect, useRef, useState } from 'react';
-import styles from '../styles.module.less';
+import styles from './player.module.less';
 import ActionColumn from "../Action/ActionColumn";
 import FullScreenButton from "../Action/FullScreenButton";
 import Paper from "@mui/material/Paper";
@@ -24,7 +24,7 @@ import { RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
-    const { protocol, title, mediaDataSource, robustness, className, events, extraParams } = props;
+    const { protocol, title, objectFit, mediaDataSource, robustness, className, events, extraParams } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
@@ -67,7 +67,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 events?.onMaxReload({ extraParams, protocol });
             }
         },
-        onLoadError: ()=> {
+        onLoadError: () => {
             loadRef.current.show();
             if (events?.onError) {
                 events?.onError({ extraParams, protocol });
@@ -108,14 +108,14 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                         ? <RcWebRTCPlayer
                                             extraParams={extraParams}
                                             events={playerEvents}
-                                            objectFit={'fill'}
+                                            objectFit={objectFit}
                                             robustness={robustness}
                                             mediaDataSource={mediaDataSource}
                                         />
                                         : <RcFlvPlayer
                                             extraParams={extraParams}
                                             events={playerEvents}
-                                            objectFit={'fill'}
+                                            objectFit={objectFit}
                                             robustness={robustness}
                                             mediaDataSource={mediaDataSource}
                                         />

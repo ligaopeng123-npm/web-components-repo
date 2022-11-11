@@ -66,10 +66,9 @@ const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
     }, []);
     return (
         <multi-player
-            // @ts-ignore
             style={Object.assign({ width: '100%', height: '100%' }, style)}
             id={id}
-            objectFit={objectFit}
+            object-fit={objectFit}
             width={width}
             height={height}
             media-data-source={media_data_source}

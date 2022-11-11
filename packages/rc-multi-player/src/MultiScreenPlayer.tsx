@@ -24,7 +24,7 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
     /**
      * 默认参数 selectedScreen
      */
-    const {defaultSelectedScreen, currentConfig, id, events} = props;
+    const { defaultSelectedScreen, defaultPlayerConfig, currentConfig, id, events } = props;
     /**
      * 唯一标识
      */
@@ -45,7 +45,7 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
             [MultiStoreEnum.playerList]: new Array(currentDefaultSelectedScreen)?.fill(0)?.map(() => {
                 return {}
             }),
-            [MultiStoreEnum.screenConfig]: screenConfig.getConfig(),
+            [MultiStoreEnum.screenConfig]: Object.assign({}, defaultPlayerConfig, screenConfig.getConfig()),
         });
     });
     /**
@@ -53,7 +53,7 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
      */
     useEffect(() => {
         if (currentConfig) {
-            const {playerConfig, mediaDataSource} = currentConfig;
+            const { playerConfig, mediaDataSource } = currentConfig;
             if (playerConfig && mediaDataSource) {
                 dispatch({
                     type: MultiStoreEnum.playerList,

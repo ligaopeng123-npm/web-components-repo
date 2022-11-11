@@ -12,7 +12,8 @@
 import { Action, MultiStoreEnum } from "./MultiTyping";
 
 const DEFAULT_SCREEN_CONFIG = {
-    protocol: 'FLV'
+    protocol: 'FLV',
+    objectFit: 'fill' // 铺满全屏
 };
 
 export const State = {

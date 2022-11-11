@@ -76,12 +76,6 @@
                 #playerBase();
             }
 
-            .playerContent {
-                //margin-top: -@ACTION-HEIGHT;
-                width: calc(100% - 1px);
-                height: calc(100% - 1px);
-            }
-
             .selected {
                 #playerBase();
                 border: .5px solid var(--multi-player-primary-color, @multi-player-primary-color);
@@ -107,48 +101,5 @@
         img {
             margin-right: 8px;
         }
-    }
-}
-
-// 播放器
-.mainPlayer {
-    position: relative;
-
-    #hoverShowBase() {
-        position: absolute;
-        width: 100%;
-    }
-
-    .hoverShow {
-        display: none;
-        #hoverShowBase();
-        animation: gradual-display .3s;
-    }
-
-    &:hover {
-        .hoverShow {
-            display: block;
-            #hoverShowBase();
-        }
-    }
-
-    .bottom {
-        bottom: 4px;
-    }
-}
-
-// 渐渐显示
-@keyframes gradual-display {
-    0% {
-        opacity: .3;
-    }
-    50% {
-        opacity: .6;
-    }
-    75% {
-        opacity: .9;
-    }
-    100% {
-        opacity: 1;
     }
 }

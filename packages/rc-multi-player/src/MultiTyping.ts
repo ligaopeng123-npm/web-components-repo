@@ -80,6 +80,7 @@ export type MultiScreenPlayerProps = {
     proxy?: string; // 代理地址
     actionPlacement?: 'top' | 'bottom';
     defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
+    defaultPlayerConfig?: PlayerConfig,
     events?: PlayerEvents,
     currentConfig?: {
         playerConfig: PlayerConfig,

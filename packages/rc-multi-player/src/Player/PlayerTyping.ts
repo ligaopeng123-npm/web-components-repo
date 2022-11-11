@@ -67,7 +67,9 @@ export type  PlayerConfig = {
     protocol?: Protocol,
     title?: string,
     // 额外参数
-    extraParams?: any
+    extraParams?: any;
+    // 视频拉伸方式
+    objectFit?: ObjectFit
 };
 // 多屏播放器
 export type LayoutPlayerProps = {

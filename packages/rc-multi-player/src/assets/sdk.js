@@ -274,7 +274,7 @@ export function SrsRtcPublisherAsync() {
 
 // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
 // Async-await-promise based SRS RTC Player.
-export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror }) {
+export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror, onended }) {
     var self = {};
 
     // @see https://github.com/rtcdn/rtcdn-draft
@@ -356,14 +356,25 @@ export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror }) {
          * 监听流中断事件
          */
         event.track.onmute = (e) => {
+            console.info(Date.now(), new Date(), '流中断');
             if (onmute) onmute(e);
         }
         /**
          * 监听流重连事件
          */
         event.track.onunmute = (e) => {
+            console.info(Date.now(), new Date(), '流重连');
             if (onunmute) onunmute(e);
         }
+
+        /**
+         * 监听流被释放事件
+         */
+        event.track.onended = (e) => {
+            console.info(Date.now(), new Date(), '流结束');
+            if (onended) onended(e);
+        }
+
         self.stream.addTrack(event.track);
     };
 

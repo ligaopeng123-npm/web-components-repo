@@ -27,7 +27,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         onClose: (playerConfig: PlayerConfig) => {
             onClose();
             if (events?.onClose) {
-                events?.onClose(playerConfig);
+                events?.onClose(Object.assign({}, playerConfig, { layoutIndex }));
             }
         },
         onReload: (playerConfig: PlayerConfig) => {

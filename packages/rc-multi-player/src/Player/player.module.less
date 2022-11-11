@@ -1,0 +1,47 @@
+// 播放器
+.mainPlayer {
+    position: relative;
+
+    .playerContent {
+        width: 100%;
+        height: 100%;
+    }
+
+    #hoverShowBase() {
+        position: absolute;
+        width: 100%;
+    }
+
+    .hoverShow {
+        display: none;
+        #hoverShowBase();
+        animation: gradual-display .3s;
+    }
+
+    &:hover {
+        .hoverShow {
+            display: block;
+            #hoverShowBase();
+        }
+    }
+
+    .bottom {
+        bottom: 4px;
+    }
+}
+
+// 渐渐显示
+@keyframes gradual-display {
+    0% {
+        opacity: .3;
+    }
+    50% {
+        opacity: .6;
+    }
+    75% {
+        opacity: .9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
