@@ -4,5 +4,10 @@
     ],
     "version": "0.6.4",
     "useWorkspaces": true,
-    "npmClient": "yarn"
+    "npmClient": "yarn",
+    "command": {
+        "bootstrap": {
+            "ignore": "@vue/*"
+        }
+    }
 }
