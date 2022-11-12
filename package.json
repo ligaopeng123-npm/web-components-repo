@@ -14,7 +14,7 @@
         "build": "lerna exec --ignore=@gaopeng123/utils -- npm run build",
         "test": "lerna exec --ignore=@gaopeng123/utils -- npm run test",
         "push": "lerna publish",
-        "publish": "lerna exec -- npm run push"
+        "publish": "lerna exec -- npm run publish"
     },
     "devDependencies": {
         "lerna": "^4.0.0"

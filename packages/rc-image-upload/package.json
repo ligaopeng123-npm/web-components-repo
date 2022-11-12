@@ -35,6 +35,7 @@
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
         "push": "npm run build && npm publish --access public",
+        "publish": "npm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
