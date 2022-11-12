@@ -20,7 +20,7 @@ export type MultiPlayerRobustness = {
 export type MediaDataSource = mpegts.MediaDataSource;
 export type Config = mpegts.Config;
 
-export type ObjectFit = 'fill' | 'contain ' | 'cover ' | 'scale-down' | 'none ' | 'initial ' | 'inherit';
+export type ObjectFit = 'fill' | 'contain ' | 'cover' | 'scale-down' | 'none ' | 'initial ' | 'inherit';
 export type MultiPlayerComProps = {
     style?: any;
     id?: string;

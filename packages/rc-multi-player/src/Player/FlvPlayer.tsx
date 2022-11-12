@@ -9,13 +9,13 @@
  * @date: 2022/3/23 16:54
  *
  **********************************************************************/
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import "@gaopeng123/multi-player";
 import {
     MultiPlayerComProps,
     MultiPlayerEvent,
 } from "@gaopeng123/multi-player";
-import { RcFlvPlayerProps } from "./PlayerTyping";
+import { RcFlvPlayerProps, RcPlayerRef } from "./PlayerTyping";
 
 /**
  * 处理react tsx中直接使用web components报错问题
@@ -28,12 +28,15 @@ declare global {
     }
 }
 
-const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
+const RcFlvPlayer = forwardRef<RcPlayerRef, RcFlvPlayerProps>((props, ref) => {
     const { width, height, mediaDataSource, config, robustness, objectFit, style, events, extraParams } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
     const [id,] = useState(`multi-player-${Date.now()}`);
+    const getVideo = () => {
+        return document.querySelector(`#${id}`);
+    }
     useEffect(() => {
-        const video = document.querySelector(`#${id}`);
+        const video = getVideo();
         const eventsInfo = {
             mediaDataSource,
             extraParams,
@@ -64,6 +67,21 @@ const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
             video.removeEventListener(MultiPlayerEvent.ERROR, _onError);
         }
     }, []);
+    // 暴露数据
+    useImperativeHandle(ref, () => ({
+        close: () => {
+            const video: any = getVideo();
+            if (video) {
+                video?.destroyPlayer();
+            }
+        },
+        reload: () => {
+            const video: any = getVideo();
+            if (video) {
+                video?.createPlayer();
+            }
+        }
+    }));
     return (
         <multi-player
             style={Object.assign({ width: '100%', height: '100%' }, style)}
@@ -76,6 +94,6 @@ const RcFlvPlayer: React.FC<RcFlvPlayerProps | any> = (props) => {
             robustness={JSON.stringify(robustness || {}) as any}
         />
     )
-};
+});
 
 export default RcFlvPlayer;

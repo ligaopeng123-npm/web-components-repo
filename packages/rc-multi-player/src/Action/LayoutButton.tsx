@@ -25,20 +25,48 @@ const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
     const bthRef = useRef();
     const onMenuClick = (item: LayoutJsonItem, popupState: any) => {
         const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
-        if (+selectedPlayer > +item.key) {
+        const selectedScreen = state[MultiStoreEnum.selectedScreen];
+        const playerList = state[MultiStoreEnum.playerList];
+        const indexKey = +item.key;
+        // 当分屏选中的屏幕太少 移动到第一位
+        if (+selectedPlayer > indexKey) {
             dispatch({
                 type: MultiStoreEnum.selectedPlayer,
                 value: '0'
             })
         }
+        /**
+         * 当从少数屏幕切换到多少屏幕时 不做修改
+         * 当从多数屏 切换到 少数屏时 此时需要做下处理 保证视频的存货
+         */
+        if (selectedScreen > indexKey) {
+            const latestPlayer = [];
+            for (let i = indexKey; i < selectedScreen; i++) {
+                if (playerList[i]) {
+                    latestPlayer.push(playerList[i]);
+                }
+            }
+            if (latestPlayer?.length) {
+                for (let i = 0; i < playerList.length; i++) {
+                    if (!playerList[i]) {
+                        playerList[i] = latestPlayer.shift();
+                    }
+                }
+            }
+            dispatch({
+                type: MultiStoreEnum.playerList,
+                value: playerList
+            })
+        }
         dispatch({
             type: MultiStoreEnum.selectedScreen,
             value: item.key
-        })
+        });
         dispatch({
             type: MultiStoreEnum.layout,
             value: item
-        })
+        });
+
         popupState.close();
     }
     return (

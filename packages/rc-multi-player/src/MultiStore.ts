@@ -10,10 +10,12 @@
  *
  **********************************************************************/
 import { Action, MultiStoreEnum } from "./MultiTyping";
+import { isArray } from "@gaopeng123/utils";
 
-const DEFAULT_SCREEN_CONFIG = {
+export const DEFAULT_SCREEN_CONFIG = {
     protocol: 'FLV',
-    objectFit: 'fill' // 铺满全屏
+    objectFit: 'fill', // 铺满全屏
+    maxPlayerTime: "forever", // 展示播放倒计时时差
 };
 
 export const State = {
@@ -23,7 +25,7 @@ export const State = {
 };
 
 export const getLocalStorage = (_id: string) => {
-    return localStorage.getItem(_id) ? JSON.parse(localStorage.getItem(_id)) : DEFAULT_SCREEN_CONFIG;
+    return localStorage.getItem(_id) ? Object.assign({}, JSON.parse(localStorage.getItem(_id))) : {};
 }
 
 export const setLocalStorage = (_id: string, val: any) => {
@@ -45,7 +47,6 @@ export function ScreenConfig(id: string) {
     return ScreenConfigHelper;
 }
 
-
 export const init = (state: any) => {
     return state
 };
@@ -59,6 +60,9 @@ export const reducer = (state: any, action: Action) => {
         case MultiStoreEnum.selectedPlayer:
             return Object.assign({}, state, { [MultiStoreEnum.selectedPlayer]: action.value });
         case MultiStoreEnum.playerList:
+            if (isArray(action.value)) {
+                return Object.assign({}, state, { [MultiStoreEnum.playerList]: action.value });
+            }
             const playerList = state[MultiStoreEnum.playerList];
             const { index, data } = action.value;
             if (JSON.stringify(playerList[index]) !== JSON.stringify(data)) {

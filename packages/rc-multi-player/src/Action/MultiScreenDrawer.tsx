@@ -42,7 +42,10 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
             }
         });
     }
-
+    /**
+     * 改变样式处理
+     * @param val
+     */
     const changeObjectFit = (val: ObjectFit) => {
         const videoList = document.querySelectorAll(`#${screenKey}`);
         const multiPlayer = document.querySelectorAll('multi-player');
@@ -52,21 +55,25 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                 videoList[i].style['object-fit'] = val;
             }
             if (multiPlayer[i]) {
-                // console.log(multiPlayer[i].objectFit)
                 // @ts-ignore
                 multiPlayer[i].objectFit = val;
             }
         }
     }
     const onObjectFitSelectChange = (v: any) => {
-        // dispatch({
-        //     type: MultiStoreEnum.screenConfig,
-        //     value: {
-        //         type: 'objectFit',
-        //         value: v
-        //     }
-        // });
         changeObjectFit(v);
+    }
+    /**
+     * 时间变化处理
+     */
+    const onCountdownSelectChange = (v: string) => {
+        dispatch({
+            type: MultiStoreEnum.screenConfig,
+            value: {
+                type: 'maxPlayerTime',
+                value: v
+            }
+        });
     }
 
     return (
@@ -99,6 +106,15 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                             { label: '拉伸铺满', value: 'fill' },
                             { label: '裁剪铺满', value: 'cover' },
                             { label: '原始尺寸', value: 'contain' },
+                        ]}/>
+                    <FormItem
+                        defaultValue={state[MultiStoreEnum.screenConfig]?.maxPlayerTime}
+                        onChange={onCountdownSelectChange}
+                        label={'倒计时'}
+                        options={[
+                            { label: '3分钟', value: "3min" },
+                            { label: '5分钟', value: "5min" },
+                            { label: '长期', value: 'forever' },
                         ]}/>
                 </div>
             </Drawer>

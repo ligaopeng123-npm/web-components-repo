@@ -76,7 +76,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 console.log(222, e);
                             }
                         }}
-                        defaultPlayerConfig={{ protocol: 'WebRTC' }}
+                        defaultPlayerConfig={{ protocol: 'WebRTC', maxPlayerTime: 'forever', objectFit: 'cover' }}
                         ref={screenRef}
                         currentConfig={currentConfig}
                         defaultSelectedScreen={4}/>

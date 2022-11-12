@@ -69,7 +69,9 @@ export type  PlayerConfig = {
     // 额外参数
     extraParams?: any;
     // 视频拉伸方式
-    objectFit?: ObjectFit
+    objectFit?: ObjectFit;
+    // 是否播放时长
+    maxPlayerTime?: "3min" | '5min' | 'forever', // 铺满全屏
 };
 // 多屏播放器
 export type LayoutPlayerProps = {
@@ -80,11 +82,14 @@ export type LayoutPlayerProps = {
 } & RcMultiPlayerProps & PlayerProps;
 
 export type RcMultiPlayerProps = {
-    protocol?: 'FLV' | 'WebRTC'; // 协议 默认为flv
     className?: string;
     title?: string | ReactNode;
-    extraParams?: any;
-} & RcFlvPlayerProps;
+} & RcFlvPlayerProps & PlayerConfig;
 
 
 export type WebRtcPlayerProps = {} & RcFlvPlayerProps;
+
+export type RcPlayerRef = {
+    close: () => void;
+    reload: () => void;
+}

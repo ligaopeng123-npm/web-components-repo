@@ -14,7 +14,7 @@
  * store类型系统定义
  */
 import * as React from "react";
-import { PlayerEvents, Protocol, RcFlvPlayerProps } from "./Player/PlayerTyping";
+import { PlayerConfig, PlayerEvents, RcFlvPlayerProps } from "./Player/PlayerTyping";
 import { MediaDataSource } from "@gaopeng123/multi-player";
 
 export enum MultiStoreEnum {
@@ -61,14 +61,6 @@ export type LayoutButtonProps = {
     style?: React.CSSProperties;
 } & Props;
 
-type PlayerConfig = {
-    protocol?: Protocol,
-    title?: string,
-    // 额外的参数
-    extraParams?: any,
-    // 第几路视频
-    layoutIndex?: string;
-};
 // 分屏视频类型
 export type ScreenConfigProps = {
     selectedScreen: any,
@@ -83,7 +75,7 @@ export type MultiScreenPlayerProps = {
     defaultPlayerConfig?: PlayerConfig,
     events?: PlayerEvents,
     currentConfig?: {
-        playerConfig: PlayerConfig,
+        playerConfig: PlayerConfig & { layoutIndex: number },
         mediaDataSource?: MediaDataSource
     }
 } & RcFlvPlayerProps;

@@ -22,12 +22,48 @@ import RcFlvPlayer from "./FlvPlayer";
 import Title from "../components/Title";
 import { RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
+import Countdown from "../Action/Countdown";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
-    const { protocol, title, objectFit, mediaDataSource, robustness, className, events, extraParams } = props;
+    const {
+        protocol,
+        title,
+        objectFit,
+        mediaDataSource,
+        robustness,
+        className,
+        events,
+        extraParams,
+        maxPlayerTime
+    } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef(null);
+    const playerRef = useRef(null);
+    const countRef = useRef(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
+    /**
+     * 重置一些参数逻辑
+     */
+    const resetConfig = () => {
+        loadRef.current.hide();
+        if (countRef.current) {
+            countRef.current.reset();
+        }
+    }
+
+    /**
+     * 重新加载播放器
+     */
+    const reloadPlayer = () => {
+        playerRef.current?.reload();
+        if (playerEvents?.onReload) {
+            playerEvents.onReload({ extraParams, protocol });
+        }
+        if (mediaDataSource) {
+            setLoadTypeTrue();
+        }
+        resetConfig();
+    }
     /**
      * 事件监听  关闭视频处理
      */
@@ -48,7 +84,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         if (!loadType) {
             setLoadTypeTrue();
         }
-        loadRef.current.hide();
+        resetConfig();
     }, [mediaDataSource]);
 
     /**
@@ -74,6 +110,10 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             }
         }
     });
+    /**
+     * 是否可加载数据
+     */
+    const canLoad = mediaDataSource && loadType;
 
     return (
         <Paper
@@ -87,25 +127,35 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 className={styles.hoverShow}
                 left={<Title>{title}</Title>}
                 right={<HideFullScreen>
+                    {
+                        canLoad && !isNaN(parseInt(maxPlayerTime))
+                            ? <Countdown
+                                ref={countRef}
+                                maxTime={parseInt(maxPlayerTime) * 60}
+                                onMaxClick={() => {
+                                    reloadPlayer();
+                                }}
+                                onMax={() => {
+                                    playerRef.current?.close();
+                                    loadRef.current.show();
+                                }}/>
+                            : null
+                    }
                     <IconCloseButton onClick={onCloseClick}/>
                 </HideFullScreen>}/>
             <div className={styles.playerContent}>
                 <ReplayLoad
                     ref={loadRef}
                     onClick={() => {
-                        if (playerEvents?.onReload) {
-                            playerEvents.onReload({ extraParams, protocol });
-                        }
-                        if (mediaDataSource) {
-                            setLoadTypeTrue();
-                        }
+                        reloadPlayer();
                     }}>
                     {
-                        mediaDataSource && loadType
+                        canLoad
                             ? <>
                                 {
                                     protocol === 'WebRTC'
                                         ? <RcWebRTCPlayer
+                                            ref={playerRef}
                                             extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={objectFit}
@@ -113,6 +163,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                             mediaDataSource={mediaDataSource}
                                         />
                                         : <RcFlvPlayer
+                                            ref={playerRef}
                                             extraParams={extraParams}
                                             events={playerEvents}
                                             objectFit={objectFit}

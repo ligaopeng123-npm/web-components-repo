@@ -21,9 +21,9 @@ const Hidden = (props: HiddenProps) => {
         <>
             {
                 Children.map(props.children, (child) => {
-                    return cloneElement(child, {
+                    return child ? cloneElement(child, {
                         style: props.hide ? { display: 'none' } : props.style
-                    })
+                    }) : null
                 })
             }
         </>

@@ -9,20 +9,24 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { SrsRtcPlayerAsync } from '../assets/sdk';
 import { Property } from "csstype";
-import { WebRtcPlayerProps } from "./PlayerTyping";
+import { RcPlayerRef, WebRtcPlayerProps } from "./PlayerTyping";
 import { DEFAULT_ROBUSTNESS } from "@gaopeng123/multi-player";
 
-const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
+const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
     const { mediaDataSource, robustness, height, width, objectFit, events, extraParams } = props;
     const videoRef = useRef<HTMLVideoElement>();
+    const [sdk, setSdk] = useState(null);
     /**
      * 最多重试次数
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
-    useEffect(() => {
+    /**
+     * 事件处理
+     */
+    const initSdk = () => {
         const { maxResetTimes } = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
         let sdk: any = null;
         const video = videoRef.current;
@@ -80,18 +84,33 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
                     console.log('error', error)
                     sdk.close();
                 });
+            // 数据保存
+            setSdk(sdk);
         }
+        return sdk;
+    }
+    useEffect(() => {
+        let sdk = initSdk()
         return () => {
             if (sdk) {
                 if (sdk?.close) {
                     sdk?.close();
                 }
                 sdk = null;
-                onmute = null;
-                onunmute = null;
             }
         }
     }, [mediaDataSource]);
+
+    // 暴露数据
+    useImperativeHandle(ref, () => ({
+        close: () => {
+            sdk?.close();
+        },
+        reload: () => {
+            initSdk();
+        }
+
+    }));
     return (
         <video
             ref={videoRef}
@@ -103,6 +122,6 @@ const RcWebRTCPlayer: React.FC<WebRtcPlayerProps> = (props) => {
             }}>
         </video>
     )
-};
+});
 
 export default RcWebRTCPlayer;

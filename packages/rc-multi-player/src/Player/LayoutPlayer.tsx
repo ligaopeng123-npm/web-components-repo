@@ -9,13 +9,14 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React from 'react';
+import React, { useMemo } from 'react';
 import MultiPlayer from "./MultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, } from "./PlayerTyping";
+import { MultiStoreEnum } from "../MultiTyping";
 
 const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
-    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch, events } = props;
+    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch, events, state } = props;
     const onClose = () => {
         dispatch({
             index: layoutIndex,
@@ -42,8 +43,13 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         }
     });
 
+    const screenConfig = state[MultiStoreEnum.screenConfig];
+
+    const { maxPlayerTime } = screenConfig;
+
     return (
         <MultiPlayer
+            maxPlayerTime={maxPlayerTime}
             events={playerEvents}
             mediaDataSource={mediaDataSource}
             protocol={playerConfig?.protocol}
