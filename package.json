@@ -13,7 +13,7 @@
     "scripts": {
         "build": "lerna exec --ignore=@gaopeng123/utils -- npm run build",
         "test": "lerna exec --ignore=@gaopeng123/utils -- npm run test",
-        "push": "npm run build && lerna publish",
+        "push": "lerna publish",
         "publish": "lerna exec -- npm run push"
     },
     "devDependencies": {
