@@ -90,14 +90,19 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                     left={<>播放器配置</>}
                     right={<IconCloseButton onClick={toggleDrawer}/>}/>
                 <div style={{ padding: 16 }}>
-                    <FormItem
-                        defaultValue={state[MultiStoreEnum.screenConfig]?.protocol}
-                        onChange={onProtocolSelectChange}
-                        label={'流媒体协议'}
-                        options={[
-                            { label: 'HTTP-FLV', value: 'FLV' },
-                            { label: 'WebRTC', value: 'WebRTC' }
-                        ]}/>
+                    {
+                        state[MultiStoreEnum.screenConfig]?.protocol === false
+                            ? null
+                            : <FormItem
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.protocol}
+                                onChange={onProtocolSelectChange}
+                                label={'流媒体协议'}
+                                options={[
+                                    { label: 'HTTP-FLV', value: 'FLV' },
+                                    { label: 'WebRTC', value: 'WebRTC' }
+                                ]}/>
+                    }
+
                     <FormItem
                         defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
                         onChange={onObjectFitSelectChange}
@@ -107,15 +112,19 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                             { label: '裁剪铺满', value: 'cover' },
                             { label: '原始尺寸', value: 'contain' },
                         ]}/>
-                    <FormItem
-                        defaultValue={state[MultiStoreEnum.screenConfig]?.maxPlayerTime}
-                        onChange={onCountdownSelectChange}
-                        label={'倒计时'}
-                        options={[
-                            { label: '3分钟', value: "3min" },
-                            { label: '5分钟', value: "5min" },
-                            { label: '长期', value: 'forever' },
-                        ]}/>
+                    {
+                        state[MultiStoreEnum.screenConfig]?.maxPlayerTime === false
+                            ? null
+                            : <FormItem
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.maxPlayerTime}
+                                onChange={onCountdownSelectChange}
+                                label={'倒计时'}
+                                options={[
+                                    { label: '3分钟', value: "3min" },
+                                    { label: '5分钟', value: "5min" },
+                                    { label: '长期', value: 'forever' },
+                                ]}/>
+                    }
                 </div>
             </Drawer>
         </>

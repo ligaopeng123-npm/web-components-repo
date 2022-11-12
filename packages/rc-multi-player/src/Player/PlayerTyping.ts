@@ -64,14 +64,14 @@ export type PlayerEvents = {
 export type Protocol = 'FLV' | 'WebRTC'; // 协议 默认为flv
 
 export type  PlayerConfig = {
-    protocol?: Protocol,
+    protocol?: Protocol | false,
     title?: string,
     // 额外参数
     extraParams?: any;
     // 视频拉伸方式
     objectFit?: ObjectFit;
     // 是否播放时长
-    maxPlayerTime?: "3min" | '5min' | 'forever', // 铺满全屏
+    maxPlayerTime?: "3min" | '5min' | 'forever' | false, // 铺满全屏
 };
 // 多屏播放器
 export type LayoutPlayerProps = {
