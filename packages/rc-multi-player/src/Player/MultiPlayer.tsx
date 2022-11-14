@@ -128,10 +128,10 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 left={<Title>{title}</Title>}
                 right={<HideFullScreen>
                     {
-                        canLoad && !isNaN(parseInt(maxPlayerTime))
+                        canLoad && !isNaN(parseInt(maxPlayerTime as string))
                             ? <Countdown
                                 ref={countRef}
-                                maxTime={parseInt(maxPlayerTime) * 60}
+                                maxTime={parseInt(maxPlayerTime as string) * 60}
                                 onMaxClick={() => {
                                     reloadPlayer();
                                 }}
