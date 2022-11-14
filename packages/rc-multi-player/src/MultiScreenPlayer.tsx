@@ -19,6 +19,7 @@ import { ThemeProvider } from "@mui/material";
 import { DefaultTheme } from "./Theme";
 import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';
+import { isEmptyObject } from "@gaopeng123/utils";
 
 const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
@@ -55,16 +56,30 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
         if (currentConfig) {
             const { playerConfig, mediaDataSource } = currentConfig;
             if (playerConfig && mediaDataSource) {
+                const layoutIndex = state[MultiStoreEnum.selectedPlayer];
+                const playerList = state[MultiStoreEnum.playerList]
                 dispatch({
                     type: MultiStoreEnum.playerList,
                     value: {
-                        index: playerConfig?.layoutIndex || state[MultiStoreEnum.selectedPlayer],
+                        index: playerConfig?.layoutIndex || layoutIndex,
                         data: {
                             mediaDataSource,
                             playerConfig,
                         }
                     }
-                })
+                });
+                /**
+                 * 处理动态划分layoutIndex
+                 */
+                for (let i = +(playerConfig?.layoutIndex || layoutIndex) + 1; i < playerList.length; i++) {
+                    if (!playerList[i] || isEmptyObject(playerList[i])) {
+                        dispatch({
+                            type: MultiStoreEnum.selectedPlayer,
+                            value: `${i}`
+                        });
+                        break;
+                    }
+                }
             }
         }
     }, [currentConfig]);
@@ -80,6 +95,8 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
             })
         }
     }));
+
+    console.log(state)
 
     return (
         <ThemeProvider theme={DefaultTheme}>
