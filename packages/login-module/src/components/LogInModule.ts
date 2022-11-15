@@ -18,16 +18,16 @@ import "./VerificationCode";
 import "./Keeplogged";
 import "./PhoneLogin";
 import "./PhoneLoginLink";
-import {removeUrlParams} from '@gaopeng123/utils.file';
-import {isTrue} from "../utils";
-import {LoginType, SendSMSVerificationCodeProps} from "../typing";
+import { removeUrlParams } from '@gaopeng123/utils.file';
+import { isTrue } from "../utils";
+import { LoginType, SendSMSVerificationCodeProps } from "../typing";
 
 export default class LogInModule extends HTMLElement {
     shadow: any = null;
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'closed'});
+        this.shadow = this.attachShadow({ mode: 'closed' });
     }
 
     /**
@@ -94,7 +94,7 @@ export default class LogInModule extends HTMLElement {
 
     create = () => {
         const config = this.getConfig();
-        const {url, user, password, method, publickey, captcha, captchasrc} = config;
+        const { url, user, password, method, publickey, captcha, captchasrc } = config;
         const title = this.title;
         /**
          * 项目title赋值
@@ -203,9 +203,9 @@ export default class LogInModule extends HTMLElement {
         // 如果是记住密码
         if (this.keeplogged) {
             const storageValue = this.getLocalStorageValue();
-            const {keepLogged} = storageValue;
+            const { keepLogged } = storageValue;
             if (keepLogged) {
-                const {user, password} = this.getConfig();
+                const { user, password } = this.getConfig();
                 const userValue = storageValue[user];
                 const passwordValue = storageValue[password];
                 this.shadow.querySelector('#user').value = userValue;
@@ -245,11 +245,11 @@ export default class LogInModule extends HTMLElement {
         this.shadow.querySelector('phone-login-link').addEventListener('change', this.linkChange);
         this.shadow.querySelector('forgot-password')?.addEventListener('resetPasswordSubmit', this.onResetPasswordSubmit)
         this.shadow.querySelector('forgot-password')?.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
-        this.shadow.querySelector('verification-code')?.addEventListener('captchaClick', this.onCaptchaClick);
     }
 
     addLoginEvent = () => {
         this.shadow.querySelector(`#bth-login`).addEventListener('click', this.onSubmit);
+        this.shadow.querySelector('verification-code')?.addEventListener('captchaClick', this.onCaptchaClick);
         this.form.addEventListener('submit', this.watchSubmit);
         this.form.addEventListener('submitError', this.submitError);
         this.form.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
@@ -363,6 +363,10 @@ export default class LogInModule extends HTMLElement {
         this.shadow.querySelector('.login-form').innerHTML = this.getFormByType(ev?.detail?.type);
         setTimeout(() => {
             this.addLoginEvent();
+            /**
+             * 相互切换时 获取新的验证码
+             */
+            this.shadow.querySelector('verification-code')?.setCaptcha();
         })
     }
     /**
@@ -447,9 +451,9 @@ export default class LogInModule extends HTMLElement {
      * @param data
      */
     watchSubmit = (res: any) => {
-        const {data, token} = res?.detail;
+        const { data, token } = res?.detail;
         this.dispatchEvent(new CustomEvent('afterSubmit', {
-            detail: this.getDetail({data: this.form.formdata?.json, token, response: data})
+            detail: this.getDetail({ data: this.form.formdata?.json, token, response: data })
         }));
     };
 
@@ -508,7 +512,7 @@ export default class LogInModule extends HTMLElement {
 
     getFormByType = (loginType: LoginType) => {
         const config = this.getConfig();
-        const {url, user, password, method, publickey, captcha} = config;
+        const { url, user, password, method, publickey, captcha } = config;
         /**
          * 明文 密文显示
          */
