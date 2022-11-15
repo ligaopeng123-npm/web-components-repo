@@ -27,7 +27,7 @@ type countdownRef = {
 const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
     const { maxTime, style, onMax, onMaxClick } = props;
     const [currentTime, setCurrentTime] = useState(0);
-    const [time, startPoller, stopPoller] = usePoller({
+    const [, startPoller, stopPoller] = usePoller({
         delay: 1000, callBack: (params: PollerMark) => {
             const newCurrentTime = currentTime + 1;
             setCurrentTime(newCurrentTime)
@@ -51,6 +51,13 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
             reset();
         },
     }));
+
+    /**
+     * 如果檢測到maxTime变化 则重新将值恢复到0 重新开始计时
+     */
+    useEffect(() => {
+        setCurrentTime(0);
+    }, [maxTime]);
 
     return (
         <div className={styles.countdown} style={style}>
