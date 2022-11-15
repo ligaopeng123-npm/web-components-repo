@@ -71,13 +71,15 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
                 /**
                  * 处理动态划分layoutIndex
                  */
-                for (let i = +(playerConfig?.layoutIndex || layoutIndex) + 1; i < playerList.length; i++) {
-                    if (!playerList[i] || isEmptyObject(playerList[i])) {
-                        dispatch({
-                            type: MultiStoreEnum.selectedPlayer,
-                            value: `${i}`
-                        });
-                        break;
+                if (!playerConfig?.layoutIndex) {
+                    for (let i = +(playerConfig?.layoutIndex || layoutIndex) + 1; i < playerList.length; i++) {
+                        if (!playerList[i] || isEmptyObject(playerList[i])) {
+                            dispatch({
+                                type: MultiStoreEnum.selectedPlayer,
+                                value: `${i}`
+                            });
+                            break;
+                        }
                     }
                 }
             }
