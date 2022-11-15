@@ -82,7 +82,17 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 console.log(222, e);
                             }
                         }}
-                        defaultPlayerConfig={{ protocol: false, maxPlayerTime: false, objectFit: 'cover' }}
+                        defaultPlayerConfig={{
+                            protocol: false,
+                            maxPlayerTime: {
+                                defaultValue: '3min',
+                                options: [{
+                                    label: '3分钟',
+                                    value: '3min'
+                                }]
+                            },
+                            objectFit: 'cover'
+                        }}
                         ref={screenRef}
                         currentConfig={currentConfig}
                         defaultSelectedScreen={4}/>
