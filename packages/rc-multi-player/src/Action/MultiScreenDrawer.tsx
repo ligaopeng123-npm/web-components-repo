@@ -121,8 +121,8 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                                 label={'倒计时'}
                                 options={[
                                     { label: '3分钟', value: "3min" },
-                                    { label: '5分钟', value: "5min" },
-                                    { label: '长期', value: 'forever' },
+                                    // { label: '5分钟', value: "5min" },
+                                    // { label: '长期', value: 'forever' },
                                 ]}/>
                     }
                 </div>
