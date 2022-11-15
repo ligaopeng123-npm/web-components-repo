@@ -109,7 +109,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                         label={'视频比例'}
                         options={[
                             { label: '拉伸铺满', value: 'fill' },
-                            { label: '裁剪铺满', value: 'cover' },
+                            // { label: '裁剪铺满', value: 'cover' },
                             { label: '原始尺寸', value: 'contain' },
                         ]}/>
                     {
