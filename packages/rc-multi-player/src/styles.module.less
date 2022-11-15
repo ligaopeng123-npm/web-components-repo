@@ -40,18 +40,24 @@
             .left {
                 min-width: 1px;
                 display: flex;
+                flex-shrink: 1;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
 
             .center {
                 min-width: 1px;
                 display: flex;
+                flex-shrink: 0;
             }
 
             .right {
-                min-width: 1px;
+                min-width: 34px;
                 display: flex;
                 justify-content: flex-end;
                 margin-left: auto;
+                flex-shrink: 0;
             }
         }
 

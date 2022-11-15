@@ -98,8 +98,6 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
         }
     }));
 
-    console.log(state)
-
     return (
         <ThemeProvider theme={DefaultTheme}>
             <div className={styles.main} id={_id}>

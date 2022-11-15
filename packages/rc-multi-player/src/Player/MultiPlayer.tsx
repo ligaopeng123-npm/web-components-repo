@@ -125,7 +125,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             classes={{ root: `${styles.mainPlayer} ${className}` }}>
             <ActionColumn
                 className={styles.hoverShow}
-                left={<Title>{title}</Title>}
+                left={<Title ellipsis={true}>{title}</Title>}
                 right={<HideFullScreen>
                     {
                         canLoad && !isNaN(parseInt(maxPlayerTime as string))

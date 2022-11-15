@@ -15,11 +15,15 @@ import comStyles from "./styles.module.less";
 
 type TitleProps = {
     children?: any;
+    ellipsis?: boolean;
+    style?: React.CSSProperties;
 }
 const Title: React.FC<TitleProps> = (props) => {
-    const { children } = props;
+    const { children, ellipsis, style } = props;
     return (
-        <Box component={'span'} className={comStyles.title}>
+        <Box title={ellipsis ? children : ''} component={'span'}
+             style={style}
+             className={`${comStyles.title} ${ellipsis ? comStyles.ellipsis : ''}`}>
             {children}
         </Box>
     )

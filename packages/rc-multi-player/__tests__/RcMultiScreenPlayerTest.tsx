@@ -27,10 +27,12 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     const onClick = (e: any) => {
         // @ts-ignore
         const url = document.querySelector('#outlined-basic')?.value;
+        // @ts-ignore
+        const title = document.querySelector('#outlined-title')?.value;
         if (url) {
             setCurrentConfig({
                 mediaDataSource: { url: url, type: 'flv', },
-                playerConfig: { protocol: protocol, title: '你好色彩', extraParams: { test: 1 }, layoutIndex: 0 }
+                playerConfig: { protocol: protocol, title: title, extraParams: { test: 1 }, layoutIndex: 0 }
             });
         } else {
             setOpen(true)
@@ -53,6 +55,10 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 <MenuItem value={'FLV'}>FLV</MenuItem>
                                 <MenuItem value={'WebRTC'}>WebRTC</MenuItem>
                             </Select>
+                        </FormControl>
+                        <FormControl fullWidth className={'form-item'}>
+                            <TextField defaultValue={'title'} id="outlined-title" label="视频title"
+                                       variant="outlined"/>
                         </FormControl>
                         <FormControl fullWidth className={'form-item'}>
                             <TextField defaultValue={'/live/40491879758-1-30002.flv'} id="outlined-basic" label="url地址"
