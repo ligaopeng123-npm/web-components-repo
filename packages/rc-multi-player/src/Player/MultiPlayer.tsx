@@ -41,14 +41,20 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const playerRef = useRef(null);
     const countRef = useRef(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
+
     /**
-     * 重置一些参数逻辑
+     * 重置倒计时参数
      */
-    const resetConfig = () => {
-        loadRef.current.hide();
+    const resetCountConfig = ()=> {
         if (countRef.current) {
             countRef.current.reset();
         }
+    }
+    /**
+     * 重置播放加载一些参数逻辑
+     */
+    const resetLoadConfig = () => {
+        loadRef.current.hide();
     }
 
     /**
@@ -62,7 +68,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         if (mediaDataSource) {
             setLoadTypeTrue();
         }
-        resetConfig();
+        resetLoadConfig();
+        resetCountConfig();
     }
     /**
      * 事件监听  关闭视频处理
@@ -84,8 +91,17 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         if (!loadType) {
             setLoadTypeTrue();
         }
-        resetConfig();
+        resetLoadConfig();
     }, [mediaDataSource]);
+
+    /**
+     * 只有url变更时去处理倒计时重置
+     */
+    useEffect(() => {
+        if (mediaDataSource?.url) {
+            resetCountConfig();
+        }
+    }, [mediaDataSource?.url]);
 
     /**
      * 事件监听
