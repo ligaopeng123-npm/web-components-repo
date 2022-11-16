@@ -56,14 +56,14 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         }
 
         let onerror = () => {
-            if (events?.onError) {
-                events.onError({ extraParams, });
+            if (events?.onLoadError) {
+                events.onLoadError({ extraParams, });
             }
         }
 
         let onended = () => {
-            if (events?.onError) {
-                events.onError({ extraParams, });
+            if (events?.onLoadError) {
+                events.onLoadError({ extraParams, });
             }
         }
 

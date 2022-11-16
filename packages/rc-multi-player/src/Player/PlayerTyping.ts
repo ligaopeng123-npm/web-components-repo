@@ -55,7 +55,9 @@ export type PlayerEvents = {
     onLoadStart?: (playerConfig?: PlayerConfig) => void;
     onReload?: (playerConfig?: PlayerConfig) => void;
     // 加载错误
-    onError?: (playerConfig?: PlayerConfig) => void;
+    onLoadError?: (playerConfig?: PlayerConfig) => void;
+    // 流加载结束
+    onLoadEnd?: (playerConfig?: PlayerConfig)=> void;
     // 最大重试次数
     onMaxReload?: (playerConfig?: PlayerConfig) => void;
     onClose?: (playerConfig?: PlayerConfig) => void;

@@ -76,7 +76,7 @@
     },
     "dependencies": {
         "@gaopeng123/login-module": "^0.6.10",
-        "@gaopeng123/utils.file": "^0.4.3"
+        "@gaopeng123/utils.file": "latest"
     },
     "gitHead": "7d667bce8e8ab6f495fc721853de43e4d7074434"
 }

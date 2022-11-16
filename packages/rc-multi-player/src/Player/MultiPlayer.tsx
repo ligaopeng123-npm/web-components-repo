@@ -105,8 +105,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         },
         onLoadError: () => {
             loadRef.current.show();
-            if (events?.onError) {
-                events?.onError({ extraParams, protocol });
+            if (events?.onLoadError) {
+                events?.onLoadError({ extraParams, protocol });
             }
         }
     });

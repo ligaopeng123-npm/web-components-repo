@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const NODE_ENV = process.env.NODE_ENV.trimEnd();
+const NODE_ENV = process.env.NODE_ENV?.trimEnd();
 
 
 module.exports = function (dirname = __dirname) {
