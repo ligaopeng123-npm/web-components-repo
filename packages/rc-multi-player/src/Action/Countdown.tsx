@@ -21,8 +21,9 @@ type CountdownProps = {
     onMaxClick?: () => void;
 };
 
-type countdownRef = {
-    reset: () => void
+export type countdownRef = {
+    reset: () => void;
+    setEnd: () => void;
 }
 const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
     const { maxTime, style, onMax, onMaxClick } = props;
@@ -50,6 +51,12 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
         reset: () => {
             reset();
         },
+        setEnd: ()=> {
+            setCurrentTime(props.maxTime);
+            if (onMax) {
+                onMax();
+            }
+        }
     }));
 
     /**

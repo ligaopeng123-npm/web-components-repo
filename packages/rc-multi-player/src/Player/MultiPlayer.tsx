@@ -22,7 +22,7 @@ import RcFlvPlayer from "./FlvPlayer";
 import Title from "../components/Title";
 import { RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
-import Countdown from "../Action/Countdown";
+import Countdown, {countdownRef} from "../Action/Countdown";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const {
@@ -39,7 +39,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef(null);
     const playerRef = useRef(null);
-    const countRef = useRef(null);
+    const countRef = useRef<countdownRef>(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
 
     /**
@@ -87,12 +87,12 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     /**
      * 重新加载时的处理
      */
-    useEffect(() => {
-        if (!loadType) {
-            setLoadTypeTrue();
-        }
-        resetLoadConfig();
-    }, [mediaDataSource]);
+    // useEffect(() => {
+    //     if (!loadType) {
+    //         setLoadTypeTrue();
+    //     }
+    //     resetLoadConfig();
+    // }, [mediaDataSource]);
 
     /**
      * 只有url变更时去处理倒计时重置
@@ -108,13 +108,17 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
      */
     const playerEvents = Object.assign({}, events, {
         onLoadStart: () => {
-            loadRef.current.hide();
+            resetLoadConfig();
             if (events?.onLoadStart) {
                 events?.onLoadStart({ extraParams, protocol });
             }
         },
+        onReload: ()=> {
+            if (events?.onReload) {
+                events?.onReload({ extraParams, protocol });
+            }
+        },
         onMaxReload: () => {
-            loadRef.current.show();
             if (events?.onMaxReload) {
                 events?.onMaxReload({ extraParams, protocol });
             }
@@ -123,6 +127,13 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             loadRef.current.show();
             if (events?.onLoadError) {
                 events?.onLoadError({ extraParams, protocol });
+            }
+        },
+        onLoadEnd: ()=> {
+            loadRef.current.show();
+            countRef?.current?.setEnd();
+            if (events?.onLoadEnd) {
+                events?.onLoadEnd({ extraParams, protocol });
             }
         }
     });
@@ -153,7 +164,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                 }}
                                 onMax={() => {
                                     playerRef.current?.close();
-                                    loadRef.current.show();
+                                    loadRef?.current?.show();
                                 }}/>
                             : null
                     }
