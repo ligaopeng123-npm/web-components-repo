@@ -31,7 +31,7 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         let sdk: any = null;
         const video = videoRef.current;
         /**
-         * 异常事件监听
+         * 异常事件监听  流中断
          * @param e
          */
         let onmute = (e: any) => {
@@ -48,22 +48,27 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
             // 最多重试次数
             setCurrentMaxResetTimes(currentMaxResetTimes + 1);
         }
-
+        /**
+         * 流重连
+         */
         let onunmute = () => {
             setCurrentMaxResetTimes(0);
             // 加载成功后 重新播放
             events.onLoadStart({ extraParams, });
         }
-
+        /**
+         * 流加载错误
+         */
         let onerror = () => {
             if (events?.onLoadError) {
                 events.onLoadError({ extraParams, });
             }
         }
 
+        // 流播放结束
         let onended = () => {
-            if (events?.onLoadError) {
-                events.onLoadError({ extraParams, });
+            if (events?.onLoadEnd) {
+                events.onLoadEnd({ extraParams, });
             }
         }
 
