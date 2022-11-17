@@ -87,18 +87,18 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     /**
      * 重新加载时的处理
      */
-    // useEffect(() => {
-    //     if (!loadType) {
-    //         setLoadTypeTrue();
-    //     }
-    //     resetLoadConfig();
-    // }, [mediaDataSource]);
+    useEffect(() => {
+        if (!loadType) {
+            setLoadTypeTrue();
+        }
+    }, [mediaDataSource]);
 
     /**
      * 只有url变更时去处理倒计时重置
      */
     useEffect(() => {
         if (mediaDataSource?.url) {
+            resetLoadConfig();
             resetCountConfig();
         }
     }, [mediaDataSource?.url]);
