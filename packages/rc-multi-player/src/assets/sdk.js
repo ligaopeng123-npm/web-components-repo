@@ -356,14 +356,14 @@ export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror, onended })
          * 监听流中断事件
          */
         event.track.onmute = (e) => {
-            console.info(Date.now(), new Date(), '流中断');
+            console.info(new Date(), '流中断');
             if (onmute) onmute(e);
         }
         /**
          * 监听流重连事件
          */
         event.track.onunmute = (e) => {
-            console.info(Date.now(), new Date(), '流重连');
+            console.info(new Date(), '流重连');
             if (onunmute) onunmute(e);
         }
 
@@ -371,7 +371,7 @@ export function SrsRtcPlayerAsync({ onmute, proxy, onunmute, onerror, onended })
          * 监听流被释放事件
          */
         event.track.onended = (e) => {
-            console.info(Date.now(), new Date(), '流结束');
+            console.info(new Date(), '流结束');
             if (onended) onended(e);
         }
 

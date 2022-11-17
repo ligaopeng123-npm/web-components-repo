@@ -32,7 +32,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         if (url) {
             setCurrentConfig({
                 mediaDataSource: { url: url, type: 'flv', },
-                playerConfig: { protocol: protocol, title: title, extraParams: { test: 1 }, layoutIndex: 0 }
+                playerConfig: { protocol: protocol, title: title, extraParams: { test: 1 }, layoutIndex: '0' }
             });
         } else {
             setOpen(true)

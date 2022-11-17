@@ -16,18 +16,19 @@ import { RcPlayerRef, WebRtcPlayerProps } from "./PlayerTyping";
 import { DEFAULT_ROBUSTNESS } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
-    const { mediaDataSource, robustness, height, width, objectFit, events, extraParams } = props;
+    const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
     const videoRef = useRef<HTMLVideoElement>();
     const [sdk, setSdk] = useState(null);
     /**
      * 最多重试次数
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
+    const [errorTime, setErrorTime] = useState<number>();
     /**
      * 事件处理
      */
     const initSdk = () => {
-        const { maxResetTimes } = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
+        const {maxResetTimes} = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
         let sdk: any = null;
         const video = videoRef.current;
         /**
@@ -38,13 +39,14 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
             // 最大次数监听
             if (currentMaxResetTimes >= maxResetTimes) {
                 if (events?.onMaxReload) {
-                    events.onMaxReload({ extraParams });
+                    events.onMaxReload({extraParams});
                 }
             } else {
                 if (events?.onReload) {
-                    events.onReload({ extraParams, });
+                    events.onReload({extraParams,});
                 }
             }
+            setErrorTime(Date.now());
             // 最多重试次数
             setCurrentMaxResetTimes(currentMaxResetTimes + 1);
         }
@@ -52,29 +54,31 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
          * 流重连
          */
         let onunmute = () => {
+            // @ts-ignore
+            clearTimeout(videoRef.current.__timer);
             setCurrentMaxResetTimes(0);
             // 加载成功后 重新播放
-            events.onLoadStart({ extraParams, });
+            events.onLoadStart({extraParams,});
         }
         /**
          * 流加载错误
          */
         let onerror = () => {
             if (events?.onLoadError) {
-                events.onLoadError({ extraParams, });
+                events.onLoadError({extraParams,});
             }
         }
 
         // 流播放结束
         let onended = () => {
             if (events?.onLoadEnd) {
-                events.onLoadEnd({ extraParams, });
+                events.onLoadEnd({extraParams,});
             }
         }
 
         if (mediaDataSource?.url) {
             // @ts-ignore
-            sdk = new SrsRtcPlayerAsync({ onmute: onmute, onunmute: onunmute, onerror: onerror, onended: onended });
+            sdk = new SrsRtcPlayerAsync({onmute: onmute, onunmute: onunmute, onerror: onerror, onended: onended});
 
             video.srcObject = sdk.stream;
 
@@ -94,6 +98,10 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         }
         return sdk;
     }
+
+    /**
+     *  缓存sdk
+     */
     useEffect(() => {
         let sdk = initSdk()
         return () => {
@@ -106,6 +114,21 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         }
     }, [mediaDataSource]);
 
+    /**
+     * 5秒无法拉起 就直接报错
+     */
+    useEffect(() => {
+        if (errorTime) {
+            // @ts-ignore
+            videoRef.current.__timer = setTimeout(() => {
+                console.log(`${new Date()} 5秒后未拉起,阻断视频`);
+                if (events?.onLoadError) {
+                    events.onLoadError({extraParams,});
+                }
+            }, 5000);
+        }
+    }, [errorTime]);
+
     // 暴露数据
     useImperativeHandle(ref, () => ({
         close: () => {
@@ -113,9 +136,10 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         },
         reload: () => {
             initSdk();
-        }
-
+        },
+        __timer: null
     }));
+
     return (
         <video
             ref={videoRef}

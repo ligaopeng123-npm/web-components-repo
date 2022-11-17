@@ -106,4 +106,5 @@ export type WebRtcPlayerProps = {} & RcFlvPlayerProps;
 export type RcPlayerRef = {
     close: () => void;
     reload: () => void;
+    __timer: any;
 }

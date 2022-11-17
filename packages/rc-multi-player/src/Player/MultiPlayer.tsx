@@ -78,6 +78,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         e?.stopPropagation();
         if (mediaDataSource) {
             loadRef.current.show();
+            playerRef?.current?.close();
         }
         setLoadTypeFalse();
         if (events?.onClose) {
@@ -125,6 +126,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         },
         onLoadError: () => {
             loadRef.current.show();
+            countRef?.current?.setEnd();
             if (events?.onLoadError) {
                 events?.onLoadError({ extraParams, protocol });
             }
