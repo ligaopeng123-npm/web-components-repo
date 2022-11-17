@@ -52,6 +52,7 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
             reset();
         },
         setEnd: ()=> {
+            stopPoller();
             setCurrentTime(props.maxTime);
             if (onMax) {
                 onMax();
