@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useReducer } from 'react';
-import { DEFAULT_SCREEN_CONFIG, reducer, ScreenConfig, State } from "./MultiStore";
+import { reducer, ScreenConfig, State } from "./MultiStore";
 import LayoutContent from "./Layout/LayoutContent";
 import { MultiScreenPlayerProps, MultiScreenPlayerRef, MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
@@ -46,7 +46,8 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
             [MultiStoreEnum.playerList]: new Array(currentDefaultSelectedScreen)?.fill(0)?.map(() => {
                 return {}
             }),
-            [MultiStoreEnum.screenConfig]: Object.assign({}, DEFAULT_SCREEN_CONFIG, defaultPlayerConfig, screenConfig.getConfig()),
+            [MultiStoreEnum.actionConfig]: screenConfig.getActionConfig(defaultPlayerConfig),
+            [MultiStoreEnum.screenConfig]: screenConfig.getDefaultConfig(defaultPlayerConfig),
         });
     });
     /**

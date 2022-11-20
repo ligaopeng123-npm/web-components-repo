@@ -69,14 +69,12 @@ export type PlayerConfigOptions = {
     label: string;
     value: string;
 }
-export type  PlayerConfig = {
+
+export type PlayerActionConfig = {
     protocol?: Protocol | false | {
         defaultValue: string,
         options: Array<PlayerConfigOptions>
     },
-    title?: string,
-    // 额外参数
-    extraParams?: any;
     // 视频拉伸方式
     objectFit?: ObjectFit | false | {
         defaultValue: string,
@@ -86,8 +84,14 @@ export type  PlayerConfig = {
     maxPlayerTime?: "3min" | '5min' | 'forever' | false | {
         defaultValue: string,
         options: Array<PlayerConfigOptions>
-    }, // 铺满全屏
-};
+    },
+}
+
+export type  PlayerConfig = {
+    title?: string,
+    // 额外参数
+    extraParams?: any;
+} & PlayerActionConfig;
 // 多屏播放器
 export type LayoutPlayerProps = {
     playerConfig?: PlayerConfig;

@@ -30,6 +30,8 @@ export enum MultiStoreEnum {
     drawer = 'drawer',
     // 流媒体协议
     screenConfig = 'screenConfig',
+    // 配置项配置
+    actionConfig = 'actionConfig',
 }
 
 export type Action = {

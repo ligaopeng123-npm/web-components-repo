@@ -25,14 +25,17 @@ import { ObjectFit } from "@gaopeng123/multi-player";
 type MultiScreenDrawerProps = {} & Props;
 
 const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
-    const { state, dispatch, screenKey } = props;
+    const {state, dispatch, screenKey} = props;
     const toggleDrawer = (open: boolean) => {
         dispatch({
             type: MultiStoreEnum.drawer,
             value: false
         });
     };
-
+    /**
+     * 协议切换处理
+     * @param v
+     */
     const onProtocolSelectChange = (v: any) => {
         dispatch({
             type: MultiStoreEnum.screenConfig,
@@ -60,9 +63,14 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
             }
         }
     }
+    /**
+     * 视频尺寸处理
+     * @param v
+     */
     const onObjectFitSelectChange = (v: any) => {
         changeObjectFit(v);
     }
+
     /**
      * 时间变化处理
      */
@@ -76,11 +84,12 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
         });
     }
 
+    console.log(state[MultiStoreEnum.screenConfig],state[MultiStoreEnum.actionConfig])
     return (
         <>
             <Drawer
-                classes={{ root: styles2.drawer }}
-                sx={{ position: 'absolute' }}
+                classes={{root: styles2.drawer}}
+                sx={{position: 'absolute'}}
                 variant="persistent"
                 anchor={'right'}
                 open={state[MultiStoreEnum.drawer]}
@@ -89,41 +98,35 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                     className={styles2.header}
                     left={<>播放器配置</>}
                     right={<IconCloseButton onClick={toggleDrawer}/>}/>
-                <div style={{ padding: 16 }}>
+                <div style={{padding: 16}}>
                     {
                         state[MultiStoreEnum.screenConfig]?.protocol === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.protocol}
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.protoco}
                                 onChange={onProtocolSelectChange}
                                 label={'流媒体协议'}
-                                options={[
-                                    { label: 'HTTP-FLV', value: 'FLV' },
-                                    { label: 'WebRTC', value: 'WebRTC' }
-                                ]}/>
+                                options={state[MultiStoreEnum.actionConfig]?.protocol.options}/>
                     }
 
-                    <FormItem
-                        defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
-                        onChange={onObjectFitSelectChange}
-                        label={'视频比例'}
-                        options={[
-                            { label: '拉伸铺满', value: 'fill' },
-                            // { label: '裁剪铺满', value: 'cover' },
-                            { label: '原始尺寸', value: 'contain' },
-                        ]}/>
                     {
                         state[MultiStoreEnum.screenConfig]?.maxPlayerTime === false
                             ? null
                             : <FormItem
                                 defaultValue={state[MultiStoreEnum.screenConfig]?.maxPlayerTime}
                                 onChange={onCountdownSelectChange}
-                                label={'倒计时'}
-                                options={[
-                                    { label: '3分钟', value: "3min" },
-                                    // { label: '5分钟', value: "5min" },
-                                    // { label: '长期', value: 'forever' },
-                                ]}/>
+                                label={'播放方式'}
+                                options={state[MultiStoreEnum.actionConfig]?.maxPlayerTime.options}/>
+                    }
+
+                    {
+                        state[MultiStoreEnum.screenConfig]?.objectFit === false
+                            ? null
+                            : <FormItem
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
+                                onChange={onObjectFitSelectChange}
+                                label={'视频比例'}
+                                options={state[MultiStoreEnum.actionConfig]?.objectFit.options}/>
                     }
                 </div>
             </Drawer>
@@ -136,7 +139,7 @@ type MultiScreenDrawerButtonProps = {
 } & Props;
 
 export const MultiScreenDrawerButton = (props: MultiScreenDrawerButtonProps) => {
-    const { dispatch, style } = props;
+    const {dispatch, style} = props;
     const onClick = () => {
         dispatch({
             type: MultiStoreEnum.drawer,
