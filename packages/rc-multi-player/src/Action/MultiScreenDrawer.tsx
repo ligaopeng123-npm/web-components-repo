@@ -84,7 +84,6 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
         });
     }
 
-    console.log(state[MultiStoreEnum.screenConfig],state[MultiStoreEnum.actionConfig])
     return (
         <>
             <Drawer
