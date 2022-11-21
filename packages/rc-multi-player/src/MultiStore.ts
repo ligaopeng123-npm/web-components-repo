@@ -11,7 +11,7 @@
  **********************************************************************/
 import { Action, MultiStoreEnum } from "./MultiTyping";
 import { isArray, isString, isUndefined } from "@gaopeng123/utils";
-import { PlayerActionConfig, PlayerConfig } from "./Player/PlayerTyping";
+import { PlayerActionConfig, PlayerConfig, PlayerConfigOptions } from "./Player/PlayerTyping";
 
 export const DEFAULT_SCREEN_CONFIG: PlayerActionConfig = {
     // 协议控制
@@ -38,6 +38,14 @@ export const DEFAULT_SCREEN_CONFIG: PlayerActionConfig = {
             {label: '3分钟', value: "3min"},
             {label: '5分钟', value: "5min"},
             {label: '长期', value: 'forever'}
+        ]
+    },
+    // 分辨率
+    resolution: {
+        defaultValue: "720P",
+        options: [
+            {label: '720P', value: "720P"},
+            {label: '超清', value: "4K"},
         ]
     },
 };
@@ -80,7 +88,7 @@ export const ScreenConfigHelper = {
                 // @ts-ignore
                 const currentValue = defaultConfigStorage[key] || DEFAULT_SCREEN_CONFIG[key].defaultValue;
                 // @ts-ignore
-                currentConfig[key] = currentOptions.filter((item: {label:string, value:string}) => item.value === currentValue)?.length ? currentValue : currentOptions[0]?.value;
+                currentConfig[key] = currentOptions.filter((item: PlayerConfigOptions) => item.value === currentValue)?.length ? currentValue : currentOptions[0]?.value;
             }
         }
         return Object.assign({}, defaultConfigStorage, currentConfig);
@@ -117,6 +125,9 @@ export const ScreenConfigHelper = {
                             currentConfig[key] = defaultConfigProps[key];
                         }
                     }
+                } else {
+                    // @ts-ignore
+                    currentConfig[key] = DEFAULT_SCREEN_CONFIG[key];
                 }
             }
             return Object.assign({}, defaultConfigProps, currentConfig)

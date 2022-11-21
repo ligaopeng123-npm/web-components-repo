@@ -70,9 +70,21 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
     const onObjectFitSelectChange = (v: any) => {
         changeObjectFit(v);
     }
-
     /**
-     * 时间变化处理
+     * 视频分辨率
+     */
+    const onResolutionSelectChange = (v: string) => {
+        dispatch({
+            type: MultiStoreEnum.screenConfig,
+            value: {
+                type: 'resolution',
+                value: v
+            }
+        });
+    }
+    /**
+     *
+     * @param v
      */
     const onCountdownSelectChange = (v: string) => {
         dispatch({
@@ -104,8 +116,18 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                             : <FormItem
                                 defaultValue={state[MultiStoreEnum.screenConfig]?.protoco}
                                 onChange={onProtocolSelectChange}
-                                label={'流媒体协议'}
+                                label={'播放策略'}
                                 options={state[MultiStoreEnum.actionConfig]?.protocol.options}/>
+                    }
+
+                    {
+                        state[MultiStoreEnum.screenConfig]?.objectFit === false
+                            ? null
+                            : <FormItem
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
+                                onChange={onObjectFitSelectChange}
+                                label={'视频比例'}
+                                options={state[MultiStoreEnum.actionConfig]?.objectFit.options}/>
                     }
 
                     {
@@ -119,13 +141,13 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                     }
 
                     {
-                        state[MultiStoreEnum.screenConfig]?.objectFit === false
+                        state[MultiStoreEnum.screenConfig]?.resolution === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
-                                onChange={onObjectFitSelectChange}
-                                label={'视频比例'}
-                                options={state[MultiStoreEnum.actionConfig]?.objectFit.options}/>
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.resolution}
+                                onChange={onResolutionSelectChange}
+                                label={'分辨率'}
+                                options={state[MultiStoreEnum.actionConfig]?.resolution.options}/>
                     }
                 </div>
             </Drawer>

@@ -64,6 +64,8 @@ export type PlayerEvents = {
 }
 
 export type Protocol = 'FLV' | 'WebRTC'; // 协议 默认为flv
+export type MaxPlayerTime = "3min" | '5min' | 'forever';
+export type Resolution = "4K" | "720P";
 // 视频配置
 export type PlayerConfigOptions = {
     label: string;
@@ -72,19 +74,23 @@ export type PlayerConfigOptions = {
 
 export type PlayerActionConfig = {
     protocol?: Protocol | false | {
-        defaultValue: string,
+        defaultValue: Protocol,
         options: Array<PlayerConfigOptions>
     },
     // 视频拉伸方式
     objectFit?: ObjectFit | false | {
-        defaultValue: string,
+        defaultValue: ObjectFit,
         options: Array<PlayerConfigOptions>
     };
     // 是否播放时长
-    maxPlayerTime?: "3min" | '5min' | 'forever' | false | {
-        defaultValue: string,
+    maxPlayerTime?: MaxPlayerTime | false | {
+        defaultValue: MaxPlayerTime,
         options: Array<PlayerConfigOptions>
     },
+    resolution?: Resolution | false | {
+        defaultValue: Resolution,
+        options: Array<PlayerConfigOptions>
+    }
 }
 
 export type  PlayerConfig = {
@@ -110,5 +116,5 @@ export type WebRtcPlayerProps = {} & RcFlvPlayerProps;
 export type RcPlayerRef = {
     close: () => void;
     reload: () => void;
-    __timer: any;
+    __timer?: any;
 }

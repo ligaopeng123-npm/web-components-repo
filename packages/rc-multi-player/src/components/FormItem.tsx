@@ -78,7 +78,7 @@ const FormItem: React.FC<FormItemProps> = (props) => {
                 >
                     {
                         options?.map(({ label, value }) => {
-                            return <ToggleButton key={value} size={'small'} value={value}>{label}</ToggleButton>
+                            return <ToggleButton style={{margin: '0px 8px 0px 0px', lineHeight: 1}} key={value} size={'small'} value={value}>{label}</ToggleButton>
                         })
                     }
                 </StyledToggleButtonGroup>

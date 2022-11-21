@@ -9,7 +9,7 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useMemo } from 'react';
+import React from 'react';
 import MultiPlayer from "./MultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, } from "./PlayerTyping";
