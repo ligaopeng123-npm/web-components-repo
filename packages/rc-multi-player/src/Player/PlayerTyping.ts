@@ -52,7 +52,9 @@ export type RcFlvPlayerProps = {
 
 
 export type PlayerEvents = {
+    // 视频播放开始
     onLoadStart?: (playerConfig?: PlayerConfig) => void;
+    // 点击视频重新加载
     onReload?: (playerConfig?: PlayerConfig) => void;
     // 加载错误
     onLoadError?: (playerConfig?: PlayerConfig) => void;
@@ -60,6 +62,7 @@ export type PlayerEvents = {
     onLoadEnd?: (playerConfig?: PlayerConfig)=> void;
     // 最大重试次数
     onMaxReload?: (playerConfig?: PlayerConfig) => void;
+    // 视频结束
     onClose?: (playerConfig?: PlayerConfig) => void;
 }
 
@@ -73,6 +76,7 @@ export type PlayerConfigOptions = {
 }
 
 export type PlayerActionConfig = {
+    // 协议类型
     protocol?: Protocol | false | {
         defaultValue: Protocol,
         options: Array<PlayerConfigOptions>
@@ -87,6 +91,7 @@ export type PlayerActionConfig = {
         defaultValue: MaxPlayerTime,
         options: Array<PlayerConfigOptions>
     },
+    // 视频分辨率
     resolution?: Resolution | false | {
         defaultValue: Resolution,
         options: Array<PlayerConfigOptions>
