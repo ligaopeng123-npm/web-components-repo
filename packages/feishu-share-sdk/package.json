@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/feishu-share-sdk",
-  "version": "0.6.19",
+  "version": "0.7.0",
   "description": "飞书 H5分享",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
