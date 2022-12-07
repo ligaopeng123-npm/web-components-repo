@@ -13,3 +13,4 @@ export type {LoginModuleProps, AfterSubmit, Submit, SubmitError} from "@gaopeng1
 // webpack转换exports.default有问题 使用RcLoginModule导出
 export {default as RCLoginJSEncrypt} from "./RCLoginJSEncrypt";
 export type {RCLoginJSEncryptProps, RCLoginCaptchaProps} from "./RCLoginJSEncrypt";
+export { useFeishuLogin , feishuShareSdk } from "@gaopeng123/rc-login-module";

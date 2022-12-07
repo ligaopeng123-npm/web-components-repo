@@ -10,29 +10,39 @@
  *
  **********************************************************************/
 import React, { useState, useEffect, ReactNode, useRef } from 'react';
+import ListContent from "./ListContent";
 
 type DataSource = { data: Array<any>, total: number };
 type PaginationProps = {
-    pageSize?: number,
-    current?: number
+    pageSize?: number;
+    current?: number;
 };
 
 type PaginatedListProps = {
     upLoading?: ReactNode,
     downLoading?: ReactNode,
     pagination?: PaginationProps,
+    params?: any;
     request?: (params: PaginationProps) => Promise<DataSource>;
 };
 
 const PaginatedList: React.FC<PaginatedListProps> = (props) => {
-    const { current, pageSize } = Object.assign({}, props.pagination);
+    const {pagination, request, params} = props;
+    const { current, pageSize } = Object.assign({}, pagination);
+    const [data, setData] = useState([]);
     const { upLoading, downLoading } = props;
     const ref = useRef<HTMLDivElement>();
+    useEffect(()=> {
+        if (request) {
+            request(Object.assign({}, params, {current, pageSize})).then(()=> {
+
+            })
+        }
+    }, [params]);
     return (
         <div ref={ref}>
-
             {upLoading}
-            {props.children}
+            <ListContent data={data}/>
             {downLoading}
         </div>
     )
