@@ -24,4 +24,3 @@ export type { RcLoginModuleProps as RcLoginModuleProps } from "./RcLoginModule";
 // webpack转换exports.default有问题 使用RcLoginModule导出
 export { default as RcLoginModule } from "./RcLoginModule";
 export { default as useFeishuLogin } from "./useFeishuLogin";
-export { default as feishuShareSdk } from "./feishuShareSdk";
