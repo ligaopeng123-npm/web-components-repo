@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-login-jsencrypt",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "description": "基于jsencrypt加密登录",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
