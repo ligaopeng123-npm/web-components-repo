@@ -18,12 +18,7 @@ module.exports = merge(base(__dirname), {
                 // http://xingtu.ubsense.cn:1985/rtc/v1/play/
                 target: 'http://xingtu.ubsense.cn:3008',
                 // pathRewrite: {'^/api': ''}
-            },
-            '/testShare/': {
-                changeOrigin: true,
-                target: 'https://ops.sany.com.cn/',
-                // pathRewrite: {'^/testShare': ''}
-            },
+            }
         }
     }
 });
