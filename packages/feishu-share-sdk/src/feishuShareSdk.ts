@@ -29,7 +29,12 @@ export type FeishuShareConfig = {
 type FeishuShareCache = {
     latestTime?: any;
 }
-const feishuShareSdk = (config: FeishuShareSdkConfig) => {
+
+type FeishuShareAction = {
+    share: ({url, title, image, content, onSuccess}: FeishuShareConfig)=> void;
+    canShare: ()=> boolean;
+}
+const feishuShareSdk = (config: FeishuShareSdkConfig): FeishuShareAction => {
     const {proxy_prefix, app_id, app_secret} = Object.assign({proxy_prefix: '/feishuAPI'}, config);
     const cache: FeishuShareCache = {};
     /**
@@ -198,7 +203,13 @@ const feishuShareSdk = (config: FeishuShareSdkConfig) => {
     /**
      * 暴露函数
      */
-    const action = {
+    const action: FeishuShareAction = {
+        // 当前环境是否可分享
+        canShare: ()=> {
+            // @ts-ignore
+            return window.h5sdk !== undefined;
+        },
+        // 分享函数
         share: ({url, title, image, content, onSuccess}: FeishuShareConfig) => {
             init().then(() => {
                 //@ts-ignore 成功回调，可以在成功之后使用 tt.xx jsapi
