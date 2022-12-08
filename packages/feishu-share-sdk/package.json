@@ -72,5 +72,6 @@
   "dependencies": {
     "@gaopeng123/utils": "^0.6.0",
     "sha1": "^1.1.1"
-  }
+  },
+  "gitHead": "105c1fbac56f6b8da70679d896341fc0c2651031"
 }
