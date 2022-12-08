@@ -13,4 +13,6 @@ export const feishuShare = feishuShareSdk({
 
 // 调用分享
 feishuShare.share({url, title, image, content, onSuccess});
+// 判断当前环境是否可用
+feishuShare.canShare();
 ```
