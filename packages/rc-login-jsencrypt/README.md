@@ -24,7 +24,7 @@ const App = () => {
             secret={headers.secret}
             getCaptcha={async () => {
                 return new Promise<RCLoginCaptchaProps>((resolve, reject) => {
-                    get(`https://pj-feedback.sany.com.cn/testAuth/api/nebula/auth/token/v1/captcha`, {
+                    get(`/testAuth/api/nebula/auth/token/v1/captcha`, {
                         params: {
                             width: 80,
                             height: 30
@@ -40,7 +40,7 @@ const App = () => {
             handleSubmit={({headers, body, loginType, data, encryptor}) => {
                 console.log(headers, body, loginType, data, encryptor);
                 return new Promise((resolve, reject) => {
-                    post(`https://pj-feedback.sany.com.cn/testAuth/api/nebula/auth/token/v1/shrLogin`, {
+                    post(`/testAuth/api/nebula/auth/token/v1/shrLogin`, {
                         headers: headers,
                         body: body
                     }).then((res) => {
