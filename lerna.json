@@ -4,7 +4,7 @@
     ],
     "version": "0.7.5",
     "useWorkspaces": true,
-    "npmClient": "yarn",
+    "npmClient": "pnpm",
     "command": {
         "bootstrap": {
             "ignore": "@vue/*"

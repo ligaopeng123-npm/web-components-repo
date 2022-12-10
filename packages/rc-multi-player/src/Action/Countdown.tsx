@@ -71,7 +71,7 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
         <div className={styles.countdown} style={style}>
             {maxTime - currentTime} 秒
             <Button
-                onClick={(e) => {
+                onClick={(e: any) => {
                     e.stopPropagation();
                     reset();
                     if (maxTime - currentTime <= 0 && onMaxClick) {

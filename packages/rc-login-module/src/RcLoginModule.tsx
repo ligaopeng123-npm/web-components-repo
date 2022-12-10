@@ -20,7 +20,7 @@ import type {
     ResetPasswordSubmitProps,
     SendSMSVerificationCodeProps,
 } from "@gaopeng123/login-module";
-import {obj2css} from "@gaopeng123/utils.file";
+import {obj2css} from "@gaopeng123/utils";
 
 export type RcLoginModuleProps = {
     id?: string, // 标识 可不传

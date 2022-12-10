@@ -148,7 +148,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         <Paper
             elevation={0}
             variant="outlined"
-            ref={(el) => {
+            ref={(el: any) => {
                 setDivCurrent(el);
             }}
             classes={{ root: `${styles.mainPlayer} ${className}` }}>

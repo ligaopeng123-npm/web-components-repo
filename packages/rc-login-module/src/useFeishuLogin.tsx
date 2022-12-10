@@ -11,7 +11,7 @@
  **********************************************************************/
 import * as React from 'react';
 import {useEffect, useState} from "react";
-import {queryParamsFromUrl, urlJoinParmas} from "@gaopeng123/utils.file";
+import {queryParamsFromUrl, urlJoinParmas} from "@gaopeng123/utils";
 
 /**
  * 飞书登录

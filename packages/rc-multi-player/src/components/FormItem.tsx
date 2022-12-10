@@ -18,7 +18,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Title from "./Title";
 
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }: any) => ({
     '& .MuiToggleButtonGroup-grouped': {
         textTransform: 'capitalize',
         margin: theme.spacing(0.5),

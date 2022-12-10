@@ -21,7 +21,7 @@ import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';
 import { isEmptyObject } from "@gaopeng123/utils";
 
-const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
+const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<MultiScreenPlayerProps> & React.RefAttributes<MultiScreenPlayerRef>> = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
      * 默认参数 selectedScreen
      */

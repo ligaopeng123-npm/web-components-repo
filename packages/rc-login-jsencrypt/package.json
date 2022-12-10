@@ -30,8 +30,8 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "npm run build && npm publish --access public",
-        "publish": "npm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
+        "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -75,6 +75,7 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
+        "@gaopeng123/login-module": "workspace:^0.7.0",
         "@gaopeng123/rc-login-module": "^0.7.0",
         "jsencrypt": "3.2.1"
     },

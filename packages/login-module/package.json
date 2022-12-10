@@ -28,8 +28,8 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "npm run build && npm publish --access public",
-        "publish": "npm publish --access public",
+        "push": "pnpm run build && npm publish --access public",
+        "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: run tests from root\" && exit 1"
     },

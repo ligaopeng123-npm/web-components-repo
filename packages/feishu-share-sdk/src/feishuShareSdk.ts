@@ -33,6 +33,7 @@ type FeishuShareCache = {
 type FeishuShareAction = {
     share: ({url, title, image, content, onSuccess}: FeishuShareConfig)=> void;
     canShare: ()=> boolean;
+    init: ()=> Promise<boolean>;
 }
 const feishuShareSdk = (config: FeishuShareSdkConfig): FeishuShareAction => {
     const {proxy_prefix, app_id, app_secret} = Object.assign({proxy_prefix: '/feishuAPI'}, config);
@@ -40,7 +41,7 @@ const feishuShareSdk = (config: FeishuShareSdkConfig): FeishuShareAction => {
     /**
      * 初始化
      */
-    const init = () => {
+    const init = (): Promise<boolean> => {
         return new Promise((resolve, reject) => {
             // @ts-ignore 例如:
             if (window.h5sdk) {
@@ -105,7 +106,7 @@ const feishuShareSdk = (config: FeishuShareSdkConfig): FeishuShareAction => {
                             const signature = genSignature(ticket, nonceStr, timeStamp, location.href.split('#')[0]);
                             // @ts-ignore
                             window.h5sdk.config({
-                                appId: process.env.REACT_APP_FEISHU_APP_ID,         // 必填，应用ID
+                                appId: app_id,         // 必填，应用ID
                                 timestamp: timeStamp,     // 必填，生成签名的时间戳，毫秒级
                                 nonceStr: nonceStr,      // 必填，生成签名的随机串
                                 signature: signature,     // 必填，签名
@@ -133,6 +134,8 @@ const feishuShareSdk = (config: FeishuShareSdkConfig): FeishuShareAction => {
      * 暴露函数
      */
     const action: FeishuShareAction = {
+        // 初始化用于提高加载速度
+        init: init,
         // 当前环境是否可分享
         canShare: ()=> {
             // @ts-ignore
