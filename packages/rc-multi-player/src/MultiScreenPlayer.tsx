@@ -73,14 +73,21 @@ const RcMultiScreenPlayer = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerPr
                  * 处理动态划分layoutIndex
                  */
                 if (!playerConfig?.layoutIndex) {
-                    for (let i = +(playerConfig?.layoutIndex || layoutIndex) + 1; i < playerList.length; i++) {
-                        if (!playerList[i] || isEmptyObject(playerList[i])) {
-                            dispatch({
-                                type: MultiStoreEnum.selectedPlayer,
-                                value: `${i}`
-                            });
-                            break;
+                    const searchPlayer = (index: number)=> {
+                        for (let i = index; i < playerList.length; i++) {
+                            if (!playerList[i] || isEmptyObject(playerList[i])) {
+                                dispatch({
+                                    type: MultiStoreEnum.selectedPlayer,
+                                    value: `${i}`
+                                });
+                                return `${i}`
+                            }
                         }
+                    }
+                    // 先从前往后排 如果排到最后 前面的还有空格 则排前面的空格
+                    const searchIndex = searchPlayer(+(playerConfig?.layoutIndex || layoutIndex) + 1);
+                    if (!searchIndex) {
+                        searchPlayer(0);
                     }
                 }
             }
