@@ -11,9 +11,8 @@
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { SrsRtcPlayerAsync } from '../assets/sdk';
-import { Property } from "csstype";
 import { RcPlayerRef, WebRtcPlayerProps } from "./PlayerTyping";
-import { DEFAULT_ROBUSTNESS } from "@gaopeng123/multi-player";
+import { DEFAULT_ROBUSTNESS, ObjectFit } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
     const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
@@ -147,7 +146,8 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
             style={{
                 height: height || '100%',
                 width: width || '100%',
-                objectFit: (objectFit || 'fill') as Property.ObjectFit
+                // @ts-ignore
+                objectFit: (objectFit || 'fill') as ObjectFit
             }}>
         </video>
     )
