@@ -11,13 +11,13 @@
         }
     },
     "scripts": {
-        "build": "lerna exec --ignore=@gaopeng123/utils -- npm run build",
-        "test": "lerna exec --ignore=@gaopeng123/utils -- npm run test",
+        "build": "lerna exec --ignore=@gaopeng123/utils -- pnpm run build",
+        "test": "lerna exec --ignore=@gaopeng123/utils -- pnpm run test",
         "push": "lerna publish",
-        "publish": "lerna exec -- npm run publish"
+        "publish": "lerna exec -- pnpm run publish"
     },
     "devDependencies": {
-        "lerna": "^4.0.0"
+        "lerna": "^6.1.0"
     },
     "workspaces": [
         "packages/*"
