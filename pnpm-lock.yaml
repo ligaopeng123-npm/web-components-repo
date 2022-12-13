@@ -1,5 +1,8 @@
 lockfileVersion: 5.4
 
+overrides:
+  language-tags: 1.0.5
+
 importers:
 
   .:
@@ -9483,7 +9486,7 @@ packages:
       eslint: 6.8.0
       has: 1.0.3
       jsx-ast-utils: 3.3.3
-      language-tags: 1.0.6
+      language-tags: 1.0.5
       minimatch: 3.1.2
       semver: 6.3.0
     dev: true
@@ -12514,9 +12517,8 @@ packages:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: true
 
-  /language-tags/1.0.6:
-    resolution: {integrity: sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==, tarball: language-tags/-/language-tags-1.0.6.tgz}
-    deprecated: '[WARNING] Use 1.0.5 instead of 1.0.6, reason: not compatible with node 10.'
+  /language-tags/1.0.5:
+    resolution: {integrity: sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==}
     dependencies:
       language-subtag-registry: 0.3.22
     dev: true
