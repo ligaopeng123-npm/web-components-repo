@@ -114,7 +114,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                         state[MultiStoreEnum.screenConfig]?.protocol === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.protoco}
+                                defaultValue={state[MultiStoreEnum.screenConfig]?.protocol}
                                 onChange={onProtocolSelectChange}
                                 label={'播放策略'}
                                 options={state[MultiStoreEnum.actionConfig]?.protocol.options}/>
