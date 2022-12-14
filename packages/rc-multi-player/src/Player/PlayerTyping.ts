@@ -34,6 +34,11 @@ export type PlayerProps = {
     [propName: string]: any;
 }
 
+type RobustnessProps = {
+    // 健壮性配置
+    robustness?: MultiPlayerRobustness & {retryDuration?: DOMHighResTimeStamp};
+}
+
 export type RcFlvPlayerProps = {
     extraParams?: any;
     style?: React.CSSProperties;
@@ -44,11 +49,9 @@ export type RcFlvPlayerProps = {
     mediaDataSource?: MediaDataSource;
     // 播放器配置
     config?: Config,
-    // 健壮性配置
-    robustness?: MultiPlayerRobustness;
     // 事件集合
     events?: PlayerEvents,
-};
+} & RobustnessProps;
 
 
 export type PlayerEvents = {
@@ -102,7 +105,8 @@ export type  PlayerConfig = {
     title?: string,
     // 额外参数
     extraParams?: any;
-} & PlayerActionConfig;
+} & PlayerActionConfig & RobustnessProps;
+
 // 多屏播放器
 export type LayoutPlayerProps = {
     playerConfig?: PlayerConfig;

@@ -65,6 +65,11 @@ export const setLocalStorage = (_id: string, val: any) => {
     return localStorage.setItem(_id, val);
 }
 
+export const getCurrentStorage = (id: string, valKey: string) => {
+    const storage = getLocalStorage(id);
+    return storage[valKey]
+}
+
 export const ScreenConfigHelper = {
     id: '',
     getConfig: () => {
@@ -72,6 +77,12 @@ export const ScreenConfigHelper = {
     },
     setConfig: (val: any) => {
         setLocalStorage(ScreenConfigHelper.id, JSON.stringify(val));
+    },
+    setSingleConfig: (val: any) => {
+        ScreenConfigHelper.setConfig(Object.assign({}, ScreenConfigHelper.getConfig(), val))
+    },
+    getSingleConfig: (valKey: string): any => {
+        return ScreenConfigHelper.getConfig()[valKey];
     },
     getDefaultConfig: (defaultConfigProps: PlayerConfig) => {
         const currentConfig: PlayerActionConfig = {};
@@ -88,7 +99,10 @@ export const ScreenConfigHelper = {
                 // @ts-ignore
                 const currentValue = defaultConfigStorage[key] || DEFAULT_SCREEN_CONFIG[key].defaultValue;
                 // @ts-ignore
-                currentConfig[key] = currentOptions.filter((item: PlayerConfigOptions) => item.value === currentValue)?.length ? currentValue : currentOptions[0]?.value;
+                currentConfig[key] = currentOptions
+                    .filter((item: PlayerConfigOptions) => item.value === currentValue)?.length
+                    ? currentValue
+                    : currentOptions[0]?.value;
             }
         }
         return Object.assign({}, defaultConfigStorage, currentConfig);
@@ -172,7 +186,8 @@ export const reducer = (state: any, action: Action) => {
         case MultiStoreEnum.screenConfig:
             const {type, value} = action.value;
             const screenConfig = state[MultiStoreEnum.screenConfig];
-            const newScreenConfig = Object.assign({}, screenConfig, {[type]: value});
+            const newScreenConfig = Object.assign({},
+                screenConfig, ScreenConfigHelper.getConfig(), {[type]: value});
             ScreenConfigHelper.setConfig(newScreenConfig);
             return Object.assign({}, state, {[MultiStoreEnum.screenConfig]: newScreenConfig});
         default:

@@ -21,6 +21,7 @@ import IconCloseButton from "./IconCloseButton";
 import FormItem from "../components/FormItem";
 import { max } from "@gaopeng123/utils";
 import { ObjectFit } from "@gaopeng123/multi-player";
+import { ScreenConfigHelper } from "../MultiStore";
 
 type MultiScreenDrawerProps = {} & Props;
 
@@ -37,13 +38,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
      * @param v
      */
     const onProtocolSelectChange = (v: any) => {
-        dispatch({
-            type: MultiStoreEnum.screenConfig,
-            value: {
-                type: 'protocol',
-                value: v
-            }
-        });
+        ScreenConfigHelper.setSingleConfig({protocol: v});
     }
     /**
      * 改变样式处理
@@ -69,21 +64,16 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
      */
     const onObjectFitSelectChange = (v: any) => {
         changeObjectFit(v);
+        ScreenConfigHelper.setSingleConfig({objectFit: v});
     }
     /**
      * 视频分辨率
      */
     const onResolutionSelectChange = (v: string) => {
-        dispatch({
-            type: MultiStoreEnum.screenConfig,
-            value: {
-                type: 'resolution',
-                value: v
-            }
-        });
+        ScreenConfigHelper.setSingleConfig({resolution: v});
     }
     /**
-     *
+     * 视频播放方式
      * @param v
      */
     const onCountdownSelectChange = (v: string) => {

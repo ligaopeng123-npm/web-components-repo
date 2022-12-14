@@ -52,9 +52,11 @@ const FormItem: React.FC<FormItemProps> = (props) => {
         event: React.MouseEvent<HTMLElement>,
         newAlignment: string,
     ) => {
-        setAlignment(newAlignment);
-        if (onChange) {
-            onChange(newAlignment);
+        if (newAlignment) {
+            setAlignment(newAlignment);
+            if (onChange) {
+                onChange(newAlignment);
+            }
         }
     };
 
@@ -72,7 +74,7 @@ const FormItem: React.FC<FormItemProps> = (props) => {
                 <StyledToggleButtonGroup
                     color="primary"
                     value={alignment}
-                    exclusive
+                    exclusive={true}
                     onChange={handleChange}
                     aria-label="Platform"
                 >

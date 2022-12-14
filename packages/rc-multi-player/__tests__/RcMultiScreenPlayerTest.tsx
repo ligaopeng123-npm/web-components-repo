@@ -14,6 +14,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@m
 import { RcMultiScreenPlayer } from "../src";
 import Snackbar from "@mui/material/Snackbar";
 import { useRef } from "react";
+import { PlayerConfig } from "../src/Player/PlayerTyping";
 
 type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
@@ -31,18 +32,24 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         const title = document.querySelector('#outlined-title')?.value;
         if (url) {
             setCurrentConfig({
-                mediaDataSource: { url: url, type: 'flv', },
-                playerConfig: { protocol: protocol, title: title, extraParams: { test: 1 }, layoutIndex: '0' }
+                mediaDataSource: {url: url, type: 'flv',},
+                playerConfig: {
+                    protocol: protocol, title: title, extraParams: {test: 1}, layoutIndex: '0',
+                    robustness: {
+                        maxResetTimes: 1,
+                        retryDuration: 15000 // 15秒加载
+                    },
+                }
             });
         } else {
             setOpen(true)
         }
     }
     return (
-        <div style={{ height: 600 }}>
-            <div style={{ display: 'flex' }}>
-                <div style={{ flex: 1 }}>
-                    <div style={{ width: '90%' }} className={'form'}>
+        <div style={{height: 600}}>
+            <div style={{display: 'flex'}}>
+                <div style={{flex: 1}}>
+                    <div style={{width: '90%'}} className={'form'}>
                         <FormControl fullWidth className={'form-item'}>
                             <InputLabel id="demo-simple-select-label">协议类型</InputLabel>
                             <Select
@@ -72,13 +79,13 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         </FormControl>
                     </div>
                 </div>
-                <div style={{ flex: 3, height: 600 }}>
+                <div style={{flex: 3, height: 600}}>
                     <RcMultiScreenPlayer
                         events={{
-                            onReload: (e) => {
+                            onReload: (e: PlayerConfig) => {
                                 onClick(e);
                             },
-                            onClose: (e) => {
+                            onClose: (e: PlayerConfig) => {
                                 console.log(222, e);
                             }
                         }}
@@ -99,7 +106,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                 </div>
             </div>
             <Snackbar
-                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+                anchorOrigin={{vertical: 'top', horizontal: 'left'}}
                 open={open}
                 autoHideDuration={6000}
                 onClose={() => setOpen(false)}

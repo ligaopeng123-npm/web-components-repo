@@ -14,7 +14,7 @@ import { SrsRtcPlayerAsync } from '../assets/sdk';
 import { RcPlayerRef, WebRtcPlayerProps } from "./PlayerTyping";
 import { DEFAULT_ROBUSTNESS, ObjectFit } from "@gaopeng123/multi-player";
 
-const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
+const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebRtcPlayerProps> & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
     const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
     const videoRef = useRef<HTMLVideoElement>();
     const [sdk, setSdk] = useState(null);
@@ -23,11 +23,12 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
     const [errorTime, setErrorTime] = useState<number>();
+    const {maxResetTimes, retryDuration} = Object.assign({retryDuration: 5000}, DEFAULT_ROBUSTNESS, robustness);
+
     /**
      * 事件处理
      */
     const initSdk = () => {
-        const {maxResetTimes} = Object.assign({}, DEFAULT_ROBUSTNESS, robustness);
         let sdk: any = null;
         const video = videoRef.current;
         /**
@@ -120,11 +121,11 @@ const RcWebRTCPlayer = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) =
         if (errorTime) {
             // @ts-ignore
             videoRef.current.__timer = setTimeout(() => {
-                console.log(`${new Date()} 5秒后未拉起,阻断视频`);
+                console.log(`${new Date()} ${retryDuration/1000}秒后未拉起,阻断视频`);
                 if (events?.onLoadError) {
                     events.onLoadError({extraParams,});
                 }
-            }, 5000);
+            }, retryDuration);
         }
     }, [errorTime]);
 

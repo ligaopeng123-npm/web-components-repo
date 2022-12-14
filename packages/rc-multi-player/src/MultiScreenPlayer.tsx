@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useReducer } from 'react';
-import { reducer, ScreenConfig, State } from "./MultiStore";
+import { reducer, ScreenConfig, ScreenConfigHelper, State } from "./MultiStore";
 import LayoutContent from "./Layout/LayoutContent";
 import { MultiScreenPlayerProps, MultiScreenPlayerRef, MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
@@ -25,7 +25,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
     /**
      * 默认参数 selectedScreen
      */
-    const { defaultSelectedScreen, defaultPlayerConfig, currentConfig, id, events } = props;
+    const {defaultSelectedScreen, defaultPlayerConfig, currentConfig, id, events} = props;
     /**
      * 唯一标识
      */
@@ -55,7 +55,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
      */
     useEffect(() => {
         if (currentConfig) {
-            const { playerConfig, mediaDataSource } = currentConfig;
+            const {playerConfig, mediaDataSource} = currentConfig;
             if (playerConfig && mediaDataSource) {
                 const layoutIndex = state[MultiStoreEnum.selectedPlayer];
                 const playerList = state[MultiStoreEnum.playerList]
@@ -73,7 +73,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                  * 处理动态划分layoutIndex
                  */
                 if (!playerConfig?.layoutIndex) {
-                    const searchPlayer = (index: number)=> {
+                    const searchPlayer = (index: number) => {
                         for (let i = index; i < playerList.length; i++) {
                             if (!playerList[i] || isEmptyObject(playerList[i])) {
                                 dispatch({
@@ -98,10 +98,14 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
     useImperativeHandle(ref, () => ({
         getScreenConfig: () => {
             return Object.assign({
-                screenConfig: Object.assign({}, state[MultiStoreEnum.screenConfig], {
-                    selectedScreen: state[MultiStoreEnum.selectedScreen],
-                    selectedPlayer: state[MultiStoreEnum.selectedPlayer],
-                }),
+                screenConfig: Object.assign(
+                    {},
+                    state[MultiStoreEnum.screenConfig],
+                    ScreenConfigHelper.getConfig(),
+                    {
+                        selectedScreen: state[MultiStoreEnum.selectedScreen],
+                        selectedPlayer: state[MultiStoreEnum.selectedPlayer],
+                    }),
             })
         }
     }));
@@ -110,7 +114,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         <ThemeProvider theme={DefaultTheme}>
             <div className={styles.main} id={_id}>
                 <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
-                <LayoutContent events={events} state={state} dispatch={dispatch}/>
+                <LayoutContent layoutKey={_id} events={events} state={state} dispatch={dispatch}/>
                 <MultiScreenDrawer screenKey={_id} state={state} dispatch={dispatch}/>
             </div>
         </ThemeProvider>
