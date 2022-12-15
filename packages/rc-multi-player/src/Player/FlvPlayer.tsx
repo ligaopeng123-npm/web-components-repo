@@ -28,7 +28,7 @@ declare global {
     }
 }
 
-const RcFlvPlayer = forwardRef<RcPlayerRef, RcFlvPlayerProps>((props, ref) => {
+const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPlayerProps> & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcFlvPlayerProps>((props, ref) => {
     const { width, height, mediaDataSource, config, robustness, objectFit, style, events, extraParams } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
     const [id,] = useState(`multi-player-${Date.now()}`);
