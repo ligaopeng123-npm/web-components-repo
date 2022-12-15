@@ -13,8 +13,7 @@
     "scripts": {
         "build": "lerna exec --ignore=@gaopeng123/utils -- pnpm run build",
         "test": "lerna exec --ignore=@gaopeng123/utils -- pnpm run test",
-        "push": "lerna publish",
-        "publish": "lerna exec -- pnpm run publish"
+        "push": "lerna exec -- pnpm run publish"
     },
     "devDependencies": {
         "lerna": "^6.1.0"
