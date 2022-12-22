@@ -1,20 +1,34 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { PaginatedList } from "../src";
-import { useEffect, useState } from "react";
-import DownLoading from "../src/DownLoading";
-import TopLoading from "../src/TopLoading";
+import { RcPaginatedList } from "../src";
 
 
 const App = () => {
-    useEffect(() => {
-        setTimeout(() => {
-        }, 2000);
-    }, [])
+    const request = (params: any, abortController)=> {
+        // @ts-ignore
+        return new Promise<any>((resolve, reject)=> {
+            setTimeout(() => {
+                resolve({
+                // @ts-ignore
+                    data: new Array(0).fill({}).map((item:any, index)=> {
+                        return {
+                            name: `name-${index * params.current}`
+                        }
+                    }),
+                    total: 100
+                })
+            }, 1000);
+        })
+    }
     return (
         <>
-            <DownLoading/>
-            <TopLoading/>
+            <RcPaginatedList
+                primaryColor={'#1a3217'}
+                request={request}
+                render={(record, style)=> {
+                    return <div style={style}>{record.name}</div>
+                }}
+            />
         </>
     );
 };
