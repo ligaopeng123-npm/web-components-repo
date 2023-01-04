@@ -66,19 +66,14 @@ const useFeishuLogin = (props: useFeishuLoginProps) => {
             const params: any = queryParamsFromUrl(location.href);
             if (params.code) {
                 setCode(params.code);
+                /**
+                 * code返回后将状态调整下
+                 */
+                setTimeout(()=> {
+                    setCurrentFeiShuLogin();
+                });
             }
         })
-    }, []);
-
-    /**
-     * code返回后将状态调整下
-     */
-    useEffect(() => {
-        const params: any = queryParamsFromUrl(location.href);
-        // 登录成功 将状态初始化 防止下次不触发免登录
-        if (params?.code) {
-            setCurrentFeiShuLogin();
-        }
     }, []);
 
     /**

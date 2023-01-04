@@ -36,18 +36,18 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 `飞书免登录`
 
 ```tsx
-const [code, setCode] = useFeishuLogin({
+const [code, resetCode] = useFeishuLogin({
         id: 'testapp', // 应用标识 字符串即可
         url: 'https://xxx', // 飞书登录地址
         app_id: '', // 申请的飞书应用id
-        redirect_uri: 'https://xxx' // 配置的重定向地址
+        redirect_uri: 'https://xxx' // 配置的重定向地址  不需要转义
     });
 
     useEffect(() => {
         if (code) {
             // 调用服务端接口去交换token 交换完成后最好在调用下setCode();
             // 登录成功或者失败后 code就不能用了 所以要调用下
-            setCode();
+            resetCode();
         }
     }, [code]);
 ```
