@@ -75,9 +75,9 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@gaopeng123/login-module": "workspace:^0.8.1",
+        "@gaopeng123/login-module": "^0.8.1",
         "@gaopeng123/rc-login-module": "^0.8.4",
         "jsencrypt": "3.2.1"
     },
-    "gitHead": "21d3b44173229cb00f6e27a8a6ebb7355a5d05b7"
+    "gitHead": "05138abed3eabf3d7816074fcb4e6dfd6f8b7081"
 }

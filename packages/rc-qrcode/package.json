@@ -73,5 +73,6 @@
   },
   "dependencies": {
     "qrcode": "^1.5.1"
-  }
+  },
+  "gitHead": "05138abed3eabf3d7816074fcb4e6dfd6f8b7081"
 }
