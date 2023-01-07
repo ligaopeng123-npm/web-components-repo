@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-login-module",
-    "version": "0.8.4",
+    "version": "0.8.5",
     "description": "登录模块",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
