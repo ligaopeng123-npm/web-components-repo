@@ -7,6 +7,7 @@ web组件仓库
 
 ```js
 npm install --global lerna
+npm install --global pnpm
 lerna bootstrap
 ```
 
