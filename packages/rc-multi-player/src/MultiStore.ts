@@ -105,7 +105,9 @@ export const ScreenConfigHelper = {
                     : currentOptions[0]?.value;
             }
         }
-        return Object.assign({}, defaultConfigStorage, currentConfig);
+        const currentDefaultConfig = Object.assign({}, defaultConfigStorage, currentConfig);
+        ScreenConfigHelper.setConfig(currentDefaultConfig)
+        return currentDefaultConfig;
     },
     // 设置默认参数
     getActionConfig: (defaultConfigProps: PlayerConfig) => {
