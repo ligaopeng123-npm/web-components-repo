@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/login-module",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "description": "登录模块",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -70,5 +70,5 @@
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.8.0"
     },
-    "gitHead": "5a4f94483cf38ad5bc1e7b8b479ba4a307ae5dfa"
+    "gitHead": "6e2a3e45fcfdccb79c3c2f8d38b096df794dc0af"
 }

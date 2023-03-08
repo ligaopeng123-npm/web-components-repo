@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-paginated-list",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "description": "分页加载列表",
     "keywords": [
         "h5",
@@ -77,5 +77,5 @@
         "@gaopeng123/hooks.use-pagination": "^0.5.0",
         "react-window": "^1.8.7"
     },
-    "gitHead": "5a4f94483cf38ad5bc1e7b8b479ba4a307ae5dfa"
+    "gitHead": "6e2a3e45fcfdccb79c3c2f8d38b096df794dc0af"
 }
