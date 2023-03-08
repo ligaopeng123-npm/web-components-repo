@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/login-module",
-    "version": "1.0.2-alpha.6",
+    "version": "1.0.2-alpha.7",
     "description": "登录模块",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
