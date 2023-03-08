@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/scroll-nav",
-    "version": "1.0.2-alpha.10",
+    "version": "1.0.2",
     "description": "吸顶 tabs",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -77,7 +77,7 @@
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
         "@gaopeng123/hooks": "^0.5.0",
-        "@gaopeng123/multi-player": "^1.0.2-alpha.10",
+        "@gaopeng123/multi-player": "^1.0.2",
         "@gaopeng123/utils": "^0.5.8",
         "@mui/icons-material": "^5.10.9",
         "@mui/material": "^5.10.10",
