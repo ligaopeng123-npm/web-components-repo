@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-paginated-list",
-    "version": "0.8.5",
+    "version": "1.0.0",
     "description": "分页加载列表",
     "keywords": [
         "h5",

@@ -83,7 +83,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/message': ^0.8.1
+      '@gaopeng123/message': ^1.0.0
       '@gaopeng123/utils.file': latest
       '@gaopeng123/utils.object': latest
       '@gaopeng123/utils.types': latest
@@ -111,8 +111,8 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/message': link:../message
-      '@gaopeng123/utils.file': 1.1.1
-      '@gaopeng123/utils.object': 1.1.1
+      '@gaopeng123/utils.file': 1.1.2
+      '@gaopeng123/utils.object': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
     devDependencies:
       '@babel/core': 7.20.5
@@ -175,7 +175,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/fetch': 0.2.7
-      '@gaopeng123/utils.file': 1.1.1
+      '@gaopeng123/utils.file': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
       crypto-js: 4.1.1
     devDependencies:
@@ -249,7 +249,7 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@ffmpeg/core': ^0.10.0
       '@ffmpeg/ffmpeg': ^0.10.1
-      '@gaopeng123/message': ^0.8.1
+      '@gaopeng123/message': ^1.0.0
       '@gaopeng123/utils.function': latest
       '@gaopeng123/utils.string': latest
       '@size-limit/preset-small-lib': ^5.0.1
@@ -279,8 +279,8 @@ importers:
       '@ffmpeg/core': 0.10.0
       '@ffmpeg/ffmpeg': 0.10.1
       '@gaopeng123/message': link:../message
-      '@gaopeng123/utils.function': 1.1.1
-      '@gaopeng123/utils.string': 1.1.1
+      '@gaopeng123/utils.function': 1.1.2
+      '@gaopeng123/utils.string': 1.1.2
       mpegts.js: 1.7.0
     devDependencies:
       '@babel/core': 7.20.5
@@ -378,7 +378,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/image-upload': ^0.8.1
+      '@gaopeng123/image-upload': ^1.0.0
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -445,8 +445,8 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/login-module': ^0.8.1
-      '@gaopeng123/rc-login-module': ^0.8.5
+      '@gaopeng123/login-module': ^1.0.0
+      '@gaopeng123/rc-login-module': ^1.0.0
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -516,7 +516,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/login-module': ^0.8.1
+      '@gaopeng123/login-module': ^1.0.0
       '@gaopeng123/utils': ^0.6.0
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
@@ -588,7 +588,7 @@ importers:
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
       '@gaopeng123/hooks': ^0.5.0
-      '@gaopeng123/multi-player': ^0.8.1
+      '@gaopeng123/multi-player': ^1.0.0
       '@gaopeng123/utils': ^0.5.8
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
@@ -867,7 +867,7 @@ importers:
       '@babel/core': ^7.14.6
       '@babel/preset-env': ^7.14.7
       '@babel/preset-typescript': ^7.14.5
-      '@gaopeng123/image-upload': ^0.8.1
+      '@gaopeng123/image-upload': ^1.0.0
       '@rollup/plugin-alias': ^3.1.2
       '@rollup/plugin-babel': ^5.3.0
       '@rollup/plugin-commonjs': ^14.0.0
@@ -2572,12 +2572,12 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.file/1.1.1:
-    resolution: {integrity: sha512-S044cbURrLlVxBSFZBjuyo/4RpDNQrDSTjR7rUo8gbj2H9keCeH9YRcSLhmoo4jzjsNyU4g4ka+jywsloDe+PQ==}
+  /@gaopeng123/utils.file/1.1.2:
+    resolution: {integrity: sha512-OSwHCXdJ0bvGj/dIoH8E4n9yxVZ7IzhPsfJO57Bx4l9KXSsF1uNlTW3DpZYfAMfYs/NdEJCvXOGUE3BtHzCEHw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.object': 1.1.1
-      '@gaopeng123/utils.string': 1.1.1
+      '@gaopeng123/utils.object': 1.1.2
+      '@gaopeng123/utils.string': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
     dev: false
 
@@ -2609,8 +2609,8 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.function/1.1.1:
-    resolution: {integrity: sha512-sbevm0/C/usmXUFPzR+mBXUEe/ZdrFeaDVbg5wgGAwBwyFjep801bf04+8F8Kc0iwLjQK69LcQOxMWwt7qYuQQ==}
+  /@gaopeng123/utils.function/1.1.2:
+    resolution: {integrity: sha512-36GLe8wT6GFu7oS7uBbPeVxHn/DRv+Bj5Kqr21twAUZp4vLsGFr1VHGy2auA8kAMlkdxR+BrpThnB6wLhGYOgA==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.0
@@ -2669,11 +2669,11 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.object/1.1.1:
-    resolution: {integrity: sha512-wNoDyDZnj6/fo4sMrpCNs4jZxRQ4EQzHIh7+qQi8fopE37DRsuEnWu4OglkPyaAsRMVvG7GI1x5ez2qgElvOUQ==}
+  /@gaopeng123/utils.object/1.1.2:
+    resolution: {integrity: sha512-Jlc/FF9tcIrKut1+foOrz+2/iRbGgR5KLb0MYGbIwiyqWIQV26OhekEconJGd2yRc7Kr2hgss8gzsTsUpDMCMQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.1
+      '@gaopeng123/utils.function': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
     dev: false
 
@@ -2709,11 +2709,11 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.string/1.1.1:
-    resolution: {integrity: sha512-GWzf6XQd30QBeWEqzb/gWs9DwVebCVhFhUooCdy2S1JddgjYOIsufT84OqzmzSaPRKzG/CM9rQMERs5C/lnn5Q==}
+  /@gaopeng123/utils.string/1.1.2:
+    resolution: {integrity: sha512-3AtuKEVkZR1kQD68G7rO/aH2XNiO24R8aGceDrVBKasRc1+xerOvSYvPvWafO6g/o7qGMwo1pEvCeCl5JbI66w==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.1
+      '@gaopeng123/utils.function': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
     dev: false
 
@@ -2776,11 +2776,11 @@ packages:
     dependencies:
       '@gaopeng123/utils.array': 1.1.0
       '@gaopeng123/utils.date': 1.1.0
-      '@gaopeng123/utils.file': 1.1.1
-      '@gaopeng123/utils.function': 1.1.1
+      '@gaopeng123/utils.file': 1.1.2
+      '@gaopeng123/utils.function': 1.1.2
       '@gaopeng123/utils.number': 1.1.0
-      '@gaopeng123/utils.object': 1.1.1
-      '@gaopeng123/utils.string': 1.1.1
+      '@gaopeng123/utils.object': 1.1.2
+      '@gaopeng123/utils.string': 1.1.2
       '@gaopeng123/utils.types': 1.1.0
     dev: false
 
