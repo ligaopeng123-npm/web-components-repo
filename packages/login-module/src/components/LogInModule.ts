@@ -164,6 +164,7 @@ export default class LogInModule extends HTMLElement {
     readonly defaultConfig: any = {
         'my-title': '某某系统',
         id: 'login-module',
+        'title-style': '',
         'body-style': '',
         'main-style': '',
         'item-style': '',
@@ -490,6 +491,7 @@ export default class LogInModule extends HTMLElement {
         return [
             'my-title',
             'id',
+            'title-style',
             'body-style',
             'main-style',
             'item-style',
@@ -528,6 +530,7 @@ export default class LogInModule extends HTMLElement {
                     <xy-form-item style="${config['item-style']}" class="item">
                         <xy-input errortips="请输入用户名" id="user" icon="user" color="#999" required name="${user}" placeholder="请输入用户名"></xy-input>
                     </xy-form-item style="${config['item-style']}">
+                    <slot name="username-helper"></slot>
                     <xy-form-item style="${config['item-style']}" class="item">
                         <xy-input autocomplete="new-password" password-text="${passwordText}" id="password" icon="lock" publickey="${publickey}" name="${password}"
                             required type="password" errortips="请输入密码" placeholder="请输入密码">
@@ -624,9 +627,10 @@ export default class LogInModule extends HTMLElement {
 			</style>
 			<div class="login-module ${config[`main-style`] ? '' : 'login-module-bg'}" id="login-module" style="${config[`main-style`]}">
 				<div class="login-module-body" style="${config['body-style']}">
-                    <div class="login-title" >
+                    <div class="login-title" style="${config['title-style']}">
                         <span id="title">${title}</span>
                     </div>
+                    <slot name="tabs"></slot>
                     <div class="login-form">
                         ${this.getFormByType(loginType)} 
                     </div>

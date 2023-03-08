@@ -177,6 +177,7 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
             captchaSrc={captcha?.image}
             id="RcLoginModule-form"
         >
+            {props.children}
         </RcLoginModule>
     )
 };

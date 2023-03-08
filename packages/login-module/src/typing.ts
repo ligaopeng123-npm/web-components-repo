@@ -13,8 +13,10 @@ export type LoginType = 'phone' | 'account';
 
 export interface LoginModuleProps {
     'my-title'?: string, // 标题
+    children?: any;
     id?: string, // 标识 可不传
     'main-style'?: string, // 主样式 用于更改背景图等
+    'title-style'?: string, // title样式
     'body-style'?: string, // form表单样式
     'item-style'?: string, // form表单每个item的样式
     method?: string, // 请求方式

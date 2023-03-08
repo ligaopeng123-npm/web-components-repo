@@ -9,6 +9,7 @@
 | title      | 项目上面的项目名称                                      | string | 某某系统     |
 | id         | 拼接本地数据存储的key值                                 | string | login-module |
 | main-style | 登录页样式，可替换背景图                           | string | ''           |
+| title-style | title的样式 | string | '' |
 | body-style      | form表单的样式                                     | string | ''           |
 | item-style | form表单每一项的样式 | string | '' |
 | method     | 请求类型 GET POST                                       | string | POST         |
@@ -25,6 +26,9 @@
 | agreement-proprietary | 用户协议的主题<br />（主要体现的解释权）例如：干饭人集团<br />用户协议中，会将title和“干饭人集团”进行拼接 | string | '' |
 | forgot-password-url | 是否支持忘记密码功能，如果传递url 插件处理密码找回逻辑<br />否则使用事件监听处理 | url \| boolean | ‘’ |
 | phone-login-url | 手机号登录，如果传递url 则插件会处理验证码请求，<br />如果不传则使用监听函数处理 | url \| boolean | ‘’ |
+| slot |  |  |  |
+| tabs | 表单上方title下方区域位置 |  |  |
+| username-helper | 表单用户名输入区域位置 |  |  |
 
 ## 事件配置 
 

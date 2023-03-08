@@ -24,7 +24,9 @@ import {obj2css} from "@gaopeng123/utils";
 
 export type RcLoginModuleProps = {
     id?: string, // 标识 可不传
+    children?: React.ReactNode;
     title?: string, // 标题
+    titleStyle?: any, // 主样式 用于更改背景图等
     mainStyle?: any, // 主样式 用于更改背景图等
     bodyStyle?: any, // form表单样式
     itemStyle?: any, // form表单每个item的样式
@@ -121,7 +123,9 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             agreement-proprietary={agreementProprietary}
             phone-login-url={phoneLoginUrl}
             forgot-password-url={forgotPasswordUrl}
-        />
+        >
+            {props.children}
+        </login-module>
     )
 };
 
