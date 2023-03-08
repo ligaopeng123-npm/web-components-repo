@@ -1,5 +1,5 @@
 {
-  "name": "scroll-nav",
+  "name": "@gaopeng123/scroll-nav",
   "version": "0.9.3",
   "description": "滚动 吸顶 导航",
   "keywords": [
@@ -68,5 +68,5 @@
   "dependencies": {
     "@gaopeng123/utils": "^1.1.1"
   },
-  "gitHead": "c2ea6c57fefcf844b7fcbc20d9fce62df311b90a"
+  "gitHead": "57aa3f0210be90f45d1df5ed18e1be3d8819e525"
 }
