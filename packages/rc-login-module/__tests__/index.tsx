@@ -39,7 +39,14 @@ const App = () => {
                 bodyStyle={{right: '200px;'}}
                 keeplogged={true}
                 title="食堂管理系统"
-            />
+            >
+                <div slot="tabs">
+                    tabs1
+                </div>
+                <div slot="username-helper">
+                    username-helper2
+                </div>
+            </RcLoginModule>
         </div>
     );
 };
