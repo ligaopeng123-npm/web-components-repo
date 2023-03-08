@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/feishu-share-sdk",
-  "version": "1.0.2-alpha.2",
+  "version": "1.0.2-alpha.3",
   "description": "飞书 H5分享",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -73,5 +73,5 @@
     "@gaopeng123/utils": "^0.6.0",
     "sha1": "^1.1.1"
   },
-  "gitHead": "0c6da9bc9318d8eb01e7678b23d3109fa818998b"
+  "gitHead": "dc0f112cdbe0914a1fcf39a36ebd4263db4786c3"
 }
