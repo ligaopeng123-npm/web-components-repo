@@ -4,7 +4,7 @@ import { RcPaginatedList } from "../src";
 
 
 const App = () => {
-    const request = (params: any, abortController)=> {
+    const request = (params: any, abortController: AbortController)=> {
         // @ts-ignore
         return new Promise<any>((resolve, reject)=> {
             setTimeout(() => {
@@ -25,7 +25,7 @@ const App = () => {
             <RcPaginatedList
                 primaryColor={'#1a3217'}
                 request={request}
-                render={(record, style)=> {
+                render={(record: any, style: React.CSSProperties)=> {
                     return <div style={style}>{record.name}</div>
                 }}
             />
