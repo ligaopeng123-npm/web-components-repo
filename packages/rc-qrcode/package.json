@@ -1,7 +1,7 @@
 {
   "name": "@gaopeng123/rc-qrcode",
   "version": "1.0.2-alpha.2",
-  "description": "二维码下载",
+  "description": "二维码",
   "keywords": [
     "qrcode"
   ],
@@ -68,11 +68,10 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
   },
-  "bugs": {
-    "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
-  },
   "dependencies": {
     "qrcode": "^1.5.1"
   },
-  "gitHead": "0c6da9bc9318d8eb01e7678b23d3109fa818998b"
+  "bugs": {
+    "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
+  }
 }
