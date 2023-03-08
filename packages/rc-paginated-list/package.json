@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/rc-paginated-list",
-  "version": "1.0.2-alpha.4",
+  "version": "1.0.2-alpha.5",
   "description": "分页加载列表",
   "keywords": [
     "h5",
@@ -76,5 +76,6 @@
   },
   "bugs": {
     "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
-  }
+  },
+  "gitHead": "98a3734f015a8207f0df011b41f82e1271dab1ba"
 }
