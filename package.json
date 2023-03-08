@@ -16,7 +16,7 @@
         "push": "lerna exec -- pnpm run publish"
     },
     "devDependencies": {
-        "lerna": "^6.1.0"
+        "lerna": "^6.4.0"
     },
     "pnpm": {
         "overrides": {
