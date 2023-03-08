@@ -30,7 +30,7 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "pnpm run build && npm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
