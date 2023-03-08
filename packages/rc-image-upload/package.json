@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-image-upload",
-    "version": "1.0.2-alpha.5",
+    "version": "1.0.2-alpha.6",
     "description": "图片上传",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -79,7 +79,7 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^1.0.2-alpha.5"
+        "@gaopeng123/image-upload": "^1.0.2-alpha.6"
     },
     "gitHead": "98a3734f015a8207f0df011b41f82e1271dab1ba"
 }
