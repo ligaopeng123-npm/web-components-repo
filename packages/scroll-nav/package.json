@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/scroll-nav",
-    "version": "1.0.2-alpha.7",
+    "version": "1.0.2-alpha.8",
     "description": "吸顶 tabs",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
