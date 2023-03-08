@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/message",
-    "version": "1.0.2-alpha.3",
+    "version": "1.0.2-alpha.4",
     "description": "message",
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
@@ -79,5 +79,5 @@
         "typescript": "^4.3.5",
         "webpack-merge": "^5.8.0"
     },
-    "gitHead": "dc0f112cdbe0914a1fcf39a36ebd4263db4786c3"
+    "gitHead": "0ea0e3f474d320732d515c48b91e71f0382067f5"
 }

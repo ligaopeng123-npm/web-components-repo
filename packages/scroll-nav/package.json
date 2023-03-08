@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/scroll-nav",
-  "version": "1.0.2-alpha.3",
+  "version": "1.0.2-alpha.4",
   "description": "滚动 吸顶 导航",
   "keywords": [
     "scroll",
@@ -67,5 +67,6 @@
   },
   "bugs": {
     "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
-  }
+  },
+  "gitHead": "0ea0e3f474d320732d515c48b91e71f0382067f5"
 }

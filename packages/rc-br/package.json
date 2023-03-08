@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-br",
-    "version": "1.0.2-alpha.3",
+    "version": "1.0.2-alpha.4",
     "description": "换行展示",
     "keywords": [
         "react",
@@ -74,5 +74,5 @@
     "bugs": {
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
-    "gitHead": "dc0f112cdbe0914a1fcf39a36ebd4263db4786c3"
+    "gitHead": "0ea0e3f474d320732d515c48b91e71f0382067f5"
 }

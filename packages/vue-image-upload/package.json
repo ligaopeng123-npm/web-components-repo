@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/vue-image-upload",
-    "version": "1.0.2-alpha.3",
+    "version": "1.0.2-alpha.4",
     "description": "图片上传",
     "keywords": [
         "vue",
@@ -47,7 +47,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^1.0.2-alpha.3"
+        "@gaopeng123/image-upload": "^1.0.2-alpha.4"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",
@@ -88,5 +88,5 @@
     "engines": {
         "node": ">=12"
     },
-    "gitHead": "dc0f112cdbe0914a1fcf39a36ebd4263db4786c3"
+    "gitHead": "0ea0e3f474d320732d515c48b91e71f0382067f5"
 }
