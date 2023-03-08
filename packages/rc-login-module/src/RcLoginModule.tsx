@@ -9,9 +9,9 @@
  * @date: 2022/2/8 12:17
  *
  **********************************************************************/
+import "@gaopeng123/login-module";
 import * as React from 'react';
 import {useEffect} from 'react';
-import "@gaopeng123/login-module";
 import type {
     LoginModuleProps,
     AfterSubmit,
@@ -64,7 +64,7 @@ declare global {
 
 const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
     const {
-        id, title, mainStyle, bodyStyle, itemStyle,
+        id, title, mainStyle, titleStyle, bodyStyle, itemStyle,
         method, url, user, password, publicKey,
         captcha, captchaSrc, captchaUrl, captchaMethod,
         keeplogged, agreementProprietary,
@@ -108,6 +108,7 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
             id={_id}
             my-title={title}
             main-style={obj2css(mainStyle || {})}
+            title-style={obj2css(titleStyle || {})}
             body-style={obj2css(bodyStyle || {})}
             item-style={obj2css(itemStyle || {})}
             method={method}
