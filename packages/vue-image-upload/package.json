@@ -31,8 +31,7 @@
         "build:es": "set NODE_ENV=production rollup --config rollup.config.js --format es",
         "build:unpkg": "set NODE_ENV=production rollup --config rollup.config.js --format iife",
         "postbuild": "rimraf ./dist/types/dev ./dist/src/entry.d.ts",
-        "push": "pnpm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "test": "echo \"Error: run tests from root\" && exit 1"
     },
     "directories": {
@@ -88,5 +87,5 @@
     "engines": {
         "node": ">=12"
     },
-    "gitHead": "fcdb65966d81bca48e5f86d5e98ad7d56fb51f64"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

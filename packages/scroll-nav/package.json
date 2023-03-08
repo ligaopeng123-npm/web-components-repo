@@ -31,7 +31,6 @@
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
         "push": "pnpm run build && pnpm publish --access public",
-        "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -84,5 +83,5 @@
         "@mui/material": "^5.10.10",
         "material-ui-popup-state": "^4.1.0"
     },
-    "gitHead": "aef76359bb3de81586529ccef7474767fc03b41e"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

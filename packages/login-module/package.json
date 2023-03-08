@@ -29,7 +29,6 @@
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
         "push": "pnpm run build && pnpm publish --access public",
-        "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: run tests from root\" && exit 1"
     },
@@ -70,5 +69,5 @@
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.8.0"
     },
-    "gitHead": "fcdb65966d81bca48e5f86d5e98ad7d56fb51f64"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

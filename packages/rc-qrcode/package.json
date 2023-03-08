@@ -30,7 +30,6 @@
     "build": "tsdx build",
     "build:dev": "set NODE_ENV=development&&webpack build",
     "push": "pnpm run build && pnpm publish --access public",
-    "publish": "pnpm publish --access public",
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -74,5 +73,5 @@
   "bugs": {
     "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
   },
-  "gitHead": "fcdb65966d81bca48e5f86d5e98ad7d56fb51f64"
+  "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }
