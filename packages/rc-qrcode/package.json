@@ -8,12 +8,6 @@
   "author": "ligaopeng123 <1170234932@qq.com>",
   "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "directories": {
     "lib": "src",
     "test": "__tests__"
@@ -24,6 +18,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ligaopeng123-npm/web-components-repo.git"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "start": "set NODE_ENV=development&&webpack serve",
