@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-login-module",
-    "version": "0.9.15",
+    "version": "1.0.2-alpha.10",
     "description": "登录模块",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -30,8 +30,7 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "pnpm run build && npm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -75,8 +74,8 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@gaopeng123/login-module": "^0.9.15",
+        "@gaopeng123/login-module": "^1.0.2-alpha.10",
         "@gaopeng123/utils": "^0.6.0"
     },
-    "gitHead": "a887868d48ad7a70f48496815e05d4ece6dc9793"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

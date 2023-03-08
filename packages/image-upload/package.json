@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/image-upload",
-    "version": "0.9.15",
+    "version": "1.0.2-alpha.10",
     "description": "图片上传",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -32,8 +32,7 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "pnpm run build && npm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -69,10 +68,10 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "@gaopeng123/message": "^0.9.15",
+        "@gaopeng123/message": "^1.0.2-alpha.10",
         "@gaopeng123/utils.file": "latest",
         "@gaopeng123/utils.object": "latest",
         "@gaopeng123/utils.types": "latest"
     },
-    "gitHead": "a887868d48ad7a70f48496815e05d4ece6dc9793"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

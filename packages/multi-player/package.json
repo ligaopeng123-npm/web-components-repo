@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/multi-player",
-    "version": "0.9.15",
+    "version": "1.0.2-alpha.10",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -13,7 +13,7 @@
         "WebCompontent",
         "player"
     ],
-    "author": "ligaopeng123 <1170234932@qq.com>",
+    "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
     "license": "MIT",
     "directories": {
@@ -31,8 +31,7 @@
         "start": "set NODE_ENV=development&&webpack serve",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
-        "push": "pnpm run build && npm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -69,10 +68,10 @@
     "dependencies": {
         "@ffmpeg/core": "^0.10.0",
         "@ffmpeg/ffmpeg": "^0.10.1",
-        "@gaopeng123/message": "^0.9.15",
+        "@gaopeng123/message": "^1.0.2-alpha.10",
         "@gaopeng123/utils.function": "latest",
         "@gaopeng123/utils.string": "latest",
         "mpegts.js": "^1.7.0"
     },
-    "gitHead": "a887868d48ad7a70f48496815e05d4ece6dc9793"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

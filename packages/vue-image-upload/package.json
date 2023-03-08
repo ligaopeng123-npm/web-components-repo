@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/vue-image-upload",
-    "version": "0.9.15",
+    "version": "1.0.2-alpha.10",
     "description": "图片上传",
     "keywords": [
         "vue",
@@ -31,8 +31,7 @@
         "build:es": "set NODE_ENV=production rollup --config rollup.config.js --format es",
         "build:unpkg": "set NODE_ENV=production rollup --config rollup.config.js --format iife",
         "postbuild": "rimraf ./dist/types/dev ./dist/src/entry.d.ts",
-        "push": "pnpm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "test": "echo \"Error: run tests from root\" && exit 1"
     },
     "directories": {
@@ -47,7 +46,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^0.9.15"
+        "@gaopeng123/image-upload": "^1.0.2-alpha.10"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",
@@ -88,5 +87,5 @@
     "engines": {
         "node": ">=12"
     },
-    "gitHead": "a887868d48ad7a70f48496815e05d4ece6dc9793"
+    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
 }

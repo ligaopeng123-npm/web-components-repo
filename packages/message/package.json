@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/message",
-    "version": "0.9.15",
+    "version": "1.0.2-alpha.10",
     "description": "message",
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
@@ -32,8 +32,7 @@
         "start": "tsdx watch",
         "build": "tsdx build",
         "test": "tsdx test",
-        "push": "pnpm publish --access public",
-        "publish": "pnpm publish --access public",
+        "push": "pnpm run build && pnpm publish --access public",
         "lint": "tsdx lint",
         "prepare": "tsdx build",
         "size": "size-limit",
@@ -79,5 +78,5 @@
         "typescript": "^4.3.5",
         "webpack-merge": "^5.8.0"
     },
-    "gitHead": "a887868d48ad7a70f48496815e05d4ece6dc9793"
+    "gitHead": "fcdb65966d81bca48e5f86d5e98ad7d56fb51f64"
 }
