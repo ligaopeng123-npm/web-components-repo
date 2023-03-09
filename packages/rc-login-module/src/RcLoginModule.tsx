@@ -26,10 +26,10 @@ export type RcLoginModuleProps = {
     id?: string, // 标识 可不传
     children?: React.ReactNode;
     title?: string, // 标题
-    titleStyle?: any, // 主样式 用于更改背景图等
-    mainStyle?: any, // 主样式 用于更改背景图等
-    bodyStyle?: any, // form表单样式
-    itemStyle?: any, // form表单每个item的样式
+    titleStyle?: React.CSSProperties, // 主样式 用于更改title样式
+    mainStyle?: React.CSSProperties, // 主样式 用于更改背景图等
+    bodyStyle?: React.CSSProperties, // form表单样式
+    itemStyle?: React.CSSProperties, // form表单每个item的样式
     method?: string, // 请求方式
     url?: string, // 请求地址
     user?: string, // 用户字段key
