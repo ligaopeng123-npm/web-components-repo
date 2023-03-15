@@ -16,6 +16,10 @@
         "push": "lerna exec -- pnpm run publish"
     },
     "devDependencies": {
+        "commitizen": "^4.3.0",
+        "conventional-changelog-cli": "^2.2.2",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^8.0.3",
         "lerna": "6.4.0"
     },
     "pnpm": {
@@ -25,5 +29,16 @@
     },
     "workspaces": [
         "packages/*"
-    ]
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsdx lint",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
 }
