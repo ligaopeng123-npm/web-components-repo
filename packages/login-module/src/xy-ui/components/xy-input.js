@@ -429,6 +429,11 @@ export default class XyInput extends HTMLElement {
 		this.inputCon.show = false;
 		this.invalid = false;
 	}
+
+	setShow(show) {
+		this.inputCon.show = show;
+		this.invalid = show;
+	}
 	
 	get customValidity() {
 		return this.$customValidity || {

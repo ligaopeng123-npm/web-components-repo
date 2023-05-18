@@ -20,14 +20,22 @@ import "./PhoneLogin";
 import "./PhoneLoginLink";
 import { removeUrlParams } from '@gaopeng123/utils.file';
 import { isTrue } from "../utils";
-import { LoginType, SendSMSVerificationCodeProps } from "../typing";
+import {
+    LoginType,
+    SendSMSVerificationCodeProps
+} from "../typing";
+import {
+    afterSubmit,
+    getFormByType,
+    submit
+} from "../xy-ui/utils/formHelper";
 
 export default class LogInModule extends HTMLElement {
     shadow: any = null;
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({ mode: 'closed' });
+        this.shadow = this.attachShadow({mode: 'closed'});
     }
 
     /**
@@ -94,7 +102,15 @@ export default class LogInModule extends HTMLElement {
 
     create = () => {
         const config = this.getConfig();
-        const { url, user, password, method, publickey, captcha, captchasrc } = config;
+        const {
+            url,
+            user,
+            password,
+            method,
+            publickey,
+            captcha,
+            captchasrc
+        } = config;
         const title = this.title;
         /**
          * 项目title赋值
@@ -104,52 +120,55 @@ export default class LogInModule extends HTMLElement {
             this.agreementProprietary?.setAttribute('my-title', title);
         });
 
-        /**
-         * 服务端请求
-         */
-        this.checkChange(this.form.getAttribute('action'), url, () => {
-            this.form.setAttribute('action', url);
-        });
-        /**
-         * 请求类型
-         */
-        this.checkChange(this.form.getAttribute('method'), method, () => {
-            this.form.setAttribute('method', method);
-        });
+        if (this.form) {
+            /**
+             * 服务端请求
+             */
+            this.checkChange(this.form.getAttribute('action'), url, () => {
+                this.form.setAttribute('action', url);
+            });
 
-        /**
-         * 用户绑定
-         */
-        this.checkChange(this.shadow.querySelector(`#user`)?.getAttribute('name'), user, () => {
-            this.shadow.querySelector(`#user`)?.setAttribute('name', user);
-        });
+            /**
+             * 请求类型
+             */
+            this.checkChange(this.form.getAttribute('method'), method, () => {
+                this.form.setAttribute('method', method);
+            });
 
-        /**
-         * 密码绑定
-         */
-        this.checkChange(this.shadow.querySelector(`#password`)?.getAttribute('name'), password, () => {
-            this.shadow.querySelector(`#password`)?.setAttribute('name', password);
-        });
+            /**
+             * 用户绑定
+             */
+            this.checkChange(this.shadow.querySelector(`#user`)?.getAttribute('name'), user, () => {
+                this.shadow.querySelector(`#user`)?.setAttribute('name', user);
+            });
 
-        /**
-         * 密码加密绑定
-         */
-        this.checkChange(this.shadow.querySelector(`#password`)?.getAttribute('publickey'), publickey, () => {
-            this.shadow.querySelector(`#password`)?.setAttribute('publickey', publickey);
-        });
+            /**
+             * 密码绑定
+             */
+            this.checkChange(this.shadow.querySelector(`#password`)?.getAttribute('name'), password, () => {
+                this.shadow.querySelector(`#password`)?.setAttribute('name', password);
+            });
 
-        /**
-         * 验证码绑定
-         */
-        captcha && this.checkChange(this.captchaShadow?.getAttribute('name'), captcha, () => {
-            this.captchaShadow?.setAttribute('name', captcha);
-        });
-        /**
-         * 设置验证码地址
-         */
-        captcha && captchasrc && this.checkChange(this.captchaImg?.getAttribute('src'), captchasrc, () => {
-            this.captchaImg?.setAttribute('src', captchasrc);
-        });
+            /**
+             * 密码加密绑定
+             */
+            this.checkChange(this.shadow.querySelector(`#password`)?.getAttribute('publickey'), publickey, () => {
+                this.shadow.querySelector(`#password`)?.setAttribute('publickey', publickey);
+            });
+
+            /**
+             * 验证码绑定
+             */
+            captcha && this.checkChange(this.captchaShadow?.getAttribute('name'), captcha, () => {
+                this.captchaShadow?.setAttribute('name', captcha);
+            });
+            /**
+             * 设置验证码地址
+             */
+            captcha && captchasrc && this.checkChange(this.captchaImg?.getAttribute('src'), captchasrc, () => {
+                this.captchaImg?.setAttribute('src', captchasrc);
+            });
+        }
     };
     /**
      * 新老数据比对后再赋值
@@ -182,6 +201,7 @@ export default class LogInModule extends HTMLElement {
         'agreement-proprietary': '', // 用户协议
         'forgot-password-url': '', // 忘记密码
         'phone-login-url': '', // 手机号登录
+        'browser-remembers-password': false, // 手机号登录
     };
     __config: any = {};
     getConfig = (): any => {
@@ -204,9 +224,12 @@ export default class LogInModule extends HTMLElement {
         // 如果是记住密码
         if (this.keeplogged) {
             const storageValue = this.getLocalStorageValue();
-            const { keepLogged } = storageValue;
+            const {keepLogged} = storageValue;
             if (keepLogged) {
-                const { user, password } = this.getConfig();
+                const {
+                    user,
+                    password
+                } = this.getConfig();
                 const userValue = storageValue[user];
                 const passwordValue = storageValue[password];
                 this.shadow.querySelector('#user').value = userValue;
@@ -249,11 +272,14 @@ export default class LogInModule extends HTMLElement {
     }
 
     addLoginEvent = () => {
-        this.shadow.querySelector(`#bth-login`).addEventListener('click', this.onSubmit);
+        this.shadow.querySelector(`#bth-login`)?.addEventListener('click', this.onSubmit);
         this.shadow.querySelector('verification-code')?.addEventListener('captchaClick', this.onCaptchaClick);
-        this.form.addEventListener('submit', this.watchSubmit);
-        this.form.addEventListener('submitError', this.submitError);
-        this.form.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
+        if (this.form) {
+            this.form.addEventListener('submit', this.watchSubmit);
+            this.form.addEventListener('submitError', this.submitError);
+            this.form.addEventListener('sendSMSVerificationCode', this.sendSMSVerificationCode);
+            this.initRememberPasswordForm();
+        }
     }
 
     onkeydown = (event: any) => {
@@ -360,8 +386,11 @@ export default class LogInModule extends HTMLElement {
      * 改变登录方式
      * @param ev
      */
+    loginType: LoginType = 'account';
+
     linkChange = (ev?: any) => {
         this.shadow.querySelector('.login-form').innerHTML = this.getFormByType(ev?.detail?.type);
+        this.loginType = ev?.detail?.type;
         setTimeout(() => {
             this.addLoginEvent();
             /**
@@ -401,6 +430,42 @@ export default class LogInModule extends HTMLElement {
     /**
      * 提交回调 给外部提供的接口
      */
+    getFormdata(jsondata: any) {
+        const formdata: any = new FormData();
+        for (const formdataKey in jsondata) {
+            formdata.set(formdataKey, jsondata[formdataKey]);
+        }
+        formdata.json = jsondata;
+        return formdata;
+    }
+
+
+    checkValidity = () => {
+        if (this.canRemember) {
+            const items = this.form.querySelectorAll('.form-item');
+            let invalid = true;
+            const json: any = {};
+            for (let i = 0; i < items.length; i++) {
+                const formItem = items[i];
+                const input = formItem.querySelector('input');
+                const value = (input?.value || formItem.value)?.trim();
+                if (!value) {
+                    formItem.setAttribute('type', "error");
+                    formItem.setAttribute('show', 'show');
+                    invalid = false
+                } else {
+                    json[formItem.getAttribute('name') || input.getAttribute('name')] = value;
+                }
+            }
+            if (invalid) {
+                this.form.formdata = this.getFormdata(json);
+                submit(this.form);
+            }
+            return invalid;
+        } else {
+            return this.form?.checkValidity();
+        }
+    }
     currentSubmitTimmer: any = null;
     onSubmit = () => {
         if (this.currentSubmitTimmer) {
@@ -410,7 +475,10 @@ export default class LogInModule extends HTMLElement {
             }
         }
         this.currentSubmitTimmer = Date.now();
-        if (this.form?.checkValidity()) {
+        /**
+         * 检验数据
+         */
+        if (this.checkValidity()) {
             /**
              * 如果是记住密码状态 则将密码缓存起来
              */
@@ -429,8 +497,8 @@ export default class LogInModule extends HTMLElement {
              */
             this.dispatchEvent(new CustomEvent('submit', {
                 detail: this.getDetail({
-                    data: Object.assign(this.form.formdata?.json),
-                    loginType: this.shadow.querySelector('phone-login-link').loginType
+                    data: Object.assign({}, this.form.formdata?.json),
+                    loginType: this.shadow.querySelector('phone-login-link')?.loginType
                 })
             }));
         }
@@ -452,9 +520,16 @@ export default class LogInModule extends HTMLElement {
      * @param data
      */
     watchSubmit = (res: any) => {
-        const { data, token } = res?.detail;
+        const {
+            data,
+            token
+        } = res?.detail;
         this.dispatchEvent(new CustomEvent('afterSubmit', {
-            detail: this.getDetail({ data: this.form.formdata?.json, token, response: data })
+            detail: this.getDetail({
+                data: this.form.formdata?.json,
+                token,
+                response: data
+            })
         }));
     };
 
@@ -509,45 +584,66 @@ export default class LogInModule extends HTMLElement {
             'agreement-proprietary',
             'forgot-password-url',
             'phone-login-url',
+            'browser-remembers-password',
         ];
     }
 
+    /**
+     * 初始化记住密码表单
+     */
+    initRememberPasswordForm = () => {
+        const passwordInput = this.shadow.querySelector('#password');
+        if (passwordInput) {
+            const btnPass = this.shadow.getElementById('btn-pass');
+            btnPass.addEventListener('click', () => {
+                const showPassword = passwordInput.getAttribute('type') === 'password';
+                if (showPassword) {
+                    passwordInput.setAttribute('type', 'text');
+                    btnPass.setAttribute('icon', 'eye');
+                } else {
+                    passwordInput.setAttribute('type', 'password');
+                    btnPass.setAttribute('icon', 'eye-close');
+                }
+                passwordInput.focus();
+            });
+            const config = this.getConfig();
+            const {
+                url,
+                method
+            } = config;
+            this.form.action = url;
+            this.form.method = method;
+            this.form.afterSubmit = (data: any) => {
+                afterSubmit(this.form, data)
+            }
+            // const inputUser = this.form.querySelector('#user');
+            // inputUser.addEventListener('input', ()=> {
+            //     const item = this.form.querySelector('.form-item-user')
+            //     const value = inputUser?.value?.trim();
+            //     if (!value) {
+            //         item.setAttribute('type', "error");
+            //         item.setAttribute('show', 'show');
+            //     } else {
+            //         item.setAttribute('type', "success");
+            //         item.setAttribute('show', false);
+            //     }
+            // });
+        }
+    }
+
+    /**
+     * 是否允许浏览器记住密码
+     */
+    get canRemember() {
+        return isTrue(this.getConfig()['browser-remembers-password']) && this.loginType === 'account'
+    }
+
+    /**
+     * 获取表单类型
+     * @param loginType
+     */
     getFormByType = (loginType: LoginType) => {
-        const config = this.getConfig();
-        const { url, user, password, method, publickey, captcha } = config;
-        /**
-         * 明文 密文显示
-         */
-        const passwordText = config['password-text'];
-        return loginType === 'phone'
-            ? `<phone-login id="${this.formId}">
-                    <xy-form-item style="display: block;margin: 16px 16px;${config['item-style']}" class="item">
-                        <xy-button id="bth-login" type="primary" htmltype="submit">登录</xy-button>
-                    </xy-form-item>
-                </phone-login>`
-            : `
-                <xy-form autocomplete="on" id="${this.formId}" action="${url}" method="${method}" form-style="display:block;">
-                    <xy-form-item style="${config['item-style']}" class="item">
-                        <xy-input errortips="请输入用户名" id="user" icon="user" color="#999" required name="${user}" placeholder="请输入用户名"></xy-input>
-                    </xy-form-item style="${config['item-style']}">
-                    <slot name="username-helper"></slot>
-                    <xy-form-item style="${config['item-style']}" class="item">
-                        <xy-input autocomplete="new-password" password-text="${passwordText}" id="password" icon="lock" publickey="${publickey}" name="${password}"
-                            required type="password" errortips="请输入密码" placeholder="请输入密码">
-                        </xy-input>
-                    </xy-form-item>
-                     <!--验证码功能-->
-                    <verification-code required ${captcha ? 'name="${captcha}"' : ''}  style="${config['item-style']}" class="item" item-style="${config['item-style']}"
-                        captcha="${captcha}" captchasrc="${config.captchasrc || ''}" captchaurl="${config.captchaurl || ''}"
-                        captchamethod="${config.captchamethod}"></verification-code>
-                    <!--记住我-->
-                    <keep-logged keeplogged="${config.keeplogged}" style="${config['item-style']}" class="item" item-style="${config['item-style']}"></keep-logged>
-                    <!--登录按钮-->
-                    <xy-form-item style="${config['item-style']}" class="item">
-                        <xy-button id="bth-login" type="primary" htmltype="submit">登录</xy-button>
-                    </xy-form-item>
-                </xy-form>
-            `
+        return getFormByType(loginType, this);
     }
     /**
      * 模板获取
@@ -591,6 +687,11 @@ export default class LogInModule extends HTMLElement {
     				color: #999;
     				padding: 0px;
 				}
+				.item {
+					margin: 16px 0px;
+					display: block;
+					width: 100%;
+				}
 				.login-module-body > .item,
 				.phone-login > .item,
 				 xy-form > .item {
@@ -624,6 +725,58 @@ export default class LogInModule extends HTMLElement {
 				.login-helper-item:last-child {
 				    margin-left: auto;
 				}
+				
+				.remember-form-item {
+				    height: 32px;
+                    width: 100%;
+                    min-width: 300px;
+                    display: flex;
+                    height: 32px;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 4px;
+                    border: 1px solid var(--borderColor,rgba(0,0,0,.2));
+                    background-color: #ffffff;
+				}
+				
+				.remember-form-item:hover {
+                    border: 1px solid var(--themeColor,#42b983);
+                }
+				
+				.remember-form-item-input {
+				    height: 28px;
+                    width: calc(100% - 32px);
+                    outline: none;
+                    color: #000000;
+                    background-color: #ffffff;
+                    border: 0px solid var(--borderColor,rgba(0,0,0,.2));
+                }
+                
+                .remember-form-item-icon-pre {
+                    display:flex;
+                    margin-right:0.25em;
+                    color:#999;
+                }
+                
+                .remember-form-item-password {
+                    width: calc(100% - 64px);
+                }
+                
+                .remember-form-item-input::placeholder {
+                    color: #999;
+                }
+                
+                xy-tips[type=error] {
+                    border: 1px solid var(--errorColor,#f4615c) !important;
+                }
+                
+                xy-tips[type=error] xy-icon{
+                    color:var(--errorColor,#f4615c);
+                }
+                
+                #btn-pass {
+                    width: 32px;
+                }
 			</style>
 			<div class="login-module ${config[`main-style`] ? '' : 'login-module-bg'}" id="login-module" style="${config[`main-style`]}">
 				<div class="login-module-body" style="${config['body-style']}">

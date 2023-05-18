@@ -19,6 +19,7 @@ const App = () => {
                 captchaSrc={captchaSrc}
                 onSubmit={(e) => {
                     console.log(e);
+                    location.href = 'http://localhost:5002/'
                 }}
                 onAfterSubmit={(e) => {
                     console.log(e);
@@ -37,8 +38,9 @@ const App = () => {
                 url="/assets/login.json"
                 mainStyle={{backgroundImage: 'url(./assets/background.jpg)'}}
                 bodyStyle={{right: '200px;'}}
-                keeplogged={true}
+                keeplogged={false}
                 title="食堂管理系统"
+                browserRemembersPassword={true}
             >
                 <div slot="tabs">
                     tabs1

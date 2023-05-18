@@ -9,13 +9,20 @@
  * @date: 2022/4/26 13:56
  *
  **********************************************************************/
-import * as React from 'react';
-import {useEffect, useState} from "react";
-import JSEncrypt from "jsencrypt";
+import * as React
+    from 'react';
+import {
+    useEffect,
+    useState
+} from "react";
+import JSEncrypt
+    from "jsencrypt";
 import {
     RcLoginModule,
-    RcLoginModuleProps, ResetPasswordSubmitDetail,
-    ResetPasswordSubmitProps, SendSMSVerificationCodeDetail,
+    RcLoginModuleProps,
+    ResetPasswordSubmitDetail,
+    ResetPasswordSubmitProps,
+    SendSMSVerificationCodeDetail,
     SendSMSVerificationCodeProps,
 } from "@gaopeng123/rc-login-module";
 
@@ -37,23 +44,31 @@ export type RCLoginCaptchaProps = {
     image: string;
     imageId: string
 }
-export type RCLoginJSEncryptProps = {
-    encryptPublicKey: string;
-    agreementProprietary?: string;
-    clientId: string;
-    secret: string;
-    forgotPasswordUrl?: boolean | string;
-    phoneLoginUrl?: boolean | string;
-    getCaptcha?: () => Promise<RCLoginCaptchaProps>;
-    handleSubmit?: (handleSubmitProps: HandleSubmitProps) => Promise<any>;
-    onResetPasswordSubmit?: (data: ResetPasswordProps) => Promise<any>;
-    onSendSMSVerificationCode?: (data: SendSMSVerificationCodeDetail) => void;
-} & RcLoginModuleProps;
+export type RCLoginJSEncryptProps =
+    {
+        encryptPublicKey: string;
+        agreementProprietary?: string;
+        clientId: string;
+        secret: string;
+        forgotPasswordUrl?: boolean | string;
+        phoneLoginUrl?: boolean | string;
+        getCaptcha?: () => Promise<RCLoginCaptchaProps>;
+        handleSubmit?: (handleSubmitProps: HandleSubmitProps) => Promise<any>;
+        onResetPasswordSubmit?: (data: ResetPasswordProps) => Promise<any>;
+        onSendSMSVerificationCode?: (data: SendSMSVerificationCodeDetail) => void;
+    }
+    & RcLoginModuleProps;
 
 const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
     const {
-        encryptPublicKey, clientId, secret, getCaptcha, handleSubmit,
-        onResetPasswordSubmit, onSendSMSVerificationCode
+        encryptPublicKey,
+        clientId,
+        secret,
+        getCaptcha,
+        handleSubmit,
+        onResetPasswordSubmit,
+        onSendSMSVerificationCode,
+        browserRemembersPassword
     } = props;
 
     const [encryptor, setEncryptor] = useState<any>();
@@ -131,7 +146,10 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
      */
     useEffect(() => {
         if (params && captcha && encryptor) {
-            const {data, loginType} = params;
+            const {
+                data,
+                loginType
+            } = params;
             handleSubmit({
                 headers: {
                     clientId,
@@ -176,6 +194,7 @@ const RCLoginJSEncrypt: React.FC<RCLoginJSEncryptProps> = (props: any) => {
             captcha="inputCode"
             captchaSrc={captcha?.image}
             id="RcLoginModule-form"
+            browserRemembersPassword={browserRemembersPassword}
         >
             {props.children}
         </RcLoginModule>

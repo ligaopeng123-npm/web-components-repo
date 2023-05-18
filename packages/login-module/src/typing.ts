@@ -9,7 +9,9 @@
  * @版权所有: pgli
  *
  ********************************************************************* */
-export type LoginType = 'phone' | 'account';
+export type LoginType =
+    'phone'
+    | 'account';
 
 export interface LoginModuleProps {
     'my-title'?: string, // 标题
@@ -32,6 +34,7 @@ export interface LoginModuleProps {
     'agreement-proprietary'?: string, // 用户协议解释权
     'forgot-password-url'?: string | boolean, // 忘記密碼功能
     'phone-login-url'?: string | boolean, // 短信登录功能
+    'browser-remembers-password'?: boolean; // 浏览器是否可以记住密码
 }
 
 export type SubmitData = {
@@ -48,11 +51,13 @@ export type User = {
     [propName: string]: any,
 }
 
-export type AfterSubmitDetail = {
-    response: { status?: number, message?: string, result?: any, [propName: string]: any },
-    session: User,
-    token: string | null,
-} & SubmitData
+export type AfterSubmitDetail =
+    {
+        response: { status?: number, message?: string, result?: any, [propName: string]: any },
+        session: User,
+        token: string | null,
+    }
+    & SubmitData
 
 export type SubmitError = {
     detail: { error: Error } & SubmitData,

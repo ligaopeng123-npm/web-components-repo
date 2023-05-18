@@ -23,6 +23,7 @@
 | captchamethod | 验证码请求类型 | string | POST |
 | publickey | 加密公钥 | string | null |
 | keeplogged | 支持记住密码 | boolean | false |
+| browser-remembers-password | 是否允许浏览器记住密码 | boolean | false |
 | agreement-proprietary | 用户协议的主题<br />（主要体现的解释权）例如：干饭人集团<br />用户协议中，会将title和“干饭人集团”进行拼接 | string | '' |
 | forgot-password-url | 是否支持忘记密码功能，如果传递url 插件处理密码找回逻辑<br />否则使用事件监听处理 | url \| boolean | ‘’ |
 | phone-login-url | 手机号登录，如果传递url 则插件会处理验证码请求，<br />如果不传则使用监听函数处理 | url \| boolean | ‘’ |

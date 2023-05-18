@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>loginModule</title>
+    <title>
+        loginModule</title>
     <style>
         :root {
             --login-module-login-title-color: red;
@@ -11,10 +12,28 @@
             --login-module-login-title-fontFamily: PingFangSC-Semibold, PingFang SC;
             --login-module-agreement-proprietary-color: red;
         }
+
+        input {
+            width: 278px;
+            height: 18px;
+            margin-bottom: 10px;
+            outline: none;
+            padding: 10px;
+            font-size: 13px;
+            color: #fff;
+            text-shadow: 1px 1px 1px;
+            border-top: 1px solid #312E3D;
+            border-left: 1px solid #312E3D;
+            border-right: 1px solid #312E3D;
+            border-bottom: 1px solid #56536A;
+            border-radius: 4px;
+            background-color: #2D2D3F;
+        }
     </style>
 </head>
 <body style="margin: 0px;">
-<script type="module" src="../dist/login-module.esm.js"></script>
+<script type="module"
+        src="../dist/login-module.esm.js"></script>
 <login-module
         user="userId"
         password="password"
@@ -33,6 +52,7 @@
         captcha="captcha"
         captchaurl="/assets/img.png"
         captchamethod="GET"
+        browser-remembers-password="true"
 >
     <div slot="tabs">
         tabs
@@ -86,5 +106,19 @@
         console.log('sendSMSVerificationCode', data);
     });
 </script>
+<form onsubmit="javascript:void(0)" style="display: none">
+    <input type="text"
+           required="required"
+           placeholder="用户名"
+           name="u"></input>
+    <input type="password"
+           required="required"
+           placeholder="密码"
+           name="p"></input>
+    <button class="but"
+            type="submit">
+        登录
+    </button>
+</form>
 </body>
 </html>

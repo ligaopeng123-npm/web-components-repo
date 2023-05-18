@@ -10,6 +10,7 @@
  *
  ********************************************************************* */
 import {get, post} from "@gaopeng123/fetch";
+import { isTrue } from "../utils";
 
 class VerificationCode extends HTMLElement {
     shadow: any = null;
@@ -45,12 +46,16 @@ class VerificationCode extends HTMLElement {
             'captchaurl',
             'captchamethod',
             'item-style',
+            'show'
         ];
     }
 
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (oldValue !== newValue) {
             this.__config[name] = newValue;
+            if(name === 'show') {
+                this.captchaRef.setShow(newValue === 'show' ? 'show' : false)
+            }
         }
     }
 

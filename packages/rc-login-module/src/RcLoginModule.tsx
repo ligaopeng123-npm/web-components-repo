@@ -10,8 +10,9 @@
  *
  **********************************************************************/
 import "@gaopeng123/login-module";
-import * as React from 'react';
-import {useEffect} from 'react';
+import * as React
+    from 'react';
+import { useEffect } from 'react';
 import type {
     LoginModuleProps,
     AfterSubmit,
@@ -20,7 +21,7 @@ import type {
     ResetPasswordSubmitProps,
     SendSMSVerificationCodeProps,
 } from "@gaopeng123/login-module";
-import {obj2css} from "@gaopeng123/utils";
+import { obj2css } from "@gaopeng123/utils";
 
 export type RcLoginModuleProps = {
     id?: string, // 标识 可不传
@@ -40,6 +41,7 @@ export type RcLoginModuleProps = {
     captchaUrl?: string, // 验证码地址
     captchaMethod?: string, // 验证码请求类型
     keeplogged?: boolean, // 是否支持记住密码
+    browserRemembersPassword?: boolean, // 是否允许浏览器记住密码
     agreementProprietary?: string, // 用户协议解释权
     onSubmit?: (data: Submit) => void, // 提交按钮
     onAfterSubmit?: (data: AfterSubmit) => void, // 提交后回调
@@ -64,13 +66,32 @@ declare global {
 
 const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
     const {
-        id, title, mainStyle, titleStyle, bodyStyle, itemStyle,
-        method, url, user, password, publicKey,
-        captcha, captchaSrc, captchaUrl, captchaMethod,
-        keeplogged, agreementProprietary,
-        onSubmit, onAfterSubmit, onSubmitError, onCaptchaClick,
-        onResetPasswordSubmit, phoneLoginUrl, forgotPasswordUrl,
-        onSendSMSVerificationCode
+        id,
+        title,
+        mainStyle,
+        titleStyle,
+        bodyStyle,
+        itemStyle,
+        method,
+        url,
+        user,
+        password,
+        publicKey,
+        captcha,
+        captchaSrc,
+        captchaUrl,
+        captchaMethod,
+        keeplogged,
+        agreementProprietary,
+        onSubmit,
+        onAfterSubmit,
+        onSubmitError,
+        onCaptchaClick,
+        onResetPasswordSubmit,
+        phoneLoginUrl,
+        forgotPasswordUrl,
+        onSendSMSVerificationCode,
+        browserRemembersPassword
     } = props;
     const _id = id || 'rc-login-module';
     useEffect(() => {
@@ -104,29 +125,52 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
     }, []);
 
     return (
-        <login-module
-            id={_id}
-            my-title={title}
-            main-style={obj2css(mainStyle || {})}
-            title-style={obj2css(titleStyle || {})}
-            body-style={obj2css(bodyStyle || {})}
-            item-style={obj2css(itemStyle || {})}
-            method={method}
-            url={url}
-            user={user}
-            password={password}
-            publickey={publicKey}
-            captcha={captcha}
-            captchasrc={captchaSrc}
-            captchaurl={captchaUrl}
-            captchamethod={captchaMethod}
-            keeplogged={keeplogged}
-            agreement-proprietary={agreementProprietary}
-            phone-login-url={phoneLoginUrl}
-            forgot-password-url={forgotPasswordUrl}
-        >
-            {props.children}
-        </login-module>
+        <>
+            <login-module
+                id={_id}
+                my-title={title}
+                main-style={obj2css(mainStyle || {})}
+                title-style={obj2css(titleStyle || {})}
+                body-style={obj2css(bodyStyle || {})}
+                item-style={obj2css(itemStyle || {})}
+                method={method}
+                url={url}
+                user={user}
+                password={password}
+                publickey={publicKey}
+                captcha={captcha}
+                captchasrc={captchaSrc}
+                captchaurl={captchaUrl}
+                captchamethod={captchaMethod}
+                keeplogged={keeplogged}
+                agreement-proprietary={agreementProprietary}
+                phone-login-url={phoneLoginUrl}
+                forgot-password-url={forgotPasswordUrl}
+                browser-remembers-password={browserRemembersPassword}
+            >
+                {props.children}
+            </login-module>
+            {/*需要一个form表单触发密码的自动填充功能*/}
+            <form
+                onSubmit={()=> {}}
+                style={{display: 'none'}}>
+                <input
+                    type="text"
+                    required={true}
+                    placeholder="用户名"
+                    name="u"></input>
+                <input
+                    type="password"
+                    required={true}
+                    placeholder="密码"
+                    name="p"></input>
+                <button
+                    className="but"
+                    type="submit">
+                    登录
+                </button>
+            </form>
+        </>
     )
 };
 

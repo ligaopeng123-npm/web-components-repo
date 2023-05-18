@@ -1,4 +1,9 @@
 import {post, get} from '@gaopeng123/fetch';
+import {
+    afterSubmit,
+    catchError,
+    submit
+} from "../utils/formHelper";
 
 export default class XyForm extends HTMLElement {
 
@@ -68,62 +73,17 @@ export default class XyForm extends HTMLElement {
      * @param error
      */
     catchError = (error) => {
-        this.hideLaoding();
-        this.dispatchEvent(new CustomEvent('submitError', {
-            detail: {
-                // 解除引用关系 防止submitError时获取不到
-                data: JSON.parse(JSON.stringify(this.formdata.json)),
-                error: error
-            }
-        }));
+        catchError(_this, error);
     };
 
     afterSubmit = async (data) => {
-        // if(data.headers.get("content-type")=='application/json'){
-        // 无论对错 结果都要抛出来
-        // }
-        this.hideLaoding();
-        /**
-         * 请求返回数据
-         * @type {any}
-         */
-        if(data && data?.clone) {
-            let resData = await data?.clone()?.json();
-
-            this.dispatchEvent(new CustomEvent('submit', {
-                detail: {
-                    data: resData,
-                    token: data?.headers?.get('token')
-                }
-            }));
-        }
+        afterSubmit(this, data);
     };
 
     async submit() {
         if (this.checkValidity() && !this.disabled) {
             //validity
-            if (this.action && this.action != 'null') {
-                this.submitBtn && (this.submitBtn.loading = true);
-                if (this.method == 'GET') {
-                    const formdata = new URLSearchParams(this.formdata).toString();
-                    get(`${this.action}?${formdata}`).then(data => {
-                        this.afterSubmit(data);
-                    }, {
-                        noModification: true
-                    }).catch(error => {
-                        this.catchError(error);
-                    });
-                } else if (this.method == 'POST') {
-                    post(this.action, {
-                        body: this.formdata.json,
-                        noModification: true
-                    }).then((data) => {
-                        this.afterSubmit(data);
-                    }).catch((error) => {
-                        this.catchError(error);
-                    });
-                }
-            }
+            submit(this);
         }
     }
 
