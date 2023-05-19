@@ -11,11 +11,12 @@ import LogInModule
  * @param _this
  */
 export const submit = async (_this: any) => {
-    if (_this.action && _this.action != 'null') {
+    const action = _this.getAction ? _this.getAction() : _this.action;
+    if (action && action != 'null') {
         _this.submitBtn && (_this.submitBtn.loading = true);
         if (_this.method?.toUpperCase() == 'GET') {
             const formdata = new URLSearchParams(_this.formdata).toString();
-            get(`${_this.action}?${formdata}`).then(data => {
+            get(`${action}?${formdata}`).then(data => {
                 _this.afterSubmit(data);
             }, {
                 // @ts-ignore
@@ -24,7 +25,7 @@ export const submit = async (_this: any) => {
                 _this.catchError(error);
             });
         } else if (_this.method?.toUpperCase() == 'POST') {
-            post(_this.action, {
+            post(action, {
                 body: _this.formdata.json,
                 noModification: true
             }).then((data) => {

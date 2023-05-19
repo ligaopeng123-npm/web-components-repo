@@ -26,6 +26,7 @@ import {
 } from "../typing";
 import {
     afterSubmit,
+    catchError,
     getFormByType,
     submit
 } from "../xy-ui/utils/formHelper";
@@ -613,8 +614,14 @@ export default class LogInModule extends HTMLElement {
             } = config;
             this.form.action = url;
             this.form.method = method;
+            this.form.getAction = ()=> {
+                return url;
+            }
             this.form.afterSubmit = (data: any) => {
                 afterSubmit(this.form, data)
+            }
+            this.form.catchError = (data: any) => {
+                catchError(this.form, data)
             }
             this.onInputChange('user');
             this.onInputChange('password');

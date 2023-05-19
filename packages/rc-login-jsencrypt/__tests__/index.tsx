@@ -32,9 +32,10 @@ const App = () => {
             encryptPublicKey={encryptPublicKey}
             clientId={headers.clientId}
             secret={headers.secret}
+            browserRemembersPassword={true}
             getCaptcha={async () => {
                 return new Promise<RCLoginCaptchaProps>((resolve, reject) => {
-                    get(`/testAuth/api/nebula/auth/token/v1/captcha`, {
+                    get(`/testAuth/auth/api/nebula/auth/token/v1/captcha`, {
                         params: {
                             width: 80,
                             height: 30
@@ -48,13 +49,13 @@ const App = () => {
             }}
             phoneLoginUrl={true}
             handleSubmit={({headers, body, loginType, data, encryptor}) => {
-                console.log(headers, body, loginType, data, encryptor);
                 return new Promise((resolve, reject) => {
-                    post(`/testAuth/api/nebula/auth/token/v1/shrLogin`, {
+                    post(`/testAuth/auth/api/nebula/auth/token/v1/shrLogin`, {
                         headers: headers,
                         body: body
-                    }).then((res) => {
+                    }).then((res: any) => {
                         console.log(res);
+                        window.open('www.baidu.com')
                     });
                     resolve(true)
                 })
@@ -73,7 +74,7 @@ const App = () => {
             }}
             mainStyle={{backgroundImage: 'url(./assets/background.jpg)'}}
             bodyStyle={{right: '200px;'}}
-            keeplogged={true}
+            keeplogged={false}
             title="食堂管理系统"
             agreementProprietary={`协议`}
         />
