@@ -151,25 +151,29 @@ const RcLoginModule: React.FC<RcLoginModuleProps> = (props) => {
                 {props.children}
             </login-module>
             {/*需要一个form表单触发密码的自动填充功能*/}
-            <form
-                onSubmit={()=> {}}
-                style={{display: 'none'}}>
-                <input
-                    type="text"
-                    required={true}
-                    placeholder="用户名"
-                    name="u"></input>
-                <input
-                    type="password"
-                    required={true}
-                    placeholder="密码"
-                    name="p"></input>
-                <button
-                    className="but"
-                    type="submit">
-                    登录
-                </button>
-            </form>
+            {
+                browserRemembersPassword ?
+                    <form
+                        onSubmit={() => {
+                        }}
+                        style={{display: 'none'}}>
+                        <input
+                            type="text"
+                            required={true}
+                            placeholder="用户名"
+                            name="u"></input>
+                        <input
+                            type="password"
+                            required={true}
+                            placeholder="密码"
+                            name="p"></input>
+                        <button
+                            className="but"
+                            type="submit">
+                            登录
+                        </button>
+                    </form> : null
+            }
         </>
     )
 };
