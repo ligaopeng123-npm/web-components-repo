@@ -154,7 +154,7 @@ const getRememberPasswordForm = (_this: LogInModule) => {
             name="${password}"></input>
             <xy-button id="btn-pass" class="btn-right" icon="eye-close" type="flat" shape="circle"></xy-button>
    </xy-tips>
-   <verification-code required ${captcha ? `name=${captcha}"` : ''}  style="${config['item-style']}" class="item form-item" item-style="${config['item-style']}"
+   <verification-code required ${captcha ? `name=${captcha}` : ''}  style="${config['item-style']}" class="item form-item" item-style="${config['item-style']}"
                 captcha="${captcha}" captchasrc="${config.captchasrc || ''}" captchaurl="${config.captchaurl || ''}"
                 captchamethod="${config.captchamethod}"></verification-code>
     <!--登录按钮-->
