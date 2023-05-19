@@ -112,7 +112,7 @@ const RcQrcode: React.FC<RcQrcodeProps> = (props) => {
     }, []);
 
     useEffect(() => {
-        if (text) {
+        if (text && qrCode) {
             qrCode.update({
                 data: text
             });
@@ -121,7 +121,7 @@ const RcQrcode: React.FC<RcQrcodeProps> = (props) => {
         } else {
             _toDataURL(null);
         }
-    }, [text]);
+    }, [text, qrCode]);
 
     return (
         <div

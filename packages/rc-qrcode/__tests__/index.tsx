@@ -4,7 +4,7 @@ import { RcQrcode } from "../src";
 import { useRef, useState } from "react";
 
 const App = () => {
-    const [text, setText] = useState();
+    const [text, setText] = useState('test');
     const ref = useRef<any>();
     const onClick = ()=> {
         setText(ref?.current.value)
