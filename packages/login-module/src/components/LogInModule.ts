@@ -593,7 +593,7 @@ export default class LogInModule extends HTMLElement {
      */
     initRememberPasswordForm = () => {
         const passwordInput = this.shadow.querySelector('#password');
-        if (passwordInput) {
+        if (this.canRemember && passwordInput) {
             const btnPass = this.shadow.getElementById('btn-pass');
             btnPass.addEventListener('click', () => {
                 const showPassword = passwordInput.getAttribute('type') === 'password';
@@ -616,19 +616,24 @@ export default class LogInModule extends HTMLElement {
             this.form.afterSubmit = (data: any) => {
                 afterSubmit(this.form, data)
             }
-            // const inputUser = this.form.querySelector('#user');
-            // inputUser.addEventListener('input', ()=> {
-            //     const item = this.form.querySelector('.form-item-user')
-            //     const value = inputUser?.value?.trim();
-            //     if (!value) {
-            //         item.setAttribute('type', "error");
-            //         item.setAttribute('show', 'show');
-            //     } else {
-            //         item.setAttribute('type', "success");
-            //         item.setAttribute('show', false);
-            //     }
-            // });
+            this.onInputChange('user');
+            this.onInputChange('password');
         }
+    }
+
+    onInputChange(key: 'user' | 'password') {
+        const inputUser = this.form.querySelector(`#${key}`);
+        inputUser.addEventListener('input', ()=> {
+            const item = this.form.querySelector(`.form-item-${key}`)
+            const value = inputUser?.value?.trim();
+            if (!value) {
+                item.setAttribute('type', "error");
+                item.setAttribute('show', 'show');
+            } else {
+                item.setAttribute('type', "success");
+                item.setAttribute('show', false);
+            }
+        });
     }
 
     /**
