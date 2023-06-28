@@ -112,7 +112,6 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
 
     return (
         <ThemeProvider theme={DefaultTheme}>
-            <CssBaseline />
             <div className={styles.main} id={_id}>
                 <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
                 <LayoutContent layoutKey={_id} events={events} state={state} dispatch={dispatch}/>
