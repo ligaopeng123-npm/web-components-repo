@@ -92,11 +92,12 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         defaultPlayerConfig={{
                             protocol: false,
                             maxPlayerTime: {
-                                defaultValue: '3min',
-                                options: [{
-                                    label: '3分钟',
-                                    value: '3min'
-                                }]
+                                defaultValue: "forever",
+                                options: [
+                                    {label: '3分钟', value: "3min"},
+                                    {label: '5分钟', value: "5min"},
+                                    {label: '长期', value: 'forever'}
+                                ]
                             },
                             objectFit: 'cover'
                         }}

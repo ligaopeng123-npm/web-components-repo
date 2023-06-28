@@ -98,7 +98,7 @@ export type PlayerActionConfig = {
     resolution?: Resolution | false | {
         defaultValue: Resolution,
         options: Array<PlayerConfigOptions>
-    }
+    },
 }
 
 export type  PlayerConfig = {

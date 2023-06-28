@@ -18,34 +18,61 @@ export const DEFAULT_SCREEN_CONFIG: PlayerActionConfig = {
     protocol: {
         defaultValue: 'FLV',
         options: [
-            {label: 'HTTP-FLV', value: 'FLV'},
-            {label: 'WebRTC', value: 'WebRTC'}
+            {
+                label: 'HTTP-FLV',
+                value: 'FLV'
+            },
+            {
+                label: 'WebRTC',
+                value: 'WebRTC'
+            }
         ]
     },
     // 铺满全屏
     objectFit: {
         defaultValue: 'fill',
         options: [
-            {label: '铺满', value: 'fill'},
+            {
+                label: '铺满',
+                value: 'fill'
+            },
             // {label: '裁剪铺满', value: 'cover'},
-            {label: '原始尺寸', value: 'contain'},
+            {
+                label: '原始尺寸',
+                value: 'contain'
+            },
         ]
     },
     // 倒计时播放// 展示播放倒计时时差
     maxPlayerTime: {
         defaultValue: "forever",
         options: [
-            {label: '3分钟', value: "3min"},
-            {label: '5分钟', value: "5min"},
-            {label: '长期', value: 'forever'}
+            {
+                label: '3分钟',
+                value: "3min"
+            },
+            {
+                label: '5分钟',
+                value: "5min"
+            },
+            {
+                label: '长期',
+                value: 'forever'
+            }
         ]
     },
     // 分辨率
     resolution: {
         defaultValue: "720P",
         options: [
-            {label: '720P', value: "720P"},
-            {label: '超清', value: "4K"},
+            {
+                label: '720P',
+                value: "720P"
+            },
+            {
+                label: '超清',
+                value: "4K"
+            },
         ]
     },
 };
@@ -88,6 +115,10 @@ export const ScreenConfigHelper = {
     getSingleConfig: (valKey: string): any => {
         return ScreenConfigHelper.getConfig()[valKey];
     },
+    /**
+     * 设置默认参数
+     * @param defaultConfigProps
+     */
     getDefaultConfig: (defaultConfigProps?: PlayerConfig) => {
         const currentConfig: PlayerActionConfig = {};
         const defaultConfigStorage = ScreenConfigHelper.getConfig();
@@ -113,7 +144,10 @@ export const ScreenConfigHelper = {
         ScreenConfigHelper.setConfig(currentDefaultConfig)
         return currentDefaultConfig;
     },
-    // 设置默认参数
+    /**
+     * 获取操作后用户定制的参数
+     * @param defaultConfigProps
+     */
     getActionConfig: (defaultConfigProps?: PlayerConfig) => {
         if (defaultConfigProps) {
             const currentConfig: PlayerActionConfig = {};
@@ -154,6 +188,12 @@ export const ScreenConfigHelper = {
         } else {
             return DEFAULT_SCREEN_CONFIG;
         }
+    },
+    /**
+     * 获取当前选中的分屏
+     */
+    getSelectedScreen: ()=> {
+        return ScreenConfigHelper.getConfig()?.defaultSelectedScreen;
     }
 }
 
@@ -171,6 +211,8 @@ export const reducer = (state: any, action: Action) => {
         case MultiStoreEnum.layout:
             return Object.assign({}, state, {[MultiStoreEnum.layout]: action.value});
         case MultiStoreEnum.selectedScreen:
+            const newConfig = Object.assign({}, ScreenConfigHelper.getConfig(), {'defaultSelectedScreen': action.value});
+            ScreenConfigHelper.setConfig(newConfig);
             return Object.assign({}, state, {[MultiStoreEnum.selectedScreen]: action.value});
         case MultiStoreEnum.selectedPlayer:
             return Object.assign({}, state, {[MultiStoreEnum.selectedPlayer]: action.value});
@@ -179,7 +221,10 @@ export const reducer = (state: any, action: Action) => {
                 return Object.assign({}, state, {[MultiStoreEnum.playerList]: action.value});
             }
             const playerList = state[MultiStoreEnum.playerList];
-            const {index, data} = action.value;
+            const {
+                index,
+                data
+            } = action.value;
             if (JSON.stringify(playerList[index]) !== JSON.stringify(data)) {
                 playerList[index] = data;
                 return Object.assign({}, state, {[MultiStoreEnum.playerList]: playerList});
@@ -190,7 +235,10 @@ export const reducer = (state: any, action: Action) => {
         case MultiStoreEnum.actionConfig:
             return Object.assign({}, state, {[MultiStoreEnum.actionConfig]: action.value});
         case MultiStoreEnum.screenConfig:
-            const {type, value} = action.value;
+            const {
+                type,
+                value
+            } = action.value;
             const screenConfig = state[MultiStoreEnum.screenConfig];
             const newScreenConfig = Object.assign({},
                 screenConfig, ScreenConfigHelper.getConfig(), {[type]: value});

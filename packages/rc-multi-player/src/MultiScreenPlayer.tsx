@@ -38,7 +38,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
      * 根据配置 初始化参数
      */
     const [state, dispatch] = useReducer(reducer, State, (currentState) => {
-        const currentDefaultSelectedScreen = defaultSelectedScreen || 1;
+        const currentDefaultSelectedScreen = screenConfig.getSelectedScreen() || defaultSelectedScreen || 1;
         const currentSelectedLayout = LayoutJson?.data?.filter((item) => item.key === `${currentDefaultSelectedScreen}`);
         return Object.assign({}, currentState, {
             [MultiStoreEnum.selectedScreen]: currentDefaultSelectedScreen,
