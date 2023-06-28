@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import styles from "./styles.module.less";
 
 type CountdownProps = {
-    maxTime?: number;
+    maxTime: number;
     style?: React.CSSProperties;
     onMax?: () => void;
     onMaxClick?: () => void;
@@ -32,7 +32,7 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
         delay: 1000, callBack: (params: PollerMark) => {
             const newCurrentTime = currentTime + 1;
             setCurrentTime(newCurrentTime)
-            if (newCurrentTime >= props.maxTime) {
+            if (newCurrentTime >= maxTime) {
                 stopPoller();
                 if (onMax) {
                     onMax();
@@ -53,7 +53,7 @@ const Countdown = forwardRef<countdownRef, CountdownProps>((props, ref) => {
         },
         setEnd: ()=> {
             stopPoller();
-            setCurrentTime(props.maxTime);
+            setCurrentTime(maxTime);
             if (onMax) {
                 onMax();
             }

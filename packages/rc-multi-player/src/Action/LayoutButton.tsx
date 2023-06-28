@@ -16,18 +16,18 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 import styles from '../styles.module.less';
-import { LayoutButtonProps, LayoutJsonItem, MultiStoreEnum, Props } from "../MultiTyping";
+import { LayoutButtonProps, LayoutJsonItem, MultiStoreEnum } from "../MultiTyping";
 import { AssetsIcon, LayoutJson } from "../assets";
 import AppsIcon from '@mui/icons-material/Apps';
 import { isEmptyObject } from "@gaopeng123/utils";
 
 const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
-    const { state, dispatch } = props;
-    const bthRef = useRef();
+    const {state, dispatch} = props;
+    const bthRef = useRef<any>(null);
     const onMenuClick = (item: LayoutJsonItem, popupState: any) => {
         const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
         // 上一次选择的屏数
-        const lastSelectedScreen = state[MultiStoreEnum.selectedScreen];
+        const lastSelectedScreen = parseInt(state[MultiStoreEnum.selectedScreen]);
         // 当前选中的屏幕
         const currentSelectedScreen = +item.key;
         const playerList = state[MultiStoreEnum.playerList];
@@ -39,34 +39,45 @@ const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
             })
         }
         /**
-         * 当从少数屏幕切换到多少屏幕时 不做修改
-         * 当从多数屏 切换到 少数屏时 此时需要做下处理 保证视频的存货
+         * 当从少数屏幕切换到多数屏幕时 不做修改
+         * 当从多数屏 切换到 少数屏时 此时需要做下处理 保证视频的存活
          */
         if (lastSelectedScreen > currentSelectedScreen) {
             const latestPlayer = [];
-            for (let i = currentSelectedScreen; i < lastSelectedScreen; i++) {
-                if (playerList[i]) {
-                    latestPlayer.push(playerList[i]);
+            const startLen = currentSelectedScreen - 1;
+            const endLen = lastSelectedScreen;
+            const newPlayerList = [...playerList];
+            for (let i = startLen; i < endLen; i++) {
+                if (newPlayerList[i] && !isEmptyObject(newPlayerList[i])) {
+                    latestPlayer.push(newPlayerList[i]);
                 }
             }
             if (latestPlayer?.length) {
-                for (let i = 0; i < playerList.length; i++) {
-                    if (!playerList[i] || isEmptyObject(playerList[i])) {
-                        playerList[i] = latestPlayer.shift();
+                for (let i = 0; i < newPlayerList.length; i++) {
+                    /**
+                     * 如果补充完了 就停止循环
+                     */
+                    if (!latestPlayer.length) {
+                        break;
+                    }
+                    if (!newPlayerList[i] || isEmptyObject(newPlayerList[i])) {
+                        const currentPlayer = latestPlayer.shift();
+                        newPlayerList[i] = currentPlayer;
                     }
                 }
             }
             dispatch({
                 type: MultiStoreEnum.playerList,
-                value: playerList?.slice(0, currentSelectedScreen)
+                value: newPlayerList?.slice(0, currentSelectedScreen)
             })
         } else {
+            const addPlayerList = new Array(currentSelectedScreen - lastSelectedScreen).fill(0)?.map(() => {
+                return {}
+            });
             dispatch({
                 type: MultiStoreEnum.playerList,
-                value: playerList?.concat(new Array(currentSelectedScreen - lastSelectedScreen).fill(0)?.map(() => {
-                    return {}
-                }))
-            })
+                value: [...playerList, ...addPlayerList]
+            });
         }
         dispatch({
             type: MultiStoreEnum.selectedScreen,

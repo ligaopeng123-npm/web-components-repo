@@ -1,4 +1,4 @@
-export { MultiPlayerComProps, MediaDataSource, Config, MultiPlayerRobustness } from "@gaopeng123/multi-player";
+export type { MultiPlayerComProps, MediaDataSource, Config, MultiPlayerRobustness } from "@gaopeng123/multi-player";
 // 混合播放器
 export { default as RcMultiPlayer } from './Player/MultiPlayer';
 // 多屏播放器

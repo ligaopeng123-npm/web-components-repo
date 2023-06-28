@@ -37,8 +37,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         maxPlayerTime
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
-    const loadRef = useRef(null);
-    const playerRef = useRef(null);
+    const loadRef = useRef<any>(null);
+    const playerRef = useRef<any>(null);
     const countRef = useRef<countdownRef>(null);
     const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
 
@@ -54,7 +54,9 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
      * 重置播放加载一些参数逻辑
      */
     const resetLoadConfig = () => {
-        loadRef.current.hide();
+        if (loadRef.current) {
+            loadRef.current.hide();
+        }
     }
 
     /**
@@ -77,7 +79,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const onCloseClick = (e: any) => {
         e?.stopPropagation();
         if (mediaDataSource) {
-            loadRef.current.show();
+            loadRef.current?.show();
             playerRef?.current?.close();
         }
         setLoadTypeFalse();
@@ -90,7 +92,13 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
      */
     useEffect(() => {
         if (!loadType) {
-            setLoadTypeTrue();
+            /**
+             * 避免关闭后 异步拉起 重新播放视频
+             */
+            if (extraParams?.__type === 'reload') {
+            } else {
+                setLoadTypeTrue();
+            }
         }
     }, [mediaDataSource]);
 
@@ -125,14 +133,14 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             }
         },
         onLoadError: () => {
-            loadRef.current.show();
+            loadRef.current?.show();
             countRef?.current?.setEnd();
             if (events?.onLoadError) {
                 events?.onLoadError({ extraParams, protocol });
             }
         },
         onLoadEnd: ()=> {
-            loadRef.current.show();
+            loadRef.current?.show();
             countRef?.current?.setEnd();
             if (events?.onLoadEnd) {
                 events?.onLoadEnd({ extraParams, protocol });

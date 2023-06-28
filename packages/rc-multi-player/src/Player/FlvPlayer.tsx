@@ -32,7 +32,7 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
     const { width, height, mediaDataSource, config, robustness, objectFit, style, events, extraParams } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
     const [id,] = useState(`multi-player-${Date.now()}`);
-    const getVideo = () => {
+    const getVideo = (): any => {
         return document.querySelector(`#${id}`);
     }
     useEffect(() => {

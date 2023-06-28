@@ -18,6 +18,7 @@ import icon12 from './12屏.svg';
 import icon13 from './13屏.svg';
 import icon16 from './16屏.svg';
 import LayoutJsonData from './layout.json';
+import { LayoutJsonType } from "../MultiTyping";
 
 export const AssetsIcon: any = {
     1: icon1,
@@ -30,4 +31,4 @@ export const AssetsIcon: any = {
     16: icon16,
 }
 
-export const LayoutJson = LayoutJsonData;
+export const LayoutJson: LayoutJsonType = LayoutJsonData as LayoutJsonType;

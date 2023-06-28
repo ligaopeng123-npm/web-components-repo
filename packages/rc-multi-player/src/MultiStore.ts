@@ -58,7 +58,11 @@ export const State = {
 };
 
 export const getLocalStorage = (_id: string) => {
-    return localStorage.getItem(_id) ? Object.assign({}, JSON.parse(localStorage.getItem(_id))) : {};
+    const val = localStorage.getItem(_id);
+    if (val) {
+        return Object.assign({}, JSON.parse(localStorage.getItem(_id) as any));
+    }
+    return {};
 }
 
 export const setLocalStorage = (_id: string, val: any) => {
@@ -84,7 +88,7 @@ export const ScreenConfigHelper = {
     getSingleConfig: (valKey: string): any => {
         return ScreenConfigHelper.getConfig()[valKey];
     },
-    getDefaultConfig: (defaultConfigProps: PlayerConfig) => {
+    getDefaultConfig: (defaultConfigProps?: PlayerConfig) => {
         const currentConfig: PlayerActionConfig = {};
         const defaultConfigStorage = ScreenConfigHelper.getConfig();
         const actionConfig = ScreenConfigHelper.getActionConfig(defaultConfigProps);
@@ -110,7 +114,7 @@ export const ScreenConfigHelper = {
         return currentDefaultConfig;
     },
     // 设置默认参数
-    getActionConfig: (defaultConfigProps: PlayerConfig) => {
+    getActionConfig: (defaultConfigProps?: PlayerConfig) => {
         if (defaultConfigProps) {
             const currentConfig: PlayerActionConfig = {};
             const defaultConfigStorage = ScreenConfigHelper.getConfig();

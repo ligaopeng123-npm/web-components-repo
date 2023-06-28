@@ -45,7 +45,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
      * @param val
      */
     const changeObjectFit = (val: ObjectFit) => {
-        const videoList = document.querySelector(`#${screenKey}`)?.querySelectorAll('video');
+        const videoList: any = document.querySelector(`#${screenKey}`)?.querySelectorAll('video') || [];
         const multiPlayer = document.querySelectorAll('multi-player');
         for (let i = 0; i < max(videoList.length, multiPlayer.length); i++) {
             if (videoList[i]) {

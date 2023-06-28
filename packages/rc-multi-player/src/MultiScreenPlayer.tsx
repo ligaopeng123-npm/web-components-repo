@@ -15,7 +15,7 @@ import LayoutContent from "./Layout/LayoutContent";
 import { MultiScreenPlayerProps, MultiScreenPlayerRef, MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
 import MultiScreenPlayerAction from "./Action/MultiScreenPlayerAction";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { DefaultTheme } from "./Theme";
 import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';
@@ -112,6 +112,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
 
     return (
         <ThemeProvider theme={DefaultTheme}>
+            <CssBaseline />
             <div className={styles.main} id={_id}>
                 <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
                 <LayoutContent layoutKey={_id} events={events} state={state} dispatch={dispatch}/>

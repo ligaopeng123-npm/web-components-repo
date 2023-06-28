@@ -31,7 +31,7 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
     const onClick = (e: any) => {
         e?.stopPropagation();
         const autoEl:any = el || document.querySelector('#multi-screen-player');
-        autoFullscreen(autoEl, null, ({ type } : any) => {
+        autoFullscreen(autoEl, {}, ({ type } : any) => {
             //fullscreen 进入全屏
             //noFullscreen 退出全屏
             setFullType(type === 'fullscreen');

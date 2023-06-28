@@ -16,63 +16,92 @@ import { DEFAULT_ROBUSTNESS, ObjectFit } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebRtcPlayerProps> & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
     const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
-    const videoRef = useRef<HTMLVideoElement>();
-    const [sdk, setSdk] = useState(null);
+    const videoRef = useRef<any>({});
+    const [sdk, setSdk] = useState<any>(null);
     /**
      * 最多重试次数
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
     const [errorTime, setErrorTime] = useState<number>();
-    const {maxResetTimes, retryDuration} = Object.assign({retryDuration: 5000}, DEFAULT_ROBUSTNESS, robustness);
+    const {maxResetTimes, retryDuration} = Object.assign({retryDuration: 10000}, DEFAULT_ROBUSTNESS, robustness);
+    /**
+     * 拉流处理
+     */
+    const startPull = (type = 'onmute') => {
+        // 最大次数监听
+        if (currentMaxResetTimes >= maxResetTimes) {
+            if (events?.onMaxReload) {
+                events.onMaxReload({extraParams});
+            }
+        } else {
+            if (events?.onReload) {
+                events.onReload({extraParams, ...{__type: 'reload'}});
+            }
+        }
+        if (type === 'onmute') {
+            setErrorTime(Date.now());
+        }
+        // 最多重试次数
+        setCurrentMaxResetTimes(currentMaxResetTimes + 1);
+    }
+    /**
+     * 批量重试
+     */
+    const batchStartPull = (time = 0) => {
+        if (time < 5) {
+            if (videoRef.current) {
+                console.log(`${new Date()} 第 ${time + 1} 次重试`);
+                videoRef.current.__batchTimer = setTimeout(() => {
+                    startPull('batch');
+                    batchStartPull(time + 1);
+                }, 3000);
+            }
+        }
+    }
 
     /**
      * 事件处理
      */
     const initSdk = () => {
         let sdk: any = null;
-        const video = videoRef.current;
+        const video: any = videoRef.current;
         /**
          * 异常事件监听  流中断
          * @param e
          */
         let onmute = (e: any) => {
-            // 最大次数监听
-            if (currentMaxResetTimes >= maxResetTimes) {
-                if (events?.onMaxReload) {
-                    events.onMaxReload({extraParams});
-                }
-            } else {
-                if (events?.onReload) {
-                    events.onReload({extraParams,});
-                }
-            }
-            setErrorTime(Date.now());
-            // 最多重试次数
-            setCurrentMaxResetTimes(currentMaxResetTimes + 1);
+            /**
+             * 先拉一次 如果拉成功就不管了 如果不成功 则每3s拉一次
+             */
+            startPull('onmute');
+            batchStartPull(0);
         }
         /**
          * 流重连
          */
         let onunmute = () => {
-            // @ts-ignore
-            clearTimeout(videoRef.current.__timer);
+            clearTimeoutAll();
             setCurrentMaxResetTimes(0);
             // 加载成功后 重新播放
-            events.onLoadStart({extraParams,});
+            if (events?.onLoadStart) {
+                events.onLoadStart({extraParams,});
+            }
         }
+
         /**
          * 流加载错误
          */
         let onerror = () => {
             if (events?.onLoadError) {
-                events.onLoadError({extraParams,});
+                events.onLoadError({extraParams});
+                closeSdk(sdk);
             }
         }
 
         // 流播放结束
         let onended = () => {
             if (events?.onLoadEnd) {
-                events.onLoadEnd({extraParams,});
+                // events.onLoadEnd({extraParams,});
             }
         }
 
@@ -98,32 +127,48 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
         }
         return sdk;
     }
+    /**
+     * 关闭sdk
+     * @param sdk
+     */
+    const closeSdk = (sdk: any) => {
+        clearTimeoutAll();
+        if (sdk) {
+            if (sdk?.close) {
+                sdk?.close();
+            }
+            sdk = null;
+        }
+    }
 
     /**
      *  缓存sdk
      */
     useEffect(() => {
-        let sdk = initSdk()
+        let sdk = initSdk();
         return () => {
-            if (sdk) {
-                if (sdk?.close) {
-                    sdk?.close();
-                }
-                sdk = null;
-            }
+            closeSdk(sdk);
         }
     }, [mediaDataSource]);
+
+    const clearTimeoutAll = () => {
+        if (videoRef.current) {
+            clearTimeout(videoRef.current.__batchTimer);
+            clearTimeout(videoRef.current.__timer);
+        }
+    }
 
     /**
      * 5秒无法拉起 就直接报错
      */
     useEffect(() => {
         if (errorTime) {
-            // @ts-ignore
+            clearTimeoutAll();
             videoRef.current.__timer = setTimeout(() => {
-                console.log(`${new Date()} ${retryDuration/1000}秒后未拉起,阻断视频`);
+                console.log(`${new Date()} ${retryDuration / 1000}秒后未拉起,阻断视频`);
                 if (events?.onLoadError) {
                     events.onLoadError({extraParams,});
+                    closeSdk(sdk);
                 }
             }, retryDuration);
         }

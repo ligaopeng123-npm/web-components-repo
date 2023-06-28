@@ -52,11 +52,15 @@ export type Props = {
 export type LayoutJsonItemRows = {
     height?: string;
     type?: 'row' | 'col';
-    width?: number;
-    key?: string;
+    width: number;
+    key: string;
     children?: Array<LayoutJsonItemRows>
 }
-export type LayoutJsonItem = { name: string; key: string; icon: string; stream: string, children: Array<any> }
+export type LayoutJsonItem = { name: string; key: string; icon: string; stream: string, children: Array<any> };
+export type LayoutJsonType = {
+    defaultSelected: string,
+    data: Array<LayoutJsonItem>
+}
 
 export type LayoutButtonProps = {
     className?: string;
