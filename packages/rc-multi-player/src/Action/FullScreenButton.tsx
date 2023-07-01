@@ -17,6 +17,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
 import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
+import { Tooltip } from '@mui/material';
 
 type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
@@ -26,53 +27,67 @@ type FullScreenButtonProps = {
 };
 
 const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
-    const { el, onChange, type, style } = props;
-    const [fullType, setFullType] = useState<boolean>(isFullscreen());
-    const onClick = (e: any) => {
-        e?.stopPropagation();
-        const autoEl:any = el || document.querySelector('#multi-screen-player');
-        autoFullscreen(autoEl, {}, ({ type } : any) => {
-            //fullscreen 进入全屏
-            //noFullscreen 退出全屏
-            setFullType(type === 'fullscreen');
-        });
-    }
-
-    const windowResize = useResize();
-
-    useEffect(() => {
-        const fullType = isFullscreen() ? true : false;
-        if (onChange) {
-            onChange(fullType);
+        const {
+            el,
+            onChange,
+            type,
+            style
+        } = props;
+        const [fullType, setFullType] = useState<boolean>(isFullscreen());
+        const onClick = (e: any) => {
+            e?.stopPropagation();
+            const autoEl: any = el || document.querySelector('#multi-screen-player');
+            autoFullscreen(autoEl, {}, ({type}: any) => {
+                //fullscreen 进入全屏
+                //noFullscreen 退出全屏
+                setFullType(type === 'fullscreen');
+            });
         }
-        setFullType(fullType)
-    }, [windowResize]);
 
-    return (
-        <>
-            {
-                type === 'icon'
-                    ? <IconButton
-                        onClick={onClick}
-                        // @ts-ignore
-                        color="iconButton"
-                        size={'small'}
-                        style={style}
-                    >
-                        {fullType ? <FullscreenExitIcon/> : <FullscreenIcon/>}
-                    </IconButton>
-                    : <Button
-                        onClick={onClick}
-                        startIcon={fullType ? <FullscreenExitIcon/> : <FullscreenIcon/>}
-                        size="small" className={styles.bottom}
-                        style={style}
-                    >
-                        {fullType ? '退出全屏' : '全屏'}
-                    </Button>
+        const windowResize = useResize();
+
+        useEffect(() => {
+            const fullType = isFullscreen() ? true : false;
+            if (onChange) {
+                onChange(fullType);
             }
-        </>
+            setFullType(fullType)
+        }, [windowResize]);
 
-    )
-};
+        return (
+            <Tooltip
+                title={fullType ? '退出全屏' : '全屏'}>
+                {
+                    type === 'icon'
+                        ?
+                        <IconButton
+                            onClick={onClick}
+                            // @ts-ignore
+                            color="iconButton"
+                            size={'small'}
+                            style={style}
+                        >
+                            {fullType ?
+                                <FullscreenExitIcon/> :
+                                <FullscreenIcon/>}
+                        </IconButton>
+                        :
+                        <Button
+                            onClick={onClick}
+                            startIcon={fullType ?
+                                <FullscreenExitIcon/> :
+                                <FullscreenIcon/>}
+                            size="small"
+                            className={styles.bottom}
+                            style={style}
+                        >
+                            {fullType ? '退出全屏' : '全屏'}
+                        </Button>
+
+                }
+            </Tooltip>
+        )
+    }
+;
 
 export default FullScreenButton;

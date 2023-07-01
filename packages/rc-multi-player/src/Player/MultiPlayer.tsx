@@ -23,6 +23,7 @@ import Title from "../components/Title";
 import { RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
 import Countdown, {countdownRef} from "../Action/Countdown";
+import ScreenshotPicture from "../Action/ScreenshotPicture";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const {
@@ -217,6 +218,7 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 className={`${styles.hoverShow} ${styles.bottom}`}
                 right={
                     <HideFullScreen>
+                        <ScreenshotPicture title={title} el={divCurrent} type={'icon'}/>
                         <FullScreenButton el={divCurrent} type={'icon'}/>
                     </HideFullScreen>
                 }
