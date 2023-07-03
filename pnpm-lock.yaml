@@ -599,7 +599,7 @@ importers:
       '@emotion/styled': ^11.10.4
       '@gaopeng123/hooks': ^0.5.0
       '@gaopeng123/multi-player': ^1.0.2
-      '@gaopeng123/utils': ^0.5.8
+      '@gaopeng123/utils': ^1.1.8
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
       '@size-limit/preset-small-lib': ^7.0.8
@@ -635,7 +635,7 @@ importers:
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
       '@gaopeng123/hooks': 0.5.0
       '@gaopeng123/multi-player': link:../multi-player
-      '@gaopeng123/utils': 0.5.9
+      '@gaopeng123/utils': 1.1.8
       '@mui/icons-material': 5.10.16_fc6xgk24gufrjg6uf4vmaeyk24
       '@mui/material': 5.10.17_2mete2oe2kozaocyy47tavsz2y
       material-ui-popup-state: 4.1.0_2mete2oe2kozaocyy47tavsz2y
@@ -2611,13 +2611,6 @@ packages:
       - encoding
     dev: false
 
-  /@gaopeng123/utils.array/0.5.9:
-    resolution: {integrity: sha512-7FdzZPVPKDHdD0afnBtxQFhczzTrVmX0/hWscFdR/CmrCMFLY0H+cSmKAeVyFDLYr0kNM2LZLOp7q4vOWYYfpg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
-
   /@gaopeng123/utils.array/0.6.0:
     resolution: {integrity: sha512-g6Hk1cu9gGriXA7m4+Or5JZYOBx4g7CXs07EKdSOg/b7omusTYoRI3Ddz89M0TeM06fGeV88cbr5t9hv0XXtpw==}
     engines: {node: '>=10'}
@@ -2639,18 +2632,18 @@ packages:
       '@gaopeng123/utils.types': 1.1.7
     dev: false
 
+  /@gaopeng123/utils.array/1.1.7:
+    resolution: {integrity: sha512-mkjePVd2peWb7dC7ekhHJcOztUj9xLz+TcUOvuNoUs/7ojO3D+mFpHM3MDVrOQCcqVuAahKbWIqavL5/DqQlsw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.7
+    dev: false
+
   /@gaopeng123/utils.date/0.4.17:
     resolution: {integrity: sha512-+mqp/LgWEXQDKqlV+HEePVMdYut2Fv94RN+It4uRBR+sl+v7FnlfzC5pbFSw2SHf188X//Yy7Fvdkt2co4BUKQ==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 0.4.14
-    dev: false
-
-  /@gaopeng123/utils.date/0.5.4:
-    resolution: {integrity: sha512-A+AislFD3Bd/u75ninU6C/7gmj84UzuF6nYFNSPVaLy6MVSzqDa+N23adO/mXSL1mFUhmxmjpXYDhJiLly15Tg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.5.0
     dev: false
 
   /@gaopeng123/utils.date/0.6.0:
@@ -2674,6 +2667,13 @@ packages:
       '@gaopeng123/utils.types': 1.1.7
     dev: false
 
+  /@gaopeng123/utils.date/1.1.7:
+    resolution: {integrity: sha512-qtx+GAR4idBTbGj8be4THJXHZNs8lciyPT/91DPmZ3rmSyK+6ujrGyBkaO7pGo7AntaXJQs+oR5Xlx4Pg9U3CA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.7
+    dev: false
+
   /@gaopeng123/utils.file/0.4.16:
     resolution: {integrity: sha512-6P12hUyreV+qVuGygbH1xgVk7bRolHTfPdXICsnafMkJDUIECLXMbxqYaqAtS6jyESEpdh/v829iGpbGaIGQ4Q==}
     engines: {node: '>=10'}
@@ -2681,15 +2681,6 @@ packages:
       '@gaopeng123/utils.object': 0.4.14
       '@gaopeng123/utils.string': 0.4.16
       '@gaopeng123/utils.types': 0.4.14
-
-  /@gaopeng123/utils.file/0.5.9:
-    resolution: {integrity: sha512-QBadV0I15ldwOeDDjbQCFxVxmBDqnxZ+BOfLzOn1A6ptHQ/D7USnzym1iuENEIyh+k540DQSmiFhCQbVdPVjVA==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.object': 0.5.9
-      '@gaopeng123/utils.string': 0.5.7
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
 
   /@gaopeng123/utils.file/0.6.0:
     resolution: {integrity: sha512-GBQWmboGc20PciBhcUvzbfLdqFpr1GswW9qpiNA+dLkNvWFJzN8BhiPenxeJNXw7CqU/N4HfBw8p92sZBHK8cQ==}
@@ -2702,6 +2693,15 @@ packages:
 
   /@gaopeng123/utils.file/1.1.7:
     resolution: {integrity: sha512-7SCaH91n5f1YX4PBUWqcdDG2Pi+plVQKiG4KGn+knVpxBi6XXnlCRbQDUb2Dot1SVo6LVu9Ba+19YwclBOzxPw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.object': 1.1.7
+      '@gaopeng123/utils.string': 1.1.7
+      '@gaopeng123/utils.types': 1.1.7
+    dev: false
+
+  /@gaopeng123/utils.file/1.1.8:
+    resolution: {integrity: sha512-/D+jx2eo4ts5DqeJ21sv6p3UpaZ1GtXGubGbiBo5ChVhSEZmRK7uDTSzIcBD3jaVPf9pYtCt+knQQjttaji6IA==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.object': 1.1.7
@@ -2736,13 +2736,6 @@ packages:
       '@gaopeng123/utils.types': 1.1.7
     dev: false
 
-  /@gaopeng123/utils.number/0.5.0:
-    resolution: {integrity: sha512-SJgXtVf7UUvAJw6j/rUYupWqmBGZp5gxLUOVf+XyjkFcapy5k8urvt01c3rGrNk/lrO1dVTbeVZl7q3dbocFzg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
-
   /@gaopeng123/utils.number/0.6.0:
     resolution: {integrity: sha512-Q2JKOT2zTT+0rZ2T0lk++wMoXmXleXnaQAwyIsWEwE5EN8MeKIMR2mTQ+ANQJKC1PXWWcupXxArGF27XIZJPDA==}
     engines: {node: '>=10'}
@@ -2764,20 +2757,19 @@ packages:
       '@gaopeng123/utils.types': 1.1.7
     dev: false
 
+  /@gaopeng123/utils.number/1.1.7:
+    resolution: {integrity: sha512-TVe/2dGsPL8j1J+SpPjdb1DBywDnCw8aUY+v6+kNCmBCXw9c3PVEUp8lK0NpgeFCs9t7MApI+3rEe0X9+msrNA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.7
+    dev: false
+
   /@gaopeng123/utils.object/0.4.14:
     resolution: {integrity: sha512-0dLhWwRx1By7yYVPYCKfFwU+2CIxJgU0+ywYbYpYsUHCvD/im3XoS7h4nK1BJLeyemtqKe3bjI1/pHR7kATWaw==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 0.4.14
       '@gaopeng123/utils.types': 0.4.14
-
-  /@gaopeng123/utils.object/0.5.9:
-    resolution: {integrity: sha512-Nj4FZWm3QIuW7A7S6EoEDQtNdM98vbVgh48U1lb+I3QAQ4L3ekscZHqecMb8IfL6/eMDNrDtZzJHXApfM23FGQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 0.5.2
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
 
   /@gaopeng123/utils.object/0.6.1:
     resolution: {integrity: sha512-OnFqHMcgiNnpa46z2Ts5j5KHxsqvqMCh9UwvUG6ObmYYwK2It1UP6GslbkS+TI8RnlZZasNGdDTelgKt1mOKmQ==}
@@ -2801,14 +2793,6 @@ packages:
     dependencies:
       '@gaopeng123/utils.function': 0.4.14
       '@gaopeng123/utils.types': 0.4.14
-
-  /@gaopeng123/utils.string/0.5.7:
-    resolution: {integrity: sha512-aPabK3Av+cIzKXxJJ1HhDRk8lbxUvhjgAjuwlrPEt+As+5SPOvtmLVuD18ftWdokS7cwJS4HeJma9pdQF3fk4A==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 0.5.2
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
 
   /@gaopeng123/utils.string/0.6.1:
     resolution: {integrity: sha512-O1q8J5PZPEA1A0cXjLdGTcQzAD9vXYfIhaFcNMPFyjweIKrR/luuQtilvGRYc8HAj78GgqLfPtW3bFbR/RGY8g==}
@@ -2843,20 +2827,6 @@ packages:
   /@gaopeng123/utils.types/1.1.7:
     resolution: {integrity: sha512-9Lc3fk3ST+uaPJoxu5xKO4CXefgLTAZa+dODDOChZX//QGF8LrseWx1x589PO4phonb2f+Uaj3Q/U+DvOTGUSQ==}
     engines: {node: '>=10'}
-
-  /@gaopeng123/utils/0.5.9:
-    resolution: {integrity: sha512-hhQqEJZqRKu4ConFRPAQ7ul29XVf+3Ab+EZgNXKWKV9Dtje4fMB4vC15L2qQIlOMscpcdVRxzuhQFOop0dB6UA==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.array': 0.5.9
-      '@gaopeng123/utils.date': 0.5.4
-      '@gaopeng123/utils.file': 0.5.9
-      '@gaopeng123/utils.function': 0.5.2
-      '@gaopeng123/utils.number': 0.5.0
-      '@gaopeng123/utils.object': 0.5.9
-      '@gaopeng123/utils.string': 0.5.7
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
 
   /@gaopeng123/utils/0.6.0:
     resolution: {integrity: sha512-ARSJPvYxcVj28oBy+nS2Xs7agc4c0NCrf7KiNWQ4g1C4EhuAYYOm08gAMeDSvE1nNwmTCc8kEJwJuFclM2E4yw==}
@@ -2895,6 +2865,20 @@ packages:
       '@gaopeng123/utils.file': 1.1.7
       '@gaopeng123/utils.function': 1.1.7
       '@gaopeng123/utils.number': 1.1.5
+      '@gaopeng123/utils.object': 1.1.7
+      '@gaopeng123/utils.string': 1.1.7
+      '@gaopeng123/utils.types': 1.1.7
+    dev: false
+
+  /@gaopeng123/utils/1.1.8:
+    resolution: {integrity: sha512-Hy/TxLM5r+cptTHWcxSrBQioTf+f/DLvpxGa2vOMKbsPk+Bu4TJZVm1dNOuPF6kqtoCMyBKYApB73wxXCd4l6A==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.array': 1.1.7
+      '@gaopeng123/utils.date': 1.1.7
+      '@gaopeng123/utils.file': 1.1.8
+      '@gaopeng123/utils.function': 1.1.7
+      '@gaopeng123/utils.number': 1.1.7
       '@gaopeng123/utils.object': 1.1.7
       '@gaopeng123/utils.string': 1.1.7
       '@gaopeng123/utils.types': 1.1.7

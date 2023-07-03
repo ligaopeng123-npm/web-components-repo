@@ -11,12 +11,14 @@ module.exports = merge(base(__dirname), {
                 // pathRewrite: {'^/api': ''}
             },
             '/live': {
-                target: 'http://49.233.99.253:9580',
+                target: 'https://ai-api-test.sany.com.cn',
+                changeOrigin: true,
                 // pathRewrite: {'^/api': ''}
             },
             '/rtc': {
                 // http://xingtu.ubsense.cn:1985/rtc/v1/play/
-                target: 'http://xingtu.ubsense.cn:3008',
+                target: 'https://ai-api-test.sany.com.cn',
+                changeOrigin: true,
                 // pathRewrite: {'^/api': ''}
             }
         }
