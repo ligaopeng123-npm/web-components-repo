@@ -70,6 +70,10 @@ module.exports = function (dirname = __dirname) {
                             }
                         }],
                 },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader'],
+                },
             ]
         },
         plugins: [
