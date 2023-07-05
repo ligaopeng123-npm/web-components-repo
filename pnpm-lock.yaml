@@ -600,6 +600,7 @@ importers:
       '@gaopeng123/hooks': ^0.5.0
       '@gaopeng123/multi-player': ^1.0.2
       '@gaopeng123/utils': ^1.1.8
+      '@gaopeng123/video-progress-bar': workspace:^0.1.0
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
       '@size-limit/preset-small-lib': ^7.0.8
@@ -636,6 +637,7 @@ importers:
       '@gaopeng123/hooks': 0.5.0
       '@gaopeng123/multi-player': link:../multi-player
       '@gaopeng123/utils': 1.1.8
+      '@gaopeng123/video-progress-bar': link:../video-progress-bar
       '@mui/icons-material': 5.10.16_fc6xgk24gufrjg6uf4vmaeyk24
       '@mui/material': 5.10.17_2mete2oe2kozaocyy47tavsz2y
       material-ui-popup-state: 4.1.0_2mete2oe2kozaocyy47tavsz2y

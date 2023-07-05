@@ -424,18 +424,14 @@ export default class VideoProgressBar extends HTMLElement {
      * 用户自定义配置
      * @param data
      */
-    videoOptionsSubscribe({data}: any) {
-        if (data?.currentTime
-            && (!this.startTime || data?.currentTime !== this.startTime)
-            && data?.stream !== 'live') {
-            if (data?.currentTime !== this.startTime) {
-                this.reset();
-            }
-            this.initVideoOptions(data);
-            this.draw();
-        }
+    drawData(data: { periods: Array<{ startTime: string, endTime: string }>, currentTime: string }) {
+        this.initVideoOptions({
+            periods: data.periods || [],
+            currentTime: DEFAULT_CURRENT_TIME
+        });
+        this.draw();
+        this.start();
     }
-
 
     /**
      * 初始化视频参数

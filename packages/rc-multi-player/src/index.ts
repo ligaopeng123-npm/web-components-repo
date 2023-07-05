@@ -7,3 +7,5 @@ export { default as RcMultiScreenPlayer } from './MultiScreenPlayer';
 export { default as RcWebRTCPlayer } from './Player/WebRTCPlayer';
 // flv播放器 后续支持h265解码
 export { default as RcFlvPlayer } from './Player/FlvPlayer';
+// 降低时间段干扰
+export { reduceTimeSlotInterference } from "@gaopeng123/video-progress-bar"

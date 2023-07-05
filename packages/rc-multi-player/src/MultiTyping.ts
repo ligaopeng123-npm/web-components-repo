@@ -16,6 +16,7 @@
 import * as React from "react";
 import { PlayerConfig, PlayerEvents, RcFlvPlayerProps } from "./Player/PlayerTyping";
 import { MediaDataSource } from "@gaopeng123/multi-player";
+import { VideoProgressBar } from "@gaopeng123/video-progress-bar";
 
 export enum MultiStoreEnum {
     // 布局数据
@@ -62,32 +63,48 @@ export type LayoutJsonType = {
     data: Array<LayoutJsonItem>
 }
 
-export type LayoutButtonProps = {
-    className?: string;
-    style?: React.CSSProperties;
-} & Props;
+export type LayoutButtonProps =
+    {
+        className?: string;
+        style?: React.CSSProperties;
+    }
+    & Props;
 
 // 分屏视频类型
-export type ScreenConfigProps = {
-    selectedScreen: any,
-    selectedPlayer: string,
-} & PlayerConfig;
-
-export type MultiScreenPlayerProps = {
-    id?: string;
-    proxy?: string; // 代理地址
-    actionPlacement?: 'top' | 'bottom';
-    defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16; // 默认的分屏路数
-    defaultPlayerConfig?: PlayerConfig,
-    events?: PlayerEvents,
-    currentConfig?: {
-        playerConfig: PlayerConfig & { layoutIndex: number },
-        mediaDataSource?: MediaDataSource
+export type ScreenConfigProps =
+    {
+        selectedScreen: any,
+        selectedPlayer: string,
     }
-} & RcFlvPlayerProps;
+    & PlayerConfig;
+
+export type MultiScreenPlayerProps =
+    {
+        id?: string;
+        proxy?: string; // 代理地址
+        playType?: 'live' | 'replay',
+        actionPlacement?: 'top' | 'bottom';
+        defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16 | boolean; // 默认的分屏路数
+        defaultPlayerConfig?: PlayerConfig,
+        events?: PlayerEvents,
+        currentConfig?: {
+            playerConfig: PlayerConfig & { layoutIndex: number },
+            mediaDataSource?: MediaDataSource
+        }
+    }
+    & RcFlvPlayerProps;
 
 
 export type MultiScreenPlayerRef = {
     // 获取协议类型
     getScreenConfig: () => ScreenConfigProps;
 };
+
+
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'video-progress-bar': any
+        }
+    }
+}

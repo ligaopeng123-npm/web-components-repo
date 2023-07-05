@@ -19,18 +19,43 @@ import styles from "../styles.module.less";
 import HideFullScreen from "./HideFullScreen";
 import { MultiScreenDrawerButton } from "./MultiScreenDrawer";
 
-type MultiScreenPlayerActionProps = {} & Props;
+type MultiScreenPlayerActionProps =
+    {}
+    & Props;
 const MultiScreenPlayerAction: React.FC<MultiScreenPlayerActionProps> = (props) => {
-    const { state, dispatch } = props;
+    const {
+        state,
+        dispatch,
+        defaultSelectedScreen
+    } = props;
+
     return (
         <ActionColumn
             right={<>
-                <HideFullScreen>
-                    <LayoutButton state={state} dispatch={dispatch}/>
-                </HideFullScreen>
-                <Divider classes={{ root: styles.hr }} orientation="vertical" variant="middle" flexItem/>
-                <MultiScreenDrawerButton state={state} dispatch={dispatch}/>
-                <Divider classes={{ root: styles.hr }} orientation="vertical" variant="middle" flexItem/>
+                {
+                    defaultSelectedScreen === false || defaultSelectedScreen === null
+                        ? null
+                        : <>
+                            <HideFullScreen>
+                                <LayoutButton
+                                    state={state}
+                                    dispatch={dispatch}/>
+                            </HideFullScreen>
+                            <Divider
+                                classes={{root: styles.hr}}
+                                orientation="vertical"
+                                variant="middle"
+                                flexItem/>
+                        </>
+                }
+                <MultiScreenDrawerButton
+                    state={state}
+                    dispatch={dispatch}/>
+                <Divider
+                    classes={{root: styles.hr}}
+                    orientation="vertical"
+                    variant="middle"
+                    flexItem/>
                 <FullScreenButton/>
             </>
             }

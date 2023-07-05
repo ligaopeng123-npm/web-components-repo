@@ -36,22 +36,24 @@ export type PlayerProps = {
 
 type RobustnessProps = {
     // 健壮性配置
-    robustness?: MultiPlayerRobustness & {retryDuration?: DOMHighResTimeStamp};
+    robustness?: MultiPlayerRobustness & { retryDuration?: DOMHighResTimeStamp };
 }
 
-export type RcFlvPlayerProps = {
-    extraParams?: any;
-    style?: React.CSSProperties;
-    width?: string | number;
-    height?: string | number;
-    // 视频填充方式
-    objectFit?: ObjectFit;
-    mediaDataSource?: MediaDataSource;
-    // 播放器配置
-    config?: Config,
-    // 事件集合
-    events?: PlayerEvents,
-} & RobustnessProps;
+export type RcFlvPlayerProps =
+    {
+        extraParams?: any;
+        style?: React.CSSProperties;
+        width?: string | number;
+        height?: string | number;
+        // 视频填充方式
+        objectFit?: ObjectFit;
+        mediaDataSource?: MediaDataSource;
+        // 播放器配置
+        config?: Config,
+        // 事件集合
+        events?: PlayerEvents,
+    }
+    & RobustnessProps;
 
 
 export type PlayerEvents = {
@@ -62,16 +64,23 @@ export type PlayerEvents = {
     // 加载错误
     onLoadError?: (playerConfig?: PlayerConfig) => void;
     // 流加载结束
-    onLoadEnd?: (playerConfig?: PlayerConfig)=> void;
+    onLoadEnd?: (playerConfig?: PlayerConfig) => void;
     // 最大重试次数
     onMaxReload?: (playerConfig?: PlayerConfig) => void;
     // 视频结束
     onClose?: (playerConfig?: PlayerConfig) => void;
 }
 
-export type Protocol = 'FLV' | 'WebRTC'; // 协议 默认为flv
-export type MaxPlayerTime = "3min" | '5min' | 'forever';
-export type Resolution = "4K" | "720P";
+export type Protocol =
+    'FLV'
+    | 'WebRTC'; // 协议 默认为flv
+export type MaxPlayerTime =
+    "3min"
+    | '5min'
+    | 'forever';
+export type Resolution =
+    "4K"
+    | "720P";
 // 视频配置
 export type PlayerConfigOptions = {
     label: string;
@@ -101,26 +110,42 @@ export type PlayerActionConfig = {
     },
 }
 
-export type  PlayerConfig = {
-    title?: string,
-    // 额外参数
-    extraParams?: any;
-} & PlayerActionConfig & RobustnessProps;
+export type  PlayerConfig =
+    {
+        title?: string,
+        // 额外参数
+        extraParams?: any;
+        // 有流的数据
+        periods?: Array<{ startTime: string, endTime: string }>;
+        // 初始播放时间
+        currentTime?: string;
+
+    }
+    & PlayerActionConfig
+    & RobustnessProps;
 
 // 多屏播放器
-export type LayoutPlayerProps = {
-    playerConfig?: PlayerConfig;
-    selected?: boolean; // 是否是当前选中颜色
-    layoutIndex?: string; // 当前是多屏中的第几个视频
-    events?: PlayerEvents;
-} & RcMultiPlayerProps & PlayerProps;
+export type LayoutPlayerProps =
+    {
+        playerConfig?: PlayerConfig;
+        selected?: boolean; // 是否是当前选中颜色
+        layoutIndex?: string; // 当前是多屏中的第几个视频
+        events?: PlayerEvents;
+    }
+    & RcMultiPlayerProps
+    & PlayerProps;
 
-export type RcMultiPlayerProps = {
-    className?: string;
-    title?: string | ReactNode;
-} & RcFlvPlayerProps & PlayerConfig;
+export type RcMultiPlayerProps =
+    {
+        className?: string;
+        title?: string | ReactNode;
+    }
+    & RcFlvPlayerProps
+    & PlayerConfig;
 
-export type WebRtcPlayerProps = {} & RcFlvPlayerProps;
+export type WebRtcPlayerProps =
+    {}
+    & RcFlvPlayerProps;
 
 export type RcPlayerRef = {
     close: () => void;

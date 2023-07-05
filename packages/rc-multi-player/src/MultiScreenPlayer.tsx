@@ -20,12 +20,20 @@ import { DefaultTheme } from "./Theme";
 import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';
 import { isEmptyObject } from "@gaopeng123/utils";
+import "@gaopeng123/video-progress-bar";
 
 const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<MultiScreenPlayerProps> & React.RefAttributes<MultiScreenPlayerRef>> = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
      * 默认参数 selectedScreen
      */
-    const {defaultSelectedScreen, defaultPlayerConfig, currentConfig, id, events} = props;
+    const {
+        defaultSelectedScreen,
+        defaultPlayerConfig,
+        currentConfig,
+        id,
+        events,
+        playType
+    } = props;
     /**
      * 唯一标识
      */
@@ -38,7 +46,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
      * 根据配置 初始化参数
      */
     const [state, dispatch] = useReducer(reducer, State, (currentState) => {
-        const currentDefaultSelectedScreen = screenConfig.getSelectedScreen() || defaultSelectedScreen || 1;
+        const currentDefaultSelectedScreen = Number(screenConfig.getSelectedScreen() || defaultSelectedScreen || 1);
         const currentSelectedLayout = LayoutJson?.data?.filter((item) => item.key === `${currentDefaultSelectedScreen}`);
         return Object.assign({}, currentState, {
             [MultiStoreEnum.selectedScreen]: currentDefaultSelectedScreen,
@@ -55,7 +63,10 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
      */
     useEffect(() => {
         if (currentConfig) {
-            const {playerConfig, mediaDataSource} = currentConfig;
+            const {
+                playerConfig,
+                mediaDataSource
+            } = currentConfig;
             if (playerConfig && mediaDataSource) {
                 const layoutIndex = state[MultiStoreEnum.selectedPlayer];
                 const playerList = state[MultiStoreEnum.playerList]
@@ -110,13 +121,54 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         }
     }));
 
+    useEffect(() => {
+        if (playType === 'replay') {
+            const onTimeChange = (e: any) => {
+                if (events && events.onReload) {
+                    events.onReload(e.detail);
+                }
+            }
+            document.querySelector(`#${_id}-bar`)?.addEventListener('timeChange', onTimeChange);
+        }
+    }, []);
+
     return (
-        <ThemeProvider theme={DefaultTheme}>
-            <div className={styles.main} id={_id}>
-                <MultiScreenPlayerAction state={state} dispatch={dispatch}/>
-                <LayoutContent layoutKey={_id} events={events} state={state} dispatch={dispatch}/>
-                <MultiScreenDrawer screenKey={_id} state={state} dispatch={dispatch}/>
+        <ThemeProvider
+            theme={DefaultTheme}>
+            <div
+                style={playType === 'replay' ? {height: 'calc(100% - 60px)'} : {}}
+                className={`${styles.main} ${state[MultiStoreEnum.selectedScreen] == 1 ? styles.noScreen : ''}`}
+                id={_id}>
+                <MultiScreenPlayerAction
+                    defaultSelectedScreen={defaultSelectedScreen}
+                    state={state}
+                    dispatch={dispatch}/>
+                <LayoutContent
+                    layoutKey={_id}
+                    events={{
+                        ...events,
+                        onLoadStart: (e) => {
+                            if (events.onLoadStart) {
+                                events.onLoadStart(e);
+                            }
+                            if (playType === 'replay') {
+                                // @ts-ignore
+                                document.querySelector(`#${_id}-bar`)?.drawData(e);
+                            }
+                        }
+                    }}
+                    state={state}
+                    dispatch={dispatch}/>
+                <MultiScreenDrawer
+                    screenKey={_id}
+                    state={state}
+                    dispatch={dispatch}/>
             </div>
+            {
+                playType === 'replay' ?
+                    <video-progress-bar
+                        id={`${_id}-bar`}></video-progress-bar> : null
+            }
         </ThemeProvider>
     )
 });

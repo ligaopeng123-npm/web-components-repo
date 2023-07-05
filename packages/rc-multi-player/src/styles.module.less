@@ -15,6 +15,21 @@
     --multi-player-border-color: #000;
 }
 
+#playerBase() {
+    border-radius: 0px;
+    border-width: .5px;
+    background-color: transparent;
+    width: calc(100% - 0px);
+    height: calc(100% - 0px);
+}
+
+.noScreen {
+    .selected {
+        #playerBase();
+        border: .5px solid rgba(255, 255, 255, 0.12) !important;
+    }
+}
+
 .main {
     background-color: var(--multi-player-background-color, @multi-player-background-color);
     height: 100%;
@@ -71,13 +86,6 @@
 
         .item {
             height: 100%;
-            #playerBase() {
-                border-radius: 0px;
-                border-width: .5px;
-                background-color: transparent;
-                width: calc(100% - 0px);
-                height: calc(100% - 0px);
-            }
             // 播放器样式
             .player {
                 #playerBase();

@@ -51,6 +51,7 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
         }
 
         const _onError = (ev: any, info?: any) => {
+            console.log('ev', ev, info);
             if (events?.onReload) {
                 events?.onReload(eventsInfo);
             }
