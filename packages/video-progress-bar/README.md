@@ -1,6 +1,6 @@
-# demo-component
+## video-progress-bar
 
-`描述`
+`视频播放滚动条`
 
 ## Usage
 
