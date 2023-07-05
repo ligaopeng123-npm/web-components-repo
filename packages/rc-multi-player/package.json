@@ -79,10 +79,10 @@
         "@gaopeng123/hooks": "^0.5.0",
         "@gaopeng123/multi-player": "^1.0.2",
         "@gaopeng123/utils": "^1.1.8",
-        "@gaopeng123/video-progress-bar": "workspace:^1.2.2-alpha.0",
+        "@gaopeng123/video-progress-bar": "^0.1.0",
         "@mui/icons-material": "^5.10.9",
         "@mui/material": "^5.10.10",
         "material-ui-popup-state": "^4.1.0"
     },
-    "gitHead": "c02fb6d849463cfc60185d0d8eaa9ca5c93b04f0"
+    "gitHead": "b4e9249f05ccb73b0e1b1550ce15425f746da298"
 }
