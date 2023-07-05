@@ -15,7 +15,24 @@
 
 <body>
 <div id="root">
-    <video-progress-bar></video-progress-bar>
+    <div style="height: 400px;">
+        <video-progress-bar-forward-select id="speed"></video-progress-bar-forward-select>
+    </div>
+    <video-progress-bar id="bar"></video-progress-bar>
 </div>
+<script>
+    window.onload = function () {
+        setTimeout(()=> {
+            document.querySelector('#bar').start();
+        }, 3000);
+        document.querySelector('#bar').addEventListener('timeChange', (e)=> {
+            console.log(222, e)
+        });
+        document.querySelector('#speed').setAttribute('options', JSON.stringify([{label:'1',value:1,}, {label:'2',value:2,}]))
+        document.querySelector('#speed').addEventListener('onChange', ()=> {
+            console.log(111)
+        });
+    }
+</script>
 </body>
 </html>

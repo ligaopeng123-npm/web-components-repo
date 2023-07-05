@@ -11,8 +11,17 @@
  * @版权所有: pgli
  *
  **********************************************************************/
+type Options = Array<{ label: string, value: string }>
+type ForwardSelectConfig = {
+    options: Options,
+    'default-value'?: string
+}
+
 class ForwardSelect extends HTMLElement {
     shadow: ShadowRoot = null;
+    __config: ForwardSelectConfig = {
+        options: []
+    }
 
     constructor() {
         super();
@@ -20,8 +29,62 @@ class ForwardSelect extends HTMLElement {
         this.shadow.innerHTML = this.createTemplate();
     }
 
-    connectedCallback() {
+    onChange = (e: Event) => {
+        this.dispatchEvent(new CustomEvent('onChange', {
+            // @ts-ignore
+            detail: {value: e.target.value}
+        }));
+    }
 
+    connectedCallback() {
+        this.select.addEventListener('change', this.onChange);
+    }
+
+    /**
+     * 移除文档流
+     */
+    disconnectedCallback() {
+        this.select.removeEventListener('change', this.onChange);
+    }
+
+    /**
+     * 暴露哪些属性可以被监听
+     * @returns {string[]}
+     */
+    // @ts-ignore
+    static get observedAttributes() {
+        return [
+            'options',
+            'default-value'
+        ];
+    }
+
+    /**
+     * 当自定义元素的一个属性被增加、移除或更改时被调用。
+     * 需要setAttribute 才能被触发
+     */
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+        if (oldValue !== newValue) {
+            // @ts-ignore
+            this.__config[name] = JSON.parse(newValue);
+        }
+        this.renderOption();
+    }
+
+    get select() {
+        return this.shadow.querySelector('.dropdown-select');
+    }
+
+    renderOption() {
+        this.select.innerHTML = this.getOption();
+    }
+
+    getOption() {
+        const options: Options = this.__config.options;
+        const defaultValue = this.__config['default-value'];
+        return options.map((item) => {
+            return `<option ${item.value == defaultValue ? 'selected' : ''} value="${item.value}">${item.label}</option>`
+        }).join('')
     }
 
     createTemplate() {
@@ -43,6 +106,8 @@ class ForwardSelect extends HTMLElement {
                     background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
                     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
                     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+                    -webkit-user-select: none; /* Safari */
+                    user-select: none;
                 }
                 
                 .dropdown:before, .dropdown:after {
@@ -150,6 +215,8 @@ class ForwardSelect extends HTMLElement {
                     color: #aaa;
                     text-shadow: 0 1px black;
                     background: #444;  /* Fallback for IE 8 */
+                    -webkit-user-select: none;
+                    user-select: none;
                 }
                 
                 .dropdown-dark .dropdown-select:focus {
@@ -163,9 +230,7 @@ class ForwardSelect extends HTMLElement {
             </style>
             <div class="dropdown dropdown-dark">
             <select name="two" class="dropdown-select">
-              <option value="5">5s</option>
-              <option value="20">20s</option>
-              <option value="60">1分钟</option>
+              ${this.getOption()}
             </select>
           </div>
         `
@@ -174,6 +239,6 @@ class ForwardSelect extends HTMLElement {
 
 export default ForwardSelect;
 
-if (!customElements.get('forward-select')) {
-    customElements.define('forward-select', ForwardSelect);
+if (!customElements.get('video-progress-bar-forward-select')) {
+    customElements.define('video-progress-bar-forward-select', ForwardSelect);
 }

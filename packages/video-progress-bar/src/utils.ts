@@ -11,15 +11,12 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import forward from "./assets/forward.svg";
-import backward from "./assets/backward.svg";
-import ForwardSelect from "./ForwardSelect";
 
 export const TIMELINEHEIGHT = 60;
 export const transparentColor = 'rgba(0,0,0,0)';
 
-const BG = '#000000';
-const BD = '#333333';
+export const BG = '#000000';
+export const BD = '#333333';
 
 export const addEventFactory = (dom: any, type: string, fn: any, useCapture = false) => {
     dom && dom.addEventListener(type, fn, useCapture);
@@ -46,17 +43,7 @@ export const createTemplate = (config: any) => {
                 width: 100%;
                 height: 100%;
             }
-            /*时间弹窗*/
-            .timeline-datetime {
-                height: 18px !important;
-                border: 1px solid ${BD};
-                background-color: ${BG};
-                color: #fff;
-                border-radius: 2px;
-                width: 130px;
-                position: relative;
-            }
-
+           
              .timeline-datetime-level {
                 position: absolute;
                 font-size: 12px;
@@ -99,41 +86,16 @@ export const createTemplate = (config: any) => {
             .active {
                 text-align: center;
                 height: 60px;
+                -webkit-user-select: none; /* Safari */
+                user-select: none;
             }
-            
-            .active img {
-                cursor: pointer;
-                margin: 0px 8px;
-                z-index: 1;
-                height: 16px;
-            }
-            
-            .active img:hover {
-                background-color: #333333;
-            }
-            
-            .active .time {
-                height: 22px;
-                padding-top: 38px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: #ffffff;
-            }
-
         </style>
        <div id="timeline" class="timeline">
         <div class="timeline-drag">
             <canvas id="timeline-drag-canvas"></canvas>
         </div>
         <div class="active">
-            <div class="time">
-                <forward-select style="z-index: 1;position: relative;top: 5px;"></forward-select>
-                <input id="datetime"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
-                <img src="${backward}" />
-                <forward-select style="z-index: 1;position: relative;top: 5px;"></forward-select>
-                <img src="${forward}" />
-            </div>
+            <video-progress-bar-active-time></video-progress-bar-active-time>
         </div>
         
         <div class="timeline-datetime-level">

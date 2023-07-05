@@ -1,14 +1,12 @@
 /**
  * @类名: 全屏控制组件
- * @作用: 控制全屏能力
+ * @作用: 回放按钮开发
  * @作者: pgli
  */
 import { debounce, formatTimestamp, getTime } from "@gaopeng123/utils";
 import { addEventFactory, createTemplate, removeEventFactory, TIMELINEHEIGHT } from "./utils";
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.css";
-import { Mandarin } from "flatpickr/dist/l10n/zh.js"
 import { wheelDeltaLevel, status, SCALE_LEVEL, DEFAULT_CURRENT_TIME } from "./typing";
+import ActiveTime from "./ActiveTime";
 
 
 export default class VideoProgressBar extends HTMLElement {
@@ -47,8 +45,8 @@ export default class VideoProgressBar extends HTMLElement {
      * 时间选择框
      * @returns {Element | any}
      */
-    get datetime(): any {
-        return this.shadow.querySelector('#datetime');
+    get datetime(): ActiveTime {
+        return this.shadow.querySelector('video-progress-bar-active-time');
     }
 
     _wheelDelta = 0;
@@ -128,7 +126,7 @@ export default class VideoProgressBar extends HTMLElement {
      */
     _onmousedown(e: any) {
         this.__dragStartEvent = e;
-        if (e) this.stopMoveTime();
+        if (e) this.stop();
     }
 
     /**
@@ -140,11 +138,12 @@ export default class VideoProgressBar extends HTMLElement {
         /**
          * video注册的也有事件 此处要多加个判断
          */
-        if (e && this.__dragStartEvent) this.moveTime();
+        if (e && this.__dragStartEvent) this.start();
         this.__dragStartEvent = null;
         this.__dragX += this.__dragCurrentX;
         this.__dragCurrentX = null;
         this.endTime = this.currentTime;
+        this.datetime.canClick();
     }
 
     /**
@@ -157,18 +156,19 @@ export default class VideoProgressBar extends HTMLElement {
             const endX = e.layerX;
             this.__dragCurrentX = endX - beginX;
             this.dragStart(null);
+            this.datetime.canNotClick();
         }
     }
 
     // 点击去抖时间现对短一些 加快响应
-    onAddclick = debounce(() => {
+    onAddClick = debounce(() => {
         this.wheelDelta = 1;
     }, 50);
+
     // 点击去抖时间现对短一些 加快响应
-    onDelclick = debounce(() => {
+    onDelClick = debounce(() => {
         this.wheelDelta = -1;
     }, 50);
-
 
     addEvent() {
         addEventFactory(this._canvas, 'mousewheel', this._onmousewheel.bind(this));
@@ -176,8 +176,9 @@ export default class VideoProgressBar extends HTMLElement {
         addEventFactory(this._canvas, 'mousemove', this._onmousemove.bind(this));
         addEventFactory(this._canvas, 'mouseout', this._onmouseup.bind(this));
         addEventFactory(this._canvas, 'mouseup', this._onmouseup.bind(this));
-        addEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddclick.bind(this));
-        addEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelclick.bind(this));
+        addEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick.bind(this));
+        addEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick.bind(this));
+        addEventFactory(this.datetime, 'change', this.onchange.bind(this));
     }
 
     removeEvent() {
@@ -186,37 +187,17 @@ export default class VideoProgressBar extends HTMLElement {
         removeEventFactory(this._canvas, 'mousemove', this._onmousemove);
         removeEventFactory(this._canvas, 'mouseout', this._onmouseup);
         removeEventFactory(this._canvas, 'mouseup', this._onmouseup);
-        removeEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddclick);
-        removeEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelclick);
+        removeEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick);
+        removeEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick);
+        removeEventFactory(this.datetime, 'change', this.onchange.bind(this));
     }
 
     afterConnectedFn() {
         this.setCanvasStyle();
         this.startTime = this.defaultCurrentTime;
-        this.initFlatpickr();
         this.initialize({status: 'loading'});
         this.setLevelValue();
         this.draw();
-    }
-
-    __flatpickr: any = null;
-
-    initFlatpickr() {
-        this.__flatpickr = flatpickr(this.datetime, {
-            dateFormat: "Y-m-d H:i:s",
-            "locale": Mandarin,
-            time_24hr: true,
-            onClose: (v) => {
-                this.datetime.value = v[0];
-                this.onchange();
-            }
-        });
-    }
-
-    setFlatpickrVal(val: string) {
-        if (this.__flatpickr) {
-            this.__flatpickr.setDate(val);
-        }
     }
 
     /**
@@ -224,7 +205,6 @@ export default class VideoProgressBar extends HTMLElement {
      */
     connectedCallback() {
         this.addEvent();
-        // this.addObserver();
         this.afterConnectedCallback();
     }
 
@@ -241,8 +221,11 @@ export default class VideoProgressBar extends HTMLElement {
         })
     }
 
-    beforeDestroy() {
-        this.stopMoveTime();
+    /**
+     * 移除文档流
+     */
+    disconnectedCallback() {
+        this.stop();
     }
 
     // 时间框
@@ -277,7 +260,7 @@ export default class VideoProgressBar extends HTMLElement {
      * @param level
      * @private
      */
-    _setTbarClass(tbar: HTMLElement, level: any) {
+    _setTBarClass(tbar: HTMLElement, level: any) {
         if (this.scaleLevelN === level) {
             tbar.classList.add('disabled');
             tbar.classList.remove('tbar');
@@ -295,11 +278,12 @@ export default class VideoProgressBar extends HTMLElement {
     setLevelValue() {
         const add: HTMLElement = this.shadow.querySelector('#add');
         const del: HTMLElement = this.shadow.querySelector('#del');
+        const levelValue: HTMLElement = this.shadow.querySelector('#levelValue');
         // 当点击到最小
-        this._setTbarClass(add, '12m');
+        this._setTBarClass(add, '12m');
         // 当点击到最大
-        this._setTbarClass(del, '24h');
-        (this.shadow.querySelector('#levelValue') as HTMLElement).innerText = this.scaleLevelN;
+        this._setTBarClass(del, '24h');
+        levelValue.innerText = this.scaleLevelN;
     }
 
     get scaleLevelV() {
@@ -403,7 +387,8 @@ export default class VideoProgressBar extends HTMLElement {
                 action: 'auto', // 自动快进
                 isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
                 timestamp: currentTime,
-                date: formatTimestamp(currentTime)
+                date: formatTimestamp(currentTime),
+                'speed-value': this.datetime.speed
             })
         }
     }
@@ -413,24 +398,25 @@ export default class VideoProgressBar extends HTMLElement {
      * @param obj
      */
     publishTimeline(obj: any) {
-        // this.publish('timeline', Object.assign({
-        //     type: 'current',
-        // }, obj))
+        this.dispatchEvent(new CustomEvent('timeChange', {
+            detail: obj
+        }));
     }
 
     /**
      * 向外部发送消息
      */
-    sendToOutside(e: any) {
+    sendToOutside(e: any, value?: any) {
         // 当收到触发加载时 启动loading 并向外部发送消息
         if (e?.status === 'loading') {
             const currentTime = this.protectCurrentTime();
-            this.publishTimeline({
+            this.publishTimeline(Object.assign({
                 action: 'drag', // 拖拽快进
                 isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
                 timestamp: this.protectCurrentTime(),
-                date: formatTimestamp(currentTime)
-            });
+                date: formatTimestamp(currentTime),
+                'speed-value': this.datetime.speed
+            }, value));
         }
     }
 
@@ -503,22 +489,21 @@ export default class VideoProgressBar extends HTMLElement {
              */
             this.startTime = value?.currentPlayTime();
             this.initVideoOptions(videoOptions);
-            // this.draw();
+            this.draw();
             /**
              * TODO 仅只有多屏模式下 才需要动态调整进度条
              */
-            // if (this.getMultiscreen()) {
-            //     this.moveTime();
-            // }
+            this.start();
         }
     }
 
     /**
-     * 赋值输入框
+     * 时间框赋值
      */
-    setTime = (time: any) => {
-        this.datetime.value = formatTimestamp(time);
-        this.setFlatpickrVal(this.datetime.value);
+    setTime(time: any) {
+        setTimeout(() => {
+            this.datetime.setAttribute('time-value', formatTimestamp(time));
+        });
     };
 
     /**
@@ -546,13 +531,12 @@ export default class VideoProgressBar extends HTMLElement {
     loadingState = (e: any) => {
         if (e?.status === 'loading') {
             // 暂停时间
-            this.stopMoveTime();
-            // TODO
-            // this.publish('loading', {type: true});
-            // // 如果一直未响应 则5秒后移除loading
-            // setTimeout(() => {
-            //     this.publish('loading', {type: false});
-            // }, 5000);
+            this.stop();
+            this.publish('loading', {type: true});
+            // 如果一直未响应 则5秒后移除loading
+            setTimeout(() => {
+                this.publish('loading', {type: false});
+            }, 5000);
         }
     };
 
@@ -560,8 +544,8 @@ export default class VideoProgressBar extends HTMLElement {
      * 给时间赋值
      * @param e
      */
-    setDateTimeFn = (e: any) => {
-        this.sendToOutside(e);
+    setDateTimeFn = (e: any, value?: any) => {
+        this.sendToOutside(e, value);
         /**
          * 加载loading效果 1秒后删除 增加体验
          */
@@ -592,7 +576,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 将状态重置
      */
     reset() {
-        this.stopMoveTime();
+        this.stop();
         this.__dragStartEvent = null;
         // 当前拖拽距离
         this.__dragCurrentX = 0;
@@ -612,42 +596,26 @@ export default class VideoProgressBar extends HTMLElement {
      * 时间选择框事件
      * @param e
      */
-    changeEvent = () => {
+    changeEvent = (e: any) => {
         if (this.checkDatetime()) {
             this.__dragCurrentX = (this.currentTime - new Date(this.datetime.value).getTime()) * this.timelineWidth / this.scaleLevelV;
             this.dragStart(null);
             this.initialize({status: 'loading'});
-            this.setDateTimeFn({status: 'loading'});
+            this.setDateTimeFn({status: 'loading'}, e.detail);
         }
     };
+
     onchange = debounce((e: any) => {
-        this.changeEvent();
+        this.changeEvent(e);
     });
+
     publish = (type: any, opts: any) => {
-        console.log(type, opts)
     }
     /**
      * 检查时间是否合法 不合法给提示 并不匀速下发
      */
     checkDatetime = () => {
-        const time = this.datetime.value;
-        if (!time) {
-            this.publish('message', {
-                type: 'waring',
-                message: '时间不合法，请重新选择或输入！'
-            });
-            return false;
-        }
-        const timeArr = time.split('-');
-        const yyyy = Number(timeArr[0]);
-        if (yyyy > 9999 || yyyy < 1970) {
-            this.publish('message', {
-                type: 'waring',
-                message: '年份必须大于1970且不超过9999，请重新选择或输入！'
-            });
-            return false;
-        }
-        return true;
+        return this.datetime.value;
     };
 
     /**
@@ -658,7 +626,7 @@ export default class VideoProgressBar extends HTMLElement {
     //     if (type === 'play') {
     //         this.getSrc() && this.moveTime();
     //     } else if (type === 'pause') {
-    //         this.stopMoveTime();
+    //         this.stop();
     //     } else {
     //         // 无需处理
     //         console.log(`pseudo的type: ${type}`)
@@ -678,11 +646,11 @@ export default class VideoProgressBar extends HTMLElement {
     }: any) {
         if (type === 'needle') {
             switch (value) {
-                case 'run':
-                    this.moveTime();
+                case 'start':
+                    this.start();
                     break;
                 case 'stop':
-                    this.stopMoveTime();
+                    this.stop();
                     break;
                 //  重新拉取新数据
                 case 'restart':
@@ -698,14 +666,14 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 根据时间将时间轴推动
      */
-    __pollingtimer: any = null;
+    __pollingTimer: any = null;
 
-    stopMoveTime() {
+    stop() {
         this.clearPollingTime();
     }
 
     clearPollingTime() {
-        clearInterval(this.__pollingtimer);
+        clearInterval(this.__pollingTimer);
     }
 
     /**
@@ -757,7 +725,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 播放绘制
      */
     pollingTimeRun() {
-        this.__pollingtimer = setInterval(() => {
+        this.__pollingTimer = setInterval(() => {
             /**
              * 模拟鼠标事件 基于鼠标事件处理相对应的逻辑
              * @type {number}
@@ -770,24 +738,17 @@ export default class VideoProgressBar extends HTMLElement {
             // 用完销毁
             this.__periodsTime = 1;
             this.dragStart(null);
-            if (this.datetime._mouseState !== 'focus') {
-                this.setDateTime({status: 'polling'});
-            }
+            this.setDateTime({status: 'polling'});
             this._onmouseup(null);
         }, 1000);
     }
 
     /**
-     * 根据播放时间轮询开始
+     * 根据播放时间轮询开始 手动控制轮询开始
      */
-    moveTime() {
+    start() {
         this.clearPollingTime();
-        /**
-         * TODO 只有回放有时间进度
-         */
-        // if (this.getIsReplay() && this.getSrc()) {
-        //     this.pollingTimeRun();
-        // }
+        this.pollingTimeRun();
     }
 
     /**
