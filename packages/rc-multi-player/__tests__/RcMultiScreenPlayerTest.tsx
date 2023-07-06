@@ -119,6 +119,9 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         playType={'replay'}
                         defaultSelectedScreen={4}
                         events={{
+                            onTimeChange: (e: PlayerConfig)=> {
+                                console.log(e);
+                            },
                             onReload: (e: PlayerConfig) => {
                                 console.log(111, e);
                                 // onClick(e);

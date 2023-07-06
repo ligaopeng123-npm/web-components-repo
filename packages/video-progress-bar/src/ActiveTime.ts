@@ -165,7 +165,7 @@ class ActiveTime extends HTMLElement {
         this.onChange('speed-value');
     }
 
-    onForwardChange = () => {
+    onForwardChange = (e: Event) => {
         // @ts-ignore
         this.__config['forward-value'] = Number(e.detail.value);
     }
