@@ -69,6 +69,8 @@ export type PlayerEvents = {
     onMaxReload?: (playerConfig?: PlayerConfig) => void;
     // 视频结束
     onClose?: (playerConfig?: PlayerConfig) => void;
+    // 时间变更参数
+    onTimeChange?: (playerConfig?: PlayerConfig) => void;
 }
 
 export type Protocol =

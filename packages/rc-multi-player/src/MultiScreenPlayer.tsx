@@ -124,8 +124,8 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
     useEffect(() => {
         if (playType === 'replay') {
             const onTimeChange = (e: any) => {
-                if (events && events.onReload) {
-                    events.onReload(e.detail);
+                if (events && events.onTimeChange) {
+                    events.onTimeChange(e.detail);
                 }
             }
             document.querySelector(`#${_id}-bar`)?.addEventListener('timeChange', onTimeChange);
