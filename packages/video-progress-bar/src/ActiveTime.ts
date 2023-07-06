@@ -274,13 +274,19 @@ class ActiveTime extends HTMLElement {
             .disabled {
                 pointer-events: none;
             }
+            
+            video-progress-bar-forward-select {
+                position: relative;
+                top: -24.5px;
+                height: 0px;
+            }
             </style>
              <div class="time">
                 <div style="width: 60px"></div>
-                <video-progress-bar-forward-select id="speed" default-value="1" options=${JSON.stringify(speedOptions)} style="position: relative;top: -25px;height: 0px;"></video-progress-bar-forward-select>
+                <video-progress-bar-forward-select id="speed" default-value="1" options=${JSON.stringify(speedOptions)}></video-progress-bar-forward-select>
                 <input id="datetime"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
                 <img id="bth-backward"  title="快退" src="${backward}" />
-                <video-progress-bar-forward-select id="forward" default-value="5" options=${JSON.stringify(forwardOptions)} style="position: relative;top: -25px;height: 0px;"></video-progress-bar-forward-select>
+                <video-progress-bar-forward-select id="forward" default-value="5" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
                 <img id="bth-forward" title="快进" src="${forward}" />
             </div>
         `

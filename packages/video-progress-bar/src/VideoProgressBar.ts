@@ -179,6 +179,7 @@ export default class VideoProgressBar extends HTMLElement {
         addEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick.bind(this));
         addEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick.bind(this));
         addEventFactory(this.datetime, 'change', this.onchange.bind(this));
+        addEventFactory(window, 'resize', this.onResizeSubscribe.bind(this));
     }
 
     removeEvent() {
@@ -190,6 +191,7 @@ export default class VideoProgressBar extends HTMLElement {
         removeEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick);
         removeEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick);
         removeEventFactory(this.datetime, 'change', this.onchange.bind(this));
+        removeEventFactory(window, 'resize', this.onResizeSubscribe.bind(this));
     }
 
     afterConnectedFn() {
@@ -455,12 +457,12 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 窗口尺寸变化重新绘制
      */
-    onResizeSubscribe() {
+    onResizeSubscribe = debounce(()=> {
         // 保证缩放的倍数 数据的准确性
         this.__dragX = (this.timelineWidth / this._canvas.offsetWidth) * this.__dragX;
         this.setCanvasStyle();
-        // this.draw();
-    }
+        this.draw();
+    })
 
     /**
      * 分屏 每个小块切换时触发
@@ -835,11 +837,11 @@ export default class VideoProgressBar extends HTMLElement {
                 this.drawSingleSchedule(item);
             });
         } else {
-            // 130 65是右边操作区域的宽度
-            this.drawSingleSchedule({
-                x: 65,
-                w: this.timelineWidth - 130
-            });
+            // 130 65是右边操作区域的宽度 todo 此处是测试方法
+            // this.drawSingleSchedule({
+            //     x: 65,
+            //     w: this.timelineWidth - 130
+            // });
         }
     }
 
