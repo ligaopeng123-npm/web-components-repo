@@ -21,6 +21,7 @@ import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';
 import { isEmptyObject } from "@gaopeng123/utils";
 import "@gaopeng123/video-progress-bar";
+import { PlayerConfig } from "./Player/PlayerTyping";
 
 const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<MultiScreenPlayerProps> & React.RefAttributes<MultiScreenPlayerRef>> = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
@@ -118,6 +119,22 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                         selectedPlayer: state[MultiStoreEnum.selectedPlayer],
                     }),
             })
+        },
+        /**
+         * 获取播放进度条
+         */
+        videoProgressBar: ()=> {
+            return document.querySelector(`#${_id}-bar`);
+        },
+        /**
+         * 绘制数据
+         * @param data
+         */
+        drawData(data: PlayerConfig) {
+            if (playType === 'replay') {
+                // @ts-ignore
+                document.querySelector(`#${_id}-bar`)?.drawData(data);
+            }
         }
     }));
 
@@ -165,9 +182,9 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                     dispatch={dispatch}/>
             </div>
             {
-                playType === 'replay' ?
-                    <video-progress-bar
-                        id={`${_id}-bar`}></video-progress-bar> : null
+                playType === 'replay'
+                    ? <video-progress-bar id={`${_id}-bar`}></video-progress-bar>
+                    : null
             }
         </ThemeProvider>
     )
