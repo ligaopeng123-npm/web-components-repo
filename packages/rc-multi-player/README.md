@@ -12,8 +12,6 @@
 | width           | 视频宽度                                                     | string ｜number                                              | 100%   |
 | height          | 视频高度                                                     | string ｜number                                              | 100%   |
 
-
-
 ## RcFlvPlayer
 
 > flv播放器，依赖@gaopeng123/multi-player
@@ -142,8 +140,6 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
 
 export default LayoutPlayer;
 ```
-
-
 
 ## RcMultiScreenPlayer
 
