@@ -13,7 +13,8 @@
     "scripts": {
         "build": "lerna exec --ignore=@gaopeng123/utils -- pnpm run build",
         "test": "lerna exec --ignore=@gaopeng123/utils -- pnpm run test",
-        "push": "lerna exec -- pnpm run publish"
+        "pushAll": "lerna exec -- pnpm run build",
+        "push": "pnpm run build && pnpm run publish"
     },
     "devDependencies": {
         "commitizen": "^4.3.0",
