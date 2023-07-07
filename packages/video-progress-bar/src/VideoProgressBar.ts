@@ -382,18 +382,18 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 快进处理
      */
-    fastForward() {
-        if (this.__periodsTime > 1) {
-            const currentTime = this.__periodsTime * 1000 + this.protectCurrentTime();
-            this.publishTimeline({
-                action: 'auto', // 自动快进
-                isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
-                timestamp: currentTime,
-                date: formatTimestamp(currentTime),
-                'speed-value': this.datetime.speed
-            })
-        }
-    }
+    // fastForward() {
+    //     if (this.__periodsTime > 1) {
+    //         const currentTime = this.__periodsTime * 1000 + this.protectCurrentTime();
+    //         this.publishTimeline({
+    //             action: 'auto', // 自动快进
+    //             isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
+    //             timestamp: currentTime,
+    //             date: formatTimestamp(currentTime),
+    //             'speed-value': this.datetime.speed
+    //         })
+    //     }
+    // }
 
     /**
      * 消息推送
@@ -415,7 +415,7 @@ export default class VideoProgressBar extends HTMLElement {
             this.publishTimeline(Object.assign({
                 action: 'drag', // 拖拽快进
                 isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
-                timestamp: this.protectCurrentTime(),
+                timestamp: currentTime,
                 date: formatTimestamp(currentTime),
                 'speed-value': this.datetime.speed
             }, value));
@@ -431,10 +431,29 @@ export default class VideoProgressBar extends HTMLElement {
             periods: data.periods || [],
             currentTime: getTime(data.currentTime || DEFAULT_CURRENT_TIME)
         });
-        this.__intervalSpeed = data['speed-value'] ? Number(data['speed-value']) : this.__intervalSpeed;
         this.draw();
         this.start();
     }
+
+    /**
+     * 倍速播放
+     * @param data
+     */
+    changeSpeed(data: VideoOptions) {
+        this.__intervalSpeed = data['speed-value'] ? Number(data['speed-value']) : this.__intervalSpeed;
+    }
+
+    /**
+     * 快进处理
+     * @param data
+     */
+    fastForward(data: VideoOptions) {
+        const forwardValue = data['forward-value'] ? Number(data['forward-value']) : 0;
+        if (forwardValue) {
+            this.__periodsTime = forwardValue;
+        }
+    }
+
 
     /**
      * 初始化视频参数
@@ -734,7 +753,7 @@ export default class VideoProgressBar extends HTMLElement {
              */
             this._onmousedown(null);
             this.checkPeriods();
-            this.fastForward();
+            // this.fastForward();
             this.__dragCurrentX = this.__periodsTime * (-1000) * this.timelineWidth / this.scaleLevelV + (this.__dragCurrentX || 0);
             // 用完销毁
             this.__periodsTime = 1;
