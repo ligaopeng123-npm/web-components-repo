@@ -36,6 +36,7 @@ export const createTemplate = (config: any) => {
                 line-height: ${TIMELINEHEIGHT}px;
                 text-align: center;
                 background-color: #000000;
+                overflow: hidden;
              }
              /*拖拽样式*/
             .timeline-drag {
