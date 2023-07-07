@@ -11,7 +11,7 @@
  **********************************************************************/
 import * as React from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
-import { RcMultiScreenPlayer } from "../src";
+import { RcMultiScreenPlayer, reduceTimeSlotInterference } from "../src";
 import Snackbar from "@mui/material/Snackbar";
 import { useRef } from "react";
 import { PlayerConfig } from "../src/Player/PlayerTyping";
@@ -33,7 +33,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         if (url) {
             setCurrentConfig({
                 mediaDataSource: {
-                    url: url,
+                    url: "https://ai-api-test.sany.com.cn/live/real_523ed2b1480a91bffc5acc1ada60fcfa.flv",
                     type: 'flv',
                 },
                 playerConfig: {
@@ -45,6 +45,19 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         maxResetTimes: 1,
                         retryDuration: 15000 // 15秒加载
                     },
+                    periods: reduceTimeSlotInterference([
+                        {
+                            "recordBeginTime": "2023-07-07 00:00:00",
+                            "recordEndTime": "2023-07-07 10:04:10",
+                            "fileName": "ch0001_01010009546000000",
+                            "fileSize": 3728667292
+                        }
+                    ], {
+                        startKey: 'recordBeginTime',
+                        endKey: 'recordEndTime'
+                    }),
+                    currentTime: "2023-07-07 00:00:00",
+                    'speed-value': 4
                 }
             });
         } else {
@@ -119,11 +132,10 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         playType={'replay'}
                         defaultSelectedScreen={4}
                         events={{
-                            onTimeChange: (e: PlayerConfig)=> {
-                                console.log(e);
+                            onTimeChange: (e: PlayerConfig) => {
+                                onClick(e);
                             },
                             onReload: (e: PlayerConfig) => {
-                                console.log(111, e);
                                 // onClick(e);
                             },
                             onClose: (e: PlayerConfig) => {
@@ -153,7 +165,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         }}
                         ref={screenRef}
                         currentConfig={currentConfig}
-                        />
+                    />
                 </div>
             </div>
             <Snackbar

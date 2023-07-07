@@ -121,7 +121,6 @@ export type  PlayerConfig =
         periods?: Array<{ startTime: string, endTime: string }>;
         // 初始播放时间
         currentTime?: string;
-
     }
     & PlayerActionConfig
     & RobustnessProps;

@@ -15,7 +15,7 @@ import LayoutContent from "./Layout/LayoutContent";
 import { MultiScreenPlayerProps, MultiScreenPlayerRef, MultiStoreEnum } from "./MultiTyping";
 import { LayoutJson } from "./assets";
 import MultiScreenPlayerAction from "./Action/MultiScreenPlayerAction";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { DefaultTheme } from "./Theme";
 import MultiScreenDrawer from "./Action/MultiScreenDrawer";
 import styles from './styles.module.less';

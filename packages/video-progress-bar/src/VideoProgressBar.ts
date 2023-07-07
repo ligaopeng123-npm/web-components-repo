@@ -5,7 +5,7 @@
  */
 import { debounce, formatTimestamp, getTime } from "@gaopeng123/utils";
 import { addEventFactory, createTemplate, removeEventFactory, TIMELINEHEIGHT } from "./utils";
-import { wheelDeltaLevel, status, SCALE_LEVEL, DEFAULT_CURRENT_TIME } from "./typing";
+import { wheelDeltaLevel, status, SCALE_LEVEL, DEFAULT_CURRENT_TIME, VideoOptions } from "./typing";
 import ActiveTime from "./ActiveTime";
 
 
@@ -426,11 +426,12 @@ export default class VideoProgressBar extends HTMLElement {
      * 用户自定义配置
      * @param data
      */
-    drawData(data: { periods: Array<{ startTime: string, endTime: string }>, currentTime: string }) {
+    drawData(data: VideoOptions) {
         this.initVideoOptions({
             periods: data.periods || [],
-            currentTime: DEFAULT_CURRENT_TIME
+            currentTime: getTime(data.currentTime || DEFAULT_CURRENT_TIME)
         });
+        this.__intervalSpeed = data['speed-value'] ? Number(data['speed-value']) : this.__intervalSpeed;
         this.draw();
         this.start();
     }
@@ -439,9 +440,9 @@ export default class VideoProgressBar extends HTMLElement {
      * 初始化视频参数
      * @param data
      */
-    initVideoOptions(data: any) {
+    initVideoOptions(data: VideoOptions) {
         this.__periods = data?.periods;
-        this.defaultCurrentTime = data.currentTime;
+        this.defaultCurrentTime = getTime(data.currentTime);
         const status = data?.currentTime !== this.startTime ? {status: 'reset'} : null;
         this.startTime = data.currentTime;
         this.initialize(status);
@@ -457,7 +458,7 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 窗口尺寸变化重新绘制
      */
-    onResizeSubscribe = debounce(()=> {
+    onResizeSubscribe = debounce(() => {
         // 保证缩放的倍数 数据的准确性
         this.__dragX = (this.timelineWidth / this._canvas.offsetWidth) * this.__dragX;
         this.setCanvasStyle();
@@ -722,6 +723,8 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 播放绘制
      */
+    __intervalSpeed = 1;
+
     pollingTimeRun() {
         this.__pollingTimer = setInterval(() => {
             /**
@@ -738,7 +741,7 @@ export default class VideoProgressBar extends HTMLElement {
             this.dragStart(null);
             this.setDateTime({status: 'polling'});
             this._onmouseup(null);
-        }, 1000);
+        }, 1000 / this.__intervalSpeed);
     }
 
     /**
@@ -800,7 +803,7 @@ export default class VideoProgressBar extends HTMLElement {
     scale = 12;
 
     /**
-     *  绘制刻度
+     *  绘制刻度值
      */
     drawScale() {
         this.drawLine(0, 0, this.timelineWidth, 0, '#f7ff2f');

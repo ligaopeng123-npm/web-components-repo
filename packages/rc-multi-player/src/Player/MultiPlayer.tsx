@@ -20,9 +20,9 @@ import HideFullScreen from "../Action/HideFullScreen";
 import IconCloseButton from "../Action/IconCloseButton";
 import RcFlvPlayer from "./FlvPlayer";
 import Title from "../components/Title";
-import { RcMultiPlayerProps } from "./PlayerTyping";
+import { PlayerConfig, RcMultiPlayerProps } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
-import Countdown, {countdownRef} from "../Action/Countdown";
+import Countdown, { countdownRef } from "../Action/Countdown";
 import ScreenshotPicture from "../Action/ScreenshotPicture";
 
 const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
@@ -41,12 +41,15 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const loadRef = useRef<any>(null);
     const playerRef = useRef<any>(null);
     const countRef = useRef<countdownRef>(null);
-    const [loadType, { setTrue: setLoadTypeTrue, setFalse: setLoadTypeFalse }] = useBoolean(true);
+    const [loadType, {
+        setTrue: setLoadTypeTrue,
+        setFalse: setLoadTypeFalse
+    }] = useBoolean(true);
 
     /**
      * 重置倒计时参数
      */
-    const resetCountConfig = ()=> {
+    const resetCountConfig = () => {
         if (countRef.current) {
             countRef.current.reset();
         }
@@ -66,7 +69,10 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
     const reloadPlayer = () => {
         playerRef.current?.reload();
         if (playerEvents?.onReload) {
-            playerEvents.onReload({ extraParams, protocol });
+            playerEvents.onReload({
+                extraParams,
+                protocol
+            });
         }
         if (mediaDataSource) {
             setLoadTypeTrue();
@@ -85,7 +91,10 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
         }
         setLoadTypeFalse();
         if (events?.onClose) {
-            events.onClose({ extraParams, protocol });
+            events.onClose({
+                extraParams,
+                protocol
+            });
         }
     }
     /**
@@ -117,34 +126,49 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
      * 事件监听
      */
     const playerEvents = Object.assign({}, events, {
-        onLoadStart: () => {
+        onLoadStart: (e: PlayerConfig) => {
             resetLoadConfig();
             if (events?.onLoadStart) {
-                events?.onLoadStart({ extraParams, protocol });
+                events?.onLoadStart({
+                    extraParams,
+                    protocol
+                });
             }
         },
-        onReload: ()=> {
+        onReload: (e: PlayerConfig) => {
             if (events?.onReload) {
-                events?.onReload({ extraParams, protocol });
+                events?.onReload({
+                    extraParams,
+                    protocol
+                });
             }
         },
-        onMaxReload: () => {
+        onMaxReload: (e: PlayerConfig) => {
             if (events?.onMaxReload) {
-                events?.onMaxReload({ extraParams, protocol });
+                events?.onMaxReload({
+                    extraParams,
+                    protocol
+                });
             }
         },
         onLoadError: () => {
             loadRef.current?.show();
             countRef?.current?.setEnd();
             if (events?.onLoadError) {
-                events?.onLoadError({ extraParams, protocol });
+                events?.onLoadError({
+                    extraParams,
+                    protocol
+                });
             }
         },
-        onLoadEnd: ()=> {
+        onLoadEnd: () => {
             loadRef.current?.show();
             countRef?.current?.setEnd();
             if (events?.onLoadEnd) {
-                events?.onLoadEnd({ extraParams, protocol });
+                events?.onLoadEnd({
+                    extraParams,
+                    protocol
+                });
             }
         }
     });
@@ -160,28 +184,34 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             ref={(el: any) => {
                 setDivCurrent(el);
             }}
-            classes={{ root: `${styles.mainPlayer} ${className}` }}>
+            classes={{root: `${styles.mainPlayer} ${className}`}}>
             <ActionColumn
                 className={styles.hoverShow}
-                left={<Title ellipsis={true}>{title}</Title>}
-                right={<HideFullScreen>
-                    {
-                        canLoad && !isNaN(parseInt(maxPlayerTime as string))
-                            ? <Countdown
-                                ref={countRef}
-                                maxTime={parseInt(maxPlayerTime as string) * 60}
-                                onMaxClick={() => {
-                                    reloadPlayer();
-                                }}
-                                onMax={() => {
-                                    playerRef.current?.close();
-                                    loadRef?.current?.show();
-                                }}/>
-                            : null
-                    }
-                    <IconCloseButton onClick={onCloseClick}/>
-                </HideFullScreen>}/>
-            <div className={styles.playerContent}>
+                left={
+                    <Title
+                        ellipsis={true}>{title}</Title>}
+                right={
+                    <HideFullScreen>
+                        {
+                            canLoad && !isNaN(parseInt(maxPlayerTime as string))
+                                ?
+                                <Countdown
+                                    ref={countRef}
+                                    maxTime={parseInt(maxPlayerTime as string) * 60}
+                                    onMaxClick={() => {
+                                        reloadPlayer();
+                                    }}
+                                    onMax={() => {
+                                        playerRef.current?.close();
+                                        loadRef?.current?.show();
+                                    }}/>
+                                : null
+                        }
+                        <IconCloseButton
+                            onClick={onCloseClick}/>
+                    </HideFullScreen>}/>
+            <div
+                className={styles.playerContent}>
                 <ReplayLoad
                     ref={loadRef}
                     onClick={() => {
@@ -192,7 +222,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                             ? <>
                                 {
                                     protocol === 'WebRTC'
-                                        ? <RcWebRTCPlayer
+                                        ?
+                                        <RcWebRTCPlayer
                                             ref={playerRef}
                                             extraParams={extraParams}
                                             events={playerEvents}
@@ -200,7 +231,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                             robustness={robustness}
                                             mediaDataSource={mediaDataSource}
                                         />
-                                        : <RcFlvPlayer
+                                        :
+                                        <RcFlvPlayer
                                             ref={playerRef}
                                             extraParams={extraParams}
                                             events={playerEvents}
@@ -210,7 +242,8 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                                         />
                                 }
                             </>
-                            : <div></div>
+                            :
+                            <div></div>
                     }
                 </ReplayLoad>
             </div>
@@ -218,8 +251,13 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
                 className={`${styles.hoverShow} ${styles.bottom}`}
                 right={
                     <HideFullScreen>
-                        <ScreenshotPicture title={title} el={divCurrent} type={'icon'}/>
-                        <FullScreenButton el={divCurrent} type={'icon'}/>
+                        <ScreenshotPicture
+                            title={title}
+                            el={divCurrent}
+                            type={'icon'}/>
+                        <FullScreenButton
+                            el={divCurrent}
+                            type={'icon'}/>
                     </HideFullScreen>
                 }
             />

@@ -65,38 +65,25 @@ export type MultiPlayerErrorType = mpegts.ErrorTypes.NETWORK_ERROR |
     // @ts-ignore
     mpegts.ErrorTypes.OTHER_ERROR
 
-export enum MultiPlayerError {
-    // @ts-ignore
-    NETWORK_ERROR = mpegts.ErrorTypes.NETWORK_ERROR,
-    // @ts-ignore
-    MEDIA_ERROR = mpegts.ErrorTypes.NETWORK_ERROR,
-    // @ts-ignore
-    OTHER_ERROR = mpegts.ErrorTypes.NETWORK_ERROR,
+export const MultiPlayerError = {
+    NETWORK_ERROR : mpegts.ErrorTypes.NETWORK_ERROR,
+    MEDIA_ERROR : mpegts.ErrorTypes.NETWORK_ERROR,
+    OTHER_ERROR : mpegts.ErrorTypes.NETWORK_ERROR,
 }
 
-export enum MultiPlayerEvent {
-    // @ts-ignore
-    ERROR = mpegts.Events.ERROR,
-    // @ts-ignore
-    LOADING_COMPLETE = mpegts.Events.LOADING_COMPLETE,
-    // @ts-ignore
-    RECOVERED_EARLY_EOF = mpegts.Events.RECOVERED_EARLY_EOF,
-    // @ts-ignore
-    MEDIA_INFO = mpegts.Events.MEDIA_INFO,
-    // @ts-ignore
-    METADATA_ARRIVED = mpegts.Events.METADATA_ARRIVED,
-    // @ts-ignore
-    SCRIPTDATA_ARRIVED = mpegts.Events.SCRIPTDATA_ARRIVED,
-    // @ts-ignore
-    TIMED_ID3_METADATA_ARRIVED = mpegts.Events.TIMED_ID3_METADATA_ARRIVED,
-    // @ts-ignore
-    PES_PRIVATE_DATA_DESCRIPTOR = mpegts.Events.PES_PRIVATE_DATA_DESCRIPTOR,
-    // @ts-ignore
-    PES_PRIVATE_DATA_ARRIVED = mpegts.Events.PES_PRIVATE_DATA_ARRIVED,
-    // @ts-ignore
-    STATISTICS_INFO = mpegts.Events.STATISTICS_INFO,
+export const MultiPlayerEvent = {
+    ERROR : mpegts.Events.ERROR,
+    LOADING_COMPLETE : mpegts.Events.LOADING_COMPLETE,
+    RECOVERED_EARLY_EOF : mpegts.Events.RECOVERED_EARLY_EOF,
+    MEDIA_INFO : mpegts.Events.MEDIA_INFO,
+    METADATA_ARRIVED : mpegts.Events.METADATA_ARRIVED,
+    SCRIPTDATA_ARRIVED : mpegts.Events.SCRIPTDATA_ARRIVED,
+    TIMED_ID3_METADATA_ARRIVED : mpegts.Events.TIMED_ID3_METADATA_ARRIVED,
+    PES_PRIVATE_DATA_DESCRIPTOR : mpegts.Events.PES_PRIVATE_DATA_DESCRIPTOR,
+    PES_PRIVATE_DATA_ARRIVED : mpegts.Events.PES_PRIVATE_DATA_ARRIVED,
+    STATISTICS_INFO : mpegts.Events.STATISTICS_INFO,
     // 缓冲区数据过少，开始
-    LOADING_COMPLETE_IMG = 'loading_complete_img',
+    LOADING_COMPLETE_IMG : 'loading_complete_img',
     // 开始加载数据
-    LOAD_START = 'load_start',
+    LOAD_START : 'load_start',
 }

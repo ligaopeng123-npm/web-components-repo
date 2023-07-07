@@ -35,7 +35,9 @@ const addTimestamp = (current: any, config: { startKey: string, endKey: string }
     } = config;
     return {
         [`__start`]: getTimeByString(current[startKey]),
-        [`__end`]: getTimeByString(current[endKey])
+        [`__end`]: getTimeByString(current[endKey]),
+        startTime: current[startKey],
+        endTime: current[endKey]
     }
 }
 

@@ -286,7 +286,7 @@ export default class MultiPlayer extends HTMLElement {
             this.restart();
             this.q_msg?.warning(`${event}: 网络连接失败，请稍后重试`);
         }
-        console.error(new Date(), 'err', err, info);
+        console.error(new Date(), event, err, info);
         this.dispatchEvent(new CustomEvent(event, {
             detail: {
                 error: err,

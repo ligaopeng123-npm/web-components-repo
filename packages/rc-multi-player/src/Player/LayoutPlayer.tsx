@@ -17,7 +17,15 @@ import { MultiStoreEnum } from "../MultiTyping";
 import { ScreenConfigHelper } from "../MultiStore";
 
 const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
-    const { layoutIndex, playerConfig, selected, mediaDataSource, dispatch, events, state } = props;
+    const {
+        layoutIndex,
+        playerConfig,
+        selected,
+        mediaDataSource,
+        dispatch,
+        events,
+        state
+    } = props;
     const onClose = () => {
         dispatch({
             index: layoutIndex,
@@ -26,27 +34,32 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
     }
 
     const playerEvents = Object.assign({}, events, {
+        onLoadStart: (e: PlayerConfig) => {
+            if (events?.onLoadStart) {
+                events?.onLoadStart(Object.assign({}, playerConfig, {layoutIndex}));
+            }
+        },
         onClose: (playerConfig: PlayerConfig) => {
             onClose();
             if (events?.onClose) {
-                events?.onClose(Object.assign({}, playerConfig, { layoutIndex }));
+                events?.onClose(Object.assign({}, playerConfig, {layoutIndex}));
             }
         },
         onReload: (playerConfig: PlayerConfig) => {
             if (events?.onReload) {
-                events?.onReload(Object.assign({}, playerConfig, { layoutIndex }));
+                events?.onReload(Object.assign({}, playerConfig, {layoutIndex}));
             }
         },
         onMaxReload: (playerConfig: PlayerConfig) => {
             if (events?.onMaxReload) {
-                events?.onMaxReload(Object.assign({}, playerConfig, { layoutIndex }));
+                events?.onMaxReload(Object.assign({}, playerConfig, {layoutIndex}));
             }
         }
     });
 
     const screenConfig = state[MultiStoreEnum.screenConfig];
 
-    const { maxPlayerTime } = screenConfig;
+    const {maxPlayerTime} = screenConfig;
 
     return (
         <MultiPlayer
