@@ -302,9 +302,9 @@ class AgreementProprietary extends HTMLElement {
                     }
                 </style>
                 <xy-form-item style="${config['item-style']}" class="item">
-                       <xy-checkbox checked id="agreement-proprietary">已阅读并同意</xy-checkbox>
+                       <xy-checkbox checked id="agreement-proprietary">我已阅读并同意</xy-checkbox>
                        <span style="position: relative;bottom: 2px;">
-                           <span id="agreement-proprietary-text">${title}服务协议</span>
+                           <span id="agreement-proprietary-text">服务协议</span>
                        </span>
                 </xy-form-item>`
             : ''
