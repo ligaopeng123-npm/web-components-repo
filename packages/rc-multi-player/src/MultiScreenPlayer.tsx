@@ -163,7 +163,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
             if (data['speed-value']) {
                 const video: HTMLVideoElement = getSelectedPlayerVideo();
                 // @ts-ignore
-                if (video) video?.playbackRate = Number(data['speed-value']);
+                if (video) video.playbackRate = Number(data['speed-value']);
             }
         },
         /**
