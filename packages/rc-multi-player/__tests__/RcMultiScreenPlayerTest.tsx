@@ -33,7 +33,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         if (url) {
             setCurrentConfig({
                 mediaDataSource: {
-                    url: "https://ai-api-test.sany.com.cn/live/back_4_37_9effd84f3bc4e3055381f986456f6e18.flv",
+                    url: "https://ai-api-test.sany.com.cn/live/back_4_43_9effd84f3bc4e3055381f986456f6e18.flv",
                     type: 'flv',
                 },
                 playerConfig: {
