@@ -439,18 +439,20 @@ export default class VideoProgressBar extends HTMLElement {
      * 倍速播放
      * @param data
      */
-    changeSpeed(data: VideoOptions) {
+    changeSpeed = (data: VideoOptions) => {
         this.__intervalSpeed = data['speed-value'] ? Number(data['speed-value']) : this.__intervalSpeed;
+        this.start();
     }
 
     /**
      * 快进处理
      * @param data
      */
-    fastForward(data: VideoOptions) {
+    fastForward = (data: VideoOptions) => {
         const forwardValue = data['forward-value'] ? Number(data['forward-value']) : 0;
         if (forwardValue) {
             this.__periodsTime = forwardValue;
+            this.start();
         }
     }
 
