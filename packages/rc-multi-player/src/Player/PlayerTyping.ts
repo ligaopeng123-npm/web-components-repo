@@ -121,6 +121,10 @@ export type  PlayerConfig =
         periods?: Array<{ startTime: string, endTime: string }>;
         // 初始播放时间
         currentTime?: string;
+        // 倍速
+        'speed-value' ?: string | number;
+        // 快进秒数
+        'forward-value' ?: string | number;
     }
     & PlayerActionConfig
     & RobustnessProps;
@@ -151,5 +155,6 @@ export type WebRtcPlayerProps =
 export type RcPlayerRef = {
     close: () => void;
     reload: () => void;
+    getVideo: () => HTMLVideoElement;
     __timer?: any;
 }

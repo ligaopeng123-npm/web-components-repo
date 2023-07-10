@@ -9,7 +9,7 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import styles from './player.module.less';
 import ActionColumn from "../Action/ActionColumn";
 import FullScreenButton from "../Action/FullScreenButton";
@@ -20,12 +20,12 @@ import HideFullScreen from "../Action/HideFullScreen";
 import IconCloseButton from "../Action/IconCloseButton";
 import RcFlvPlayer from "./FlvPlayer";
 import Title from "../components/Title";
-import { PlayerConfig, RcMultiPlayerProps } from "./PlayerTyping";
+import { PlayerConfig, RcMultiPlayerProps, RcPlayerRef } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
 import Countdown, { countdownRef } from "../Action/Countdown";
 import ScreenshotPicture from "../Action/ScreenshotPicture";
 
-const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
+const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
         protocol,
         title,
@@ -177,6 +177,21 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
      */
     const canLoad = mediaDataSource && loadType;
 
+    /**
+     * 报漏钩子函数
+     */
+    useImperativeHandle(ref, () => ({
+        close: () => {
+
+        },
+        reload: () => {
+
+        },
+        getVideo: () => {
+            return playerRef.current?.getVideo();
+        }
+    }));
+
     return (
         <Paper
             elevation={0}
@@ -263,6 +278,6 @@ const RcMultiPlayer: React.FC<RcMultiPlayerProps> = (props) => {
             />
         </Paper>
     )
-};
+});
 
 export default RcMultiPlayer;

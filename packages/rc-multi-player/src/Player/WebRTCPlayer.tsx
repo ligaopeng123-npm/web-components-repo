@@ -182,11 +182,18 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
         reload: () => {
             initSdk();
         },
-        __timer: null
+        __timer: null,
+        /**
+         * 获取当前视频模块
+         */
+        getVideo: ()=> {
+            return videoRef.current.querySelector('#WebRTC-player') as HTMLVideoElement;
+        }
     }));
 
     return (
         <video
+            id='WebRTC-player'
             ref={videoRef}
             autoPlay={true}
             style={{

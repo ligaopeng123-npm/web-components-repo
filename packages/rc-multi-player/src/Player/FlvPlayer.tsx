@@ -81,6 +81,11 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
             if (video) {
                 video?.createPlayer();
             }
+        },
+        getVideo: () => {
+            // @ts-ignore
+            const video: HTMLVideoElement = document.querySelector(`#${id}`)?.video;
+            return video;
         }
     }));
     return (

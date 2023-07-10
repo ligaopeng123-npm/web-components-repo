@@ -22,6 +22,7 @@ import styles from './styles.module.less';
 import { isEmptyObject } from "@gaopeng123/utils";
 import "@gaopeng123/video-progress-bar";
 import { PlayerConfig } from "./Player/PlayerTyping";
+import { VideoOptions } from 'video-progress-bar/dist/typing';
 
 const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<MultiScreenPlayerProps> & React.RefAttributes<MultiScreenPlayerRef>> = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
@@ -106,6 +107,17 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         }
     }, [currentConfig]);
 
+    /**
+     * 获取当前选中的video标签
+     */
+    const getSelectedPlayerVideo = (): HTMLVideoElement => {
+        const selectedPlayerIndex = state[MultiStoreEnum.selectedPlayer];
+        const playerDomList = document.querySelector(`#${_id}`).querySelectorAll('.multi-screen-player-item');
+        const selectedPlayer = playerDomList[Number(selectedPlayerIndex)];
+        // @ts-ignore
+        return selectedPlayer.querySelector('video') || selectedPlayer.querySelector('multi-player')?.video;
+    }
+
     // 暴露数据
     useImperativeHandle(ref, () => ({
         getScreenConfig: () => {
@@ -135,6 +147,34 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                 // @ts-ignore
                 document.querySelector(`#${_id}-bar`)?.drawData(data);
             }
+        },
+
+        getSelectedPlayerVideo: getSelectedPlayerVideo,
+
+        /**
+         * 倍速播放
+         * @param data
+         */
+        changeSpeed(data: PlayerConfig) {
+            if (playType === 'replay') {
+                // @ts-ignore
+                document.querySelector(`#${_id}-bar`).changeSpeed(data);
+            }
+            if (data['speed-value']) {
+                const video: HTMLVideoElement = getSelectedPlayerVideo();
+                // @ts-ignore
+                if (video) video?.playbackRate = Number(data['speed-value']);
+            }
+        },
+        /**
+         * 快进
+         * @param data
+         */
+        fastForward(data: VideoOptions) {
+            if (playType === 'replay') {
+                // @ts-ignore
+                document.querySelector(`#${_id}-bar`).fastForward(data);
+            }
         }
     }));
 
@@ -148,6 +188,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
             document.querySelector(`#${_id}-bar`)?.addEventListener('timeChange', onTimeChange);
         }
     }, []);
+
 
     return (
         <ThemeProvider

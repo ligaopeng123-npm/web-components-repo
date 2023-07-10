@@ -9,10 +9,10 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React from 'react';
+import React, { useRef } from 'react';
 import MultiPlayer from "./MultiPlayer";
 import styles from '../styles.module.less';
-import { LayoutPlayerProps, PlayerConfig, } from "./PlayerTyping";
+import { LayoutPlayerProps, PlayerConfig, RcPlayerRef, } from "./PlayerTyping";
 import { MultiStoreEnum } from "../MultiTyping";
 import { ScreenConfigHelper } from "../MultiStore";
 
@@ -61,8 +61,13 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
 
     const {maxPlayerTime} = screenConfig;
 
+    // 获取当前选中的播放器
+    const videoRef = useRef<RcPlayerRef>();
+
+
     return (
         <MultiPlayer
+            ref={videoRef}
             objectFit={ScreenConfigHelper.getSingleConfig('objectFit')}
             maxPlayerTime={maxPlayerTime}
             events={playerEvents}
