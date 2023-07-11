@@ -152,8 +152,8 @@ export default class VideoProgressBar extends HTMLElement {
      */
     _onmousemove(e: any) {
         if (this.__dragStartEvent) {
-            const beginX = this.__dragStartEvent.layerX;
-            const endX = e.layerX;
+            const beginX = this.__dragStartEvent.offsetX;
+            const endX = e.offsetX;
             this.__dragCurrentX = endX - beginX;
             this.dragStart(null);
             this.datetime.canNotClick();
@@ -426,7 +426,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 用户自定义配置
      * @param data
      */
-    drawData(data: VideoOptions) {
+    drawData = (data: VideoOptions) => {
         this.initVideoOptions({
             periods: data.periods || [],
             currentTime: getTime(data.currentTime || DEFAULT_CURRENT_TIME)
