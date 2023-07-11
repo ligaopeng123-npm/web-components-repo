@@ -205,7 +205,7 @@ class ActiveTime extends HTMLElement {
 
     initFlatpickr() {
         this.__flatpickr = flatpickr(this.datetime, {
-            dateFormat: "Y-m-d H:i:s",
+            dateFormat: "Y-m-d H:i:S",
             "locale": Mandarin,
             time_24hr: true,
             onClose: (v) => {

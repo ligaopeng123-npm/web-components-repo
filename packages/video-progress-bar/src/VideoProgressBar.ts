@@ -320,7 +320,7 @@ export default class VideoProgressBar extends HTMLElement {
         const dragX = this.__dragCurrentX + this.__dragX;
         return new Array(this.scale + 1).fill('00:00').map((item, index) => {
             return {
-                time: `${formatTimestamp(this.startTime + (index - median - parseInt(`${dragX / itemWidth}`)) * itemScale, 'hh:mm')}`,
+                time: `${formatTimestamp(this.startTime + (index - median - parseInt(`${dragX / itemWidth}`)) * itemScale, 'HH:mm')}`,
                 x: index * itemWidth + (dragX || 0) % itemWidth,
             }
         });
@@ -456,7 +456,6 @@ export default class VideoProgressBar extends HTMLElement {
         }
     }
 
-
     /**
      * 初始化视频参数
      * @param data
@@ -521,9 +520,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 时间框赋值
      */
     setTime(time: any) {
-        setTimeout(() => {
-            this.datetime.setAttribute('time-value', formatTimestamp(time));
-        });
+        this.datetime.setAttribute('time-value', formatTimestamp(time));
     };
 
     /**
@@ -627,6 +624,7 @@ export default class VideoProgressBar extends HTMLElement {
 
     onchange = debounce((e: any) => {
         this.changeEvent(e);
+        this.stop();
     });
 
     publish = (type: any, opts: any) => {
@@ -827,7 +825,7 @@ export default class VideoProgressBar extends HTMLElement {
      *  绘制刻度值
      */
     drawScale() {
-        this.drawLine(0, 0, this.timelineWidth, 0, '#f7ff2f');
+        this.drawLine(0, 0, this.timelineWidth, 0, '#f7ff2f')
         this.scaleData.forEach(({
             time,
             x
