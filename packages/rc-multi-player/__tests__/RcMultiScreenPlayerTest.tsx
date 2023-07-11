@@ -33,7 +33,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         if (url) {
             setCurrentConfig({
                 mediaDataSource: {
-                    url: "https://ai-api-test.sany.com.cn/live/back_4_43_9effd84f3bc4e3055381f986456f6e18.flv",
+                    url: "https://ai-api-test.sany.com.cn/live/real_523ed2b1480a91bffc5acc1ada60fcfa.flv",
                     type: 'flv',
                 },
                 playerConfig: {
@@ -132,11 +132,16 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         playType={'replay'}
                         defaultSelectedScreen={4}
                         events={{
-                            onTimeChange: (e: PlayerConfig) => {
+                            onTimeChange: (e: any) => {
                                 onClick(e);
                                 setTimeout(()=> {
-                                    screenRef.current.changeSpeed({'speed-value': 4});
-                                }, 1000);
+                                    if (e.currentType === 'speed-value') {
+                                        screenRef.current.changeSpeed({'speed-value': 2});
+                                    } else if (e.currentType === 'forward-value') {
+                                        console.log(2222)
+                                        screenRef.current.fastForward({'forward-value': 60});
+                                    }
+                                }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
                                 // onClick(e);
@@ -184,5 +189,6 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         </div>
     )
 };
+
 
 export default RcMultiScreenPlayerTest;

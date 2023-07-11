@@ -26,14 +26,14 @@ type ActiveTimeConfig = {
 }
 
 const forwardOptions = [{
-    label: '5s',
-    value: '5'
-}, {
-    label: '20s',
-    value: '20'
+    label: '30s',
+    value: '30'
 }, {
     label: '1分钟',
     value: '60'
+}, {
+    label: '5分钟',
+    value: '300'
 }];
 const speedOptions = [{
     label: '1/4x',
@@ -286,7 +286,7 @@ class ActiveTime extends HTMLElement {
                 <video-progress-bar-forward-select id="speed" default-value="1" options=${JSON.stringify(speedOptions)}></video-progress-bar-forward-select>
                 <input id="datetime"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
                 <img id="bth-backward"  title="快退" src="${backward}" />
-                <video-progress-bar-forward-select id="forward" default-value="5" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
+                <video-progress-bar-forward-select id="forward" default-value="60" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
                 <img id="bth-forward" title="快进" src="${forward}" />
             </div>
         `
