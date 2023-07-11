@@ -61,13 +61,13 @@ class ActiveTime extends HTMLElement {
     shadow: ShadowRoot = null;
     __config: ActiveTimeConfig = {
         'time-value': '',
-        'forward-value': '5',
+        'forward-value': '60',
         'speed-value': '1',
     }
 
     __oldConfig: ActiveTimeConfig = {
         'time-value': '',
-        'forward-value': '5',
+        'forward-value': '60',
         'speed-value': '1',
     }
 
