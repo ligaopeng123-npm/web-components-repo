@@ -13,7 +13,7 @@ import * as React from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { RcMultiScreenPlayer, reduceTimeSlotInterference } from "../src";
 import Snackbar from "@mui/material/Snackbar";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PlayerConfig } from "../src/Player/PlayerTyping";
 
 type RcMultiScreenPlayerTestProps = {};
@@ -33,7 +33,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         if (url) {
             setCurrentConfig({
                 mediaDataSource: {
-                    url: "https://ai-api-test.sany.com.cn/live/real_523ed2b1480a91bffc5acc1ada60fcfa.flv",
+                    url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
                     type: 'flv',
                 },
                 playerConfig: {
@@ -64,6 +64,156 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
             setOpen(true)
         }
     }
+
+    const [timeParams, setTimeParams] = useState<any>();
+
+
+    useEffect(()=> {
+        if (timeParams) {
+            setTimeout(()=> {
+                const currentConfig = {
+                    id: Date.now(),
+                    mediaDataSource: {
+                        url: `https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv?a=${Date.now()}`,
+                        type: 'flv',
+                    },
+                    playerConfig: {
+                        protocol: protocol,
+                        title: 'test',
+                        extraParams: {test: 1},
+                        robustness: {
+                            maxResetTimes: 1,
+                            retryDuration: 15000 // 15秒加载
+                        },
+                        periods: reduceTimeSlotInterference(timeParams.date !== "2023-07-11 00:00:00" ?  [
+                            {
+                                "recordBeginTime": "2023-07-11 06:00:04",
+                                "recordEndTime": "2023-07-11 06:55:06",
+                                "fileName": "ch0037_02010015055075000",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 06:55:06",
+                                "recordEndTime": "2023-07-11 08:06:04",
+                                "fileName": "ch0037_02010015114189600",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 08:06:04",
+                                "recordEndTime": "2023-07-11 09:17:04",
+                                "fileName": "ch0037_02010015174090700",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 09:17:04",
+                                "recordEndTime": "2023-07-11 10:27:52",
+                                "fileName": "ch0037_02010015234200000",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 10:27:52",
+                                "recordEndTime": "2023-07-11 11:39:00",
+                                "fileName": "ch0037_02010015295101400",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 11:39:00",
+                                "recordEndTime": "2023-07-11 12:49:48",
+                                "fileName": "ch0037_02010015357007400",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 12:49:48",
+                                "recordEndTime": "2023-07-11 14:00:48",
+                                "fileName": "ch0037_02010015415112800",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 14:00:48",
+                                "recordEndTime": "2023-07-11 14:06:06",
+                                "fileName": "ch0037_03000000020018200",
+                                "fileSize": 79691776
+                            }
+                        ] : [
+                            {
+                                "recordBeginTime": "2023-07-11 00:00:00",
+                                "recordEndTime": "2023-07-11 01:00:19",
+                                "fileName": "ch0037_02010014751181200",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 01:00:19",
+                                "recordEndTime": "2023-07-11 02:11:17",
+                                "fileName": "ch0037_02010014815079400",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 02:11:17",
+                                "recordEndTime": "2023-07-11 03:22:15",
+                                "fileName": "ch0037_02010014873179000",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 03:22:15",
+                                "recordEndTime": "2023-07-11 04:33:12",
+                                "fileName": "ch0037_02010014933076200",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 04:33:12",
+                                "recordEndTime": "2023-07-11 05:44:04",
+                                "fileName": "ch0037_02010014995174200",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 05:44:04",
+                                "recordEndTime": "2023-07-11 06:55:06",
+                                "fileName": "ch0037_02010015055075000",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 06:55:06",
+                                "recordEndTime": "2023-07-11 08:06:04",
+                                "fileName": "ch0037_02010015114189600",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 08:06:04",
+                                "recordEndTime": "2023-07-11 09:17:04",
+                                "fileName": "ch0037_02010015174090700",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 09:17:04",
+                                "recordEndTime": "2023-07-11 10:27:52",
+                                "fileName": "ch0037_02010015234200000",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 10:27:52",
+                                "recordEndTime": "2023-07-11 11:39:00",
+                                "fileName": "ch0037_02010015295101400",
+                                "fileSize": 1073741824
+                            },
+                            {
+                                "recordBeginTime": "2023-07-11 11:39:00",
+                                "recordEndTime": "2023-07-11 12:00:00",
+                                "fileName": "ch0037_02010015357007400",
+                                "fileSize": 1073741824
+                            }
+                        ], {
+                            startKey: 'recordBeginTime',
+                            endKey: 'recordEndTime'
+                        }),
+                        currentTime: "2023-07-11 00:00:00",
+                        'speed-value': 1
+                    }
+                };
+                setCurrentConfig(currentConfig);
+            }, 200)
+        }
+    }, [timeParams]);
+
     return (
         <div
             style={{height: 600}}>
@@ -126,28 +276,29 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                 <div
                     style={{
                         flex: 3,
-                        height: 600
+                        height: 600,
                     }}>
                     <RcMultiScreenPlayer
                         playType={'replay'}
                         defaultSelectedScreen={4}
                         events={{
                             onTimeChange: (e: any) => {
-                                onClick(e);
-                                setTimeout(()=> {
-                                    if (e.currentType === 'speed-value') {
-                                        screenRef.current.changeSpeed({'speed-value': 2});
-                                    } else if (e.currentType === 'forward-value') {
-                                        console.log(2222)
-                                        screenRef.current.fastForward({'forward-value': 60});
-                                    }
-                                }, 50)
+                                setTimeParams(e);
+                                // onClick(e);
+                                // setTimeout(()=> {
+                                //     if (e.currentType === 'speed-value') {
+                                //         screenRef.current.changeSpeed({'speed-value': 2});
+                                //     } else if (e.currentType === 'forward-value') {
+                                //         console.log(2222)
+                                //         screenRef.current.fastForward({'forward-value': 60});
+                                //     }
+                                // }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
-                                // onClick(e);
+
                             },
                             onClose: (e: PlayerConfig) => {
-                                console.log(222, e);
+
                             }
                         }}
                         defaultPlayerConfig={{

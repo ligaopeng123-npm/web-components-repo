@@ -26,6 +26,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
             value: key
         })
     }
+
     return (
         <>
             {

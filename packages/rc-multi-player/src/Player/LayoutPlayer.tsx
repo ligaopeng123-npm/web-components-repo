@@ -9,7 +9,7 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import MultiPlayer from "./MultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, RcPlayerRef, } from "./PlayerTyping";
@@ -33,26 +33,35 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         })
     }
 
+    // 获取当前选中的播放器
+    const videoRef = useRef<RcPlayerRef>();
+
+
+    useEffect(()=> {
+        videoRef.current.playerConfig = playerConfig;
+    }, [playerConfig])
+
+
     const playerEvents = Object.assign({}, events, {
         onLoadStart: (e: PlayerConfig) => {
             if (events?.onLoadStart) {
-                events?.onLoadStart(Object.assign({}, playerConfig, {layoutIndex}));
+                events?.onLoadStart(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
             }
         },
         onClose: (playerConfig: PlayerConfig) => {
             onClose();
             if (events?.onClose) {
-                events?.onClose(Object.assign({}, playerConfig, {layoutIndex}));
+                events?.onClose(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
             }
         },
         onReload: (playerConfig: PlayerConfig) => {
             if (events?.onReload) {
-                events?.onReload(Object.assign({}, playerConfig, {layoutIndex}));
+                events?.onReload(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
             }
         },
         onMaxReload: (playerConfig: PlayerConfig) => {
             if (events?.onMaxReload) {
-                events?.onMaxReload(Object.assign({}, playerConfig, {layoutIndex}));
+                events?.onMaxReload(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
             }
         }
     });
@@ -60,10 +69,6 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
     const screenConfig = state[MultiStoreEnum.screenConfig];
 
     const {maxPlayerTime} = screenConfig;
-
-    // 获取当前选中的播放器
-    const videoRef = useRef<RcPlayerRef>();
-
 
     return (
         <MultiPlayer
@@ -75,6 +80,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
             robustness={playerConfig?.robustness}
             protocol={playerConfig?.protocol}
             extraParams={playerConfig?.extraParams}
+            config={playerConfig?.config}
             title={playerConfig?.title}
             className={selected ? styles.selected : styles.player}
         />

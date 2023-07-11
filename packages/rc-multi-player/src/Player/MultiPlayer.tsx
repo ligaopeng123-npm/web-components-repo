@@ -35,7 +35,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         className,
         events,
         extraParams,
-        maxPlayerTime
+        maxPlayerTime,
+        config
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -248,6 +249,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                         />
                                         :
                                         <RcFlvPlayer
+                                            config={config}
                                             ref={playerRef}
                                             extraParams={extraParams}
                                             events={playerEvents}

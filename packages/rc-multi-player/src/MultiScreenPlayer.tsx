@@ -118,6 +118,10 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         return selectedPlayer.querySelector('video') || selectedPlayer.querySelector('multi-player')?.video;
     }
 
+    const videoProgressBar = (): any => {
+        return document.querySelector(`#${_id}-bar`);
+    };
+
     // 暴露数据
     useImperativeHandle(ref, () => ({
         getScreenConfig: () => {
@@ -135,17 +139,14 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         /**
          * 获取播放进度条
          */
-        videoProgressBar: ()=> {
-            return document.querySelector(`#${_id}-bar`);
-        },
+        videoProgressBar: videoProgressBar,
         /**
          * 绘制数据
          * @param data
          */
         drawData(data: PlayerConfig) {
             if (playType === 'replay') {
-                // @ts-ignore
-                document.querySelector(`#${_id}-bar`)?.drawData(data);
+                videoProgressBar()?.drawData(data);
             }
         },
 
@@ -157,8 +158,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
          */
         changeSpeed(data: PlayerConfig) {
             if (playType === 'replay') {
-                // @ts-ignore
-                document.querySelector(`#${_id}-bar`).changeSpeed(data);
+                videoProgressBar()?.changeSpeed(data);
             }
             if (data['speed-value']) {
                 const video: HTMLVideoElement = getSelectedPlayerVideo();
@@ -172,8 +172,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
          */
         fastForward(data: VideoOptions) {
             if (playType === 'replay') {
-                // @ts-ignore
-                document.querySelector(`#${_id}-bar`).fastForward(data);
+                videoProgressBar()?.fastForward(data);
             }
         }
     }));
@@ -185,7 +184,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                     events.onTimeChange(e.detail);
                 }
             }
-            document.querySelector(`#${_id}-bar`)?.addEventListener('timeChange', onTimeChange);
+            videoProgressBar()?.addEventListener('timeChange', onTimeChange);
         }
     }, []);
 
@@ -210,8 +209,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                                 events.onLoadStart(e);
                             }
                             if (playType === 'replay') {
-                                // @ts-ignore
-                                document.querySelector(`#${_id}-bar`)?.drawData(e);
+                                videoProgressBar()?.drawData(e);
                             }
                         }
                     }}
@@ -224,7 +222,9 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
             </div>
             {
                 playType === 'replay'
-                    ? <video-progress-bar id={`${_id}-bar`}></video-progress-bar>
+                    ?
+                    <video-progress-bar
+                        id={`${_id}-bar`}></video-progress-bar>
                     : null
             }
         </ThemeProvider>

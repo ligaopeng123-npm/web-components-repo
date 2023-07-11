@@ -125,6 +125,8 @@ export type  PlayerConfig =
         'speed-value' ?: string | number;
         // 快进秒数
         'forward-value' ?: string | number;
+        // flv视频配置
+        config?: any,
     }
     & PlayerActionConfig
     & RobustnessProps;
@@ -157,4 +159,5 @@ export type RcPlayerRef = {
     reload: () => void;
     getVideo: () => HTMLVideoElement;
     __timer?: any;
+    playerConfig?: PlayerConfig
 }
