@@ -284,6 +284,7 @@ export default class MultiPlayer extends HTMLElement {
     }
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {
+        console.log(eventType, info);
         /**
          * 处理loading事件
          */
