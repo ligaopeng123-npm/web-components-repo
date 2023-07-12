@@ -83,7 +83,7 @@ export const MultiPlayerEvent = {
     PES_PRIVATE_DATA_ARRIVED : mpegts.Events.PES_PRIVATE_DATA_ARRIVED,
     STATISTICS_INFO : mpegts.Events.STATISTICS_INFO,
     // 缓冲区数据过少，开始
-    LOADING_COMPLETE_IMG : 'loading_complete_img',
+    LOADING_COMPLETE_ING : 'loading_complete_ing',
     // 开始加载数据
     LOAD_START : 'load_start',
 }

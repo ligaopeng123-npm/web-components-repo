@@ -11,11 +11,8 @@
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import "@gaopeng123/multi-player";
-import {
-    MultiPlayerComProps,
-    MultiPlayerEvent,
-} from "@gaopeng123/multi-player";
 import { RcFlvPlayerProps, RcPlayerRef } from "./PlayerTyping";
+import { MultiPlayerComProps, MultiPlayerEvent } from "@gaopeng123/multi-player";
 
 /**
  * 处理react tsx中直接使用web components报错问题
@@ -29,7 +26,17 @@ declare global {
 }
 
 const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPlayerProps> & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcFlvPlayerProps>((props, ref) => {
-    const { width, height, mediaDataSource, config, robustness, objectFit, style, events, extraParams } = props;
+    const {
+        width,
+        height,
+        mediaDataSource,
+        config,
+        robustness,
+        objectFit,
+        style,
+        events,
+        extraParams
+    } = props;
     const media_data_source: any = JSON.stringify(mediaDataSource || {});
     const [id,] = useState(`multi-player-${Date.now()}`);
     const getVideo = (): any => {
@@ -44,6 +51,7 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
             config,
             robustness
         }
+
         const _onLoad = (ev: any, info?: any) => {
             if (events?.onLoadStart) {
                 events?.onLoadStart(eventsInfo);
@@ -55,17 +63,24 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
                 events?.onReload(eventsInfo);
             }
         }
-        console.log(MultiPlayerEvent.ERROR)
+
+        const _onLoading = () => {
+            if (events?.onReload) {
+                events?.onReload(eventsInfo);
+            }
+        }
+
+
         if (video) {
             video.addEventListener(MultiPlayerEvent.LOAD_START, _onLoad);
-            // @ts-ignore
             video.addEventListener(MultiPlayerEvent.ERROR, _onError);
+            video.addEventListener(MultiPlayerEvent.LOADING_COMPLETE_ING, _onLoading);
         }
 
         return () => {
             video.removeEventListener(MultiPlayerEvent.LOAD_START, _onLoad);
-            // @ts-ignore
             video.removeEventListener(MultiPlayerEvent.ERROR, _onError);
+            video.removeEventListener(MultiPlayerEvent.LOADING_COMPLETE_ING, _onLoading);
         }
     }, []);
     // 暴露数据
@@ -90,7 +105,10 @@ const RcFlvPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
     }));
     return (
         <multi-player
-            style={Object.assign({ width: '100%', height: '100%' }, style)}
+            style={Object.assign({
+                width: '100%',
+                height: '100%'
+            }, style)}
             id={id}
             object-fit={objectFit}
             width={width}

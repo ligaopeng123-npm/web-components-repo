@@ -15,6 +15,7 @@ import { RcMultiScreenPlayer, reduceTimeSlotInterference } from "../src";
 import Snackbar from "@mui/material/Snackbar";
 import { useEffect, useRef, useState } from "react";
 import { PlayerConfig } from "../src/Player/PlayerTyping";
+import { formatTimestamp } from "@gaopeng123/utils";
 
 type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
@@ -76,6 +77,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     id: Date.now(),
                     mediaDataSource: {
                         url: `https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv?a=${Date.now()}`,
+                        // url: `https://ai-api-test.sany.com.cn/live/back_58_5_7330b1b3a9405bbe4a1e0352c7cdeabb.flv?a=${Date.now()}`,
                         type: 'flv',
                     },
                     playerConfig: {
@@ -206,7 +208,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             startKey: 'recordBeginTime',
                             endKey: 'recordEndTime'
                         }),
-                        currentTime: "2023-07-11 00:00:00",
+                        currentTime: formatTimestamp(Date.now()),
                         'speed-value': timeParams['speed-value'],
                         'forward-value': timeParams['forward-value']
                     }
@@ -297,7 +299,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 // }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
-
+                                console.log(111, e, screenRef.current.getCurrentTime());
                             },
                             onClose: (e: PlayerConfig) => {
 

@@ -93,7 +93,7 @@ export default class MultiPlayer extends HTMLElement {
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({ mode: 'closed' });
+        this.shadow = this.attachShadow({mode: 'closed'});
         this.q_msg = initMsg(this);
         this.q_msg.config({
             showClose: true
@@ -106,14 +106,14 @@ export default class MultiPlayer extends HTMLElement {
     connectedCallback() {
         this.shadow.innerHTML = template(this.defaultConfig);
         this.handleAttributeChanged();
-        document.addEventListener('visibilitychange', this.onVisibilitychange);
+        document.addEventListener('visibilitychange', this.onVisibilityChange);
     }
 
     /**
      * 移除文档流
      */
     disconnectedCallback() {
-        document.removeEventListener('visibilitychange', this.onVisibilitychange);
+        document.removeEventListener('visibilitychange', this.onVisibilityChange);
         this.destroyPlayer();
     }
 
@@ -177,12 +177,12 @@ export default class MultiPlayer extends HTMLElement {
             this.loopAdjustBuffer();
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
-            this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start')
+            this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start');
         });
         this.onPlayEvent();
     };
 
-    onVisibilitychange = () => {
+    onVisibilityChange = () => {
         if (document.visibilityState === 'visible') {
             this.adjustBuffer();
         }
@@ -209,6 +209,14 @@ export default class MultiPlayer extends HTMLElement {
 
     get video() {
         return this.shadow.querySelector(`#multi-player`);
+    }
+
+    /**
+     * 基于时间戳
+     * @param v
+     */
+    setCurrentTime = (v: number) => {
+        this.player.currentTime = v;
     }
 
     /**
@@ -243,12 +251,12 @@ export default class MultiPlayer extends HTMLElement {
     }
 
     adjustBuffer() {
-        const diffSecond = this.robustness.bufferTime / 1000
+        const diffSecond = this.robustness.bufferTime / 1000;
         if (this.player?.buffered?.length) {
             const currentTime = this.player.currentTime;
             if (this.__lastCurrentTime && currentTime - this.__lastCurrentTime < 1) {
-                // 发loading消息
-                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_IMG, (currentTime - this.__lastCurrentTime) + 'almost complete loading')
+                // 发即将loading的消息loading消息
+                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (currentTime - this.__lastCurrentTime) + 'almost complete loading')
             }
             //获取当前缓冲区buffered值
             const end = this.player.buffered.end(0);
@@ -276,8 +284,32 @@ export default class MultiPlayer extends HTMLElement {
     }
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {
+        /**
+         * 处理loading事件
+         */
+        if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
+            let intervalTime = 0;
+            const intervalKey = setInterval(() => {
+                const currentTime = this.player.currentTime;
+                //获取当前缓冲区buffered值
+                const end = this.player.buffered.end(0);
+                console.log(`当前播放currentTime: ${currentTime}, end: ${end}`);
+                if (end === currentTime) {
+                    intervalTime = intervalTime + 1;
+                } else {
+                    intervalTime = 0;
+                }
+                if (intervalTime >= 5) {
+                    clearInterval(intervalKey);
+                    this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
+                }
+            }, 500);
+        }
         this.dispatchEvent(new CustomEvent(eventType, {
-            detail: { event: eventType, info: info }
+            detail: {
+                event: eventType,
+                info: info
+            }
         }));
     }
 

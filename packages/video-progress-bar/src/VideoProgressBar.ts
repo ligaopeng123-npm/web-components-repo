@@ -450,7 +450,6 @@ export default class VideoProgressBar extends HTMLElement {
      */
     fastForward = (data: VideoOptions) => {
         const forwardValue = data['forward-value'] ? Number(data['forward-value']) : 0;
-        console.log('forwardValue', forwardValue);
         if (forwardValue) {
             this.__periodsTime = forwardValue;
             this.start();
@@ -687,7 +686,7 @@ export default class VideoProgressBar extends HTMLElement {
      */
     __pollingTimer: any = null;
 
-    stop() {
+    stop = ()=> {
         this.clearPollingTime();
     }
 
@@ -909,7 +908,7 @@ export default class VideoProgressBar extends HTMLElement {
     /**
      * 获取单个时间区域内的数据
      * @param startTime
-     * @param endTime
+     * @param endTimestop
      */
     getSingleScheduleData = (startTime: any, endTime: any) => {
         /**

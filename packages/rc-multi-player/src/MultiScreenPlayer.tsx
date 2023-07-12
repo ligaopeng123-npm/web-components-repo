@@ -185,7 +185,10 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
          * 快进
          * @param data
          */
-        fastForward: fastForward
+        fastForward: fastForward,
+        getCurrentTime: ()=> {
+            return videoProgressBar()?.currentTime;
+        }
     }));
 
     useEffect(() => {
@@ -223,6 +226,14 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                                 videoProgressBar()?.drawData(e);
                                 changeSpeed(e);
                                 fastForward(e);
+                            }
+                        },
+                        onReload: (e)=> {
+                            if (events.onReload) {
+                                events.onReload(e);
+                            }
+                            if (playType === 'replay') {
+                                videoProgressBar()?.stop();
                             }
                         }
                     }}
