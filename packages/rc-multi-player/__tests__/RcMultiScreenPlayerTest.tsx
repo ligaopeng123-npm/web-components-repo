@@ -71,6 +71,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     useEffect(()=> {
         if (timeParams) {
             setTimeout(()=> {
+                console.log('timeParams', timeParams);
                 const currentConfig = {
                     id: Date.now(),
                     mediaDataSource: {
@@ -206,7 +207,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             endKey: 'recordEndTime'
                         }),
                         currentTime: "2023-07-11 00:00:00",
-                        'speed-value': 1
+                        'speed-value': timeParams['speed-value'],
+                        'forward-value': timeParams['forward-value']
                     }
                 };
                 setCurrentConfig(currentConfig);

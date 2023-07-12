@@ -118,9 +118,33 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         return selectedPlayer.querySelector('video') || selectedPlayer.querySelector('multi-player')?.video;
     }
 
+    /**
+     * 获取video bar
+     */
     const videoProgressBar = (): any => {
         return document.querySelector(`#${_id}-bar`);
     };
+
+    /**
+     * 更新速度
+     * @param data
+     */
+    const changeSpeed = (data: PlayerConfig) => {
+        if (playType === 'replay') {
+            videoProgressBar()?.changeSpeed(data);
+        }
+        if (data['speed-value']) {
+            const video: HTMLVideoElement = getSelectedPlayerVideo();
+            // @ts-ignore
+            if (video) video.playbackRate = Number(data['speed-value']);
+        }
+    };
+
+    const fastForward = (data: PlayerConfig) => {
+        if (playType === 'replay') {
+            videoProgressBar()?.fastForward(data);
+        }
+    }
 
     // 暴露数据
     useImperativeHandle(ref, () => ({
@@ -156,25 +180,12 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
          * 倍速播放
          * @param data
          */
-        changeSpeed(data: PlayerConfig) {
-            if (playType === 'replay') {
-                videoProgressBar()?.changeSpeed(data);
-            }
-            if (data['speed-value']) {
-                const video: HTMLVideoElement = getSelectedPlayerVideo();
-                // @ts-ignore
-                if (video) video.playbackRate = Number(data['speed-value']);
-            }
-        },
+        changeSpeed: changeSpeed,
         /**
          * 快进
          * @param data
          */
-        fastForward(data: VideoOptions) {
-            if (playType === 'replay') {
-                videoProgressBar()?.fastForward(data);
-            }
-        }
+        fastForward: fastForward
     }));
 
     useEffect(() => {
@@ -210,6 +221,8 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                             }
                             if (playType === 'replay') {
                                 videoProgressBar()?.drawData(e);
+                                changeSpeed(e);
+                                fastForward(e);
                             }
                         }
                     }}

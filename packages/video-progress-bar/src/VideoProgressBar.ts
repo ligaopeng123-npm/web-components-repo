@@ -450,6 +450,7 @@ export default class VideoProgressBar extends HTMLElement {
      */
     fastForward = (data: VideoOptions) => {
         const forwardValue = data['forward-value'] ? Number(data['forward-value']) : 0;
+        console.log('forwardValue', forwardValue);
         if (forwardValue) {
             this.__periodsTime = forwardValue;
             this.start();
