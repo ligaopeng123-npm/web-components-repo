@@ -290,20 +290,24 @@ export default class MultiPlayer extends HTMLElement {
         let intervalTime = 0;
         clearInterval(intervalKey);
         intervalKey = setInterval(() => {
-            const currentTime = this.player.currentTime;
-            // @ts-ignore
-            const speed = this.player.statisticsInfo.speed;
-            //获取当前缓冲区buffered值
-            const end = this.player.buffered.end(0);
-            console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
-            if (end - currentTime < 1) {
-                intervalTime = intervalTime + 1;
-            } else {
-                intervalTime = 0;
-            }
-            if (intervalTime >= 2) {
-                clearInterval(intervalKey);
-                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
+            try {
+                const currentTime = this.player.currentTime;
+                // @ts-ignore
+                const speed = this.player.statisticsInfo.speed;
+                //获取当前缓冲区buffered值
+                const end = this.player.buffered.end(0);
+                console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
+                if (end - currentTime < 1) {
+                    intervalTime = intervalTime + 1;
+                } else {
+                    intervalTime = 0;
+                }
+                if (intervalTime >= 2) {
+                    clearInterval(intervalKey);
+                    this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
+                }
+            } catch (e) {
+                console.log(e);
             }
         }, 1000);
     }
