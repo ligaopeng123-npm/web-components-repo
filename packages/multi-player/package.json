@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/multi-player",
-    "version": "1.2.7-alpha.17",
+    "version": "1.2.7-alpha.18",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
