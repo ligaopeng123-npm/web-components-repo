@@ -178,7 +178,9 @@ export default class MultiPlayer extends HTMLElement {
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
             this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start');
-            this.addLoadingEvent(null);
+            setTimeout(()=> {
+                this.addLoadingEvent(null);
+            }, 5000);
         });
         this.onPlayEvent();
     };
@@ -297,7 +299,7 @@ export default class MultiPlayer extends HTMLElement {
                 //获取当前缓冲区buffered值
                 const end = this.player.buffered.end(0);
                 console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
-                if (end - currentTime < 1) {
+                if (end - currentTime < 0.5) {
                     intervalTime = intervalTime + 1;
                 } else {
                     intervalTime = 0;
@@ -359,6 +361,8 @@ export default class MultiPlayer extends HTMLElement {
      * 销毁播放器
      */
     destroyPlayer = () => {
+        clearInterval(this._loadingIntervalKey);
+        clearInterval(this._speedIntervalKey);
         if (!this.player) return;
         this.playerEvent?.destroy();
         this.player.pause();
