@@ -288,7 +288,7 @@ export default class MultiPlayer extends HTMLElement {
 
     _speedIntervalKey: any = null;
     _loadingIntervalKey: any = null;
-    _loopCheckEnd = (intervalKey: any) => {
+    _loopCheckEnd = () => {
         let intervalTime = 0;
         clearInterval(this._speedIntervalKey);
         this._speedIntervalKey = setInterval(() => {
@@ -305,7 +305,7 @@ export default class MultiPlayer extends HTMLElement {
                     intervalTime = 0;
                 }
                 if (intervalTime >= 2) {
-                    clearInterval(intervalKey);
+                    clearInterval(this._speedIntervalKey);
                     this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
                 }
             } catch (e) {
@@ -323,10 +323,10 @@ export default class MultiPlayer extends HTMLElement {
             if (eventType) {
                 if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
                     clearInterval(this._speedIntervalKey);
-                    this._loopCheckEnd(this._loadingIntervalKey);
+                    this._loopCheckEnd();
                 }
             } else {
-                this._loopCheckEnd(this._speedIntervalKey);
+                this._loopCheckEnd();
             }
         }, this.robustness.loopBufferTime);
     }
