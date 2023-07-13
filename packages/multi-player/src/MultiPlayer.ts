@@ -294,8 +294,8 @@ export default class MultiPlayer extends HTMLElement {
             const speed = this.player.statisticsInfo.speed;
             //获取当前缓冲区buffered值
             const end = this.player.buffered.end(0);
-            console.log(`是否暂停${this.video.paused} 当前播放speed ${speed} currentTime: ${currentTime}, end: ${end}`);
-            if (end === currentTime) {
+            console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
+            if (end - currentTime < 1) {
                 intervalTime = intervalTime + 1;
             } else {
                 intervalTime = 0;
