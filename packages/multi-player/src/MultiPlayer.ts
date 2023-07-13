@@ -29,6 +29,7 @@ export const DEFAULT_ROBUSTNESS: MultiPlayerRobustness = {
     bufferTime: 1000,
     loopBufferTime: 5000,
     maxResetTimes: 5,
+    isOpen: true
 }
 
 export const DEFAULT_MEDIA_DATA_SOURCE = {
@@ -170,17 +171,14 @@ export default class MultiPlayer extends HTMLElement {
         this.player = mpegts.createPlayer(this.mediaDataSource, this.config);
         this.player.attachMediaElement(this.shadow.querySelector(`#multi-player`));
         this.player.load();
-        // 返回一个promise 可以做相对应的处理 提示等
-        // @ts-ignore
+        // @ts-ignore 返回一个promise 可以做相对应的处理 提示等
         this.player.play().then(() => {
             console.log(`${this.mediaDataSource.url} start playing`);
             this.loopAdjustBuffer();
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
             this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start');
-            setTimeout(()=> {
-                this.addLoadingEvent(null);
-            }, 5000);
+            this.addLoadingEvent(null);
         });
         this.onPlayEvent();
     };
@@ -248,9 +246,11 @@ export default class MultiPlayer extends HTMLElement {
     __lastCurrentTime: number = 0; // 上次播放时间
 
     loopAdjustBuffer = () => {
-        this.__adjustBuffer = setTimeout(() => {
-            this.adjustBuffer();
-        }, this.robustness.loopBufferTime);
+        if (this.robustness.isOpen) {
+            this.__adjustBuffer = setTimeout(() => {
+                this.adjustBuffer();
+            }, this.robustness.loopBufferTime);
+        }
     }
 
     adjustBuffer() {
@@ -258,8 +258,8 @@ export default class MultiPlayer extends HTMLElement {
         if (this.player?.buffered?.length) {
             const currentTime = this.player.currentTime;
             if (this.__lastCurrentTime && currentTime - this.__lastCurrentTime < 1) {
-                // 发即将loading的消息loading消息
-                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (currentTime - this.__lastCurrentTime) + 'almost complete loading')
+                // 发即将loading的消息loading消息 校准的时候不在发出loading信息
+                // this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (currentTime - this.__lastCurrentTime) + 'almost complete loading')
             }
             //获取当前缓冲区buffered值
             const end = this.player.buffered.end(0);
@@ -286,12 +286,12 @@ export default class MultiPlayer extends HTMLElement {
         );
     }
 
-    _speedIntervalKey: any;
-    _loadingIntervalKey: any;
+    _speedIntervalKey: any = null;
+    _loadingIntervalKey: any = null;
     _loopCheckEnd = (intervalKey: any) => {
         let intervalTime = 0;
-        clearInterval(intervalKey);
-        intervalKey = setInterval(() => {
+        clearInterval(this._speedIntervalKey);
+        this._speedIntervalKey = setInterval(() => {
             try {
                 const currentTime = this.player.currentTime;
                 // @ts-ignore
@@ -317,14 +317,18 @@ export default class MultiPlayer extends HTMLElement {
         /**
          * 处理loading事件
          */
-        if (eventType) {
-            if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
-                clearInterval(this._speedIntervalKey);
-                this._loopCheckEnd(this._loadingIntervalKey);
+        clearInterval(this._speedIntervalKey);
+        clearInterval(this._loadingIntervalKey);
+        setTimeout(() => {
+            if (eventType) {
+                if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
+                    clearInterval(this._speedIntervalKey);
+                    this._loopCheckEnd(this._loadingIntervalKey);
+                }
+            } else {
+                this._loopCheckEnd(this._speedIntervalKey);
             }
-        } else {
-            this._loopCheckEnd(this._speedIntervalKey);
-        }
+        }, this.robustness.loopBufferTime);
     }
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {

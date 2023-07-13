@@ -300,7 +300,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             },
                             onReload: (e: PlayerConfig) => {
                                 console.log(111, e, screenRef.current.getCurrentTime());
-                                setTimeParams({'speed-value': 4})
+                                setTimeParams({'speed-value': 1})
                             },
                             onClose: (e: PlayerConfig) => {
 
