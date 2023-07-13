@@ -178,6 +178,7 @@ export default class MultiPlayer extends HTMLElement {
             // 断线连上后 次处就是0了 以后再遇到错误 重新开始计算
             this.__resetTimes = 0;
             this.onEvent(MultiPlayerEvent.LOAD_START, 'load_start');
+            this.addLoadingEvent(null);
         });
         this.onPlayEvent();
     };
@@ -281,13 +282,13 @@ export default class MultiPlayer extends HTMLElement {
             this.onEvent.bind(this),
             this.onError.bind(this)
         );
-        this.addLoadingEvent(null);
     }
 
     _speedIntervalKey: any;
     _loadingIntervalKey: any;
     _loopCheckEnd = (intervalKey: any) => {
         let intervalTime = 0;
+        clearInterval(intervalKey);
         intervalKey = setInterval(() => {
             const currentTime = this.player.currentTime;
             // @ts-ignore
@@ -313,17 +314,15 @@ export default class MultiPlayer extends HTMLElement {
         if (eventType) {
             if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
                 clearInterval(this._speedIntervalKey);
-                clearInterval(this._loadingIntervalKey);
                 this._loopCheckEnd(this._loadingIntervalKey);
             }
         } else {
-            clearInterval(this._speedIntervalKey);
             this._loopCheckEnd(this._speedIntervalKey);
         }
     }
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {
-        this.addLoadingEvent(eventType);
+        // this.addLoadingEvent(eventType);
         this.dispatchEvent(new CustomEvent(eventType, {
             detail: {
                 event: eventType,
