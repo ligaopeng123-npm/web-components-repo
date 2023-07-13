@@ -286,56 +286,44 @@ export default class MultiPlayer extends HTMLElement {
 
     _speedIntervalKey: any;
     _loadingIntervalKey: any;
-    addLoadingEvent = (eventType: MultiPlayerEventType | null, info?: any)=> {
+    _loopCheckEnd = (intervalKey: any) => {
+        let intervalTime = 0;
+        intervalKey = setInterval(() => {
+            const currentTime = this.player.currentTime;
+            // @ts-ignore
+            const speed = this.player.statisticsInfo.speed;
+            //获取当前缓冲区buffered值
+            const end = this.player.buffered.end(0);
+            console.log(`是否暂停${this.video.paused} 当前播放speed ${speed} currentTime: ${currentTime}, end: ${end}`);
+            if (end === currentTime) {
+                intervalTime = intervalTime + 1;
+            } else {
+                intervalTime = 0;
+            }
+            if (intervalTime >= 2) {
+                clearInterval(intervalKey);
+                this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
+            }
+        }, 1000);
+    }
+    addLoadingEvent = (eventType: MultiPlayerEventType | null) => {
         /**
          * 处理loading事件
          */
-       if (eventType) {
-           if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
-               let intervalTime = 0;
-               clearInterval(this._speedIntervalKey);
-               clearInterval(this._loadingIntervalKey);
-               this._loadingIntervalKey = setInterval(() => {
-                   const currentTime = this.player.currentTime;
-                   //获取当前缓冲区buffered值
-                   const end = this.player.buffered.end(0);
-                   console.log(`LOADING_COMPLETE 当前播放currentTime: ${currentTime}, end: ${end}`);
-                   if (end === currentTime) {
-                       intervalTime = intervalTime + 1;
-                   } else {
-                       intervalTime = 0;
-                   }
-                   if (intervalTime >= 2) {
-                       clearInterval(this._loadingIntervalKey);
-                       this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
-                   }
-               }, 1000);
-           }
-       } else {
-           let intervalTime = 0;
-           clearInterval(this._speedIntervalKey);
-           this._speedIntervalKey = setInterval(() => {
-               const currentTime = this.player.currentTime;
-               // @ts-ignore
-               const speed = this.player.statisticsInfo.speed;
-               //获取当前缓冲区buffered值
-               const end = this.player.buffered.end(0);
-               console.log(`是否暂停${this.video.paused} 当前播放speed ${speed} currentTime: ${currentTime}, end: ${end}`);
-               if (speed === 0 && !this.video.paused) {
-                   intervalTime = intervalTime + 1;
-               } else {
-                   intervalTime = 0;
-               }
-               if (intervalTime >= 2) {
-                   clearInterval(this._speedIntervalKey);
-                   this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
-               }
-           }, 1000);
-       }
+        if (eventType) {
+            if (eventType === MultiPlayerEvent.LOADING_COMPLETE) {
+                clearInterval(this._speedIntervalKey);
+                clearInterval(this._loadingIntervalKey);
+                this._loopCheckEnd(this._loadingIntervalKey);
+            }
+        } else {
+            clearInterval(this._speedIntervalKey);
+            this._loopCheckEnd(this._speedIntervalKey);
+        }
     }
 
     onEvent = (eventType: MultiPlayerEventType, info: any) => {
-        this.addLoadingEvent(eventType,info);
+        this.addLoadingEvent(eventType);
         this.dispatchEvent(new CustomEvent(eventType, {
             detail: {
                 event: eventType,
