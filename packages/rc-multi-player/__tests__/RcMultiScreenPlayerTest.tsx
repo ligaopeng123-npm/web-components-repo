@@ -283,6 +283,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         height: 600,
                     }}>
                     <RcMultiScreenPlayer
+                        id={'test'}
                         playType={'replay'}
                         defaultSelectedScreen={4}
                         events={{

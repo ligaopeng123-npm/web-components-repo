@@ -186,7 +186,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
          * @param data
          */
         fastForward: fastForward,
-        getCurrentTime: ()=> {
+        getCurrentTime: () => {
             return videoProgressBar()?.currentTime;
         }
     }));
@@ -207,50 +207,55 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         <ThemeProvider
             theme={DefaultTheme}>
             <div
-                style={playType === 'replay' ? {height: 'calc(100% - 60px)'} : {}}
-                className={`${styles.main} ${state[MultiStoreEnum.selectedScreen] == 1 ? styles.noScreen : ''}`}
-                id={_id}>
-                <MultiScreenPlayerAction
-                    defaultSelectedScreen={defaultSelectedScreen}
-                    state={state}
-                    dispatch={dispatch}/>
-                <LayoutContent
-                    layoutKey={_id}
-                    events={{
-                        ...events,
-                        onLoadStart: (e) => {
-                            if (events.onLoadStart) {
-                                events.onLoadStart(e);
+                id={_id}
+                style={{height: '100%'}}>
+                <div
+                    style={playType === 'replay' ? {height: 'calc(100% - 60px)'} : {}}
+                    className={`${styles.main} ${state[MultiStoreEnum.selectedScreen] == 1 ? styles.noScreen : ''}`}
+                >
+                    <MultiScreenPlayerAction
+                        multiScreenPlayerId={_id}
+                        defaultSelectedScreen={defaultSelectedScreen}
+                        state={state}
+                        dispatch={dispatch}/>
+                    <LayoutContent
+                        layoutKey={_id}
+                        events={{
+                            ...events,
+                            onLoadStart: (e) => {
+                                if (events.onLoadStart) {
+                                    events.onLoadStart(e);
+                                }
+                                if (playType === 'replay') {
+                                    videoProgressBar()?.drawData(e);
+                                    changeSpeed(e);
+                                    fastForward(e);
+                                }
+                            },
+                            onReload: (e) => {
+                                if (events.onReload) {
+                                    events.onReload(e);
+                                }
+                                if (playType === 'replay') {
+                                    videoProgressBar()?.stop();
+                                }
                             }
-                            if (playType === 'replay') {
-                                videoProgressBar()?.drawData(e);
-                                changeSpeed(e);
-                                fastForward(e);
-                            }
-                        },
-                        onReload: (e)=> {
-                            if (events.onReload) {
-                                events.onReload(e);
-                            }
-                            if (playType === 'replay') {
-                                videoProgressBar()?.stop();
-                            }
-                        }
-                    }}
-                    state={state}
-                    dispatch={dispatch}/>
-                <MultiScreenDrawer
-                    screenKey={_id}
-                    state={state}
-                    dispatch={dispatch}/>
+                        }}
+                        state={state}
+                        dispatch={dispatch}/>
+                    <MultiScreenDrawer
+                        screenKey={_id}
+                        state={state}
+                        dispatch={dispatch}/>
+                </div>
+                {
+                    playType === 'replay'
+                        ?
+                        <video-progress-bar
+                            id={`${_id}-bar`}></video-progress-bar>
+                        : null
+                }
             </div>
-            {
-                playType === 'replay'
-                    ?
-                    <video-progress-bar
-                        id={`${_id}-bar`}></video-progress-bar>
-                    : null
-            }
         </ThemeProvider>
     )
 });

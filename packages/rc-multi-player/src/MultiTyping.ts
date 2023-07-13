@@ -100,6 +100,10 @@ export type MultiScreenPlayerRef = {
     getScreenConfig: () => ScreenConfigProps;
 };
 
+export type MultiScreenPlayerDomConfig = {
+    multiScreenPlayerId?: string;
+}
+
 
 declare global {
     namespace JSX {

@@ -18,12 +18,14 @@ import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
 import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
 import { Tooltip } from '@mui/material';
+import { MultiScreenPlayerDomConfig } from "../MultiTyping";
 
 type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
     el?: HTMLElement;
     type?: 'icon' | 'auto';
     style?: React.CSSProperties;
+    fullScreenId?: string;
 };
 
 const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
@@ -31,12 +33,13 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
             el,
             onChange,
             type,
-            style
+            style,
+            fullScreenId
         } = props;
         const [fullType, setFullType] = useState<boolean>(isFullscreen());
         const onClick = (e: any) => {
             e?.stopPropagation();
-            const autoEl: any = el || document.querySelector('#multi-screen-player');
+            const autoEl: any = el || document.querySelector(`#${fullScreenId || 'multi-screen-player'}`);
             autoFullscreen(autoEl, {}, ({type}: any) => {
                 //fullscreen 进入全屏
                 //noFullscreen 退出全屏

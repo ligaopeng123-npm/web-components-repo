@@ -26,7 +26,8 @@ const MultiScreenPlayerAction: React.FC<MultiScreenPlayerActionProps> = (props) 
     const {
         state,
         dispatch,
-        defaultSelectedScreen
+        defaultSelectedScreen,
+        multiScreenPlayerId
     } = props;
 
     return (
@@ -56,7 +57,7 @@ const MultiScreenPlayerAction: React.FC<MultiScreenPlayerActionProps> = (props) 
                     orientation="vertical"
                     variant="middle"
                     flexItem/>
-                <FullScreenButton/>
+                <FullScreenButton fullScreenId={multiScreenPlayerId}/>
             </>
             }
         />
