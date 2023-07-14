@@ -43,7 +43,6 @@ class ScrollNav extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({mode: 'open'});
-        this.init();
         this.shadow.innerHTML = template(this.config);
     }
 
@@ -51,7 +50,7 @@ class ScrollNav extends HTMLElement {
      * 生命周期钩子函数 处理挂载
      */
     connectedCallback() {
-
+        this.init();
     }
 
     /**
