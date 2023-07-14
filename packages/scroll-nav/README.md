@@ -10,11 +10,7 @@
 | text-color<br />--text-color             | 字体颜色 | string                                                       | #000000 |
 | background-color<br />--background-color | 背景色   | string                                                       | #ffffff |
 | items                                    | 导航数据 | type ScrollNavItem = {     label: string,     value: string, }<br />Array<ScrollNavItem> |         |
-|                                          |          |                                                              |         |
-|                                          |          |                                                              |         |
-|                                          |          |                                                              |         |
-|                                          |          |                                                              |         |
-|                                          |          |                                                              |         |
+
 
 
 
