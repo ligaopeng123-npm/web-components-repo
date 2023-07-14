@@ -39,6 +39,7 @@ export const template = (config: ScrollNavProps) => {
               font-family: 'DM Sans', sans-serif;
               font-weight: 500;
               position: relative;
+              cursor: pointer;
             }
             
             .nav-item:before {

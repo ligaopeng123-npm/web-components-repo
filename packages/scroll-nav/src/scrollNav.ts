@@ -143,7 +143,7 @@ class ScrollNav extends HTMLElement {
             const nav = this.shadow.querySelector('nav');
             nav.innerHTML = `
             ${this.config.items.map(item=> {
-                return `<a href="#" data-id="${item.value}" class="nav-item" active-color="${this.config['primary-color']}">${item.label}</a>`
+                return `<a data-id="${item.value}" class="nav-item" active-color="${this.config['primary-color']}">${item.label}</a>`
             }).join('')}
           <span class="nav-indicator"></span>
         `;
