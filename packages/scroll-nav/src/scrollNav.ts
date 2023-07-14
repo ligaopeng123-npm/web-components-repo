@@ -131,6 +131,11 @@ class ScrollNav extends HTMLElement {
 
     }
     init = ()=> {
+        // 处理组件需要的样式
+        document.querySelector('html').style.overflow = 'hidden';
+        document.querySelector('html').style.height = '100%';
+        document.querySelector('body').style.overflow = 'auto';
+        document.querySelector('body').style.height = '100%';
         attributesList.forEach((name)=> {
             this.change(name);
         });

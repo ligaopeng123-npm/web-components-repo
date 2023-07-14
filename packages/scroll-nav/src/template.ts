@@ -17,6 +17,15 @@ import { ScrollNavProps } from "./interface";
 export const template = (config: ScrollNavProps) => {
     return `
         <style>
+            html {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                margin: 0;
+                height: 100%;
+                overflow: auto;
+            }
             .nav-container {
                 margin: 12px 0px;
             }
