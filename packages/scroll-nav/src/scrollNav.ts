@@ -11,9 +11,9 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { ScrollNavProps } from "./interface";
+import { ScrollNavItem, ScrollNavProps } from "./interface";
 import { template } from "./template";
-import { addOpacity, isJSON } from "@gaopeng123/utils";
+import { addOpacity, isJSON, isNumber } from "@gaopeng123/utils";
 import { createScrollNavEvent } from "./utils";
 
 
@@ -79,8 +79,23 @@ class ScrollNav extends HTMLElement {
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (oldValue !== newValue) {
             // @ts-ignore
-            this.__config[name] = isJSON(newValue) ? JSON.parse(newValue) : newValue;
+            this.__config[name] = this._getItemValue(name, isJSON(newValue) ? JSON.parse(newValue) : newValue);
             this.change(name);
+        }
+        console.log( this.__config)
+    }
+
+    _getItemValue = (name: string, value: any)=> {
+        if(name === 'items') {
+            return value.map((item: ScrollNavItem)=> {
+                return {
+                    ...item,
+                    _value: item.value,
+                    value: isNumber(item.value) ? `nav-${item.value}` : item.value
+                }
+            });
+        } else {
+            return value;
         }
     }
 

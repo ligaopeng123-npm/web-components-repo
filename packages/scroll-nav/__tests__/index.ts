@@ -16,7 +16,7 @@ import { createScrollNavEvent } from "../src";
 window.onload = function () {
     console.log(createScrollNavEvent)
     const nav = document.querySelector('scroll-nav');
-    nav.setAttribute('items', JSON.stringify([{label: 'Web1', value: 'a'},
+    nav.setAttribute('items', JSON.stringify([{label: 'Web1', value: 1},
         {label: 'Web2', value: 'b'}, {label: 'Web3', value: 'c'}]));
     nav.addEventListener('onChange', ({detail}: any) => {
         console.log(detail);
