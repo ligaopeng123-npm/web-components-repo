@@ -19,9 +19,10 @@ import { createScrollNavEvent } from "./utils";
 
 const attributesList = [
     "items",
+    'scroll-dom',
     "primary-color",
     "text-color",
-    "background-color",
+    "background-color"
 ];
 
 
@@ -32,6 +33,7 @@ class ScrollNav extends HTMLElement {
      */
     __config: ScrollNavProps = {
         items: [],
+        "scroll-dom": 'body',
         "primary-color": '#387af6',
         "text-color": '#000000',
         "background-color": '#ffffff',
@@ -108,6 +110,7 @@ class ScrollNav extends HTMLElement {
 
         const {navClick} = createScrollNavEvent({
             navBar: nav,
+            scrollDom: this.config['scroll-dom'],
             navList: this.config.items,
             onChange: ({value}) => {
                 handleIndicator(nav.querySelector(`[data-id=${value}]`));

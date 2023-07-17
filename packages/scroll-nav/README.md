@@ -4,12 +4,13 @@
 
 ## 参数
 
-| 参数                                     | 说明     | 类型                                                         | 默认值  |
-| ---------------------------------------- | -------- | ------------------------------------------------------------ | ------- |
-| primary-color                            | 主色     | string                                                       | #387af6 |
-| text-color<br />--text-color             | 字体颜色 | string                                                       | #000000 |
-| background-color<br />--background-color | 背景色   | string                                                       | #ffffff |
-| items                                    | 导航数据 | type ScrollNavItem = {     label: string,     value: string, }<br />Array<ScrollNavItem> |         |
+| 参数                                     | 说明      | 类型                                                         | 默认值  |
+| ---------------------------------------- | --------- | ------------------------------------------------------------ | ------- |
+| primary-color                            | 主色      | string                                                       | #387af6 |
+| text-color<br />--text-color             | 字体颜色  | string                                                       | #000000 |
+| background-color<br />--background-color | 背景色    | string                                                       | #ffffff |
+| items                                    | 导航数据  | type ScrollNavItem = {     label: string,     value: string, }<br />Array<ScrollNavItem> |         |
+| scroll-dom                               | 滚动条dom | string                                                       | body    |
 
 
 

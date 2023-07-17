@@ -18,6 +18,7 @@ export type ScrollNavItem = {
 }
 export type ScrollNavProps = {
     items: Array<ScrollNavItem>;
+    'scroll-dom'?: string; // 滚动的父级节点
     'primary-color'?: string;
     'text-color'?: string;
     'background-color'?: string;

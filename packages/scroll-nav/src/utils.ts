@@ -43,13 +43,14 @@ const getMarginTop = (target: Element) => {
  * 获取标记
  * @param value
  */
-const getAttrStr = (value:string)=> {
+const getAttrStr = (value: string) => {
     return `${value}-p-top`;
 }
 
 
 export type CreateScrollNavEventProps = {
     navBar: any,
+    scrollDom?: string | HTMLElement,
     navList: Array<ScrollNavItem>,
     onChange: (v: ScrollNavItem) => void;
 }
@@ -57,13 +58,16 @@ export type CreateScrollNavEventProps = {
 export const createScrollNavEvent = (
     {
         navBar,
+        scrollDom,
         navList,
         onChange
     }: CreateScrollNavEventProps) => {
     /**
      * 选择滚动条
      */
-    const scrollContainer = document.querySelector('body');
+    const scrollContainer: any = scrollDom
+        ? (isString(scrollDom) ? document.querySelector(scrollDom as string) : scrollDom)
+        : document.querySelector('body');
     const needFixed = true;
     // 这是body的paddingTop，因为导航栏的offsetParent不是body，因为要减去body的paddingTop才能用来跟导航栏的offsetTop做比较
     const extraFixed = getPaddingTop(scrollContainer);
@@ -131,7 +135,7 @@ export const createScrollNavEvent = (
                 duration: 500,
                 easing: 'cubicOut',
                 afterAnimate: () => {
-                    _onChange(navList.filter((item)=> item.value === dataId)[0])
+                    _onChange(navList.filter((item) => item.value === dataId)[0])
                 }
             });
         } else {

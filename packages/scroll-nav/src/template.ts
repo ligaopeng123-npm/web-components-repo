@@ -31,7 +31,7 @@ export const template = (config: ScrollNavProps) => {
             }
             .nav {
               display: inline-flex;
-              overflow: hidden;
+              overflow: hidden !important;
               width: 100%;
               background-color: var(--background-color);
               border-radius: 4px;
