@@ -1,0 +1,37 @@
+/**********************************************************************
+ *
+ * @模块名称: TimePeriod
+ *
+ * @模块作用: TimePeriod
+ *
+ * @创建人: pgli
+ *
+ * @date: 2023/7/17 2:29 下午
+ *
+ * @版权所有: pgli
+ *
+ **********************************************************************/
+import React, { useReducer } from 'react';
+import { initState, reducer, state } from "./state";
+import TimePeriodCharts from "./components/TimePeriodCharts";
+import PeriodTip from "./components/PeriodTip";
+
+type TimePeriodProps = {};
+const TimePeriod: React.FC<TimePeriodProps> = (props) => {
+    /**
+     * 内部数据管理
+     */
+    const [store, dispatch] = useReducer(reducer, state, initState);
+    return (
+        <>
+            <PeriodTip
+                store={store}
+                dispatch={dispatch}/>
+            <TimePeriodCharts
+                store={store}
+                dispatch={dispatch}/>
+        </>
+    )
+}
+
+export default TimePeriod;

@@ -70,6 +70,7 @@
   "dependencies": {
     "@gaopeng123/message": "workspace:^1.0.2",
     "@gaopeng123/utils": "^1.1.5",
+    "react-tooltip": "^5.18.0",
     "zrender": "^5.4.4"
   },
   "bugs": {

@@ -1,0 +1,53 @@
+// 定位 对内部weekpanel及time进行布局
+.week-config {
+  position: relative;
+}
+
+// 给要点击的元素位置定位
+.time-change-item {
+  position: absolute;
+}
+
+// 提升下拉元素的层级 避免被覆盖
+.time-change-item-popupClassName {
+  z-index: 1070;
+}
+
+// 顶部元素
+.week-panel-top {
+  position: absolute;
+  top: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  .layout {
+    position: absolute;
+  }
+}
+
+.week-panel-top-layout-legend {
+  width: 100px;
+  // 去掉可点击样式
+  button {
+    cursor: default;
+    &:hover {
+      color: rgba(0, 0, 0, 0.85);
+      //background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.week-panel-top-layout-legend-icon {
+  width: 16px;
+  height: 16px;
+  background-color: #80a5ff;
+  transform: translateY(2.5px);
+  margin: 0 4px;
+  border-radius: 8px;
+}
+
+.week-panel-top-layout-clear {
+  width: 50px;
+}

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TimePeriodCharts } from "../src";
+import { TimePeriod } from "../src";
 
 const App = () => {
         return (
-            <div style={{height: 400}}><TimePeriodCharts /></div>
+            <div style={{height: 400}}><TimePeriod /></div>
         );
 };
 

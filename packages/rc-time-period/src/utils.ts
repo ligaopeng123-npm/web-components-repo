@@ -23,7 +23,7 @@ import {
     WeekDataInterface,
     ZrenderEvent
 } from "./interface";
-import { isNumber, isObject, isUndefined } from "@gaopeng123/utils";
+import { debounce, isNumber, isObject, isUndefined, throttle } from "@gaopeng123/utils";
 
 /**
  * 一天的时间长度
@@ -152,12 +152,6 @@ const weekUtils: any = {
             width,
             height
         } = this.__options;
-        console.log(left,
-            right,
-            top,
-            bottom,
-            width,
-            height)
         const x = left;
         const y = top;
         const w = width - left - right;
@@ -585,8 +579,11 @@ const weekUtils: any = {
          * tip 信息处理
          */
         period.on('mouseout', this.periodMouseout.bind(this, period));
-        period.on('mouseover', this.periodMouseover.bind(this, period));
-
+        // todo 信息及时展示 此处使用mousemove
+        // period.on('mouseover', this.periodMouseover.bind(this, period));
+        period.on('mousemove', throttle((e: any)=> {
+            this.periodMouseover(period, e);
+        }, 32));
         // 添加事件 处理移动逻辑
         period.on('click', this.periodClick.bind(this, period));
         period.on('mousedown', this.changePeriod.bind(this, 'edit', period, left, right));
@@ -611,11 +608,13 @@ const weekUtils: any = {
      * @param period
      */
     periodMouseout(period: any, e: ZrenderEvent) {
-        this.dispatch(EnumWeekState.periodTip, {
-            period,
-            state: 'hide',
-            e
-        } as MonitorEventsInterface);
+        if (!this.__mouseEvent.dragType) {
+            this.dispatch(EnumWeekState.periodTip, {
+                period,
+                state: 'hide',
+                e
+            } as MonitorEventsInterface);
+        }
     },
 
     /**
@@ -635,7 +634,6 @@ const weekUtils: any = {
                 timeRange: this.convertedToTime(x, width)
             } as MonitorEventsInterface);
         }
-
     },
 
     /**

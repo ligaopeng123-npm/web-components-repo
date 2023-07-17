@@ -12,14 +12,14 @@
  *
  **********************************************************************/
 import React, { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
-import weekUtils from "./utils";
-import { EnumWeekState } from "./interface";
+import weekUtils from "../utils";
+import { EnumWeekState } from "../interface";
 import {
     CanvasInterface,
     MonitorEventsInterface,
     PeriodTipInterface,
     WeekPanelPropsInterface
-} from "./interface";
+} from "../interface";
 
 import * as zrender from 'zrender';
 import { parentByExpected } from "@gaopeng123/utils";
