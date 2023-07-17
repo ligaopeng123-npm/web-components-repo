@@ -137,8 +137,8 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
         }
 
         return () => {
-            _week.unsubscribe(EnumWeekState.periodClick, onmouseup);
-            _week.unsubscribe(EnumWeekState.periodClick, onmousedown);
+            _week.unsubscribe(EnumWeekState.periodClick, onPeriodClick);
+            _week.unsubscribe(EnumWeekState.copyClick, onCopyClick);
             _week.unsubscribe(EnumWeekState.periodTip, onPeriodTip);
             _week.destory();
             zd.dispose();
@@ -152,20 +152,20 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
     /**
      * 删除时间段操作处理
      */
-    // useEffect(() => {
-    //     if (store[EnumWeekState.periodDelete]) {
-    //         week.deletePeriod(store[EnumWeekState.periodDelete]);
-    //     }
-    // }, [store[EnumWeekState.periodDelete]]);
+    useEffect(() => {
+        if (store[EnumWeekState.periodDelete]) {
+            week.deletePeriod(store[EnumWeekState.periodDelete]);
+        }
+    }, [store[EnumWeekState.periodDelete]]);
 
     /**
      * 时间段编辑操作处理
      */
-    // useEffect(() => {
-    //     if (store[EnumWeekState.periodEdit]) {
-    //         week.editPeriod(store[EnumWeekState.periodEdit]);
-    //     }
-    // }, [store[EnumWeekState.periodEdit]]);
+    useEffect(() => {
+        if (store[EnumWeekState.periodEdit]) {
+            week.editPeriod(store[EnumWeekState.periodEdit]);
+        }
+    }, [store[EnumWeekState.periodEdit]]);
 
     /**
      * 传递不同的id 渲染不同的数据

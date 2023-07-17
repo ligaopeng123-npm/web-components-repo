@@ -836,6 +836,7 @@ importers:
       css-loader: ^6.7.1
       cssnano: ^5.1.12
       file-loader: ^6.2.0
+      flatpickr: ^4.6.13
       html-webpack-plugin: ^5.3.1
       husky: ^7.0.4
       less-loader: ^11.0.0
@@ -859,6 +860,7 @@ importers:
     dependencies:
       '@gaopeng123/message': link:../message
       '@gaopeng123/utils': 1.1.8
+      flatpickr: 4.6.13
       react-tooltip: 5.18.0_sfoxds7t5ydpegc3knd667wn6m
       zrender: 5.4.4
     devDependencies:

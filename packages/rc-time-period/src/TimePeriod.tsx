@@ -15,6 +15,7 @@ import React, { useReducer } from 'react';
 import { initState, reducer, state } from "./state";
 import TimePeriodCharts from "./components/TimePeriodCharts";
 import PeriodTip from "./components/PeriodTip";
+import SinglePeriod from "./components/TimeEdit";
 
 type TimePeriodProps = {};
 const TimePeriod: React.FC<TimePeriodProps> = (props) => {
@@ -24,12 +25,9 @@ const TimePeriod: React.FC<TimePeriodProps> = (props) => {
     const [store, dispatch] = useReducer(reducer, state, initState);
     return (
         <>
-            <PeriodTip
-                store={store}
-                dispatch={dispatch}/>
-            <TimePeriodCharts
-                store={store}
-                dispatch={dispatch}/>
+            <PeriodTip store={store} dispatch={dispatch}/>
+            <TimePeriodCharts store={store} dispatch={dispatch}/>
+            <SinglePeriod store={store} dispatch={dispatch}/>
         </>
     )
 }
