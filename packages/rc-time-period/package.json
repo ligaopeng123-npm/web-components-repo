@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/rc-time-period",
-  "version": "1.2.9",
+  "version": "1.2.10-alpha.1",
   "description": "时间分段",
   "keywords": [
     "time",
