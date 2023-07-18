@@ -35,8 +35,8 @@ const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface
     const {
         dispatch,
         store,
-        template,
-        panelOptions
+        panelOptions,
+        data
     } = props;
     /**
      * 当前设置的样式 TODO 宽高是必须的
@@ -90,6 +90,8 @@ const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface
             });
         };
 
+        let _options = options;
+
         if (!options.width || !options.height) {
             const {
                 offsetHeight,
@@ -98,27 +100,27 @@ const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface
                 return currntDom.offsetHeight;
             });
 
-            const _options = Object.assign({}, options, {
+            _options = Object.assign({}, options, {
                 height: offsetHeight,
                 width: offsetWidth
             });
             setOptions(_options);
-
-            setTimeout(() => {
-                // 设置zrender对象
-                zd = zrender.init(mainRef.current);
-                _week = weekUtils.init(zd, _options);
-                // 绘制基础图形
-                _week.drawBody().drawScale();
-
-                // 监听事件 处理各种效果
-                _week.subscribe(EnumWeekState.periodClick, onPeriodClick);
-                _week.subscribe(EnumWeekState.copyClick, onCopyClick);
-                _week.subscribe(EnumWeekState.periodTip, onPeriodTip);
-
-                setWeek(_week);
-            })
         }
+
+        setTimeout(() => {
+            // 设置zrender对象
+            zd = zrender.init(mainRef.current);
+            _week = weekUtils.init(zd, _options);
+            // 绘制基础图形
+            _week.drawBody().drawScale();
+
+            // 监听事件 处理各种效果
+            _week.subscribe(EnumWeekState.periodClick, onPeriodClick);
+            _week.subscribe(EnumWeekState.copyClick, onCopyClick);
+            _week.subscribe(EnumWeekState.periodTip, onPeriodTip);
+
+            setWeek(_week);
+        })
 
         return () => {
             _week.unsubscribe(EnumWeekState.periodClick, onPeriodClick);
@@ -150,13 +152,16 @@ const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface
     /**
      * 传递不同的id 渲染不同的数据
      */
-    // useEffect(() => {
-    //     if (template && template.__data__) {
-    //         week && week.loadWeekData(template);
-    //     } else {
-    //         week && week.removeData();
-    //     }
-    // }, [template?.__templateId__, week]);
+    useEffect(() => {
+        if (data.length) {
+            week && week.loadWeekData({
+                __data__: data,
+               ...store[EnumWeekState.fieldNames]
+            });
+        } else {
+            week && week.removeData();
+        }
+    }, [data, week]);
 
     /**
      * 清空处理

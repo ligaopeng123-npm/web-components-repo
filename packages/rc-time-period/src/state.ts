@@ -15,29 +15,10 @@
 /**
  * 枚举定义类型
  */
-import { EnumWeekState } from "./interface";
+import { EnumWeekState, TimePeriodModuleDefaultProps } from "./interface";
 import { assignDeep, isEqual } from "@gaopeng123/utils";
 
-const defaultPanelOptions = {
-    left: 30,
-    right: 30,
-    top: 50,
-    bottom: 30,
-    scale: {
-        y: {
-            width: 80,
-            data: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
-        },
-        x: {
-            height: 28,
-            data: ['00', '02', '04', '06', '08', '10', '12', '14', '16', '18', '20', '22', '24']
-        }
-    },
-    operate: {
-        width: 50
-    },
-    cleared: false // 清空按钮
-}
+const defaultPanelOptions = TimePeriodModuleDefaultProps.panelOptions;
 
 export const state = {
     [EnumWeekState.panelOptions]: defaultPanelOptions
@@ -55,6 +36,8 @@ export const reducer = (state: any, action: any) => {
                 return state;
             }
             return Object.assign({}, state, {[EnumWeekState.panelOptions]: assignDeep(defaultPanelOptions, action.value)});
+        case EnumWeekState.fieldNames:
+            return Object.assign({}, state, {[EnumWeekState.fieldNames]: action.value});
         case EnumWeekState.periodClick:
             return Object.assign({}, state, {[EnumWeekState.periodClick]: action.value});
         case EnumWeekState.copyClick:

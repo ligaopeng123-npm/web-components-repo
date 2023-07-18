@@ -17,6 +17,7 @@
  */
 export enum EnumWeekState {
     panelOptions = 'panelOptions', // 配置参数
+    fieldNames = 'fieldNames', // fieldNames配置
     periodClick = 'periodClick', // 时间段点击
     periodDelete = 'periodDelete', // 时间段删除
     periodEdit = 'periodEdit', // 时间段根据时间选择框 进行修改
@@ -49,6 +50,13 @@ export interface TemplateInterface {
      */
     __data__?: any[];
 
+    /**
+     * 多余元素
+     */
+    [propName: string]: any;
+}
+
+export interface PeriodItemDate {
     /**
      * 多余元素
      */
@@ -136,7 +144,7 @@ export interface WeekPanelPropsInterface {
     store?: any;
     dispatch?: any;
     panelOptions?: CanvasInterface, //canvas画布参数
-    template?: TemplateInterface, // 时间模板参数
+    data?: Array<PeriodItemDate>, // 时间模板参数
     ref?: any // 实例对象
 }
 
@@ -312,7 +320,7 @@ export interface TimePeriodModuleProps {
     /**
      * tree数据
      */
-    data: Array<TemplateInterface>
+    data: Array<PeriodItemDate>
     /**
      * 操作列
      */
@@ -320,7 +328,7 @@ export interface TimePeriodModuleProps {
     /**
      * 数据映射
      */
-    mapping?: DataMappingInterface
+    fieldNames?: DataMappingInterface
     /**
      * 是否可编辑
      */
@@ -400,15 +408,15 @@ export const TimePeriodModuleDefaultProps: TimePeriodModuleProps = {
     /**
      * 映射数据
      */
-    mapping: {
+    fieldNames: {
         nameKey: 'name',
         templateIdKey: 'timeTemplateId',
         dataKey: 'weeks',
-        startKey: 'startAt',
-        endKey: 'endAt',
-        indexKey: 'period',
-        periodsKey: 'periods',
-        periodsIndexKey: 'week'
+        startKey: 'startAt', // 开始时间
+        endKey: 'endAt', // 结束时间
+        indexKey: 'period', // 第几段数据
+        periodsKey: 'periods', // 时间段存储的数据
+        periodsIndexKey: 'week' // 时间段的key  例如 周一 周二
     },
     editable: false,
     loading: false,

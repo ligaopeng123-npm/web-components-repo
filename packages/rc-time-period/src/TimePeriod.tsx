@@ -12,30 +12,38 @@
  *
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useReducer, useRef } from 'react';
-import { initState, reducer, state } from "./state";
+import { reducer, state } from "./state";
 import TimePeriodCharts, { TimePeriodChartsRef } from "./components/TimePeriodCharts";
 import PeriodTip from "./components/PeriodTip";
 import SinglePeriod from "./components/TimeEdit";
 import TimePeriodCopy from "./components/TimePeriodCopy";
-import { CanvasInterface, EnumWeekState } from "./interface";
+import { CanvasInterface, DataMappingInterface, EnumWeekState, PeriodItemDate, TimePeriodModuleDefaultProps } from "./interface";
 import { conversionDataToServer } from "./utils";
 
 export type RcTimePeriodProps = {
     panelOptions: CanvasInterface,
+    fieldNames?: DataMappingInterface,
+    data: Array<PeriodItemDate>
 };
 
 export type RcTimePeriodRef = {
-    clear: ()=> void,
-    getDate: ()=> void,
+    clear: () => void,
+    getDate: () => void,
 };
 
 const TimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((props, ref) => {
     /**
      * 内部数据管理
      */
-    const [store, dispatch] = useReducer(reducer, state, initState);
+    const [store, dispatch] = useReducer(reducer, state, (state: any) => {
+        return {
+            ...state,
+            [EnumWeekState.fieldNames]: Object.assign({}, TimePeriodModuleDefaultProps.fieldNames, props.fieldNames)
+        };
+    });
 
     const chartRef = useRef<TimePeriodChartsRef>();
+
 
     useEffect(() => {
         if (props.panelOptions) {
@@ -57,28 +65,32 @@ const TimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((props, ref) =
             });
         },
 
-        getDate: ()=> {
-            console.log(conversionDataToServer(chartRef.current.getConfig(), chartRef.current.convertedToTime, {
-                nameKey: 'name',
-                templateIdKey: 'timeTemplateId',
-                dataKey: 'weeks',
-                startKey: 'startAt',
-                endKey: 'endAt',
-                indexKey: 'period',
-                periodsKey: 'periods',
-                periodsIndexKey: 'week'
-            },))
+        getDate: () => {
+            return conversionDataToServer(chartRef.current.getConfig(), chartRef.current.convertedToTime, store[EnumWeekState.fieldNames], store[EnumWeekState.panelOptions].scale.y.data);
+        },
+
+        loadDate: () => {
+
         }
     }));
 
 
-
     return (
         <>
-            <PeriodTip store={store} dispatch={dispatch}/>
-            <TimePeriodCharts ref={chartRef} store={store} dispatch={dispatch}/>
-            <SinglePeriod store={store} dispatch={dispatch}/>
-            <TimePeriodCopy store={store} dispatch={dispatch}/>
+            <PeriodTip
+                store={store}
+                dispatch={dispatch}/>
+            <TimePeriodCharts
+                data={props.data}
+                ref={chartRef}
+                store={store}
+                dispatch={dispatch}/>
+            <SinglePeriod
+                store={store}
+                dispatch={dispatch}/>
+            <TimePeriodCopy
+                store={store}
+                dispatch={dispatch}/>
         </>
     )
 })

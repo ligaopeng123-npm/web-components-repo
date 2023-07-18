@@ -23,7 +23,7 @@ import {
     WeekDataInterface,
     ZrenderEvent
 } from "./interface";
-import { debounce, isNumber, isObject, isUndefined, throttle } from "@gaopeng123/utils";
+import { isNumber, isObject, isUndefined, throttle } from "@gaopeng123/utils";
 
 /**
  * 一天的时间长度
@@ -390,16 +390,17 @@ const weekUtils: any = {
         __data__,
         startKey,
         endKey,
-        indexKey
+        indexKey,
+        periodsKey,
+        periodsIndexKey
     }: WeekDataInterface) {
         // 先清理上次绘制的接口
         this.removeData();
         __data__.forEach((item: any) => {
             // addPeriod e event const {zrX, zrY} = e.event;
-            const {
-                periods,
-                week
-            } = item;
+            const periods = item[periodsKey];
+            const week = item[periodsIndexKey];
+
             periods.forEach((period: any) => {
                 const start = period[startKey];
                 const end = period[endKey];
@@ -1320,7 +1321,7 @@ export const isAsync = (fn: any) => fn?.constructor?.name === "AsyncFunction";
 /**
  * 前端将前端数据 转换为服务端需要的数据
  */
-export const conversionDataToServer = (val: any[], convertedToTime: any, mapping: DataMappingInterface) => {
+export const conversionDataToServer = (val: any[], convertedToTime: any, mapping: DataMappingInterface, scaleY: Array<string>) => {
     // 数据 默认为数组
     const data: any = [];
     val.forEach((item: any[], index: number) => {
@@ -1328,7 +1329,8 @@ export const conversionDataToServer = (val: any[], convertedToTime: any, mapping
         item.forEach(({period}: PeriodInterface, _index: number) => {
             if (!someday) someday = {
                 [mapping.periodsKey]: [],
-                [mapping.periodsIndexKey]: index + 1
+                [mapping.periodsIndexKey]: index + 1,
+                name: scaleY[index]
             };
             const {
                 x,
