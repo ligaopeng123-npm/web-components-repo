@@ -3,5 +3,6 @@ import * as zrender from 'zrender';
 
 zrender.registerPainter('canvas', CanvasPainter);
 
-export { default as TimePeriodCharts } from "./components/TimePeriodCharts";
-export { default as TimePeriod } from "./TimePeriod";
+export { default as RcTimePeriod } from "./TimePeriod";
+
+export type { RcTimePeriodRef, RcTimePeriodProps } from "./TimePeriod";

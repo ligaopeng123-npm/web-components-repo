@@ -12,7 +12,7 @@
  *
  **********************************************************************/
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useRef } from 'react';
-import { CopyPeriodDataInterface, plainOptions, plainOptionsEnum, EnumWeekState } from "../interface";
+import { CopyPeriodDataInterface, EnumWeekState } from "../interface";
 import PositionModal from "./PositionModal";
 import Checkbox from "./CheckBox";
 import '../index.less';
@@ -58,6 +58,7 @@ const CheckboxGroup = ({
 
 const PositionPanel: React.FC<any> = forwardRef((props: any, ref: any) => {
     const {store} = props;
+    const plainOptions = store[EnumWeekState.panelOptions].scale.y.data;
     const [boxList, setBoxList] = useState(plainOptions);
     /**
      * 选中的集合
@@ -138,6 +139,9 @@ const TimePeriodCopy: React.FC<any> = (props: any) => {
         store,
         dispatch
     } = props;
+
+    const plainOptions = store[EnumWeekState.panelOptions].scale.y.data;
+
     /**
      * 监控数据
      */
@@ -151,11 +155,10 @@ const TimePeriodCopy: React.FC<any> = (props: any) => {
      */
     const onConfirm = () => {
         const checkList = copyRef.current.getCheckList();
-
         if (checkList.length) {
             const targetIndexs: any[] = [];
             checkList.forEach((item: any) => {
-                const targetIndex = plainOptionsEnum[item];
+                const targetIndex = plainOptions.findIndex((_item: string) => _item === item);
                 if (targetIndex !== monitor.index) targetIndexs.push(targetIndex)
             });
             /**
@@ -184,10 +187,7 @@ const TimePeriodCopy: React.FC<any> = (props: any) => {
             onCancel={onCancel}
             okText={`复制`}
             cancelText={`取消`}
-            title={
-                <PositionPanel
-                    ref={copyRef}
-                    store={store}/>}
+            title={<PositionPanel ref={copyRef} store={store}/>}
         />
     )
 };

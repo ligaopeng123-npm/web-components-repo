@@ -20,33 +20,17 @@ import {
     PeriodTipInterface,
     WeekPanelPropsInterface
 } from "../interface";
-
 import * as zrender from 'zrender';
 import { parentByExpected } from "@gaopeng123/utils";
 
-export const WeekPanelDefaultOpt: CanvasInterface = {
-    left: 30,
-    right: 30,
-    top: 50,
-    bottom: 30,
-    scale: {
-        y: {
-            width: 80,
-            data: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
-        },
-        x: {
-            height: 28,
-            data: ['00', '02', '04', '06', '08', '10', '12', '14', '16', '18', '20', '22', '24']
-        }
-    },
-    operate: {
-        width: 50
-    },
-    cleared: false // 清空按钮
-};
-
-
-const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: WeekPanelPropsInterface, ref: any) => {
+export type TimePeriodChartsRef = {
+    getConfig: () => any,
+    /**
+     * 获取时间转换函数
+     */
+    convertedToTime: any
+}
+const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface>((props: WeekPanelPropsInterface, ref) => {
     // template模板 panelOptions 配置属性
     const {
         dispatch,
@@ -57,7 +41,7 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
     /**
      * 当前设置的样式 TODO 宽高是必须的
      */
-    const [options, setOptions] = useState<CanvasInterface>(Object.assign({}, WeekPanelDefaultOpt, panelOptions));
+    const [options, setOptions] = useState<CanvasInterface>(store[EnumWeekState.panelOptions]);
     /**
      *  zrender 对象
      */
@@ -143,11 +127,7 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
             _week.destory();
             zd.dispose();
         }
-    }, []);
-
-    useEffect(() => {
-
-    }, []);
+    }, [store[EnumWeekState.panelOptions]]);
 
     /**
      * 删除时间段操作处理
@@ -181,11 +161,11 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
     /**
      * 清空处理
      */
-    // useEffect(() => {
-    //     if (store[EnumWeekState.clearClick]) {
-    //         week && week.removeData();
-    //     }
-    // }, [store[EnumWeekState.clearClick]]);
+    useEffect(() => {
+        if (store[EnumWeekState.clearClick]) {
+            week && week.removeData();
+        }
+    }, [store[EnumWeekState.clearClick]]);
 
     /**
      * 给week组件暴露一些接口

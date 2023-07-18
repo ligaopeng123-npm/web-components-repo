@@ -16,6 +16,7 @@
  * 支持的参数
  */
 export enum EnumWeekState {
+    panelOptions = 'panelOptions', // 配置参数
     periodClick = 'periodClick', // 时间段点击
     periodDelete = 'periodDelete', // 时间段删除
     periodEdit = 'periodEdit', // 时间段根据时间选择框 进行修改
@@ -219,24 +220,6 @@ export interface CopyPeriodDataInterface {
 }
 
 /**
- * 复制展示数据
- */
-export const plainOptions: any = [`星期一`, `星期二`, `星期三`, `星期四`, `星期五`, `星期六`, `星期日`];
-
-/**
- * 枚举 做数据映射
- */
-export enum plainOptionsEnum {
-    星期一 = 0,
-    星期二 = 1,
-    星期三 = 2,
-    星期四 = 3,
-    星期五 = 4,
-    星期六 = 5,
-    星期日 = 6,
-};
-
-/**
  * 图例配置
  */
 export interface LegendInterface {
@@ -383,7 +366,6 @@ export interface TimePeriodProps {
  * 默认参数
  */
 export const TimePeriodModuleDefaultProps: TimePeriodModuleProps = {
-    zrender: 'js/zrender.min.js', // 默认地址
     panelOptions: {
         width: 850,
         height: 330,
