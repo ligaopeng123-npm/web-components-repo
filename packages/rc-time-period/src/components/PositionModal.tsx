@@ -32,7 +32,8 @@ const PositionModal: React.FC<any> = (props: any) => {
         cancelText,
         okText,
         onConfirm,
-        onCancel
+        onCancel,
+        modalKey
     } = props;
     /**
      * 位置信息
@@ -58,7 +59,7 @@ const PositionModal: React.FC<any> = (props: any) => {
             <Tooltip
                 isOpen={visible}
                 clickable
-                anchorSelect="#position-modal"
+                anchorSelect={`#${modalKey || 'position-modal'}`}
                 style={Object.assign({zIndex: 99999}, position)}
             >
                 <div>
@@ -73,7 +74,7 @@ const PositionModal: React.FC<any> = (props: any) => {
                     <button
                         type={'reset'}
                         style={{color: 'red'}}
-                        onClick={()=> {
+                        onClick={() => {
                             setVisible(false);
                             onCancel();
                         }}>{cancelText || `删除`}</button>
@@ -83,14 +84,14 @@ const PositionModal: React.FC<any> = (props: any) => {
                             marginLeft: 12,
                             color: '#80a5ff'
                         }}
-                        onClick={(e)=> {
+                        onClick={(e) => {
                             setVisible(false);
                             onConfirm(e);
                         }}>{okText || `保存`}</button>
                 </div>
             </Tooltip>
             <div
-                id="position-modal"
+                id={modalKey || "position-modal"}
                 className={`time-change-item`}
                 style={position}></div>
         </>

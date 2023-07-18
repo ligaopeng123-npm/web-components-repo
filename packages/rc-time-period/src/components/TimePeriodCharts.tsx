@@ -207,12 +207,12 @@ const TimePeriodCharts: React.FC<WeekPanelPropsInterface> = forwardRef((props: W
     /**
      * 复制copy时的场景
      */
-    // useEffect(() => {
-    //     const copyObject = store[EnumWeekState.copyObject];
-    //     if (copyObject) {
-    //         week.loadCopyData(copyObject);
-    //     }
-    // }, [store[EnumWeekState.copyObject]]);
+    useEffect(() => {
+        const copyObject = store[EnumWeekState.copyObject];
+        if (copyObject) {
+            week.loadCopyData(copyObject);
+        }
+    }, [store[EnumWeekState.copyObject]]);
 
     return (
         // 利用pointerEvents属性 来处理是否可拖拽

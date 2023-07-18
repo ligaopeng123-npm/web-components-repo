@@ -16,6 +16,7 @@ import { initState, reducer, state } from "./state";
 import TimePeriodCharts from "./components/TimePeriodCharts";
 import PeriodTip from "./components/PeriodTip";
 import SinglePeriod from "./components/TimeEdit";
+import TimePeriodCopy from "./components/TimePeriodCopy";
 
 type TimePeriodProps = {};
 const TimePeriod: React.FC<TimePeriodProps> = (props) => {
@@ -28,6 +29,7 @@ const TimePeriod: React.FC<TimePeriodProps> = (props) => {
             <PeriodTip store={store} dispatch={dispatch}/>
             <TimePeriodCharts store={store} dispatch={dispatch}/>
             <SinglePeriod store={store} dispatch={dispatch}/>
+            <TimePeriodCopy store={store} dispatch={dispatch}/>
         </>
     )
 }
