@@ -1,4 +1,476 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.0.2...v) (2023-03-15)
+# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.1...v) (2023-07-19)
+
+
+
+## [1.2.10-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.0...v1.2.10-alpha.1) (2023-07-18)
+
+
+### Features
+
+* data值处理 ([7671002](https://github.com/ligaopeng123-npm/web-components-repo/commit/767100262279304c35910d0af8286cc726b9ef9e))
+* 值获取处理 ([0a1c14a](https://github.com/ligaopeng123-npm/web-components-repo/commit/0a1c14a2b7327692886fb8a0793b1ea5800c98d6))
+* 复制功能完善 ([19379ae](https://github.com/ligaopeng123-npm/web-components-repo/commit/19379ae56901fa0cc1dca729b6523c4dbe819b49))
+* 添加PeriodTip ([d523d52](https://github.com/ligaopeng123-npm/web-components-repo/commit/d523d52a8f8ca38d04db677ccac559cd5959d113))
+* 添加时间编辑 ([b5b3175](https://github.com/ligaopeng123-npm/web-components-repo/commit/b5b31759c633d0740077e84e7e44a3d9f350279a))
+
+
+
+## [1.2.10-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.9...v1.2.10-alpha.0) (2023-07-17)
+
+
+### Features
+
+* 处理value为数字的场景 ([a3ce917](https://github.com/ligaopeng123-npm/web-components-repo/commit/a3ce9175c676eee66e09f86241cb5e44f765f014))
+
+
+
+## [1.2.9](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.9-alpha.1...v1.2.9) (2023-07-17)
+
+
+### Bug Fixes
+
+* 'scroll-dom'支持 ([313ddbd](https://github.com/ligaopeng123-npm/web-components-repo/commit/313ddbd6d41533119efd7f3fdcf13dca60dc97a1))
+
+
+### Features
+
+* @gaopeng123/rc-time-period添加 ([95c332f](https://github.com/ligaopeng123-npm/web-components-repo/commit/95c332f811ddfc1a5cd1a6eb4169be710ceae219))
+
+
+
+## [1.2.9-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.9-alpha.0...v1.2.9-alpha.1) (2023-07-14)
+
+
+### Bug Fixes
+
+* 解决html body样式问题 ([72f8064](https://github.com/ligaopeng123-npm/web-components-repo/commit/72f80641b78fbc2f523aa0f6216de45cf9d41542))
+
+
+
+## [1.2.9-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.8...v1.2.9-alpha.0) (2023-07-14)
+
+
+### Bug Fixes
+
+* 解决在href定向 ([e870a21](https://github.com/ligaopeng123-npm/web-components-repo/commit/e870a21710ddfcf66277af24bf18c78f1800fc73))
+
+
+
+## [1.2.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.8-alpha.0...v1.2.8) (2023-07-14)
+
+
+### Bug Fixes
+
+* 解决在href定向 ([58d3445](https://github.com/ligaopeng123-npm/web-components-repo/commit/58d3445969afec3b7523225d877c24c613577b34))
+
+
+
+## [1.2.8-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7...v1.2.8-alpha.0) (2023-07-14)
+
+
+### Bug Fixes
+
+* 解决在react中的报错问题 ([7bb32a0](https://github.com/ligaopeng123-npm/web-components-repo/commit/7bb32a0eeaf56f95e87458e3cf84309a8774960a))
+
+
+
+## [1.2.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.19...v1.2.7) (2023-07-13)
+
+
+### Bug Fixes
+
+* 自定义id导致全屏失败 ([9cc970e](https://github.com/ligaopeng123-npm/web-components-repo/commit/9cc970ee5ba69f55f0a7eb69c5e77813369c4530))
+
+
+
+## [1.2.7-alpha.19](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.18...v1.2.7-alpha.19) (2023-07-13)
+
+
+### Features
+
+* 清除定时器 ([783071f](https://github.com/ligaopeng123-npm/web-components-repo/commit/783071f339dba27d480566b13434a8ce83e239c1))
+
+
+
+## [1.2.7-alpha.18](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.17...v1.2.7-alpha.18) (2023-07-13)
+
+
+### Features
+
+* robustness 增加稳定性参数isOpen ([20a7f57](https://github.com/ligaopeng123-npm/web-components-repo/commit/20a7f57d9a6864c8c0ef5c75878647729cc16943))
+
+
+
+## [1.2.7-alpha.17](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.16...v1.2.7-alpha.17) (2023-07-13)
+
+
+### Features
+
+* 错误处理 ([621fe94](https://github.com/ligaopeng123-npm/web-components-repo/commit/621fe949d1559f3f028fe8cca1ec9fd2c6adc5ad))
+
+
+
+## [1.2.7-alpha.16](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.15...v1.2.7-alpha.16) (2023-07-13)
+
+
+### Features
+
+* this.player.buffered.end 报错处理 ([ad24aa3](https://github.com/ligaopeng123-npm/web-components-repo/commit/ad24aa31afd5e148885fd355ec62dbdc6dae3d83))
+
+
+
+## [1.2.7-alpha.15](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.14...v1.2.7-alpha.15) (2023-07-13)
+
+
+### Features
+
+* 异常补获 end - currentTime < 1 2 ([4cd7f23](https://github.com/ligaopeng123-npm/web-components-repo/commit/4cd7f2329640849af3add5e7ffd81a22cba27db9))
+
+
+
+## [1.2.7-alpha.14](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.13...v1.2.7-alpha.14) (2023-07-13)
+
+
+### Features
+
+* 异常补获 end - currentTime < 1 ([da9e97c](https://github.com/ligaopeng123-npm/web-components-repo/commit/da9e97cbc3e3ab196884253c1a52d93b9c3abfa2))
+
+
+
+## [1.2.7-alpha.13](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.12...v1.2.7-alpha.13) (2023-07-13)
+
+
+### Features
+
+* 异常补获 基于speed ([ad7de63](https://github.com/ligaopeng123-npm/web-components-repo/commit/ad7de633f151d15cb42e135e268c1f600e75ea36))
+
+
+
+## [1.2.7-alpha.12](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.11...v1.2.7-alpha.12) (2023-07-13)
+
+
+### Features
+
+* 异常补获 基于speed ([1082a63](https://github.com/ligaopeng123-npm/web-components-repo/commit/1082a63c0ad14dbff285bd868234cd6e40be0952))
+
+
+
+## [1.2.7-alpha.11](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.10...v1.2.7-alpha.11) (2023-07-12)
+
+
+### Features
+
+* 打印日志 方便调试 ([0eca9da](https://github.com/ligaopeng123-npm/web-components-repo/commit/0eca9da167e63aa4396df309f5bfda86ca371fe7))
+
+
+
+## [1.2.7-alpha.10](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.9...v1.2.7-alpha.10) (2023-07-12)
+
+
+### Features
+
+* loading处理 ([c26d94a](https://github.com/ligaopeng123-npm/web-components-repo/commit/c26d94a36e3ca435d067a7de7a56d51ef173fc02))
+
+
+
+## [1.2.7-alpha.9](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.8...v1.2.7-alpha.9) (2023-07-12)
+
+
+### Features
+
+* 速度一致行处理 ([5567b3f](https://github.com/ligaopeng123-npm/web-components-repo/commit/5567b3f67ac4000afe5e5b414eb2806a55b216a9))
+
+
+
+## [1.2.7-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.7...v1.2.7-alpha.8) (2023-07-11)
+
+
+### Features
+
+* 时间处理 调整为24小时 补偿0 ([79e6885](https://github.com/ligaopeng123-npm/web-components-repo/commit/79e6885d08612773a78c3350afd46a57d1077fe0))
+
+
+
+## [1.2.7-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.6...v1.2.7-alpha.7) (2023-07-11)
+
+
+### Features
+
+* config配置及playerConfig不及时问题处理 ([9c009dc](https://github.com/ligaopeng123-npm/web-components-repo/commit/9c009dc60db6a94c9ef89432342febcfa3665cc9))
+* 弃用layerX使用offsetX ([e3ce4f0](https://github.com/ligaopeng123-npm/web-components-repo/commit/e3ce4f0d98655e84e2756633a4d2a3b113dc6cbf))
+
+
+
+## [1.2.7-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.5...v1.2.7-alpha.6) (2023-07-11)
+
+
+### Features
+
+* 快进参数调整 ([0c5eeaa](https://github.com/ligaopeng123-npm/web-components-repo/commit/0c5eeaaa036ff1b92bf5f6f628b964db27afe186))
+
+
+
+## [1.2.7-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.4...v1.2.7-alpha.5) (2023-07-11)
+
+
+### Features
+
+* forwardOptions 调整 ([90e94bc](https://github.com/ligaopeng123-npm/web-components-repo/commit/90e94bce9694448f5996605fb7a82b6ccc719237))
+
+
+
+## [1.2.7-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.3...v1.2.7-alpha.4) (2023-07-10)
+
+
+### Features
+
+* changeSpeed和fastForward处理进度条 ([691f71d](https://github.com/ligaopeng123-npm/web-components-repo/commit/691f71dd8cf001e286c09f6e61273f981caf3a2c))
+
+
+
+## [1.2.7-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.2...v1.2.7-alpha.3) (2023-07-10)
+
+
+### Features
+
+* 倍速播放端侧支持 ([1099377](https://github.com/ligaopeng123-npm/web-components-repo/commit/10993772f65666c0ef3b63866919683eb13bcc5e))
+* 倍速播放端侧支持2 ([5adb94a](https://github.com/ligaopeng123-npm/web-components-repo/commit/5adb94a51faa10394d3a02c7524b091fb11f241c))
+* 倍速播放端侧支持4 ([04f3a60](https://github.com/ligaopeng123-npm/web-components-repo/commit/04f3a60a9a5c02485070dc94c639f1bea635de12))
+
+
+
+## [1.2.7-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.1...v1.2.7-alpha.2) (2023-07-07)
+
+
+### Features
+
+* 倍速播放 ([9e8a319](https://github.com/ligaopeng123-npm/web-components-repo/commit/9e8a319066d6d30c3525026167d9b4208b95e4ed))
+
+
+
+## [1.2.7-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.7-alpha.0...v1.2.7-alpha.1) (2023-07-07)
+
+
+### Features
+
+* 报漏videoProgressBar ([74f8c4c](https://github.com/ligaopeng123-npm/web-components-repo/commit/74f8c4c906964f413cb91f296d5169ab0e8b2d8b))
+
+
+
+## [1.2.7-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.6...v1.2.7-alpha.0) (2023-07-07)
+
+
+### Features
+
+* 发版报错 ([d0bacdd](https://github.com/ligaopeng123-npm/web-components-repo/commit/d0bacdd6f201006940b45817affe36dfd25abf0d))
+
+
+
+## [1.2.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.5...v1.2.6) (2023-07-07)
+
+
+### Features
+
+* 指令完善 ([05d1d6c](https://github.com/ligaopeng123-npm/web-components-repo/commit/05d1d6c17fd95b3f28aeb32a9e4c11f1c4440591))
+* 指令完善 ([826130b](https://github.com/ligaopeng123-npm/web-components-repo/commit/826130b16299367f701e94ca78b73073decf9a73))
+
+
+
+## [1.2.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.4...v1.2.5) (2023-07-07)
+
+
+### Bug Fixes
+
+* 视频bug处理 ([4df71f7](https://github.com/ligaopeng123-npm/web-components-repo/commit/4df71f74ff8b116f938fc332d3cabfb1b7c352ed))
+
+
+
+## [1.2.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3...v1.2.4) (2023-07-07)
+
+
+### Features
+
+* video-bar问题修改 ([a09450d](https://github.com/ligaopeng123-npm/web-components-repo/commit/a09450d093bc3428fd39925e84d9824383e39b93))
+* 服务协议处理 ([553e1a5](https://github.com/ligaopeng123-npm/web-components-repo/commit/553e1a5009f33c33453444869c34c35c720bc810))
+
+
+
+## [1.2.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.5...v1.2.3) (2023-07-06)
+
+
+
+## [1.2.3-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.4...v1.2.3-alpha.5) (2023-07-06)
+
+
+### Bug Fixes
+
+* __periods处理 ([159c903](https://github.com/ligaopeng123-npm/web-components-repo/commit/159c903c507e7b7fd5b1c9214a10d25edcb59531))
+
+
+
+## [1.2.3-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.3...v1.2.3-alpha.4) (2023-07-06)
+
+
+### Bug Fixes
+
+* 版本梳理 ([7fb7b8f](https://github.com/ligaopeng123-npm/web-components-repo/commit/7fb7b8fdd50b6dc842979c82bbae95781014e1ff))
+
+
+
+## [1.2.3-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.2...v1.2.3-alpha.3) (2023-07-06)
+
+
+### Bug Fixes
+
+* onTimeChange event bug ([1f3f5b1](https://github.com/ligaopeng123-npm/web-components-repo/commit/1f3f5b14aec5f8ba969768974fe394f7dcb0088f))
+
+
+
+## [1.2.3-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.1...v1.2.3-alpha.2) (2023-07-06)
+
+
+### Features
+
+* onTimeChange ([582f322](https://github.com/ligaopeng123-npm/web-components-repo/commit/582f32277d49ba8069d7db4314f044395c0813f0))
+
+
+
+## [1.2.3-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.3-alpha.0...v1.2.3-alpha.1) (2023-07-05)
+
+
+### Features
+
+* 文档2 ([9bae254](https://github.com/ligaopeng123-npm/web-components-repo/commit/9bae2549291a57dd171392e06125ed5d059d4559))
+
+
+
+## [1.2.3-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.2-alpha.0...v1.2.3-alpha.0) (2023-07-05)
+
+
+### Features
+
+* publish删除 ([14a3fd1](https://github.com/ligaopeng123-npm/web-components-repo/commit/14a3fd141ce7b453cfe6ea8b155787c133754867))
+* publish删除 ([48edb52](https://github.com/ligaopeng123-npm/web-components-repo/commit/48edb5292577a5dabcb39d68c86a45b3574cf05d))
+* publish删除 ([ee8dc78](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee8dc787c3595f03b5408bc3da0be92abe0e8c53))
+* 回放组件开发2 ([02b7e5f](https://github.com/ligaopeng123-npm/web-components-repo/commit/02b7e5fc5ac614e69d164d3d8ea163d2137ba319))
+* 回放组件开发3 ([c29c61d](https://github.com/ligaopeng123-npm/web-components-repo/commit/c29c61d2f2e66315425ed27b342c096e44b46842))
+
+
+
+## [1.2.2-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.1...v1.2.2-alpha.0) (2023-07-05)
+
+
+### Features
+
+* @gaopeng123/video-progress-bar 新增 ([506b457](https://github.com/ligaopeng123-npm/web-components-repo/commit/506b4572895d25560f8baef922cef76db53910a6))
+* 回放组件开发 ([bb66f36](https://github.com/ligaopeng123-npm/web-components-repo/commit/bb66f3610d8afe6bce5c6898fa5013b83e1d2ea2))
+* 时间轴 ([68e9904](https://github.com/ligaopeng123-npm/web-components-repo/commit/68e9904fdd2bce027e9bc9d47300e6ecec3c340d))
+
+
+
+## [1.2.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.1-alpha.0...v1.2.1) (2023-07-03)
+
+
+### Bug Fixes
+
+* 视频截图功能白屏问题处理 ([031b72e](https://github.com/ligaopeng123-npm/web-components-repo/commit/031b72e6089592aeb8877a7a7b0559a5f7c5d790))
+
+
+
+## [1.2.1-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.0...v1.2.1-alpha.0) (2023-07-01)
+
+
+### Features
+
+* 视频截图功能 ([1629fd7](https://github.com/ligaopeng123-npm/web-components-repo/commit/1629fd7727b34507cee4b920ba05b2eaef77d3d6))
+
+
+
+# [1.2.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.1.4...v1.2.0) (2023-06-28)
+
+
+### Bug Fixes
+
+* webRtc播放问题迭代 ([597bd68](https://github.com/ligaopeng123-npm/web-components-repo/commit/597bd68cc62f0d06afd8ca877c44b7c4b14cf282))
+* 主题配置变更 ([06dce7a](https://github.com/ligaopeng123-npm/web-components-repo/commit/06dce7aac0fa5bbe2c01fe8bfa4a2a334347cd95))
+* 开发环境配置 ([d65a29a](https://github.com/ligaopeng123-npm/web-components-repo/commit/d65a29a1399dc758783e754193589c2094f47844))
+* 开发环境配置 ([a3b1ca3](https://github.com/ligaopeng123-npm/web-components-repo/commit/a3b1ca39183b834e9c60360b30e064bfb6f372a9))
+
+
+### Features
+
+* defaultSelectedScreen 支持用户记录保存 ([2dbf95f](https://github.com/ligaopeng123-npm/web-components-repo/commit/2dbf95f7c4595408fd2245d0828d88705178b079))
+
+
+
+## [1.1.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.1.3...v1.1.4) (2023-05-19)
+
+
+### Bug Fixes
+
+* login-module captcha多了一个空格 ([404ab96](https://github.com/ligaopeng123-npm/web-components-repo/commit/404ab967961ef0985dda03b8b5e4605d9d9282fa))
+
+
+
+## [1.1.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.1.2...v1.1.3) (2023-05-19)
+
+
+### Bug Fixes
+
+* login-module 多下发一次处理 ([c4fddef](https://github.com/ligaopeng123-npm/web-components-repo/commit/c4fddefc22c8520635343bbc64fad366def8c8e6))
+
+
+
+## [1.1.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.1.1...v1.1.2) (2023-05-19)
+
+
+### Bug Fixes
+
+* initRememberPasswordForm 增加判断 ([cf9e06a](https://github.com/ligaopeng123-npm/web-components-repo/commit/cf9e06aee97ee233f969575dd357efdc5c7d56fa))
+* qrCode 初始化异常保护 ([b51730e](https://github.com/ligaopeng123-npm/web-components-repo/commit/b51730e23b1060bc063684b955a02c2a0c6ea971))
+
+
+
+## [1.1.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.1.0...v1.1.1) (2023-05-19)
+
+
+### Features
+
+* 处理编译 ([38fe9a1](https://github.com/ligaopeng123-npm/web-components-repo/commit/38fe9a1bcbaaa589e51b7a569baeae455c35715a))
+
+
+
+# [1.1.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.0.4...v1.1.0) (2023-05-19)
+
+
+### Features
+
+* 支持密码记忆功能 ([9a9fb1a](https://github.com/ligaopeng123-npm/web-components-repo/commit/9a9fb1a3793d8fa55ea0d91713486cb9d0210247))
+
+
+
+## [1.0.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.0.3...v1.0.4) (2023-05-18)
+
+
+### Bug Fixes
+
+* login-module afterSubmit 异常保护 ([52f14e4](https://github.com/ligaopeng123-npm/web-components-repo/commit/52f14e49d906fbd7d1dbbca8b66928a1e55877b1))
+
+
+### Features
+
+* rc-qrcode扩展支持设置样式 ([20c4bea](https://github.com/ligaopeng123-npm/web-components-repo/commit/20c4beaadbd8ce6c9adadf282fd145025310ae3d))
+
+
+
+## [1.0.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.0.2...v1.0.3) (2023-03-17)
+
+
+### Features
+
+* scroll-nav ([7a06701](https://github.com/ligaopeng123-npm/web-components-repo/commit/7a06701b3304e68b4771972cb83458e1a4a721dc))
+* scroll-nav ([0040388](https://github.com/ligaopeng123-npm/web-components-repo/commit/0040388591e3cfe8239efccf63e9b7ad5b0dba23))
+* 新增变更日志 ([0dca806](https://github.com/ligaopeng123-npm/web-components-repo/commit/0dca806f79c046f5e0581e702db31a4bd964ca57))
 
 
 
