@@ -67,15 +67,15 @@ export const PeriodTip: React.FC<any> = (props: any) => {
 
     return (
         <>
-            {
-                canRender
-                    ? <Tooltip
-                        isOpen={visible}
-                        id="tooltip"
-                        style={Object.assign({zIndex: 99999}, position)}
-                        content={title}/>
-                    : null
-            }
+            {/*{*/}
+            {/*    canRender*/}
+            {/*        ? <Tooltip*/}
+            {/*            isOpen={visible}*/}
+            {/*            id="tooltip"*/}
+            {/*            style={Object.assign({zIndex: 99999}, position)}*/}
+            {/*            content={title}/>*/}
+            {/*        : null*/}
+            {/*}*/}
             <div
                 data-tooltip-id="tooltip"
                 className={`time-change-item`}
