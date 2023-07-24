@@ -35,7 +35,6 @@ export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsIn
     const {
         dispatch,
         store,
-        panelOptions,
         data
     } = props;
     /**
@@ -209,7 +208,7 @@ export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsIn
             style={{
                 height: options.height,
                 width: options.width,
-                pointerEvents: panelOptions?.cleared ? 'none' : 'auto'
+                pointerEvents: options?.cleared ? 'none' : 'auto'
             }}></div>
     )
 });

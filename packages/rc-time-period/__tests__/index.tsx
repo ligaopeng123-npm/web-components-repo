@@ -59,11 +59,11 @@ const App = () => {
             console.log(ref.current?.getDate());
         }
         return (
-            <div style={{height: 400}}>
+            <>
                     <button onClick={clear}>清理</button>
                     <button onClick={getDate}>数据</button>
-                    <RcTimePeriod data={data} panelOptions={{}} ref={ref}/>
-            </div>
+                    <RcTimePeriod data={data} panelOptions={{top: 16, bottom: 16, left: 16, height: 300}} ref={ref}/>
+            </>
         );
 };
 

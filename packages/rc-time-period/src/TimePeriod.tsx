@@ -19,6 +19,7 @@ import { SinglePeriod } from "./components/TimeEdit";
 import { TimePeriodCopy } from "./components/TimePeriodCopy";
 import { CanvasInterface, DataMappingInterface, EnumWeekState, PeriodItemDate, TimePeriodModuleDefaultProps } from "./interface";
 import { conversionDataToServer } from "./utils";
+import { assignDeep } from "@gaopeng123/utils";
 
 export type RcTimePeriodProps = {
     panelOptions: CanvasInterface,
@@ -38,21 +39,21 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
     const [store, dispatch] = useReducer(reducer, state, (state: any) => {
         return {
             ...state,
-            [EnumWeekState.fieldNames]: Object.assign({}, TimePeriodModuleDefaultProps.fieldNames, props.fieldNames)
-        };
+            [EnumWeekState.fieldNames]: Object.assign({}, TimePeriodModuleDefaultProps.fieldNames, props.fieldNames),
+            [EnumWeekState.panelOptions]: assignDeep({}, TimePeriodModuleDefaultProps.panelOptions, props.panelOptions || {})
+        }
     });
 
     const chartRef = useRef<TimePeriodChartsRef>();
 
-
-    useEffect(() => {
-        if (props.panelOptions) {
-            dispatch({
-                type: EnumWeekState.panelOptions,
-                value: props.panelOptions
-            });
-        }
-    }, [props.panelOptions]);
+    // useEffect(() => {
+    //     if (props.panelOptions) {
+    //         dispatch({
+    //             type: EnumWeekState.panelOptions,
+    //             value: props.panelOptions
+    //         });
+    //     }
+    // }, [props.panelOptions]);
 
     /**
      * 钩子函数
@@ -76,7 +77,8 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
 
 
     return (
-        <>
+        <div
+            style={{position: 'relative'}}>
             <PeriodTip
                 store={store}
                 dispatch={dispatch}/>
@@ -91,6 +93,6 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
             <TimePeriodCopy
                 store={store}
                 dispatch={dispatch}/>
-        </>
+        </div>
     )
 });
