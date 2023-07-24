@@ -14,7 +14,7 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useRef } from 'react';
 import { CopyPeriodDataInterface, EnumWeekState, WeekPanelPropsInterface } from "../interface";
 import { PositioningModal } from "./PositioningModal";
-import Checkbox, { CheckboxGroup } from "./CheckBox";
+import { Checkbox, CheckboxGroup } from "./CheckBox";
 import '../index.less';
 
 

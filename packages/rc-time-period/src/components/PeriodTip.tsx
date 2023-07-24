@@ -75,5 +75,3 @@ export const PeriodTip: React.FC<any> = (props: any) => {
         </>
     );
 };
-
-export default PeriodTip;
