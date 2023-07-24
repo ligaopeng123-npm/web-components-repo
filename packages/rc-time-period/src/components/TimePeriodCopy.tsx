@@ -12,51 +12,17 @@
  *
  **********************************************************************/
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useRef } from 'react';
-import { CopyPeriodDataInterface, EnumWeekState } from "../interface";
-import PositionModal from "./PositionModal";
-import Checkbox from "./CheckBox";
+import { CopyPeriodDataInterface, EnumWeekState, WeekPanelPropsInterface } from "../interface";
+import TimePositionModal from "./TimePositionModal";
+import Checkbox, { CheckboxGroup } from "./CheckBox";
 import '../index.less';
 
 
 const defaultCheckedList: any = [];
-
-const CheckboxGroup = ({
-    options,
-    value,
-    onChange,
-    style
-}: any) => {
-    return (
-        <div
-            style={style}>
-            {
-                options.map((item: string, index: number) => {
-                    return <label
-                        className={'time-period-copy-label'}
-                        key={item}>
-                        <Checkbox
-                            name={item}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    if (!value.includes(item)) {
-                                        onChange([...value, item]);
-                                    }
-                                } else {
-                                    if (value.includes(item)) {
-                                        onChange(value.filter((_item: string) => _item !== item));
-                                    }
-                                }
-                            }}
-                            checked={value.includes(item)}/>
-                        {item}
-                    </label>
-                })
-            }
-        </div>
-    )
+type PositionPanelRef = {
+    getCheckList: () => Array<any>
 }
-
-const PositionPanel: React.FC<any> = forwardRef((props: any, ref: any) => {
+export const PositionPanel = forwardRef<PositionPanelRef, WeekPanelPropsInterface>((props, ref) => {
     const {store} = props;
     const plainOptions = store[EnumWeekState.panelOptions].scale.y.data;
     const [boxList, setBoxList] = useState(plainOptions);
@@ -134,7 +100,7 @@ const PositionPanel: React.FC<any> = forwardRef((props: any, ref: any) => {
     )
 });
 
-const TimePeriodCopy: React.FC<any> = (props: any) => {
+const TimePeriodCopy: React.FC<WeekPanelPropsInterface> = (props) => {
     const {
         store,
         dispatch
@@ -149,7 +115,7 @@ const TimePeriodCopy: React.FC<any> = (props: any) => {
     /**
      * copy实例
      */
-    const copyRef = useRef<any>(null);
+    const copyRef = useRef<PositionPanelRef>(null);
     /**
      * 复制操作
      */
@@ -180,14 +146,17 @@ const TimePeriodCopy: React.FC<any> = (props: any) => {
 
     };
     return (
-        <PositionModal
+        <TimePositionModal
             modalKey={'time-period-copy'}
             monitor={monitor}
             onConfirm={onConfirm}
             onCancel={onCancel}
             okText={`复制`}
             cancelText={`取消`}
-            title={<PositionPanel ref={copyRef} store={store}/>}
+            title={
+                <PositionPanel
+                    ref={copyRef}
+                    store={store}/>}
         />
     )
 };

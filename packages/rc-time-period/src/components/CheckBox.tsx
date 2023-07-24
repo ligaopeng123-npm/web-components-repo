@@ -104,4 +104,41 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     );
 });
 
+
+export const CheckboxGroup = ({
+    options,
+    value,
+    onChange,
+    style
+}: any) => {
+    return (
+        <div
+            style={style}>
+            {
+                options.map((item: string, index: number) => {
+                    return <label
+                        className={'time-period-copy-label'}
+                        key={item}>
+                        <Checkbox
+                            name={item}
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    if (!value.includes(item)) {
+                                        onChange([...value, item]);
+                                    }
+                                } else {
+                                    if (value.includes(item)) {
+                                        onChange(value.filter((_item: string) => _item !== item));
+                                    }
+                                }
+                            }}
+                            checked={value.includes(item)}/>
+                        {item}
+                    </label>
+                })
+            }
+        </div>
+    )
+}
+
 export default Checkbox;

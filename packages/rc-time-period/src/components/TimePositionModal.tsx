@@ -22,7 +22,7 @@ import '../index.less';
  * @param props
  * @constructor
  */
-const PositionModal: React.FC<PositionModalProps> = (props) => {
+const TimePositionModal: React.FC<PositionModalProps> = (props) => {
     /**
      * hook共享数据
      */
@@ -96,4 +96,4 @@ const PositionModal: React.FC<PositionModalProps> = (props) => {
     )
 };
 
-export default PositionModal;
+export default TimePositionModal;

@@ -14,7 +14,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { EnumWeekState } from "../interface";
 import { TimeRangeInterface } from "../interface";
-import PositionModal from "./PositionModal";
+import TimePositionModal from "./TimePositionModal";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import { Mandarin } from "flatpickr/dist/l10n/zh";
@@ -156,7 +156,7 @@ const SinglePeriod: React.FC<any> = (props: any) => {
     };
 
     return (
-        <PositionModal
+        <TimePositionModal
             modalKey={'single-period'}
             onCancel={onCancel}
             onConfirm={onConfirm}
