@@ -7,6 +7,6 @@ export { default as RcTimePeriod } from "./TimePeriod";
 
 export type { RcTimePeriodRef, RcTimePeriodProps } from "./TimePeriod";
 
-export {default as TimePositionModal } from "./components/TimePositionModal";
+export { PositioningModal } from "./components/PositioningModal";
 
-export { default as PeriodTip} from "./components/PeriodTip";
+export { default as PeriodTip } from "./components/PeriodTip";

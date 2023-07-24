@@ -13,7 +13,7 @@
  **********************************************************************/
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useRef } from 'react';
 import { CopyPeriodDataInterface, EnumWeekState, WeekPanelPropsInterface } from "../interface";
-import TimePositionModal from "./TimePositionModal";
+import { PositioningModal } from "./PositioningModal";
 import Checkbox, { CheckboxGroup } from "./CheckBox";
 import '../index.less';
 
@@ -146,7 +146,7 @@ const TimePeriodCopy: React.FC<WeekPanelPropsInterface> = (props) => {
 
     };
     return (
-        <TimePositionModal
+        <PositioningModal
             modalKey={'time-period-copy'}
             monitor={monitor}
             onConfirm={onConfirm}
