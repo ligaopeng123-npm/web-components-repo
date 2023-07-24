@@ -1,8 +1,8 @@
 /**********************************************************************
  *
- * @模块名称: PositionModal
+ * @模块名称: PositioningModal
  *
- * @模块作用: PositionModal
+ * @模块作用: PositioningModal
  *
  * @创建人: pgli
  *
@@ -22,7 +22,7 @@ import '../index.less';
  * @param props
  * @constructor
  */
-export function PositioningModal(props: PositionModalProps) {
+export const PositioningModal: React.FC<PositionModalProps> = (props) => {
     /**
      * hook共享数据
      */
@@ -56,42 +56,42 @@ export function PositioningModal(props: PositionModalProps) {
 
     return (
         <Fragment>
-            <Tooltip
-                isOpen={visible}
-                clickable
-                anchorSelect={`#${modalKey || 'position-modal'}`}
-                style={Object.assign({zIndex: 99999}, position)}
-            >
-                <div>{title}</div>
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        marginTop: 12
-                    }}>
-                    <button
-                        type={'reset'}
-                        style={{color: 'red'}}
-                        onClick={() => {
-                            setVisible(false);
-                            onCancel();
-                        }}>{cancelText || `删除`}</button>
-                    <button
-                        type={'submit'}
-                        style={{
-                            marginLeft: 12,
-                            color: '#80a5ff'
-                        }}
-                        onClick={(e: any) => {
-                            setVisible(false);
-                            onConfirm(e);
-                        }}>{okText || `保存`}</button>
-                </div>
-            </Tooltip>
-            <div
-                id={modalKey || "position-modal"}
-                className={`time-change-item`}
-                style={position}></div>
+            {/*<Tooltip*/}
+            {/*    isOpen={visible}*/}
+            {/*    clickable*/}
+            {/*    anchorSelect={`#${modalKey || 'position-modal'}`}*/}
+            {/*    style={Object.assign({zIndex: 99999}, position)}*/}
+            {/*>*/}
+            {/*    <div>{title}</div>*/}
+            {/*    <div*/}
+            {/*        style={{*/}
+            {/*            display: 'flex',*/}
+            {/*            justifyContent: 'flex-end',*/}
+            {/*            marginTop: 12*/}
+            {/*        }}>*/}
+            {/*        <button*/}
+            {/*            type={'reset'}*/}
+            {/*            style={{color: 'red'}}*/}
+            {/*            onClick={() => {*/}
+            {/*                setVisible(false);*/}
+            {/*                onCancel();*/}
+            {/*            }}>{cancelText || `删除`}</button>*/}
+            {/*        <button*/}
+            {/*            type={'submit'}*/}
+            {/*            style={{*/}
+            {/*                marginLeft: 12,*/}
+            {/*                color: '#80a5ff'*/}
+            {/*            }}*/}
+            {/*            onClick={(e: any) => {*/}
+            {/*                setVisible(false);*/}
+            {/*                onConfirm(e);*/}
+            {/*            }}>{okText || `保存`}</button>*/}
+            {/*    </div>*/}
+            {/*</Tooltip>*/}
+            {/*<div*/}
+            {/*    id={modalKey || "position-modal"}*/}
+            {/*    className={`time-change-item`}*/}
+            {/*    style={position}></div>*/}
         </Fragment>
-    )
+    );
 };
