@@ -58,7 +58,7 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
         <Fragment>
             <ReactTooltip
                 isOpen={visible}
-                clickable
+                clickable={true}
                 anchorSelect={`#${modalKey || 'position-modal'}`}
                 style={Object.assign({zIndex: 99999}, position)}
             >
@@ -94,6 +94,7 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
             </ReactTooltip>
             <div
                 id={modalKey || "position-modal"}
+                data-tooltip-id={modalKey || "position-modal"}
                 className={`time-change-item`}
                 style={position}></div>
         </Fragment>
