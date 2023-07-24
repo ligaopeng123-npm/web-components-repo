@@ -11,7 +11,7 @@ module.exports = function (config, options) {
         images({include: ['**/*.png', '**/*.jpg', '**/*.svg']}),
         ...config.plugins,
         postcss({
-            extensions: ['.less'],
+            extensions: ['.less', '.css'],
             plugins: [
                 // 解析url链接 加载静态资源
                 autoprefixer(),
@@ -27,6 +27,7 @@ module.exports = function (config, options) {
             modules: false, // 使用css modules
             camelCase: true, // 支持驼峰
             extract: !!options.writeMeta, //
+            autoModules: true,
             css: true,
             less: true, // 是否使用less,
             sass: true, // 是否使用sass

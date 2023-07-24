@@ -14,7 +14,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
 import { PositionModalInterface, PositionModalProps } from "../interface";
-import * as ReactTooltip from 'react-tooltip';
+import { Tooltip as ReactTooltip } from '../react-tooltip';
 import '../index.less';
 
 /**
@@ -56,7 +56,7 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
 
     return (
         <Fragment>
-            <ReactTooltip.Tooltip
+            <ReactTooltip
                 isOpen={visible}
                 clickable={true}
                 anchorSelect={`#${modalKey || 'position-modal'}`}
@@ -91,7 +91,7 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
                             onConfirm(e);
                         }}>{okText || `保存`}</button>
                 </div>
-            </ReactTooltip.Tooltip>
+            </ReactTooltip>
             <div
                 id={modalKey || "position-modal"}
                 data-tooltip-id={modalKey || "position-modal"}

@@ -14,7 +14,7 @@
 import React, { useState, useEffect } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
 import { EnumWeekState, PositionModalInterface } from "../interface";
-import * as ReactTooltip from 'react-tooltip';
+import { Tooltip as ReactTooltip } from '../react-tooltip';
 import '../index.less';
 
 export const PeriodTip: React.FC<any> = (props: any) => {
@@ -54,15 +54,16 @@ export const PeriodTip: React.FC<any> = (props: any) => {
                 } = monitor?.timeRange;
                 setTitle(`${start}-${end}`);
                 setVisible(true);
-            } else if (monitor.state === 'hide') {
-                setVisible(false);
-            }
+            } else
+                if (monitor.state === 'hide') {
+                    setVisible(false);
+                }
         }
     }, [monitor]);
 
     return (
         <>
-            <ReactTooltip.Tooltip
+            <ReactTooltip
                 isOpen={visible}
                 id="period-tip"
                 style={Object.assign({zIndex: 99999}, position)}
