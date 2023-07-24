@@ -824,10 +824,12 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
+      '@floating-ui/dom': ^1.4.5
       '@gaopeng123/message': ^1.0.2
       '@gaopeng123/utils': ^1.1.5
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
+      '@types/node': ^16.4.6
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
       '@types/react-window': ^1.8.5
@@ -846,7 +848,7 @@ importers:
       rc-util: ^5.34.1
       react: ^17.0.2
       react-dom: ^17.0.2
-      react-tooltip: ^5.18.1
+      resize-observer-polyfill: ^1.5.1
       rollup-plugin-postcss: ^4.0.2
       size-limit: ^7.0.8
       style-loader: ^3.3.1
@@ -861,12 +863,13 @@ importers:
       webpack-merge: ^5.8.0
       zrender: ^5.4.4
     dependencies:
+      '@floating-ui/dom': 1.4.5
       '@gaopeng123/message': link:../message
       '@gaopeng123/utils': 1.1.8
       classnames: 2.3.2
       flatpickr: 4.6.13
       rc-util: 5.34.1_sfoxds7t5ydpegc3knd667wn6m
-      react-tooltip: 5.18.1_sfoxds7t5ydpegc3knd667wn6m
+      resize-observer-polyfill: 1.5.1
       zrender: 5.4.4
     devDependencies:
       '@babel/core': 7.20.5
@@ -874,6 +877,7 @@ importers:
       '@babel/preset-env': 7.20.2_@babel+core@7.20.5
       '@rollup/plugin-image': 2.1.1
       '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@types/node': 16.18.7
       '@types/react': 17.0.52
       '@types/react-dom': 17.0.18
       '@types/react-window': 1.8.5
@@ -893,7 +897,7 @@ importers:
       size-limit: 7.0.8
       style-loader: 3.3.1_webpack@5.75.0
       ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
-      tsdx: 0.14.1
+      tsdx: 0.14.1_@types+node@16.18.7
       tslib: 2.4.1
       typescript: 4.9.4
       url-loader: 4.1.1_p5dl6emkcwslbw72e37w4ug7em
@@ -16511,18 +16515,6 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
-  /react-tooltip/5.18.1_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-5zUKoMoKHTYxobzhR160+kkHdLtB+yYO8p16aQRoz2jGcOdtV0o1enNynoA4YqQb3xTjl84N8KLNoscmgMNuSg==}
-    peerDependencies:
-      react: '>=16.14.0'
-      react-dom: '>=16.14.0'
-    dependencies:
-      '@floating-ui/dom': 1.4.5
-      classnames: 2.3.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: false
-
   /react-transition-group/4.4.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -16877,6 +16869,10 @@ packages:
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: true
+
+  /resize-observer-polyfill/1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
+    dev: false
 
   /resolve-cwd/2.0.0:
     resolution: {integrity: sha512-ccu8zQTrzVr954472aUVPLEcB3YpKSYR3cg/3lo1okzobPBM+1INXBbBZlDbnI/hbEocnf8j0QVo43hQKrbchg==}
