@@ -88,10 +88,10 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
             {/*            }}>{okText || `保存`}</button>*/}
             {/*    </div>*/}
             {/*</Tooltip>*/}
-            {/*<div*/}
-            {/*    id={modalKey || "position-modal"}*/}
-            {/*    className={`time-change-item`}*/}
-            {/*    style={position}></div>*/}
+            <div
+                id={modalKey || "position-modal"}
+                className={`time-change-item`}
+                style={position}></div>
         </Fragment>
     );
 };
