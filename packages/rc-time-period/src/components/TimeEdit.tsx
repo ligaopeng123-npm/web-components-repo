@@ -21,14 +21,9 @@ import { Mandarin } from "flatpickr/dist/l10n/zh";
 import { formatTimestamp } from "@gaopeng123/utils";
 import '../index.less';
 
-const TimePickerStyle = {
-    width: 70
-};
-
-const SinglePeriodTitle: React.FC<any> = (props: any) => {
+export const SinglePeriodTitle: React.FC<any> = (props: any) => {
     const {
         store,
-        timeRange,
         setTimeRange
     } = props;
 
@@ -121,7 +116,7 @@ const SinglePeriodTitle: React.FC<any> = (props: any) => {
 };
 
 
-const SinglePeriod: React.FC<any> = (props: any) => {
+export const SinglePeriod: React.FC<any> = (props: any) => {
     const {
         store,
         dispatch
@@ -170,5 +165,3 @@ const SinglePeriod: React.FC<any> = (props: any) => {
             }/>
     )
 };
-
-export default SinglePeriod;

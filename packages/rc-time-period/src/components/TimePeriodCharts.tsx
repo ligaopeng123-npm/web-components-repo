@@ -30,7 +30,7 @@ export type TimePeriodChartsRef = {
      */
     convertedToTime: any
 }
-const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface>((props: WeekPanelPropsInterface, ref) => {
+export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface>((props: WeekPanelPropsInterface, ref) => {
     // template模板 panelOptions 配置属性
     const {
         dispatch,
@@ -210,5 +210,3 @@ const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsInterface
             }}></div>
     )
 });
-
-export default TimePeriodCharts;

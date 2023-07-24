@@ -100,7 +100,7 @@ export const PositionPanel = forwardRef<PositionPanelRef, WeekPanelPropsInterfac
     )
 });
 
-const TimePeriodCopy: React.FC<WeekPanelPropsInterface> = (props) => {
+export const TimePeriodCopy: React.FC<WeekPanelPropsInterface> = (props) => {
     const {
         store,
         dispatch
@@ -160,5 +160,3 @@ const TimePeriodCopy: React.FC<WeekPanelPropsInterface> = (props) => {
         />
     )
 };
-
-export default TimePeriodCopy;

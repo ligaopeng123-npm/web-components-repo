@@ -13,10 +13,10 @@
  **********************************************************************/
 import React, { forwardRef, useEffect, useImperativeHandle, useReducer, useRef } from 'react';
 import { reducer, state } from "./state";
-import TimePeriodCharts, { TimePeriodChartsRef } from "./components/TimePeriodCharts";
+import { TimePeriodCharts, TimePeriodChartsRef } from "./components/TimePeriodCharts";
 import { PeriodTip } from "./components/PeriodTip";
-import SinglePeriod from "./components/TimeEdit";
-import TimePeriodCopy from "./components/TimePeriodCopy";
+import { SinglePeriod } from "./components/TimeEdit";
+import { TimePeriodCopy } from "./components/TimePeriodCopy";
 import { CanvasInterface, DataMappingInterface, EnumWeekState, PeriodItemDate, TimePeriodModuleDefaultProps } from "./interface";
 import { conversionDataToServer } from "./utils";
 
@@ -31,7 +31,7 @@ export type RcTimePeriodRef = {
     getDate: () => void,
 };
 
-const TimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((props, ref) => {
+export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((props, ref) => {
     /**
      * 内部数据管理
      */
@@ -93,6 +93,4 @@ const TimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((props, ref) =
                 dispatch={dispatch}/>
         </>
     )
-})
-
-export default TimePeriod;
+});
