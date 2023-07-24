@@ -826,6 +826,7 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@gaopeng123/message': workspace:^1.0.2
       '@gaopeng123/utils': ^1.1.5
+      '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -845,7 +846,7 @@ importers:
       rc-util: ^5.34.1
       react: ^17.0.2
       react-dom: ^17.0.2
-      react-tooltip: ^5.18.0
+      react-tooltip: ^5.18.1
       rollup-plugin-postcss: ^4.0.2
       size-limit: ^7.0.8
       style-loader: ^3.3.1
@@ -865,12 +866,13 @@ importers:
       classnames: 2.3.2
       flatpickr: 4.6.13
       rc-util: 5.34.1_sfoxds7t5ydpegc3knd667wn6m
-      react-tooltip: 5.18.0_sfoxds7t5ydpegc3knd667wn6m
+      react-tooltip: 5.18.1_sfoxds7t5ydpegc3knd667wn6m
       zrender: 5.4.4
     devDependencies:
       '@babel/core': 7.20.5
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.5
       '@babel/preset-env': 7.20.2_@babel+core@7.20.5
+      '@rollup/plugin-image': 2.1.1
       '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
       '@types/react': 17.0.52
       '@types/react-dom': 17.0.18
@@ -16501,8 +16503,8 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
-  /react-tooltip/5.18.0_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-qjDK/skUJJ27sc9lTWeNxp2rLzmenBTskSsRiDOCPnupGSz2GhL5IZxDizK/sOsk0hn5iSCywt+3jKxUJ3Y4Sw==}
+  /react-tooltip/5.18.1_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-5zUKoMoKHTYxobzhR160+kkHdLtB+yYO8p16aQRoz2jGcOdtV0o1enNynoA4YqQb3xTjl84N8KLNoscmgMNuSg==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'

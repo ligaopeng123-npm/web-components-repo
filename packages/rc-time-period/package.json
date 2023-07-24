@@ -42,6 +42,7 @@
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.14.4",
+    "@rollup/plugin-image": "^2.1.1",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
@@ -77,7 +78,7 @@
     "classnames": "^2.3.2",
     "flatpickr": "^4.6.13",
     "rc-util": "^5.34.1",
-    "react-tooltip": "^5.18.0",
+    "react-tooltip": "^5.18.1",
     "zrender": "^5.4.4"
   },
   "bugs": {

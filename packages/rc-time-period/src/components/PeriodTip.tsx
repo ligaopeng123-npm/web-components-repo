@@ -14,7 +14,7 @@
 import React, { useState, useEffect } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
 import { EnumWeekState, PositionModalInterface } from "../interface";
-import { Tooltip as RcTimeTooltip } from 'react-tooltip';
+import { Tooltip as ReactTooltip } from 'react-tooltip';
 import '../index.less';
 
 export const PeriodTip: React.FC<any> = (props: any) => {
@@ -62,7 +62,7 @@ export const PeriodTip: React.FC<any> = (props: any) => {
 
     return (
         <>
-            <RcTimeTooltip
+            <ReactTooltip
                 isOpen={visible}
                 id="period-tip"
                 style={Object.assign({zIndex: 99999}, position)}
