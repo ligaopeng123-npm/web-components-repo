@@ -22,7 +22,7 @@ import '../index.less';
  * @param props
  * @constructor
  */
-export const PositioningModal: React.FC<PositionModalProps> = (props) => {
+export function PositioningModal(props: PositionModalProps) {
     /**
      * hook共享数据
      */
