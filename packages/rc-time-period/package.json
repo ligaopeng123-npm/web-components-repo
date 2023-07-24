@@ -73,7 +73,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@gaopeng123/message": "workspace:^1.0.2",
+    "@gaopeng123/message": "^1.0.2",
     "@gaopeng123/utils": "^1.1.5",
     "classnames": "^2.3.2",
     "flatpickr": "^4.6.13",
@@ -83,5 +83,6 @@
   },
   "bugs": {
     "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
-  }
+  },
+  "gitHead": "81112cef4582efff3344d32509f25582891e1e97"
 }
