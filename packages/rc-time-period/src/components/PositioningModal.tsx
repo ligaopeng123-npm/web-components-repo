@@ -47,47 +47,61 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
     /**
      *  当接收到periodClick时间 将弹出框弹出
      */
+    const [canRender, showCanRender] = useState(false);
     useEffect(() => {
-        if (monitor) {
+        if (monitor && canRender) {
             setPosition(getWeekTimeChangePosition(monitor.e));
             setVisible(true);
         }
-    }, [monitor]);
+    }, [monitor, canRender]);
+
+    useEffect(() => {
+        showCanRender(true);
+    }, []);
 
     return (
         <Fragment>
-            {/*<Tooltip*/}
-            {/*    isOpen={visible}*/}
-            {/*    clickable*/}
-            {/*    anchorSelect={`#${modalKey || 'position-modal'}`}*/}
-            {/*    style={Object.assign({zIndex: 99999}, position)}*/}
-            {/*>*/}
-            {/*    <div>{title}</div>*/}
-            {/*    <div*/}
-            {/*        style={{*/}
-            {/*            display: 'flex',*/}
-            {/*            justifyContent: 'flex-end',*/}
-            {/*            marginTop: 12*/}
-            {/*        }}>*/}
-            {/*        <button*/}
-            {/*            type={'reset'}*/}
-            {/*            style={{color: 'red'}}*/}
-            {/*            onClick={() => {*/}
-            {/*                setVisible(false);*/}
-            {/*                onCancel();*/}
-            {/*            }}>{cancelText || `删除`}</button>*/}
-            {/*        <button*/}
-            {/*            type={'submit'}*/}
-            {/*            style={{*/}
-            {/*                marginLeft: 12,*/}
-            {/*                color: '#80a5ff'*/}
-            {/*            }}*/}
-            {/*            onClick={(e: any) => {*/}
-            {/*                setVisible(false);*/}
-            {/*                onConfirm(e);*/}
-            {/*            }}>{okText || `保存`}</button>*/}
-            {/*    </div>*/}
-            {/*</Tooltip>*/}
+            {
+                canRender
+                    ?
+                    <Tooltip
+                        isOpen={visible}
+                        clickable
+                        anchorSelect={`#${modalKey || 'position-modal'}`}
+                        style={Object.assign({zIndex: 99999}, position)}
+                    >
+                        <div>{title}</div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                marginTop: 12
+                            }}>
+                            <button
+                                type={'reset'}
+                                style={{
+                                    color: 'red',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={() => {
+                                    setVisible(false);
+                                    onCancel();
+                                }}>{cancelText || `删除`}</button>
+                            <button
+                                type={'submit'}
+                                style={{
+                                    marginLeft: 12,
+                                    color: '#80a5ff',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={(e: any) => {
+                                    setVisible(false);
+                                    onConfirm(e);
+                                }}>{okText || `保存`}</button>
+                        </div>
+                    </Tooltip>
+                    : null
+            }
             <div
                 id={modalKey || "position-modal"}
                 className={`time-change-item`}

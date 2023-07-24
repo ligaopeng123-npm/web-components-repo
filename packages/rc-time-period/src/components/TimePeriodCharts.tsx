@@ -123,11 +123,14 @@ export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsIn
         })
 
         return () => {
-            _week.unsubscribe(EnumWeekState.periodClick, onPeriodClick);
-            _week.unsubscribe(EnumWeekState.copyClick, onCopyClick);
-            _week.unsubscribe(EnumWeekState.periodTip, onPeriodTip);
-            _week.destory();
-            zd.dispose();
+            if (_week) {
+                _week.unsubscribe(EnumWeekState.periodClick, onPeriodClick);
+                _week.unsubscribe(EnumWeekState.copyClick, onCopyClick);
+                _week.unsubscribe(EnumWeekState.periodTip, onPeriodTip);
+                _week.destory();
+            }
+
+            zd?.dispose();
         }
     }, [store[EnumWeekState.panelOptions]]);
 

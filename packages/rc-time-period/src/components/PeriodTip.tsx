@@ -33,11 +33,12 @@ export const PeriodTip: React.FC<any> = (props: any) => {
     const [position, setPosition] = useState<PositionModalInterface>();
     const {store} = props;
     const monitor = store[EnumWeekState.periodTip];
+    const [canRender, showCanRender] = useState(false);
     /**
      *  当接收到periodClick时间 将弹出框弹出
      */
     useEffect(() => {
-        if (monitor) {
+        if (monitor && canRender) {
             if (monitor.state === 'show') {
                 const {
                     left,
@@ -58,15 +59,23 @@ export const PeriodTip: React.FC<any> = (props: any) => {
                 setVisible(false);
             }
         }
-    }, [monitor]);
+    }, [monitor, canRender]);
+
+    useEffect(() => {
+        showCanRender(true);
+    }, []);
 
     return (
         <>
-            {/*<Tooltip*/}
-            {/*    isOpen={visible}*/}
-            {/*    id="tooltip"*/}
-            {/*    style={Object.assign({zIndex: 99999}, position)}*/}
-            {/*    content={title}/>*/}
+            {
+                canRender
+                    ? <Tooltip
+                        isOpen={visible}
+                        id="tooltip"
+                        style={Object.assign({zIndex: 99999}, position)}
+                        content={title}/>
+                    : null
+            }
             <div
                 data-tooltip-id="tooltip"
                 className={`time-change-item`}
