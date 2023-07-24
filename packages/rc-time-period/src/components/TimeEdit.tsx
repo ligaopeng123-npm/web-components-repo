@@ -13,14 +13,13 @@
  **********************************************************************/
 import React, { useState, useEffect, useRef } from 'react';
 import { EnumWeekState } from "../interface";
-import { carryTimmer } from "../utils";
 import { TimeRangeInterface } from "../interface";
 import PositionModal from "./PositionModal";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
-import '../index.less';
 import { Mandarin } from "flatpickr/dist/l10n/zh";
 import { formatTimestamp } from "@gaopeng123/utils";
+import '../index.less';
 
 const TimePickerStyle = {
     width: 70
@@ -45,11 +44,17 @@ const SinglePeriodTitle: React.FC<any> = (props: any) => {
      */
     const onStartChange: any = (date: any): void => {
         ref.current.start = formatTimestamp(date[0], 'HH:mm:ss');
-        setTimeRange({start: ref.current.start, end: ref.current.end});
+        setTimeRange({
+            start: ref.current.start,
+            end: ref.current.end
+        });
     };
     const onEndChange: any = (date: any): void => {
         ref.current.end = formatTimestamp(date[0], 'HH:mm:ss');
-        setTimeRange({start: ref.current.start, end: ref.current.end});
+        setTimeRange({
+            start: ref.current.start,
+            end: ref.current.end
+        });
     };
     /**
      * 根据periodClick点击事件 处理点击逻辑
@@ -74,8 +79,8 @@ const SinglePeriodTitle: React.FC<any> = (props: any) => {
     }, [store[EnumWeekState.periodClick], endFlatpickr, startFlatpickr]);
 
 
-    useEffect(()=> {
-        const initFlatpickr = (inputId: string, onChange: any)=> {
+    useEffect(() => {
+        const initFlatpickr = (inputId: string, onChange: any) => {
             return flatpickr(ref?.current?.querySelector(`#${inputId}`), {
                 enableTime: true,
                 noCalendar: true,
@@ -97,13 +102,15 @@ const SinglePeriodTitle: React.FC<any> = (props: any) => {
     }, []);
 
     return (
-        <div ref={ref}>
+        <div
+            ref={ref}>
             <input
                 id="start-datetime"
                 className="flatpickr time-change-item-input"
                 data-enable-time="true"
                 data-enable-seconds="true"></input>
-            <span style={{margin: 4}}>-</span>
+            <span
+                style={{margin: 4}}>-</span>
             <input
                 id="end-datetime"
                 className="flatpickr time-change-item-input"
@@ -150,11 +157,10 @@ const SinglePeriod: React.FC<any> = (props: any) => {
 
     return (
         <PositionModal
-            store={store}
+            modalKey={'single-period'}
             onCancel={onCancel}
             onConfirm={onConfirm}
             monitor={store[EnumWeekState.periodClick]}
-            dispatch={dispatch}
             title={
                 <SinglePeriodTitle
                     store={store}

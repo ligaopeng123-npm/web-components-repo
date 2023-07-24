@@ -219,6 +219,16 @@ export interface PositionModalInterface {
     left?: number;
 }
 
+export type PositionModalProps=  {
+    title?: string | ReactNode,
+    monitor?: MonitorEventsInterface,
+    cancelText?: string,
+    okText?: string,
+    onConfirm?: (e: MouseEvent)=> void,
+    onCancel?: ()=> void,
+    modalKey?: string,
+}
+
 /**
  * 复制数据
  */

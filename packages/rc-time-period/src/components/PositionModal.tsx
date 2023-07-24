@@ -11,9 +11,9 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
-import { PositionModalInterface } from "../interface";
+import { PositionModalInterface, PositionModalProps } from "../interface";
 import { Tooltip } from "react-tooltip";
 import '../index.less';
 
@@ -22,7 +22,7 @@ import '../index.less';
  * @param props
  * @constructor
  */
-const PositionModal: React.FC<any> = (props: any) => {
+const PositionModal: React.FC<PositionModalProps> = (props) => {
     /**
      * hook共享数据
      */
@@ -55,16 +55,14 @@ const PositionModal: React.FC<any> = (props: any) => {
     }, [monitor]);
 
     return (
-        <>
+        <Fragment>
             <Tooltip
                 isOpen={visible}
                 clickable
                 anchorSelect={`#${modalKey || 'position-modal'}`}
                 style={Object.assign({zIndex: 99999}, position)}
             >
-                <div>
-                    {title}
-                </div>
+                <div>{title}</div>
                 <div
                     style={{
                         display: 'flex',
@@ -84,7 +82,7 @@ const PositionModal: React.FC<any> = (props: any) => {
                             marginLeft: 12,
                             color: '#80a5ff'
                         }}
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                             setVisible(false);
                             onConfirm(e);
                         }}>{okText || `保存`}</button>
@@ -94,7 +92,7 @@ const PositionModal: React.FC<any> = (props: any) => {
                 id={modalKey || "position-modal"}
                 className={`time-change-item`}
                 style={position}></div>
-        </>
+        </Fragment>
     )
 };
 
