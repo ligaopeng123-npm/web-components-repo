@@ -14,7 +14,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
 import { PositionModalInterface, PositionModalProps } from "../interface";
-import { Tooltip } from "react-tooltip";
+import { Tooltip as RcTimeTooltip } from "react-tooltip";
 import '../index.less';
 
 /**
@@ -47,61 +47,51 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
     /**
      *  当接收到periodClick时间 将弹出框弹出
      */
-    const [canRender, showCanRender] = useState(false);
     useEffect(() => {
-        if (monitor && canRender) {
+        if (monitor) {
             setPosition(getWeekTimeChangePosition(monitor.e));
             setVisible(true);
         }
-    }, [monitor, canRender]);
-
-    useEffect(() => {
-        showCanRender(true);
-    }, []);
+    }, [monitor]);
 
     return (
         <Fragment>
-            {/*{*/}
-            {/*    canRender*/}
-            {/*        ?*/}
-            {/*        <Tooltip*/}
-            {/*            isOpen={visible}*/}
-            {/*            clickable*/}
-            {/*            anchorSelect={`#${modalKey || 'position-modal'}`}*/}
-            {/*            style={Object.assign({zIndex: 99999}, position)}*/}
-            {/*        >*/}
-            {/*            <div>{title}</div>*/}
-            {/*            <div*/}
-            {/*                style={{*/}
-            {/*                    display: 'flex',*/}
-            {/*                    justifyContent: 'flex-end',*/}
-            {/*                    marginTop: 12*/}
-            {/*                }}>*/}
-            {/*                <button*/}
-            {/*                    type={'reset'}*/}
-            {/*                    style={{*/}
-            {/*                        color: 'red',*/}
-            {/*                        cursor: 'pointer'*/}
-            {/*                    }}*/}
-            {/*                    onClick={() => {*/}
-            {/*                        setVisible(false);*/}
-            {/*                        onCancel();*/}
-            {/*                    }}>{cancelText || `删除`}</button>*/}
-            {/*                <button*/}
-            {/*                    type={'submit'}*/}
-            {/*                    style={{*/}
-            {/*                        marginLeft: 12,*/}
-            {/*                        color: '#80a5ff',*/}
-            {/*                        cursor: 'pointer'*/}
-            {/*                    }}*/}
-            {/*                    onClick={(e: any) => {*/}
-            {/*                        setVisible(false);*/}
-            {/*                        onConfirm(e);*/}
-            {/*                    }}>{okText || `保存`}</button>*/}
-            {/*            </div>*/}
-            {/*        </Tooltip>*/}
-            {/*        : null*/}
-            {/*}*/}
+            <RcTimeTooltip
+                isOpen={visible}
+                clickable
+                anchorSelect={`#${modalKey || 'position-modal'}`}
+                style={Object.assign({zIndex: 99999}, position)}
+            >
+                <div>{title}</div>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        marginTop: 12
+                    }}>
+                    <button
+                        type={'reset'}
+                        style={{
+                            color: 'red',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => {
+                            setVisible(false);
+                            onCancel();
+                        }}>{cancelText || `删除`}</button>
+                    <button
+                        type={'submit'}
+                        style={{
+                            marginLeft: 12,
+                            color: '#80a5ff',
+                            cursor: 'pointer'
+                        }}
+                        onClick={(e: any) => {
+                            setVisible(false);
+                            onConfirm(e);
+                        }}>{okText || `保存`}</button>
+                </div>
+            </RcTimeTooltip>
             <div
                 id={modalKey || "position-modal"}
                 className={`time-change-item`}

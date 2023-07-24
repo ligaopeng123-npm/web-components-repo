@@ -14,7 +14,7 @@
 import React, { useState, useEffect } from 'react';
 import { getWeekTimeChangePosition } from "../utils";
 import { EnumWeekState, PositionModalInterface } from "../interface";
-import { Tooltip } from 'react-tooltip';
+import { Tooltip as RcTimeTooltip } from 'react-tooltip';
 import '../index.less';
 
 export const PeriodTip: React.FC<any> = (props: any) => {
@@ -33,12 +33,11 @@ export const PeriodTip: React.FC<any> = (props: any) => {
     const [position, setPosition] = useState<PositionModalInterface>();
     const {store} = props;
     const monitor = store[EnumWeekState.periodTip];
-    const [canRender, showCanRender] = useState(false);
     /**
      *  当接收到periodClick时间 将弹出框弹出
      */
     useEffect(() => {
-        if (monitor && canRender) {
+        if (monitor) {
             if (monitor.state === 'show') {
                 const {
                     left,
@@ -59,25 +58,17 @@ export const PeriodTip: React.FC<any> = (props: any) => {
                 setVisible(false);
             }
         }
-    }, [monitor, canRender]);
-
-    useEffect(() => {
-        showCanRender(true);
-    }, []);
+    }, [monitor]);
 
     return (
         <>
-            {/*{*/}
-            {/*    canRender*/}
-            {/*        ? <Tooltip*/}
-            {/*            isOpen={visible}*/}
-            {/*            id="tooltip"*/}
-            {/*            style={Object.assign({zIndex: 99999}, position)}*/}
-            {/*            content={title}/>*/}
-            {/*        : null*/}
-            {/*}*/}
+            <RcTimeTooltip
+                isOpen={visible}
+                id="period-tip"
+                style={Object.assign({zIndex: 99999}, position)}
+                content={title}/>
             <div
-                data-tooltip-id="tooltip"
+                data-tooltip-id="period-tip"
                 className={`time-change-item`}
                 style={position}>
             </div>
