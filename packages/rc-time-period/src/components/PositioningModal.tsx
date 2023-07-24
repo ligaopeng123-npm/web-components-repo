@@ -95,3 +95,5 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
         </Fragment>
     )
 };
+
+export default PositioningModal;

@@ -139,6 +139,6 @@ export const CheckboxGroup = ({
             }
         </div>
     )
-}
+};
 
 export default Checkbox;

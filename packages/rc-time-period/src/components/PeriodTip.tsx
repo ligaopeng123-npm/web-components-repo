@@ -17,7 +17,7 @@ import { EnumWeekState, PositionModalInterface } from "../interface";
 import { Tooltip } from 'react-tooltip';
 import '../index.less';
 
-const PeriodTip: React.FC<any> = (props: any) => {
+export const PeriodTip: React.FC<any> = (props: any) => {
     /**
      * 控制显示和隐藏
      */
@@ -74,6 +74,6 @@ const PeriodTip: React.FC<any> = (props: any) => {
             </div>
         </>
     );
-}
+};
 
 export default PeriodTip;

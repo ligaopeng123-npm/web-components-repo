@@ -9,4 +9,4 @@ export type { RcTimePeriodRef, RcTimePeriodProps } from "./TimePeriod";
 
 export { PositioningModal } from "./components/PositioningModal";
 
-export { default as PeriodTip } from "./components/PeriodTip";
+export { PeriodTip } from "./components/PeriodTip";

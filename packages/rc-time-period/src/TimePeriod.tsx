@@ -14,7 +14,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useReducer, useRef } from 'react';
 import { reducer, state } from "./state";
 import TimePeriodCharts, { TimePeriodChartsRef } from "./components/TimePeriodCharts";
-import PeriodTip from "./components/PeriodTip";
+import { PeriodTip } from "./components/PeriodTip";
 import SinglePeriod from "./components/TimeEdit";
 import TimePeriodCopy from "./components/TimePeriodCopy";
 import { CanvasInterface, DataMappingInterface, EnumWeekState, PeriodItemDate, TimePeriodModuleDefaultProps } from "./interface";
