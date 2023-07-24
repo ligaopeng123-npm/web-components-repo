@@ -824,7 +824,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/message': workspace:^1.0.2
+      '@gaopeng123/message': ^1.0.2
       '@gaopeng123/utils': ^1.1.5
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
