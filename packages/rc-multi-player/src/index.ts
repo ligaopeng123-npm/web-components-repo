@@ -1,6 +1,7 @@
 export type { MultiPlayerComProps, MediaDataSource, Config, MultiPlayerRobustness } from "@gaopeng123/multi-player";
 // 混合播放器
 export { default as RcMultiPlayer } from './Player/MultiPlayer';
+export type { RcMultiPlayerProps, RcPlayerRef } from "./Player/PlayerTyping";
 // 多屏播放器
 export { default as RcMultiScreenPlayer } from './MultiScreenPlayer';
 // WebRTC播放器

@@ -13,6 +13,7 @@ import * as React from 'react';
 import { RcMultiPlayer } from "../src";
 import { Button, FormControl, TextField } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
+import "./index.less";
 
 type RcMultiPlayerTestProps = {};
 const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
@@ -46,9 +47,7 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                     </div>
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
-                    <RcMultiPlayer
-                        mediaDataSource={mediaDataSource}
-                    />
+                    <RcMultiPlayer className={'RcMultiPlayerTest'} title={'RcMultiPlayer'} mediaDataSource={mediaDataSource}/>
                 </div>
             </div>
             <Snackbar

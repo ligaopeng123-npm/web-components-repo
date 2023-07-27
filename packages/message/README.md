@@ -5,10 +5,10 @@
 ## Usage
 
 ```typescript
-import initMessage from “@gaopeng123/message”;
+import {initMsg} from “@gaopeng123/message”;
 
 // 初始化message 避免全局变量
-const message = initMessage();
+const message = initMsg();
 
 // 全局设置message的属性
 message.config = {

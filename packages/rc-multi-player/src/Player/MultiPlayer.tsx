@@ -24,6 +24,8 @@ import { PlayerConfig, RcMultiPlayerProps, RcPlayerRef } from "./PlayerTyping";
 import RcWebRTCPlayer from "./WebRTCPlayer";
 import Countdown, { countdownRef } from "../Action/Countdown";
 import ScreenshotPicture from "../Action/ScreenshotPicture";
+import { DefaultTheme } from "../Theme";
+import { ThemeProvider } from "@mui/material";
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
@@ -194,91 +196,94 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     }));
 
     return (
-        <Paper
-            elevation={0}
-            variant="outlined"
-            ref={(el: any) => {
-                setDivCurrent(el);
-            }}
-            classes={{root: `${styles.mainPlayer} ${className}`}}>
-            <ActionColumn
-                className={styles.hoverShow}
-                left={
-                    <Title
-                        ellipsis={true}>{title}</Title>}
-                right={
-                    <HideFullScreen>
+        <ThemeProvider
+            theme={DefaultTheme}>
+            <Paper
+                elevation={0}
+                variant="outlined"
+                ref={(el: any) => {
+                    setDivCurrent(el);
+                }}
+                classes={{root: `${styles.mainPlayer} ${className}`}}>
+                <ActionColumn
+                    className={styles.hoverShow}
+                    left={
+                        <Title
+                            ellipsis={true}>{title}</Title>}
+                    right={
+                        <HideFullScreen>
+                            {
+                                canLoad && !isNaN(parseInt(maxPlayerTime as string))
+                                    ?
+                                    <Countdown
+                                        ref={countRef}
+                                        maxTime={parseInt(maxPlayerTime as string) * 60}
+                                        onMaxClick={() => {
+                                            reloadPlayer();
+                                        }}
+                                        onMax={() => {
+                                            playerRef.current?.close();
+                                            loadRef?.current?.show();
+                                        }}/>
+                                    : null
+                            }
+                            <IconCloseButton
+                                onClick={onCloseClick}/>
+                        </HideFullScreen>}/>
+                <div
+                    className={styles.playerContent}>
+                    <ReplayLoad
+                        ref={loadRef}
+                        onClick={() => {
+                            reloadPlayer();
+                        }}>
                         {
-                            canLoad && !isNaN(parseInt(maxPlayerTime as string))
-                                ?
-                                <Countdown
-                                    ref={countRef}
-                                    maxTime={parseInt(maxPlayerTime as string) * 60}
-                                    onMaxClick={() => {
-                                        reloadPlayer();
-                                    }}
-                                    onMax={() => {
-                                        playerRef.current?.close();
-                                        loadRef?.current?.show();
-                                    }}/>
-                                : null
+                            canLoad
+                                ? <>
+                                    {
+                                        protocol === 'WebRTC'
+                                            ?
+                                            <RcWebRTCPlayer
+                                                ref={playerRef}
+                                                extraParams={extraParams}
+                                                events={playerEvents}
+                                                objectFit={objectFit}
+                                                robustness={robustness}
+                                                mediaDataSource={mediaDataSource}
+                                            />
+                                            :
+                                            <RcFlvPlayer
+                                                config={config}
+                                                ref={playerRef}
+                                                extraParams={extraParams}
+                                                events={playerEvents}
+                                                objectFit={objectFit}
+                                                robustness={robustness}
+                                                mediaDataSource={mediaDataSource}
+                                            />
+                                    }
+                                </>
+                                :
+                                <div></div>
                         }
-                        <IconCloseButton
-                            onClick={onCloseClick}/>
-                    </HideFullScreen>}/>
-            <div
-                className={styles.playerContent}>
-                <ReplayLoad
-                    ref={loadRef}
-                    onClick={() => {
-                        reloadPlayer();
-                    }}>
-                    {
-                        canLoad
-                            ? <>
-                                {
-                                    protocol === 'WebRTC'
-                                        ?
-                                        <RcWebRTCPlayer
-                                            ref={playerRef}
-                                            extraParams={extraParams}
-                                            events={playerEvents}
-                                            objectFit={objectFit}
-                                            robustness={robustness}
-                                            mediaDataSource={mediaDataSource}
-                                        />
-                                        :
-                                        <RcFlvPlayer
-                                            config={config}
-                                            ref={playerRef}
-                                            extraParams={extraParams}
-                                            events={playerEvents}
-                                            objectFit={objectFit}
-                                            robustness={robustness}
-                                            mediaDataSource={mediaDataSource}
-                                        />
-                                }
-                            </>
-                            :
-                            <div></div>
+                    </ReplayLoad>
+                </div>
+                <ActionColumn
+                    className={`${styles.hoverShow} ${styles.bottom}`}
+                    right={
+                        <HideFullScreen>
+                            <ScreenshotPicture
+                                title={title}
+                                el={divCurrent}
+                                type={'icon'}/>
+                            <FullScreenButton
+                                el={divCurrent}
+                                type={'icon'}/>
+                        </HideFullScreen>
                     }
-                </ReplayLoad>
-            </div>
-            <ActionColumn
-                className={`${styles.hoverShow} ${styles.bottom}`}
-                right={
-                    <HideFullScreen>
-                        <ScreenshotPicture
-                            title={title}
-                            el={divCurrent}
-                            type={'icon'}/>
-                        <FullScreenButton
-                            el={divCurrent}
-                            type={'icon'}/>
-                    </HideFullScreen>
-                }
-            />
-        </Paper>
+                />
+            </Paper>
+        </ThemeProvider>
     )
 });
 

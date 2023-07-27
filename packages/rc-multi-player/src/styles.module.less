@@ -8,6 +8,8 @@
 @multi-player-border-color: #000;
 //  操作列高度
 @ACTION-HEIGHT: 30px;
+// icon 宽度
+@WIDTH: 32px;
 :root {
     --multi-player-primary-color: #52c41a;
     --multi-player-background-color: #121212;
@@ -36,51 +38,6 @@
     position: relative;
     overflow: hidden;
 
-    .bottomMain {
-        height: @ACTION-HEIGHT;
-        @WIDTH: 32px;
-        position: relative;
-        z-index: 1;
-
-        .bottom {
-            min-width: 32px;
-            color: var(--multi-player-text-color, @multi-player-text-color);
-        }
-
-        .bottomContent {
-            display: flex;
-            padding: 0px @WIDTH / 2;
-            align-items: center;
-
-            .left {
-                min-width: 1px;
-                display: flex;
-                flex-shrink: 1;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
-            .center {
-                min-width: 1px;
-                display: flex;
-                flex-shrink: 0;
-            }
-
-            .right {
-                min-width: 34px;
-                display: flex;
-                justify-content: flex-end;
-                margin-left: auto;
-                flex-shrink: 0;
-            }
-        }
-
-        .hr {
-            border-color: var(--multi-player-border-color, @multi-player-border-color);
-        }
-    }
-
     .content {
         height: calc(100% - @ACTION-HEIGHT);
 
@@ -101,6 +58,50 @@
     .hidden {
         display: none;
     }
+}
+
+.bottomMain {
+  height: @ACTION-HEIGHT;
+  position: relative;
+  z-index: 1;
+
+  .bottom {
+    min-width: 32px;
+    color: var(--multi-player-text-color, @multi-player-text-color);
+  }
+
+  .bottomContent {
+    display: flex;
+    padding: 0px @WIDTH / 2;
+    align-items: center;
+
+    .left {
+      min-width: 1px;
+      display: flex;
+      flex-shrink: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .center {
+      min-width: 1px;
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    .right {
+      min-width: 34px;
+      display: flex;
+      justify-content: flex-end;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+  }
+
+  .hr {
+    border-color: var(--multi-player-border-color, @multi-player-border-color);
+  }
 }
 
 .menu {
