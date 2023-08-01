@@ -11,7 +11,7 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { ScrollNavItem } from "./interface";
+import { ScrollNavItem } from "./typing";
 import { animate, debounce, getStyle, isString } from "@gaopeng123/utils";
 
 /**

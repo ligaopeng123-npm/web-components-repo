@@ -12,7 +12,7 @@
  *
  **********************************************************************/
 
-import { ScrollNavProps } from "./interface";
+import { ScrollNavProps } from "./typing";
 
 export const template = (config: ScrollNavProps) => {
     return `
@@ -81,11 +81,6 @@ export const template = (config: ScrollNavProps) => {
               z-index: 1;
               border-radius: 8px 8px 0 0;
             }
-            
-            @media (max-width: 580px) {
-              .nav { overflow: auto; }
-            }
-
         </style>
         <div class="nav-container">
             <nav class="nav">
