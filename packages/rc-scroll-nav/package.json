@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-scroll-nav",
-    "version": "0.1.0",
+    "version": "1.2.11",
     "description": "react scroll nav",
     "keywords": [],
     "author": "ligaopeng123 <1170234932@qq.com>",
@@ -73,6 +73,6 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/scroll-nav": "workspace:1.2.10-alpha.1"
+        "@gaopeng123/scroll-nav": "workspace:1.2.11"
     }
 }
