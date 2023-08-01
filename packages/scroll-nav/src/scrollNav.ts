@@ -82,7 +82,6 @@ class ScrollNav extends HTMLElement {
             this.__config[name] = this._getItemValue(name, isJSON(newValue) ? JSON.parse(newValue) : newValue);
             this.change(name);
         }
-        console.log( this.__config)
     }
 
     _getItemValue = (name: string, value: any)=> {
