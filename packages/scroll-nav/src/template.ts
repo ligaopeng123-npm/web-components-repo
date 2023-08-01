@@ -52,12 +52,12 @@ export const template = (config: ScrollNavProps) => {
             }
             
             .nav-item:before {
-                content: "";
+                content: "1";
                 position: absolute;
-                bottom: -6px;
+                bottom: -3px;
                 left: 0;
                 width: 100%;
-                height: 5px;
+                height: 2px;
                 border-radius: 8px 8px 0 0;
                 opacity: 0;
                 background-color: var(--hover-color);
@@ -76,7 +76,7 @@ export const template = (config: ScrollNavProps) => {
               position: absolute;
               left: 0;
               bottom: 0;
-              height: 4px;
+              height: 2px;
               transition: .4s;
               z-index: 1;
               border-radius: 8px 8px 0 0;
