@@ -293,23 +293,28 @@ export default class MultiPlayer extends HTMLElement {
         clearInterval(this._speedIntervalKey);
         this._speedIntervalKey = setInterval(() => {
             try {
-                const currentTime = this.player.currentTime;
-                // @ts-ignore
-                const speed = this.player.statisticsInfo.speed;
-                //获取当前缓冲区buffered值
-                const end = this.player.buffered.end(0);
-                console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
-                if (end - currentTime < 0.5) {
-                    intervalTime = intervalTime + 1;
+                if (this.player) {
+                    const currentTime = this.player.currentTime;
+                    // @ts-ignore
+                    const speed = this.player.statisticsInfo.speed;
+                    //获取当前缓冲区buffered值
+                    const end = this.player.buffered.end(0);
+                    console.log(`paused: ${this.video.paused} speed: ${speed} currentTime: ${currentTime}, end: ${end}`);
+                    if (end - currentTime < 0.5) {
+                        intervalTime = intervalTime + 1;
+                    } else {
+                        intervalTime = 0;
+                    }
+                    if (intervalTime >= 2) {
+                        clearInterval(this._speedIntervalKey);
+                        this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
+                    }
                 } else {
-                    intervalTime = 0;
-                }
-                if (intervalTime >= 2) {
                     clearInterval(this._speedIntervalKey);
-                    this.onEvent(MultiPlayerEvent.LOADING_COMPLETE_ING, (end - currentTime) + 'almost complete loading')
                 }
             } catch (e) {
                 console.log(e);
+                clearInterval(this._speedIntervalKey);
             }
         }, 1000);
     }
