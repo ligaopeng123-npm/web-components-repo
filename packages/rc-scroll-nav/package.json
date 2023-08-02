@@ -28,7 +28,6 @@
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
         "push": "pnpm run build && npm publish --access public",
-        "publish": "pnpm publish --access public",
         "watch": "webpack --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -75,5 +74,5 @@
     "dependencies": {
         "@gaopeng123/scroll-nav": "1.2.10-alpha.1"
     },
-    "gitHead": "09115a2b7a255794477abbe61d01bfcb2e26f231"
+    "gitHead": "e3925bc5890b3da0cebf844afb5183942aeb18f2"
 }
