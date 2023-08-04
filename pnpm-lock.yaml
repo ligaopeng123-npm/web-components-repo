@@ -7,12 +7,14 @@ importers:
 
   .:
     specifiers:
+      '@gaopeng123/utils': 1.1.10-alpha.0
       commitizen: ^4.3.0
       conventional-changelog-cli: ^2.2.2
       cz-conventional-changelog: ^3.3.0
       husky: ^8.0.3
       lerna: 6.4.0
     devDependencies:
+      '@gaopeng123/utils': 1.1.10-alpha.0
       commitizen: 4.3.0
       conventional-changelog-cli: 2.2.2
       cz-conventional-changelog: 3.3.0
@@ -2854,7 +2856,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.7
-    dev: false
 
   /@gaopeng123/utils.date/0.4.17:
     resolution: {integrity: sha512-+mqp/LgWEXQDKqlV+HEePVMdYut2Fv94RN+It4uRBR+sl+v7FnlfzC5pbFSw2SHf188X//Yy7Fvdkt2co4BUKQ==}
@@ -2889,7 +2890,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.7
-    dev: false
 
   /@gaopeng123/utils.file/0.4.16:
     resolution: {integrity: sha512-6P12hUyreV+qVuGygbH1xgVk7bRolHTfPdXICsnafMkJDUIECLXMbxqYaqAtS6jyESEpdh/v829iGpbGaIGQ4Q==}
@@ -2907,6 +2907,15 @@ packages:
       '@gaopeng123/utils.string': 0.6.1
       '@gaopeng123/utils.types': 0.6.1
     dev: false
+
+  /@gaopeng123/utils.file/1.1.10-alpha.0:
+    resolution: {integrity: sha512-kl0yBsFJbUT8w+oLngcK5EIfGl39gp4Ylz6d0Vd3CMgpzuyJc48OB+iL96VVVXZTSgg5kR5PoveDbYnDinUohw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.object': 1.1.7
+      '@gaopeng123/utils.string': 1.1.7
+      '@gaopeng123/utils.types': 1.1.7
+    dev: true
 
   /@gaopeng123/utils.file/1.1.8:
     resolution: {integrity: sha512-/D+jx2eo4ts5DqeJ21sv6p3UpaZ1GtXGubGbiBo5ChVhSEZmRK7uDTSzIcBD3jaVPf9pYtCt+knQQjttaji6IA==}
@@ -2942,7 +2951,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.7
-    dev: false
 
   /@gaopeng123/utils.number/0.6.0:
     resolution: {integrity: sha512-Q2JKOT2zTT+0rZ2T0lk++wMoXmXleXnaQAwyIsWEwE5EN8MeKIMR2mTQ+ANQJKC1PXWWcupXxArGF27XIZJPDA==}
@@ -2972,6 +2980,13 @@ packages:
       '@gaopeng123/utils.types': 1.1.7
     dev: false
 
+  /@gaopeng123/utils.number/1.1.9:
+    resolution: {integrity: sha512-pzB2XF9pLU3yeTprL5mbTWi5Ge5X5mvEatVhmWHU8TC1Gwnex5Xe5oTfzq5WaMTwZwuDbgsOWehjOSUJhtWrzA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.7
+    dev: true
+
   /@gaopeng123/utils.object/0.4.14:
     resolution: {integrity: sha512-0dLhWwRx1By7yYVPYCKfFwU+2CIxJgU0+ywYbYpYsUHCvD/im3XoS7h4nK1BJLeyemtqKe3bjI1/pHR7kATWaw==}
     engines: {node: '>=10'}
@@ -2993,7 +3008,6 @@ packages:
     dependencies:
       '@gaopeng123/utils.function': 1.1.7
       '@gaopeng123/utils.types': 1.1.7
-    dev: false
 
   /@gaopeng123/utils.string/0.4.16:
     resolution: {integrity: sha512-plJ967qvkIX7L8PJhBoFXNtKbCdF2VBjDXoEAse1/W1baNqKqpoIxTW9JNYESU8OKesOQucNeZa6s7hhCZjkvg==}
@@ -3016,7 +3030,6 @@ packages:
     dependencies:
       '@gaopeng123/utils.function': 1.1.7
       '@gaopeng123/utils.types': 1.1.7
-    dev: false
 
   /@gaopeng123/utils.types/0.4.14:
     resolution: {integrity: sha512-t6UxA8h4ut0qSnE+ilLI5tB374/ejEpx3SacBAH4LO33QTDAc8/BdoAVxSgn8FfgMXTIfL906fgAH5ruDRUtxQ==}
@@ -3049,6 +3062,20 @@ packages:
       '@gaopeng123/utils.string': 0.6.1
       '@gaopeng123/utils.types': 0.6.1
     dev: false
+
+  /@gaopeng123/utils/1.1.10-alpha.0:
+    resolution: {integrity: sha512-4X1HexLksK/bPmKNPSSDbOqvZY5uPeAV5OIu0Ky53VYbveBhPDc9WtPx4GGlu2h0h21DaSwI74TPNl3RzhRrZw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.array': 1.1.7
+      '@gaopeng123/utils.date': 1.1.7
+      '@gaopeng123/utils.file': 1.1.10-alpha.0
+      '@gaopeng123/utils.function': 1.1.7
+      '@gaopeng123/utils.number': 1.1.9
+      '@gaopeng123/utils.object': 1.1.7
+      '@gaopeng123/utils.string': 1.1.7
+      '@gaopeng123/utils.types': 1.1.7
+    dev: true
 
   /@gaopeng123/utils/1.1.4:
     resolution: {integrity: sha512-m9eCB6ZbetLPqRwsvG+woeM6Ya2e/UfUaQCyqWmFxyGeK7y+dschlWgTs7bIJy6y0wPHFXejnSyCwCdtH1hrhg==}

@@ -18,6 +18,7 @@
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
     },
     "devDependencies": {
+        "@gaopeng123/utils": "1.1.10-alpha.0",
         "commitizen": "^4.3.0",
         "conventional-changelog-cli": "^2.2.2",
         "cz-conventional-changelog": "^3.3.0",
