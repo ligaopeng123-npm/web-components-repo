@@ -1,4 +1,4 @@
-import {isUndefined} from "@gaopeng123/utils";
+const {isUndefined} = require("@gaopeng123/utils");
 const images = require('@rollup/plugin-image');
 const postcss = require('rollup-plugin-postcss');
 const autoprefixer = require('autoprefixer');

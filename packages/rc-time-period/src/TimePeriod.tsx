@@ -46,14 +46,17 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
 
     const chartRef = useRef<TimePeriodChartsRef>();
 
-    // useEffect(() => {
-    //     if (props.panelOptions) {
-    //         dispatch({
-    //             type: EnumWeekState.panelOptions,
-    //             value: props.panelOptions
-    //         });
-    //     }
-    // }, [props.panelOptions]);
+    /**
+     * 处理动态变更panelOptions
+     */
+    useEffect(() => {
+        if (props.panelOptions) {
+            dispatch({
+                type: EnumWeekState.panelOptions,
+                value: props.panelOptions
+            });
+        }
+    }, [props.panelOptions]);
 
     /**
      * 钩子函数

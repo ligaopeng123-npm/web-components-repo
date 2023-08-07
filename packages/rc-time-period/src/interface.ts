@@ -133,7 +133,7 @@ export interface CanvasInterface {
     // 操作列信息
     operate?: operateInterface;
     // 清空按钮 同时控制着 是否可操作
-    cleared?: boolean;
+    disabled?: boolean;
     legend?: LegendInterface;
 }
 
@@ -404,7 +404,7 @@ export const TimePeriodModuleDefaultProps: TimePeriodModuleProps = {
         operate: {
             width: 50
         },
-        cleared: false, // 清空按钮
+        disabled: false, // 清空按钮
         legend: {
             name: '布放时间',
             color: `#80a5ff`

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { RcTimePeriod, RcTimePeriodRef } from "../src";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const data = [{
     "week": 2,
@@ -52,6 +52,7 @@ const data = [{
 
 const App = () => {
         const ref = useRef<RcTimePeriodRef>();
+        const [disabled, setDisabled] = useState(false);
         const clear = ()=> {
                 ref?.current?.clear();
         }
@@ -62,7 +63,8 @@ const App = () => {
             <>
                     <button onClick={clear}>清理</button>
                     <button onClick={getDate}>数据</button>
-                    <RcTimePeriod data={data} panelOptions={{top: 16, bottom: 16, left: 16, height: 300}} ref={ref}/>
+                    <button onClick={()=> setDisabled(!disabled)}>{disabled ? 'disabled' : 'not disabled'}</button>
+                    <RcTimePeriod data={data} panelOptions={{top: 16, bottom: 16, left: 16, height: 300, disabled: disabled}} ref={ref}/>
             </>
         );
 };

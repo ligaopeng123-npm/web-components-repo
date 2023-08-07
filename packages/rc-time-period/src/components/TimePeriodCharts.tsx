@@ -208,7 +208,7 @@ export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsIn
             style={{
                 height: options.height,
                 width: options.width,
-                pointerEvents: options?.cleared ? 'none' : 'auto'
+                pointerEvents: store[EnumWeekState.panelOptions]?.disabled ? 'none' : 'auto'
             }}></div>
     )
 });
