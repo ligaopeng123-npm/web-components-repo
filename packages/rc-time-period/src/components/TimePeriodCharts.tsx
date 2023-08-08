@@ -155,6 +155,10 @@ export const TimePeriodCharts = forwardRef<TimePeriodChartsRef, WeekPanelPropsIn
      * 传递不同的id 渲染不同的数据
      */
     useEffect(() => {
+        dispatch({
+            type: EnumWeekState.periodClick,
+            value: null
+        });
         if (data.length) {
             week && week.loadWeekData({
                 __data__: data,

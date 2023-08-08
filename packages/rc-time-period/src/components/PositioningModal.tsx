@@ -51,6 +51,8 @@ export const PositioningModal: React.FC<PositionModalProps> = (props) => {
         if (monitor) {
             setPosition(getWeekTimeChangePosition(monitor.e));
             setVisible(true);
+        } else {
+            setVisible(false);
         }
     }, [monitor]);
 

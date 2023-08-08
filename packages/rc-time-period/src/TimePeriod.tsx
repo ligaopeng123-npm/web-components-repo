@@ -80,22 +80,11 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
 
 
     return (
-        <div
-            style={{position: 'relative'}}>
-            <PeriodTip
-                store={store}
-                dispatch={dispatch}/>
-            <TimePeriodCharts
-                data={props.data}
-                ref={chartRef}
-                store={store}
-                dispatch={dispatch}/>
-            <SinglePeriod
-                store={store}
-                dispatch={dispatch}/>
-            <TimePeriodCopy
-                store={store}
-                dispatch={dispatch}/>
+        <div style={{position: 'relative'}}>
+            <PeriodTip store={store} dispatch={dispatch}/>
+            <TimePeriodCharts data={props.data} ref={chartRef} store={store} dispatch={dispatch}/>
+            <SinglePeriod store={store} dispatch={dispatch}/>
+            <TimePeriodCopy store={store} dispatch={dispatch}/>
         </div>
     )
 });

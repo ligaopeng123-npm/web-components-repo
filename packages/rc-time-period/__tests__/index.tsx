@@ -53,6 +53,7 @@ const data = [{
 const App = () => {
         const ref = useRef<RcTimePeriodRef>();
         const [disabled, setDisabled] = useState(false);
+        const [currentDate, setDate] = useState([]);
         const clear = ()=> {
                 ref?.current?.clear();
         }
@@ -63,8 +64,9 @@ const App = () => {
             <>
                     <button onClick={clear}>清理</button>
                     <button onClick={getDate}>数据</button>
+                    <button onClick={()=> setDate([...data])}>加载数据</button>
                     <button onClick={()=> setDisabled(!disabled)}>{disabled ? 'disabled' : 'not disabled'}</button>
-                    <RcTimePeriod data={data} panelOptions={{top: 16, bottom: 16, left: 16, height: 300, disabled: disabled}} ref={ref}/>
+                    <RcTimePeriod data={currentDate} panelOptions={{top: 16, bottom: 16, left: 16, height: 300, disabled: disabled}} ref={ref}/>
             </>
         );
 };
