@@ -40,7 +40,7 @@ const weekUtils: any = {
     __periodColor: '#80a5ff', // 背景色
     __mouseEvent: null, // 鼠标事件集合
     __rows: [], // 保持的rows值 主要是image和rect
-    __dayLen: 7, // 每天最多能添加的段数
+    __dayLen: 8, // 每天最多能添加的段数
     __dragLineX: 1, // 拖拽线离rect的距离
 
     msg: null,
@@ -339,7 +339,7 @@ const weekUtils: any = {
         // rows index
         const {
             rowIndex,
-            colIndex,
+            comIndex,
             period
         } = this.getCurrentOperationPeriod(value);
         /**
@@ -351,7 +351,7 @@ const weekUtils: any = {
         /**
          * 将其从保存的数据中清除
          */
-        this.__mouseEvent.data[rowIndex].splice(colIndex, 1);
+        this.__mouseEvent.data[rowIndex].splice(comIndex, 1);
     },
 
     /**
@@ -582,7 +582,7 @@ const weekUtils: any = {
         period.on('mouseout', this.periodMouseout.bind(this, period));
         // todo 信息及时展示 此处使用mousemove
         // period.on('mouseover', this.periodMouseover.bind(this, period));
-        period.on('mousemove', throttle((e: any)=> {
+        period.on('mousemove', throttle((e: any) => {
             this.periodMouseover(period, e);
         }, 32));
         // 添加事件 处理移动逻辑
@@ -705,7 +705,7 @@ const weekUtils: any = {
         if (this.__mouseEvent.data[index].length >= this.__dayLen) {
             clearTimeout(this.__timeout);
             this.__timeout = setTimeout(() => {
-                this.msg.info(`每天最多只能添加${this.__dayLen + 1}段!`);
+                this.msg.info(`每天最多只能添加${this.__dayLen}段!`);
             }, 10);
             return false;
         }

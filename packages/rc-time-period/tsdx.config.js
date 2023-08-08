@@ -1,5 +1,5 @@
 const tsdxConfig = require("../../tsdx.config");
 
 module.exports = {
-    rollup: tsdxConfig,
+    rollup: (config, options)=> tsdxConfig(config, Object.assign({}, options, {writeMeta: false})),
 }

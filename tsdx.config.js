@@ -11,7 +11,7 @@ const cssUrl = require('postcss-url');
  * 子模块使用
  *
  *  module.exports = {
- *      rollup: (config, options)=> tsdxConfig(config, Object.assign({}, options, {writeMeta: true}))
+ *      rollup: (config, options)=> tsdxConfig(config, Object.assign({}, options, {writeMeta: false}))
  *  }
  *
  */
