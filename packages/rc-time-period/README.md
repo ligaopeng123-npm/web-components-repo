@@ -4,7 +4,13 @@
 
 ## [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs)
 
-<iframe id="rc-time-period"       title="rc-time-period"       width="800"       height="800"       src="https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs">   </iframe>
+<iframe  
+ height=850 
+ width=90% 
+ src="https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs"  
+ frameborder=0  
+ allowfullscreen>
+ </iframe>
 
 ## 参数
 
