@@ -1,0 +1,5 @@
+
+.sb-show-main.sb-main-centered #storybook-root {
+    min-height: 100vh;
+    max-height: none;
+}
