@@ -1,4 +1,239 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.1...v) (2023-07-19)
+# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15-alpha.2...v) (2023-08-09)
+
+
+### Features
+
+* RcScrollNav stories ([4b4f5dc](https://github.com/ligaopeng123-npm/web-components-repo/commit/4b4f5dcb9845b327efb91d2ef55709d6256a0119))
+
+
+
+## [1.2.15-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15-alpha.1...v1.2.15-alpha.2) (2023-08-09)
+
+
+### Bug Fixes
+
+* 样式导入 ([f2dd3c2](https://github.com/ligaopeng123-npm/web-components-repo/commit/f2dd3c2373c8215895da99740fe32c2f8ec85c3b))
+
+
+
+## [1.2.15-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15-alpha.0...v1.2.15-alpha.1) (2023-08-08)
+
+
+### Bug Fixes
+
+* TimePeriod 数据重置后消除编辑弹窗 ([c0d68fa](https://github.com/ligaopeng123-npm/web-components-repo/commit/c0d68fa5572029f465b4407bc777c8cca415a4c8))
+
+
+### Features
+
+* storybook引入 ([6265b2c](https://github.com/ligaopeng123-npm/web-components-repo/commit/6265b2cfed58d4ffdc9b5dd2856b2b177c5f4a8d))
+
+
+
+## [1.2.15-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.14...v1.2.15-alpha.0) (2023-08-08)
+
+
+### Bug Fixes
+
+* deletePeriod bug fix ([1a1cc24](https://github.com/ligaopeng123-npm/web-components-repo/commit/1a1cc2405a291b8d37839c7211807750c79e0b63))
+
+
+
+## [1.2.14](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.13...v1.2.14) (2023-08-07)
+
+
+### Features
+
+* extract字段可配置，允许将css打入到js中 ([3015b98](https://github.com/ligaopeng123-npm/web-components-repo/commit/3015b98ca1aa7fa9bd847bcf5fbcb77f7bcd9a45))
+* TimePeriodCharts支持disabled字段 ([4a9f014](https://github.com/ligaopeng123-npm/web-components-repo/commit/4a9f01422fe48b833d1c45178c7cf63162303b35))
+
+
+
+## [1.2.13](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.12...v1.2.13) (2023-08-02)
+
+
+### Bug Fixes
+
+* publish ([0cc8359](https://github.com/ligaopeng123-npm/web-components-repo/commit/0cc835901a1943baff6776457f8e98ec5f723ddc))
+
+
+
+## [1.2.12](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.11...v1.2.12) (2023-08-02)
+
+
+### Bug Fixes
+
+* _loopCheckEnd ([3fa4289](https://github.com/ligaopeng123-npm/web-components-repo/commit/3fa42891096a361834b7910745002645818cfaae))
+* 1.2.11 ([8f3e835](https://github.com/ligaopeng123-npm/web-components-repo/commit/8f3e8358f0ce53cdacfc29ed7f29368e7b67ef69))
+* 1.2.11 ([d1906de](https://github.com/ligaopeng123-npm/web-components-repo/commit/d1906de77822e7ace840f2fa94fc217e36ab45b9))
+* 1.2.11 ([81eb49c](https://github.com/ligaopeng123-npm/web-components-repo/commit/81eb49c0c2821ae30aeea9b3fb1eaaa84a0670e4))
+
+
+
+## [1.2.11](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10...v1.2.11) (2023-08-01)
+
+
+### Bug Fixes
+
+* @gaopeng123/rc-scroll-nav 新增 ([226f547](https://github.com/ligaopeng123-npm/web-components-repo/commit/226f547896d40a72ad8f94e699204fe081c176cf))
+* ScrollNav 细节优化 ([97d9108](https://github.com/ligaopeng123-npm/web-components-repo/commit/97d9108d4194c7a775342c565654d5e65f556f60))
+* ScrollNav冗余打印 ([ae3fcb6](https://github.com/ligaopeng123-npm/web-components-repo/commit/ae3fcb6de5b23eb0e5b06637835ef43b6d065afd))
+
+
+
+## [1.2.10](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.17...v1.2.10) (2023-07-27)
+
+
+### Bug Fixes
+
+* RcMultiPlayer 样式处理 @gaopeng123/message 导出处理 ([14180b9](https://github.com/ligaopeng123-npm/web-components-repo/commit/14180b98865290cf2cabaf34fa3a7c63f807daab))
+
+
+
+## [1.2.10-alpha.17](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.16...v1.2.10-alpha.17) (2023-07-24)
+
+
+### Bug Fixes
+
+* 静态参数支持 ([f6ff8a1](https://github.com/ligaopeng123-npm/web-components-repo/commit/f6ff8a11d76a2397810a11798eadad7ba03e6b22))
+
+
+
+## [1.2.10-alpha.16](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.15...v1.2.10-alpha.16) (2023-07-24)
+
+
+### Bug Fixes
+
+* react-tooltip 本地化解决导入的问题 ([949fde4](https://github.com/ligaopeng123-npm/web-components-repo/commit/949fde4a1cdeeb8a27b413f2f5f04dbeaecc812e))
+* react-tooltip 本地化解决导入的问题 ([68329c5](https://github.com/ligaopeng123-npm/web-components-repo/commit/68329c52cfb1831c1861d01c026b0edbb2ede994))
+
+
+
+## [1.2.10-alpha.15](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.14...v1.2.10-alpha.15) (2023-07-24)
+
+
+### Bug Fixes
+
+* import * as ReactTooltip from 'react-tooltip'; ([7cd4f79](https://github.com/ligaopeng123-npm/web-components-repo/commit/7cd4f79779593553f8a233d5ee93d88bc0eeb1ab))
+* react-tooltip bug兼容5 ([1901ed8](https://github.com/ligaopeng123-npm/web-components-repo/commit/1901ed83b996f7141e48ced7be6fbd6d08f8f00d))
+
+
+
+## [1.2.10-alpha.14](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.13...v1.2.10-alpha.14) (2023-07-24)
+
+
+### Bug Fixes
+
+* react-tooltip bug兼容4 ([08a497a](https://github.com/ligaopeng123-npm/web-components-repo/commit/08a497ae9adfdb9c9b19918604c3524a0578d073))
+* react-tooltip bug兼容5 ([823d7c6](https://github.com/ligaopeng123-npm/web-components-repo/commit/823d7c650ee6abfec3481681a1f6dc5d6e36843c))
+
+
+
+## [1.2.10-alpha.13](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.12...v1.2.10-alpha.13) (2023-07-24)
+
+
+### Bug Fixes
+
+* react-tooltip bug兼容3 ([fd04198](https://github.com/ligaopeng123-npm/web-components-repo/commit/fd041980f49b0a1956b638d639f12f9ad4580dd0))
+
+
+
+## [1.2.10-alpha.12](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.11...v1.2.10-alpha.12) (2023-07-24)
+
+
+### Bug Fixes
+
+* react-tooltip bug兼容2 ([4f6fdb4](https://github.com/ligaopeng123-npm/web-components-repo/commit/4f6fdb423227671cd6408cea0d69e364598933cd))
+
+
+
+## [1.2.10-alpha.11](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.10...v1.2.10-alpha.11) (2023-07-24)
+
+
+### Bug Fixes
+
+* react-tooltip bug兼容 ([624eecc](https://github.com/ligaopeng123-npm/web-components-repo/commit/624eeccac4ed98b523efe1b197f8f91168a77ccb))
+
+
+
+## [1.2.10-alpha.10](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.9...v1.2.10-alpha.10) (2023-07-24)
+
+
+### Bug Fixes
+
+* Tooltip删掉 ([9d45acb](https://github.com/ligaopeng123-npm/web-components-repo/commit/9d45acb8887c3640a6bbbeee47e00dc84dfe0f40))
+
+
+
+## [1.2.10-alpha.9](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.8...v1.2.10-alpha.9) (2023-07-24)
+
+
+### Bug Fixes
+
+* Tooltip测试 ([0cb9be0](https://github.com/ligaopeng123-npm/web-components-repo/commit/0cb9be0f5c6c9a6491de3d92c4346b35decd3715))
+
+
+
+## [1.2.10-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.7...v1.2.10-alpha.8) (2023-07-24)
+
+
+### Bug Fixes
+
+* 添加peerDependencies ([4303cfe](https://github.com/ligaopeng123-npm/web-components-repo/commit/4303cfeff68e6381fa1e8418a15e48b3a8a39075))
+
+
+
+## [1.2.10-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.6...v1.2.10-alpha.7) (2023-07-24)
+
+
+### Bug Fixes
+
+* 导出报错处理 ([803cb92](https://github.com/ligaopeng123-npm/web-components-repo/commit/803cb920a2beba8c0e06c4ea4aee322ce132884d))
+
+
+
+## [1.2.10-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.5...v1.2.10-alpha.6) (2023-07-24)
+
+
+### Bug Fixes
+
+* 导出问题处理2 ([086fa59](https://github.com/ligaopeng123-npm/web-components-repo/commit/086fa599ffc0ebbad3f2f91a73f016040e97881c))
+
+
+
+## [1.2.10-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.4...v1.2.10-alpha.5) (2023-07-24)
+
+
+### Bug Fixes
+
+* 导出问题处理 ([f3812c0](https://github.com/ligaopeng123-npm/web-components-repo/commit/f3812c06cf5303c5e19823be5a735ede1cd32807))
+
+
+
+## [1.2.10-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.3...v1.2.10-alpha.4) (2023-07-24)
+
+
+### Bug Fixes
+
+* PositioningModal ([cf7d438](https://github.com/ligaopeng123-npm/web-components-repo/commit/cf7d43889e9590f8a0648c9c50afde8a08be63fa))
+
+
+
+## [1.2.10-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.2...v1.2.10-alpha.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* react18报错 ([565059d](https://github.com/ligaopeng123-npm/web-components-repo/commit/565059dcb4cf6e6ddde3d6e89865f878ffaad5b5))
+
+
+
+## [1.2.10-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.10-alpha.1...v1.2.10-alpha.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports. ([5400e2b](https://github.com/ligaopeng123-npm/web-components-repo/commit/5400e2b62e70c516d130a6e93a54900e072e8ef9))
 
 
 
