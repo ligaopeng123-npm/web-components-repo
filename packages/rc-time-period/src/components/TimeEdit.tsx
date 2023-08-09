@@ -16,7 +16,7 @@ import { EnumWeekState } from "../interface";
 import { TimeRangeInterface } from "../interface";
 import { PositioningModal } from "./PositioningModal";
 import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.css";
+import "flatpickr/dist/flatpickr.min.css";
 import { Mandarin } from "flatpickr/dist/l10n/zh";
 import { formatTimestamp } from "@gaopeng123/utils";
 import '../index.less';
