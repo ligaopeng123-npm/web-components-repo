@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge"/>
+    <title>card-ellipsis</title>
+    <style>
+        card-ellipsis {
+            --text-color: #1677ff;
+            --border-color: #bfbfbf;
+        }
+        body {
+            background: #ffffff;
+        }
+        #root, #root2 {
+            width: 100%;
+            height: 200px;
+            background: #666666;
+        }
+    </style>
+</head>
+<body>
+<script src="../src/index.tx"></script>
+<div id="root"></div>
+<card-ellipsis min-height="140">
+    <div slot="content">
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+        12121212</br>
+    </div>
+</card-ellipsis>
+<div id="root2"></div>
+<script>
+    window.onload = function () {
+        document.querySelector('card-ellipsis').addEventListener('onChange', (e)=> {
+            console.log(e);
+        })
+    }
+</script>
+</body>
+</html>
