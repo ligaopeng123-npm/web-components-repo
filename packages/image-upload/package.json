@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/image-upload",
-    "version": "1.2.13",
+    "version": "1.2.15",
     "description": "图片上传",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -68,7 +68,7 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "@gaopeng123/message": "^1.2.13",
+        "@gaopeng123/message": "^1.2.15",
         "@gaopeng123/utils.file": "latest",
         "@gaopeng123/utils.object": "latest",
         "@gaopeng123/utils.types": "latest"

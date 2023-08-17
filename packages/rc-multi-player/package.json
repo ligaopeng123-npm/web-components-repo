@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-multi-player",
-    "version": "1.2.13",
+    "version": "1.2.15",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -77,9 +77,9 @@
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
         "@gaopeng123/hooks": "^0.5.0",
-        "@gaopeng123/multi-player": "^1.2.13",
+        "@gaopeng123/multi-player": "^1.2.15",
         "@gaopeng123/utils": "^1.1.8",
-        "@gaopeng123/video-progress-bar": "^1.2.13",
+        "@gaopeng123/video-progress-bar": "^1.2.15",
         "@mui/icons-material": "^5.10.9",
         "@mui/material": "^5.10.10",
         "material-ui-popup-state": "^4.1.0"
