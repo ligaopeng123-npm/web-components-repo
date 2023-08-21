@@ -19,7 +19,7 @@ export const template = (config: Config) => {
         <style>
         .container {
             position: relative;
-            width: 100%;
+            width: calc(100% - 2px);
         }
 
         .body {
@@ -34,6 +34,7 @@ export const template = (config: Config) => {
             height: auto !important;
             max-height: 800px !important;
             background: #fff;
+            z-index: 1;
         }
 
         .body-collapse {
