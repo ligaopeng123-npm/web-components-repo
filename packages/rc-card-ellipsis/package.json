@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-card-ellipsis",
-    "version": "1.2.16-alpha.3",
+    "version": "1.2.16-alpha.4",
     "description": "卡片展开和收起",
     "keywords": [],
     "author": "ligaopeng123 <gaopeng@123>",
@@ -72,6 +72,6 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/card-ellipsis": "workspace:^1.2.16-alpha.3"
+        "@gaopeng123/card-ellipsis": "workspace:^1.2.16-alpha.4"
     }
 }
