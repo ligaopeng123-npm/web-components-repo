@@ -29,7 +29,7 @@ declare global {
 }
 
 const RcCardEllipsis: FC<RcCardEllipsisProps> = (props) => {
-    const [id] = useState(uuid(16))
+    const [id] = useState(uuid(16));
     useEffect(() => {
         const card = document.querySelector(`#${id}`);
         const onChange = (e: any) => {
@@ -40,10 +40,9 @@ const RcCardEllipsis: FC<RcCardEllipsisProps> = (props) => {
         }
         card?.addEventListener('onChange', onChange);
         return () => {
-            card.removeEventListener('onChange', onChange);
+            card?.removeEventListener('onChange', onChange);
         }
     }, []);
-    console.log(id)
     return (
         <card-ellipsis id={id} min-height={props.minHeight}>
             <div slot="content">{props.children}</div>
