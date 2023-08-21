@@ -15,6 +15,7 @@ import { addBoxSizeUnit } from "@gaopeng123/utils";
 
 export const template = (config: Config) => {
     const minHeight = addBoxSizeUnit(config["min-height"]);
+    const moreHeight = parseInt(minHeight) - 60 > 30 ? 60 : parseInt(minHeight) / 2;
     return `
         <style>
         .container {
@@ -44,7 +45,7 @@ export const template = (config: Config) => {
         .body-collapse > .body-more {
             position: absolute;
             background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-            height: 22px;
+            height: ${moreHeight}px;
         }
         
         .body-expand > .body-more {
