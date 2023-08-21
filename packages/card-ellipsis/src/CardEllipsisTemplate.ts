@@ -33,7 +33,7 @@ export const template = (config: Config) => {
             position: absolute;
             height: auto !important;
             max-height: 800px !important;
-            background: #fff;
+            background: var(--background-color, #fff);
             z-index: 1;
         }
 
