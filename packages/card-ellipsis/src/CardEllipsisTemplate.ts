@@ -71,10 +71,14 @@ export const template = (config: Config) => {
 
         .body-collapse > .body-more::after {
             content: var(--expand-text, '更多');
+            position: relative;
+            top: 4px;
         }
 
         .body-expand > .body-more::after {
             content: var(--collapse-text, '收起');
+            position: relative;
+            top: 4px;
         }
         </style>
         <div class="container" style="height: ${minHeight};">
