@@ -8,8 +8,14 @@
 card-ellipsis {
     --text-color: #1677ff;
   	--border-color: #bfbfbf;
+		// 使用文字
 		--expand-text: '更多';
-		--expand-text: '收起';
+		--collapse-text: '收起';
+		// 使用图标
+		--expand-image: url(~@/assets/img/expand.png);
+		--expand-text: '';
+		--collapse-image: url(~@/assets/img/collapse.png);
+		--collapse-text: '';
 }
 <card-ellipsis min-height="140">
     <div slot="content">
