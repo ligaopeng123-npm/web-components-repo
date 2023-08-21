@@ -29,7 +29,7 @@ declare global {
 }
 
 const RcCardEllipsis: FC<RcCardEllipsisProps> = (props) => {
-    const [id] = useState(uuid(16));
+    const [id] = useState('card-ellipsis' + uuid(16));
     useEffect(() => {
         const card = document.querySelector(`#${id}`);
         const onChange = (e: any) => {
