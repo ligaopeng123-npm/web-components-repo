@@ -773,7 +773,7 @@ importers:
       '@emotion/styled': ^11.10.4
       '@gaopeng123/hooks': ^0.5.0
       '@gaopeng123/multi-player': ^1.2.15
-      '@gaopeng123/utils': ^1.1.8
+      '@gaopeng123/utils': ^1.1.11
       '@gaopeng123/video-progress-bar': ^1.2.15
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
@@ -810,7 +810,7 @@ importers:
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
       '@gaopeng123/hooks': 0.5.0
       '@gaopeng123/multi-player': link:../multi-player
-      '@gaopeng123/utils': 1.1.8
+      '@gaopeng123/utils': 1.1.11
       '@gaopeng123/video-progress-bar': link:../video-progress-bar
       '@mui/icons-material': 5.10.16_fc6xgk24gufrjg6uf4vmaeyk24
       '@mui/material': 5.10.17_2mete2oe2kozaocyy47tavsz2y
@@ -6677,6 +6677,20 @@ packages:
       '@gaopeng123/utils.string': 1.1.11
       '@gaopeng123/utils.types': 1.1.10
     dev: true
+
+  /@gaopeng123/utils/1.1.11:
+    resolution: {integrity: sha512-zGVDp1KHm4AmtTg7t0ro08mFYVoV7384t8DTKWxQ4I/gsCxPsc4JazUb0YL0PL48yr6Ps5hRpXNEb7wJ1tPCpw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.array': 1.1.10
+      '@gaopeng123/utils.date': 1.1.10
+      '@gaopeng123/utils.file': 1.1.11
+      '@gaopeng123/utils.function': 1.1.11
+      '@gaopeng123/utils.number': 1.1.10
+      '@gaopeng123/utils.object': 1.1.11
+      '@gaopeng123/utils.string': 1.1.11
+      '@gaopeng123/utils.types': 1.1.10
+    dev: false
 
   /@gaopeng123/utils/1.1.4:
     resolution: {integrity: sha512-m9eCB6ZbetLPqRwsvG+woeM6Ya2e/UfUaQCyqWmFxyGeK7y+dschlWgTs7bIJy6y0wPHFXejnSyCwCdtH1hrhg==}

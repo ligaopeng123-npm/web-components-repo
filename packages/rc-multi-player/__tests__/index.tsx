@@ -7,7 +7,7 @@ import { Link } from "@mui/material";
 import WebRTCPlayerTest from "./WebRTCPlayerTest";
 
 const App = () => {
-    const [type, setType] = React.useState('RcMultiScreenPlayer');
+    const [type, setType] = React.useState('RcMultiPlayer');
     const LinkText = ({ label, value }: any) => {
         return (
             <>
