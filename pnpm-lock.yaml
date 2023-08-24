@@ -285,7 +285,7 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/fetch': 0.3.2
+      '@gaopeng123/fetch': 0.3.4
       '@gaopeng123/utils.file': 1.1.11
       '@gaopeng123/utils.types': 1.1.10
       crypto-js: 4.1.1
@@ -771,9 +771,9 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
-      '@gaopeng123/hooks': ^0.5.0
+      '@gaopeng123/hooks': latest
       '@gaopeng123/multi-player': ^1.2.15
-      '@gaopeng123/utils': ^1.1.11
+      '@gaopeng123/utils': latest
       '@gaopeng123/video-progress-bar': ^1.2.15
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
@@ -808,7 +808,7 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_czskpwcgwtkufrblwuek25f2b4
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
-      '@gaopeng123/hooks': 0.5.0
+      '@gaopeng123/hooks': 0.7.4_sfoxds7t5ydpegc3knd667wn6m
       '@gaopeng123/multi-player': link:../multi-player
       '@gaopeng123/utils': 1.1.11
       '@gaopeng123/video-progress-bar': link:../video-progress-bar
@@ -6230,17 +6230,6 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@gaopeng123/fetch/0.2.7:
-    resolution: {integrity: sha512-aN72qKM2b9bOKtYMfkQgAFOmcN9QjYQJbM9YXJ+rbI24Xtz+PJTpe8t+dtG9DdKj3qP64jxdX5UsQODOwKBKkA==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.file': 0.4.16
-      '@gaopeng123/utils.types': 0.4.14
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /@gaopeng123/fetch/0.3.2:
     resolution: {integrity: sha512-MdZikXM1pcburoORfhlVn1rq/sgltlf+fxy3PGv6VwjBV7HSHTWk+uIwhSX250B+/GKqtZULUZionSNQhJqPKA==}
     engines: {node: '>=10'}
@@ -6250,46 +6239,83 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
+    dev: true
+
+  /@gaopeng123/fetch/0.3.4:
+    resolution: {integrity: sha512-bhaVvBCOh9zpifUD+XZuhq7r3va6CjXid4LIEP31aP1jpznziLPkdAjCmkBvrp5KZQSvQLAjfCn1l1I1ehNhBg==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.file': 1.1.11
+      '@gaopeng123/utils.types': 1.1.10
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@gaopeng123/hooks.use-antd-table-selection/0.7.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-SueUve/0CNPV0mtmOy+JV6G9css7u+VQiQdYBtoW24KCBU5qaWWsDOQbycmrwECyTokYWr6nB+VP08gI3/bZew==}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
 
   /@gaopeng123/hooks.use-boolean/0.5.0:
     resolution: {integrity: sha512-04zILW6Vxr2cg9rOOotMsbLiOjPQLjaoX5/LZiclbLTP4Ft6SZoJ/pARKRtfaLFiJSowjtpkByNJfkgaE2EUoQ==}
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-clock/0.5.0:
-    resolution: {integrity: sha512-lk/qZGSADNLVzN5i9zjp09i/fevLyAGNYJpRkkLajRlUEhjSrPrs/+BYhGBP2syxOUTLSmy7LE/V6h+F25VBqg==}
+  /@gaopeng123/hooks.use-boolean/0.7.2:
+    resolution: {integrity: sha512-5OhhBlToTUN7AyMwXAmy459rC5J+NAJ6rR+8Z4FqfZFaI+kVjeNz3/s3SH4fiZdAyKInjdHziG01ElzIo9vADg==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /@gaopeng123/hooks.use-clock/0.7.2:
+    resolution: {integrity: sha512-ifcwhShGTY2BPDYlul7F0Lm1FibpUl1fiGBAZKIPiAaxIk5swDg7+9Vks8LzPw7UvV4IRJ4YQtNSXcp+UlLMcA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-poller': 0.5.0
+      '@gaopeng123/hooks.use-poller': 0.7.2
       '@gaopeng123/utils.date': 0.4.17
     dev: false
 
-  /@gaopeng123/hooks.use-debounce/0.5.0:
-    resolution: {integrity: sha512-VC+o+x3Tcrczup/85W3Vu5ohnHK+jKetBs/T9zBssoax9a3Fioj5Hit8win5Yfythhs/ORRY45L0j19lOkS1SQ==}
+  /@gaopeng123/hooks.use-debounce/0.7.2:
+    resolution: {integrity: sha512-WFRm47ew1NcWPT/qncezcwPJH+DHh/VxIYlj9GJhS3kwP430VagFyhaY2coI1RVwIT666zYHBUbwMlXrQWsp4w==}
     dependencies:
-      '@gaopeng123/utils.function': 0.4.14
+      '@gaopeng123/utils.function': 1.1.11
     dev: false
 
-  /@gaopeng123/hooks.use-easing/0.5.0:
-    resolution: {integrity: sha512-LaGeOU/sHo/7i+9581/Ysvu8spr4SibFE0LLpAw+Y5FP2+6+YPzwdNQQIyjijODAJYMcAPu/vbYivkAkoU9mBQ==}
+  /@gaopeng123/hooks.use-easing/0.7.2:
+    resolution: {integrity: sha512-JyKSc54EBvpzFVc4jbd1r8M7SMfhhiBTJKclh3+PpnEUe1uNmFHaWtu4L6KfWoBn4yEwK2A8x17Sz7KxaRpJoQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-poller': 0.5.0
+      '@gaopeng123/hooks.use-poller': 0.7.2
       '@gaopeng123/utils.types': 0.4.14
     dev: false
 
-  /@gaopeng123/hooks.use-fetch/0.5.0:
-    resolution: {integrity: sha512-CNiVqQhlJbjqkKHi793spSkkfUsJ7joZrOMyzEFUaa+OZTZ9z0EeHw3c22FUW9eypVI7ncLikSOI8U8fasFXwg==}
+  /@gaopeng123/hooks.use-effect-once-in-strict-mode/0.7.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-1SKLo2HksvQij7A1p3pvddGhUWwJ4e3m01AUYr5wslXBGlVkYj8uq8X3Em7ZlaWWZY1ltwO1YWB4yE8V8ZQa8A==}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@gaopeng123/hooks.use-fetch/0.7.4:
+    resolution: {integrity: sha512-8ov8oLNQseQbOnr9Fl4WFXIfrf97kK2RBMeN7ntDr/pdGkJR2StbYtDcXjoEi724Ixm312gKB3re8MwzOGqalA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/fetch': 0.2.7
-      '@gaopeng123/utils.types': 0.4.14
+      '@gaopeng123/fetch': 0.3.4
+      '@gaopeng123/utils.types': 1.1.10
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@gaopeng123/hooks.use-merge-value/0.5.0:
-    resolution: {integrity: sha512-G7XEF1lXBs+3rSQ+Hhg/4lwcky0NPNGSBRHIc7sKcmQ13zUbK7jhAqLmsc73SbwcsQUhq5QC5ndWgUaDCFg8uw==}
+  /@gaopeng123/hooks.use-merge-value/0.7.2:
+    resolution: {integrity: sha512-f+wCI7eZZV789MlUExCxHcKM9uRSmNHKr72KT9E4D7w171r193/wco7+W3iiwkJLsO/koq9EF+l6AGF15vl08g==}
     engines: {node: '>=10'}
     dev: false
 
@@ -6298,80 +6324,105 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-poller/0.5.0:
-    resolution: {integrity: sha512-cEEAamWBsMP5oNgHv0Kc4kJf/ox3ovbS98T7NMXTI3U0TVwdDGJ9aI4C8DqlVPDQcIJOngZtBQtLUDQEstD0OA==}
+  /@gaopeng123/hooks.use-pagination/0.7.2:
+    resolution: {integrity: sha512-IwE4icG/9C+EGWJdvLqe7k1PxvymN5mVt/XRzgqoF+mRC1qwx2CCABHtTQMao3kIZndsL3X+eQWxkJ+eaS8JtQ==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /@gaopeng123/hooks.use-poller/0.7.2:
+    resolution: {integrity: sha512-oSWR/62axGhv2NYi0xQnagPkzMmpZG0XFGfibImYUxhtr19qPZZBklkV9ASMGtDHf5Ehey9M011/v2qNRop4Tw==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 0.4.14
     dev: false
 
-  /@gaopeng123/hooks.use-resize/0.5.0:
-    resolution: {integrity: sha512-VaDKHkYW1pBvx5GJzptOu1/rPBTqOARuN0bK/oHSaur9nZJTu7xCtPUbZElhuSi7wzLu2hJzQ7Qx9JO8Urx3Vw==}
+  /@gaopeng123/hooks.use-reload-after-stationary/0.7.2:
+    resolution: {integrity: sha512-5Kx/im6PmYa4V1ycT1Nx0fvckr50VkrcuCPBWg++opahW0XBC3U+Qq39Je5762cPowDnSxaKYMHZDFWR/gXvCg==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.11
+    dev: false
+
+  /@gaopeng123/hooks.use-resize/0.7.2:
+    resolution: {integrity: sha512-78RNaPQhDWKWerOmQMbhg/Tyb2tYWg+mCsj2/nNccChspZWfSYCGWLA7NDtsAETAYYbXvtrk0uSWI7sjREjwsQ==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 0.4.14
     dev: false
 
-  /@gaopeng123/hooks.use-scale/0.5.0:
-    resolution: {integrity: sha512-WgQQi1vENRL13AlmrBd2ygZU/yHrHYNB8lLAFVRW3vK/+gRwnkjsDhm71Szj2Xo8XyJocMIiO6pVDpp1kEkAXA==}
+  /@gaopeng123/hooks.use-scale/0.7.2:
+    resolution: {integrity: sha512-k+6PUhadKzS06ufkhHCcnseMy/ZaClf8RCFNACyMxWH+o05QICYjhRDxJjAUkUPu7nWNJfhqqVZ528qEPZg+TA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-resize': 0.5.0
+      '@gaopeng123/hooks.use-resize': 0.7.2
       '@gaopeng123/utils.types': 0.4.14
     dev: false
 
-  /@gaopeng123/hooks.use-throttle/0.5.0:
-    resolution: {integrity: sha512-OHVvqXHGPAw8tRYiAtV83CUMfUWTdl9YYcotgFgvFYX+/cO5Zh04ZojChixGspu0EWlH9qfuVdYOIgNEdZiXhg==}
+  /@gaopeng123/hooks.use-throttle-and-merge/0.7.2:
+    resolution: {integrity: sha512-J7SNfOn2rlHY9aHilOV3E1vvNe6Pbbwbkpe3hi8XHzO/JQY3sYGcM+mFJKoyleFVHiQraaccgo7hycR4UFpVeg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 0.4.14
+      '@gaopeng123/utils.function': 1.1.11
     dev: false
 
-  /@gaopeng123/hooks.use-visibility/0.5.0:
-    resolution: {integrity: sha512-jLHv6JFNKXPcvXtEMwADEE+BCx+ZzKQZ3oqF5lmh2yej+0YDBQwm0WVBpzQ/n20dXGNP2wUO/xYFVbUJUKllPA==}
+  /@gaopeng123/hooks.use-throttle/0.7.2:
+    resolution: {integrity: sha512-+3J3xxVf7fxwFGC+izmA6gslDATTSTWU4geHVrMmemp5kTpGH7edrhxjfM+PbPdU4+M7Lxhrk1KyS8ci6Rg6Og==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.11
+    dev: false
+
+  /@gaopeng123/hooks.use-visibility/0.7.2:
+    resolution: {integrity: sha512-IDkKPEegwpWGEKM0+gluIxNT57UKPIzHcXdZ0dxTScIokhV+W5J61VCDN8x5adtbpnGJ9kW8e+0fSE5XKlcbuA==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 0.5.2
     dev: false
 
-  /@gaopeng123/hooks.use-worker/0.5.0:
-    resolution: {integrity: sha512-sE/6Pt774ayoccznzzUAxbi2nvwQMn/IDR3j5QSgPkf8Wkz1rRDErervJnfMxmHr2JufT+410zbRfeFoc7OFkg==}
+  /@gaopeng123/hooks.use-worker/0.7.2:
+    resolution: {integrity: sha512-c0doUs74lPcckHtvYyLyrnxG2qM5qBNOk3MaTEZmLgvhlCgLf8DLQ2ATgZ+5gQAIDCwHXDZxBGz7hP6leRK95Q==}
     dev: false
 
-  /@gaopeng123/hooks.use-zoom/0.5.0:
-    resolution: {integrity: sha512-a2wN+F3bVHGD5CjerWWlj/5lQJMqYTWibmOLVCw+DL35j+rQToz93r283kVahaL5YORvb8Y8KNMiXc8O8frL8w==}
+  /@gaopeng123/hooks.use-zoom/0.7.2:
+    resolution: {integrity: sha512-wPZlXel/6oh5OV8wgmmuDrU0Xxry0w7Cuy/3E14Rlw0v1wgj3e1jgnXgoGQa3/k/AbP9dHZOv82CXnQmiegj4A==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-resize': 0.5.0
+      '@gaopeng123/hooks.use-resize': 0.7.2
       '@gaopeng123/utils.types': 0.4.14
     dev: false
 
-  /@gaopeng123/hooks/0.5.0:
-    resolution: {integrity: sha512-0K+Biv8WHa1AK61vfPeX3Q6wdnh2DipLlno35O9z3zh4cx+Sq1pbSznIi6WDN4b15+ZgKX9UvpfShDvp9iH16A==}
+  /@gaopeng123/hooks/0.7.4_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-uXaONh3uzL1UgGB29cE8/eSypM63kOJah06lGOmYvlcYcnxH0TXidye0SQIaXAUKqGW/NezBX0U/RUqQyz2jdQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-boolean': 0.5.0
-      '@gaopeng123/hooks.use-clock': 0.5.0
-      '@gaopeng123/hooks.use-debounce': 0.5.0
-      '@gaopeng123/hooks.use-easing': 0.5.0
-      '@gaopeng123/hooks.use-fetch': 0.5.0
-      '@gaopeng123/hooks.use-merge-value': 0.5.0
-      '@gaopeng123/hooks.use-pagination': 0.5.0
-      '@gaopeng123/hooks.use-poller': 0.5.0
-      '@gaopeng123/hooks.use-resize': 0.5.0
-      '@gaopeng123/hooks.use-scale': 0.5.0
-      '@gaopeng123/hooks.use-throttle': 0.5.0
-      '@gaopeng123/hooks.use-visibility': 0.5.0
-      '@gaopeng123/hooks.use-worker': 0.5.0
-      '@gaopeng123/hooks.use-zoom': 0.5.0
+      '@gaopeng123/hooks.use-antd-table-selection': 0.7.2_sfoxds7t5ydpegc3knd667wn6m
+      '@gaopeng123/hooks.use-boolean': 0.7.2
+      '@gaopeng123/hooks.use-clock': 0.7.2
+      '@gaopeng123/hooks.use-debounce': 0.7.2
+      '@gaopeng123/hooks.use-easing': 0.7.2
+      '@gaopeng123/hooks.use-effect-once-in-strict-mode': 0.7.2_sfoxds7t5ydpegc3knd667wn6m
+      '@gaopeng123/hooks.use-fetch': 0.7.4
+      '@gaopeng123/hooks.use-merge-value': 0.7.2
+      '@gaopeng123/hooks.use-pagination': 0.7.2
+      '@gaopeng123/hooks.use-poller': 0.7.2
+      '@gaopeng123/hooks.use-reload-after-stationary': 0.7.2
+      '@gaopeng123/hooks.use-resize': 0.7.2
+      '@gaopeng123/hooks.use-scale': 0.7.2
+      '@gaopeng123/hooks.use-throttle': 0.7.2
+      '@gaopeng123/hooks.use-throttle-and-merge': 0.7.2
+      '@gaopeng123/hooks.use-visibility': 0.7.2
+      '@gaopeng123/hooks.use-worker': 0.7.2
+      '@gaopeng123/hooks.use-zoom': 0.7.2
     transitivePeerDependencies:
       - encoding
+      - react
+      - react-dom
     dev: false
 
   /@gaopeng123/scroll-nav/1.2.10-alpha.1:
     resolution: {integrity: sha512-qB77lrFWBPE2UAMO92WuJsd2R9VusItsgxDpOaHSMB+DMG8GnN/1vzs8JaVo7kSkLFKxByVEV/I9OjS9d+76lg==}
     dependencies:
-      '@gaopeng123/utils': 1.1.8
+      '@gaopeng123/utils': 1.1.11
     dev: false
 
   /@gaopeng123/utils.array/0.6.0:
@@ -6456,6 +6507,7 @@ packages:
       '@gaopeng123/utils.object': 0.4.14
       '@gaopeng123/utils.string': 0.4.16
       '@gaopeng123/utils.types': 0.4.14
+    dev: true
 
   /@gaopeng123/utils.file/0.6.0:
     resolution: {integrity: sha512-GBQWmboGc20PciBhcUvzbfLdqFpr1GswW9qpiNA+dLkNvWFJzN8BhiPenxeJNXw7CqU/N4HfBw8p92sZBHK8cQ==}
@@ -6564,6 +6616,7 @@ packages:
     dependencies:
       '@gaopeng123/utils.function': 0.4.14
       '@gaopeng123/utils.types': 0.4.14
+    dev: true
 
   /@gaopeng123/utils.object/0.6.1:
     resolution: {integrity: sha512-OnFqHMcgiNnpa46z2Ts5j5KHxsqvqMCh9UwvUG6ObmYYwK2It1UP6GslbkS+TI8RnlZZasNGdDTelgKt1mOKmQ==}
@@ -6594,6 +6647,7 @@ packages:
     dependencies:
       '@gaopeng123/utils.function': 0.4.14
       '@gaopeng123/utils.types': 0.4.14
+    dev: true
 
   /@gaopeng123/utils.string/0.6.1:
     resolution: {integrity: sha512-O1q8J5PZPEA1A0cXjLdGTcQzAD9vXYfIhaFcNMPFyjweIKrR/luuQtilvGRYc8HAj78GgqLfPtW3bFbR/RGY8g==}
