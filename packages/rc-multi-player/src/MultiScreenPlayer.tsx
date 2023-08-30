@@ -60,6 +60,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
             [MultiStoreEnum.screenConfig]: screenConfig.getDefaultConfig(defaultPlayerConfig),
         });
     });
+
     /**
      * 发送单个视频的配置
      */

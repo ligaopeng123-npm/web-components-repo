@@ -308,7 +308,16 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             }
                         }}
                         defaultPlayerConfig={{
-                            protocol: false,
+                            protocol: {defaultValue: 'WebRTC', options: [
+                                    {
+                                        label: 'WebRTC',
+                                        value: 'WebRTC'
+                                    },
+                                    {
+                                        label: 'HTTP-FLV',
+                                        value: 'FLV'
+                                    },
+                                ]},
                             maxPlayerTime: {
                                 defaultValue: "forever",
                                 options: [

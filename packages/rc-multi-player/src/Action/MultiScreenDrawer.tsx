@@ -89,7 +89,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
     return (
         <>
             <Drawer
-                classes={{root: styles2.drawer}}
+                classes={{root: styles2.drawer, paper: styles2.paper}}
                 sx={{position: 'absolute'}}
                 variant="persistent"
                 anchor={'right'}

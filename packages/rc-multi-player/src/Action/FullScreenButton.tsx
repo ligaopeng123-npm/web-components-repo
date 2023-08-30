@@ -17,7 +17,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
 import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
-import { Tooltip } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
 import { MultiScreenPlayerDomConfig } from "../MultiTyping";
 
 type FullScreenButtonProps = {

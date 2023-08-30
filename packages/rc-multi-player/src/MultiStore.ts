@@ -13,7 +13,9 @@ import { Action, MultiStoreEnum } from "./MultiTyping";
 import { isArray, isString, isUndefined } from "@gaopeng123/utils";
 import { PlayerActionConfig, PlayerConfig, PlayerConfigOptions } from "./Player/PlayerTyping";
 
-export const DEFAULT_SCREEN_CONFIG: PlayerActionConfig = {
+export type PlayerActionKey = 'protocol' | 'objectFit' | 'maxPlayerTime' | 'resolution';
+
+export const DEFAULT_SCREEN_CONFIG = {
     // 协议控制
     protocol: {
         defaultValue: 'FLV',
@@ -77,7 +79,6 @@ export const DEFAULT_SCREEN_CONFIG: PlayerActionConfig = {
     },
 };
 
-
 export const State = {
     [MultiStoreEnum.selectedPlayer]: '0',
     [MultiStoreEnum.playerList]: [] as any[],
@@ -123,17 +124,14 @@ export const ScreenConfigHelper = {
         const currentConfig: PlayerActionConfig = {};
         const defaultConfigStorage = ScreenConfigHelper.getConfig();
         const actionConfig = ScreenConfigHelper.getActionConfig(defaultConfigProps);
-        for (const key in DEFAULT_SCREEN_CONFIG) {
-            // @ts-ignore
+        for (const i in DEFAULT_SCREEN_CONFIG) {
+            const key: PlayerActionKey = i as PlayerActionKey;
             if (defaultConfigProps[key] === false) {
-                // @ts-ignore
                 currentConfig[key] = false;
             } else {
                 // @ts-ignore
                 const currentOptions = actionConfig[key]?.options;
-                // @ts-ignore
-                const currentValue = defaultConfigStorage[key] || DEFAULT_SCREEN_CONFIG[key].defaultValue;
-                // @ts-ignore
+                const currentValue = ScreenConfigHelper.getDefaultValueByKey(key, defaultConfigStorage, defaultConfigProps) || DEFAULT_SCREEN_CONFIG[key].defaultValue;
                 currentConfig[key] = currentOptions
                     .filter((item: PlayerConfigOptions) => item.value === currentValue)?.length
                     ? currentValue
@@ -145,6 +143,19 @@ export const ScreenConfigHelper = {
         return currentDefaultConfig;
     },
     /**
+     * 匹配当前默认值
+     * @param key
+     * @param defaultConfigStorage
+     * @param defaultConfigProps
+     */
+    getDefaultValueByKey: (key: PlayerActionKey, defaultConfigStorage: PlayerActionConfig, defaultConfigProps: PlayerActionConfig) => {
+        if (defaultConfigStorage[key]) return defaultConfigStorage[key];
+        if (defaultConfigProps[key]) {
+            // @ts-ignore
+            return defaultConfigProps[key].defaultValue ? defaultConfigProps[key].defaultValue : defaultConfigProps[key];
+        }
+    },
+    /**
      * 获取操作后用户定制的参数
      * @param defaultConfigProps
      */
@@ -152,37 +163,34 @@ export const ScreenConfigHelper = {
         if (defaultConfigProps) {
             const currentConfig: PlayerActionConfig = {};
             const defaultConfigStorage = ScreenConfigHelper.getConfig();
-            for (const key in DEFAULT_SCREEN_CONFIG) {
-                // @ts-ignore
+            for (const i in DEFAULT_SCREEN_CONFIG) {
+                const key: PlayerActionKey = i as PlayerActionKey;
+                let currentItemConfig: any;
                 if (!isUndefined(defaultConfigProps[key])) {
-                    // @ts-ignore 当前值配置为false时 则不支持该配置
+                    // 当前值配置为false时 则不支持该配置
                     if (defaultConfigProps[key] === false) {
-                        // @ts-ignore
-                        currentConfig[key] = {
-                            // @ts-ignore
+                        currentItemConfig = {
                             defaultValue: DEFAULT_SCREEN_CONFIG[key].defaultValue,
                             options: [],
-                        }
+                        } as PlayerActionConfig[keyof PlayerActionConfig]
                     } else {
-                        // @ts-ignore  如果本地存储的是字符串或者配置的字符串 则初始化优先使用本地存储的值
+                        // 如果本地存储的是字符串或者配置的字符串 则初始化优先使用本地存储的值
                         // 如果配置的有options 则使用配置的options
-                        if (isString(defaultConfigStorage[key]) || isString(defaultConfigProps[key])) {
-                            // @ts-ignore
-                            currentConfig[key] = {
-                                // @ts-ignore
-                                defaultValue: defaultConfigStorage[key] || defaultConfigProps[key],
+                        const currentDefaultValue = ScreenConfigHelper.getDefaultValueByKey(key, defaultConfigStorage, defaultConfigProps);
+                        if (isString(currentDefaultValue)) {
+                            currentItemConfig = {
+                                defaultValue: currentDefaultValue,
                                 // @ts-ignore
                                 options: defaultConfigProps[key]?.options || DEFAULT_SCREEN_CONFIG[key].options,
                             }
                         } else {
-                            // @ts-ignore
-                            currentConfig[key] = defaultConfigProps[key];
+                            currentItemConfig = defaultConfigProps[key];
                         }
                     }
                 } else {
-                    // @ts-ignore
-                    currentConfig[key] = DEFAULT_SCREEN_CONFIG[key];
+                    currentItemConfig = DEFAULT_SCREEN_CONFIG[key];
                 }
+                currentConfig[key] = currentItemConfig;
             }
             return Object.assign({}, defaultConfigProps, currentConfig)
         } else {
@@ -192,7 +200,7 @@ export const ScreenConfigHelper = {
     /**
      * 获取当前选中的分屏
      */
-    getSelectedScreen: ()=> {
+    getSelectedScreen: () => {
         return ScreenConfigHelper.getConfig()?.defaultSelectedScreen;
     }
 }
