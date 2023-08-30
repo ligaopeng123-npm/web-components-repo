@@ -58,15 +58,31 @@ export const RcTimePeriod = forwardRef<RcTimePeriodRef, RcTimePeriodProps>((prop
         }
     }, [props.panelOptions]);
 
+    const init = ()=> {
+        dispatch({
+            type: EnumWeekState.clearClick,
+            value: Date.now()
+        });
+        dispatch({
+            type: EnumWeekState.periodTip,
+            value: {state: 'hide'}
+        });
+        dispatch({
+            type: EnumWeekState.periodClick,
+            value: null
+        });
+        dispatch({
+            type: EnumWeekState.copyClick,
+            value: null
+        });
+    }
+
     /**
      * 钩子函数
      */
     useImperativeHandle(ref, () => ({
         clear: () => {
-            dispatch({
-                type: EnumWeekState.clearClick,
-                value: Date.now()
-            });
+            init();
         },
 
         getDate: () => {

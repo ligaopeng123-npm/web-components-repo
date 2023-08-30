@@ -587,6 +587,7 @@ const Tooltip = ({
   const canShow = !hidden && content && show && Object.keys(inlineStyles).length > 0
 
   return rendered ? (
+      // @ts-ignore
     <WrapperElement
       id={id}
       role="tooltip"
@@ -611,6 +612,7 @@ const Tooltip = ({
       ref={tooltipRef}
     >
       {content}
+      {/*@ts-ignore*/}
       <WrapperElement
         className={classNames(
           'react-tooltip-arrow',

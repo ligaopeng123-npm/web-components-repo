@@ -11,7 +11,6 @@
  **********************************************************************/
 import CanvasUtils from "./CanvasUtils";
 import { EnumWeekState } from "./interface";
-import { initMsg } from "@gaopeng123/message";
 import copyImage from "./assets/copy.svg";
 import {
     CopyPeriodDataInterface,
@@ -24,6 +23,7 @@ import {
     ZrenderEvent
 } from "./interface";
 import { isNumber, isObject, isUndefined, throttle } from "@gaopeng123/utils";
+import { initMsg } from "@gaopeng123/message";
 
 /**
  * 一天的时间长度

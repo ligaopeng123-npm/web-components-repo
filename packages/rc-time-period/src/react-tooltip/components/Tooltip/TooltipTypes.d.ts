@@ -16,7 +16,7 @@ export type PlacesType =
 
 export type VariantType = 'dark' | 'light' | 'success' | 'warning' | 'error' | 'info'
 
-export type WrapperType = ElementType | 'div' | 'span'
+export type WrapperType =  ElementType | 'div' | 'span'
 
 export type ChildrenType = Element | ElementType | ReactNode
 
