@@ -9,10 +9,9 @@
  * @date: 2023-08-30 17:01:57
  *
  **********************************************************************/
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.less';
-import { RcLoadingProps } from "./typing";
-import LoadingBody from "./LoadingBody";
+import LoadingBody, { RcLoadingProps } from "./LoadingBody";
 
 const RcLoading: FC<RcLoadingProps> = (props) => {
     return (

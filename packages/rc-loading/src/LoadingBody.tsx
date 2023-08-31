@@ -15,8 +15,14 @@ import React, { useState, useEffect } from 'react';
 import LoadingIcon from "./LoadingIcon";
 import { useEasing } from "@gaopeng123/hooks";
 import styles from './styles.module.less';
-import { RcLoadingProps } from "./typing";
 import loadingGif from "./loading.gif";
+
+// --loading-main-color  css变量 定义颜色
+
+export interface RcLoadingProps {
+    loading?: boolean; // 是否开启
+    duration?: number; // 默认 60000ms
+}
 
 const LoadingBody = (props: RcLoadingProps) => {
     const { loading, duration } = Object.assign({ duration: 60000 }, props);
