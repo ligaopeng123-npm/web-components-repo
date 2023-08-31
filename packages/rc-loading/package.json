@@ -75,5 +75,6 @@
     },
     "dependencies": {
         "@gaopeng123/hooks": "^0.7.4"
-    }
+    },
+    "gitHead": "76da60f34856f9f087e322de66c5c12d82d929a4"
 }
