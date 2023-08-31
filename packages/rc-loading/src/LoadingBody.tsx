@@ -73,7 +73,7 @@ const LoadingBody = (props: RcLoadingProps) => {
                         }
                     </div>
                     <div className={styles.progress}>
-                        <span className={styles.title}>正在查询 &nbsp;&nbsp; <LoadingIcon/></span>
+                        <span className={styles.title}>正在查询 &nbsp; <LoadingIcon size={'small'}/></span>
                         <div>
                             <span style={{ marginRight: 8 }}>查询进度</span>
                             <input type="range" min="0" step="0.01" max="100" value={percent}

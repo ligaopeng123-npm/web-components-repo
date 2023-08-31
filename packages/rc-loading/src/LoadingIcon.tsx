@@ -14,9 +14,18 @@
 import React from 'react';
 import styles from "./styles.module.less";
 
-const LoadingIcon = () => {
+type LoadingIconProps = {
+    size?: 'small' | 'default' | 'large'
+}
+const LoadingIcon = ({ size }: LoadingIconProps) => {
+    const sizeStyle = {
+        'small': styles.iconSmall,
+        'default': styles.iconDefault,
+        'large': styles.iconLarge,
+    }
+    const sizeClass = sizeStyle[size || 'default'];
     return (
-        <div className={styles.loadingIcon}></div>
+        <div className={`${styles.loadingIcon} ${sizeClass}`}></div>
     )
 }
 
