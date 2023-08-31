@@ -19,7 +19,7 @@ const cssUrl = require('postcss-url');
 
 module.exports = function (config, options) {
     config.plugins = [
-        images({include: ['**/*.png', '**/*.jpg', '**/*.svg']}),
+        images({include: ['**/*.png', '**/*.jpg', '**/*.svg', '**/*.gif']}),
         ...config.plugins,
         postcss({
             extensions: ['.less', '.css'],
