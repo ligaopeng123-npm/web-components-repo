@@ -1,4 +1,6 @@
 import {RcScrollNav} from "../packages/rc-scroll-nav/src";
+import {Markdown} from "@storybook/blocks";
+import ReadMe from "../packages/rc-scroll-nav/README.md";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -7,6 +9,13 @@ export default {
     parameters: {
         // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'centered',
+        docs: {
+            page: (Story) => (
+                <>
+                    <Markdown>{ReadMe}</Markdown>
+                </>
+            ),
+        }
     },
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
     tags: ['autodocs'],
