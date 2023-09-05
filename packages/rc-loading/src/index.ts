@@ -1,2 +1,3 @@
-export { default as RcSuperLoading, RcLoadingProps } from './rc-loading';
+export { default as RcSuperLoading } from './RcLoading';
 export { default as LoadingIcon } from './LoadingIcon';
+export type { RcLoadingProps } from "./RcLoading"

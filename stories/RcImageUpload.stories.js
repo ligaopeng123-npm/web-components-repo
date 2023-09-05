@@ -1,11 +1,11 @@
-import { RcCardEllipsis } from "../packages/rc-card-ellipsis/src";
+import { RcImageUpload } from "../packages/rc-image-upload/src";
 import { Markdown } from '@storybook/blocks';
-import ReadMe from '../packages/rc-card-ellipsis/README.md?raw';
+import ReadMe from '../packages/rc-image-upload/README.md?raw';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'Example/RcCardEllipsis',
-    component: RcCardEllipsis,
+    title: 'Example/RcImageUpload',
+    component: RcImageUpload,
     parameters: {
         // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'centered',
@@ -28,15 +28,6 @@ export default {
 
 export const props = {
     args: {
-        minHeight: 120,
-        children: <div
-            id={'value1'}
-            style={{
-                height: 200,
-                width: 400,
-                background: 'red'
-            }}>
-            label1
-        </div>
+
     },
 };

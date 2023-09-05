@@ -11,7 +11,7 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import LoadingIcon from "./LoadingIcon";
 import { useEasing } from "@gaopeng123/hooks";
 import styles from './styles.module.less';
@@ -27,7 +27,7 @@ export interface LoadingBodyProps {
     className?: string | undefined;
 }
 
-const LoadingBody = (props: LoadingBodyProps) => {
+const LoadingBody: FC<LoadingBodyProps> = (props) => {
     const { loading, duration } = Object.assign({ duration: 60000 }, props);
     /**
      * 记录进度

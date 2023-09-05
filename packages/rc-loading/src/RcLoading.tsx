@@ -15,7 +15,7 @@ import LoadingBody, { LoadingBodyProps } from "./LoadingBody";
 import { classnames } from "@gaopeng123/utils";
 
 export interface RcLoadingProps extends LoadingBodyProps {
-    wrapperClassName?: string
+    wrapperClassName?: string;
 }
 
 const RcLoading: FC<RcLoadingProps> = (props) => {

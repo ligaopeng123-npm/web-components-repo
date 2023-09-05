@@ -1,5 +1,5 @@
 import {RcSuperLoading} from "../packages/rc-loading/src";
-import { Markdown } from '@storybook/blocks';
+import {Markdown} from '@storybook/blocks';
 import ReadMe from '../packages/rc-loading/README.md?raw';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -21,12 +21,12 @@ export default {
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        data: {control: 'array'},
+        // data: {control: 'array'},
     },
     decorators: [
         (Story) => (
             <div>
-                <Story />
+                <Story/>
             </div>
         ),
     ],
@@ -38,17 +38,14 @@ export default {
 
 export const props = {
     args: {
-        duration: 60000,
         loading: true,
-        children: <>
-            <div
-                style={{
-                    height: 600,
-                    width: 600,
-                    background: 'red'
-                }}>
-                我是加载模块
-            </div>
-        </>
+        children: <div
+            style={{
+                height: 600,
+                width: 600,
+                background: 'red'
+            }}>
+            我是加载模块
+        </div>
     },
 };
