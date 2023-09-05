@@ -11,17 +11,22 @@
  **********************************************************************/
 import React, { FC } from 'react';
 import styles from './styles.module.less';
-import LoadingBody, { RcLoadingProps } from "./LoadingBody";
+import LoadingBody, { LoadingBodyProps } from "./LoadingBody";
+import { classnames } from "@gaopeng123/utils";
+
+export interface RcLoadingProps extends LoadingBodyProps {
+    wrapperClassName?: string
+}
 
 const RcLoading: FC<RcLoadingProps> = (props) => {
     return (
-        <div className={props.className ? `${styles.loading} ${props.className}` : styles.loading} style={props.style}>
+        <div className={classnames(styles.loading, props.className)} style={props.style}>
             {
                 props.loading
                     ? <LoadingBody {...props}/>
                     : null
             }
-            <div className={props.loading ? styles.container : ''}>
+            <div className={classnames({ [styles.container]: props.loading }, props.wrapperClassName)}>
                 {props.children}
             </div>
         </div>

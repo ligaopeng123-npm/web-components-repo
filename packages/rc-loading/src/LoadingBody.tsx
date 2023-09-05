@@ -16,17 +16,18 @@ import LoadingIcon from "./LoadingIcon";
 import { useEasing } from "@gaopeng123/hooks";
 import styles from './styles.module.less';
 import loadingGif from "./loading.gif";
+import { classnames } from "@gaopeng123/utils";
 
 // --loading-main-color  css变量 定义颜色
 
-export interface RcLoadingProps {
+export interface LoadingBodyProps {
     loading?: boolean; // 是否开启
     duration?: number; // 默认 60000ms
     style?: React.CSSProperties;
     className?: string | undefined;
 }
 
-const LoadingBody = (props: RcLoadingProps) => {
+const LoadingBody = (props: LoadingBodyProps) => {
     const { loading, duration } = Object.assign({ duration: 60000 }, props);
     /**
      * 记录进度
@@ -53,7 +54,7 @@ const LoadingBody = (props: RcLoadingProps) => {
 
     return (
         <div>
-            <div className={loading ? styles.loadingEl : ''}>
+            <div className={classnames({ [styles.loadingEl]: loading })}>
                 <div className={styles.loadingBody}>
                     <img className={styles.loadingGif} src={loadingGif}/>
                     <div className={styles.step}>
@@ -61,8 +62,11 @@ const LoadingBody = (props: RcLoadingProps) => {
                             stepList.map(({ css, step }, index) => {
                                 const lastStep = stepList[index + 1]?.step || 100;
                                 const isLoading = percent < lastStep && percent >= step;
-                                return <div key={index} className={index === 3 ? styles.lastCircle : styles.circle}>
-                                                <span className={`${styles.serial} ${css}`}
+                                return <div key={index} className={classnames({
+                                    [styles.lastCircle]: index === 3,
+                                    [styles.circle]: index !== 3
+                                })}>
+                                                <span className={classnames(styles.serial, css)}
                                                       style={isLoading ? { background: 'transparent' } : {}}>
                                                     {
                                                         isLoading

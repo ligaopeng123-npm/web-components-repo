@@ -8,7 +8,7 @@ const App = () => {
     return (
         <div>
             <button onClick={()=> setLoading(!loading)}>loading</button>
-            <RcSuperLoading loading={loading} duration={20000}>
+            <RcSuperLoading loading={loading} duration={20000} wrapperClassName={'test'}>
                 <div style={{width: 500, height: 700}}>
                     <div>1212</div>
                     <div>1212</div>

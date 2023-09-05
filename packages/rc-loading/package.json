@@ -74,7 +74,8 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/hooks": "^0.7.4"
+        "@gaopeng123/hooks": "latest",
+        "@gaopeng123/utils": "latest"
     },
     "gitHead": "76da60f34856f9f087e322de66c5c12d82d929a4"
 }

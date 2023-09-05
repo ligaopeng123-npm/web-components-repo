@@ -628,6 +628,7 @@ importers:
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
       '@gaopeng123/hooks': ^0.7.4
+      '@gaopeng123/utils': 1.1.12-alpha.1
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
@@ -658,6 +659,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/hooks': 0.7.4_sfoxds7t5ydpegc3knd667wn6m
+      '@gaopeng123/utils': 1.1.12-alpha.1
     devDependencies:
       '@babel/core': 7.22.10
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
@@ -6314,7 +6316,7 @@ packages:
     resolution: {integrity: sha512-bhaVvBCOh9zpifUD+XZuhq7r3va6CjXid4LIEP31aP1jpznziLPkdAjCmkBvrp5KZQSvQLAjfCn1l1I1ehNhBg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.file': 1.1.12-alpha.0
+      '@gaopeng123/utils.file': 1.1.12-alpha.1
       '@gaopeng123/utils.types': 1.1.10
       node-fetch: 2.6.7
     transitivePeerDependencies:
@@ -6604,6 +6606,15 @@ packages:
       '@gaopeng123/utils.types': 1.1.10
     dev: false
 
+  /@gaopeng123/utils.file/1.1.12-alpha.1:
+    resolution: {integrity: sha512-n9Eug8lZaU1lWdBIHjR8uhc4HG0o0Kq6jT/ngVh9s51eBYT4e2oUVqaTZCHhkN/vYXAoS7daAwvGCuy/WlPnZQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.object': 1.1.11
+      '@gaopeng123/utils.string': 1.1.11
+      '@gaopeng123/utils.types': 1.1.10
+    dev: false
+
   /@gaopeng123/utils.function/0.4.14:
     resolution: {integrity: sha512-0PQ69ibtP8jWB6hQSaYvfCpKU5Kv5Ehq4O2BVSOVOz3ogKPCc9t6DrOhY2OKNjnr3Uy/Y9CMXVc3MOK8I+cX2g==}
     engines: {node: '>=10'}
@@ -6814,6 +6825,20 @@ packages:
       '@gaopeng123/utils.array': 1.1.10
       '@gaopeng123/utils.date': 1.1.10
       '@gaopeng123/utils.file': 1.1.12-alpha.0
+      '@gaopeng123/utils.function': 1.1.11
+      '@gaopeng123/utils.number': 1.1.10
+      '@gaopeng123/utils.object': 1.1.11
+      '@gaopeng123/utils.string': 1.1.11
+      '@gaopeng123/utils.types': 1.1.10
+    dev: false
+
+  /@gaopeng123/utils/1.1.12-alpha.1:
+    resolution: {integrity: sha512-LTPTjJ9ceaDH7meXWTWlyLmPf7nttKnI9LCp3dB5SLNV/r8QMe4OQA/kob7cVHuFJYTaGnvpCulPkM8Rk7/7SQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.array': 1.1.10
+      '@gaopeng123/utils.date': 1.1.10
+      '@gaopeng123/utils.file': 1.1.12-alpha.1
       '@gaopeng123/utils.function': 1.1.11
       '@gaopeng123/utils.number': 1.1.10
       '@gaopeng123/utils.object': 1.1.11
