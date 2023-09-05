@@ -15,7 +15,7 @@ import LoadingBody, { RcLoadingProps } from "./LoadingBody";
 
 const RcLoading: FC<RcLoadingProps> = (props) => {
     return (
-        <div className={styles.loading}>
+        <div className={props.className ? `${styles.loading} ${props.className}` : styles.loading} style={props.style}>
             {
                 props.loading
                     ? <LoadingBody {...props}/>

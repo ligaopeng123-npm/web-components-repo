@@ -22,6 +22,8 @@ import loadingGif from "./loading.gif";
 export interface RcLoadingProps {
     loading?: boolean; // 是否开启
     duration?: number; // 默认 60000ms
+    style?: React.CSSProperties;
+    className?: string | undefined;
 }
 
 const LoadingBody = (props: RcLoadingProps) => {
