@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import React, { useEffect, useRef } from 'react';
-import MultiPlayer from "./MultiPlayer";
+import MultiPlayer from "./RcMultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, RcPlayerRef, } from "./PlayerTyping";
 import { MultiStoreEnum } from "../MultiTyping";

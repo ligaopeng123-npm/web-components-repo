@@ -126,7 +126,7 @@ export const ScreenConfigHelper = {
         const actionConfig = ScreenConfigHelper.getActionConfig(defaultConfigProps);
         for (const i in DEFAULT_SCREEN_CONFIG) {
             const key: PlayerActionKey = i as PlayerActionKey;
-            if (defaultConfigProps[key] === false) {
+            if (defaultConfigProps && defaultConfigProps[key] === false) {
                 currentConfig[key] = false;
             } else {
                 // @ts-ignore
@@ -150,7 +150,7 @@ export const ScreenConfigHelper = {
      */
     getDefaultValueByKey: (key: PlayerActionKey, defaultConfigStorage: PlayerActionConfig, defaultConfigProps: PlayerActionConfig) => {
         if (defaultConfigStorage[key]) return defaultConfigStorage[key];
-        if (defaultConfigProps[key]) {
+        if (defaultConfigProps && defaultConfigProps[key]) {
             // @ts-ignore
             return defaultConfigProps[key].defaultValue ? defaultConfigProps[key].defaultValue : defaultConfigProps[key];
         }

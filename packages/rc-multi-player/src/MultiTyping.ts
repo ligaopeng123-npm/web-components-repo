@@ -63,11 +63,13 @@ export type LayoutJsonType = {
     data: Array<LayoutJsonItem>
 }
 
+export type DomStyle = {
+    style?: React.CSSProperties;
+    className?: string;
+}
+
 export type LayoutButtonProps =
-    {
-        className?: string;
-        style?: React.CSSProperties;
-    }
+    DomStyle
     & Props;
 
 // 分屏视频类型
@@ -92,6 +94,7 @@ export type MultiScreenPlayerProps =
             mediaDataSource?: MediaDataSource
         }
     }
+    & DomStyle
     & RcFlvPlayerProps;
 
 

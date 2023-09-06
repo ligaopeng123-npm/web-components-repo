@@ -12,6 +12,7 @@
 
 import React, { ReactNode } from "react";
 import { Config, MediaDataSource, MultiPlayerRobustness, ObjectFit } from "@gaopeng123/multi-player";
+import { DomStyle } from "../MultiTyping";
 
 export enum PlayerStoreEnum {
     // 报错信息
@@ -42,7 +43,6 @@ type RobustnessProps = {
 export type RcFlvPlayerProps =
     {
         extraParams?: any;
-        style?: React.CSSProperties;
         width?: string | number;
         height?: string | number;
         // 视频填充方式
@@ -53,6 +53,7 @@ export type RcFlvPlayerProps =
         // 事件集合
         events?: PlayerEvents,
     }
+    & DomStyle
     & RobustnessProps;
 
 
@@ -144,9 +145,9 @@ export type LayoutPlayerProps =
 
 export type RcMultiPlayerProps =
     {
-        className?: string;
         title?: string | ReactNode;
     }
+    & DomStyle
     & RcFlvPlayerProps
     & PlayerConfig;
 
