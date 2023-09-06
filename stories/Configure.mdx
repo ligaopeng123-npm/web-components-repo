@@ -1,5 +1,12 @@
 import { Meta } from "@storybook/blocks";
 
+import Utils from "./assets/utils.png";
+import Hooks from "./assets/hooks.png";
+import Components from "./assets/components.png";
+import Notes from "./assets/notes.png";
+import CLI from "./assets/cli.png";
+import Screen from "./assets/screen.png";
+
 import Github from "./assets/github.svg";
 import Discord from "./assets/discord.svg";
 import Youtube from "./assets/youtube.svg";
@@ -31,51 +38,100 @@ export const RightArrow = () => <svg
   <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
 </svg>
 
-<Meta title="Configure your project" />
+<Meta title="概览" />
 
 <div className="sb-container">
   <div className='sb-section-title'>
-    # Configure your project
+    # 概览
 
-    Because Storybook works separately from your app, you'll need to configure it for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
+     @gaopeng123/* 文档整理
   </div>
   <div className="sb-section">
     <div className="sb-section-item">
-      <img
-        src={Styling}
-        alt="A wall of logos representing different styling technologies"
-      />
-      <h4 className="sb-section-item-heading">Add styling and CSS</h4>
-      <p className="sb-section-item-paragraph">Like with web applications, there are many ways to include CSS within Storybook. Learn more about setting up styling within Storybook.</p>
-      <a
-        href="https://storybook.js.org/docs/react/configure/styling-and-css"
-        target="_blank"
-      >Learn more<RightArrow /></a>
+     <a href="https://ligaopeng123-npm.github.io/utils/"
+                    target="_blank">
+        <img
+            src={Utils}
+            alt="An abstraction representing the composition of data for a component"
+        />
+          <h4 className="sb-section-item-heading">@gaopeng123/`utils`</h4>
+          <p className="sb-section-item-paragraph">工具函数库</p>
+          <a
+            href="https://ligaopeng123-npm.github.io/utils/"
+            target="_blank"
+          >Learn more<RightArrow /></a>
+      </a>
     </div>
     <div className="sb-section-item">
-      <img
-        src={Context}
-        alt="An abstraction representing the composition of data for a component"
-      />
-      <h4 className="sb-section-item-heading">Provide context and mocking</h4>
-      <p className="sb-section-item-paragraph">Often when a story doesn't render, it's because your component is expecting a specific environment or context (like a theme provider) to be available.</p>
-      <a
-        href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
-        target="_blank"
-      >Learn more<RightArrow /></a>
+      <a href="https://ligaopeng123-npm.github.io/hooks/"
+                       target="_blank">
+          <img
+              src={Hooks}
+              alt="An abstraction representing the composition of data for a component"
+          />
+            <h4 className="sb-section-item-heading">@gaopeng123/hooks</h4>
+            <p className="sb-section-item-paragraph">公共hooks库</p>
+            <a
+              href="https://ligaopeng123-npm.github.io/hooks/"
+              target="_blank"
+            >Learn more<RightArrow /></a>
+      </a>
     </div>
     <div className="sb-section-item">
-      <img src={Assets} alt="A representation of typography and image assets" />
-      <div>
-        <h4 className="sb-section-item-heading">Load assets and resources</h4>
-        <p className="sb-section-item-paragraph">To link static files (like fonts) to your projects and stories, use the
-        `staticDirs` configuration option to specify folders to load when
-        starting Storybook.</p>
-        <a
-          href="https://storybook.js.org/docs/react/configure/images-and-assets"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
+      <a>
+        <img
+            src={Components}
+            alt="An abstraction representing the composition of data for a component"
+        />
+          <h4 className="sb-section-item-heading">Components</h4>
+          <p className="sb-section-item-paragraph">公共组件库</p>
+          <a
+            href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+            target="_blank"
+          >Learn more<RightArrow /></a>
+      </a>
+    </div>
+    <div className="sb-section-item">
+      <a>
+        <img
+            src={CLI}
+            alt="An abstraction representing the composition of data for a component"
+        />
+          <h4 className="sb-section-item-heading">CLI</h4>
+          <p className="sb-section-item-paragraph">基础能力脚手架&插件</p>
+          <a
+            href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+            target="_blank"
+          >Learn more<RightArrow /></a>
+      </a>
+    </div>
+    <div className="sb-section-item">
+      <a>
+        <img
+            src={Screen}
+            alt="An abstraction representing the composition of data for a component"
+        />
+          <h4 className="sb-section-item-heading">@gaopeng123/screen</h4>
+          <p className="sb-section-item-paragraph">大屏报表组件库</p>
+          <a
+            href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+            target="_blank"
+          >Learn more<RightArrow /></a>
+      </a>
+    </div>
+    <div className="sb-section-item">
+      <a>
+        <img
+            src={Notes}
+            alt="An abstraction representing the composition of data for a component"
+        />
+          <h4 className="sb-section-item-heading">Notes</h4>
+          <p className="sb-section-item-paragraph">文档积累</p>
+          <a
+            href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+            target="_blank"
+          >Learn more<RightArrow /></a>
+      </a>
     </div>
   </div>
 </div>
@@ -166,9 +222,8 @@ export const RightArrow = () => <svg
     <div className="sb-section-item">
       <img src={Github} alt="Github logo" className="sb-explore-image"/>
       Join our contributors building the future of UI development.
-
       <a
-        href="https://github.com/storybookjs/storybook"
+        href="https://github.com/ligaopeng123-npm"
         target="_blank"
       >Star on GitHub<RightArrow /></a>
     </div>
@@ -216,10 +271,22 @@ export const RightArrow = () => <svg
     display: flex;
     flex-direction: row;
     gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  a > img {
+    height: 200px;
   }
 
   img {
     object-fit: cover;
+    border-radius: 8px;
+    transition: box-shadow .3s, border-color .3s;
+  }
+
+  img:hover {
+      border-color: transparent;
+      box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017
   }
 
   .sb-section-title {
@@ -234,6 +301,7 @@ export const RightArrow = () => <svg
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 300px;
   }
 
   .sb-section-item-heading {
@@ -257,7 +325,7 @@ export const RightArrow = () => <svg
   }
 
   .sb-socials {
-    display: grid;
+//     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
 
