@@ -4,7 +4,7 @@
 
 [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/story/example-rcimageupload--props) 
 
-![demo.png](https://github.com/ligaopeng123-npm/web-components-repo/blob/main/packages/multi-player/__tests__/demo.png?raw=true)
+![demo.png](https://github.com/ligaopeng123-npm/web-components-repo/blob/main/packages/image-upload/__tests__/demo.png?raw=true)
 
 ## Usage
 

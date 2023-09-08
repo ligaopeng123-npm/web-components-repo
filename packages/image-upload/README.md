@@ -63,7 +63,7 @@ document.querySelector('image-upload').addEventListener('afterDelete', ({detail}
 
 ## Usage
 
-![demo](https://github.com/ligaopeng123-npm/web-components-repo/blob/main/packages/multi-player/__tests__/demo.png?raw=true)
+![demo](https://raw.githubusercontent.com/ligaopeng123-npm/web-components-repo/main/packages/image-upload/__tests__/demo.png)
 
 ```html
 <!DOCTYPE html>
