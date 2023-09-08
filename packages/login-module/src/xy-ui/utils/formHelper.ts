@@ -157,7 +157,9 @@ const getRememberPasswordForm = (_this: LogInModule) => {
    <verification-code required ${captcha ? `name=${captcha}` : ''}  style="${config['item-style']}" class="item form-item" item-style="${config['item-style']}"
                 captcha="${captcha}" captchasrc="${config.captchasrc || ''}" captchaurl="${config.captchaurl || ''}"
                 captchamethod="${config.captchamethod}"></verification-code>
-    <!--登录按钮-->
+   <!--记住我-->
+   <keep-logged keeplogged="${config.keeplogged}" style="${config['item-style']}" class="item" item-style="${config['item-style']}"></keep-logged>
+   <!--登录按钮-->
    <xy-form-item style="${config['item-style']}" class="item">
         <xy-button id="bth-login" type="primary" htmltype="submit">登录</xy-button>
    </xy-form-item>
