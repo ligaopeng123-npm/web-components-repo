@@ -560,7 +560,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/image-upload': ^1.2.17
+      '@gaopeng123/image-upload': ^1.2.18-alpha.0
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -1347,7 +1347,7 @@ importers:
       '@babel/core': ^7.14.6
       '@babel/preset-env': ^7.14.7
       '@babel/preset-typescript': ^7.14.5
-      '@gaopeng123/image-upload': ^1.2.17
+      '@gaopeng123/image-upload': ^1.2.18-alpha.0
       '@rollup/plugin-alias': ^3.1.2
       '@rollup/plugin-babel': ^5.3.0
       '@rollup/plugin-commonjs': ^14.0.0
