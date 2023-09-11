@@ -15,7 +15,7 @@ import React, { useState, useEffect, FC } from 'react';
 import LoadingIcon from "./LoadingIcon";
 import { useEasing } from "@gaopeng123/hooks";
 import styles from './styles.module.less';
-import loadingGif from "./loading.gif";
+import loadingGif from "./loading.webp";
 import { classnames } from "@gaopeng123/utils";
 
 // --loading-main-color  css变量 定义颜色

@@ -49,7 +49,7 @@ module.exports = function (dirname = __dirname) {
                     exclude: /node_modules/
                 },
                 {
-                    test: /\.(gif|png|jpe|jpg|svg?g)$/i,
+                    test: /\.(gif|webp|png|jpe|jpg|svg?g)$/i,
                     loader: 'url-loader', // url-loader 依赖于  file-loader 要使用url-loader必须安装file-loader
                     options: {
                         name: '[name].[ext]', // 文件名.hash.文件扩展名 默认格式为[hash].[ext]，没有文件名
