@@ -1,4 +1,5 @@
 import {RcSuperLoading} from "../packages/rc-loading/src";
+import RcLoadingText from "../packages/rc-loading/__tests__/RcLoadingTest";
 import {Markdown} from '@storybook/blocks';
 import ReadMe from '../packages/rc-loading/README.md?raw';
 
@@ -32,9 +33,14 @@ export default {
     ],
 };
 
-// export const Demo = {
-//     render: () => <Markdown>{ReadMe}</Markdown>,
-// };
+export const Demo = {
+    args: {
+
+    },
+    render: () => {
+        return <RcLoadingText/>
+    }
+};
 
 export const props = {
     args: {

@@ -1,0 +1,191 @@
+@import "../variable";
+
+.loadingSize {
+    position: absolute;
+    top: calc(50% - 10px);
+    inset-inline-start: calc(50% - 60px);
+    width: 120px;
+    height: 20px;
+}
+
+.loading1 {
+    background: linear-gradient(@main-color 0 0) 0/0% no-repeat #ddd;
+    animation: loading1-animation 2s infinite linear;
+}
+
+@keyframes loading1-animation {
+    100% {
+        background-size: 100%
+    }
+}
+
+.loading2 {
+    border-radius: 20px;
+    background: linear-gradient(@main-color 0 0) 0/0% no-repeat lightblue;
+    animation: loading2-animation 2s infinite steps(10);
+}
+
+@keyframes loading2-animation {
+    100% {
+        background-size: 110%
+    }
+}
+
+
+.loading3 {
+    border-radius: 20px;
+    background: repeating-linear-gradient(135deg, @main-color 0 10px, #ffa516 0 20px) 0/0% no-repeat,
+    repeating-linear-gradient(135deg, #ddd 0 10px, #eee 0 20px) 0/100%;
+    animation: loading3-animation 2s infinite;
+}
+
+@keyframes loading3-animation {
+    100% {
+        background-size: 100%
+    }
+}
+
+
+.loading4 {
+    -webkit-mask: linear-gradient(90deg, @main-color 70%, #0000 0) 0/20%;
+    background: linear-gradient(@main-color 0 0) 0/0% no-repeat #ddd;
+    animation: loading4-animation 2s infinite steps(6);
+}
+
+@keyframes loading4-animation {
+    100% {
+        background-size: 120%
+    }
+}
+
+
+.loading5 {
+    border: 2px solid #000;
+    padding: 3px;
+    background: repeating-linear-gradient(90deg, @main-color 0 10px, #0000 0 18px)
+        0/0% no-repeat content-box content-box;
+    position: relative;
+    animation: loading5-animation 2s infinite steps(8);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border: 2px solid #000;
+    }
+}
+
+@keyframes loading5-animation {
+    100% {
+        background-size: 120%
+    }
+}
+
+
+.loading6 {
+    border-radius: 20px;
+    color: @main-color;
+    border: 2px solid;
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        margin: 2px;
+        inset: 0 100% 0 0;
+        border-radius: inherit;
+        background: #514b82;
+        animation: loading6-animation 2s infinite;
+    }
+}
+
+@keyframes loading6-animation {
+    100% {
+        inset: 0
+    }
+}
+
+
+.loading7 {
+    -webkit-mask: radial-gradient(circle closest-side, #000 94%, #0000) 0 0/25% 100%,
+    linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat;
+    background: linear-gradient(@main-color 0 0) 0/0% no-repeat #ddd;
+    animation: loading7-animation 2s infinite linear;
+}
+
+@keyframes loading7-animation {
+    100% {
+        background-size: 100%
+    }
+}
+
+
+.loading8 {
+    width: 60px;
+    height: 60px;
+    top: calc(50% - 30px);
+    inset-inline-start: calc(50% - 30px);
+    border-radius: 50%;
+    -webkit-mask: linear-gradient(0deg, #000 55%, #0000 0) bottom/100% 18.18%;
+    background: linear-gradient(@main-color 0 0) bottom/100% 0% no-repeat #ddd;
+    animation: loading8-animation 2s infinite steps(7);
+}
+
+@keyframes loading8-animation {
+    100% {
+        background-size: 100% 115%
+    }
+}
+
+
+.loading9 {
+    --r1: 154%;
+    --r2: 68.5%;
+    width: 60px;
+    height: 60px;
+    top: calc(50% - 30px);
+    inset-inline-start: calc(50% - 30px);
+    border-radius: 50%;
+    background: radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, @main-color 80%) center left,
+    radial-gradient(var(--r1) var(--r2) at bottom, @main-color 79.5%, #0000 80%) center center,
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, @main-color 80%) center right,
+    #ccc;
+    background-size: 50.5% 220%;
+    background-position: -100% 0%, 0% 0%, 100% 0%;
+    background-repeat: no-repeat;
+    animation: loading9-animation 2s infinite linear;
+}
+
+@keyframes loading9-animation {
+    33% {
+        background-position: 0% 33%, 100% 33%, 200% 33%
+    }
+    66% {
+        background-position: -100% 66%, 0% 66%, 100% 66%
+    }
+    100% {
+        background-position: 0% 100%, 100% 100%, 200% 100%
+    }
+}
+
+
+.loading10 {
+    width: 120px;
+    height: 60px;
+    top: calc(50% - 30px);
+    inset-inline-start: calc(50% - 60px);
+    border-radius: 200px 200px 0 0;
+    -webkit-mask: repeating-radial-gradient(farthest-side at bottom, #0000 0, @main-color 1px 12%, #0000 calc(12% + 1px) 20%);
+    background: radial-gradient(farthest-side at bottom, @main-color 0 95%, #0000 0) bottom/0% 0% no-repeat #ddd;
+    animation: loading10-animation 2s infinite steps(6);
+}
+
+@keyframes loading10-animation {
+    100% {
+        background-size: 120% 120%
+    }
+}

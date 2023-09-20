@@ -11,19 +11,20 @@
  **********************************************************************/
 import React, { FC } from 'react';
 import styles from './styles.module.less';
-import LoadingBody, { LoadingBodyProps } from "./LoadingBody";
 import { classnames } from "@gaopeng123/utils";
+import { LoadingType, RcLoadingProps } from "./interface";
 
-export interface RcLoadingProps extends LoadingBodyProps {
-    wrapperClassName?: string;
+export interface RcBaseLoadingProps extends RcLoadingProps {
+    loadingComponent: React.ComponentFactory<RcLoadingProps, any>
 }
 
-const RcLoading: FC<RcLoadingProps> = (props) => {
+const RcBaseLoading: FC<RcBaseLoadingProps & { type?: LoadingType }> = (props) => {
+    const LoadingComponent = props.loadingComponent;
     return (
         <div className={classnames(styles.loading, props.className)} style={props.style}>
             {
                 props.loading
-                    ? <LoadingBody {...props}/>
+                    ? <LoadingComponent {...props}/>
                     : null
             }
             <div className={classnames({ [styles.container]: props.loading }, props.wrapperClassName)}>
@@ -33,4 +34,4 @@ const RcLoading: FC<RcLoadingProps> = (props) => {
     )
 };
 
-export default RcLoading;
+export default RcBaseLoading;

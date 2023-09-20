@@ -1,33 +1,27 @@
 /**********************************************************************
  *
- * @模块名称: LoadingBody
+ * @模块名称: RcSuperLoading
  *
- * @模块作用: LoadingBody
+ * @模块作用: RcSuperLoading
  *
  * @创建人: pgli
  *
- * @date: 2023/8/31 10:00 上午
+ * @date: 2023/9/20 2:44 下午
  *
  * @版权所有: pgli
  *
  **********************************************************************/
 import React, { useState, useEffect, FC } from 'react';
-import LoadingIcon from "./LoadingIcon";
+import RcBaseLoading from "../RcBaseLoading";
+import LoadingIcon from "../LoadingIcon";
 import { useEasing } from "@gaopeng123/hooks";
-import styles from './styles.module.less';
-import loadingGif from "./loading.webp";
+import styles from '../styles.module.less';
+import loadingGif from "../loading.webp";
 import { classnames } from "@gaopeng123/utils";
+import { RcLoadingProps } from "../interface";
 
-// --loading-main-color  css变量 定义颜色
 
-export interface LoadingBodyProps {
-    loading?: boolean; // 是否开启
-    duration?: number; // 默认 60000ms
-    style?: React.CSSProperties;
-    className?: string | undefined;
-}
-
-const LoadingBody: FC<LoadingBodyProps> = (props) => {
+const LoadingBody: FC<RcLoadingProps> = (props) => {
     const { loading, duration } = Object.assign({ duration: 60000 }, props);
     /**
      * 记录进度
@@ -98,4 +92,10 @@ const LoadingBody: FC<LoadingBodyProps> = (props) => {
     )
 }
 
-export default LoadingBody;
+const RcSuperLoading: FC<RcLoadingProps> = (props) => {
+    return (
+        <RcBaseLoading loadingComponent={LoadingBody} {...props}/>
+    )
+}
+
+export default RcSuperLoading;
