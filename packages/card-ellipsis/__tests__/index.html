@@ -29,7 +29,7 @@
 <script src="../src/index.tx"></script>
 <div id="root"></div>
 <card-ellipsis min-height="140">
-    <div slot="content">
+    <div slot="content" id="content">
         12121212</br>
         12121212</br>
         12121212</br>
@@ -49,7 +49,11 @@
     window.onload = function () {
         document.querySelector('card-ellipsis').addEventListener('onChange', (e)=> {
             console.log(e);
-        })
+        });
+        setTimeout(()=> {
+            var node = document.querySelector('#content').firstChild;
+            document.querySelector('#content').appendChild(node);
+        }, 5000)
     }
 </script>
 </body>

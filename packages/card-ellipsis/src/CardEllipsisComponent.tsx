@@ -16,6 +16,7 @@ import { addBoxSizeUnit } from "@gaopeng123/utils";
 
 class CardEllipsis extends HTMLElement {
     shadow: ShadowRoot = null;
+    // observer: MutationObserver;
     /*
     * 保存配置信息
     */
@@ -84,7 +85,27 @@ class CardEllipsis extends HTMLElement {
         this.bodyMore.addEventListener('click', this.moreClick);
         this.bodyMore.addEventListener('mouseenter', this.onmouseenter);
         this.bodyMore.addEventListener('mouseleave', this.onmouseleave);
+        // this.addObserver()
+
     }
+    // addObserver = () => {
+    //     // 某个需要被监控的 dom 元素。
+    //     const targetNode = document.querySelector('[slot="content"]');
+    //     //配置 dom 的哪些改变会触发回调函数，详细见下文表格。
+    //     const mutationObserverInitConfig = { attributes: false, childList: true, subtree: false };
+    //     // dom 变化时触发的回调函数，传入 mutationsList：记录 dom 变化的对象数组。
+    //     const callback = (mutationsList: any) => {
+    //         for(let mutation of mutationsList) {
+    //             console.log( 'dom 变化啦！');
+    //         }
+    //     };
+    //
+    //     // 创建一个 MutationObserver 示例，传入回调函数
+    //     this.observer = new MutationObserver(callback);
+    //
+    //     // 注册监控的节点、监控的事件
+    //     this.observer.observe(targetNode, mutationObserverInitConfig);
+    // }
     /**
      * 事件销毁
      */
@@ -92,6 +113,8 @@ class CardEllipsis extends HTMLElement {
         this.bodyMore.removeEventListener('click', this.moreClick);
         this.bodyMore.removeEventListener('mouseenter', this.onmouseenter);
         this.bodyMore.removeEventListener('mouseleave', this.onmouseleave);
+        // 停止监控
+        // this.observer.disconnect();
     }
 
     get bodyMore() {
@@ -112,10 +135,6 @@ class CardEllipsis extends HTMLElement {
         } else {
             body.classList.remove('body-collapse');
             body.classList.add('body-expand');
-            setTimeout(() => {
-                // @ts-ignore  - 2 是border 去掉避免赋值高度抖动
-                body.style.setProperty('height', addBoxSizeUnit(body.offsetHeight - 2), 'important');
-            }, 310);
         }
         this.dispatchEvent(new CustomEvent('onChange', {
             detail: {

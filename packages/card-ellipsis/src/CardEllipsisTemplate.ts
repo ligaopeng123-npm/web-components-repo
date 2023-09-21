@@ -33,7 +33,6 @@ export const template = (config: Config) => {
         .body-expand {
             position: absolute;
             height: auto !important;
-            max-height: 800px !important;
             background: var(--background-color, #fff);
             z-index: 1;
         }
@@ -91,7 +90,7 @@ export const template = (config: Config) => {
         }
         </style>
         <div class="container" style="height: ${minHeight};">
-            <div style="height: ${minHeight};max-height: ${minHeight};" class="body body-collapse">
+            <div style="height: ${minHeight};"  class="body body-collapse">
                 <slot name="content"></slot>
                 <div class="body-more"></div>
             </div>
