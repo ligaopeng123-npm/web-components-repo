@@ -9,9 +9,10 @@
  * @date: 2022/10/9 8:31
  *
  **********************************************************************/
+import * as React from 'react';
 import { useBoolean } from '@gaopeng123/hooks.use-boolean';
 import { usePagination } from '@gaopeng123/hooks.use-pagination';
-import React, { useState, useEffect, ReactNode, useRef } from 'react';
+import { useState, useEffect, ReactNode, useRef } from 'react';
 import DownLoading from './DownLoading';
 import ListContent from "./ListContent";
 import TopLoading from './TopLoading';
@@ -24,7 +25,7 @@ type PaginationProps = {
     current?: number;
 };
 
-type PaginatedListProps = {
+export type PaginatedListProps = {
     upLoading?: ReactNode,
     downLoading?: ReactNode,
     pagination?: PaginationProps,

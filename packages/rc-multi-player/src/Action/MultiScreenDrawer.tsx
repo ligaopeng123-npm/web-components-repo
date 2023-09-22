@@ -97,7 +97,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
             >
                 <ActionColumn
                     className={styles2.header}
-                    left={<>播放器配置</>}
+                    left={<span style={{marginLeft: 16}}>播放器配置</span>}
                     right={<IconCloseButton onClick={toggleDrawer}/>}/>
                 <div style={{padding: 16}}>
                     {

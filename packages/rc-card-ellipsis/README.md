@@ -13,7 +13,7 @@ const App = () => {
     return (
         <RcCardEllipsis onChange={(e)=> {
             console.log(e);
-        }} minHeight={100}>
+        }} minHeight={100} mode="simple">
             12<br/>
             12<br/>
             12<br/>

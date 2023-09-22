@@ -24,7 +24,7 @@ export type RcCardEllipsisProps = {
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            'card-ellipsis': CardEllipsisConfig
+            'card-ellipsis': CardEllipsisConfig & { id?: string, children: React.ReactNode }
         }
     }
 }

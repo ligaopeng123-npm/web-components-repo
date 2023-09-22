@@ -9,7 +9,8 @@
  * @版权所有: pgli
  *
  ********************************************************************* */
-export { default as RcPaginatedList } from './PaginatedList';
+export type { PaginatedListProps } from "./PaginatedList";
 export { default as RcDownLoading } from './DownLoading';
 export { default as RcTopLoading } from './TopLoading';
 export { default as EmptyList } from './Empty';
+export { default as RcPaginatedList } from './PaginatedList';
