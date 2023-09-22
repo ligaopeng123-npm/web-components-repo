@@ -32,7 +32,7 @@ export const template = (config: Config) => {
 
         .body-expand {
             position: absolute;
-            height: auto !important;
+            /*height: auto !important;*/
             background: var(--background-color, #fff);
             z-index: 1;
         }

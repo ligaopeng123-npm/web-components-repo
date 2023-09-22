@@ -16,7 +16,7 @@ import { addBoxSizeUnit } from "@gaopeng123/utils";
 
 class CardEllipsis extends HTMLElement {
     shadow: ShadowRoot = null;
-    // observer: MutationObserver;
+    observer: MutationObserver;
     /*
     * 保存配置信息
     */
@@ -30,7 +30,7 @@ class CardEllipsis extends HTMLElement {
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'open'});
+        this.shadow = this.attachShadow({ mode: 'open' });
         this.shadow.innerHTML = template(this.config);
     }
 
@@ -85,27 +85,9 @@ class CardEllipsis extends HTMLElement {
         this.bodyMore.addEventListener('click', this.moreClick);
         this.bodyMore.addEventListener('mouseenter', this.onmouseenter);
         this.bodyMore.addEventListener('mouseleave', this.onmouseleave);
-        // this.addObserver()
-
+        this._slot.addEventListener('slotchange', this.onslotchange);
+        this.addObserver();
     }
-    // addObserver = () => {
-    //     // 某个需要被监控的 dom 元素。
-    //     const targetNode = document.querySelector('[slot="content"]');
-    //     //配置 dom 的哪些改变会触发回调函数，详细见下文表格。
-    //     const mutationObserverInitConfig = { attributes: false, childList: true, subtree: false };
-    //     // dom 变化时触发的回调函数，传入 mutationsList：记录 dom 变化的对象数组。
-    //     const callback = (mutationsList: any) => {
-    //         for(let mutation of mutationsList) {
-    //             console.log( 'dom 变化啦！');
-    //         }
-    //     };
-    //
-    //     // 创建一个 MutationObserver 示例，传入回调函数
-    //     this.observer = new MutationObserver(callback);
-    //
-    //     // 注册监控的节点、监控的事件
-    //     this.observer.observe(targetNode, mutationObserverInitConfig);
-    // }
     /**
      * 事件销毁
      */
@@ -113,28 +95,52 @@ class CardEllipsis extends HTMLElement {
         this.bodyMore.removeEventListener('click', this.moreClick);
         this.bodyMore.removeEventListener('mouseenter', this.onmouseenter);
         this.bodyMore.removeEventListener('mouseleave', this.onmouseleave);
-        // 停止监控
-        // this.observer.disconnect();
+        this._slot.removeEventListener('slotchange', this.onslotchange);
+        this.observer.disconnect();
     }
 
     get bodyMore() {
         return this.shadow.querySelector('.body-more');
     }
 
+    get _slot() {
+        return this.shadow.querySelector('slot')
+    }
+
     get body() {
         return this.shadow.querySelector('.body');
     }
 
+    addObserver = () => {
+        // 某个需要被监控的 dom 元素。
+        const targetNode = this.querySelector('[slot="content"]');
+        //配置 dom 的哪些改变会触发回调函数，详细见下文表格。
+        const mutationObserverInitConfig = { attributes: false, childList: true, subtree: false };
+        // dom 变化时触发的回调函数，传入 mutationsList：记录 dom 变化的对象数组。
+        const callback = (mutationsList: any) => {
+            console.log('dom 变化啦！');
+            this.domChange();
+        };
+
+        // 创建一个 MutationObserver 示例，传入回调函数
+        this.observer = new MutationObserver(callback);
+
+        // 注册监控的节点、监控的事件
+        this.observer.observe(targetNode, mutationObserverInitConfig);
+    }
+
     moreClick = () => {
         const body = this.body;
+        // @ts-ignore
+        const bodyStyle = body.style;
         if (body.classList.contains('body-expand')) {
             body.classList.remove('body-expand');
             body.classList.add('body-collapse');
-            // @ts-ignore
-            body.style.setProperty('height', addBoxSizeUnit(this.config["min-height"]));
+            bodyStyle.setProperty('height', addBoxSizeUnit(this.config["min-height"]));
         } else {
             body.classList.remove('body-collapse');
             body.classList.add('body-expand');
+            bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
         }
         this.dispatchEvent(new CustomEvent('onChange', {
             detail: {
@@ -152,6 +158,27 @@ class CardEllipsis extends HTMLElement {
         const body = this.body;
         body.classList.remove('hover');
     }
+
+    onslotchange = (e: any) => {
+        console.log('onslotchange');
+    }
+
+    get maxHeight() {
+        return this.querySelector('[slot="content"]').scrollHeight + this.bodyMore.scrollHeight;
+    }
+
+    /**
+     * domChange 变更后 通知组件做出高度改变
+     */
+    domChange = () => {
+        const body = this.body;
+        if (body.classList.contains('body-expand')) {
+            // @ts-ignore
+            const bodyStyle = body.style;
+            bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
+        }
+    }
+
 }
 
 export default CardEllipsis;
