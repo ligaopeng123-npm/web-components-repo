@@ -2,7 +2,7 @@
     "packages": [
         "packages/*"
     ],
-    "version": "1.2.18-alpha.7",
+    "version": "1.2.18-alpha.8",
     "useWorkspaces": true,
     "npmClient": "pnpm",
     "command": {

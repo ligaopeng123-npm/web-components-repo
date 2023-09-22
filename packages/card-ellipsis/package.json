@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/card-ellipsis",
-    "version": "1.2.18-alpha.6",
+    "version": "1.2.18-alpha.8",
     "description": "卡片多余内容支持展开和收起",
     "keywords": [
         "ellipsis",
