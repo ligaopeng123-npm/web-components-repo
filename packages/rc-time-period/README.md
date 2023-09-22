@@ -1,16 +1,9 @@
 # `rc-time-period`
 
 > TODO: 时间段展示与配置
+>
+> [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs)
 
-## [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs)
-
-<iframe  
- height=850 
- width=90% 
- src="https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rctimeperiod--docs"  
- frameborder=0  
- allowfullscreen>
- </iframe>
 
 ## 参数
 

@@ -1,6 +1,6 @@
 ## video-progress-bar
 
-`视频播放滚动条`
+`视频播放滚动条`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-videoprogressbar--props)
 
 ## Usage
 

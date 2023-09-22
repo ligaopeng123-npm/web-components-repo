@@ -1,6 +1,8 @@
 # `scroll-nav`
 
 > TODO: 吸顶导航
+>
+> [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-scrollnav--props)
 
 ## 参数
 

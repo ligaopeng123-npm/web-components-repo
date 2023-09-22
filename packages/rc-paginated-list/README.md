@@ -1,6 +1,8 @@
 # `rc-paginated-list`
 
 > TODO: 滚动分页表格
+>
+> [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rcpaginatedlist--props)  
 
 ## 参数
 

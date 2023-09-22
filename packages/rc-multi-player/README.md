@@ -15,6 +15,8 @@
 ## RcFlvPlayer
 
 > flv播放器，依赖@gaopeng123/multi-player
+>
+> [在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rcflvplayer--props)
 
 ### Usage
 
@@ -45,7 +47,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 
 ## RcWebRTCPlayer
 
-`WebRTC 播放器`
+`WebRTC 播放器`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rcwebrtcplayer--props)
 
 ### Usage
 
@@ -75,7 +77,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 
 ## RcMultiPlayer
 
-`混合播放器，双协议`
+`混合播放器，双协议`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rcmultiplayer--props)
 
 | 属性          | 说明                         | 类型                          | 默认值  |
 | ------------- | ---------------------------- | ----------------------------- | ------- |
@@ -143,7 +145,7 @@ export default LayoutPlayer;
 
 ## RcMultiScreenPlayer
 
-`多屏播放器`
+`多屏播放器`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-rcmultiscreenplayer--docs)
 
 | 属性                  | 说明                             | 类型                                                         | 默认值                                                       |
 | --------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
