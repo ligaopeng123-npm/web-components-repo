@@ -10,13 +10,14 @@
  *
  **********************************************************************/
 import React, { FC, useEffect, useState } from 'react';
-import { CardEllipsisConfig } from "@gaopeng123/card-ellipsis";
+import { CardEllipsisConfig, CardEllipsisMode } from "@gaopeng123/card-ellipsis";
 import { uuid } from "@gaopeng123/utils";
 import "@gaopeng123/card-ellipsis";
 
 type RcCardEllipsisChangeValue = { expand: boolean };
 export type RcCardEllipsisProps = {
     minHeight?: number;
+    mode?: CardEllipsisMode;
     onChange?: (v: RcCardEllipsisChangeValue) => void;
 };
 
@@ -44,7 +45,7 @@ const RcCardEllipsis: FC<RcCardEllipsisProps> = (props) => {
         }
     }, []);
     return (
-        <card-ellipsis id={id} min-height={props.minHeight}>
+        <card-ellipsis mode={props.mode} id={id} min-height={props.minHeight}>
             <div slot="content">{props.children}</div>
         </card-ellipsis>
     )

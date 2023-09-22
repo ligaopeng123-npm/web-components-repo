@@ -21,7 +21,8 @@ class CardEllipsis extends HTMLElement {
     * 保存配置信息
     */
     __config: Config = {
-        'min-height': 100
+        'min-height': 100,
+        'mode': 'simple' // complex
     }
 
     get config() {
@@ -54,7 +55,7 @@ class CardEllipsis extends HTMLElement {
      */
     // @ts-ignore
     static get observedAttributes() {
-        return ['min-height'];
+        return ['min-height', 'mode'];
     }
 
     /**
@@ -140,7 +141,7 @@ class CardEllipsis extends HTMLElement {
         } else {
             body.classList.remove('body-collapse');
             body.classList.add('body-expand');
-            bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
+            this.setBodyMaxHeight();
         }
         this.dispatchEvent(new CustomEvent('onChange', {
             detail: {
@@ -167,15 +168,18 @@ class CardEllipsis extends HTMLElement {
         return this.querySelector('[slot="content"]').scrollHeight + this.bodyMore.scrollHeight;
     }
 
+    setBodyMaxHeight() {
+        // @ts-ignore
+        const bodyStyle =  this.body.style;
+        bodyStyle.setProperty('height', this.config.mode === 'complex' ? 'auto' : addBoxSizeUnit(this.maxHeight));
+    }
+
     /**
      * domChange 变更后 通知组件做出高度改变
      */
     domChange = () => {
-        const body = this.body;
-        if (body.classList.contains('body-expand')) {
-            // @ts-ignore
-            const bodyStyle = body.style;
-            bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
+        if (this.body.classList.contains('body-expand')) {
+            this.setBodyMaxHeight();
         }
     }
 

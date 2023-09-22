@@ -1,2 +1,2 @@
 export { default as CardEllipsis } from './CardEllipsisComponent';
-export type { Config as CardEllipsisConfig } from "./typing";
+export type { Config as CardEllipsisConfig, CardEllipsisMode } from "./typing";
