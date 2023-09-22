@@ -1,11 +1,11 @@
-import { RcCardEllipsis } from "../packages/rc-card-ellipsis/src";
-import { Markdown } from '@storybook/blocks';
-import ReadMe from '../packages/rc-card-ellipsis/README.md?raw';
+import {CardEllipsis} from "../packages/card-ellipsis/src";
+import {Markdown} from '@storybook/blocks';
+import ReadMe from '../packages/card-ellipsis/README.md?raw';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'Example/RcCardEllipsis',
-    component: RcCardEllipsis,
+    title: 'Example/CardEllipsis',
+    component: CardEllipsis,
     parameters: {
         // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'centered',
@@ -28,15 +28,11 @@ export default {
 
 export const props = {
     args: {
-        minHeight: 120,
-        children: <div
-            id={'value1'}
-            style={{
-                height: 200,
-                width: '100%',
-                background: 'red'
-            }}>
-            我是要展开的card
-        </div>
+        'min-height': 120,
     },
+    render: () => {
+        return <card-ellipsis>
+            <div style={{height: 200, width: '100%', background: 'red'}} slot="content">我是要展开的card</div>
+        </card-ellipsis>
+    }
 };
