@@ -9,9 +9,17 @@
  * @date: 2023-08-16 19:31:39
  *
  **********************************************************************/
-import { Config } from "./typing";
 import { addBoxSizeUnit } from "@gaopeng123/utils";
 
+export type ConfigName = 'min-height';
+
+// 简单模式为 slot比较简单 可以监听dam变化 添加过渡动画，复杂dom结构无法监听内部节点变化 获取不到高度
+export type CardEllipsisMode = 'simple' | 'complex'
+
+export type Config = {
+    'min-height': string | number;
+    mode?: CardEllipsisMode
+}
 
 export const template = (config: Config) => {
     const minHeight = addBoxSizeUnit(config["min-height"]);

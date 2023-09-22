@@ -9,8 +9,7 @@
  * @date: 2023-08-16 19:31:39
  *
  **********************************************************************/
-import { template } from "./CardEllipsisTemplate";
-import { Config, ConfigName } from "./typing";
+import { template, Config, ConfigName } from "./CardEllipsisTemplate";
 import { addBoxSizeUnit } from "@gaopeng123/utils";
 
 
@@ -22,7 +21,7 @@ class CardEllipsis extends HTMLElement {
     */
     __config: Config = {
         'min-height': 100,
-        'mode': 'simple' // complex
+        'mode': 'complex' // complex simple
     }
 
     get config() {
