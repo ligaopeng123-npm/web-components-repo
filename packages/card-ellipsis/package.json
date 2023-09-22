@@ -1,8 +1,11 @@
 {
     "name": "@gaopeng123/card-ellipsis",
-    "version": "1.2.18-alpha.4",
+    "version": "1.2.18-alpha.5",
     "description": "卡片多余内容支持展开和收起",
-    "keywords": ["ellipsis", "expand"],
+    "keywords": [
+        "ellipsis",
+        "expand"
+    ],
     "author": "ligaopeng123 <gaopeng@123>",
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
     "license": "MIT",
