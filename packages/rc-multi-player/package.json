@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-multi-player",
-    "version": "1.2.18",
+    "version": "1.2.19-alpha.0",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
