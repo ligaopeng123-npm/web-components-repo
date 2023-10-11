@@ -35,8 +35,10 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                 <div style={{ flex: 1 }}>
                     <div style={{ width: '90%' }} className={'form'}>
                         <FormControl fullWidth className={'form-item'}>
-                            <TextField defaultValue={'https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv'} id="outlined-basic" label="url地址"
-                                       variant="outlined"/>
+                            <TextField
+                                defaultValue={'https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv'}
+                                id="outlined-basic" label="url地址"
+                                variant="outlined"/>
                         </FormControl>
                         <FormControl fullWidth className={'form-item'}>
                             <Button onClick={onClick} type={'submit'} id="form-submit"
@@ -47,7 +49,8 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                     </div>
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
-                    <RcMultiPlayer className={'RcMultiPlayerTest'} mediaDataSource={mediaDataSource}/>
+                    <RcMultiPlayer videoToolbar={{ close: false, fullScreen: false, screenshot: false }} className={'RcMultiPlayerTest'}
+                                   mediaDataSource={mediaDataSource}/>
                 </div>
             </div>
             <Snackbar

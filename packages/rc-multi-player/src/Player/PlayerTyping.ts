@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Config, MediaDataSource, MultiPlayerRobustness, ObjectFit } from "@gaopeng123/multi-player";
 import { DomStyle } from "../MultiTyping";
 
@@ -95,7 +95,7 @@ export type PlayerActionConfig = {
     protocol?: Protocol | false | {
         defaultValue: Protocol,
         options: Array<PlayerConfigOptions>
-    },
+    };
     // 视频拉伸方式
     objectFit?: ObjectFit | false | {
         defaultValue: ObjectFit,
@@ -105,12 +105,18 @@ export type PlayerActionConfig = {
     maxPlayerTime?: MaxPlayerTime | false | {
         defaultValue: MaxPlayerTime,
         options: Array<PlayerConfigOptions>
-    },
+    };
     // 视频分辨率
     resolution?: Resolution | false | {
         defaultValue: Resolution,
         options: Array<PlayerConfigOptions>
-    },
+    };
+    // 视频工具栏
+    videoToolbar?: {
+        close?: boolean; // 是否可关闭
+        screenshot?: boolean; // 是否可截图
+        fullScreen?: boolean; // 是否支持全屏
+    }
 }
 
 export type  PlayerConfig =
@@ -127,7 +133,7 @@ export type  PlayerConfig =
         // 快进秒数
         'forward-value' ?: string | number;
         // flv视频配置
-        config?: any,
+        config?: Config;
     }
     & PlayerActionConfig
     & RobustnessProps;

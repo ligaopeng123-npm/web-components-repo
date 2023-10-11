@@ -9,7 +9,8 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import * as React from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import styles from './player.module.less';
 import ActionColumn from "../Action/ActionColumn";
 import FullScreenButton from "../Action/FullScreenButton";
@@ -38,7 +39,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         events,
         extraParams,
         maxPlayerTime,
-        config
+        config,
+        videoToolbar
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -204,18 +206,15 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 ref={(el: any) => {
                     setDivCurrent(el);
                 }}
-                classes={{root: `${styles.mainPlayer} ${className}`}}>
+                classes={{ root: `${styles.mainPlayer} ${className}` }}>
                 <ActionColumn
                     className={styles.hoverShow}
-                    left={
-                        <Title
-                            ellipsis={true}>{title}</Title>}
+                    left={<Title ellipsis={true}>{title}</Title>}
                     right={
                         <HideFullScreen>
                             {
                                 canLoad && !isNaN(parseInt(maxPlayerTime as string))
-                                    ?
-                                    <Countdown
+                                    ? <Countdown
                                         ref={countRef}
                                         maxTime={parseInt(maxPlayerTime as string) * 60}
                                         onMaxClick={() => {
@@ -225,10 +224,13 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                             playerRef.current?.close();
                                             loadRef?.current?.show();
                                         }}/>
-                                    : null
+                                    : <></>
                             }
-                            <IconCloseButton
-                                onClick={onCloseClick}/>
+                            {
+                                videoToolbar?.close !== false
+                                    ? <IconCloseButton onClick={onCloseClick}/>
+                                    : <></>
+                            }
                         </HideFullScreen>}/>
                 <div
                     className={styles.playerContent}>
@@ -242,8 +244,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                 ? <>
                                     {
                                         protocol === 'WebRTC'
-                                            ?
-                                            <RcWebRTCPlayer
+                                            ? <RcWebRTCPlayer
                                                 ref={playerRef}
                                                 extraParams={extraParams}
                                                 events={playerEvents}
@@ -251,8 +252,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                                 robustness={robustness}
                                                 mediaDataSource={mediaDataSource}
                                             />
-                                            :
-                                            <RcFlvPlayer
+                                            : <RcFlvPlayer
                                                 config={config}
                                                 ref={playerRef}
                                                 extraParams={extraParams}
@@ -263,8 +263,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                             />
                                     }
                                 </>
-                                :
-                                <div></div>
+                                : <div></div>
                         }
                     </ReplayLoad>
                 </div>
@@ -272,13 +271,16 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     className={`${styles.hoverShow} ${styles.bottom}`}
                     right={
                         <HideFullScreen>
-                            <ScreenshotPicture
-                                title={title}
-                                el={divCurrent}
-                                type={'icon'}/>
-                            <FullScreenButton
-                                el={divCurrent}
-                                type={'icon'}/>
+                            {
+                                videoToolbar?.screenshot !== false
+                                    ? <ScreenshotPicture title={title} el={divCurrent} type={'icon'}/>
+                                    : <></>
+                            }
+                            {
+                                videoToolbar?.fullScreen !== false
+                                    ? <FullScreenButton el={divCurrent} type={'icon'}/>
+                                    : <></>
+                            }
                         </HideFullScreen>
                     }
                 />
