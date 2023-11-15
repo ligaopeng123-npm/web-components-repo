@@ -59,6 +59,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
                                         style={{ height: colItem.height }}
                                     >
                                         <LayoutPlayer
+                                            playerList={playerList}
                                             events={events}
                                             state={state}
                                             dispatch={dispatch}

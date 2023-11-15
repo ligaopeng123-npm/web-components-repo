@@ -24,7 +24,8 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         mediaDataSource,
         dispatch,
         events,
-        state
+        state,
+        playerList
     } = props;
     const onClose = () => {
         dispatch({
@@ -36,39 +37,41 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
     // 获取当前选中的播放器
     const videoRef = useRef<RcPlayerRef>();
 
-
-    useEffect(()=> {
-        videoRef.current.playerConfig = playerConfig;
-    }, [playerConfig])
+    // useEffect(() => {
+    //     videoRef.current.playerConfig = playerConfig;
+    // }, [playerConfig]);
+    
+    // 获取当前选中的播放器
+    const currentPlayerConfig = playerList[+layoutIndex];
 
 
     const playerEvents = Object.assign({}, events, {
         onLoadStart: (e: PlayerConfig) => {
             if (events?.onLoadStart) {
-                events?.onLoadStart(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
+                events?.onLoadStart(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }));
             }
         },
         onClose: (playerConfig: PlayerConfig) => {
             onClose();
             if (events?.onClose) {
-                events?.onClose(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
+                events?.onClose(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }));
             }
         },
         onReload: (playerConfig: PlayerConfig) => {
             if (events?.onReload) {
-                events?.onReload(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
+                events?.onReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }));
             }
         },
         onMaxReload: (playerConfig: PlayerConfig) => {
             if (events?.onMaxReload) {
-                events?.onMaxReload(Object.assign({}, videoRef.current.playerConfig, {layoutIndex}));
+                events?.onMaxReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }));
             }
         }
     });
 
     const screenConfig = state[MultiStoreEnum.screenConfig];
 
-    const {maxPlayerTime} = screenConfig;
+    const { maxPlayerTime } = screenConfig;
 
     return (
         <MultiPlayer
