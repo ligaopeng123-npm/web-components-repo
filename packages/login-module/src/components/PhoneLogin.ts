@@ -9,10 +9,9 @@
  * @版权所有: pgli
  *
  ********************************************************************* */
-import {isNumber} from "@gaopeng123/utils.types";
-import {SendSMSVerificationCodeProps} from "../typing";
-
-const phone_reg = `^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$`;
+import { isNumber } from "@gaopeng123/utils.types";
+import { SendSMSVerificationCodeProps } from "../typing";
+import { PHONE_NUMBER_STR } from "@gaopeng123/utils.string";
 
 class PhoneLogin extends HTMLElement {
     shadow: any = null;
@@ -20,7 +19,7 @@ class PhoneLogin extends HTMLElement {
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'open'});
+        this.shadow = this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
@@ -117,7 +116,7 @@ class PhoneLogin extends HTMLElement {
 
     sendSMSVerificationCode = (timeer: any) => {
         const phoneVal = this.shadow.querySelector('#phone')?.value;
-        if (new RegExp(phone_reg).test(phoneVal)) {
+        if (new RegExp(PHONE_NUMBER_STR).test(phoneVal)) {
             this.setCodeDisabled(true);
             this.showTimmer(timeer);
             this.dispatchEvent(new CustomEvent('sendSMSVerificationCode', {
@@ -144,7 +143,7 @@ class PhoneLogin extends HTMLElement {
             </style>
             <xy-form id="login-module-phone-form" form-style="display:block;" action="/login" method="post">
                 <xy-form-item class="item" errordir="bottom">
-                    <xy-input errortips="请输入手机号" id="phone" icon="phone" pattern="^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$" errordir="bottom" style="width: 100%" name="phone" required placeholder="请输入手机号"></xy-input>
+                    <xy-input errortips="请输入手机号" id="phone" icon="phone" pattern="${PHONE_NUMBER_STR}" errordir="bottom" style="width: 100%" name="phone" required placeholder="请输入手机号"></xy-input>
                 </xy-form-item>
                 <xy-form-item class="item">
                     <xy-input-group style="width: 100%">

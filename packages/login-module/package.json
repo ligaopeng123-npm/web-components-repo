@@ -38,6 +38,7 @@
     "dependencies": {
         "@gaopeng123/fetch": "latest",
         "@gaopeng123/utils.file": "latest",
+        "@gaopeng123/utils.string": "^1.1.12",
         "@gaopeng123/utils.types": "latest",
         "crypto-js": "^4.1.1"
     },
