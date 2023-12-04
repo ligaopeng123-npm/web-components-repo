@@ -27,12 +27,14 @@ import Countdown, { countdownRef } from "../Action/Countdown";
 import ScreenshotPicture from "../Action/ScreenshotPicture";
 import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
+import ResolutionSelect from "../components/ResolutionSelect";
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
         protocol,
         title,
         objectFit,
+        resolution,
         mediaDataSource,
         robustness,
         className,
@@ -131,52 +133,61 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
      * 事件监听
      */
     const playerEvents = Object.assign({}, events, {
-        onLoadStart: (e: PlayerConfig) => {
-            resetLoadConfig();
-            if (events?.onLoadStart) {
-                events?.onLoadStart({
-                    extraParams,
-                    protocol
-                });
-            }
-        },
-        onReload: (e: PlayerConfig) => {
-            if (events?.onReload) {
+            onLoadStart: (e: PlayerConfig) => {
+                resetLoadConfig();
+                if (events?.onLoadStart) {
+                    events?.onLoadStart({
+                        extraParams,
+                        protocol
+                    });
+                }
+            },
+            onReload: (e: PlayerConfig) => {
+                if (events?.onReload) {
+                    events?.onReload({
+                        extraParams,
+                        protocol
+                    });
+                }
+            },
+            onMaxReload: (e: PlayerConfig) => {
+                if (events?.onMaxReload) {
+                    events?.onMaxReload({
+                        extraParams,
+                        protocol
+                    });
+                }
+            },
+            onLoadError: () => {
+                loadRef.current?.show();
+                countRef?.current?.setEnd();
+                if (events?.onLoadError) {
+                    events?.onLoadError({
+                        extraParams,
+                        protocol
+                    });
+                }
+            },
+            onLoadEnd: () => {
+                loadRef.current?.show();
+                countRef?.current?.setEnd();
+                if (events?.onLoadEnd) {
+                    events?.onLoadEnd({
+                        extraParams,
+                        protocol
+                    });
+                }
+            },
+            // 分辨率切换
+            onResolutionChange: (v: string) => {
                 events?.onReload({
                     extraParams,
-                    protocol
-                });
-            }
-        },
-        onMaxReload: (e: PlayerConfig) => {
-            if (events?.onMaxReload) {
-                events?.onMaxReload({
-                    extraParams,
-                    protocol
-                });
-            }
-        },
-        onLoadError: () => {
-            loadRef.current?.show();
-            countRef?.current?.setEnd();
-            if (events?.onLoadError) {
-                events?.onLoadError({
-                    extraParams,
-                    protocol
-                });
-            }
-        },
-        onLoadEnd: () => {
-            loadRef.current?.show();
-            countRef?.current?.setEnd();
-            if (events?.onLoadEnd) {
-                events?.onLoadEnd({
-                    extraParams,
-                    protocol
+                    protocol,
+                    resolution: v
                 });
             }
         }
-    });
+    );
     /**
      * 是否可加载数据
      */
@@ -196,6 +207,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             return playerRef.current?.getVideo();
         }
     }));
+
+    console.log('resolution', resolution)
 
     return (
         <ThemeProvider
@@ -271,6 +284,13 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     className={`${styles.hoverShow} ${styles.bottom}`}
                     right={
                         <HideFullScreen>
+                            {
+                                videoToolbar?.resolution !== false
+                                    // @ts-ignore
+                                    ? <ResolutionSelect el={divCurrent} value={resolution || videoToolbar?.resolution?.defaultValue} options={videoToolbar?.resolution?.options}
+                                                        onChange={playerEvents.onResolutionChange}/>
+                                    : <></>
+                            }
                             {
                                 videoToolbar?.screenshot !== false
                                     ? <ScreenshotPicture title={title} el={divCurrent} type={'icon'}/>

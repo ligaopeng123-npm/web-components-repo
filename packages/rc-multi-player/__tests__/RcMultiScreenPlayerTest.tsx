@@ -20,6 +20,7 @@ import { formatTimestamp } from "@gaopeng123/utils";
 type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
     const [protocol, setProtocol] = React.useState<any>('FLV');
+    const [resolution, setResolution] = React.useState<any>('');
     const [open, setOpen] = React.useState(false);
     const [currentConfig, setCurrentConfig] = React.useState<any>({});
     const screenRef = useRef(null);
@@ -31,6 +32,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         const url = document.querySelector('#outlined-basic')?.value;
         // @ts-ignore
         const title = document.querySelector('#outlined-title')?.value;
+        console.log(screenRef.current.getScreenConfig());
         if (url) {
             setCurrentConfig({
                 mediaDataSource: {
@@ -72,7 +74,6 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     useEffect(()=> {
         if (timeParams) {
             setTimeout(()=> {
-                console.log('timeParams', timeParams);
                 const currentConfig = {
                     id: Date.now(),
                     mediaDataSource: {
@@ -210,7 +211,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         }),
                         currentTime: formatTimestamp(Date.now()),
                         'speed-value': timeParams['speed-value'],
-                        'forward-value': timeParams['forward-value']
+                        'forward-value': timeParams['forward-value'],
+                        resolution: resolution
                     }
                 };
                 setCurrentConfig(currentConfig);
@@ -300,8 +302,10 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 // }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
-                                console.log(111, e, screenRef.current.getCurrentTime());
-                                setTimeParams({'speed-value': 1})
+                                setTimeParams({'speed-value': 1});
+                                if (e.resolution) {
+                                    setResolution(e.resolution);
+                                }
                             },
                             onClose: (e: PlayerConfig) => {
 
@@ -332,6 +336,19 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                     {
                                         label: '长期',
                                         value: 'forever'
+                                    }
+                                ]
+                            },
+                            resolution: {
+                                defaultValue: "1",
+                                options: [
+                                    {
+                                        label: '子码流',
+                                        value: "1"
+                                    },
+                                    {
+                                        label: '主码流',
+                                        value: "2"
                                     }
                                 ]
                             },

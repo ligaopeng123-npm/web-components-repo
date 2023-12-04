@@ -102,6 +102,7 @@ export const getCurrentStorage = (id: string, valKey: string) => {
     return storage[valKey]
 }
 
+// @ts-ignore
 export const ScreenConfigHelper = {
     id: '',
     getConfig: () => {
@@ -205,6 +206,7 @@ export const ScreenConfigHelper = {
     }
 }
 
+// @ts-ignore
 export function ScreenConfig(id: string) {
     ScreenConfigHelper.id = id;
     return ScreenConfigHelper;

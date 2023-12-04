@@ -9,7 +9,7 @@
  * @date: 2022/10/27 14:43
  *
  **********************************************************************/
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import MultiPlayer from "./RcMultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, RcPlayerRef, } from "./PlayerTyping";
@@ -40,7 +40,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
     // useEffect(() => {
     //     videoRef.current.playerConfig = playerConfig;
     // }, [playerConfig]);
-    
+
     // 获取当前选中的播放器
     const currentPlayerConfig = playerList[+layoutIndex];
 
@@ -59,7 +59,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         },
         onReload: (playerConfig: PlayerConfig) => {
             if (events?.onReload) {
-                events?.onReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }));
+                events?.onReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }, playerConfig.resolution ? { resolution: playerConfig.resolution } : {}));
             }
         },
         onMaxReload: (playerConfig: PlayerConfig) => {
@@ -86,6 +86,8 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
             config={playerConfig?.config}
             title={playerConfig?.title}
             className={selected ? styles.selected : styles.player}
+            resolution={playerConfig?.resolution}
+            videoToolbar={Object.assign({}, screenConfig.videoToolbar, state[MultiStoreEnum.actionConfig])}
         />
     )
 };

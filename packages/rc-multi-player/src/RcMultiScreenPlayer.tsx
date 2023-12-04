@@ -74,7 +74,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
             } = currentConfig;
             if (playerConfig && mediaDataSource) {
                 const layoutIndex = state[MultiStoreEnum.selectedPlayer];
-                const playerList = state[MultiStoreEnum.playerList]
+                const playerList = state[MultiStoreEnum.playerList];
                 dispatch({
                     type: MultiStoreEnum.playerList,
                     value: {

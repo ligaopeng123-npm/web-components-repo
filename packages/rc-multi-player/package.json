@@ -78,7 +78,7 @@
         "@emotion/styled": "^11.10.4",
         "@gaopeng123/hooks": "latest",
         "@gaopeng123/multi-player": "^1.2.16",
-        "@gaopeng123/utils": "latest",
+        "@gaopeng123/utils": "1.1.13-alpha.2",
         "@gaopeng123/video-progress-bar": "^1.2.18",
         "@mui/icons-material": "^5.10.9",
         "@mui/material": "^5.10.10",

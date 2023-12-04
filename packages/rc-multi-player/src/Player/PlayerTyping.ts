@@ -47,6 +47,8 @@ export type RcFlvPlayerProps =
         height?: string | number;
         // 视频填充方式
         objectFit?: ObjectFit;
+        // 分辨率
+        resolution?: any;
         mediaDataSource?: MediaDataSource;
         // 播放器配置
         config?: Config,
@@ -83,41 +85,45 @@ export type MaxPlayerTime =
     | 'forever';
 export type Resolution =
     "4K"
-    | "720P";
+    | "720P"
+    | string;
 // 视频配置
 export type PlayerConfigOptions = {
     label: string;
     value: string;
 }
 
+export type PlayerActionConfigResolution = Resolution | boolean | {
+    defaultValue: Resolution,
+    options: Array<PlayerConfigOptions>
+};
+
 export type PlayerActionConfig = {
     // 协议类型
-    protocol?: Protocol | false | {
+    protocol?: Protocol | boolean | {
         defaultValue: Protocol,
         options: Array<PlayerConfigOptions>
     };
     // 视频拉伸方式
-    objectFit?: ObjectFit | false | {
+    objectFit?: ObjectFit | boolean | {
         defaultValue: ObjectFit,
         options: Array<PlayerConfigOptions>
     };
     // 是否播放时长
-    maxPlayerTime?: MaxPlayerTime | false | {
+    maxPlayerTime?: MaxPlayerTime | boolean | {
         defaultValue: MaxPlayerTime,
         options: Array<PlayerConfigOptions>
     };
     // 视频分辨率
-    resolution?: Resolution | false | {
-        defaultValue: Resolution,
-        options: Array<PlayerConfigOptions>
-    };
+    resolution?: PlayerActionConfigResolution;
     // 视频工具栏
     videoToolbar?: {
         close?: boolean; // 是否可关闭
         screenshot?: boolean; // 是否可截图
         fullScreen?: boolean; // 是否支持全屏
+        resolution?: PlayerActionConfigResolution; // 是否支持分辨率切换
     }
-}
+};
 
 export type  PlayerConfig =
     {
@@ -129,9 +135,9 @@ export type  PlayerConfig =
         // 初始播放时间
         currentTime?: string;
         // 倍速
-        'speed-value' ?: string | number;
+        'speed-value'?: string | number;
         // 快进秒数
-        'forward-value' ?: string | number;
+        'forward-value'?: string | number;
         // flv视频配置
         config?: Config;
     }

@@ -16,7 +16,6 @@
 import * as React from "react";
 import { PlayerConfig, PlayerEvents, RcFlvPlayerProps } from "./Player/PlayerTyping";
 import { MediaDataSource } from "@gaopeng123/multi-player";
-import { VideoProgressBar } from "@gaopeng123/video-progress-bar";
 
 export enum MultiStoreEnum {
     // 布局数据
