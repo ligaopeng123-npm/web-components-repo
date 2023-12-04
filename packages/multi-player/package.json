@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/multi-player",
-    "version": "1.2.16",
+    "version": "1.3.0",
     "description": "多功能播放器",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -68,7 +68,7 @@
     "dependencies": {
         "@ffmpeg/core": "^0.10.0",
         "@ffmpeg/ffmpeg": "^0.10.1",
-        "@gaopeng123/message": "^1.2.16",
+        "@gaopeng123/message": "^1.3.0",
         "@gaopeng123/utils.function": "latest",
         "@gaopeng123/utils.string": "latest",
         "mpegts.js": "^1.7.0"
