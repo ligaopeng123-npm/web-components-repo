@@ -44,7 +44,7 @@ class StreamSdk {
      */
     async getChannelListByCarId(carId: string) {
         return new Promise((resolve, reject) => {
-            post(this.host + `/iot-xingtu20-service-tenant/car/operation/${carId}`, { headers: this.header }).then((res) => {
+            post(this.host + `/iot-xingtu20-service-tenant/car/operation/${carId}`, { headers: this.header }).then((res: any) => {
                 if (res.code === 200) {
                     const bindDevices = res?.data?.result?.bindDevices;
                     if (bindDevices?.length > 0) {
@@ -52,7 +52,7 @@ class StreamSdk {
                             return this.getSingleChannel(item.deviceSerialCode);
                         })).then((res) => {
                             const list: any[] = []
-                            res.forEach((_res, index) => {
+                            res.forEach((_res: any, index) => {
                                 if (_res.code === 200) {
                                     const _singleList: any[] = [];
                                     _res?.data?.content.map((_item: any) => {
