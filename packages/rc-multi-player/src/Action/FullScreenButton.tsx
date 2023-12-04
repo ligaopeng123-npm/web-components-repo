@@ -9,7 +9,7 @@
  * @date: 2022/10/24 9:20
  *
  **********************************************************************/
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import Button from "@mui/material/Button";
 import styles from "../styles.module.less";
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
@@ -18,7 +18,6 @@ import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
 import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from '@mui/material/Tooltip';
-import { MultiScreenPlayerDomConfig } from "../MultiTyping";
 
 type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
@@ -28,7 +27,9 @@ type FullScreenButtonProps = {
     fullScreenId?: string;
 };
 
-const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
+type FullScreenButtonRef = { click: (e: any) => void };
+
+const FullScreenButton: React.ForwardRefExoticComponent<FullScreenButtonProps & React.RefAttributes<FullScreenButtonRef>> = forwardRef<FullScreenButtonRef, FullScreenButtonProps>((props, ref) => {
         const {
             el,
             onChange,
@@ -40,7 +41,7 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
         const onClick = (e: any) => {
             e?.stopPropagation();
             const autoEl: any = el || document.querySelector(`#${fullScreenId || 'multi-screen-player'}`);
-            autoFullscreen(autoEl, {}, ({type}: any) => {
+            autoFullscreen(autoEl, {}, ({ type }: any) => {
                 //fullscreen 进入全屏
                 //noFullscreen 退出全屏
                 setFullType(type === 'fullscreen');
@@ -56,6 +57,10 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
             }
             setFullType(fullType)
         }, [windowResize]);
+
+        useImperativeHandle(ref, () => ({
+            click: onClick
+        }));
 
         return (
             <Tooltip
@@ -91,6 +96,6 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = (props) => {
             </Tooltip>
         )
     }
-;
+);
 
 export default FullScreenButton;

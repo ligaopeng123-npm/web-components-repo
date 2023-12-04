@@ -74,6 +74,10 @@ export type PlayerEvents = {
     onClose?: (playerConfig?: PlayerConfig) => void;
     // 时间变更参数
     onTimeChange?: (playerConfig?: PlayerConfig) => void;
+    // 返回事件
+    onBack?: ()=> void;
+    // 最大化 最下化
+    onFullChange?: (val: boolean)=> void;
 }
 
 export type Protocol =
@@ -121,6 +125,7 @@ export type PlayerActionConfig = {
         close?: boolean; // 是否可关闭
         screenshot?: boolean; // 是否可截图
         fullScreen?: boolean; // 是否支持全屏
+        back?: boolean; // 是否支持返回键
         resolution?: PlayerActionConfigResolution; // 是否支持分辨率切换
     }
 };

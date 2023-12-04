@@ -30,6 +30,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
      */
     const {
         defaultSelectedScreen,
+        hideAction,
         defaultPlayerConfig,
         currentConfig,
         id,
@@ -216,13 +217,16 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                     style={playType === 'replay' ? { height: 'calc(100% - 60px)' } : {}}
                     className={`${styles.main} ${state[MultiStoreEnum.selectedScreen] == 1 ? styles.noScreen : ''}`}
                 >
-                    <MultiScreenPlayerAction
-                        multiScreenPlayerId={_id}
-                        defaultSelectedScreen={defaultSelectedScreen}
-                        state={state}
-                        dispatch={dispatch}/>
+                    {
+                        hideAction === true ? null : <MultiScreenPlayerAction
+                            multiScreenPlayerId={_id}
+                            defaultSelectedScreen={defaultSelectedScreen}
+                            state={state}
+                            dispatch={dispatch}/>
+                    }
                     <LayoutContent
                         layoutKey={_id}
+                        hideAction={hideAction}
                         events={{
                             ...events,
                             onLoadStart: (e) => {

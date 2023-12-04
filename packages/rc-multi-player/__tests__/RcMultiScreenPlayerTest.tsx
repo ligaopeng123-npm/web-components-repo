@@ -42,7 +42,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                 playerConfig: {
                     protocol: protocol,
                     title: title,
-                    extraParams: {test: 1},
+                    extraParams: { test: 1 },
                     // layoutIndex: '0',
                     robustness: {
                         maxResetTimes: 1,
@@ -71,9 +71,9 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
     const [timeParams, setTimeParams] = useState<any>();
 
 
-    useEffect(()=> {
+    useEffect(() => {
         if (timeParams) {
-            setTimeout(()=> {
+            setTimeout(() => {
                 const currentConfig = {
                     id: Date.now(),
                     mediaDataSource: {
@@ -84,12 +84,12 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     playerConfig: {
                         protocol: protocol,
                         title: 'test',
-                        extraParams: {test: 1},
+                        extraParams: { test: 1 },
                         robustness: {
                             maxResetTimes: 1,
                             retryDuration: 15000 // 15秒加载
                         },
-                        periods: reduceTimeSlotInterference(timeParams.date !== "2023-07-11 00:00:00" ?  [
+                        periods: reduceTimeSlotInterference(timeParams.date !== "2023-07-11 00:00:00" ? [
                             {
                                 "recordBeginTime": "2023-07-11 06:00:04",
                                 "recordEndTime": "2023-07-11 06:55:06",
@@ -222,13 +222,13 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
 
     return (
         <div
-            style={{height: 600}}>
+            style={{ height: 600 }}>
             <div
-                style={{display: 'flex'}}>
+                style={{ display: 'flex' }}>
                 <div
-                    style={{flex: 1}}>
+                    style={{ flex: 1 }}>
                     <div
-                        style={{width: '90%'}}
+                        style={{ width: '90%' }}
                         className={'form'}>
                         <FormControl
                             fullWidth
@@ -287,7 +287,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     <RcMultiScreenPlayer
                         id={'test'}
                         playType={'replay'}
-                        defaultSelectedScreen={4}
+                        defaultSelectedScreen={false}
+                        hideAction={true}
                         events={{
                             onTimeChange: (e: any) => {
                                 setTimeParams(e);
@@ -302,7 +303,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 // }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
-                                setTimeParams({'speed-value': 1});
+                                setTimeParams({ 'speed-value': 1 });
                                 if (e.resolution) {
                                     setResolution(e.resolution);
                                 }
@@ -312,7 +313,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             }
                         }}
                         defaultPlayerConfig={{
-                            protocol: {defaultValue: 'WebRTC', options: [
+                            protocol: {
+                                defaultValue: 'WebRTC', options: [
                                     {
                                         label: 'WebRTC',
                                         value: 'WebRTC'
@@ -321,7 +323,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                         label: 'HTTP-FLV',
                                         value: 'FLV'
                                     },
-                                ]},
+                                ]
+                            },
                             maxPlayerTime: {
                                 defaultValue: "forever",
                                 options: [
@@ -352,7 +355,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                     }
                                 ]
                             },
-                            objectFit: 'cover'
+                            objectFit: 'cover',
                         }}
                         ref={screenRef}
                         currentConfig={currentConfig}

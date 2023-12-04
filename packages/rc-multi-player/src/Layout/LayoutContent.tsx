@@ -16,7 +16,7 @@ import styles from "../styles.module.less";
 import LayoutPlayer from "../Player/LayoutPlayer";
 import { PlayerEvents } from "../Player/PlayerTyping";
 
-type LayoutContentProps = { events?: PlayerEvents } & Props;
+type LayoutContentProps = { events?: PlayerEvents, hideAction?: boolean } & Props;
 
 const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any) => {
     const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
@@ -77,11 +77,11 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
     )
 }
 const LayoutContent: React.FC<LayoutContentProps> = (props) => {
-    const { state, dispatch, events } = props;
+    const { state, dispatch, events, hideAction } = props;
     const layoutVal = state[MultiStoreEnum.layout];
     const playerList = state[MultiStoreEnum.playerList];
     return (
-        <div className={styles.content}>
+        <div className={styles.content} style={hideAction ? {height: 'calc(100% - 0px)'} : {}}>
             <LayoutContentGrid
                 events={events}
                 playerList={playerList}

@@ -27,7 +27,9 @@ import Countdown, { countdownRef } from "../Action/Countdown";
 import ScreenshotPicture from "../Action/ScreenshotPicture";
 import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
-import ResolutionSelect from "../components/ResolutionSelect";
+import ResolutionSelect from "../Action/ResolutionSelect";
+import IconBackButton from "../Action/IconBackButton";
+import { isFullscreen, isFunction } from "@gaopeng123/utils";
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
@@ -47,6 +49,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
     const playerRef = useRef<any>(null);
+    const fullRef = useRef<any>(null);
     const countRef = useRef<countdownRef>(null);
     const [loadType, {
         setTrue: setLoadTypeTrue,
@@ -185,6 +188,17 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     protocol,
                     resolution: v
                 });
+            },
+            // 返回处理
+            onBack: () => {
+                fullRef?.current?.click();
+                events?.onBack();
+            },
+            // 最大化最小化
+            onFullChange: (val: boolean) => {
+                if(isFunction(events?.onFullChange)) {
+                    events?.onFullChange(val);
+                }
             }
         }
     );
@@ -208,7 +222,6 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         }
     }));
 
-    console.log('resolution', resolution)
 
     return (
         <ThemeProvider
@@ -222,7 +235,14 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 classes={{ root: `${styles.mainPlayer} ${className}` }}>
                 <ActionColumn
                     className={styles.hoverShow}
-                    left={<Title ellipsis={true}>{title}</Title>}
+                    left={<>
+                        {
+                            videoToolbar?.back === true && isFullscreen() != false
+                                ? <IconBackButton onClick={playerEvents.onBack} style={{ paddingLeft: 12 }}/>
+                                : <></>
+                        }
+                        <Title ellipsis={true}>{title}</Title>
+                    </>}
                     right={
                         <HideFullScreen>
                             {
@@ -287,7 +307,11 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             {
                                 videoToolbar?.resolution !== false
                                     // @ts-ignore
-                                    ? <ResolutionSelect el={divCurrent} value={resolution || videoToolbar?.resolution?.defaultValue} options={videoToolbar?.resolution?.options}
+                                    ? <ResolutionSelect el={divCurrent}
+                                        // @ts-ignore
+                                                        value={resolution || videoToolbar?.resolution?.defaultValue}
+                                        // @ts-ignore
+                                                        options={videoToolbar?.resolution?.options}
                                                         onChange={playerEvents.onResolutionChange}/>
                                     : <></>
                             }
@@ -298,7 +322,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             }
                             {
                                 videoToolbar?.fullScreen !== false
-                                    ? <FullScreenButton el={divCurrent} type={'icon'}/>
+                                    ? <FullScreenButton onChange={playerEvents.onFullChange} ref={fullRef} el={divCurrent} type={'icon'}/>
                                     : <></>
                             }
                         </HideFullScreen>

@@ -49,7 +49,7 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                     </div>
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
-                    <RcMultiPlayer videoToolbar={{ close: false, fullScreen: false, screenshot: false }} className={'RcMultiPlayerTest'}
+                    <RcMultiPlayer videoToolbar={{ close: false, fullScreen: true, screenshot: false }} className={'RcMultiPlayerTest'}
                                    mediaDataSource={mediaDataSource}/>
                 </div>
             </div>

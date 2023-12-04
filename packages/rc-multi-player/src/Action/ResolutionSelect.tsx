@@ -17,7 +17,7 @@ import MenuList from '@mui/material/MenuList';
 import React, { useState, useEffect, useRef } from 'react';
 import { PlayerConfigOptions } from "../Player/PlayerTyping";
 import { on, off } from "@gaopeng123/utils";
-import LoadingIcon from "./LoadingIcon";
+import LoadingIcon from "../components/LoadingIcon";
 
 type ResolutionSelectProps = {
     el?: HTMLElement;
@@ -72,7 +72,7 @@ const ResolutionSelect: React.FC<ResolutionSelectProps> = (props) => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 color={"inherit"}
-                style={{padding: 0}}
+                style={{ padding: 0 }}
             >
                 {
                     loading ? <LoadingIcon/> : props.options?.filter((item) => item.value === props.value)[0]?.label
@@ -88,7 +88,7 @@ const ResolutionSelect: React.FC<ResolutionSelectProps> = (props) => {
             }}>
                 {
                     props.options?.map(({ label, value }) => {
-                        return <MenuItem onClick={(e) => handleClose(e, value)}>{label}</MenuItem>
+                        return <MenuItem key={value} onClick={(e: any) => handleClose(e, value)}>{label}</MenuItem>
                     })
                 }
             </MenuList>

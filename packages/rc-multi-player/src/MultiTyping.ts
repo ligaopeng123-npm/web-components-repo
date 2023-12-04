@@ -86,6 +86,8 @@ export type MultiScreenPlayerProps =
         playType?: 'live' | 'replay',
         actionPlacement?: 'top' | 'bottom';
         defaultSelectedScreen?: 1 | 4 | 6 | 8 | 9 | 12 | 13 | 16 | boolean; // 默认的分屏路数
+        // 隐藏操作列
+        hideAction?: boolean;
         defaultPlayerConfig?: PlayerConfig,
         events?: PlayerEvents,
         currentConfig?: {
