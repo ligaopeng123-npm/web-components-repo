@@ -88,7 +88,7 @@ const ResolutionSelect: React.FC<ResolutionSelectProps> = (props) => {
             }}>
                 {
                     props.options?.map(({ label, value }) => {
-                        return <MenuItem onClick={(e) => handleClose(e, value)}>{label}</MenuItem>
+                        return <MenuItem onClick={(e: any) => handleClose(e, value)}>{label}</MenuItem>
                     })
                 }
             </MenuList>
