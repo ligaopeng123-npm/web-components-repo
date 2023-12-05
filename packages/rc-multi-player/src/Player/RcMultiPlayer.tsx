@@ -196,7 +196,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             },
             // 最大化最小化
             onFullChange: (val: boolean) => {
-                if(isFunction(events?.onFullChange)) {
+                if (isFunction(events?.onFullChange)) {
                     events?.onFullChange(val);
                 }
             }
@@ -322,7 +322,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             }
                             {
                                 videoToolbar?.fullScreen !== false
-                                    ? <FullScreenButton onChange={playerEvents.onFullChange} ref={fullRef} el={divCurrent} type={'icon'}/>
+                                    ?
+                                    <FullScreenButton onChange={playerEvents.onFullChange} ref={fullRef} el={divCurrent}
+                                                      type={'icon'}/>
                                     : <></>
                             }
                         </HideFullScreen>

@@ -153,6 +153,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
     // 暴露数据
     useImperativeHandle(ref, () => ({
         getScreenConfig: () => {
+            const selectedPlayerIndex = state[MultiStoreEnum.selectedPlayer];
             return Object.assign({
                 screenConfig: Object.assign(
                     {},
@@ -160,7 +161,8 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                     ScreenConfigHelper.getConfig(),
                     {
                         selectedScreen: state[MultiStoreEnum.selectedScreen],
-                        selectedPlayer: state[MultiStoreEnum.selectedPlayer],
+                        selectedPlayerIndex: state[MultiStoreEnum.selectedPlayer],
+                        selectedPlayer: state[MultiStoreEnum.playerList][+selectedPlayerIndex]
                     }),
             })
         },

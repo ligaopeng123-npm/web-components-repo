@@ -32,8 +32,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
         const url = document.querySelector('#outlined-basic')?.value;
         // @ts-ignore
         const title = document.querySelector('#outlined-title')?.value;
-        console.log(screenRef.current.getScreenConfig());
         if (url) {
+            console.log(screenRef.current.getScreenConfig())
             setCurrentConfig({
                 mediaDataSource: {
                     url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
@@ -72,6 +72,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
 
 
     useEffect(() => {
+        return;
         if (timeParams) {
             setTimeout(() => {
                 const currentConfig = {
@@ -287,8 +288,8 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     <RcMultiScreenPlayer
                         id={'test'}
                         playType={'replay'}
-                        defaultSelectedScreen={false}
-                        hideAction={true}
+                        defaultSelectedScreen={4}
+                        hideAction={false}
                         events={{
                             onTimeChange: (e: any) => {
                                 setTimeParams(e);

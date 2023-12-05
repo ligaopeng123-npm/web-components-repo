@@ -59,6 +59,22 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         },
         onReload: (playerConfig: PlayerConfig) => {
             if (events?.onReload) {
+                if (playerConfig.resolution) {
+                    // 当重来没有播放过的时候 此时改变状态的时候，将状态先填充上
+                    if (!mediaDataSource) {
+                        dispatch({
+                            type: MultiStoreEnum.playerList,
+                            value: {
+                                index: layoutIndex,
+                                data: {
+                                    mediaDataSource: mediaDataSource,
+                                    playerConfig: Object.assign({ resolution: playerConfig.resolution }, currentPlayerConfig.playerConfig),
+                                }
+                            }
+                        });
+                        return;
+                    }
+                }
                 events?.onReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }, playerConfig.resolution ? { resolution: playerConfig.resolution } : {}));
             }
         },
