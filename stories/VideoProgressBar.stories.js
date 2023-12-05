@@ -21,15 +21,15 @@ export default {
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        // data: { control: 'array' },
+        'scale-level': {control: 'select', options: [0, 1, 2, 3, 4, 5, 6]}
     },
 };
 
 export const props = {
     args: {
-
+        'scale-level': 0
     },
-    render: ()=> {
-        return <video-progress-bar id="video-progress-bar"></video-progress-bar>
+    render: (props) => {
+        return <video-progress-bar scale-level={props['scale-level'] || 0} id="video-progress-bar"></video-progress-bar>
     }
 };
