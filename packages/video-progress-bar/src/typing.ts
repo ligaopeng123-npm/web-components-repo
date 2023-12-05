@@ -23,6 +23,10 @@ export type wheelDeltaLevel =
     | 5
     | 6;
 
+export type VideoProgressBarConfig = {
+    'scale-level'?: wheelDeltaLevel
+}
+
 export type status =
     'loading'
     | 'polling'

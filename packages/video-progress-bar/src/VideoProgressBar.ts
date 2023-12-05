@@ -5,19 +5,51 @@
  */
 import { debounce, formatTimestamp, getTime } from "@gaopeng123/utils";
 import { addEventFactory, createTemplate, removeEventFactory, TIMELINEHEIGHT } from "./utils";
-import { wheelDeltaLevel, status, SCALE_LEVEL, DEFAULT_CURRENT_TIME, VideoOptions } from "./typing";
+import {
+    wheelDeltaLevel,
+    status,
+    SCALE_LEVEL,
+    DEFAULT_CURRENT_TIME,
+    VideoOptions,
+    VideoProgressBarConfig
+} from "./typing";
 import ActiveTime from "./ActiveTime";
 
 
 export default class VideoProgressBar extends HTMLElement {
     shadow: ShadowRoot = null;
-    config = {};
+    config: VideoProgressBarConfig = {
+        'scale-level': 0
+    };
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'open'});
+        this.shadow = this.attachShadow({ mode: 'open' });
         this.shadow.innerHTML = createTemplate(this.config);
         this.init();
+    }
+
+    /**
+     * 暴露哪些属性可以被监听
+     * @returns {string[]}
+     */
+    // @ts-ignore
+    static get observedAttributes() {
+        return [
+            'scale-level'
+        ];
+    }
+
+    /**
+     * 当自定义元素的一个属性被增加、移除或更改时被调用。
+     * 需要setAttribute 才能被触发
+     */
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+        if (oldValue !== newValue) {
+            if (name === 'scale-level') {
+                this._wheelDelta = +newValue;
+            }
+        }
     }
 
     init() {
@@ -134,7 +166,7 @@ export default class VideoProgressBar extends HTMLElement {
      * @param e
      */
     _onmouseup(e: any) {
-        this.__dragStartEvent && this.setDateTime({status: 'loading'});
+        this.__dragStartEvent && this.setDateTime({ status: 'loading' });
         /**
          * video注册的也有事件 此处要多加个判断
          */
@@ -197,7 +229,7 @@ export default class VideoProgressBar extends HTMLElement {
     afterConnectedFn() {
         this.setCanvasStyle();
         this.startTime = this.defaultCurrentTime;
-        this.initialize({status: 'loading'});
+        this.initialize({ status: 'loading' });
         this.setLevelValue();
         this.draw();
     }
@@ -219,7 +251,7 @@ export default class VideoProgressBar extends HTMLElement {
          * 避免外部注册过晚 接收不到
          */
         setTimeout(() => {
-            this.sendToOutside({status: 'loading'});
+            this.sendToOutside({ status: 'loading' });
         })
     }
 
@@ -463,7 +495,7 @@ export default class VideoProgressBar extends HTMLElement {
     initVideoOptions(data: VideoOptions) {
         this.__periods = data?.periods;
         this.defaultCurrentTime = getTime(data.currentTime);
-        const status = data?.currentTime !== this.startTime ? {status: 'reset'} : null;
+        const status = data?.currentTime !== this.startTime ? { status: 'reset' } : null;
         this.startTime = data.currentTime;
         this.initialize(status);
     }
@@ -489,12 +521,12 @@ export default class VideoProgressBar extends HTMLElement {
      * 分屏 每个小块切换时触发
      */
     onSplitScreenChangeSubscribe({
-        data: {
-            type,
-            value,
-            videoOptions
-        }
-    }: any) {
+                                     data: {
+                                         type,
+                                         value,
+                                         videoOptions
+                                     }
+                                 }: any) {
         this.reset();
         this.startTime = this.defaultCurrentTime;
         this.initialize(null);
@@ -549,10 +581,10 @@ export default class VideoProgressBar extends HTMLElement {
         if (e?.status === 'loading') {
             // 暂停时间
             this.stop();
-            this.publish('loading', {type: true});
+            this.publish('loading', { type: true });
             // 如果一直未响应 则5秒后移除loading
             setTimeout(() => {
-                this.publish('loading', {type: false});
+                this.publish('loading', { type: false });
             }, 5000);
         }
     };
@@ -583,7 +615,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 接收重置指令
      * @param data
      */
-    resetSubscribe({data: {type}}: any) {
+    resetSubscribe({ data: { type } }: any) {
         if (type === 'timeline') {
             this.reset();
         }
@@ -604,7 +636,7 @@ export default class VideoProgressBar extends HTMLElement {
         this.startTime = null;
         this.endTime = null;
         this.__periods = null;
-        this.setDateTime({status: 'reset'});
+        this.setDateTime({ status: 'reset' });
         this.setLevelValue();
         // this.draw();
     }
@@ -617,8 +649,8 @@ export default class VideoProgressBar extends HTMLElement {
         if (this.checkDatetime()) {
             this.__dragCurrentX = (this.currentTime - new Date(this.datetime.value).getTime()) * this.timelineWidth / this.scaleLevelV;
             this.dragStart(null);
-            this.initialize({status: 'loading'});
-            this.setDateTimeFn({status: 'loading'}, e.detail);
+            this.initialize({ status: 'loading' });
+            this.setDateTimeFn({ status: 'loading' }, e.detail);
         }
     };
 
@@ -657,11 +689,11 @@ export default class VideoProgressBar extends HTMLElement {
      * @param value
      */
     timelineSubscribe({
-        data: {
-            type,
-            value
-        }
-    }: any) {
+                          data: {
+                              type,
+                              value
+                          }
+                      }: any) {
         if (type === 'needle') {
             switch (value) {
                 case 'start':
@@ -672,7 +704,7 @@ export default class VideoProgressBar extends HTMLElement {
                     break;
                 //  重新拉取新数据
                 case 'restart':
-                    this.sendToOutside({status: 'loading'});
+                    this.sendToOutside({ status: 'loading' });
                     break;
                 default:
                     console.log(`needle的type: ${value}`);
@@ -686,7 +718,7 @@ export default class VideoProgressBar extends HTMLElement {
      */
     __pollingTimer: any = null;
 
-    stop = ()=> {
+    stop = () => {
         this.clearPollingTime();
     }
 
@@ -758,7 +790,7 @@ export default class VideoProgressBar extends HTMLElement {
             // 用完销毁
             this.__periodsTime = 1;
             this.dragStart(null);
-            this.setDateTime({status: 'polling'});
+            this.setDateTime({ status: 'polling' });
             this._onmouseup(null);
         }, 1000 / this.__intervalSpeed);
     }
@@ -827,9 +859,9 @@ export default class VideoProgressBar extends HTMLElement {
     drawScale() {
         this.drawLine(0, 0, this.timelineWidth, 0, '#f7ff2f')
         this.scaleData.forEach(({
-            time,
-            x
-        }, index) => {
+                                    time,
+                                    x
+                                }, index) => {
             const y = 9;
             this.drawLine(x, 0, x, y, '#fffdd9');
             this.drawText(time, x, y + 12, '#ffffff');
@@ -873,9 +905,9 @@ export default class VideoProgressBar extends HTMLElement {
      * @param x
      */
     drawSingleSchedule({
-        w,
-        x
-    }: any) {
+                           w,
+                           x
+                       }: any) {
         this._context.save();
         this._context.fillStyle = 'rgba(174,218,255,.7)';
         this._context.fillRect(x, 22, w, 15);
