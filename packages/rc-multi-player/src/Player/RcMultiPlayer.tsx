@@ -44,7 +44,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         extraParams,
         maxPlayerTime,
         config,
-        videoToolbar
+        videoToolbar,
+        hideToolbarInFullScreen
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -55,6 +56,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         setTrue: setLoadTypeTrue,
         setFalse: setLoadTypeFalse
     }] = useBoolean(true);
+
+    const [_isFullscreen, setIsFullscreen] = useState(isFullscreen());
 
     /**
      * 重置倒计时参数
@@ -196,6 +199,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             },
             // 最大化最小化
             onFullChange: (val: boolean) => {
+                if (videoToolbar?.back) {
+                    setIsFullscreen(isFullscreen());
+                }
                 if (isFunction(events?.onFullChange)) {
                     events?.onFullChange(val);
                 }
@@ -222,7 +228,6 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         }
     }));
 
-
     return (
         <ThemeProvider
             theme={DefaultTheme}>
@@ -237,7 +242,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     className={styles.hoverShow}
                     left={<>
                         {
-                            videoToolbar?.back === true && isFullscreen() != false
+                            videoToolbar?.back === true && _isFullscreen
                                 ? <IconBackButton onClick={playerEvents.onBack} style={{ paddingLeft: 12 }}/>
                                 : <></>
                         }
@@ -303,16 +308,17 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 <ActionColumn
                     className={`${styles.hoverShow} ${styles.bottom}`}
                     right={
-                        <HideFullScreen>
+                        <HideFullScreen hide={hideToolbarInFullScreen}>
                             {
-                                videoToolbar?.resolution !== false
+                                videoToolbar?.resolution === true
                                     // @ts-ignore
-                                    ? <ResolutionSelect el={divCurrent}
+                                    ? <ResolutionSelect
+                                        el={divCurrent}
                                         // @ts-ignore
-                                                        value={resolution || videoToolbar?.resolution?.defaultValue}
+                                        value={resolution || videoToolbar?.resolution?.defaultValue}
                                         // @ts-ignore
-                                                        options={videoToolbar?.resolution?.options}
-                                                        onChange={playerEvents.onResolutionChange}/>
+                                        options={videoToolbar?.resolution?.options}
+                                        onChange={playerEvents.onResolutionChange}/>
                                     : <></>
                             }
                             {

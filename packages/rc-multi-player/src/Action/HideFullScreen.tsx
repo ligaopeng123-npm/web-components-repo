@@ -17,11 +17,15 @@ import { isFullscreen } from "@gaopeng123/utils";
 type HideFullScreenProps = {
     children: any;
     style?: React.CSSProperties;
+    hide?: boolean;
 };
 const HideFullScreen: React.FC<HideFullScreenProps> = (props) => {
     const [hide, { setTrue, setFalse }] = useBoolean(isFullscreen());
     const { children, style } = props;
     useEffect(() => {
+        if (props.hide === false) {
+            return;
+        }
         const onFullscreenchange = (e: any) => {
             if (isFullscreen() === false) {
                 setFalse();

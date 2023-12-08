@@ -49,8 +49,16 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                     </div>
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
-                    <RcMultiPlayer videoToolbar={{ close: false, fullScreen: true, screenshot: false }} className={'RcMultiPlayerTest'}
-                                   mediaDataSource={mediaDataSource}/>
+                    <RcMultiPlayer
+                        events={{
+                            onFullChange: (v) => {
+                                console.log(v);
+                            }
+                        }}
+                        hideToolbarInFullScreen={false}
+                        videoToolbar={{ close: false, fullScreen: true, screenshot: false, back: true }}
+                        className={'RcMultiPlayerTest'}
+                        mediaDataSource={mediaDataSource}/>
                 </div>
             </div>
             <Snackbar

@@ -75,9 +75,9 @@ export type PlayerEvents = {
     // 时间变更参数
     onTimeChange?: (playerConfig?: PlayerConfig) => void;
     // 返回事件
-    onBack?: ()=> void;
+    onBack?: () => void;
     // 最大化 最下化
-    onFullChange?: (val: boolean)=> void;
+    onFullChange?: (val: boolean) => void;
 }
 
 export type Protocol =
@@ -164,6 +164,7 @@ export type RcMultiPlayerProps =
     {
         title?: string | ReactNode;
     }
+    & { hideToolbarInFullScreen?: boolean }
     & DomStyle
     & RcFlvPlayerProps
     & PlayerConfig;
