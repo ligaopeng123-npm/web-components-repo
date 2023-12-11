@@ -3,7 +3,7 @@
  * @作用: 回放按钮开发
  * @作者: pgli
  */
-import { debounce, formatTimestamp, getTime } from "@gaopeng123/utils";
+import { debounce, formatTimestamp, getTime, isMobile } from "@gaopeng123/utils";
 import { addEventFactory, createTemplate, removeEventFactory, TIMELINEHEIGHT } from "./utils";
 import {
     wheelDeltaLevel,
@@ -19,14 +19,14 @@ import ActiveTime from "./ActiveTime";
 export default class VideoProgressBar extends HTMLElement {
     shadow: ShadowRoot = null;
     config: VideoProgressBarConfig = {
-        'scale-level': 0
+        'scale-level': 0,
+        'hide-fast': false,
+        'hide-speed': false,
     };
 
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'open' });
-        this.shadow.innerHTML = createTemplate(this.config);
-        this.init();
     }
 
     /**
@@ -36,7 +36,9 @@ export default class VideoProgressBar extends HTMLElement {
     // @ts-ignore
     static get observedAttributes() {
         return [
-            'scale-level'
+            'scale-level',
+            'hide-fast',
+            'hide-speed',
         ];
     }
 
@@ -48,6 +50,9 @@ export default class VideoProgressBar extends HTMLElement {
         if (oldValue !== newValue) {
             if (name === 'scale-level') {
                 this._wheelDelta = +newValue;
+            } else {
+                // @ts-ignore
+                this.config[name] = newValue;
             }
         }
     }
@@ -175,7 +180,7 @@ export default class VideoProgressBar extends HTMLElement {
         this.__dragX += this.__dragCurrentX;
         this.__dragCurrentX = null;
         this.endTime = this.currentTime;
-        this.datetime.canClick();
+        this.datetime?.canClick();
     }
 
     /**
@@ -184,12 +189,19 @@ export default class VideoProgressBar extends HTMLElement {
      */
     _onmousemove(e: any) {
         if (this.__dragStartEvent) {
-            const beginX = this.__dragStartEvent.offsetX;
-            const endX = e.offsetX;
+            const beginX = isMobile() ? this.__dragStartEvent.touches[0].clientX : this.__dragStartEvent.offsetX;
+            const endX = isMobile() ? e.touches[0].clientX : e.offsetX;
             this.__dragCurrentX = endX - beginX;
             this.dragStart(null);
-            this.datetime.canNotClick();
+            this.datetime?.canNotClick();
         }
+    }
+
+    /**
+     * 如果设置最小值来 则拖拽需要做限制
+     */
+    getTimeFormDrag() {
+
     }
 
     // 点击去抖时间现对短一些 加快响应
@@ -204,10 +216,10 @@ export default class VideoProgressBar extends HTMLElement {
 
     addEvent() {
         addEventFactory(this._canvas, 'mousewheel', this._onmousewheel.bind(this));
-        addEventFactory(this._canvas, 'mousedown', this._onmousedown.bind(this));
-        addEventFactory(this._canvas, 'mousemove', this._onmousemove.bind(this));
-        addEventFactory(this._canvas, 'mouseout', this._onmouseup.bind(this));
-        addEventFactory(this._canvas, 'mouseup', this._onmouseup.bind(this));
+        addEventFactory(this._canvas, isMobile() ? 'touchstart' : 'mousedown', this._onmousedown.bind(this));
+        addEventFactory(this._canvas, isMobile() ? 'touchmove' : 'mousemove', this._onmousemove.bind(this));
+        addEventFactory(this._canvas, isMobile() ? 'touchleave' : 'mouseout', this._onmouseup.bind(this));
+        addEventFactory(this._canvas, isMobile() ? 'touchend' : 'mouseup', this._onmouseup.bind(this));
         addEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick.bind(this));
         addEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick.bind(this));
         addEventFactory(this.datetime, 'change', this.onchange.bind(this));
@@ -216,10 +228,10 @@ export default class VideoProgressBar extends HTMLElement {
 
     removeEvent() {
         removeEventFactory(this._canvas, 'mousewheel', this._onmousewheel);
-        removeEventFactory(this._canvas, 'mousedown', this._onmousedown);
-        removeEventFactory(this._canvas, 'mousemove', this._onmousemove);
-        removeEventFactory(this._canvas, 'mouseout', this._onmouseup);
-        removeEventFactory(this._canvas, 'mouseup', this._onmouseup);
+        removeEventFactory(this._canvas, isMobile() ? 'touchstart' : 'mousedown', this._onmousedown);
+        removeEventFactory(this._canvas, isMobile() ? 'touchmove' : 'mousemove', this._onmousemove);
+        removeEventFactory(this._canvas, isMobile() ? 'touchleave' : 'mouseout', this._onmouseup);
+        removeEventFactory(this._canvas, isMobile() ? 'touchend' : 'mouseup', this._onmouseup);
         removeEventFactory(this.shadow.querySelector('#add'), 'click', this.onAddClick);
         removeEventFactory(this.shadow.querySelector('#del'), 'click', this.onDelClick);
         removeEventFactory(this.datetime, 'change', this.onchange.bind(this));
@@ -238,6 +250,8 @@ export default class VideoProgressBar extends HTMLElement {
      * dom结构插入后
      */
     connectedCallback() {
+        this.shadow.innerHTML = createTemplate(this.config);
+        this.init();
         this.addEvent();
         this.afterConnectedCallback();
     }
@@ -449,7 +463,7 @@ export default class VideoProgressBar extends HTMLElement {
                 isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
                 timestamp: currentTime,
                 date: formatTimestamp(currentTime),
-                'speed-value': this.datetime.speed
+                'speed-value': this.datetime?.speed
             }, value));
         }
     }
@@ -552,7 +566,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 时间框赋值
      */
     setTime(time: any) {
-        this.datetime.setAttribute('time-value', formatTimestamp(time));
+        this.datetime?.setAttribute('time-value', formatTimestamp(time));
     };
 
     /**
@@ -665,7 +679,7 @@ export default class VideoProgressBar extends HTMLElement {
      * 检查时间是否合法 不合法给提示 并不匀速下发
      */
     checkDatetime = () => {
-        return this.datetime.value;
+        return this.datetime?.value;
     };
 
     /**

@@ -24,7 +24,9 @@ export type wheelDeltaLevel =
     | 6;
 
 export type VideoProgressBarConfig = {
-    'scale-level'?: wheelDeltaLevel
+    'scale-level'?: wheelDeltaLevel,
+    'hide-fast'?: boolean,
+    'hide-speed'?: boolean,
 }
 
 export type status =

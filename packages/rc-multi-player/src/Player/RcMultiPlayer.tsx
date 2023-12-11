@@ -196,7 +196,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             // 返回处理
             onBack: () => {
                 fullRef?.current?.click();
-                events?.onBack();
+                if (events?.onBack) {
+                    events?.onBack();
+                }
             },
             // 最大化最小化
             onFullChange: (val: boolean) => {

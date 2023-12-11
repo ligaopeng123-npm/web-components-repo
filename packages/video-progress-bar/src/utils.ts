@@ -12,7 +12,7 @@
  *
  **********************************************************************/
 
-export const TIMELINEHEIGHT = 60;
+export const TIMELINEHEIGHT = 100;
 export const transparentColor = 'rgba(0,0,0,0)';
 
 export const BG = '#000000';
@@ -27,6 +27,8 @@ export const removeEventFactory = (dom: any, type: string, fn: any, useCapture =
 }
 
 export const createTemplate = (config: any) => {
+    const hideFast = config['hide-fast'];
+    const hideSpeed = config['hide-speed'];
     return `
         <style>
              /*时间拖动区域*/
@@ -86,17 +88,17 @@ export const createTemplate = (config: any) => {
             
             .active {
                 text-align: center;
-                height: 60px;
+                height: ${TIMELINEHEIGHT}px;
                 -webkit-user-select: none; /* Safari */
                 user-select: none;
             }
         </style>
-       <div id="timeline" class="timeline">
+        <div id="timeline" class="timeline">
         <div class="timeline-drag">
             <canvas id="timeline-drag-canvas"></canvas>
         </div>
         <div class="active">
-            <video-progress-bar-active-time></video-progress-bar-active-time>
+            <video-progress-bar-active-time hide-fast="${hideFast}" hide-speed="${hideSpeed}"></video-progress-bar-active-time>
         </div>
         
         <div class="timeline-datetime-level">

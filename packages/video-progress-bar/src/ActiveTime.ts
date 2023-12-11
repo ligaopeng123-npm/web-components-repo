@@ -16,13 +16,15 @@ import backward from "./assets/backward.svg";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import { Mandarin } from "flatpickr/dist/l10n/zh.js"
-import { BD, BG } from "./utils";
+import { BD, BG, TIMELINEHEIGHT } from "./utils";
 import { formatTimestamp } from "@gaopeng123/utils";
 
 type ActiveTimeConfig = {
     'time-value': string;
     'forward-value': string;
     'speed-value': string;
+    'hide-fast'?: boolean,
+    'hide-speed'?: boolean,
 }
 
 const forwardOptions = [{
@@ -63,18 +65,21 @@ class ActiveTime extends HTMLElement {
         'time-value': '',
         'forward-value': '60',
         'speed-value': '1',
+        'hide-fast': false,
+        'hide-speed': false,
     }
 
     __oldConfig: ActiveTimeConfig = {
         'time-value': '',
         'forward-value': '60',
         'speed-value': '1',
+        'hide-fast': false,
+        'hide-speed': false,
     }
 
     constructor() {
         super();
-        this.shadow = this.attachShadow({mode: 'open'});
-        this.shadow.innerHTML = this.createTemplate();
+        this.shadow = this.attachShadow({ mode: 'open' });
     }
 
     onChange(currentType: CurrentConfigType, value?: any) {
@@ -87,6 +92,7 @@ class ActiveTime extends HTMLElement {
     }
 
     connectedCallback() {
+        this.shadow.innerHTML = this.createTemplate();
         this.initFlatpickr();
         this.shadow.querySelector('#speed').addEventListener('onChange', this.onSpeedChange);
         this.shadow.querySelector('#forward').addEventListener('onChange', this.onForwardChange);
@@ -114,6 +120,8 @@ class ActiveTime extends HTMLElement {
             'time-value',
             'forward-value',
             'speed-value',
+            'hide-fast',
+            'hide-speed',
         ];
     }
 
@@ -125,7 +133,9 @@ class ActiveTime extends HTMLElement {
         if (oldValue !== newValue) {
             this.__config[name as CurrentConfigType] = newValue;
         }
-        this.setAllValue();
+        setTimeout(() => {
+            this.setAllValue();
+        })
     }
 
     get value() {
@@ -231,6 +241,7 @@ class ActiveTime extends HTMLElement {
     }
 
     createTemplate() {
+        console.log(this.__config)
         return `
             <style>
             /*时间弹窗*/
@@ -261,14 +272,13 @@ class ActiveTime extends HTMLElement {
             
             .time {
                 height: 22px;
-                padding-top: 38px;
+                padding-top: ${TIMELINEHEIGHT - 22}px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 color: #ffffff;
                 -webkit-user-select: none; /* Safari */
                 user-select: none;
-              
             }
             
             .disabled {
@@ -279,15 +289,16 @@ class ActiveTime extends HTMLElement {
                 position: relative;
                 top: -24.5px;
                 height: 0px;
+                line-height: 60px;
             }
             </style>
              <div class="time">
-                <div style="width: 60px"></div>
-                <video-progress-bar-forward-select id="speed" default-value="1" options=${JSON.stringify(speedOptions)}></video-progress-bar-forward-select>
+<!--                <div style="width: 60px"></div>-->
+                <video-progress-bar-forward-select style="display: ${this.__config['hide-speed'] ? 'none' : ''};" id="speed" default-value="1" options=${JSON.stringify(speedOptions)}></video-progress-bar-forward-select>
                 <input id="datetime"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
-                <img id="bth-backward"  title="快退" src="${backward}" />
-                <video-progress-bar-forward-select id="forward" default-value="60" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
-                <img id="bth-forward" title="快进" src="${forward}" />
+                <img id="bth-backward" style="display: ${this.__config['hide-speed'] ? 'none' : ''};"  title="快退" src="${backward}" />
+                <video-progress-bar-forward-select style="display: ${this.__config['hide-speed'] ? 'none' : ''};" id="forward" default-value="60" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
+                <img id="bth-forward"  style="display: ${this.__config['hide-speed'] ? 'none' : ''};" title="快进" src="${forward}" />
             </div>
         `
     }
