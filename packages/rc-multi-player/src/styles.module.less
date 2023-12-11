@@ -61,47 +61,47 @@
 }
 
 .bottomMain {
-  height: @ACTION-HEIGHT;
-  position: relative;
-  z-index: 1;
+    height: @ACTION-HEIGHT;
+    position: relative;
+    z-index: 1;
 
-  .bottom {
-    min-width: 32px;
-    color: var(--multi-player-text-color, @multi-player-text-color);
-  }
-
-  .bottomContent {
-    display: flex;
-    padding: 0px @WIDTH / 2;
-    align-items: center;
-
-    .left {
-      min-width: 1px;
-      display: flex;
-      flex-shrink: 1;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+    .bottom {
+        min-width: 32px;
+        color: var(--multi-player-text-color, @multi-player-text-color);
     }
 
-    .center {
-      min-width: 1px;
-      display: flex;
-      flex-shrink: 0;
+    .bottomContent {
+        display: flex;
+        padding: 0px @WIDTH / 2;
+        align-items: center;
+
+        .left {
+            min-width: 1px;
+            display: flex;
+            flex-shrink: 1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .center {
+            min-width: 1px;
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        .right {
+            min-width: 34px;
+            display: flex;
+            justify-content: flex-end;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
     }
 
-    .right {
-      min-width: 34px;
-      display: flex;
-      justify-content: flex-end;
-      margin-left: auto;
-      flex-shrink: 0;
+    .hr {
+        border-color: var(--multi-player-border-color, @multi-player-border-color);
     }
-  }
-
-  .hr {
-    border-color: var(--multi-player-border-color, @multi-player-border-color);
-  }
 }
 
 .menu {
@@ -123,9 +123,9 @@
 
 // webview中全屏处理
 .mobileFull {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 0px;
-    top: 0px;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    left: 0px !important;
+    top: 0px !important;
 }
