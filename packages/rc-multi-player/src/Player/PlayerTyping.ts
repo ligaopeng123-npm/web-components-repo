@@ -164,7 +164,7 @@ export type RcMultiPlayerProps =
     {
         title?: string | ReactNode;
     }
-    & { hideToolbarInFullScreen?: boolean }
+    & { hideToolbarInFullScreen?: boolean, timeDrag?: ReactNode }
     & DomStyle
     & RcFlvPlayerProps
     & PlayerConfig;

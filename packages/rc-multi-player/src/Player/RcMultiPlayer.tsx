@@ -45,7 +45,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         maxPlayerTime,
         config,
         videoToolbar,
-        hideToolbarInFullScreen
+        hideToolbarInFullScreen,
+        timeDrag
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -218,7 +219,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
      */
     useImperativeHandle(ref, () => ({
         close: () => {
-
+            playerRef.current?.close();
+            loadRef.current?.show();
         },
         reload: () => {
 
@@ -309,6 +311,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     className={`${styles.hoverShow} ${styles.bottom}`}
                     right={
                         <HideFullScreen hide={hideToolbarInFullScreen}>
+                            {
+
+                            }
                             {
                                 videoToolbar?.resolution === true
                                     // @ts-ignore
