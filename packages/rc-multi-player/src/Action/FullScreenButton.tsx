@@ -14,10 +14,11 @@ import Button from "@mui/material/Button";
 import styles from "../styles.module.less";
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import { autoFullscreen, isFullscreen } from "@gaopeng123/utils";
+import { autoFullscreen, isFullscreen, isMobile } from "@gaopeng123/utils";
 import { useResize } from "@gaopeng123/hooks";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from '@mui/material/Tooltip';
+
 
 type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
@@ -41,21 +42,35 @@ const FullScreenButton: React.ForwardRefExoticComponent<FullScreenButtonProps & 
         const onClick = (e: any) => {
             e?.stopPropagation();
             const autoEl: any = el || document.querySelector(`#${fullScreenId || 'multi-screen-player'}`);
-            autoFullscreen(autoEl, {}, ({ type }: any) => {
-                //fullscreen 进入全屏
-                //noFullscreen 退出全屏
-                setFullType(type === 'fullscreen');
-            });
+            if (isMobile()) {
+                if (fullType) {
+                    autoEl.classList.remove(styles.mobileFull);
+                } else {
+                    autoEl.classList.add(styles.mobileFull);
+                }
+                setFullType(!fullType);
+                if (onChange) {
+                    onChange(!fullType);
+                }
+            } else {
+                autoFullscreen(autoEl, {}, ({ type }: any) => {
+                    //fullscreen 进入全屏
+                    //noFullscreen 退出全屏
+                    setFullType(type === 'fullscreen');
+                });
+            }
         }
 
         const windowResize = useResize();
 
         useEffect(() => {
-            const fullType = isFullscreen() ? true : false;
-            if (onChange) {
-                onChange(fullType);
+            if (!isMobile()) {
+                const fullType = isFullscreen() ? true : false;
+                if (onChange) {
+                    onChange(fullType);
+                }
+                setFullType(fullType)
             }
-            setFullType(fullType)
         }, [windowResize]);
 
         useImperativeHandle(ref, () => ({

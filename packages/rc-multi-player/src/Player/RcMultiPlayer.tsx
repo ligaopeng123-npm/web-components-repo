@@ -203,7 +203,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             // 最大化最小化
             onFullChange: (val: boolean) => {
                 if (videoToolbar?.back) {
-                    setIsFullscreen(isFullscreen());
+                    setIsFullscreen(val);
                 }
                 if (isFunction(events?.onFullChange)) {
                     events?.onFullChange(val);
