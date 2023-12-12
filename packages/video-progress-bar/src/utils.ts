@@ -11,8 +11,6 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-
-export const TIMELINEHEIGHT = 100;
 export const transparentColor = 'rgba(0,0,0,0)';
 
 export const BG = '#000000';
@@ -26,7 +24,7 @@ export const removeEventFactory = (dom: any, type: string, fn: any, useCapture =
     dom && dom.removeEventListener(type, fn, useCapture);
 }
 
-export const createTemplate = (config: any) => {
+export const createTemplate = (config: any, timeLine?: any) => {
     const hideFast = config['hide-fast'];
     const hideSpeed = config['hide-speed'];
     return `
@@ -34,8 +32,8 @@ export const createTemplate = (config: any) => {
              /*时间拖动区域*/
             .timeline {
                 position: relative;
-                height: ${TIMELINEHEIGHT}px;
-                line-height: ${TIMELINEHEIGHT}px;
+                height: 100%;
+                line-height: 100%;
                 text-align: center;
                 background-color: #000000;
                 overflow: hidden;
@@ -49,11 +47,11 @@ export const createTemplate = (config: any) => {
            
              .timeline-datetime-level {
                 position: absolute;
-                font-size: 12px;
-                bottom: 24px;
-                right: 0px;
-                height: 12px;
-                line-height: 12px;
+                font-size: 16px;
+                bottom: 1px;
+                right: 20px;
+                height: 18px;
+                line-height: 18px;
                 border: 1px solid ${BD};
                 background-color: ${BG};
                 border-radius: 2px;
@@ -81,14 +79,14 @@ export const createTemplate = (config: any) => {
             .disabled-input {
                  height: 16px;
                  width: 150px;
-                 top: ${TIMELINEHEIGHT - 16}px;
+                 top: calc(100% - 16px);
                  position: absolute;
                  left: calc(50% - 86px);
             }
             
             .active {
                 text-align: center;
-                height: ${TIMELINEHEIGHT}px;
+                height: 22px;
                 -webkit-user-select: none; /* Safari */
                 user-select: none;
             }

@@ -1,3 +1,5 @@
+
+
 lockfileVersion: 5.4
 
 overrides:
@@ -1351,7 +1353,8 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/utils': ^1.1.7
+      '@gaopeng123/utils': 1.1.13-alpha.2
+      '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
       autoprefixer: ^10.4.7
       babel-loader: ^8.2.2
@@ -1377,12 +1380,13 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/utils': 1.1.8
+      '@gaopeng123/utils': 1.1.13-alpha.2
       flatpickr: 4.6.13
     devDependencies:
       '@babel/core': 7.20.5
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.5
       '@babel/preset-env': 7.20.2_@babel+core@7.20.5
+      '@rollup/plugin-image': 2.1.1
       '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
       autoprefixer: 10.4.13
       babel-loader: 8.3.0_ztqwsvkb6z73luspkai6ilstpu

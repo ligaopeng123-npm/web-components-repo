@@ -27,6 +27,7 @@ export type VideoProgressBarConfig = {
     'scale-level'?: wheelDeltaLevel,
     'hide-fast'?: boolean,
     'hide-speed'?: boolean,
+    'height'?: number,
 }
 
 export type status =
@@ -72,4 +73,4 @@ export const SCALE_LEVEL = {
 
 export const DEFAULT_CURRENT_TIME = getTime(`${formatTimestamp(Date.now(), 'yyyy-MM-dd')} 00:00:00`);
 
-export type VideoOptions = { periods: Array<{ startTime: string, endTime: string }>, currentTime: string | number | Date, 'speed-value'?: string , 'forward-value'?: string };
+export type VideoOptions = { periods: Array<{ startTime: string, endTime: string }>, currentTime: string | number | Date, 'speed-value'?: string, 'forward-value'?: string, minTime?: string, maxTime?: string };

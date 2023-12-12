@@ -8,29 +8,28 @@
     <style>
         #root {
             width: 100%;
-            height: 60px;
+            height: 100px;
         }
     </style>
 </head>
 
 <body>
 <div id="root">
-    <div style="height: 400px;">
-        <video-progress-bar-forward-select id="speed"></video-progress-bar-forward-select>
-    </div>
-    <video-progress-bar hide-speed="true" hide-fast="true" scale-level="6" id="bar"></video-progress-bar>
+<!--    <div style="height: 400px;">-->
+<!--        <video-progress-bar-forward-select id="speed"></video-progress-bar-forward-select>-->
+<!--    </div>-->
+    <video-progress-bar hide-speed="false" hide-fast="false" scale-level="0" id="bar"></video-progress-bar>
 </div>
 <script>
     window.onload = function () {
         setTimeout(()=> {
-            document.querySelector('#bar').start();
+            document.querySelector('#root').style.height = '60px';
+            document.querySelector('video-progress-bar').onResizeSubscribe();
         }, 3000);
         document.querySelector('#bar').addEventListener('timeChange', (e)=> {
-            console.log(222, e)
         });
         document.querySelector('#speed').setAttribute('options', JSON.stringify([{label:'1',value:1,}, {label:'2',value:2,}]))
         document.querySelector('#speed').addEventListener('onChange', ()=> {
-            console.log(111)
         });
     }
 </script>
