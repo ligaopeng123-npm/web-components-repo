@@ -24,7 +24,7 @@ type FullScreenButtonProps = {
     onChange?: (v: boolean) => void;
     el?: HTMLElement;
     type?: 'icon' | 'auto';
-    style?: React.CSSProperties;
+    bthStyle?: React.CSSProperties;
     fullScreenId?: string;
 };
 
@@ -35,7 +35,7 @@ const FullScreenButton: React.ForwardRefExoticComponent<FullScreenButtonProps & 
             el,
             onChange,
             type,
-            style,
+            bthStyle,
             fullScreenId
         } = props;
         const [fullType, setFullType] = useState<boolean>(isFullscreen());
@@ -88,7 +88,7 @@ const FullScreenButton: React.ForwardRefExoticComponent<FullScreenButtonProps & 
                             // @ts-ignore
                             color="iconButton"
                             size={'small'}
-                            style={style}
+                            style={bthStyle}
                         >
                             {fullType ?
                                 <FullscreenExitIcon/> :
@@ -102,7 +102,7 @@ const FullScreenButton: React.ForwardRefExoticComponent<FullScreenButtonProps & 
                                 <FullscreenIcon/>}
                             size="small"
                             className={styles.bottom}
-                            style={style}
+                            style={bthStyle}
                         >
                             {fullType ? '退出全屏' : '全屏'}
                         </Button>

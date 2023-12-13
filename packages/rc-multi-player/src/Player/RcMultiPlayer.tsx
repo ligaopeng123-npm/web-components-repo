@@ -247,7 +247,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     left={<>
                         {
                             videoToolbar?.back === true && _isFullscreen
-                                ? <IconBackButton onClick={playerEvents.onBack} style={{ paddingLeft: 12 }}/>
+                                ? <IconBackButton onClick={playerEvents.onBack} style={{ width: 56 }}/>
                                 : <></>
                         }
                         <Title ellipsis={true}>{title}</Title>
@@ -314,9 +314,6 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     right={
                         <HideFullScreen hide={hideToolbarInFullScreen}>
                             {
-
-                            }
-                            {
                                 videoToolbar?.resolution === true
                                     // @ts-ignore
                                     ? <ResolutionSelect
@@ -335,9 +332,12 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             }
                             {
                                 videoToolbar?.fullScreen !== false
-                                    ?
-                                    <FullScreenButton onChange={playerEvents.onFullChange} ref={fullRef} el={divCurrent}
-                                                      type={'icon'}/>
+                                    ? <FullScreenButton
+                                        bthStyle={{ width: 56 }}
+                                        onChange={playerEvents.onFullChange}
+                                        ref={fullRef}
+                                        el={divCurrent}
+                                        type={'icon'}/>
                                     : <></>
                             }
                         </HideFullScreen>

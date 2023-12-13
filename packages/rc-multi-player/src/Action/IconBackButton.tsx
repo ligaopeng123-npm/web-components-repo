@@ -19,6 +19,7 @@ type IconBackButtonProps = {
     style?: React.CSSProperties;
 };
 const IconBackButton: React.FC<IconBackButtonProps> = (props) => {
+    console.log(props);
     return (
         <Tooltip title={'返回'}>
             <IconButton
