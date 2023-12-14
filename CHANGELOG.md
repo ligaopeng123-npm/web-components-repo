@@ -1,8 +1,406 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15-alpha.2...v) (2023-08-09)
+# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.4...v) (2023-12-14)
 
 
 ### Features
 
+* RcMultiPlayer样式调整[移动端和pc端按钮样式区分] ([b53b91e](https://github.com/ligaopeng123-npm/web-components-repo/commit/b53b91e1fbc7858ca720d2ba8eb582d6c6d05851))
+
+
+
+## [1.3.4-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.3...v1.3.4-alpha.4) (2023-12-13)
+
+
+### Features
+
+* RcMultiPlayer样式调整 ([c3999a2](https://github.com/ligaopeng123-npm/web-components-repo/commit/c3999a2b282e3ad37fbe6a4e6a866d025e82ded2))
+
+
+
+## [1.3.4-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.2...v1.3.4-alpha.3) (2023-12-12)
+
+
+### Features
+
+* @gaopeng123/video-progress-bar 限制最小值和最大值 ([5ee153e](https://github.com/ligaopeng123-npm/web-components-repo/commit/5ee153eaf69a69b6bc14c6c556d38483e0c2fceb))
+
+
+
+## [1.3.4-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.1...v1.3.4-alpha.2) (2023-12-11)
+
+
+### Features
+
+* RcMultiPlayer 全屏移动端支持 样式支持优先级 ([7e737db](https://github.com/ligaopeng123-npm/web-components-repo/commit/7e737db50c00a754aac446e0a2cb1e2b62169c19))
+
+
+
+## [1.3.4-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.0...v1.3.4-alpha.1) (2023-12-11)
+
+
+### Features
+
+* RcMultiPlayer 全屏移动端支持 ([ac05f99](https://github.com/ligaopeng123-npm/web-components-repo/commit/ac05f994718e95cf8d4cceb7dc8e1113a072006d))
+
+
+
+## [1.3.4-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.2...v1.3.4-alpha.0) (2023-12-11)
+
+
+### Features
+
+* video-progress-bar支持移动端 ([f52813a](https://github.com/ligaopeng123-npm/web-components-repo/commit/f52813a4b7c7b08ea009007602a2de3f1d4a0c86))
+* video-progress-bar支持移动端 ([82649ff](https://github.com/ligaopeng123-npm/web-components-repo/commit/82649ff690fe3a6514c0fa63eceae22343d45c80))
+
+
+
+## [1.3.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.1-alpha.1...v1.3.2) (2023-12-11)
+
+
+### Features
+
+* author 替换 ([7573d5b](https://github.com/ligaopeng123-npm/web-components-repo/commit/7573d5bc65c8c852fa347e9d3b35d4a662f4acab))
+* author 替换 ([7b279ec](https://github.com/ligaopeng123-npm/web-components-repo/commit/7b279ecd0cf600545f800f9929e360e40702b251))
+* RcMultiPlayer add timeDrag 移动端支撑 ([0d3b18e](https://github.com/ligaopeng123-npm/web-components-repo/commit/0d3b18e3746233f1631821e7bfa9595d43fd9964))
+
+
+
+## [1.3.1-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.1-alpha.0...v1.3.1-alpha.1) (2023-12-08)
+
+
+### Features
+
+* RcMultiPlayer 移动端支撑 ([9718575](https://github.com/ligaopeng123-npm/web-components-repo/commit/971857546ed67113df1d2de75c968735c943da10))
+* video-progress-bar add props 'scale-level' ([24b9c59](https://github.com/ligaopeng123-npm/web-components-repo/commit/24b9c59177667f4a671a041732c80bcf36fa3284))
+
+
+
+## [1.3.1-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.0...v1.3.1-alpha.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* login-module icon缺失 ([c83acc2](https://github.com/ligaopeng123-npm/web-components-repo/commit/c83acc2b42c0f071d586077321a44ea4860d7eee))
+* RcMultiScreenPlayer 分辨率切换 支持未播放时切换 ([1c1a2d4](https://github.com/ligaopeng123-npm/web-components-repo/commit/1c1a2d48152ba42258777c67ba0c13a830a40487))
+
+
+
+# [1.3.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.19-alpha.2...v1.3.0) (2023-12-04)
+
+
+### Features
+
+* stream sdk ([5b22154](https://github.com/ligaopeng123-npm/web-components-repo/commit/5b221549ce4ffb92d1096d0d88277623bd1d118d))
+* stream-sdk 添加类型 ([ee7078e](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee7078e2742f7e4fd5ead94c8d9ee20059df182b))
+* 分辨率切换 ([abd66a8](https://github.com/ligaopeng123-npm/web-components-repo/commit/abd66a8ab78359ed2403e908cdd9a5bb570615a1))
+* 分辨率切换 版本问题处理 ([66f4db7](https://github.com/ligaopeng123-npm/web-components-repo/commit/66f4db76bc0964ddf7f0965306380f1ae10b14c2))
+
+
+
+## [1.2.19-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.19-alpha.1...v1.2.19-alpha.2) (2023-11-20)
+
+
+### Bug Fixes
+
+* 登录组件手机号限制bug ([d032031](https://github.com/ligaopeng123-npm/web-components-repo/commit/d032031ce90e01c0310fc942a65fa2ca564d079f))
+
+
+
+## [1.2.19-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.19-alpha.0...v1.2.19-alpha.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* playerList 参数传递问题 ([f332ddb](https://github.com/ligaopeng123-npm/web-components-repo/commit/f332ddb55d0848a5a038fe2b121edb0af47e75cf))
+
+
+### Features
+
+* add MultiPlayer story ([8c88dfd](https://github.com/ligaopeng123-npm/web-components-repo/commit/8c88dfde26e75e8df549dc3c7fa29cc46fa4ad0b))
+* videoToolbar属性 ([24594be](https://github.com/ligaopeng123-npm/web-components-repo/commit/24594bea571907668506821f287782ef1fbe1afe))
+
+
+
+## [1.2.19-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18...v1.2.19-alpha.0) (2023-10-11)
+
+
+### Features
+
+* videoToolbar属性 ([0e4c0fb](https://github.com/ligaopeng123-npm/web-components-repo/commit/0e4c0fb8a6a36767de90c50d362282e95802d268))
+
+
+
+## [1.2.18](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.8...v1.2.18) (2023-09-22)
+
+
+
+## [1.2.18-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.7...v1.2.18-alpha.8) (2023-09-22)
+
+
+### Bug Fixes
+
+* card-ellipsis类型定义移动到组件中 ([6cb273d](https://github.com/ligaopeng123-npm/web-components-repo/commit/6cb273de23a320e81d13b6734b0b2bade17a3100))
+
+
+
+## [1.2.18-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.6...v1.2.18-alpha.7) (2023-09-22)
+
+
+### Bug Fixes
+
+* 添加 导出 CardEllipsisMode ([60ebb06](https://github.com/ligaopeng123-npm/web-components-repo/commit/60ebb0632ba90215bcf4a50f1237f2c3a9cc9c49))
+
+
+
+## [1.2.18-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.5...v1.2.18-alpha.6) (2023-09-22)
+
+
+### Bug Fixes
+
+* card-ellipsis add mode ([d13eeaa](https://github.com/ligaopeng123-npm/web-components-repo/commit/d13eeaad3d54e6d7c0ae8e700fcac41290fca471))
+
+
+
+## [1.2.18-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.4...v1.2.18-alpha.5) (2023-09-22)
+
+
+### Features
+
+* add keywords ([2869451](https://github.com/ligaopeng123-npm/web-components-repo/commit/2869451ddb609a1e237248e350efd556c207c662))
+
+
+
+## [1.2.18-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.3...v1.2.18-alpha.4) (2023-09-22)
+
+
+### Bug Fixes
+
+* CardEllipsis 内容动态改变后 高度处理异常问题 ([20b2de2](https://github.com/ligaopeng123-npm/web-components-repo/commit/20b2de291f12514551f4125c2d4465eb77bf331c))
+* CardEllipsis 解决展开后内容动态改变后 高度处理异常 ([267db87](https://github.com/ligaopeng123-npm/web-components-repo/commit/267db872cc12e1fe46ef585c00f1d999f6e7e799))
+
+
+
+## [1.2.18-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.2...v1.2.18-alpha.3) (2023-09-20)
+
+
+### Features
+
+* add RcLoading ([9425cf5](https://github.com/ligaopeng123-npm/web-components-repo/commit/9425cf5ce2f26f5f234e43c217be4db3a4f6f689))
+
+
+
+## [1.2.18-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.1...v1.2.18-alpha.2) (2023-09-11)
+
+
+### Features
+
+* 支持webp格式 减少包体积 ([5a79b33](https://github.com/ligaopeng123-npm/web-components-repo/commit/5a79b33cc4deb289cce50c20e00b2a665b4f82db))
+
+
+
+## [1.2.18-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.18-alpha.0...v1.2.18-alpha.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* login-module keep-logged ([54490cf](https://github.com/ligaopeng123-npm/web-components-repo/commit/54490cf739fae9c034b4cac7d2996d27e89dafd3))
+
+
+
+## [1.2.18-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17...v1.2.18-alpha.0) (2023-09-08)
+
+
+
+## [1.2.17](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.8...v1.2.17) (2023-09-08)
+
+
+### Features
+
+* login-module包体积优化 ([f7ccb81](https://github.com/ligaopeng123-npm/web-components-repo/commit/f7ccb81914742066d17e6a5cefa08f06935aa04b))
+
+
+
+## [1.2.17-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.7...v1.2.17-alpha.8) (2023-09-05)
+
+
+### Features
+
+* rc-loading 支持wrapperClassName属性 ([dd863c6](https://github.com/ligaopeng123-npm/web-components-repo/commit/dd863c625f474299ebc273661185b5ac2b8967d3))
+
+
+
+## [1.2.17-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.6...v1.2.17-alpha.7) (2023-09-05)
+
+
+### Features
+
+* rc-loading 支持className 和 style ([03f8c34](https://github.com/ligaopeng123-npm/web-components-repo/commit/03f8c34a13299cae142e9f28d49075573acd56c6))
+
+
+
+## [1.2.17-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.5...v1.2.17-alpha.6) (2023-08-31)
+
+
+### Bug Fixes
+
+* rc-loading top 居中 ([479a2f5](https://github.com/ligaopeng123-npm/web-components-repo/commit/479a2f5d3ddfc4aa58e31c4742a7c2bd95f52e77))
+
+
+
+## [1.2.17-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.4...v1.2.17-alpha.5) (2023-08-31)
+
+
+### Features
+
+* loadingIcon add size ([73d2142](https://github.com/ligaopeng123-npm/web-components-repo/commit/73d2142cded56e511997d102a337633dd1c47dbe))
+
+
+
+## [1.2.17-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.3...v1.2.17-alpha.4) (2023-08-31)
+
+
+### Features
+
+* rc-super-loading 增加阴影 ([1e8a748](https://github.com/ligaopeng123-npm/web-components-repo/commit/1e8a748f170154e8b2634624c89168a3d3630517))
+* rc-super-loading添加box-sizing 避免被外界box-sizing影响 ([77afdc5](https://github.com/ligaopeng123-npm/web-components-repo/commit/77afdc52205684760c8533f29c68835a2d94f97e))
+
+
+
+## [1.2.17-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.2...v1.2.17-alpha.3) (2023-08-31)
+
+
+### Features
+
+* rc-super-loading 增加阴影 ([d4eab3a](https://github.com/ligaopeng123-npm/web-components-repo/commit/d4eab3aacce2952f5f6aafc1983c665e0944d6ae))
+
+
+
+## [1.2.17-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.1...v1.2.17-alpha.2) (2023-08-31)
+
+
+### Features
+
+* 依赖梳理 ([7036447](https://github.com/ligaopeng123-npm/web-components-repo/commit/703644714bac87713827182a4e9d717d39932c7a))
+
+
+
+## [1.2.17-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.17-alpha.0...v1.2.17-alpha.1) (2023-08-31)
+
+
+### Features
+
+* add @gaopeng123/rc-loading ([1f086e1](https://github.com/ligaopeng123-npm/web-components-repo/commit/1f086e1d98c33a39e52f1ea8915359ff479fd475))
+* rollup添加gif图 ([76aebc5](https://github.com/ligaopeng123-npm/web-components-repo/commit/76aebc5b142acb7832bc1c23a7147f758e8fbf18))
+
+
+
+## [1.2.17-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16...v1.2.17-alpha.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* @gaopeng123/rc-multi-player支持自定义opts ([02ec279](https://github.com/ligaopeng123-npm/web-components-repo/commit/02ec279a5c8e67918aaf88d9c79a22099e5086bf))
+
+
+
+## [1.2.16](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.8...v1.2.16) (2023-08-30)
+
+
+### Bug Fixes
+
+* @gaopeng123/TimePeriod 清理数据时，处理掉弹窗数据 ([6e9ec0d](https://github.com/ligaopeng123-npm/web-components-repo/commit/6e9ec0df8adc62422164768e7aba898b34a87bf7))
+
+
+
+## [1.2.16-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.7...v1.2.16-alpha.8) (2023-08-24)
+
+
+### Bug Fixes
+
+* @gaopeng123/rc-multi-player 依赖处理 ([43ba2ec](https://github.com/ligaopeng123-npm/web-components-repo/commit/43ba2ec95a0b8e866666d6cca1a6d3ddc5e4ce26))
+
+
+
+## [1.2.16-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.6...v1.2.16-alpha.7) (2023-08-24)
+
+
+### Bug Fixes
+
+* @gaopeng123/rc-multi-player utils依赖处理 ([96c967f](https://github.com/ligaopeng123-npm/web-components-repo/commit/96c967fab37daf892ae58dcf0522df4aa67e617e))
+
+
+
+## [1.2.16-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.5...v1.2.16-alpha.6) (2023-08-21)
+
+
+### Features
+
+* card-ellipsis id不能是数字 ([25a7181](https://github.com/ligaopeng123-npm/web-components-repo/commit/25a718144f4554d8a7b042f2bb566168759ccdc5))
+
+
+
+## [1.2.16-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.4...v1.2.16-alpha.5) (2023-08-21)
+
+
+### Features
+
+* card-ellipsis 支持--expand-image --collapse-image ([14294f7](https://github.com/ligaopeng123-npm/web-components-repo/commit/14294f72f29b830fda45cbb16ac88c001401e29c))
+
+
+
+## [1.2.16-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.3...v1.2.16-alpha.4) (2023-08-21)
+
+
+### Features
+
+* add moreHeight ([fdd528a](https://github.com/ligaopeng123-npm/web-components-repo/commit/fdd528ad96e56f4f0a41e684377d75cb946167b5))
+
+
+
+## [1.2.16-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.2...v1.2.16-alpha.3) (2023-08-21)
+
+
+### Bug Fixes
+
+* ::after 样式优化 ([b01735b](https://github.com/ligaopeng123-npm/web-components-repo/commit/b01735bee5d0cf2cf11f1efe54029d6d671c89e8))
+
+
+
+## [1.2.16-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.1...v1.2.16-alpha.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* add  card-ellipsis id ([6337e6b](https://github.com/ligaopeng123-npm/web-components-repo/commit/6337e6b46a0091f89187016a51bf1b9b64193133))
+
+
+
+## [1.2.16-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.16-alpha.0...v1.2.16-alpha.1) (2023-08-21)
+
+
+### Bug Fixes
+
+* add  --background-color ([b795309](https://github.com/ligaopeng123-npm/web-components-repo/commit/b795309288aeda60f625f7786d29fe11e6804934))
+* card-ellipsis z-index bug ([971c33e](https://github.com/ligaopeng123-npm/web-components-repo/commit/971c33eefc671d39b50bf7ff8a5cc030f50c1064))
+
+
+
+## [1.2.16-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15...v1.2.16-alpha.0) (2023-08-18)
+
+
+### Features
+
+* del rc-card-ellipsis  less ([1a9fc02](https://github.com/ligaopeng123-npm/web-components-repo/commit/1a9fc026be31916e2193930aefb483c7f48f27e8))
+
+
+
+## [1.2.15](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.2.15-alpha.2...v1.2.15) (2023-08-17)
+
+
+### Features
+
+* add @gaopeng123/card-ellipsis ([44c2795](https://github.com/ligaopeng123-npm/web-components-repo/commit/44c279515cb41cfea68b22aaa26f4121d8a9ee65))
+* add @gaopeng123/card-ellipsis docs ([58be56b](https://github.com/ligaopeng123-npm/web-components-repo/commit/58be56b9c0ceb5bffb5052664aac3b68192025c3))
+* add @gaopeng123/rc-card-ellipsis ([776aa1c](https://github.com/ligaopeng123-npm/web-components-repo/commit/776aa1c3e4efcf07bc9bf5c5ce0f61c97b1884d3))
 * RcScrollNav stories ([4b4f5dc](https://github.com/ligaopeng123-npm/web-components-repo/commit/4b4f5dcb9845b327efb91d2ef55709d6256a0119))
 
 
