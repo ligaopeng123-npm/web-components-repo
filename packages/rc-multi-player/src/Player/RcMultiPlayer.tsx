@@ -29,7 +29,7 @@ import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
 import ResolutionSelect from "../Action/ResolutionSelect";
 import IconBackButton from "../Action/IconBackButton";
-import { isFullscreen, isFunction } from "@gaopeng123/utils";
+import { isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
@@ -232,6 +232,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         }
     }));
 
+    const bthStyle = isMobile() ? { width: 56 } : {};
+
     return (
         <ThemeProvider
             theme={DefaultTheme}>
@@ -247,7 +249,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     left={<>
                         {
                             videoToolbar?.back === true && _isFullscreen
-                                ? <IconBackButton onClick={playerEvents.onBack} style={{ width: 56 }}/>
+                                ? <IconBackButton onClick={playerEvents.onBack} style={bthStyle}/>
                                 : <></>
                         }
                         <Title ellipsis={true}>{title}</Title>
@@ -333,7 +335,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             {
                                 videoToolbar?.fullScreen !== false
                                     ? <FullScreenButton
-                                        bthStyle={{ width: 56 }}
+                                        bthStyle={bthStyle}
                                         onChange={playerEvents.onFullChange}
                                         ref={fullRef}
                                         el={divCurrent}
