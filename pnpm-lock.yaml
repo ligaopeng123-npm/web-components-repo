@@ -845,7 +845,7 @@ importers:
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
       '@gaopeng123/hooks': latest
-      '@gaopeng123/multi-player': ^1.3.2
+      '@gaopeng123/multi-player': ^1.3.4-alpha.9
       '@gaopeng123/utils': 1.1.13-alpha.2
       '@gaopeng123/video-progress-bar': ^1.3.4-alpha.8
       '@mui/icons-material': ^5.10.9
