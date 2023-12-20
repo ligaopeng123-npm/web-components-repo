@@ -22,6 +22,6 @@ export const template = (config: MultiPlayerComProps) => {
                    object-fit: ${config['object-fit']}
                 }
 			</style>
-			<video id="multi-player" class="multi-player" muted="muted" autoplay="autoplay">
+			<video poster="noposter" id="multi-player" class="multi-player" muted="muted" autoplay="autoplay">
 			`;
 }
