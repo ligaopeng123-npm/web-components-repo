@@ -27,6 +27,7 @@ export type VideoProgressBarConfig = {
     'scale-level'?: wheelDeltaLevel,
     'hide-fast'?: boolean,
     'hide-speed'?: boolean,
+    'hide-time'?: boolean,
     'height'?: number,
 }
 

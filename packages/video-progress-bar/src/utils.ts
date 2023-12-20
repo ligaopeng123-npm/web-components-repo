@@ -27,6 +27,7 @@ export const removeEventFactory = (dom: any, type: string, fn: any, useCapture =
 export const createTemplate = (config: any, timeLine?: any) => {
     const hideFast = config['hide-fast'];
     const hideSpeed = config['hide-speed'];
+    const hideTime = config['hide-time'];
     return `
         <style>
              /*时间拖动区域*/
@@ -72,7 +73,7 @@ export const createTemplate = (config: any, timeLine?: any) => {
              }
 
              #levelValue {
-                width: 28px;
+                width: 36px;
                 padding: 0px;
              }
 
@@ -96,7 +97,7 @@ export const createTemplate = (config: any, timeLine?: any) => {
             <canvas id="timeline-drag-canvas"></canvas>
         </div>
         <div class="active">
-            <video-progress-bar-active-time hide-fast="${hideFast}" hide-speed="${hideSpeed}"></video-progress-bar-active-time>
+            <video-progress-bar-active-time hide-time="${hideTime}" hide-fast="${hideFast}" hide-speed="${hideSpeed}"></video-progress-bar-active-time>
         </div>
         
         <div class="timeline-datetime-level">

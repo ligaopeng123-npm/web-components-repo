@@ -25,6 +25,7 @@ type ActiveTimeConfig = {
     'speed-value': string;
     'hide-fast'?: boolean,
     'hide-speed'?: boolean,
+    'hide-time'?: boolean,
 }
 
 const forwardOptions = [{
@@ -67,6 +68,7 @@ class ActiveTime extends HTMLElement {
         'speed-value': '1',
         'hide-fast': false,
         'hide-speed': false,
+        'hide-time': false,
     }
 
     __oldConfig: ActiveTimeConfig = {
@@ -122,6 +124,7 @@ class ActiveTime extends HTMLElement {
             'speed-value',
             'hide-fast',
             'hide-speed',
+            'hide-time',
         ];
     }
 
@@ -293,7 +296,7 @@ class ActiveTime extends HTMLElement {
              <div class="time">
 <!--                <div style="width: 60px"></div>-->
                 <video-progress-bar-forward-select style="display: ${isTrue(this.__config['hide-speed']) ? 'none' : ''};" id="speed" default-value="1" options=${JSON.stringify(speedOptions)}></video-progress-bar-forward-select>
-                <input id="datetime"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
+                <input id="datetime" style="display: ${isTrue(this.__config['hide-time']) ? 'none' : ''};"  class="flatpickr timeline-datetime" data-enable-time="true" data-enable-seconds="true" >
                 <img id="bth-backward" style="display: ${isTrue(this.__config['hide-fast']) ? 'none' : ''};"  title="快退" src="${backward}" />
                 <video-progress-bar-forward-select style="display: ${isTrue(this.__config['hide-fast']) ? 'none' : ''};" id="forward" default-value="60" options=${JSON.stringify(forwardOptions)}></video-progress-bar-forward-select>
                 <img id="bth-forward"  style="display: ${isTrue(this.__config['hide-fast']) ? 'none' : ''};" title="快进" src="${forward}" />

@@ -22,6 +22,7 @@ export default class VideoProgressBar extends HTMLElement {
         'scale-level': 0,
         'hide-fast': false,
         'hide-speed': false,
+        'hide-time': false,
         'height': 60
     };
 
@@ -40,6 +41,7 @@ export default class VideoProgressBar extends HTMLElement {
             'scale-level',
             'hide-fast',
             'hide-speed',
+            'hide-time',
             'height'
         ];
     }
