@@ -282,6 +282,10 @@ class ActiveTime extends HTMLElement {
                 user-select: none;
             }
             
+            .time > input.flatpickr {
+                display: ${isTrue(this.__config['hide-time']) ? 'none' : ''};
+            }
+            
             .disabled {
                 pointer-events: none;
             }
