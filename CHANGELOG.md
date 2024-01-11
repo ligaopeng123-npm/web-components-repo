@@ -1,4 +1,39 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.4...v) (2023-12-14)
+# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.9...v) (2024-01-11)
+
+
+
+## [1.3.4-alpha.9](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.8...v1.3.4-alpha.9) (2023-12-20)
+
+
+### Features
+
+* multi-player 添加poster="noposter" 解决安卓下webview有个默认的播放按钮 ([fb5c8aa](https://github.com/ligaopeng123-npm/web-components-repo/commit/fb5c8aa1338dccc378f6b441a1758660c0435264))
+
+
+
+## [1.3.4-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.7...v1.3.4-alpha.8) (2023-12-20)
+
+
+### Features
+
+* video-progress-bar 支持hide-time 移动端支持 ([2ba3252](https://github.com/ligaopeng123-npm/web-components-repo/commit/2ba3252b0bb06849ab637ffc4f7f21378ce55924))
+
+
+
+## [1.3.4-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.6...v1.3.4-alpha.7) (2023-12-20)
+
+
+### Features
+
+* video-progress-bar 支持hide-time ([0a99ae7](https://github.com/ligaopeng123-npm/web-components-repo/commit/0a99ae791269085008710d4ffd1b6b2dfa545f4a))
+
+
+
+## [1.3.4-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.5...v1.3.4-alpha.6) (2023-12-14)
+
+
+
+## [1.3.4-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.4...v1.3.4-alpha.5) (2023-12-14)
 
 
 ### Features
