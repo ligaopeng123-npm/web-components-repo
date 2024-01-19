@@ -17,10 +17,11 @@ const cssUrl = require('postcss-url');
  */
 
 
-module.exports = function (config, options) {
+module.exports = function (config, options, plugins) {
     config.plugins = [
         images({include: ['**/*.png', '**/*.jpg', '**/*.svg', '**/*.gif', '**/*.webp']}),
         ...config.plugins,
+        ...(plugins || []),
         postcss({
             extensions: ['.less', '.css'],
             plugins: [
