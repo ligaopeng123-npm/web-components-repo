@@ -15,7 +15,7 @@ import { RcPlayerRef, WebRtcPlayerProps } from "./PlayerTyping";
 import { DEFAULT_ROBUSTNESS, ObjectFit } from "@gaopeng123/multi-player";
 
 const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebRtcPlayerProps> & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, WebRtcPlayerProps>((props, ref) => {
-    const {mediaDataSource, robustness, height, width, objectFit, events, extraParams} = props;
+    const { mediaDataSource, robustness, height, width, objectFit, events, extraParams } = props;
     const videoRef = useRef<any>({});
     const [sdk, setSdk] = useState<any>(null);
     /**
@@ -23,7 +23,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
      */
     const [currentMaxResetTimes, setCurrentMaxResetTimes] = useState<number>(0);
     const [errorTime, setErrorTime] = useState<number>();
-    const {maxResetTimes, retryDuration} = Object.assign({retryDuration: 10000}, DEFAULT_ROBUSTNESS, robustness);
+    const { maxResetTimes, retryDuration } = Object.assign({ retryDuration: 10000 }, DEFAULT_ROBUSTNESS, robustness);
     /**
      * 拉流处理
      */
@@ -31,11 +31,11 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
         // 最大次数监听
         if (currentMaxResetTimes >= maxResetTimes) {
             if (events?.onMaxReload) {
-                events.onMaxReload({extraParams});
+                events.onMaxReload({ extraParams });
             }
         } else {
             if (events?.onReload) {
-                events.onReload({extraParams, ...{__type: 'reload'}});
+                events.onReload({ extraParams, ...{ __type: 'reload' } });
             }
         }
         if (type === 'onmute') {
@@ -84,7 +84,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             setCurrentMaxResetTimes(0);
             // 加载成功后 重新播放
             if (events?.onLoadStart) {
-                events.onLoadStart({extraParams,});
+                events.onLoadStart({ extraParams, });
             }
         }
 
@@ -93,7 +93,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
          */
         let onerror = () => {
             if (events?.onLoadError) {
-                events.onLoadError({extraParams});
+                events.onLoadError({ extraParams });
                 closeSdk(sdk);
             }
         }
@@ -107,7 +107,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
 
         if (mediaDataSource?.url) {
             // @ts-ignore
-            sdk = new SrsRtcPlayerAsync({onmute: onmute, onunmute: onunmute, onerror: onerror, onended: onended});
+            sdk = new SrsRtcPlayerAsync({ onmute: onmute, onunmute: onunmute, onerror: onerror, onended: onended });
 
             video.srcObject = sdk.stream;
 
@@ -142,10 +142,18 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
     }
 
     /**
+     * 获取当前视频
+     */
+    const getVideo = () => {
+        return videoRef.current.querySelector('#WebRTC-player');
+    }
+
+    /**
      *  缓存sdk
      */
     useEffect(() => {
         let sdk = initSdk();
+        getVideo().play();
         return () => {
             closeSdk(sdk);
         }
@@ -167,7 +175,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             videoRef.current.__timer = setTimeout(() => {
                 console.log(`${new Date()} ${retryDuration / 1000}秒后未拉起,阻断视频`);
                 if (events?.onLoadError) {
-                    events.onLoadError({extraParams,});
+                    events.onLoadError({ extraParams, });
                     closeSdk(sdk);
                 }
             }, retryDuration);
@@ -186,9 +194,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
         /**
          * 获取当前视频模块
          */
-        getVideo: ()=> {
-            return videoRef.current.querySelector('#WebRTC-player') as HTMLVideoElement;
-        }
+        getVideo: getVideo
     }));
 
     return (
