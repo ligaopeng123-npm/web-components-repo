@@ -196,6 +196,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             id='WebRTC-player'
             ref={videoRef}
             autoPlay={true}
+            playsInline={true}
             style={{
                 height: height || '100%',
                 width: width || '100%',

@@ -11,14 +11,21 @@
  **********************************************************************/
 import * as React from 'react';
 import { RcMultiPlayer } from "../src";
-import { Button, FormControl, TextField } from "@mui/material";
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import "./index.less";
+import { useRef } from "react";
 
 type RcMultiPlayerTestProps = {};
 const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
     const [open, setOpen] = React.useState(false);
     const [mediaDataSource, setMediaDataSource] = React.useState<any>();
+
+    const [protocol, setProtocol] = React.useState<any>('FLV');
+
+    const handleChange = (v: any) => {
+        setProtocol(v?.target?.value);
+    }
 
     const onClick = () => {
         // @ts-ignore
@@ -34,6 +41,24 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
                     <div style={{ width: '90%' }} className={'form'}>
+                        <FormControl
+                            fullWidth
+                            className={'form-item'}>
+                            <InputLabel
+                                id="demo-simple-select-label">协议类型</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={protocol}
+                                label="Age"
+                                onChange={handleChange}
+                            >
+                                <MenuItem
+                                    value={'FLV'}>FLV</MenuItem>
+                                <MenuItem
+                                    value={'WebRTC'}>WebRTC</MenuItem>
+                            </Select>
+                        </FormControl>
                         <FormControl fullWidth className={'form-item'}>
                             <TextField
                                 defaultValue={'https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv'}
@@ -55,6 +80,7 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                                 console.log(v);
                             }
                         }}
+                        protocol={protocol}
                         hideToolbarInFullScreen={false}
                         videoToolbar={{ close: false, fullScreen: true, screenshot: false, back: true }}
                         className={'RcMultiPlayerTest'}

@@ -36,7 +36,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
             console.log(screenRef.current.getScreenConfig())
             setCurrentConfig({
                 mediaDataSource: {
-                    url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
+                    url: url || "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
                     type: 'flv',
                 },
                 playerConfig: {
