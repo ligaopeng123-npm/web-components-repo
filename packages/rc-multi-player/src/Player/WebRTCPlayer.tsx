@@ -113,6 +113,8 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
 
             sdk.play(mediaDataSource?.url)
                 .then(function (session: any) {
+                    // @ts-ignore
+                    video?.muted = false;
                     console.log('sdk play session', session)
                     if (events?.onLoadStart) {
                         events?.onLoadStart();
@@ -122,8 +124,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
                     console.log('error', error)
                     sdk.close();
                 });
-            console.log('safari不自动播放')
-            video?.play();
+            // video?.play();
             // 数据保存
             setSdk(sdk);
         }
@@ -204,6 +205,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             ref={videoRef}
             autoPlay={true}
             playsInline={true}
+            muted={true}
             style={{
                 height: height || '100%',
                 width: width || '100%',
