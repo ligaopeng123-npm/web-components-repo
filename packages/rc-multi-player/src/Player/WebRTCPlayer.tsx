@@ -114,7 +114,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             sdk.play(mediaDataSource?.url)
                 .then(function (session: any) {
                     // @ts-ignore
-                    video?.muted = false;
+                    video.muted = false;
                     console.log('sdk play session', session)
                     if (events?.onLoadStart) {
                         events?.onLoadStart();
