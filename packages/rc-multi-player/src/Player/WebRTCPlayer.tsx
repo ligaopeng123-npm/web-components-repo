@@ -122,6 +122,8 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
                     console.log('error', error)
                     sdk.close();
                 });
+            console.log('safari不自动播放')
+            video?.play();
             // 数据保存
             setSdk(sdk);
         }
@@ -153,7 +155,6 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
      */
     useEffect(() => {
         let sdk = initSdk();
-        getVideo().play();
         return () => {
             closeSdk(sdk);
         }
