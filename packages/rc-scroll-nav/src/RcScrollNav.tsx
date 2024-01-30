@@ -19,13 +19,13 @@ export type RcScrollNavProps = {
     scrollDom?: string, // 滚动的dom 默认为body
     primaryColor?: string, // 选中的颜色
     backgroundColor?: string, // 背景色 默认为#fff
-    onChange?: (v: any)=> void; // 事件
+    onChange?: (v: any) => void; // 事件
 };
 
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            'scroll-nav': ScrollNavProps
+            'scroll-nav': ScrollNavProps & { children?: any, id?: string, items: ScrollNavItem[] }
         }
     }
 }
@@ -42,7 +42,7 @@ const RcScrollNav: FC<RcScrollNavProps> = (props) => {
     } = props;
     useEffect(() => {
         const nav = document.querySelector(`#${id}`);
-        const _onChange = ({detail}: any)=> {
+        const _onChange = ({ detail }: any) => {
             if (onChange) {
                 onChange!(detail);
             }
@@ -50,12 +50,12 @@ const RcScrollNav: FC<RcScrollNavProps> = (props) => {
         if (nav) {
             nav.addEventListener('onChange', _onChange);
         }
-        return ()=> {
+        return () => {
             nav?.removeEventListener('onChange', _onChange);
         }
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         const nav = document.querySelector(`#${id}`);
         nav.setAttribute('items', JSON.stringify(items))
     }, [items]);
@@ -63,6 +63,7 @@ const RcScrollNav: FC<RcScrollNavProps> = (props) => {
     return (
         <scroll-nav
             id={id}
+            items={[]}
             scroll-dom={scrollDom}
             primary-color={primaryColor}
             background-color={backgroundColor}

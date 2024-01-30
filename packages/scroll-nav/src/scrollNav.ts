@@ -11,10 +11,9 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { ScrollNavItem, ScrollNavProps } from "./typing";
 import { template } from "./template";
 import { addOpacity, isJSON, isNumber } from "@gaopeng123/utils";
-import { createScrollNavEvent } from "./utils";
+import { createScrollNavEvent, ScrollNavItem, ScrollNavProps } from "./utils";
 
 
 const attributesList = [

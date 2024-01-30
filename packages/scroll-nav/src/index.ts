@@ -14,5 +14,4 @@
 import "./scrollNav";
 
 export { createScrollNavEvent } from "./utils";
-export type { CreateScrollNavEventProps } from "./utils";
-export type { ScrollNavProps, ScrollNavItem } from "./typing";
+export type { CreateScrollNavEventProps, ScrollNavProps, ScrollNavItem } from "./utils";

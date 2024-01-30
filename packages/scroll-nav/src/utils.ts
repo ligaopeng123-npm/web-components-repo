@@ -11,7 +11,6 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { ScrollNavItem } from "./typing";
 import { animate, debounce, getStyle, isString } from "@gaopeng123/utils";
 
 /**
@@ -96,7 +95,7 @@ export const createScrollNavEvent = (
     function calcTop(realNav: boolean) {
         realNav && (offsetTops.navBar = navBar.offsetTop);
         for (let j = 0; j < navList.length; j++) {
-            const {value} = navList[j];
+            const { value } = navList[j];
             const currentDom: any = document.querySelector(`#${value}`)
             offsetTops[value] = currentDom.offsetTop;
             offsetTops[getAttrStr(value)] = getPaddingTop(currentDom);
@@ -209,4 +208,19 @@ export const createScrollNavEvent = (
     return {
         navClick: navClick
     }
+}
+
+/**
+ * 处理react tsx中直接使用web components报错问题
+ */
+export type ScrollNavItem = {
+    label: string,
+    value: string,
+}
+export type ScrollNavProps = {
+    items: Array<ScrollNavItem>;
+    'scroll-dom'?: string; // 滚动的父级节点
+    'primary-color'?: string;
+    'text-color'?: string;
+    'background-color'?: string;
 }

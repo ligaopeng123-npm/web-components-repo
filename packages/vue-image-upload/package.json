@@ -46,7 +46,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/image-upload": "^1.3.2"
+        "@gaopeng123/image-upload": "workspace:^1.3.2"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",
@@ -73,7 +73,7 @@
         "rollup": "^2.52.8",
         "rollup-plugin-postcss": "^4.0.2",
         "rollup-plugin-terser": "^7.0.2",
-        "rollup-plugin-typescript2": "^0.30.0",
+        "rollup-plugin-typescript2": "^0.31.0",
         "rollup-plugin-vue": "^5.1.9",
         "style-loader": "^3.3.1",
         "ttypescript": "^1.5.12",
