@@ -18,6 +18,7 @@
         "url": "git+https://github.com/xxx#readme"
     },
     "main": "dist/index.js",
+    "module": "dist/stream-sdk.esm.js",
     "typings": "dist/index.d.ts",
     "private": false,
     "publishConfig": {

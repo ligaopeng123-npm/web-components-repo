@@ -10,6 +10,7 @@
   "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/rc-time-period.esm.js",
   "typings": "dist/index.d.ts",
   "private": false,
   "publishConfig": {

@@ -6,6 +6,7 @@
     "homepage": "https://github.com/ligaopeng123-npm/web-components-repo#readme",
     "license": "MIT",
     "main": "dist/index.js",
+    "module": "dist/message.esm.js",
     "typings": "dist/index.d.ts",
     "private": false,
     "publishConfig": {
@@ -49,7 +50,6 @@
         "singleQuote": true,
         "trailingComma": "es5"
     },
-    "module": "dist/index.js",
     "size-limit": [
         {
             "path": "dist/message.cjs.production.min.js",

@@ -21,6 +21,7 @@
         "url": "git+https://github.com/ligaopeng123-npm/web-components-repo.git"
     },
     "main": "dist/index.js",
+    "module": "dist/rc-br.esm.js",
     "typings": "dist/index.d.ts",
     "private": false,
     "publishConfig": {

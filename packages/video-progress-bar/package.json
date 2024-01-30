@@ -18,6 +18,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo#readme"
     },
     "main": "dist/index.js",
+    "module": "dist/video-progress-bar.esm.js",
     "typings": "dist/index.d.ts",
     "private": false,
     "publishConfig": {
