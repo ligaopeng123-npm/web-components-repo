@@ -122,6 +122,64 @@ importers:
       webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
       webpack-merge: 5.8.0
 
+  packages/component-loading:
+    specifiers:
+      '@babel/core': ^7.14.3
+      '@babel/plugin-proposal-class-properties': ^7.13.0
+      '@babel/preset-env': ^7.14.4
+      '@rollup/plugin-image': ^2.1.1
+      '@size-limit/preset-small-lib': ^7.0.8
+      autoprefixer: ^10.4.7
+      babel-loader: ^8.2.2
+      copy-webpack-plugin: ^11.0.0
+      css-loader: ^6.7.1
+      cssnano: ^5.1.12
+      file-loader: ^6.2.0
+      html-webpack-plugin: ^5.3.1
+      husky: ^7.0.4
+      less-loader: ^11.0.0
+      postcss-url: ^10.1.3
+      rollup-plugin-postcss: ^4.0.2
+      size-limit: ^7.0.8
+      style-loader: ^3.3.1
+      ts-loader: ^9.2.2
+      tsdx: ^0.14.1
+      tslib: ^2.3.1
+      typescript: ^4.5.5
+      url-loader: ^4.1.1
+      webpack: ^5.38.1
+      webpack-cli: ^4.7.0
+      webpack-dev-server: ^3.11.2
+      webpack-merge: ^5.8.0
+    devDependencies:
+      '@babel/core': 7.22.10
+      '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
+      '@babel/preset-env': 7.22.10_@babel+core@7.22.10
+      '@rollup/plugin-image': 2.1.1
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      autoprefixer: 10.4.13
+      babel-loader: 8.3.0_6fuapc6hmjgdcyhxse3dtubbfq
+      copy-webpack-plugin: 11.0.0_webpack@5.75.0
+      css-loader: 6.7.2_webpack@5.75.0
+      cssnano: 5.1.14
+      file-loader: 6.2.0_webpack@5.75.0
+      html-webpack-plugin: 5.5.0_webpack@5.75.0
+      husky: 7.0.4
+      less-loader: 11.1.0_webpack@5.75.0
+      postcss-url: 10.1.3
+      rollup-plugin-postcss: 4.0.2
+      size-limit: 7.0.8
+      style-loader: 3.3.1_webpack@5.75.0
+      ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
+      tsdx: 0.14.1
+      tslib: 2.4.1
+      typescript: 4.9.4
+      url-loader: 4.1.1_p5dl6emkcwslbw72e37w4ug7em
+      webpack: 5.75.0_webpack-cli@4.10.0
+      webpack-cli: 4.10.0_ixwfotxft53uv5r5hjf7zsiiya
+      webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
+      webpack-merge: 5.8.0
+
   packages/feishu-share-sdk:
     specifiers:
       '@babel/core': ^7.14.3
@@ -222,7 +280,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/message': link:../message
-      '@gaopeng123/utils.file': 1.1.14
+      '@gaopeng123/utils.file': 1.1.15-alpha.4
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
     devDependencies:
@@ -287,8 +345,8 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/fetch': 0.3.8
-      '@gaopeng123/utils.file': 1.1.14
-      '@gaopeng123/utils.string': 1.1.14
+      '@gaopeng123/utils.file': 1.1.15-alpha.4
+      '@gaopeng123/utils.string': 1.1.15-alpha.4
       '@gaopeng123/utils.types': 1.1.14
       crypto-js: 4.1.1
     devDependencies:
@@ -393,7 +451,7 @@ importers:
       '@ffmpeg/ffmpeg': 0.10.1
       '@gaopeng123/message': link:../message
       '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.string': 1.1.14
+      '@gaopeng123/utils.string': 1.1.15-alpha.4
       mpegts.js: 1.7.0
     devDependencies:
       '@babel/core': 7.20.5
@@ -661,7 +719,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/hooks': 0.7.8
-      '@gaopeng123/utils': 1.1.15-alpha.3
+      '@gaopeng123/utils': 1.1.15-alpha.4
     devDependencies:
       '@babel/core': 7.22.10
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
@@ -804,7 +862,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/login-module': link:../login-module
-      '@gaopeng123/utils': 1.1.15-alpha.3
+      '@gaopeng123/utils': 1.1.15-alpha.4
     devDependencies:
       '@babel/core': 7.20.5
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.5
@@ -1317,64 +1375,6 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/fetch': 0.3.4
-    devDependencies:
-      '@babel/core': 7.22.10
-      '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
-      '@babel/preset-env': 7.22.10_@babel+core@7.22.10
-      '@rollup/plugin-image': 2.1.1
-      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
-      autoprefixer: 10.4.13
-      babel-loader: 8.3.0_6fuapc6hmjgdcyhxse3dtubbfq
-      copy-webpack-plugin: 11.0.0_webpack@5.75.0
-      css-loader: 6.7.2_webpack@5.75.0
-      cssnano: 5.1.14
-      file-loader: 6.2.0_webpack@5.75.0
-      html-webpack-plugin: 5.5.0_webpack@5.75.0
-      husky: 7.0.4
-      less-loader: 11.1.0_webpack@5.75.0
-      postcss-url: 10.1.3
-      rollup-plugin-postcss: 4.0.2
-      size-limit: 7.0.8
-      style-loader: 3.3.1_webpack@5.75.0
-      ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
-      tsdx: 0.14.1
-      tslib: 2.4.1
-      typescript: 4.9.4
-      url-loader: 4.1.1_p5dl6emkcwslbw72e37w4ug7em
-      webpack: 5.75.0_webpack-cli@4.10.0
-      webpack-cli: 4.10.0_ixwfotxft53uv5r5hjf7zsiiya
-      webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
-      webpack-merge: 5.8.0
-
-  packages/super-loading:
-    specifiers:
-      '@babel/core': ^7.14.3
-      '@babel/plugin-proposal-class-properties': ^7.13.0
-      '@babel/preset-env': ^7.14.4
-      '@rollup/plugin-image': ^2.1.1
-      '@size-limit/preset-small-lib': ^7.0.8
-      autoprefixer: ^10.4.7
-      babel-loader: ^8.2.2
-      copy-webpack-plugin: ^11.0.0
-      css-loader: ^6.7.1
-      cssnano: ^5.1.12
-      file-loader: ^6.2.0
-      html-webpack-plugin: ^5.3.1
-      husky: ^7.0.4
-      less-loader: ^11.0.0
-      postcss-url: ^10.1.3
-      rollup-plugin-postcss: ^4.0.2
-      size-limit: ^7.0.8
-      style-loader: ^3.3.1
-      ts-loader: ^9.2.2
-      tsdx: ^0.14.1
-      tslib: ^2.3.1
-      typescript: ^4.5.5
-      url-loader: ^4.1.1
-      webpack: ^5.38.1
-      webpack-cli: ^4.7.0
-      webpack-dev-server: ^3.11.2
-      webpack-merge: ^5.8.0
     devDependencies:
       '@babel/core': 7.22.10
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
@@ -6439,7 +6439,7 @@ packages:
     resolution: {integrity: sha512-bhaVvBCOh9zpifUD+XZuhq7r3va6CjXid4LIEP31aP1jpznziLPkdAjCmkBvrp5KZQSvQLAjfCn1l1I1ehNhBg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.file': 1.1.14
+      '@gaopeng123/utils.file': 1.1.15-alpha.4
       '@gaopeng123/utils.types': 1.1.14
       node-fetch: 2.6.7
     transitivePeerDependencies:
@@ -6450,7 +6450,7 @@ packages:
     resolution: {integrity: sha512-oUSxj0t5i4BStHDgjYjk52FQopPF2T4t/IOR0RusP97Am1mg5zcM2H5gjIiIYqGAhA0TZXL6jDqlaK3oQNIoYg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.file': 1.1.14
+      '@gaopeng123/utils.file': 1.1.15-alpha.4
       '@gaopeng123/utils.types': 1.1.14
       node-fetch: 2.6.7
     transitivePeerDependencies:
@@ -6732,6 +6732,15 @@ packages:
       '@gaopeng123/utils.string': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
 
+  /@gaopeng123/utils.file/1.1.15-alpha.4:
+    resolution: {integrity: sha512-OR2/yVMJezcpKWNSUJpxxKXYfAKpVfbNGtJ2oZJ7hZCaWPvGFrO3EGhI1BnKP8TC3gYw7lodtZJPEt82dxoIDQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.object': 1.1.14
+      '@gaopeng123/utils.string': 1.1.15-alpha.4
+      '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
   /@gaopeng123/utils.function/0.4.14:
     resolution: {integrity: sha512-0PQ69ibtP8jWB6hQSaYvfCpKU5Kv5Ehq4O2BVSOVOz3ogKPCc9t6DrOhY2OKNjnr3Uy/Y9CMXVc3MOK8I+cX2g==}
     engines: {node: '>=10'}
@@ -6875,6 +6884,14 @@ packages:
       '@gaopeng123/utils.function': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
 
+  /@gaopeng123/utils.string/1.1.15-alpha.4:
+    resolution: {integrity: sha512-hSkVsrKjxBbGKyQKe9aFK8XuKZm6aI00Pj1K+1OW5bl597Z4cmiSGCpjEioTyRq7Sa9aNyoxZDrLWYc9R8vHJA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
   /@gaopeng123/utils.types/0.4.14:
     resolution: {integrity: sha512-t6UxA8h4ut0qSnE+ilLI5tB374/ejEpx3SacBAH4LO33QTDAc8/BdoAVxSgn8FfgMXTIfL906fgAH5ruDRUtxQ==}
     engines: {node: '>=10'}
@@ -6958,6 +6975,21 @@ packages:
       '@gaopeng123/utils.number': 1.1.14
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
+      '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
+  /@gaopeng123/utils/1.1.15-alpha.4:
+    resolution: {integrity: sha512-Si2SrA0Tkrvf0KAJi8y9JIVcKGfocCyzaVN5dsn6K1JqHRc4BLyDnjrs7tLnj2DFbVnKZu4YzizWBA6Um/YpHA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.array': 1.1.14
+      '@gaopeng123/utils.date': 1.1.15-alpha.2
+      '@gaopeng123/utils.file': 1.1.15-alpha.4
+      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.log': 1.1.15-alpha.1
+      '@gaopeng123/utils.number': 1.1.14
+      '@gaopeng123/utils.object': 1.1.14
+      '@gaopeng123/utils.string': 1.1.15-alpha.4
       '@gaopeng123/utils.types': 1.1.14
     dev: false
 
