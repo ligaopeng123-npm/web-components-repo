@@ -286,7 +286,7 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/fetch': 0.3.4
+      '@gaopeng123/fetch': 0.3.8
       '@gaopeng123/utils.file': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
@@ -660,7 +660,7 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/hooks': 0.7.7_sfoxds7t5ydpegc3knd667wn6m
+      '@gaopeng123/hooks': 0.7.8
       '@gaopeng123/utils': 1.1.15-alpha.3
     devDependencies:
       '@babel/core': 7.22.10
@@ -882,7 +882,7 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_czskpwcgwtkufrblwuek25f2b4
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
-      '@gaopeng123/hooks': 0.7.7_sfoxds7t5ydpegc3knd667wn6m
+      '@gaopeng123/hooks': 0.7.8
       '@gaopeng123/multi-player': link:../multi-player
       '@gaopeng123/utils': 1.1.15-alpha.3
       '@gaopeng123/video-progress-bar': link:../video-progress-bar
@@ -1317,6 +1317,64 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/fetch': 0.3.4
+    devDependencies:
+      '@babel/core': 7.22.10
+      '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
+      '@babel/preset-env': 7.22.10_@babel+core@7.22.10
+      '@rollup/plugin-image': 2.1.1
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      autoprefixer: 10.4.13
+      babel-loader: 8.3.0_6fuapc6hmjgdcyhxse3dtubbfq
+      copy-webpack-plugin: 11.0.0_webpack@5.75.0
+      css-loader: 6.7.2_webpack@5.75.0
+      cssnano: 5.1.14
+      file-loader: 6.2.0_webpack@5.75.0
+      html-webpack-plugin: 5.5.0_webpack@5.75.0
+      husky: 7.0.4
+      less-loader: 11.1.0_webpack@5.75.0
+      postcss-url: 10.1.3
+      rollup-plugin-postcss: 4.0.2
+      size-limit: 7.0.8
+      style-loader: 3.3.1_webpack@5.75.0
+      ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
+      tsdx: 0.14.1
+      tslib: 2.4.1
+      typescript: 4.9.4
+      url-loader: 4.1.1_p5dl6emkcwslbw72e37w4ug7em
+      webpack: 5.75.0_webpack-cli@4.10.0
+      webpack-cli: 4.10.0_ixwfotxft53uv5r5hjf7zsiiya
+      webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
+      webpack-merge: 5.8.0
+
+  packages/super-loading:
+    specifiers:
+      '@babel/core': ^7.14.3
+      '@babel/plugin-proposal-class-properties': ^7.13.0
+      '@babel/preset-env': ^7.14.4
+      '@rollup/plugin-image': ^2.1.1
+      '@size-limit/preset-small-lib': ^7.0.8
+      autoprefixer: ^10.4.7
+      babel-loader: ^8.2.2
+      copy-webpack-plugin: ^11.0.0
+      css-loader: ^6.7.1
+      cssnano: ^5.1.12
+      file-loader: ^6.2.0
+      html-webpack-plugin: ^5.3.1
+      husky: ^7.0.4
+      less-loader: ^11.0.0
+      postcss-url: ^10.1.3
+      rollup-plugin-postcss: ^4.0.2
+      size-limit: ^7.0.8
+      style-loader: ^3.3.1
+      ts-loader: ^9.2.2
+      tsdx: ^0.14.1
+      tslib: ^2.3.1
+      typescript: ^4.5.5
+      url-loader: ^4.1.1
+      webpack: ^5.38.1
+      webpack-cli: ^4.7.0
+      webpack-dev-server: ^3.11.2
+      webpack-merge: ^5.8.0
     devDependencies:
       '@babel/core': 7.22.10
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
@@ -6388,14 +6446,19 @@ packages:
       - encoding
     dev: false
 
-  /@gaopeng123/hooks.use-antd-table-selection/0.7.6_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-vWPG3qEAjNJjDx4pzDK0DGXVrzVArTEvdjlmJdTdCcII2l+o3Q0T8Z+s+QM+vxSIvNEp9nNRWfP0Q35mZgfX6w==}
-    peerDependencies:
-      react: ^17.0.2
-      react-dom: ^17.0.2
+  /@gaopeng123/fetch/0.3.8:
+    resolution: {integrity: sha512-oUSxj0t5i4BStHDgjYjk52FQopPF2T4t/IOR0RusP97Am1mg5zcM2H5gjIiIYqGAhA0TZXL6jDqlaK3oQNIoYg==}
+    engines: {node: '>=10'}
     dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
+      '@gaopeng123/utils.file': 1.1.14
+      '@gaopeng123/utils.types': 1.1.14
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@gaopeng123/hooks.use-antd-table-selection/0.7.8:
+    resolution: {integrity: sha512-v/3guVdSSBf0MDSse73F120fUpJ1uGEpsKMdYszYFwvt+1TRtMjkdYRdrP3/QQObYOzQv5YH9zaEe9AWI0AGBw==}
     dev: false
 
   /@gaopeng123/hooks.use-boolean/0.5.0:
@@ -6403,55 +6466,49 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-boolean/0.7.6:
-    resolution: {integrity: sha512-YqmRUYzjNjAGKfOsNlyadTNGRNXDTkGKwa3GFaiJwSKLBqQi27ASHTgnTbqFe90wc7rbXp0C+7ilbhkyLb04Xg==}
+  /@gaopeng123/hooks.use-boolean/0.7.8:
+    resolution: {integrity: sha512-oPuhhmJdgcEm9eNs1saF5ZLPfV/qTCT4VVZB1ndOle7xG6DbpYXuUuelmEjTeQRK1zzhads8P1QAeQMAbgnmlg==}
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-clock/0.7.6:
-    resolution: {integrity: sha512-bfnEuaFxmm+PJlKrv2WakvicN5UL0k+kwd1sAWdzY2CVkmyWbzi4+dtL/HlJ0Tc8451D2/OJijlfPIJUolGWfA==}
+  /@gaopeng123/hooks.use-clock/0.7.8:
+    resolution: {integrity: sha512-7ouQ8+motgYMAxj95Ui0/fDju7Rxu68VhR7ArzIUFMD/3+oALO+jeve+JayWF8+UCNQIoVDquw+68iWgqoTGRQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-poller': 0.7.6
-      '@gaopeng123/utils.date': 0.4.17
+      '@gaopeng123/hooks.use-poller': 0.7.8
+      '@gaopeng123/utils.date': 1.1.15-alpha.2
     dev: false
 
-  /@gaopeng123/hooks.use-debounce/0.7.6:
-    resolution: {integrity: sha512-EITDapngE82m+O0ptISzWpox1Dv9pf1Yn2MZsCkMNq+mvCF6qHzxWPbJVma9WY6Pkbo6eTc4kWVT3npaNqGH6Q==}
+  /@gaopeng123/hooks.use-debounce/0.7.8:
+    resolution: {integrity: sha512-MuEWN7XvFH+dJKObjVbdXyw8zmAU5Dj3vb/UjbJGyL4b1XYGlmB0GKW7o0oTKb9KGqtJQ7Wu7uQVhCd0TNSKjg==}
     dependencies:
       '@gaopeng123/utils.function': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-easing/0.7.6:
-    resolution: {integrity: sha512-OOIryJct7Z6CAs+Do1yU71VOI0+l3FiRQN/tuPNolJxuP7ARyBakwJL22ym/gRPm1Nrd71XVoTJHtkycCOEG/A==}
+  /@gaopeng123/hooks.use-easing/0.7.8:
+    resolution: {integrity: sha512-pqQkuqB4dYK4r4H2N/74LT/S2SpfebtysbOUcGrfkVsun18zkDgM9MT5qZREZq3pOtOR/F3cehTruZO3E0iC8Q==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-poller': 0.7.6
-      '@gaopeng123/utils.types': 0.4.14
+      '@gaopeng123/hooks.use-poller': 0.7.8
+      '@gaopeng123/utils.types': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-effect-once-in-strict-mode/0.7.6_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-a6EkKiY/dqlWg7Gr/uqypRmkFmVU0ozwgHSePUy2XQ7Iw3zyh9XK5AtAldyOWZrawdf+pSBgusiu4GZ0y/FhYg==}
-    peerDependencies:
-      react: ^17.0.2
-      react-dom: ^17.0.2
-    dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
+  /@gaopeng123/hooks.use-effect-once-in-strict-mode/0.7.8:
+    resolution: {integrity: sha512-OgQUsMR2W5+1Wl8Ot9CCFub9loxCugrIo8bFryevtlEOwgX6Wz19B1DT7xCSGfLC138hvHPaG3epgW411gB7iw==}
     dev: false
 
-  /@gaopeng123/hooks.use-fetch/0.7.6:
-    resolution: {integrity: sha512-yo/f7KqNH7BA4L/ZgxNCMXjEiVlKynMQGFOfr2A+GUx3n0n4VgBagte8PI6mZ150LlniwT0Mm2r4Pv/vELhhlQ==}
+  /@gaopeng123/hooks.use-fetch/0.7.8:
+    resolution: {integrity: sha512-LrEtPp4u2XAgVLjkiWRK9TR1l2kFR5TReSyhodCYEuI7IbG/zzTd5vqMNoQrgY5aU9QgofnGkTafYcxpP3tVJw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/fetch': 0.3.4
+      '@gaopeng123/fetch': 0.3.8
       '@gaopeng123/utils.types': 1.1.14
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@gaopeng123/hooks.use-merge-value/0.7.2:
-    resolution: {integrity: sha512-f+wCI7eZZV789MlUExCxHcKM9uRSmNHKr72KT9E4D7w171r193/wco7+W3iiwkJLsO/koq9EF+l6AGF15vl08g==}
+  /@gaopeng123/hooks.use-merge-value/0.7.8:
+    resolution: {integrity: sha512-P1b5ZocqcOFCOtgicEjU/kM9SBktNINZMJ77mGZG5w1aZb5ZhXCH9NReaCIWvtLaP3h7jbHcZkWcPG+e3gI3bQ==}
     engines: {node: '>=10'}
     dev: false
 
@@ -6460,99 +6517,97 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-pagination/0.7.6:
-    resolution: {integrity: sha512-tQPHWTbkczhhnIII2/Ci6DZ3df2R27AEXOs3ecdMInBK/yP9UtheZ+6k/s6DpBUPhLKBYUGyZHnlFwLNmoAzdA==}
+  /@gaopeng123/hooks.use-pagination/0.7.8:
+    resolution: {integrity: sha512-rIXIs4lIUf18UhWp3pl0O3QdfBa7WLAi2GzTzvV/pJS1fWOlc9zSZrbzcLu4dCMSpJ8unKkpJCO9fVudnqTA5A==}
     engines: {node: '>=10'}
     dev: false
 
-  /@gaopeng123/hooks.use-poller/0.7.6:
-    resolution: {integrity: sha512-AxfjQ+Gu/96LGYj1rmU5LPe81WQCFlWuz9jZwDVzGDJ7FMFhi1V1Cyr7b8kg6zvWMaMDzN4NvnEp22nYulkLqQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.4.14
-    dev: false
-
-  /@gaopeng123/hooks.use-reload-after-stationary/0.7.6:
-    resolution: {integrity: sha512-DvZU9jxRzbAGgLleLZnIxbX7jAJthLDfnIjzF3tJtdiacMVy/uMMz3PIWX05MPGXrDGHDuH/o/FTrIt0psQHCA==}
+  /@gaopeng123/hooks.use-poller/0.7.8:
+    resolution: {integrity: sha512-5P94VPApF9pMtkv23P4vE8Vp5wVd2PUnmhFwVGjr33BFnzEX0UgNkwu34idOGCdO+7w7BVqsP0AwEH84ZeGViA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.types': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-resize/0.7.6:
-    resolution: {integrity: sha512-kC3sxWrx/s74+GsNxkHF3IM7ObO8HVK8A0D2fuPQFjBAnZ9MJYNv9ydf6dSAsxMwkeI/DhtqmwxaHbX3Hi+8Tg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 0.4.14
-    dev: false
-
-  /@gaopeng123/hooks.use-scale/0.7.6:
-    resolution: {integrity: sha512-jB3IcuYgyue5uIkhQgxL1FO294Qa8lf0FWm5Q5pHURvFmOksIOAJgao/fQv/4j2C8gN2S/tsoAjzhpPHjehjHQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/hooks.use-resize': 0.7.6
-      '@gaopeng123/utils.types': 0.4.14
-    dev: false
-
-  /@gaopeng123/hooks.use-throttle-and-merge/0.7.6:
-    resolution: {integrity: sha512-QmTnvLVwngumPxz9b0fqMYA9urEqohVf+LwRCYZtEypdl5nAvTCoX3027RgrovavJ0yzV6gNyVnzFzxz1RGtrA==}
+  /@gaopeng123/hooks.use-reload-after-stationary/0.7.8:
+    resolution: {integrity: sha512-3IZwv2EulboTMSatzhokOlIHN3nZB4sZc68AVcG+AL3+ir9zd2UtM3hWxSwcz87WaZZt4/3Q1SZd2dG3nsNDjA==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-throttle/0.7.6:
-    resolution: {integrity: sha512-eWR8zSA0GyU67T16K3alkYZhMYafsCkJsnmcj6quqJMe+N5uaqDdk24twqHcbu4ikAoayNNkj8BzEXZpIFwR4A==}
+  /@gaopeng123/hooks.use-resize/0.7.8:
+    resolution: {integrity: sha512-By7P+vuK4CNtj5CAi9TeEUGQ/7YjiK7DtZ8dz4JXVo83+eMHMw+iF+RnCFqFQveB5DlqZ1nXAmnsjGLhyTxsNw==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-visibility/0.7.6:
-    resolution: {integrity: sha512-4bYJvOEE3Bj9UIJscSq74vF2QxIoL17TVX3HCcfBj67nDBvci9FhvtoNoUhp7QL5M+meIq0K254vXimXTUmKMg==}
+  /@gaopeng123/hooks.use-scale/0.7.8:
+    resolution: {integrity: sha512-y8mU0+PthHqvFs/xAPtPnpDpbsTSdkuudI0SL+pZk2DusVkacDGkeIZBbBchnzvXdLofwLpB4HnCz8CnhnQq5Q==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 0.5.2
+      '@gaopeng123/hooks.use-resize': 0.7.8
+      '@gaopeng123/utils.types': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks.use-worker/0.7.6:
-    resolution: {integrity: sha512-aqcuo6gZOHD6QzTBBNd/QOSw7fMn8ueI5D9LQyIMU9eizwBFA+ncwlsMYrxV9LSSXfQC8kJF6TPv4mSrFn+wbQ==}
-    dev: false
-
-  /@gaopeng123/hooks.use-zoom/0.7.6:
-    resolution: {integrity: sha512-KvJ1fLL3VHQ8KEvMxRNWJRMKiM0GcYxt3slAu1wAjZYutXVPVJifjIUjgkJC2JAVXT0rZ9Lwdli5xoheqBcYeg==}
+  /@gaopeng123/hooks.use-throttle-and-merge/0.7.8:
+    resolution: {integrity: sha512-meexRKlwDKcwJ2KM/qZjbcWU6u2rsCjXV727XaJrqrC0NrYZ3mvJ1e/3f2wn4LgUOn3h/41y2OqDtYaHC/AKRA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-resize': 0.7.6
-      '@gaopeng123/utils.types': 0.4.14
+      '@gaopeng123/utils.function': 1.1.14
     dev: false
 
-  /@gaopeng123/hooks/0.7.7_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-HUaROvZcBIc6TAVwTWdiLQBaGQYZyGBHVdIVAjotH8K7UtsDEs4b1o5ZPYHz+3/hVCkLZ7L0HVfSbtKg5897mw==}
+  /@gaopeng123/hooks.use-throttle/0.7.8:
+    resolution: {integrity: sha512-e/bHU/Y+bp1QT3A5REH7s0iUQTShzILU+ZNRzPFPDlZDonGOkNrNXRkwWmUTDP+jfFNHByUcrB28t+608/ssmg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/hooks.use-antd-table-selection': 0.7.6_sfoxds7t5ydpegc3knd667wn6m
-      '@gaopeng123/hooks.use-boolean': 0.7.6
-      '@gaopeng123/hooks.use-clock': 0.7.6
-      '@gaopeng123/hooks.use-debounce': 0.7.6
-      '@gaopeng123/hooks.use-easing': 0.7.6
-      '@gaopeng123/hooks.use-effect-once-in-strict-mode': 0.7.6_sfoxds7t5ydpegc3knd667wn6m
-      '@gaopeng123/hooks.use-fetch': 0.7.6
-      '@gaopeng123/hooks.use-merge-value': 0.7.2
-      '@gaopeng123/hooks.use-pagination': 0.7.6
-      '@gaopeng123/hooks.use-poller': 0.7.6
-      '@gaopeng123/hooks.use-reload-after-stationary': 0.7.6
-      '@gaopeng123/hooks.use-resize': 0.7.6
-      '@gaopeng123/hooks.use-scale': 0.7.6
-      '@gaopeng123/hooks.use-throttle': 0.7.6
-      '@gaopeng123/hooks.use-throttle-and-merge': 0.7.6
-      '@gaopeng123/hooks.use-visibility': 0.7.6
-      '@gaopeng123/hooks.use-worker': 0.7.6
-      '@gaopeng123/hooks.use-zoom': 0.7.6
+      '@gaopeng123/utils.function': 1.1.14
+    dev: false
+
+  /@gaopeng123/hooks.use-visibility/0.7.8:
+    resolution: {integrity: sha512-bvckPhS3yPeS2BMOidKqmsoeypYbbDfcdEVzZfO3aAAKUOkBQeQuwebQ0wOaLrcJr5tRlKVEx3A1AgtCAcMl/w==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.14
+    dev: false
+
+  /@gaopeng123/hooks.use-worker/0.7.8:
+    resolution: {integrity: sha512-em84R+47rBK9wo55OI+bzvvqhTedXkAk5EUaQePdI5YDQt4oGdafqkV3nNFt5EZCgbSuP8qVZx7aYz66zEVk2g==}
+    dev: false
+
+  /@gaopeng123/hooks.use-zoom/0.7.8:
+    resolution: {integrity: sha512-EDvoUMPiy6rslwHtUaab3NGTzjW+uWQ6PmoeMs0dAww4K8TG0GqadQcYQyJVrJB3lDVE45PoX73SVnupaJBQWA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/hooks.use-resize': 0.7.8
+      '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
+  /@gaopeng123/hooks/0.7.8:
+    resolution: {integrity: sha512-LaGNU0ii/z2LMYd1VKDrNt0T/rIDY+pDVNsi+cEoxiqjwqhDEi2Qn9B5V/qhy7IG3C+rbT6xei2XttgWWofALA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/hooks.use-antd-table-selection': 0.7.8
+      '@gaopeng123/hooks.use-boolean': 0.7.8
+      '@gaopeng123/hooks.use-clock': 0.7.8
+      '@gaopeng123/hooks.use-debounce': 0.7.8
+      '@gaopeng123/hooks.use-easing': 0.7.8
+      '@gaopeng123/hooks.use-effect-once-in-strict-mode': 0.7.8
+      '@gaopeng123/hooks.use-fetch': 0.7.8
+      '@gaopeng123/hooks.use-merge-value': 0.7.8
+      '@gaopeng123/hooks.use-pagination': 0.7.8
+      '@gaopeng123/hooks.use-poller': 0.7.8
+      '@gaopeng123/hooks.use-reload-after-stationary': 0.7.8
+      '@gaopeng123/hooks.use-resize': 0.7.8
+      '@gaopeng123/hooks.use-scale': 0.7.8
+      '@gaopeng123/hooks.use-throttle': 0.7.8
+      '@gaopeng123/hooks.use-throttle-and-merge': 0.7.8
+      '@gaopeng123/hooks.use-visibility': 0.7.8
+      '@gaopeng123/hooks.use-worker': 0.7.8
+      '@gaopeng123/hooks.use-zoom': 0.7.8
     transitivePeerDependencies:
       - encoding
-      - react
-      - react-dom
     dev: false
 
   /@gaopeng123/utils.array/0.6.0:
@@ -6602,13 +6657,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.14
-
-  /@gaopeng123/utils.date/0.4.17:
-    resolution: {integrity: sha512-+mqp/LgWEXQDKqlV+HEePVMdYut2Fv94RN+It4uRBR+sl+v7FnlfzC5pbFSw2SHf188X//Yy7Fvdkt2co4BUKQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.4.14
-    dev: false
 
   /@gaopeng123/utils.date/0.6.0:
     resolution: {integrity: sha512-kX9gTiBM8a07NWOwaruj7Gi2xqno6SQTVkSI4x0gTlu6VZDTbMKcZOMEC8sKJJ8oxvgHVmbyuTf1FrFKqWtGRw==}
@@ -6689,13 +6737,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 0.4.14
-
-  /@gaopeng123/utils.function/0.5.2:
-    resolution: {integrity: sha512-jKDrFSzJe0K4u+GKgj3WBiuaTSQOVnrfwASY75eJWgqA/K8j5j2OeKyzXuZy62V+tnO5w3FxyLm/NIjsyydm0A==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 0.5.0
-    dev: false
+    dev: true
 
   /@gaopeng123/utils.function/0.6.1:
     resolution: {integrity: sha512-qF4g/fo4mEQe2JpL/FMprDgkSxCWlvLv2JmI/aj/+mbzuFB4DYhIfg7p4fcxHJU24FTvqlmKb+55ZwEBFqo4YQ==}
@@ -6836,11 +6878,7 @@ packages:
   /@gaopeng123/utils.types/0.4.14:
     resolution: {integrity: sha512-t6UxA8h4ut0qSnE+ilLI5tB374/ejEpx3SacBAH4LO33QTDAc8/BdoAVxSgn8FfgMXTIfL906fgAH5ruDRUtxQ==}
     engines: {node: '>=10'}
-
-  /@gaopeng123/utils.types/0.5.0:
-    resolution: {integrity: sha512-EQb7mU4YvEbQn02/TuxuXktChMBOUsY3mUZVJuvEmQ1xKESxaBplmNpDV6IfcroBgreGT+ieYbXsw8Pe3ipggg==}
-    engines: {node: '>=10'}
-    dev: false
+    dev: true
 
   /@gaopeng123/utils.types/0.6.1:
     resolution: {integrity: sha512-PAYo6qOcVm0Bj66YMkBSvmxS2m+C9PZTwagzBtIEJvzPxqJpT/d5BoGHPD0++3O/VGqk11zEGLwbXWIjh/dQsg==}
