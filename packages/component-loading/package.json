@@ -1,6 +1,6 @@
 {
   "name": "@gaopeng123/component-loading",
-  "version": "1.3.6-alpha.1",
+  "version": "1.3.6-alpha.2",
   "description": "组件加载动画",
   "keywords": [
     "loading"
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "set NODE_ENV=development && npm run watch:css & webpack serve",
-    "watch:css" : "node chokidarStyles.js",
+    "watch:css": "node chokidarStyles.js",
     "build": "tsdx build",
     "build:dev": "set NODE_ENV=development&&webpack build",
     "push": "pnpm run build && pnpm publish --access public --no-git-checks",
