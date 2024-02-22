@@ -287,14 +287,14 @@ class AgreementProprietary extends HTMLElement {
                         left: 0px;
                         position: absolute;
                         width: 100%;
-                        background: var(--login-module-agreement-proprietary-color, #42b983);
+                        background: var(--login-module-agreement-proprietary-color, var(--themeColor, #42b983));
                         transform: scaleX(0);
                         transition: all 0.5s;
                     }
                     #agreement-proprietary-text {
                         cursor: pointer;
                         user-select: none;
-                        color: var(--login-module-agreement-proprietary-color, #42b983);
+                        color: var(--login-module-agreement-proprietary-color, var(--themeColor, #42b983));
                         /*vertical-align: 1px;*/
                     }
                     #agreement-proprietary-text:hover::after {

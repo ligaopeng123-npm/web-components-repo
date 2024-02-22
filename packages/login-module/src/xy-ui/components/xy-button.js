@@ -62,6 +62,9 @@ export default class XyButton extends HTMLElement {
             color: #fff; 
             background:var(--themeBackground,var(--themeColor,#42b983));
         }
+        :host([type="flat"]){ 
+            color:var(--themeColor,#42b983); 
+        }
         :host([type="danger"]){ 
             color: #fff; 
             background:var(--themeBackground,var(--dangerColor,#ff7875));
