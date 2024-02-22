@@ -1,4 +1,120 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.9...v) (2024-01-11)
+# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.4...v) (2024-02-22)
+
+
+
+## [1.3.6-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.3...v1.3.6-alpha.4) (2024-02-22)
+
+
+### Bug Fixes
+
+* login-module 主题色更简介 ([1b59fe4](https://github.com/ligaopeng123-npm/web-components-repo/commit/1b59fe40227d97f2a89c6a33622eba2d85460a1d))
+
+
+
+## [1.3.6-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.2...v1.3.6-alpha.3) (2024-02-22)
+
+
+### Bug Fixes
+
+* login-module 登录模式切换bug ([953030a](https://github.com/ligaopeng123-npm/web-components-repo/commit/953030a6e509db25fc32354cacc819a40ab65ade))
+
+
+
+## [1.3.6-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.1...v1.3.6-alpha.2) (2024-02-22)
+
+
+### Features
+
+* component-loading转suss ([5c36835](https://github.com/ligaopeng123-npm/web-components-repo/commit/5c36835f19cb27ef1f928c1b991d745edd05305c))
+* login add slot name="footer" ([8f6de41](https://github.com/ligaopeng123-npm/web-components-repo/commit/8f6de41ede9f10383915869715d473013da5379d))
+* styles 错误监听 ([73e1f8b](https://github.com/ligaopeng123-npm/web-components-repo/commit/73e1f8b7e0719110977f963170ce59f0ef5ab5ac))
+* 删除冗余依赖 ([afad236](https://github.com/ligaopeng123-npm/web-components-repo/commit/afad2366acfa75c0f374802e755e53d3455776af))
+
+
+
+## [1.3.6-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.0...v1.3.6-alpha.1) (2024-02-15)
+
+
+
+## [1.3.6-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5...v1.3.6-alpha.0) (2024-02-15)
+
+
+### Features
+
+* add @gaopeng123/component-loading ([9f7c169](https://github.com/ligaopeng123-npm/web-components-repo/commit/9f7c169849e88b9d15e6081b3201fce075d8e249))
+
+
+
+## [1.3.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.5...v1.3.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* add module ([64ab66a](https://github.com/ligaopeng123-npm/web-components-repo/commit/64ab66a8c40ef3efb085190526315da57983173b))
+* add module all ([c4df7ac](https://github.com/ligaopeng123-npm/web-components-repo/commit/c4df7aca26d8e01f255de14a7bbe84f564b959c7))
+
+
+
+## [1.3.5-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.4...v1.3.5-alpha.5) (2024-01-29)
+
+
+### Bug Fixes
+
+* muted尝试解决不能自动播放问题3 ([2c51303](https://github.com/ligaopeng123-npm/web-components-repo/commit/2c51303dde33a7096a3ac7559d9c1ca4013f95a9))
+
+
+
+## [1.3.5-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.3...v1.3.5-alpha.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* muted尝试解决不能自动播放问题2 ([58a0923](https://github.com/ligaopeng123-npm/web-components-repo/commit/58a0923e61758c06cb54fc8feb6dfbe5095ec282))
+
+
+
+## [1.3.5-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.2...v1.3.5-alpha.3) (2024-01-29)
+
+
+### Bug Fixes
+
+* muted尝试解决不能自动播放问题 ([cc8706b](https://github.com/ligaopeng123-npm/web-components-repo/commit/cc8706b319bea1b26f21ef26a92bdc394da43d92))
+
+
+
+## [1.3.5-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.1...v1.3.5-alpha.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* safari不自动播放 ([3e2b113](https://github.com/ligaopeng123-npm/web-components-repo/commit/3e2b11371fd1845c28d2385921b7f9b1a9195764))
+
+
+
+## [1.3.5-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.5-alpha.0...v1.3.5-alpha.1) (2024-01-26)
+
+
+### Bug Fixes
+
+* webrtc 增加getVideo().play(); ios不能播放 需要手动调用下play方法 ([5c34a26](https://github.com/ligaopeng123-npm/web-components-repo/commit/5c34a261468804b06a842a50c110acaf203eed6b))
+
+
+
+## [1.3.5-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4...v1.3.5-alpha.0) (2024-01-26)
+
+
+### Bug Fixes
+
+* webrtc 增加playsInline ([d80d03f](https://github.com/ligaopeng123-npm/web-components-repo/commit/d80d03f2d9c4ea70547aa78c6bd5e0ae7d09a81b))
+
+
+
+## [1.3.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.4-alpha.9...v1.3.4) (2024-01-19)
+
+
+### Bug Fixes
+
+* login-module iocn丢失 // Unsafe attempt to load URL data:image/svg+xml;utf8 ([ecda9f0](https://github.com/ligaopeng123-npm/web-components-repo/commit/ecda9f02c6c20245a0de505a444ea735a5f78b39))
 
 
 
