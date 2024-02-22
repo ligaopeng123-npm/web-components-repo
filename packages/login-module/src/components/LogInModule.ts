@@ -807,7 +807,8 @@ export default class LogInModule extends HTMLElement {
                     <div style="${config['item-style']}" class="item login-helper">
                         <phone-login-link class="login-helper-item" item-style="${config['item-style']}" phone-login-url="${config['phone-login-url']}"></phone-login-link>
                         <forgot-password class="login-helper-item" item-style="${config['item-style']}" forgot-password-url="${config['forgot-password-url']}"></forgot-password>
-                    </div> 
+                    </div>
+                    <slot name="footer"></slot> 
                 </div>
             </div>
          `;

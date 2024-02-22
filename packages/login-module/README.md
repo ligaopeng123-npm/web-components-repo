@@ -105,3 +105,10 @@ captchaClick 在点击验证码的时候触发
 | --login-module-login-title-fontFamily      | title字体fontFamily       | PingFangSC-Semibold, PingFang SC |
 | --login-module-agreement-proprietary-color | agreement-proprietary颜色 | #42b983                          |
 
+## slot <span class="new"></span>
+
+```
+tabs // 顶部
+username-helper // 账号下方
+footer // 底部
+```
