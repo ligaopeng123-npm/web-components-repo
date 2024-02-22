@@ -390,8 +390,8 @@ export default class LogInModule extends HTMLElement {
     loginType: LoginType = 'account';
 
     linkChange = (ev?: any) => {
-        this.shadow.querySelector('.login-form').innerHTML = this.getFormByType(ev?.detail?.type);
         this.loginType = ev?.detail?.type;
+        this.shadow.querySelector('.login-form').innerHTML = this.getFormByType(ev?.detail?.type);
         setTimeout(() => {
             this.addLoginEvent();
             /**
