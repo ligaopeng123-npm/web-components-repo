@@ -29,7 +29,7 @@ import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
 import ResolutionSelect from "../Action/ResolutionSelect";
 import IconBackButton from "../Action/IconBackButton";
-import { isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
+import { classnames, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
@@ -232,7 +232,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         }
     }));
 
-    const bthStyle = isMobile() ? { width: 56 } : {};
+    const _isMobile = isMobile();
+
+    const bthStyle = _isMobile ? { width: 56 } : {};
 
     return (
         <ThemeProvider
@@ -245,7 +247,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 }}
                 classes={{ root: `${styles.mainPlayer} ${className}` }}>
                 <ActionColumn
-                    className={styles.hoverShow}
+                    className={classnames(styles.hoverShow, _isMobile ? styles.mobileSafe : '')}
                     left={<>
                         {
                             videoToolbar?.back === true && _isFullscreen
