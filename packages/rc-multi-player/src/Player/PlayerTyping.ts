@@ -78,6 +78,8 @@ export type PlayerEvents = {
     onBack?: () => void;
     // 最大化 最下化
     onFullChange?: (val: boolean) => void;
+    // 视频配置变化事件监听
+    onActionChange?: (values: any) => void;
 }
 
 export type Protocol =
@@ -163,11 +165,13 @@ export type LayoutPlayerProps =
 export type RcMultiPlayerProps =
     {
         title?: string | ReactNode;
+        defaultPlayerConfig?: PlayerConfig;
     }
     & { hideToolbarInFullScreen?: boolean, timeDrag?: ReactNode }
     & DomStyle
     & RcFlvPlayerProps
     & PlayerConfig;
+
 
 export type WebRtcPlayerProps =
     {}

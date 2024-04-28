@@ -12,6 +12,7 @@
 import * as React from 'react';
 import Drawer from "@mui/material/Drawer";
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import styles from "../styles.module.less";
 import styles2 from "./styles.module.less";
 import Button from "@mui/material/Button";
@@ -19,14 +20,16 @@ import { MultiStoreEnum, Props } from "../MultiTyping";
 import ActionColumn from "./ActionColumn";
 import IconCloseButton from "./IconCloseButton";
 import FormItem from "../components/FormItem";
-import { max } from "@gaopeng123/utils";
+import { classnames, isMobile, max } from "@gaopeng123/utils";
 import { ObjectFit } from "@gaopeng123/multi-player";
 import { ScreenConfigHelper } from "../MultiStore";
 
+
+const isMob = isMobile();
 type MultiScreenDrawerProps = {} & Props;
 
 const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
-    const {state, dispatch, screenKey} = props;
+    const { state, dispatch, screenKey,  anchor} = props;
     const toggleDrawer = (open: boolean) => {
         dispatch({
             type: MultiStoreEnum.drawer,
@@ -38,7 +41,7 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
      * @param v
      */
     const onProtocolSelectChange = (v: any) => {
-        ScreenConfigHelper.setSingleConfig({protocol: v});
+        ScreenConfigHelper.setSingleConfig({ protocol: v });
     }
     /**
      * 改变样式处理
@@ -64,13 +67,13 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
      */
     const onObjectFitSelectChange = (v: any) => {
         changeObjectFit(v);
-        ScreenConfigHelper.setSingleConfig({objectFit: v});
+        ScreenConfigHelper.setSingleConfig({ objectFit: v });
     }
     /**
      * 视频分辨率
      */
     const onResolutionSelectChange = (v: string) => {
-        ScreenConfigHelper.setSingleConfig({resolution: v});
+        ScreenConfigHelper.setSingleConfig({ resolution: v });
     }
     /**
      * 视频播放方式
@@ -89,17 +92,24 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
     return (
         <>
             <Drawer
-                classes={{root: styles2.drawer, paper: styles2.paper}}
-                sx={{position: 'absolute'}}
+                classes={{
+                    root: classnames({
+                        [styles2.drawer]: true,
+                        [styles2.mobDrawer]: isMob,
+                        [styles2.pcDrawer]: !isMob
+                    }),
+                    paper: styles2.paper
+                }}
+                sx={{ position: 'absolute' }}
                 variant="persistent"
-                anchor={'right'}
+                anchor={anchor || 'right'}
                 open={state[MultiStoreEnum.drawer]}
             >
                 <ActionColumn
                     className={styles2.header}
-                    left={<span style={{marginLeft: 16}}>播放器配置</span>}
+                    left={<span style={{ marginLeft: 16 }}>播放器配置</span>}
                     right={<IconCloseButton onClick={toggleDrawer}/>}/>
-                <div style={{padding: 16}}>
+                <div style={{ padding: 16 }}>
                     {
                         state[MultiStoreEnum.screenConfig]?.protocol === false
                             ? null
@@ -150,7 +160,7 @@ type MultiScreenDrawerButtonProps = {
 } & Props;
 
 export const MultiScreenDrawerButton = (props: MultiScreenDrawerButtonProps) => {
-    const {dispatch, style} = props;
+    const { dispatch, style } = props;
     const onClick = () => {
         dispatch({
             type: MultiStoreEnum.drawer,
@@ -160,12 +170,12 @@ export const MultiScreenDrawerButton = (props: MultiScreenDrawerButtonProps) => 
     return (
         <Button
             onClick={onClick}
-            startIcon={<BrightnessHighIcon/>}
+            startIcon={isMob ? <MoreVertIcon/> : <BrightnessHighIcon/>}
             size="small"
             className={styles.bottom}
             style={props.style}
         >
-            配置
+            {!isMob ? '配置' : ''}
         </Button>
     )
 }

@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import * as React from 'react';
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useReducer, useRef, useState } from 'react';
 import styles from './player.module.less';
 import ActionColumn from "../Action/ActionColumn";
 import FullScreenButton from "../Action/FullScreenButton";
@@ -29,7 +29,12 @@ import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
 import ResolutionSelect from "../Action/ResolutionSelect";
 import IconBackButton from "../Action/IconBackButton";
-import { classnames, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
+import { classnames, isEqualByObj, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
+import MultiScreenDrawer, { MultiScreenDrawerButton } from "../Action/MultiScreenDrawer";
+import { reducer, ScreenConfig } from "../MultiStore";
+import { MultiStoreEnum } from "../MultiTyping";
+
+const _isMobile = isMobile();
 
 const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.RefAttributes<RcPlayerRef>> = forwardRef<RcPlayerRef, RcMultiPlayerProps>((props, ref) => {
     const {
@@ -46,13 +51,15 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         config,
         videoToolbar,
         hideToolbarInFullScreen,
-        timeDrag
+        timeDrag,
+        defaultPlayerConfig
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
     const playerRef = useRef<any>(null);
     const fullRef = useRef<any>(null);
     const countRef = useRef<countdownRef>(null);
+    const configStateRef = useRef(null);
     const [loadType, {
         setTrue: setLoadTypeTrue,
         setFalse: setLoadTypeFalse
@@ -208,6 +215,11 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 if (isFunction(events?.onFullChange)) {
                     events?.onFullChange(val);
                 }
+            },
+            onActionChange: (values: any) => {
+                if (events?.onActionChange) {
+                    events?.onActionChange(values);
+                }
             }
         }
     );
@@ -229,17 +241,46 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         },
         getVideo: () => {
             return playerRef.current?.getVideo();
+        },
+        getActionConfig: () => {
+            return screenConfig.getConfig();
         }
     }));
 
-    const _isMobile = isMobile();
 
     const bthStyle = _isMobile ? { width: 56 } : {};
+
+
+    const _id = `rc-multi-player`
+    const screenConfig = ScreenConfig(_id);
+
+    const [configState, configDispatch] = useReducer(reducer, {}, (currentState) => {
+        return {
+            [MultiStoreEnum.screenConfig]: screenConfig.getDefaultConfig(defaultPlayerConfig),
+            [MultiStoreEnum.actionConfig]: screenConfig.getActionConfig(defaultPlayerConfig),
+        }
+    });
+    /**
+     * 协议等变更处理
+     */
+    useEffect(() => {
+        if (defaultPlayerConfig && _isMobile && configState[MultiStoreEnum.drawer] === false) {
+            if (!isEqualByObj(configStateRef.current, screenConfig.getConfig())) {
+                playerEvents.onActionChange(screenConfig.getConfig());
+                configStateRef.current = configState[MultiStoreEnum.screenConfig];
+            }
+        }
+    }, [configState[MultiStoreEnum.drawer]]);
+
+    useEffect(() => {
+        configStateRef.current = screenConfig.getConfig();
+    }, [])
 
     return (
         <ThemeProvider
             theme={DefaultTheme}>
             <Paper
+                id={_id}
                 elevation={0}
                 variant="outlined"
                 ref={(el: any) => {
@@ -257,27 +298,32 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                         <Title ellipsis={true}>{title}</Title>
                     </>}
                     right={
-                        <HideFullScreen>
-                            {
-                                canLoad && !isNaN(parseInt(maxPlayerTime as string))
-                                    ? <Countdown
-                                        ref={countRef}
-                                        maxTime={parseInt(maxPlayerTime as string) * 60}
-                                        onMaxClick={() => {
-                                            reloadPlayer();
-                                        }}
-                                        onMax={() => {
-                                            playerRef.current?.close();
-                                            loadRef?.current?.show();
-                                        }}/>
-                                    : <></>
-                            }
-                            {
-                                videoToolbar?.close !== false
-                                    ? <IconCloseButton onClick={onCloseClick}/>
-                                    : <></>
-                            }
-                        </HideFullScreen>}/>
+                        <>
+                            {_isMobile && defaultPlayerConfig &&
+                            <MultiScreenDrawerButton state={configState} dispatch={configDispatch}/>}
+                            <HideFullScreen>
+                                {
+                                    canLoad && !isNaN(parseInt(maxPlayerTime as string))
+                                        ? <Countdown
+                                            ref={countRef}
+                                            maxTime={parseInt(maxPlayerTime as string) * 60}
+                                            onMaxClick={() => {
+                                                reloadPlayer();
+                                            }}
+                                            onMax={() => {
+                                                playerRef.current?.close();
+                                                loadRef?.current?.show();
+                                            }}/>
+                                        : <></>
+                                }
+                                {
+                                    videoToolbar?.close !== false
+                                        ? <IconCloseButton onClick={onCloseClick}/>
+                                        : <></>
+                                }
+                            </HideFullScreen>
+                        </>
+                    }/>
                 <div
                     className={styles.playerContent}>
                     <ReplayLoad
@@ -347,6 +393,12 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                         </HideFullScreen>
                     }
                 />
+
+                {_isMobile && defaultPlayerConfig && <MultiScreenDrawer
+                    anchor={_isMobile && _isFullscreen ? 'right' : 'bottom'}
+                    screenKey={_id}
+                    state={configState}
+                    dispatch={configDispatch}/>}
             </Paper>
         </ThemeProvider>
     )

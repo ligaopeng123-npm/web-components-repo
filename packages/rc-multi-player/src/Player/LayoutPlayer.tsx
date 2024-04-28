@@ -10,7 +10,7 @@
  *
  **********************************************************************/
 import React, { useRef } from 'react';
-import MultiPlayer from "./RcMultiPlayer";
+import RcMultiPlayer from "./RcMultiPlayer";
 import styles from '../styles.module.less';
 import { LayoutPlayerProps, PlayerConfig, RcPlayerRef, } from "./PlayerTyping";
 import { MultiStoreEnum } from "../MultiTyping";
@@ -90,7 +90,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
     const { maxPlayerTime } = screenConfig;
 
     return (
-        <MultiPlayer
+        <RcMultiPlayer
             ref={videoRef}
             objectFit={ScreenConfigHelper.getSingleConfig('objectFit')}
             maxPlayerTime={maxPlayerTime}

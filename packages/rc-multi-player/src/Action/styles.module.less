@@ -13,12 +13,24 @@
     }
 }
 
-.drawer {
+.mobDrawer {
+
+}
+
+.pcDrawer {
     position: absolute;
     height: 100%;
     top: 0px;
     right: 0px;
 
+    :global .MuiDrawer-paper {
+        position: absolute;
+        min-width: 400px;
+    }
+}
+
+
+.drawer {
     .header {
         border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         font-size: .8125rem;
@@ -26,11 +38,6 @@
 
     .paper {
         z-index: 2;
-    }
-
-    :global .MuiDrawer-paper {
-        position: absolute;
-        min-width: 400px;
     }
 }
 

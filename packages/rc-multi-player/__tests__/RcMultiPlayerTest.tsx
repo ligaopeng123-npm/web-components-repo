@@ -78,7 +78,39 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                         events={{
                             onFullChange: (v) => {
                                 console.log(v);
+                            },
+                            onActionChange: (allValue) => {
+                                console.log(allValue);
                             }
+                        }}
+                        defaultPlayerConfig={{
+                            protocol: {
+                                defaultValue: 'WebRTC', options: [
+                                    {
+                                        label: 'WebRTC',
+                                        value: 'WebRTC'
+                                    },
+                                    {
+                                        label: 'HTTP-FLV',
+                                        value: 'FLV'
+                                    },
+                                ]
+                            },
+                            maxPlayerTime: false,
+                            resolution: {
+                                defaultValue: "1",
+                                options: [
+                                    {
+                                        label: '子码流',
+                                        value: "1"
+                                    },
+                                    {
+                                        label: '主码流',
+                                        value: "2"
+                                    }
+                                ]
+                            },
+                            objectFit: 'cover',
                         }}
                         protocol={protocol}
                         hideToolbarInFullScreen={false}
