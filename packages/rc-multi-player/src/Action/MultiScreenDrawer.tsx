@@ -89,8 +89,6 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
         });
     }
 
-    console.log(isMob && anchor === 'right')
-
     return (
         <>
             <Drawer

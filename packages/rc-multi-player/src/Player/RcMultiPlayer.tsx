@@ -265,9 +265,17 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
      */
     useEffect(() => {
         if (defaultPlayerConfig && _isMobile && configState[MultiStoreEnum.drawer] === false) {
-            if (!isEqualByObj(configStateRef.current, screenConfig.getConfig())) {
-                playerEvents.onActionChange(screenConfig.getConfig());
-                configStateRef.current = configState[MultiStoreEnum.screenConfig];
+            const currentConfig = screenConfig.getConfig()
+            const oldConfig = configStateRef.current;
+            for (const configKey in defaultPlayerConfig) {
+                // @ts-ignore
+                if (defaultPlayerConfig[configKey] !== false) {
+                    if (configKey !== 'objectFit' && oldConfig[configKey] !== currentConfig[configKey]) {
+                        playerEvents.onActionChange(screenConfig.getConfig());
+                        configStateRef.current = screenConfig.getConfig();
+                        break;
+                    }
+                }
             }
         }
     }, [configState[MultiStoreEnum.drawer]]);
