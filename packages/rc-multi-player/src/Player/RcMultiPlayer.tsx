@@ -288,7 +288,12 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                 }}
                 classes={{ root: `${styles.mainPlayer} ${className}` }}>
                 <ActionColumn
-                    className={classnames(styles.hoverShow, _isMobile ? styles.mobileSafe : '')}
+                    className={classnames({
+                        [styles.hoverShow]: true,
+                        [styles.top]: true,
+                        [styles.mobileSafeFullscreen]: _isMobile && _isFullscreen,
+                        [styles.mobileSafeTop]: _isMobile
+                    })}
                     left={<>
                         {
                             videoToolbar?.back === true && _isFullscreen
@@ -360,7 +365,12 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     </ReplayLoad>
                 </div>
                 <ActionColumn
-                    className={`${styles.hoverShow} ${styles.bottom}`}
+                    className={classnames({
+                        [styles.hoverShow]: true,
+                        [styles.bottom]: true,
+                        [styles.mobileSafeFullscreen]: _isMobile && _isFullscreen,
+                        [styles.mobileSafeBottom]: _isMobile,
+                    })}
                     right={
                         <HideFullScreen hide={hideToolbarInFullScreen}>
                             {

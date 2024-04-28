@@ -14,14 +14,32 @@
     }
 
     .hoverShow {
-        //display: none;
+        display: none;
         #hoverShowBase();
         animation: gradual-display .3s;
     }
 
+    .top {
+        top: 4px;
+    }
+
+    .bottom {
+        bottom: 4px;
+    }
+
     // 移动端安全区设置
-    .mobileSafe {
-        margin-top: 12px;
+    .mobileSafeTop {
+        top: 24px !important;
+    }
+
+    .mobileSafeBottom {
+        bottom: 24px !important;
+    }
+
+    .mobileSafeFullscreen {
+        left: 24px;
+        right: 24px;
+        width: calc(100% - 48px) !important;
     }
 
     &:hover {
@@ -29,10 +47,6 @@
             display: block;
             #hoverShowBase();
         }
-    }
-
-    .bottom {
-        bottom: 4px;
     }
 }
 

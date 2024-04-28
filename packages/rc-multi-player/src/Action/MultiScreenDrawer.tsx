@@ -29,7 +29,7 @@ const isMob = isMobile();
 type MultiScreenDrawerProps = {} & Props;
 
 const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
-    const { state, dispatch, screenKey,  anchor} = props;
+    const { state, dispatch, screenKey, anchor } = props;
     const toggleDrawer = (open: boolean) => {
         dispatch({
             type: MultiStoreEnum.drawer,
@@ -89,6 +89,8 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
         });
     }
 
+    console.log(isMob && anchor === 'right')
+
     return (
         <>
             <Drawer
@@ -96,9 +98,12 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                     root: classnames({
                         [styles2.drawer]: true,
                         [styles2.mobDrawer]: isMob,
-                        [styles2.pcDrawer]: !isMob
+                        [styles2.pcDrawer]: !isMob,
                     }),
-                    paper: styles2.paper
+                    paper: classnames({
+                        [styles2.paper]: true,
+                        [styles2.drawerSafe]: isMob && anchor === 'right',
+                    })
                 }}
                 sx={{ position: 'absolute' }}
                 variant="persistent"
@@ -106,9 +111,11 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                 open={state[MultiStoreEnum.drawer]}
             >
                 <ActionColumn
-                    className={styles2.header}
+                    className={classnames({
+                        [styles2.header]: true,
+                    })}
                     left={<span style={{ marginLeft: 16 }}>播放器配置</span>}
-                    right={<IconCloseButton onClick={toggleDrawer}/>}/>
+                    right={<IconCloseButton style={{ marginRight: 16 }} onClick={toggleDrawer}/>}/>
                 <div style={{ padding: 16 }}>
                     {
                         state[MultiStoreEnum.screenConfig]?.protocol === false
