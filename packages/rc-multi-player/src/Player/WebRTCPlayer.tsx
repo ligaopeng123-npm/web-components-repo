@@ -181,6 +181,9 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
                 }
             }, retryDuration);
         }
+        return () => {
+            clearTimeoutAll();
+        }
     }, [errorTime]);
 
     // 暴露数据

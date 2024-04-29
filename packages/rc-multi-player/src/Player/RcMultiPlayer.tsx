@@ -282,7 +282,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
 
     useEffect(() => {
         configStateRef.current = screenConfig.getConfig();
-    }, [])
+    }, []);
+    // 处理默认objectFit值
+    const _objectFit = objectFit || defaultPlayerConfig ? screenConfig.getConfig().objectFit : '';
 
     return (
         <ThemeProvider
@@ -353,7 +355,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                                 ref={playerRef}
                                                 extraParams={extraParams}
                                                 events={playerEvents}
-                                                objectFit={objectFit}
+                                                objectFit={_objectFit}
                                                 robustness={robustness}
                                                 mediaDataSource={mediaDataSource}
                                             />
@@ -362,7 +364,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                                 ref={playerRef}
                                                 extraParams={extraParams}
                                                 events={playerEvents}
-                                                objectFit={objectFit}
+                                                objectFit={_objectFit}
                                                 robustness={robustness}
                                                 mediaDataSource={mediaDataSource}
                                             />
