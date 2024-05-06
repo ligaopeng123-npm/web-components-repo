@@ -61,6 +61,26 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 
 ## RcSuperLoading
 
+`参数`
+
+```typescript
+export type SingleLoadingStep = {
+    label: string;
+    step?: number;
+}
+export type RcLoadingProps = {
+    stepList?: Array<SingleLoadingStep>, // 进度自定义
+    title?: string | ReactNode; // 正在查询
+    subTitle?: string | ReactNode; // 查询进度
+    onStepChange?: (v: SingleLoadingStep)=> void; // 是否开启
+    loading?: boolean; // 是否开启
+    duration?: number; // 默认 60000ms
+    style?: React.CSSProperties;
+    className?: string | undefined;
+    wrapperClassName?: string;
+}
+```
+
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

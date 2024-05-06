@@ -40,7 +40,9 @@ const RcLoadingTest: FC<RcLoadingProps> = (props) => {
             </select>
             <button onClick={() => setLoading(!loading)}>loading</button>
 
-            <LoadingComponent loading={loading} duration={20000} wrapperClassName={'test'}>
+            <LoadingComponent onStepChange={(v)=> {
+                console.log(v)
+            }} loading={loading} duration={20000} wrapperClassName={'test'}>
                 <div style={{ width: 500, height: 700 }}>
                     <div>我是一段待加载的页面</div>
                     <div>我是一段待加载的页面</div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**********************************************************************
  *
@@ -15,7 +15,15 @@ import React from "react";
  **********************************************************************/
 // --loading-main-color  css变量 定义颜色
 
+export type SingleLoadingStep = {
+    label: string;
+    step?: number;
+}
 export type RcLoadingProps = {
+    stepList?: Array<SingleLoadingStep>, // 进度自定义
+    title?: string | ReactNode; // 正在查询
+    subTitle?: string | ReactNode; // 查询进度
+    onStepChange?: (v: SingleLoadingStep)=> void; // 是否开启
     loading?: boolean; // 是否开启
     duration?: number; // 默认 60000ms
     style?: React.CSSProperties;
