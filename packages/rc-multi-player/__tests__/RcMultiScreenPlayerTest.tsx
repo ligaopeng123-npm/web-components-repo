@@ -72,6 +72,11 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
 
 
     useEffect(() => {
+        if (timeParams?.action === "drag") {
+            setTimeout(()=> {
+                screenRef.current.videoProgressBar().start();
+            }, 500);
+        }
         return;
         if (timeParams) {
             setTimeout(() => {
@@ -292,6 +297,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         hideAction={false}
                         events={{
                             onTimeChange: (e: any) => {
+                                console.log(111, e)
                                 setTimeParams(e);
                                 // onClick(e);
                                 // setTimeout(()=> {

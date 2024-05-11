@@ -175,11 +175,12 @@ export default class VideoProgressBar extends HTMLElement {
      * @param e
      */
     _onmouseup(e: any) {
-        this.__dragStartEvent && this.setDateTime({ status: 'loading' });
+        this.__dragStartEvent && this.setDateTime({ status: 'drag' });
         /**
          * video注册的也有事件 此处要多加个判断
          */
-        if (e && this.__dragStartEvent) this.start();
+        // todo 20240511 手动控制开始
+        // if (e && this.__dragStartEvent) this.start();
         this.__dragStartEvent = null;
         this.__dragX += this.__dragCurrentX;
         this.__dragCurrentX = null;
@@ -503,10 +504,11 @@ export default class VideoProgressBar extends HTMLElement {
      */
     sendToOutside(e: any, value?: any) {
         // 当收到触发加载时 启动loading 并向外部发送消息
-        if (e?.status === 'loading' || e?.status === 'polling') {
+        if (e?.status) {// todo 20240511 e?.status === 'loading' || e?.status === 'polling'
             const currentTime = this.protectCurrentTime();
             this.publishTimeline(Object.assign({
-                action: e?.status === 'polling' ? 'polling' : 'drag', // 拖拽快进
+                // action: e?.status === 'polling' ? 'polling' : 'drag', // 拖拽快进 // todo 20240511
+                action: e?.status, // 拖拽快进
                 isInPeriods: this.checkCurrentTimeInPeriods(currentTime),
                 timestamp: currentTime,
                 date: formatTimestamp(currentTime),
@@ -714,8 +716,8 @@ export default class VideoProgressBar extends HTMLElement {
         if (this.checkDatetime()) {
             this.__dragCurrentX = (this.currentTime - new Date(this.datetime.value).getTime()) * this.timelineWidth / this.scaleLevelV;
             this.dragStart(null);
-            this.initialize({ status: 'loading' });
-            this.setDateTimeFn({ status: 'loading' }, e.detail);
+            this.initialize({ status: 'drag' }); // todo 20240511 loading
+            this.setDateTimeFn({ status: 'drag' }, e.detail); // todo 20240511 loading
         }
     };
 

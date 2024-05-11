@@ -259,9 +259,9 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                 </div>
                 {
                     playType === 'replay'
-                        ?
-                        <video-progress-bar
-                            id={`${_id}-bar`}></video-progress-bar>
+                        ? <div  style={{ height: '60px' }}>
+                            <video-progress-bar id={`${_id}-bar`}></video-progress-bar>
+                        </div>
                         : null
                 }
             </div>
