@@ -286,9 +286,9 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/message': link:../message
-      '@gaopeng123/utils.file': 1.1.15-alpha.4
-      '@gaopeng123/utils.object': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.file': 1.1.16-alpha.3
+      '@gaopeng123/utils.object': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     devDependencies:
       '@babel/core': 7.20.5
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.5
@@ -350,10 +350,10 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/fetch': 0.3.8
-      '@gaopeng123/utils.file': 1.1.15-alpha.4
-      '@gaopeng123/utils.string': 1.1.15-alpha.4
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/fetch': 0.3.10
+      '@gaopeng123/utils.file': 1.1.16-alpha.3
+      '@gaopeng123/utils.string': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
       crypto-js: 4.1.1
     devDependencies:
       '@babel/core': 7.20.5
@@ -456,8 +456,8 @@ importers:
       '@ffmpeg/core': 0.10.0
       '@ffmpeg/ffmpeg': 0.10.1
       '@gaopeng123/message': link:../message
-      '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.string': 1.1.15-alpha.4
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
+      '@gaopeng123/utils.string': 1.1.16-alpha.3
       mpegts.js: 1.7.0
     devDependencies:
       '@babel/core': 7.20.5
@@ -724,8 +724,8 @@ importers:
       webpack-dev-server: ^3.11.2
       webpack-merge: ^5.8.0
     dependencies:
-      '@gaopeng123/hooks': 0.7.8
-      '@gaopeng123/utils': 1.1.15-alpha.4
+      '@gaopeng123/hooks': 0.7.9-alpha.1
+      '@gaopeng123/utils': 1.1.16-alpha.3
     devDependencies:
       '@babel/core': 7.22.10
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
@@ -868,7 +868,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@gaopeng123/login-module': link:../login-module
-      '@gaopeng123/utils': 1.1.15-alpha.4
+      '@gaopeng123/utils': 1.1.16-alpha.3
     devDependencies:
       '@babel/core': 7.20.5
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.5
@@ -911,7 +911,7 @@ importers:
       '@gaopeng123/hooks': latest
       '@gaopeng123/multi-player': workspace:1.3.5
       '@gaopeng123/utils': 1.1.15-alpha.3
-      '@gaopeng123/video-progress-bar': workspace:1.3.5
+      '@gaopeng123/video-progress-bar': workspace:1.3.6-alpha.11
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
       '@rollup/plugin-image': ^2.1.1
@@ -946,7 +946,7 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_czskpwcgwtkufrblwuek25f2b4
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
-      '@gaopeng123/hooks': 0.7.8
+      '@gaopeng123/hooks': 0.7.9-alpha.1
       '@gaopeng123/multi-player': link:../multi-player
       '@gaopeng123/utils': 1.1.15-alpha.3
       '@gaopeng123/video-progress-bar': link:../video-progress-bar
@@ -6430,6 +6430,17 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
+  /@gaopeng123/fetch/0.3.10:
+    resolution: {integrity: sha512-VMPvERMohLBoF8Ak+lTpW04LM98aKhQ+x7LQ9mkwUrjI5El8AgznCX/FQFFHvtYO0HTIwbTrReYTvDw009MylQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.file': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@gaopeng123/fetch/0.3.2:
     resolution: {integrity: sha512-MdZikXM1pcburoORfhlVn1rq/sgltlf+fxy3PGv6VwjBV7HSHTWk+uIwhSX250B+/GKqtZULUZionSNQhJqPKA==}
     engines: {node: '>=10'}
@@ -6445,19 +6456,8 @@ packages:
     resolution: {integrity: sha512-bhaVvBCOh9zpifUD+XZuhq7r3va6CjXid4LIEP31aP1jpznziLPkdAjCmkBvrp5KZQSvQLAjfCn1l1I1ehNhBg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.file': 1.1.15-alpha.4
-      '@gaopeng123/utils.types': 1.1.14
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@gaopeng123/fetch/0.3.8:
-    resolution: {integrity: sha512-oUSxj0t5i4BStHDgjYjk52FQopPF2T4t/IOR0RusP97Am1mg5zcM2H5gjIiIYqGAhA0TZXL6jDqlaK3oQNIoYg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.file': 1.1.15-alpha.4
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.file': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
@@ -6482,13 +6482,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/hooks.use-poller': 0.7.8
-      '@gaopeng123/utils.date': 1.1.15-alpha.2
+      '@gaopeng123/utils.date': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/hooks.use-debounce/0.7.8:
     resolution: {integrity: sha512-MuEWN7XvFH+dJKObjVbdXyw8zmAU5Dj3vb/UjbJGyL4b1XYGlmB0GKW7o0oTKb9KGqtJQ7Wu7uQVhCd0TNSKjg==}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-easing/0.7.8:
@@ -6496,7 +6496,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/hooks.use-poller': 0.7.8
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/hooks.use-effect-once-in-strict-mode/0.7.8:
@@ -6507,8 +6507,8 @@ packages:
     resolution: {integrity: sha512-LrEtPp4u2XAgVLjkiWRK9TR1l2kFR5TReSyhodCYEuI7IbG/zzTd5vqMNoQrgY5aU9QgofnGkTafYcxpP3tVJw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/fetch': 0.3.8
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/fetch': 0.3.10
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -6532,21 +6532,21 @@ packages:
     resolution: {integrity: sha512-5P94VPApF9pMtkv23P4vE8Vp5wVd2PUnmhFwVGjr33BFnzEX0UgNkwu34idOGCdO+7w7BVqsP0AwEH84ZeGViA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/hooks.use-reload-after-stationary/0.7.8:
     resolution: {integrity: sha512-3IZwv2EulboTMSatzhokOlIHN3nZB4sZc68AVcG+AL3+ir9zd2UtM3hWxSwcz87WaZZt4/3Q1SZd2dG3nsNDjA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-resize/0.7.8:
     resolution: {integrity: sha512-By7P+vuK4CNtj5CAi9TeEUGQ/7YjiK7DtZ8dz4JXVo83+eMHMw+iF+RnCFqFQveB5DlqZ1nXAmnsjGLhyTxsNw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-scale/0.7.8:
@@ -6554,28 +6554,28 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/hooks.use-resize': 0.7.8
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
-  /@gaopeng123/hooks.use-throttle-and-merge/0.7.8:
-    resolution: {integrity: sha512-meexRKlwDKcwJ2KM/qZjbcWU6u2rsCjXV727XaJrqrC0NrYZ3mvJ1e/3f2wn4LgUOn3h/41y2OqDtYaHC/AKRA==}
+  /@gaopeng123/hooks.use-throttle-and-merge/0.7.9-alpha.1:
+    resolution: {integrity: sha512-yvUkc0wu9JDoXn3a0aU+Xb8cp11FeTlMlAZ1R1+QYgK2uPUbLJzE+JaVk0Ep22S90UkqumRoVcMiOQ2XVTKF8Q==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-throttle/0.7.8:
     resolution: {integrity: sha512-e/bHU/Y+bp1QT3A5REH7s0iUQTShzILU+ZNRzPFPDlZDonGOkNrNXRkwWmUTDP+jfFNHByUcrB28t+608/ssmg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-visibility/0.7.8:
     resolution: {integrity: sha512-bvckPhS3yPeS2BMOidKqmsoeypYbbDfcdEVzZfO3aAAKUOkBQeQuwebQ0wOaLrcJr5tRlKVEx3A1AgtCAcMl/w==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
     dev: false
 
   /@gaopeng123/hooks.use-worker/0.7.8:
@@ -6587,11 +6587,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/hooks.use-resize': 0.7.8
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
-  /@gaopeng123/hooks/0.7.8:
-    resolution: {integrity: sha512-LaGNU0ii/z2LMYd1VKDrNt0T/rIDY+pDVNsi+cEoxiqjwqhDEi2Qn9B5V/qhy7IG3C+rbT6xei2XttgWWofALA==}
+  /@gaopeng123/hooks/0.7.9-alpha.1:
+    resolution: {integrity: sha512-FuIYPkYL4D/nMOm3/9ELlSvkUWEnmIvswJSNqtMFnslVU89ZxwvxVjSJt/P+ZsLkF340yf6ocd27dY6KvyIUEw==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/hooks.use-antd-table-selection': 0.7.8
@@ -6608,7 +6608,7 @@ packages:
       '@gaopeng123/hooks.use-resize': 0.7.8
       '@gaopeng123/hooks.use-scale': 0.7.8
       '@gaopeng123/hooks.use-throttle': 0.7.8
-      '@gaopeng123/hooks.use-throttle-and-merge': 0.7.8
+      '@gaopeng123/hooks.use-throttle-and-merge': 0.7.9-alpha.1
       '@gaopeng123/hooks.use-visibility': 0.7.8
       '@gaopeng123/hooks.use-worker': 0.7.8
       '@gaopeng123/hooks.use-zoom': 0.7.8
@@ -6649,6 +6649,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
+  /@gaopeng123/utils.array/1.1.16-alpha.0:
+    resolution: {integrity: sha512-LwzU1vhBeEN0ygHFGlPfR0viul2VQlLacdTK49BUqpQWSr0zk0oVtVUNbjH3eveZbFQrkp7JvfvDw4whD0hQXQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/utils.array/1.1.5:
@@ -6699,6 +6706,13 @@ packages:
       '@gaopeng123/utils.types': 1.1.14
     dev: false
 
+  /@gaopeng123/utils.date/1.1.16-alpha.0:
+    resolution: {integrity: sha512-q+CV8wlCj+xY7FZDFpljQEgPfrpDDtCC5KjKX5T2WxSqezdFXG4tYTGuewsRHoCKQg2J1SNiq8Q2m8P4kB5Cjw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
+    dev: false
+
   /@gaopeng123/utils.date/1.1.5:
     resolution: {integrity: sha512-P0dSlZfIHcbrfTM0/5hGB8XRryFhzd9ujUw3b2qaC5DZ1WhR5JQnDPm0rsxH+PMK5IVveofTeaaMEDx8+Hl5Nw==}
     engines: {node: '>=10'}
@@ -6738,13 +6752,13 @@ packages:
       '@gaopeng123/utils.string': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
 
-  /@gaopeng123/utils.file/1.1.15-alpha.4:
-    resolution: {integrity: sha512-OR2/yVMJezcpKWNSUJpxxKXYfAKpVfbNGtJ2oZJ7hZCaWPvGFrO3EGhI1BnKP8TC3gYw7lodtZJPEt82dxoIDQ==}
+  /@gaopeng123/utils.file/1.1.16-alpha.3:
+    resolution: {integrity: sha512-eMOPLU9mJN6R/69gqIoUPwHeG0CzCucGdW22uWYYCg8bUzm7SyPYMD1qYQDl0k+P8C7Ac0fpzFB0RefN4aM9Yg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.object': 1.1.14
-      '@gaopeng123/utils.string': 1.1.15-alpha.4
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.object': 1.1.16-alpha.3
+      '@gaopeng123/utils.string': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/utils.function/0.4.14:
@@ -6774,6 +6788,13 @@ packages:
     dependencies:
       '@gaopeng123/utils.types': 1.1.14
 
+  /@gaopeng123/utils.function/1.1.16-alpha.3:
+    resolution: {integrity: sha512-yhMxa4k8CkKbL5iDuWFZrKPJfZa0QJtnrkByRnxo5nssEJxikFjEBYub3F6/2fcMA8hHajsPiqnwMmLb+4utaw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
+    dev: false
+
   /@gaopeng123/utils.log/1.1.12:
     resolution: {integrity: sha512-CqbLubl3/CRd84VyLeghAGBXYYCJFXzWcGA2DdwKEwmk4LHe1LCw6McRKxZTpeFDezN32QtMv9p87JydsVSAog==}
     engines: {node: '>=10'}
@@ -6786,6 +6807,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
+  /@gaopeng123/utils.log/1.1.16-alpha.0:
+    resolution: {integrity: sha512-gj6t6D2NHGjk1zdRijz/WIRw/Fu5EYmAMZnAMD+A0RgOHm1UtGGBz1lILkcpLcWW7jcQhBNVZi9UisLiCdRrtA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.number/0.6.0:
@@ -6821,6 +6849,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 1.1.14
+    dev: false
+
+  /@gaopeng123/utils.number/1.1.16-alpha.0:
+    resolution: {integrity: sha512-OobI4BgDDZbMXeqYZaNRorQ+rMDMtjG1sFnO56AT2gqhqR1aR7NbL6T0YOdnStWjeNT3lUI5U2FEOuLbXEFKMw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/utils.number/1.1.5:
@@ -6867,6 +6902,15 @@ packages:
       '@gaopeng123/utils.function': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
 
+  /@gaopeng123/utils.object/1.1.16-alpha.3:
+    resolution: {integrity: sha512-CTgejF8obuZ+DStmLoqBpybhbh5NxxbH2YX6Bd8rKHNgOss6If4dH+d34SKIK7uwpb2zWABxKL8r/UfC0z4HOQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
+      '@gaopeng123/utils.string': 1.1.16-alpha.2
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
+    dev: false
+
   /@gaopeng123/utils.string/0.4.16:
     resolution: {integrity: sha512-plJ967qvkIX7L8PJhBoFXNtKbCdF2VBjDXoEAse1/W1baNqKqpoIxTW9JNYESU8OKesOQucNeZa6s7hhCZjkvg==}
     engines: {node: '>=10'}
@@ -6890,12 +6934,20 @@ packages:
       '@gaopeng123/utils.function': 1.1.14
       '@gaopeng123/utils.types': 1.1.14
 
-  /@gaopeng123/utils.string/1.1.15-alpha.4:
-    resolution: {integrity: sha512-hSkVsrKjxBbGKyQKe9aFK8XuKZm6aI00Pj1K+1OW5bl597Z4cmiSGCpjEioTyRq7Sa9aNyoxZDrLWYc9R8vHJA==}
+  /@gaopeng123/utils.string/1.1.16-alpha.2:
+    resolution: {integrity: sha512-CvLSdy3H/WoYD7hgXO5iNmE6yZtiOyL7VzTx0aPa9ex93jUH/6R1tsfDrgoJ737e4RRkxbwsidhhOaObEJFe7w==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
+    dev: false
+
+  /@gaopeng123/utils.string/1.1.16-alpha.3:
+    resolution: {integrity: sha512-BJYgeM75sZ8CsahJBnZq5pbsRIOyA3ti7I71MZ9Ha7vf3QM7TkQNQdY8y6OAeDBf+4LXRqAhf5+B/FFFJrP6aA==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/utils.types/0.4.14:
@@ -6911,6 +6963,16 @@ packages:
   /@gaopeng123/utils.types/1.1.14:
     resolution: {integrity: sha512-Mhs9dhuhSqR1lK+vZgEDFN8ELG2G7y7KEYoEHZU7KmC2DnhzbLkzZZHdXukglAko/9Zp26VvMLiQ63rDtjTKkg==}
     engines: {node: '>=10'}
+
+  /@gaopeng123/utils.types/1.1.15:
+    resolution: {integrity: sha512-GmYyymIhasbT1Yg4fv3jVubZz5O7T8lTJxa2HuSdTd51XtNmFfLcQ/LaK1mdOazOCyHSNhFm/FMuygzx6pVEzg==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /@gaopeng123/utils.types/1.1.16-alpha.0:
+    resolution: {integrity: sha512-pbwGMPNA5Zgd+3eqjEqpyZP3zxel7WwMR2yfXFuVrWWLrBOKr3HfxYDzg2N54pqt+WPPfvP/AQqBRYKSvU1cvw==}
+    engines: {node: '>=10'}
+    dev: false
 
   /@gaopeng123/utils/0.6.0:
     resolution: {integrity: sha512-ARSJPvYxcVj28oBy+nS2Xs7agc4c0NCrf7KiNWQ4g1C4EhuAYYOm08gAMeDSvE1nNwmTCc8kEJwJuFclM2E4yw==}
@@ -6984,19 +7046,19 @@ packages:
       '@gaopeng123/utils.types': 1.1.14
     dev: false
 
-  /@gaopeng123/utils/1.1.15-alpha.4:
-    resolution: {integrity: sha512-Si2SrA0Tkrvf0KAJi8y9JIVcKGfocCyzaVN5dsn6K1JqHRc4BLyDnjrs7tLnj2DFbVnKZu4YzizWBA6Um/YpHA==}
+  /@gaopeng123/utils/1.1.16-alpha.3:
+    resolution: {integrity: sha512-pFafmkyzW/y8L0gMfoZRZVIGaJuTlsbfO5AM07LiGiX+uNAZlBP+9HA/AsVEb9IWB6/O2uzzY1jJtwYSx06uxg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.array': 1.1.14
-      '@gaopeng123/utils.date': 1.1.15-alpha.2
-      '@gaopeng123/utils.file': 1.1.15-alpha.4
-      '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.log': 1.1.15-alpha.1
-      '@gaopeng123/utils.number': 1.1.14
-      '@gaopeng123/utils.object': 1.1.14
-      '@gaopeng123/utils.string': 1.1.15-alpha.4
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.array': 1.1.16-alpha.0
+      '@gaopeng123/utils.date': 1.1.16-alpha.0
+      '@gaopeng123/utils.file': 1.1.16-alpha.3
+      '@gaopeng123/utils.function': 1.1.16-alpha.3
+      '@gaopeng123/utils.log': 1.1.16-alpha.0
+      '@gaopeng123/utils.number': 1.1.16-alpha.0
+      '@gaopeng123/utils.object': 1.1.16-alpha.3
+      '@gaopeng123/utils.string': 1.1.16-alpha.3
+      '@gaopeng123/utils.types': 1.1.16-alpha.0
     dev: false
 
   /@gaopeng123/utils/1.1.4:
