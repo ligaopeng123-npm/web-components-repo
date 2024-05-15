@@ -15,7 +15,7 @@ import { RcMultiScreenPlayer, reduceTimeSlotInterference } from "../src";
 import Snackbar from "@mui/material/Snackbar";
 import { useEffect, useRef, useState } from "react";
 import { PlayerConfig } from "../src/Player/PlayerTyping";
-import { formatTimestamp } from "@gaopeng123/utils";
+import { formatTimestamp, getTime } from "@gaopeng123/utils";
 
 type RcMultiScreenPlayerTestProps = {};
 const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) => {
@@ -59,7 +59,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         startKey: 'recordBeginTime',
                         endKey: 'recordEndTime'
                     }),
-                    currentTime: "2023-07-07 00:00:00",
+                    currentTime: getTime("2023-07-07 00:00:00"),
                     'speed-value': 4
                 }
             });

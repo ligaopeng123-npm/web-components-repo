@@ -65,7 +65,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/utils": "1.1.13-alpha.2",
+        "@gaopeng123/utils": "1.1.16-alpha.3",
         "flatpickr": "^4.6.13"
     },
     "gitHead": "e3925bc5890b3da0cebf844afb5183942aeb18f2"
