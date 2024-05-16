@@ -977,11 +977,11 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
-      '@gaopeng123/hls-player': workspace:^0.1.0
+      '@gaopeng123/hls-player': workspace:^1.3.6-alpha.12
       '@gaopeng123/hooks': latest
-      '@gaopeng123/multi-player': workspace:1.3.5
+      '@gaopeng123/multi-player': workspace:1.3.6-alpha.12
       '@gaopeng123/utils': 1.1.16-alpha.3
-      '@gaopeng123/video-progress-bar': workspace:1.3.6-alpha.11
+      '@gaopeng123/video-progress-bar': workspace:1.3.6-alpha.12
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
       '@rollup/plugin-image': ^2.1.1
