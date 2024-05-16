@@ -82,17 +82,9 @@ export type PlayerEvents = {
     onActionChange?: (values: any) => void;
 }
 
-export type Protocol =
-    'FLV'
-    | 'WebRTC'; // 协议 默认为flv
-export type MaxPlayerTime =
-    "3min"
-    | '5min'
-    | 'forever';
-export type Resolution =
-    "4K"
-    | "720P"
-    | string;
+export type Protocol = 'FLV' | 'WebRTC' | 'HLS'; // 协议 默认为flv
+export type MaxPlayerTime = "3min" | '5min' | 'forever';
+export type Resolution = "4K" | "720P" | string;
 // 视频配置
 export type PlayerConfigOptions = {
     label: string;

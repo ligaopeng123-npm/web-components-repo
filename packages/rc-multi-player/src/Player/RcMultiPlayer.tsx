@@ -29,10 +29,11 @@ import { DefaultTheme } from "../Theme";
 import { ThemeProvider } from "@mui/material";
 import ResolutionSelect from "../Action/ResolutionSelect";
 import IconBackButton from "../Action/IconBackButton";
-import { classnames, isEqualByObj, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
+import { classnames, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
 import MultiScreenDrawer, { MultiScreenDrawerButton } from "../Action/MultiScreenDrawer";
 import { reducer, ScreenConfig } from "../MultiStore";
 import { MultiStoreEnum } from "../MultiTyping";
+import RcHlsPlayer from './RcHlsPlayer';
 
 const _isMobile = isMobile();
 
@@ -286,6 +287,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     // 处理默认objectFit值
     const _objectFit = objectFit || defaultPlayerConfig ? screenConfig.getConfig().objectFit : '';
 
+    console.log('protocol', protocol)
+
     return (
         <ThemeProvider
             theme={DefaultTheme}>
@@ -350,24 +353,39 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                             canLoad
                                 ? <>
                                     {
-                                        protocol === 'WebRTC'
-                                            ? <RcWebRTCPlayer
-                                                ref={playerRef}
-                                                extraParams={extraParams}
-                                                events={playerEvents}
-                                                objectFit={_objectFit}
-                                                robustness={robustness}
-                                                mediaDataSource={mediaDataSource}
-                                            />
-                                            : <RcFlvPlayer
-                                                config={config}
-                                                ref={playerRef}
-                                                extraParams={extraParams}
-                                                events={playerEvents}
-                                                objectFit={_objectFit}
-                                                robustness={robustness}
-                                                mediaDataSource={mediaDataSource}
-                                            />
+                                        (()=> {
+                                            switch (protocol) {
+                                                case 'WebRTC':
+                                                    return <RcWebRTCPlayer
+                                                        ref={playerRef}
+                                                        extraParams={extraParams}
+                                                        events={playerEvents}
+                                                        objectFit={_objectFit}
+                                                        robustness={robustness}
+                                                        mediaDataSource={mediaDataSource}
+                                                    />
+                                                case "HLS":
+                                                    return <RcHlsPlayer
+                                                        config={config}
+                                                        ref={playerRef}
+                                                        extraParams={extraParams}
+                                                        events={playerEvents}
+                                                        objectFit={_objectFit}
+                                                        robustness={robustness}
+                                                        mediaDataSource={mediaDataSource}
+                                                    />
+                                                default:
+                                                    return <RcFlvPlayer
+                                                        config={config}
+                                                        ref={playerRef}
+                                                        extraParams={extraParams}
+                                                        events={playerEvents}
+                                                        objectFit={_objectFit}
+                                                        robustness={robustness}
+                                                        mediaDataSource={mediaDataSource}
+                                                    />
+                                            }
+                                        })()
                                     }
                                 </>
                                 : <div></div>
@@ -413,7 +431,6 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                         </HideFullScreen>
                     }
                 />
-
                 {_isMobile && defaultPlayerConfig && <MultiScreenDrawer
                     anchor={_isMobile && _isFullscreen ? 'right' : 'bottom'}
                     screenKey={_id}

@@ -53,14 +53,14 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                                 label="Age"
                                 onChange={handleChange}
                             >
-                                <MenuItem
-                                    value={'FLV'}>FLV</MenuItem>
-                                <MenuItem
-                                    value={'WebRTC'}>WebRTC</MenuItem>
+                                <MenuItem value={'FLV'}>FLV</MenuItem>
+                                <MenuItem value={'WebRTC'}>WebRTC</MenuItem>
+                                <MenuItem value={'HLS'}>HLS</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl fullWidth className={'form-item'}>
                             <TextField
+                                // https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
                                 defaultValue={'https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv'}
                                 id="outlined-basic" label="url地址"
                                 variant="outlined"/>

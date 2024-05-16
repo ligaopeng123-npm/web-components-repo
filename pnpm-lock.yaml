@@ -253,6 +253,75 @@ importers:
       webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
       webpack-merge: 5.8.0
 
+  packages/hls-player:
+    specifiers:
+      '@babel/core': ^7.14.3
+      '@babel/plugin-proposal-class-properties': ^7.13.0
+      '@babel/preset-env': ^7.14.4
+      '@gaopeng123/utils': 1.1.16-alpha.3
+      '@rollup/plugin-image': ^2.1.1
+      '@size-limit/preset-small-lib': ^7.0.8
+      autoprefixer: ^10.4.7
+      babel-loader: ^8.2.2
+      chokidar: ^3.6.0
+      copy-webpack-plugin: ^11.0.0
+      css-loader: ^6.7.1
+      cssnano: ^5.1.12
+      file-loader: ^6.2.0
+      hls.js: ^1.5.8
+      html-webpack-plugin: ^5.3.1
+      husky: ^7.0.4
+      less-loader: ^11.0.0
+      postcss: ^8.4.35
+      postcss-url: ^10.1.3
+      rollup-plugin-postcss: ^4.0.2
+      sass: ^1.71.0
+      size-limit: ^7.0.8
+      style-loader: ^3.3.1
+      ts-loader: ^9.2.2
+      tsdx: ^0.14.1
+      tslib: ^2.3.1
+      typescript: ^4.5.5
+      url-loader: ^4.1.1
+      webpack: ^5.38.1
+      webpack-cli: ^4.7.0
+      webpack-dev-server: ^3.11.2
+      webpack-merge: ^5.8.0
+    dependencies:
+      '@gaopeng123/utils': 1.1.16-alpha.3
+      hls.js: 1.5.8
+    devDependencies:
+      '@babel/core': 7.22.10
+      '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.22.10
+      '@babel/preset-env': 7.22.10_@babel+core@7.22.10
+      '@rollup/plugin-image': 2.1.1
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      autoprefixer: 10.4.13_postcss@8.4.35
+      babel-loader: 8.3.0_6fuapc6hmjgdcyhxse3dtubbfq
+      chokidar: 3.6.0
+      copy-webpack-plugin: 11.0.0_webpack@5.75.0
+      css-loader: 6.7.2_webpack@5.75.0
+      cssnano: 5.1.14_postcss@8.4.35
+      file-loader: 6.2.0_webpack@5.75.0
+      html-webpack-plugin: 5.5.0_webpack@5.75.0
+      husky: 7.0.4
+      less-loader: 11.1.0_webpack@5.75.0
+      postcss: 8.4.35
+      postcss-url: 10.1.3_postcss@8.4.35
+      rollup-plugin-postcss: 4.0.2_postcss@8.4.35
+      sass: 1.71.0
+      size-limit: 7.0.8
+      style-loader: 3.3.1_webpack@5.75.0
+      ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
+      tsdx: 0.14.1
+      tslib: 2.4.1
+      typescript: 4.9.4
+      url-loader: 4.1.1_p5dl6emkcwslbw72e37w4ug7em
+      webpack: 5.75.0_webpack-cli@4.10.0
+      webpack-cli: 4.10.0_ixwfotxft53uv5r5hjf7zsiiya
+      webpack-dev-server: 3.11.3_pda42hcaj7d62cr262fr632kue
+      webpack-merge: 5.8.0
+
   packages/image-upload:
     specifiers:
       '@babel/core': ^7.14.3
@@ -908,6 +977,7 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
+      '@gaopeng123/hls-player': workspace:^0.1.0
       '@gaopeng123/hooks': latest
       '@gaopeng123/multi-player': workspace:1.3.5
       '@gaopeng123/utils': 1.1.16-alpha.3
@@ -946,6 +1016,7 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_czskpwcgwtkufrblwuek25f2b4
       '@emotion/styled': 11.10.5_sebsp7644knzvh4a72jultvi6e
+      '@gaopeng123/hls-player': link:../hls-player
       '@gaopeng123/hooks': 0.7.9-alpha.1
       '@gaopeng123/multi-player': link:../multi-player
       '@gaopeng123/utils': 1.1.16-alpha.3
@@ -6446,7 +6517,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.file': 0.4.16
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
@@ -6627,7 +6698,7 @@ packages:
     resolution: {integrity: sha512-wkQWAJpl1x8O5tRYOD9RDwRkMYVbmyVQ+H10sQzH5m5oeYXpsdLPum5YCeQwMF0HV0SIKD0EwpBsugPxqoNZww==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.array/1.1.10:
@@ -6648,14 +6719,14 @@ packages:
     resolution: {integrity: sha512-mCtAPoG2YmtB/JAcB1vZY6Hq8O6CAU6vjw1GJcuI4xsaKB75wBKx9TXOvMrAOSWw5YFpN19kr077ZR5XtiIrNA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.array/1.1.7:
     resolution: {integrity: sha512-mkjePVd2peWb7dC7ekhHJcOztUj9xLz+TcUOvuNoUs/7ojO3D+mFpHM3MDVrOQCcqVuAahKbWIqavL5/DqQlsw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.date/0.6.0:
     resolution: {integrity: sha512-kX9gTiBM8a07NWOwaruj7Gi2xqno6SQTVkSI4x0gTlu6VZDTbMKcZOMEC8sKJJ8oxvgHVmbyuTf1FrFKqWtGRw==}
@@ -6668,7 +6739,7 @@ packages:
     resolution: {integrity: sha512-z9UarkCjibqSk4wQnm5tcd/lqZQn20bo5d2ICeF7qLepljHQ4LIT73i6ETOmECPJhOVW9Z54LnZM1kc2sWsNRg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.date/1.1.10:
@@ -6689,14 +6760,14 @@ packages:
     resolution: {integrity: sha512-P0dSlZfIHcbrfTM0/5hGB8XRryFhzd9ujUw3b2qaC5DZ1WhR5JQnDPm0rsxH+PMK5IVveofTeaaMEDx8+Hl5Nw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.date/1.1.7:
     resolution: {integrity: sha512-qtx+GAR4idBTbGj8be4THJXHZNs8lciyPT/91DPmZ3rmSyK+6ujrGyBkaO7pGo7AntaXJQs+oR5Xlx4Pg9U3CA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.file/0.4.16:
     resolution: {integrity: sha512-6P12hUyreV+qVuGygbH1xgVk7bRolHTfPdXICsnafMkJDUIECLXMbxqYaqAtS6jyESEpdh/v829iGpbGaIGQ4Q==}
@@ -6722,7 +6793,7 @@ packages:
     dependencies:
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.file/1.1.16-alpha.3:
     resolution: {integrity: sha512-eMOPLU9mJN6R/69gqIoUPwHeG0CzCucGdW22uWYYCg8bUzm7SyPYMD1qYQDl0k+P8C7Ac0fpzFB0RefN4aM9Yg==}
@@ -6758,7 +6829,7 @@ packages:
     resolution: {integrity: sha512-c1sfGegLkc18t4MgUuj93v5OJbufKu/snKja+j3VSQnsv4JooUqxzFjdpML4O0YXBCuKGXTohxwBTjOnvivZ7w==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.function/1.1.16-alpha.3:
     resolution: {integrity: sha512-yhMxa4k8CkKbL5iDuWFZrKPJfZa0QJtnrkByRnxo5nssEJxikFjEBYub3F6/2fcMA8hHajsPiqnwMmLb+4utaw==}
@@ -6785,7 +6856,7 @@ packages:
     resolution: {integrity: sha512-vtoxbmMYe96AW1u/4I5uNU55mg0Ru3lbYhMlZzk+rEKW9CX6zW2kDsU5aHcIleQsApGUCIlIjRcwvUJiM8CVHw==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.number/1.1.10:
@@ -6806,21 +6877,21 @@ packages:
     resolution: {integrity: sha512-yZYW+qDrI98dwNAMW6WsSvtqy2welNEn3l1rr0/xBnG0kIQrX6qwt4n0EXHBhVCd7s7bmMNLEOiqmYvqddKGOA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.number/1.1.7:
     resolution: {integrity: sha512-TVe/2dGsPL8j1J+SpPjdb1DBywDnCw8aUY+v6+kNCmBCXw9c3PVEUp8lK0NpgeFCs9t7MApI+3rEe0X9+msrNA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.number/1.1.9:
     resolution: {integrity: sha512-pzB2XF9pLU3yeTprL5mbTWi5Ge5X5mvEatVhmWHU8TC1Gwnex5Xe5oTfzq5WaMTwZwuDbgsOWehjOSUJhtWrzA==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: true
 
   /@gaopeng123/utils.object/0.4.14:
@@ -6844,7 +6915,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.object/1.1.16-alpha.3:
     resolution: {integrity: sha512-CTgejF8obuZ+DStmLoqBpybhbh5NxxbH2YX6Bd8rKHNgOss6If4dH+d34SKIK7uwpb2zWABxKL8r/UfC0z4HOQ==}
@@ -6876,7 +6947,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
 
   /@gaopeng123/utils.string/1.1.16-alpha.2:
     resolution: {integrity: sha512-CvLSdy3H/WoYD7hgXO5iNmE6yZtiOyL7VzTx0aPa9ex93jUH/6R1tsfDrgoJ737e4RRkxbwsidhhOaObEJFe7w==}
@@ -6907,11 +6978,11 @@ packages:
   /@gaopeng123/utils.types/1.1.14:
     resolution: {integrity: sha512-Mhs9dhuhSqR1lK+vZgEDFN8ELG2G7y7KEYoEHZU7KmC2DnhzbLkzZZHdXukglAko/9Zp26VvMLiQ63rDtjTKkg==}
     engines: {node: '>=10'}
+    dev: false
 
   /@gaopeng123/utils.types/1.1.15:
     resolution: {integrity: sha512-GmYyymIhasbT1Yg4fv3jVubZz5O7T8lTJxa2HuSdTd51XtNmFfLcQ/LaK1mdOazOCyHSNhFm/FMuygzx6pVEzg==}
     engines: {node: '>=10'}
-    dev: false
 
   /@gaopeng123/utils.types/1.1.16-alpha.0:
     resolution: {integrity: sha512-pbwGMPNA5Zgd+3eqjEqpyZP3zxel7WwMR2yfXFuVrWWLrBOKr3HfxYDzg2N54pqt+WPPfvP/AQqBRYKSvU1cvw==}
@@ -6957,7 +7028,7 @@ packages:
       '@gaopeng123/utils.number': 1.1.9
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: true
 
   /@gaopeng123/utils/1.1.16-alpha.3:
@@ -6986,7 +7057,7 @@ packages:
       '@gaopeng123/utils.number': 1.1.0
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils/1.1.5:
@@ -7000,7 +7071,7 @@ packages:
       '@gaopeng123/utils.number': 1.1.5
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils/1.1.8:
@@ -7014,7 +7085,7 @@ packages:
       '@gaopeng123/utils.number': 1.1.7
       '@gaopeng123/utils.object': 1.1.14
       '@gaopeng123/utils.string': 1.1.14
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gar/promisify/1.1.3:
@@ -11649,7 +11720,7 @@ packages:
       acorn: 8.8.1
       acorn-walk: 8.2.0
       address: 1.2.1
-      autoprefixer: 10.4.13_postcss@8.4.19
+      autoprefixer: 10.4.13_postcss@8.4.35
       browserslist: 4.21.4
       case-sensitive-paths-webpack-plugin: 2.4.0
       cli-highlight: 2.1.11
@@ -11658,7 +11729,7 @@ packages:
       copy-webpack-plugin: 9.1.0_webpack@5.75.0
       css-loader: 6.7.2_webpack@5.75.0
       css-minimizer-webpack-plugin: 3.4.1_webpack@5.75.0
-      cssnano: 5.1.14_postcss@8.4.19
+      cssnano: 5.1.14_postcss@8.4.35
       debug: 4.3.4
       default-gateway: 6.0.3
       dotenv: 10.0.0
@@ -11676,8 +11747,8 @@ packages:
       minimist: 1.2.7
       module-alias: 2.2.2
       portfinder: 1.0.32
-      postcss: 8.4.19
-      postcss-loader: 6.2.1_upg3rk2kpasnbk27hkqapxaxfq
+      postcss: 8.4.35
+      postcss-loader: 6.2.1_drwvmnunin54uf3rzdsqpma7fq
       progress-webpack-plugin: 1.0.16_webpack@5.75.0
       ssri: 8.0.1
       terser-webpack-plugin: 5.3.6_webpack@5.75.0
@@ -11785,7 +11856,7 @@ packages:
     resolution: {integrity: sha512-aNmNHyLPsw+sVvlQFQ2/8sjNuLtK54TC6cuKnVzAY93ks4ZBrvwQSnkkIh7bsbNhum5hJBS00wSDipQ937f5DA==}
     dependencies:
       '@babel/parser': 7.20.5
-      postcss: 8.4.19
+      postcss: 8.4.35
       source-map: 0.6.1
     dev: true
 
@@ -12947,22 +13018,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /autoprefixer/10.4.13_postcss@8.4.19:
-    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
-    engines: {node: ^10 || ^12 || >=14}
-    hasBin: true
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      browserslist: 4.21.10
-      caniuse-lite: 1.0.30001519
-      fraction.js: 4.2.0
-      normalize-range: 0.1.2
-      picocolors: 1.0.0
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /autoprefixer/10.4.13_postcss@8.4.35:
     resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -14065,21 +14120,6 @@ packages:
       fsevents: 1.2.13
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /chokidar/3.5.3:
-    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
-    engines: {node: '>= 8.10.0'}
-    dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.2
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /chokidar/3.6.0:
@@ -15300,15 +15340,6 @@ packages:
       postcss: ^8.0.9
     dev: true
 
-  /css-declaration-sorter/6.3.1_postcss@8.4.19:
-    resolution: {integrity: sha512-fBffmak0bPAnyqc/HO8C3n2sHrp9wcqQz6ES9koRF2/mLOVAx9zIQ3Y7R29sYCteTPqMCwns4WYQoCX91Xl3+w==}
-    engines: {node: ^10 || ^12 || >=14}
-    peerDependencies:
-      postcss: ^8.0.9
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /css-declaration-sorter/6.3.1_postcss@8.4.35:
     resolution: {integrity: sha512-fBffmak0bPAnyqc/HO8C3n2sHrp9wcqQz6ES9koRF2/mLOVAx9zIQ3Y7R29sYCteTPqMCwns4WYQoCX91Xl3+w==}
     engines: {node: ^10 || ^12 || >=14}
@@ -15324,13 +15355,13 @@ packages:
     peerDependencies:
       webpack: ^4.27.0 || ^5.0.0
     dependencies:
-      icss-utils: 5.1.0_postcss@8.4.19
+      icss-utils: 5.1.0_postcss@8.4.35
       loader-utils: 2.0.4
-      postcss: 8.4.19
-      postcss-modules-extract-imports: 3.0.0_postcss@8.4.19
-      postcss-modules-local-by-default: 4.0.0_postcss@8.4.19
-      postcss-modules-scope: 3.0.0_postcss@8.4.19
-      postcss-modules-values: 4.0.0_postcss@8.4.19
+      postcss: 8.4.35
+      postcss-modules-extract-imports: 3.0.0_postcss@8.4.35
+      postcss-modules-local-by-default: 4.0.0_postcss@8.4.35
+      postcss-modules-scope: 3.0.0_postcss@8.4.35
+      postcss-modules-values: 4.0.0_postcss@8.4.35
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
       semver: 7.5.4
@@ -15389,9 +15420,9 @@ packages:
       esbuild:
         optional: true
     dependencies:
-      cssnano: 5.1.14_postcss@8.4.19
+      cssnano: 5.1.14_postcss@8.4.35
       jest-worker: 27.5.1
-      postcss: 8.4.19
+      postcss: 8.4.35
       schema-utils: 4.0.0
       serialize-javascript: 6.0.0
       source-map: 0.6.1
@@ -15488,44 +15519,6 @@ packages:
       postcss-unique-selectors: 5.1.1
     dev: true
 
-  /cssnano-preset-default/5.2.13_postcss@8.4.19:
-    resolution: {integrity: sha512-PX7sQ4Pb+UtOWuz8A1d+Rbi+WimBIxJTRyBdgGp1J75VU0r/HFQeLnMYgHiCAp6AR4rqrc7Y4R+1Rjk3KJz6DQ==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      css-declaration-sorter: 6.3.1_postcss@8.4.19
-      cssnano-utils: 3.1.0_postcss@8.4.19
-      postcss: 8.4.19
-      postcss-calc: 8.2.4_postcss@8.4.19
-      postcss-colormin: 5.3.0_postcss@8.4.19
-      postcss-convert-values: 5.1.3_postcss@8.4.19
-      postcss-discard-comments: 5.1.2_postcss@8.4.19
-      postcss-discard-duplicates: 5.1.0_postcss@8.4.19
-      postcss-discard-empty: 5.1.1_postcss@8.4.19
-      postcss-discard-overridden: 5.1.0_postcss@8.4.19
-      postcss-merge-longhand: 5.1.7_postcss@8.4.19
-      postcss-merge-rules: 5.1.3_postcss@8.4.19
-      postcss-minify-font-values: 5.1.0_postcss@8.4.19
-      postcss-minify-gradients: 5.1.1_postcss@8.4.19
-      postcss-minify-params: 5.1.4_postcss@8.4.19
-      postcss-minify-selectors: 5.2.1_postcss@8.4.19
-      postcss-normalize-charset: 5.1.0_postcss@8.4.19
-      postcss-normalize-display-values: 5.1.0_postcss@8.4.19
-      postcss-normalize-positions: 5.1.1_postcss@8.4.19
-      postcss-normalize-repeat-style: 5.1.1_postcss@8.4.19
-      postcss-normalize-string: 5.1.0_postcss@8.4.19
-      postcss-normalize-timing-functions: 5.1.0_postcss@8.4.19
-      postcss-normalize-unicode: 5.1.1_postcss@8.4.19
-      postcss-normalize-url: 5.1.0_postcss@8.4.19
-      postcss-normalize-whitespace: 5.1.1_postcss@8.4.19
-      postcss-ordered-values: 5.1.3_postcss@8.4.19
-      postcss-reduce-initial: 5.1.1_postcss@8.4.19
-      postcss-reduce-transforms: 5.1.0_postcss@8.4.19
-      postcss-svgo: 5.1.0_postcss@8.4.19
-      postcss-unique-selectors: 5.1.1_postcss@8.4.19
-    dev: true
-
   /cssnano-preset-default/5.2.13_postcss@8.4.35:
     resolution: {integrity: sha512-PX7sQ4Pb+UtOWuz8A1d+Rbi+WimBIxJTRyBdgGp1J75VU0r/HFQeLnMYgHiCAp6AR4rqrc7Y4R+1Rjk3KJz6DQ==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -15571,15 +15564,6 @@ packages:
       postcss: ^8.2.15
     dev: true
 
-  /cssnano-utils/3.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-JQNR19/YZhz4psLX/rQ9M83e3z2Wf/HdJbryzte4a3NSuafyp9w/I4U+hx5C2S9g41qlstH7DEWnZaaj83OuEA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /cssnano-utils/3.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-JQNR19/YZhz4psLX/rQ9M83e3z2Wf/HdJbryzte4a3NSuafyp9w/I4U+hx5C2S9g41qlstH7DEWnZaaj83OuEA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -15597,18 +15581,6 @@ packages:
     dependencies:
       cssnano-preset-default: 5.2.13
       lilconfig: 2.0.6
-      yaml: 1.10.2
-    dev: true
-
-  /cssnano/5.1.14_postcss@8.4.19:
-    resolution: {integrity: sha512-Oou7ihiTocbKqi0J1bB+TRJIQX5RMR3JghA8hcWSw9mjBLQ5Y3RWqEDoYG3sRNlAbCIXpqMoZGbq5KDR3vdzgw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      cssnano-preset-default: 5.2.13_postcss@8.4.19
-      lilconfig: 2.0.6
-      postcss: 8.4.19
       yaml: 1.10.2
     dev: true
 
@@ -17798,7 +17770,7 @@ packages:
       '@babel/code-frame': 7.18.6
       '@types/json-schema': 7.0.11
       chalk: 4.1.2
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       cosmiconfig: 6.0.0
       deepmerge: 4.2.2
       fs-extra: 9.1.0
@@ -18541,6 +18513,10 @@ packages:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
     dev: true
 
+  /hls.js/1.5.8:
+    resolution: {integrity: sha512-hJYMPfLhWO7/7+n4f9pn6bOheCGx0WgvVz7k3ouq3Pp1bja48NN+HeCQu3XCGYzqWQF/wo7Sk6dJAyWVJD8ECA==}
+    dev: false
+
   /hmac-drbg/1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
     dependencies:
@@ -18837,15 +18813,6 @@ packages:
     engines: {node: ^10 || ^12 || >= 14}
     peerDependencies:
       postcss: ^8.1.0
-    dev: true
-
-  /icss-utils/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==}
-    engines: {node: ^10 || ^12 || >= 14}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      postcss: 8.4.19
     dev: true
 
   /icss-utils/5.1.0_postcss@8.4.35:
@@ -22097,9 +22064,9 @@ packages:
     peerDependencies:
       webpack: ^4.0.0
     dependencies:
-      cssnano: 5.1.14_postcss@8.4.19
+      cssnano: 5.1.14_postcss@8.4.35
       last-call-webpack-plugin: 3.0.0
-      postcss: 8.4.19
+      postcss: 8.4.35
       webpack: 4.46.0_webpack-cli@4.10.0
     dev: true
 
@@ -22710,16 +22677,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-calc/8.2.4_postcss@8.4.19:
-    resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
-    peerDependencies:
-      postcss: ^8.2.2
-    dependencies:
-      postcss: 8.4.19
-      postcss-selector-parser: 6.0.11
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-calc/8.2.4_postcss@8.4.35:
     resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
     peerDependencies:
@@ -22739,19 +22696,6 @@ packages:
       browserslist: 4.21.10
       caniuse-api: 3.0.0
       colord: 2.9.3
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-colormin/5.3.0_postcss@8.4.19:
-    resolution: {integrity: sha512-WdDO4gOFG2Z8n4P8TWBpshnL3JpmNmJwdnfP2gbk2qBA8PWwOYcmjmI/t3CmMeL72a7Hkd+x/Mg9O2/0rD54Pg==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      caniuse-api: 3.0.0
-      colord: 2.9.3
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -22778,17 +22722,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-convert-values/5.1.3_postcss@8.4.19:
-    resolution: {integrity: sha512-82pC1xkJZtcJEfiLw6UXnXVXScgtBrjlO5CBmuDQc+dlb88ZYheFsjTn40+zBVi3DkfF7iezO0nJUPLcJK3pvA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-convert-values/5.1.3_postcss@8.4.35:
     resolution: {integrity: sha512-82pC1xkJZtcJEfiLw6UXnXVXScgtBrjlO5CBmuDQc+dlb88ZYheFsjTn40+zBVi3DkfF7iezO0nJUPLcJK3pvA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -22807,15 +22740,6 @@ packages:
       postcss: ^8.2.15
     dev: true
 
-  /postcss-discard-comments/5.1.2_postcss@8.4.19:
-    resolution: {integrity: sha512-+L8208OVbHVF2UQf1iDmRcbdjJkuBF6IS29yBDSiWUIzpYaAhtNl6JYnYm12FnkeCwQqF5LeklOu6rAqgfBZqQ==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /postcss-discard-comments/5.1.2_postcss@8.4.35:
     resolution: {integrity: sha512-+L8208OVbHVF2UQf1iDmRcbdjJkuBF6IS29yBDSiWUIzpYaAhtNl6JYnYm12FnkeCwQqF5LeklOu6rAqgfBZqQ==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -22830,15 +22754,6 @@ packages:
     engines: {node: ^10 || ^12 || >=14.0}
     peerDependencies:
       postcss: ^8.2.15
-    dev: true
-
-  /postcss-discard-duplicates/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-zmX3IoSI2aoenxHV6C7plngHWWhUOV3sP1T8y2ifzxzbtnuhk1EdPwm0S1bIUNaJ2eNbWeGLEwzw8huPD67aQw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
     dev: true
 
   /postcss-discard-duplicates/5.1.0_postcss@8.4.35:
@@ -22857,15 +22772,6 @@ packages:
       postcss: ^8.2.15
     dev: true
 
-  /postcss-discard-empty/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-zPz4WljiSuLWsI0ir4Mcnr4qQQ5e1Ukc3i7UfE2XcrwKK2LIPIqE5jxMRxO6GbI3cv//ztXDsXwEWT3BHOGh3A==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /postcss-discard-empty/5.1.1_postcss@8.4.35:
     resolution: {integrity: sha512-zPz4WljiSuLWsI0ir4Mcnr4qQQ5e1Ukc3i7UfE2XcrwKK2LIPIqE5jxMRxO6GbI3cv//ztXDsXwEWT3BHOGh3A==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -22880,15 +22786,6 @@ packages:
     engines: {node: ^10 || ^12 || >=14.0}
     peerDependencies:
       postcss: ^8.2.15
-    dev: true
-
-  /postcss-discard-overridden/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-21nOL7RqWR1kasIVdKs8HNqQJhFxLsyRfAnUDm4Fe4t4mCWL9OJiHvlHPjcd8zc5Myu89b/7wZDnOSjFgeWRtw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
     dev: true
 
   /postcss-discard-overridden/5.1.0_postcss@8.4.35:
@@ -22933,7 +22830,7 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /postcss-loader/6.2.1_upg3rk2kpasnbk27hkqapxaxfq:
+  /postcss-loader/6.2.1_drwvmnunin54uf3rzdsqpma7fq:
     resolution: {integrity: sha512-WbbYpmAaKcux/P66bZ40bpWsBucjx/TTgVVzRZ9yUO8yQfVBlameJ0ZGVaPfH64hNSBh63a+ICP5nqOpBA0w+Q==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -22942,7 +22839,7 @@ packages:
     dependencies:
       cosmiconfig: 7.1.0
       klona: 2.0.5
-      postcss: 8.4.19
+      postcss: 8.4.35
       semver: 7.3.8
       webpack: 5.75.0
     dev: true
@@ -22955,17 +22852,6 @@ packages:
     dependencies:
       postcss-value-parser: 4.2.0
       stylehacks: 5.1.1
-    dev: true
-
-  /postcss-merge-longhand/5.1.7_postcss@8.4.19:
-    resolution: {integrity: sha512-YCI9gZB+PLNskrK0BB3/2OzPnGhPkBEwmwhfYk1ilBHYVAZB7/tkTHFBAnCrvBBOmeYyMYw3DMjT55SyxMBzjQ==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-      stylehacks: 5.1.1_postcss@8.4.19
     dev: true
 
   /postcss-merge-longhand/5.1.7_postcss@8.4.35:
@@ -22991,19 +22877,6 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
-  /postcss-merge-rules/5.1.3_postcss@8.4.19:
-    resolution: {integrity: sha512-LbLd7uFC00vpOuMvyZop8+vvhnfRGpp2S+IMQKeuOZZapPRY4SMq5ErjQeHbHsjCUgJkRNrlU+LmxsKIqPKQlA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      caniuse-api: 3.0.0
-      cssnano-utils: 3.1.0_postcss@8.4.19
-      postcss: 8.4.19
-      postcss-selector-parser: 6.0.11
-    dev: true
-
   /postcss-merge-rules/5.1.3_postcss@8.4.35:
     resolution: {integrity: sha512-LbLd7uFC00vpOuMvyZop8+vvhnfRGpp2S+IMQKeuOZZapPRY4SMq5ErjQeHbHsjCUgJkRNrlU+LmxsKIqPKQlA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23026,16 +22899,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-minify-font-values/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-el3mYTgx13ZAPPirSVsHqFzl+BBBDrXvbySvPGFnQcTI4iNslrPaFq4muTkLZmKlGk4gyFAYUBMH30+HurREyA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-minify-font-values/5.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-el3mYTgx13ZAPPirSVsHqFzl+BBBDrXvbySvPGFnQcTI4iNslrPaFq4muTkLZmKlGk4gyFAYUBMH30+HurREyA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23054,18 +22917,6 @@ packages:
     dependencies:
       colord: 2.9.3
       cssnano-utils: 3.1.0
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-minify-gradients/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-VGvXMTpCEo4qHTNSa9A0a3D+dxGFZCYwR6Jokk+/3oB6flu2/PnPXAh2x7x52EkY5xlIHLm+Le8tJxe/7TNhzw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      colord: 2.9.3
-      cssnano-utils: 3.1.0_postcss@8.4.19
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23092,18 +22943,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-minify-params/5.1.4_postcss@8.4.19:
-    resolution: {integrity: sha512-+mePA3MgdmVmv6g+30rn57USjOGSAyuxUmkfiWpzalZ8aiBkdPYjXWtHuwJGm1v5Ojy0Z0LaSYhHaLJQB0P8Jw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      cssnano-utils: 3.1.0_postcss@8.4.19
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-minify-params/5.1.4_postcss@8.4.35:
     resolution: {integrity: sha512-+mePA3MgdmVmv6g+30rn57USjOGSAyuxUmkfiWpzalZ8aiBkdPYjXWtHuwJGm1v5Ojy0Z0LaSYhHaLJQB0P8Jw==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23125,16 +22964,6 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
-  /postcss-minify-selectors/5.2.1_postcss@8.4.19:
-    resolution: {integrity: sha512-nPJu7OjZJTsVUmPdm2TcaiohIwxP+v8ha9NehQ2ye9szv4orirRU3SDdtUmKH+10nzn0bAyOXZ0UEr7OpvLehg==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-selector-parser: 6.0.11
-    dev: true
-
   /postcss-minify-selectors/5.2.1_postcss@8.4.35:
     resolution: {integrity: sha512-nPJu7OjZJTsVUmPdm2TcaiohIwxP+v8ha9NehQ2ye9szv4orirRU3SDdtUmKH+10nzn0bAyOXZ0UEr7OpvLehg==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23150,15 +22979,6 @@ packages:
     engines: {node: ^10 || ^12 || >= 14}
     peerDependencies:
       postcss: ^8.1.0
-    dev: true
-
-  /postcss-modules-extract-imports/3.0.0_postcss@8.4.19:
-    resolution: {integrity: sha512-bdHleFnP3kZ4NYDhuGlVK+CMrQ/pqUm8bx/oGL93K6gVwiclvX5x0n76fYMKuIGKzlABOy13zsvqjb0f92TEXw==}
-    engines: {node: ^10 || ^12 || >= 14}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      postcss: 8.4.19
     dev: true
 
   /postcss-modules-extract-imports/3.0.0_postcss@8.4.35:
@@ -23184,18 +23004,6 @@ packages:
       postcss: ^8.1.0
     dependencies:
       icss-utils: 5.1.0
-      postcss-selector-parser: 6.0.11
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-modules-local-by-default/4.0.0_postcss@8.4.19:
-    resolution: {integrity: sha512-sT7ihtmGSF9yhm6ggikHdV0hlziDTX7oFoXtuVWeDd3hHObNkcHRo9V3yg7vCAY7cONyxJC/XXCmmiHHcvX7bQ==}
-    engines: {node: ^10 || ^12 || >= 14}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      icss-utils: 5.1.0_postcss@8.4.19
-      postcss: 8.4.19
       postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
     dev: true
@@ -23228,16 +23036,6 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
-  /postcss-modules-scope/3.0.0_postcss@8.4.19:
-    resolution: {integrity: sha512-hncihwFA2yPath8oZ15PZqvWGkWf+XUfQgUGamS4LqoP1anQLOsOJw0vr7J7IwLpoY9fatA2qiGUGmuZL0Iqlg==}
-    engines: {node: ^10 || ^12 || >= 14}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      postcss: 8.4.19
-      postcss-selector-parser: 6.0.11
-    dev: true
-
   /postcss-modules-scope/3.0.0_postcss@8.4.35:
     resolution: {integrity: sha512-hncihwFA2yPath8oZ15PZqvWGkWf+XUfQgUGamS4LqoP1anQLOsOJw0vr7J7IwLpoY9fatA2qiGUGmuZL0Iqlg==}
     engines: {node: ^10 || ^12 || >= 14}
@@ -23266,16 +23064,6 @@ packages:
       postcss: ^8.1.0
     dependencies:
       icss-utils: 5.1.0
-    dev: true
-
-  /postcss-modules-values/4.0.0_postcss@8.4.19:
-    resolution: {integrity: sha512-RDxHkAiEGI78gS2ofyvCsu7iycRv7oqw5xMWn9iMoR0N/7mf9D50ecQqUo5BZ9Zh2vH4bCUR/ktCqbB9m8vJjQ==}
-    engines: {node: ^10 || ^12 || >= 14}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      icss-utils: 5.1.0_postcss@8.4.19
-      postcss: 8.4.19
     dev: true
 
   /postcss-modules-values/4.0.0_postcss@8.4.35:
@@ -23326,15 +23114,6 @@ packages:
       postcss: ^8.2.15
     dev: true
 
-  /postcss-normalize-charset/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-mSgUJ+pd/ldRGVx26p2wz9dNZ7ji6Pn8VWBajMXFf8jk7vUoSrZ2lt/wZR7DtlZYKesmZI680qjr2CeFF2fbUg==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /postcss-normalize-charset/5.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-mSgUJ+pd/ldRGVx26p2wz9dNZ7ji6Pn8VWBajMXFf8jk7vUoSrZ2lt/wZR7DtlZYKesmZI680qjr2CeFF2fbUg==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23350,16 +23129,6 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-normalize-display-values/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-WP4KIM4o2dazQXWmFaqMmcvsKmhdINFblgSeRgn8BJ6vxaMyaJkwAzpPpuvSIoG/rmX3M+IrRZEz2H0glrQNEA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23382,16 +23151,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-normalize-positions/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-6UpCb0G4eofTCQLFVuI3EVNZzBNPiIKcA1AKVka+31fTVySphr3VUgAIULBhxZkKgwLImhzMR2Bw1ORK+37INg==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-normalize-positions/5.1.1_postcss@8.4.35:
     resolution: {integrity: sha512-6UpCb0G4eofTCQLFVuI3EVNZzBNPiIKcA1AKVka+31fTVySphr3VUgAIULBhxZkKgwLImhzMR2Bw1ORK+37INg==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23408,16 +23167,6 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-normalize-repeat-style/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-mFpLspGWkQtBcWIRFLmewo8aC3ImN2i/J3v8YCFUwDnPu3Xz4rLohDO26lGjwNsQxB3YF0KKRwspGzE2JEuS0g==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23440,16 +23189,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-normalize-string/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-oYiIJOf4T9T1N4i+abeIc7Vgm/xPCGih4bZz5Nm0/ARVJ7K6xrDlLwvwqOydvyL3RHNf8qZk6vo3aatiw/go3w==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-normalize-string/5.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-oYiIJOf4T9T1N4i+abeIc7Vgm/xPCGih4bZz5Nm0/ARVJ7K6xrDlLwvwqOydvyL3RHNf8qZk6vo3aatiw/go3w==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23466,16 +23205,6 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-normalize-timing-functions/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-DOEkzJ4SAXv5xkHl0Wa9cZLF3WCBhF3o1SKVxKQAa+0pYKlueTpCgvkFAHfk+Y64ezX9+nITGrDZeVGgITJXjg==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23496,17 +23225,6 @@ packages:
       postcss: ^8.2.15
     dependencies:
       browserslist: 4.21.10
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-normalize-unicode/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-qnCL5jzkNUmKVhZoENp1mJiGNPcsJCs1aaRmURmeJGES23Z/ajaln+EPTD+rBeNkSryI+2WTdW+lwcVdOikrpA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23531,17 +23249,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-normalize-url/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-5upGeDO+PVthOxSmds43ZeMeZfKH+/DKgGRD7TElkkyS46JXAUhMzIKiCa7BabPeIy3AQcTkXwVVN7DbqsiCew==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      normalize-url: 6.1.0
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-normalize-url/5.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-5upGeDO+PVthOxSmds43ZeMeZfKH+/DKgGRD7TElkkyS46JXAUhMzIKiCa7BabPeIy3AQcTkXwVVN7DbqsiCew==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23562,16 +23269,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-normalize-whitespace/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-83ZJ4t3NUDETIHTa3uEg6asWjSBYL5EdkVB0sDncx9ERzOKBVJIUeDO9RyA9Zwtig8El1d79HBp0JEi8wvGQnA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-normalize-whitespace/5.1.1_postcss@8.4.35:
     resolution: {integrity: sha512-83ZJ4t3NUDETIHTa3uEg6asWjSBYL5EdkVB0sDncx9ERzOKBVJIUeDO9RyA9Zwtig8El1d79HBp0JEi8wvGQnA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23589,17 +23286,6 @@ packages:
       postcss: ^8.2.15
     dependencies:
       cssnano-utils: 3.1.0
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-ordered-values/5.1.3_postcss@8.4.19:
-    resolution: {integrity: sha512-9UO79VUhPwEkzbb3RNpqqghc6lcYej1aveQteWY+4POIwlqkYE21HKWaLDF6lWNuqCobEAyTovVhtI32Rbv2RQ==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      cssnano-utils: 3.1.0_postcss@8.4.19
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23624,17 +23310,6 @@ packages:
       caniuse-api: 3.0.0
     dev: true
 
-  /postcss-reduce-initial/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-//jeDqWcHPuXGZLoolFrUXBDyuEGbr9S2rMo19bkTIjBQ4PqkaO+oI8wua5BOUxpfi97i3PCoInsiFIEBfkm9w==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      caniuse-api: 3.0.0
-      postcss: 8.4.19
-    dev: true
-
   /postcss-reduce-initial/5.1.1_postcss@8.4.35:
     resolution: {integrity: sha512-//jeDqWcHPuXGZLoolFrUXBDyuEGbr9S2rMo19bkTIjBQ4PqkaO+oI8wua5BOUxpfi97i3PCoInsiFIEBfkm9w==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23652,16 +23327,6 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-reduce-transforms/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-2fbdbmgir5AvpW9RLtdONx1QoYG2/EtqpNQbFASDlixBbAYuTcJ0dECwlqNqH7VbaUnEnh8SrxOe2sRIn24XyQ==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -23693,17 +23358,6 @@ packages:
       svgo: 2.8.0
     dev: true
 
-  /postcss-svgo/5.1.0_postcss@8.4.19:
-    resolution: {integrity: sha512-D75KsH1zm5ZrHyxPakAxJWtkyXew5qwS70v56exwvw542d9CRtTo78K0WeFxZB4G7JXKKMbEZtZayTGdIky/eA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
-      postcss-value-parser: 4.2.0
-      svgo: 2.8.0
-    dev: true
-
   /postcss-svgo/5.1.0_postcss@8.4.35:
     resolution: {integrity: sha512-D75KsH1zm5ZrHyxPakAxJWtkyXew5qwS70v56exwvw542d9CRtTo78K0WeFxZB4G7JXKKMbEZtZayTGdIky/eA==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -23721,16 +23375,6 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      postcss-selector-parser: 6.0.11
-    dev: true
-
-  /postcss-unique-selectors/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-5JiODlELrz8L2HwxfPnhOWZYWDxVHWL83ufOv84NrcgipI7TaeRsatAhK4Tr2/ZiYldpK/wBvw5BD3qfaK96GA==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      postcss: 8.4.19
       postcss-selector-parser: 6.0.11
     dev: true
 
@@ -23798,15 +23442,6 @@ packages:
     dependencies:
       picocolors: 0.2.1
       source-map: 0.6.1
-    dev: true
-
-  /postcss/8.4.19:
-    resolution: {integrity: sha512-h+pbPsyhlYj6N2ozBmHhHrs9DzGmbaarbLvWipMRO7RLS+v4onj26MPFXA5OBYFxyqYhUJK456SwDcY9H2/zsA==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.4
-      picocolors: 1.0.0
-      source-map-js: 1.0.2
     dev: true
 
   /postcss/8.4.35:
@@ -25690,7 +25325,7 @@ packages:
     hasBin: true
     dependencies:
       bytes-iec: 3.1.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       ci-job-number: 1.2.2
       globby: 11.1.0
       lilconfig: 2.0.6
@@ -26333,17 +25968,6 @@ packages:
       postcss: ^8.2.15
     dependencies:
       browserslist: 4.21.10
-      postcss-selector-parser: 6.0.11
-    dev: true
-
-  /stylehacks/5.1.1_postcss@8.4.19:
-    resolution: {integrity: sha512-sBpcd5Hx7G6seo7b1LkpttvTz7ikD0LlH5RmdcBNb6fFR0Fl7LQwHDFr300q4cwUqi+IYrFGmsIHieMBfnN/Bw==}
-    engines: {node: ^10 || ^12 || >=14.0}
-    peerDependencies:
-      postcss: ^8.2.15
-    dependencies:
-      browserslist: 4.21.10
-      postcss: 8.4.19
       postcss-selector-parser: 6.0.11
     dev: true
 
@@ -28014,7 +27638,7 @@ packages:
       '@types/ws': 8.5.3
       ansi-html-community: 0.0.8
       bonjour-service: 1.0.14
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4
       connect-history-api-fallback: 2.0.0
