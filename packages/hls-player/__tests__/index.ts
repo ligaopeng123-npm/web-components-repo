@@ -1,8 +1,6 @@
 import { HlsPlayer } from "../src";
 import "../src";
 
-console.log('HlsPlayer')
-
 window.onload = () => {
     const hlsPlayer = document.querySelector('hls-player');
     hlsPlayer.setAttribute('media-data-source', JSON.stringify({
