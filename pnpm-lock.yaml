@@ -977,7 +977,7 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
-      '@gaopeng123/hls-player': workspace:^1.3.6-alpha.12
+      '@gaopeng123/hls-player': workspace:^1.3.6-alpha.13
       '@gaopeng123/hooks': latest
       '@gaopeng123/multi-player': workspace:1.3.6-alpha.12
       '@gaopeng123/utils': 1.1.16-alpha.3
@@ -6705,7 +6705,7 @@ packages:
     resolution: {integrity: sha512-/cow219868gMNqQYjQMNoaUxlFCSC1geAHRdFE4XTZolO2N98AV3UOnNJr1dO4/nVwk73FY2uJExVrV1DI5i0A==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.array/1.1.16-alpha.0:
@@ -6746,7 +6746,7 @@ packages:
     resolution: {integrity: sha512-iP3Tb4/DKLzCo03VSV0/ZW9/MMdQsBS+qbfXhvIoHY9wNDV2OgeX/cwwuS7xx3BjC1qv0xlFkXjh5qxU2r454A==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.date/1.1.16-alpha.0:
@@ -6822,7 +6822,7 @@ packages:
     resolution: {integrity: sha512-fzQ1qMzkdmBM/fr5aCAfErNcym5eBm4Pn3T63dVg3usRw8/6x461hjeG1e774ZUn/oWpepV/6KjMAWeuOMkPPg==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.function/1.1.14:
@@ -6863,7 +6863,7 @@ packages:
     resolution: {integrity: sha512-Z2C8UIPjIVUzPANPRiLakFuxmC3XdtfJ1Oi/d3SXKGPCAdpNaE+TDRDPc/byEGBi7QKFY2jViHRAxeYEOrLsYQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@gaopeng123/utils.types': 1.1.14
+      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.number/1.1.16-alpha.0:
