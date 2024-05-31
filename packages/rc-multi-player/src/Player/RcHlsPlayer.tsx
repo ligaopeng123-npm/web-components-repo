@@ -98,14 +98,12 @@ const RcHlsPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<RcFlvPl
                 video?.createPlayer();
             }
         },
-        getVideo: () => {
+        getVideo: (): HTMLVideoElement => {
             // @ts-ignore
-            const video: HTMLVideoElement = document.querySelector(`#${id}`)?.video;
-            return video;
+            return document.querySelector(`#${id}`)?.video as HTMLVideoElement;
         }
     }));
 
-    console.log('hls', media_data_source)
     return (
         <hls-player
             id={id}

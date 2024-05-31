@@ -29,6 +29,7 @@
     },
     "scripts": {
         "start": "set NODE_ENV=development&&webpack serve",
+        "build:test": "webpack build",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
         "push": "pnpm run build && pnpm publish --access public",

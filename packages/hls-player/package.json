@@ -29,6 +29,7 @@
     },
     "scripts": {
         "start": "set NODE_ENV=development && npm run watch:css & webpack serve",
+        "build:test": "webpack build",
         "watch:css": "node chokidarStyles.js",
         "build": "tsdx build",
         "build:dev": "set NODE_ENV=development&&webpack build",
