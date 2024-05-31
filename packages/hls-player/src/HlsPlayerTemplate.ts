@@ -36,6 +36,6 @@ export const template = (config: HlsPlayerConfig) => {
   height: 100%;
   width: 100%;
 }</style>
-        <video poster="noposter" id="hls-player" class="hls-player container" muted="muted" autoplay="autoplay">
+        <video poster="noposter" playsinline id="hls-player" class="hls-player container" muted="muted" autoplay="autoplay">
     `
 }
