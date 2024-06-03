@@ -1,4 +1,118 @@
-# [](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.4...v) (2024-02-22)
+## [1.3.6-alpha.16](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.15...v1.3.6-alpha.16) (2024-06-03)
+
+
+### Bug Fixes
+
+* WebRTCPlayer add video.playsInline = true before video.play() ([6eb69fe](https://github.com/ligaopeng123-npm/web-components-repo/commit/6eb69fe220cb09abc786243a2090c878f02f5f59))
+
+
+
+## [1.3.6-alpha.15](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.14...v1.3.6-alpha.15) (2024-05-31)
+
+
+### Bug Fixes
+
+* hls ios下无法自动播放2 ([7ee5bf1](https://github.com/ligaopeng123-npm/web-components-repo/commit/7ee5bf1051bbb0a5d3b6f907187068c7596f0b4d))
+
+
+
+## [1.3.6-alpha.14](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.13...v1.3.6-alpha.14) (2024-05-31)
+
+
+### Bug Fixes
+
+* hls ios下无法自动播放 ([d1e0bb0](https://github.com/ligaopeng123-npm/web-components-repo/commit/d1e0bb06b3b07e9309c497f7b650df3116cf2bd1))
+
+
+### Features
+
+* hls-player tree-shaking ([09575e7](https://github.com/ligaopeng123-npm/web-components-repo/commit/09575e793222417593ffc763cf3a4ecbbd6b64db))
+
+
+
+## [1.3.6-alpha.13](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.12...v1.3.6-alpha.13) (2024-05-16)
+
+
+### Features
+
+* add hls-player ([cce6d98](https://github.com/ligaopeng123-npm/web-components-repo/commit/cce6d98864267ca0c5e79736cd0b9579a6dbe06b))
+
+
+
+## [1.3.6-alpha.12](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.11...v1.3.6-alpha.12) (2024-05-16)
+
+
+### Bug Fixes
+
+* 回放视频flv 回放异常处理 ([b782fcf](https://github.com/ligaopeng123-npm/web-components-repo/commit/b782fcf96cbaeaa03ba4c3106e7a9ec1d4e9a54b))
+
+
+### Features
+
+* add hls-player ([25add97](https://github.com/ligaopeng123-npm/web-components-repo/commit/25add9779708483ce9f526e2e8f98b97217e9362))
+
+
+
+## [1.3.6-alpha.11](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.10...v1.3.6-alpha.11) (2024-05-11)
+
+
+### Bug Fixes
+
+* 回放拖拽条高度问题 ([5b98c33](https://github.com/ligaopeng123-npm/web-components-repo/commit/5b98c33487b9ae7ada342c93d6ea3eac114e94e6))
+
+
+
+## [1.3.6-alpha.10](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.9...v1.3.6-alpha.10) (2024-05-06)
+
+
+### Features
+
+* rc-super-loading 支持自定义 ([866e192](https://github.com/ligaopeng123-npm/web-components-repo/commit/866e192b9dc97d137f0b0f6cc0ba0cac89677094))
+
+
+
+## [1.3.6-alpha.9](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.8...v1.3.6-alpha.9) (2024-04-29)
+
+
+### Bug Fixes
+
+* replay区域过大处理 rtc销毁清理计时器 objectFit默认值处理 ([c494c40](https://github.com/ligaopeng123-npm/web-components-repo/commit/c494c40f7d3482e95959b73cf619865a611444d5))
+
+
+
+## [1.3.6-alpha.8](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.7...v1.3.6-alpha.8) (2024-04-28)
+
+
+### Bug Fixes
+
+* 交互细节处理 ([3a0f9ed](https://github.com/ligaopeng123-npm/web-components-repo/commit/3a0f9ed377f7b4072f450d1424f348c27fedff09))
+
+
+
+## [1.3.6-alpha.7](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.6...v1.3.6-alpha.7) (2024-04-28)
+
+
+### Bug Fixes
+
+* 样式细节处理 ([5f098f5](https://github.com/ligaopeng123-npm/web-components-repo/commit/5f098f580fd0c051595a0518379f390ad5d03f0e))
+
+
+
+## [1.3.6-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.5...v1.3.6-alpha.6) (2024-04-28)
+
+
+### Bug Fixes
+
+* 移动端组件支持播放器配置 ([1fdad48](https://github.com/ligaopeng123-npm/web-components-repo/commit/1fdad48d76617155213a3b543d04ac66f68cae08))
+
+
+
+## [1.3.6-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.4...v1.3.6-alpha.5) (2024-03-19)
+
+
+### Bug Fixes
+
+* rc-multi-player 处理顶部安全区域操作区域 ([3c6136a](https://github.com/ligaopeng123-npm/web-components-repo/commit/3c6136a27c63960c00246a2c2ba76a7a67b37da2))
 
 
 
