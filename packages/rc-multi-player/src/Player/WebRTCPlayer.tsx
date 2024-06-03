@@ -110,7 +110,7 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             sdk = new SrsRtcPlayerAsync({ onmute: onmute, onunmute: onunmute, onerror: onerror, onended: onended });
 
             video.srcObject = sdk.stream;
-
+            video.playsInline = true;
             sdk.play(mediaDataSource?.url)
                 .then(function (session: any) {
                     // video.muted = false;
