@@ -89,13 +89,13 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     /**
      * 重新加载播放器
      */
-    const reloadPlayer = () => {
+    const reloadPlayer = (event?: {clickEventName?: 'maxClick' | 'reloadClick'}) => {
         playerRef.current?.reload();
         if (playerEvents?.onReload) {
-            playerEvents.onReload({
+            playerEvents.onReload(Object.assign({
                 extraParams,
                 protocol
-            });
+            }, event));
         }
         if (mediaDataSource) {
             setLoadTypeTrue();
@@ -325,7 +325,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                             ref={countRef}
                                             maxTime={parseInt(maxPlayerTime as string) * 60}
                                             onMaxClick={() => {
-                                                reloadPlayer();
+                                                reloadPlayer({clickEventName: 'maxClick'});
                                             }}
                                             onMax={() => {
                                                 playerRef.current?.close();
@@ -346,7 +346,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     <ReplayLoad
                         ref={loadRef}
                         onClick={() => {
-                            reloadPlayer();
+                            reloadPlayer({clickEventName:'reloadClick'});
                         }}>
                         {
                             canLoad
