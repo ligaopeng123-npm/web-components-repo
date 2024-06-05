@@ -76,7 +76,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
                         return;
                     }
                 }
-                events?.onReload(Object.assign({}, currentPlayerConfig.playerConfig, { layoutIndex }, playerConfig.resolution ? { resolution: playerConfig.resolution } : {}));
+                events?.onReload(Object.assign({}, playerConfig, currentPlayerConfig.playerConfig, { layoutIndex }, playerConfig.resolution ? { resolution: playerConfig.resolution } : {}));
             }
         },
         onMaxReload: (playerConfig: PlayerConfig) => {

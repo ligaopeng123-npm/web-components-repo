@@ -293,7 +293,6 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                     <RcMultiScreenPlayer
                         id={'test'}
                         playType={'replay'}
-                        defaultSelectedScreen={4}
                         hideAction={false}
                         events={{
                             onTimeChange: (e: any) => {
@@ -310,6 +309,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                                 // }, 50)
                             },
                             onReload: (e: PlayerConfig) => {
+                                console.log('onReload',e);
                                 setTimeParams({ 'speed-value': 1 });
                                 if (e.resolution) {
                                     setResolution(e.resolution);
@@ -372,6 +372,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             'hide-fast': true,
                             // 'hide-time': true,
                         }}
+                        defaultSelectedScreen={false}
                     />
                 </div>
             </div>

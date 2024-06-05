@@ -89,7 +89,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     /**
      * 重新加载播放器
      */
-    const reloadPlayer = (event?: {clickEventName?: 'maxClick' | 'reloadClick'}) => {
+    const reloadPlayer = (event?: { clickEventName?: 'maxClick' | 'reloadClick' }) => {
         playerRef.current?.reload();
         if (playerEvents?.onReload) {
             playerEvents.onReload(Object.assign({
@@ -160,10 +160,10 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
             },
             onReload: (e: PlayerConfig) => {
                 if (events?.onReload) {
-                    events?.onReload({
+                    events?.onReload(Object.assign({}, e, {
                         extraParams,
                         protocol
-                    });
+                    }));
                 }
             },
             onMaxReload: (e: PlayerConfig) => {
@@ -325,7 +325,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                                             ref={countRef}
                                             maxTime={parseInt(maxPlayerTime as string) * 60}
                                             onMaxClick={() => {
-                                                reloadPlayer({clickEventName: 'maxClick'});
+                                                reloadPlayer({ clickEventName: 'maxClick' });
                                             }}
                                             onMax={() => {
                                                 playerRef.current?.close();
@@ -346,13 +346,13 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     <ReplayLoad
                         ref={loadRef}
                         onClick={() => {
-                            reloadPlayer({clickEventName:'reloadClick'});
+                            reloadPlayer({ clickEventName: 'reloadClick' });
                         }}>
                         {
                             canLoad
                                 ? <>
                                     {
-                                        (()=> {
+                                        (() => {
                                             switch (protocol) {
                                                 case 'WebRTC':
                                                     return <RcWebRTCPlayer
