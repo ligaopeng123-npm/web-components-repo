@@ -93,6 +93,7 @@ export type PlayerConfigOptions = {
 
 export type PlayerActionConfigResolution = Resolution | boolean | {
     defaultValue: Resolution,
+    helpText?: string,
     options: Array<PlayerConfigOptions>
 };
 

@@ -351,6 +351,7 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                             },
                             resolution: {
                                 defaultValue: "1",
+                                helpText: '121212',
                                 options: [
                                     {
                                         label: '子码流',

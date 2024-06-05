@@ -94,6 +94,9 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
         });
     }
 
+    const actionConfig = state[MultiStoreEnum.actionConfig];
+    const screenConfig = state[MultiStoreEnum.screenConfig]
+
     return (
         <>
             <Drawer
@@ -121,43 +124,47 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
                     right={<IconCloseButton style={{ marginRight: 16 }} onClick={toggleDrawer}/>}/>
                 <div style={{ padding: 16 }}>
                     {
-                        state[MultiStoreEnum.screenConfig]?.protocol === false
+                        screenConfig?.protocol === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.protocol}
+                                defaultValue={screenConfig?.protocol}
                                 onChange={onProtocolSelectChange}
                                 label={'播放策略'}
-                                options={state[MultiStoreEnum.actionConfig]?.protocol.options}/>
+                                helpText={actionConfig?.protocol.helpText}
+                                options={actionConfig?.protocol.options}/>
                     }
 
                     {
-                        state[MultiStoreEnum.screenConfig]?.objectFit === false
+                        screenConfig?.objectFit === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.objectFit}
+                                defaultValue={screenConfig?.objectFit}
                                 onChange={onObjectFitSelectChange}
                                 label={'视频比例'}
-                                options={state[MultiStoreEnum.actionConfig]?.objectFit.options}/>
+                                helpText={actionConfig?.objectFit.helpText}
+                                options={actionConfig?.objectFit.options}/>
                     }
 
                     {
-                        state[MultiStoreEnum.screenConfig]?.maxPlayerTime === false
+                        screenConfig?.maxPlayerTime === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.maxPlayerTime}
+                                defaultValue={screenConfig?.maxPlayerTime}
                                 onChange={onCountdownSelectChange}
                                 label={'播放方式'}
-                                options={state[MultiStoreEnum.actionConfig]?.maxPlayerTime.options}/>
+                                helpText={actionConfig?.maxPlayerTime.helpText}
+                                options={actionConfig?.maxPlayerTime.options}/>
                     }
 
                     {
-                        state[MultiStoreEnum.screenConfig]?.resolution === false
+                        screenConfig?.resolution === false
                             ? null
                             : <FormItem
-                                defaultValue={state[MultiStoreEnum.screenConfig]?.resolution}
+                                defaultValue={screenConfig?.resolution}
                                 onChange={onResolutionSelectChange}
                                 label={'分辨率'}
-                                options={state[MultiStoreEnum.actionConfig]?.resolution.options}/>
+                                helpText={actionConfig?.resolution.helpText}
+                                options={actionConfig?.resolution.options}/>
                     }
                 </div>
             </Drawer>

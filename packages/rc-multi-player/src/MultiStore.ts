@@ -179,11 +179,11 @@ export const ScreenConfigHelper: any = {
                         // 如果配置的有options 则使用配置的options
                         const currentDefaultValue = ScreenConfigHelper.getDefaultValueByKey(key, defaultConfigStorage, defaultConfigProps);
                         if (isString(currentDefaultValue)) {
-                            currentItemConfig = {
+                            currentItemConfig = Object.assign({}, defaultConfigProps[key] || {}, {
                                 defaultValue: currentDefaultValue,
                                 // @ts-ignore
                                 options: defaultConfigProps[key]?.options || DEFAULT_SCREEN_CONFIG[key].options,
-                            }
+                            })
                         } else {
                             currentItemConfig = defaultConfigProps[key];
                         }
@@ -219,16 +219,16 @@ export const init = (state: any) => {
 export const reducer = (state: any, action: Action) => {
     switch (action.type) {
         case MultiStoreEnum.layout:
-            return Object.assign({}, state, {[MultiStoreEnum.layout]: action.value});
+            return Object.assign({}, state, { [MultiStoreEnum.layout]: action.value });
         case MultiStoreEnum.selectedScreen:
-            const newConfig = Object.assign({}, ScreenConfigHelper.getConfig(), {'defaultSelectedScreen': action.value});
+            const newConfig = Object.assign({}, ScreenConfigHelper.getConfig(), { 'defaultSelectedScreen': action.value });
             ScreenConfigHelper.setConfig(newConfig);
-            return Object.assign({}, state, {[MultiStoreEnum.selectedScreen]: action.value});
+            return Object.assign({}, state, { [MultiStoreEnum.selectedScreen]: action.value });
         case MultiStoreEnum.selectedPlayer:
-            return Object.assign({}, state, {[MultiStoreEnum.selectedPlayer]: action.value});
+            return Object.assign({}, state, { [MultiStoreEnum.selectedPlayer]: action.value });
         case MultiStoreEnum.playerList:
             if (isArray(action.value)) {
-                return Object.assign({}, state, {[MultiStoreEnum.playerList]: action.value});
+                return Object.assign({}, state, { [MultiStoreEnum.playerList]: action.value });
             }
             const playerList = state[MultiStoreEnum.playerList];
             const {
@@ -237,13 +237,13 @@ export const reducer = (state: any, action: Action) => {
             } = action.value;
             if (JSON.stringify(playerList[index]) !== JSON.stringify(data)) {
                 playerList[index] = data;
-                return Object.assign({}, state, {[MultiStoreEnum.playerList]: playerList});
+                return Object.assign({}, state, { [MultiStoreEnum.playerList]: playerList });
             }
             return state;
         case MultiStoreEnum.drawer:
-            return Object.assign({}, state, {[MultiStoreEnum.drawer]: action.value});
+            return Object.assign({}, state, { [MultiStoreEnum.drawer]: action.value });
         case MultiStoreEnum.actionConfig:
-            return Object.assign({}, state, {[MultiStoreEnum.actionConfig]: action.value});
+            return Object.assign({}, state, { [MultiStoreEnum.actionConfig]: action.value });
         case MultiStoreEnum.screenConfig:
             const {
                 type,
@@ -251,9 +251,9 @@ export const reducer = (state: any, action: Action) => {
             } = action.value;
             const screenConfig = state[MultiStoreEnum.screenConfig];
             const newScreenConfig = Object.assign({},
-                screenConfig, ScreenConfigHelper.getConfig(), {[type]: value});
+                screenConfig, ScreenConfigHelper.getConfig(), { [type]: value });
             ScreenConfigHelper.setConfig(newScreenConfig);
-            return Object.assign({}, state, {[MultiStoreEnum.screenConfig]: newScreenConfig});
+            return Object.assign({}, state, { [MultiStoreEnum.screenConfig]: newScreenConfig });
         default:
             return state;
     }
