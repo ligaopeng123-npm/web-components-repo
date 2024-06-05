@@ -1,3 +1,27 @@
+## [1.3.6-alpha.18](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.17...v1.3.6-alpha.18) (2024-06-05)
+
+
+### Features
+
+* add clickEventName ([59d2aa5](https://github.com/ligaopeng123-npm/web-components-repo/commit/59d2aa5a9d8d600ae2d333c44cde34e5d16ccf05))
+* add videoProgressBarConfig ([1fd0640](https://github.com/ligaopeng123-npm/web-components-repo/commit/1fd06407d591657a2b432bf86acae28073b75c48))
+
+
+
+## [1.3.6-alpha.17](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.16...v1.3.6-alpha.17) (2024-06-05)
+
+
+### Bug Fixes
+
+* RcMultiPlayer和RcMultiScreenPlayer配置污染问题处理 ([f66306b](https://github.com/ligaopeng123-npm/web-components-repo/commit/f66306b4020f38c5e86db1c46d55ed5ea6ec2fae))
+
+
+### Features
+
+* add helpText ([ac21390](https://github.com/ligaopeng123-npm/web-components-repo/commit/ac21390eacb37366e738fd82aac83f35d9fc2938))
+
+
+
 ## [1.3.6-alpha.16](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.15...v1.3.6-alpha.16) (2024-06-03)
 
 
