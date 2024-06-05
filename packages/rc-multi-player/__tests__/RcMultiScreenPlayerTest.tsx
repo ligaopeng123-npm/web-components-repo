@@ -367,6 +367,11 @@ const RcMultiScreenPlayerTest: React.FC<RcMultiScreenPlayerTestProps> = (props) 
                         }}
                         ref={screenRef}
                         currentConfig={currentConfig}
+                        videoProgressBarConfig={{
+                            'hide-speed': true,
+                            'hide-fast': true,
+                            // 'hide-time': true,
+                        }}
                     />
                 </div>
             </div>

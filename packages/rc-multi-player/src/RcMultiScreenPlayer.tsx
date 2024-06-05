@@ -22,7 +22,6 @@ import styles from './styles.module.less';
 import { isEmptyObject } from "@gaopeng123/utils";
 import "@gaopeng123/video-progress-bar";
 import { PlayerConfig } from "./Player/PlayerTyping";
-import { VideoOptions } from 'video-progress-bar/dist/typing';
 
 const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<MultiScreenPlayerProps> & React.RefAttributes<MultiScreenPlayerRef>> = forwardRef<MultiScreenPlayerRef, MultiScreenPlayerProps>((props, ref) => {
     /**
@@ -37,6 +36,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         events,
         playType,
         style,
+        videoProgressBarConfig,
         className
     } = props;
     /**
@@ -208,7 +208,6 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
         }
     }, []);
 
-
     return (
         <ThemeProvider
             theme={DefaultTheme}>
@@ -261,7 +260,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                 {
                     playType === 'replay'
                         ? <div  style={{ height: '60px' }}>
-                            <video-progress-bar id={`${_id}-bar`}></video-progress-bar>
+                            <video-progress-bar {...Object.assign({}, videoProgressBarConfig)} id={`${_id}-bar`}></video-progress-bar>
                         </div>
                         : null
                 }

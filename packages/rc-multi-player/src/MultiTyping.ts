@@ -16,6 +16,7 @@
 import * as React from "react";
 import { PlayerConfig, PlayerEvents, RcFlvPlayerProps } from "./Player/PlayerTyping";
 import { MediaDataSource } from "@gaopeng123/multi-player";
+import type { VideoProgressBarConfig } from "@gaopeng123/video-progress-bar";
 
 export enum MultiStoreEnum {
     // 布局数据
@@ -93,7 +94,8 @@ export type MultiScreenPlayerProps =
         currentConfig?: {
             playerConfig: PlayerConfig & { layoutIndex: number },
             mediaDataSource?: MediaDataSource
-        }
+        },
+        videoProgressBarConfig?: VideoProgressBarConfig;
     }
     & DomStyle
     & RcFlvPlayerProps;
