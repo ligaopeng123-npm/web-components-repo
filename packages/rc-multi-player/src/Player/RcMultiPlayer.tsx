@@ -31,7 +31,7 @@ import ResolutionSelect from "../Action/ResolutionSelect";
 import IconBackButton from "../Action/IconBackButton";
 import { classnames, isFullscreen, isFunction, isMobile } from "@gaopeng123/utils";
 import MultiScreenDrawer, { MultiScreenDrawerButton } from "../Action/MultiScreenDrawer";
-import { reducer, ScreenConfig } from "../MultiStore";
+import { reducer, ScreenConfig, ScreenConfigHelper } from "../MultiStore";
 import { MultiStoreEnum } from "../MultiTyping";
 import RcHlsPlayer from './RcHlsPlayer';
 
@@ -53,7 +53,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         videoToolbar,
         hideToolbarInFullScreen,
         timeDrag,
-        defaultPlayerConfig
+        defaultPlayerConfig,
+        id
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -252,7 +253,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     const bthStyle = _isMobile ? { width: 56 } : {};
 
 
-    const _id = `rc-multi-player`
+    const _id = id || ScreenConfigHelper.id || `rc-multi-player`;
     const screenConfig = ScreenConfig(_id);
 
     const [configState, configDispatch] = useReducer(reducer, {}, (currentState) => {
@@ -286,8 +287,6 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
     }, []);
     // 处理默认objectFit值
     const _objectFit = objectFit || defaultPlayerConfig ? screenConfig.getConfig().objectFit : '';
-
-    console.log('protocol', protocol)
 
     return (
         <ThemeProvider

@@ -18,7 +18,7 @@ import { PlayerEvents } from "../Player/PlayerTyping";
 
 type LayoutContentProps = { events?: PlayerEvents, hideAction?: boolean } & Props;
 
-const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any) => {
+const LayoutContentGrid = ({ layout, dispatch, state, playerList, events, defaultPlayerConfig }: any) => {
     const selectedPlayer = state[MultiStoreEnum.selectedPlayer];
     const onItemClick = (key: string) => {
         dispatch({
@@ -45,6 +45,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
                                             state={state}
                                             dispatch={dispatch}
                                             layout={colItem}
+                                            defaultPlayerConfig={defaultPlayerConfig}
                                             playerList={playerList}/>
                                     </Grid>
                                     : <Grid
@@ -64,6 +65,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
                                             state={state}
                                             dispatch={dispatch}
                                             layoutIndex={colItem.key}
+                                            defaultPlayerConfig={defaultPlayerConfig}
                                             playerConfig={playerList[+colItem.key]?.playerConfig}
                                             mediaDataSource={playerList[+colItem.key]?.mediaDataSource}
                                             selected={selectedPlayer === colItem.key}/>
@@ -77,7 +79,7 @@ const LayoutContentGrid = ({ layout, dispatch, state, playerList, events }: any)
     )
 }
 const LayoutContent: React.FC<LayoutContentProps> = (props) => {
-    const { state, dispatch, events, hideAction } = props;
+    const { state, dispatch, events, hideAction, defaultPlayerConfig } = props;
     const layoutVal = state[MultiStoreEnum.layout];
     const playerList = state[MultiStoreEnum.playerList];
     return (
@@ -86,6 +88,7 @@ const LayoutContent: React.FC<LayoutContentProps> = (props) => {
                 events={events}
                 playerList={playerList}
                 layout={layoutVal}
+                defaultPlayerConfig={defaultPlayerConfig}
                 dispatch={dispatch}
                 state={state}/>
         </div>

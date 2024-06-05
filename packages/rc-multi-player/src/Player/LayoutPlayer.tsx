@@ -25,7 +25,8 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         dispatch,
         events,
         state,
-        playerList
+        playerList,
+        defaultPlayerConfig
     } = props;
     const onClose = () => {
         dispatch({
@@ -93,6 +94,7 @@ const LayoutPlayer: React.FC<LayoutPlayerProps> = (props) => {
         <RcMultiPlayer
             ref={videoRef}
             objectFit={ScreenConfigHelper.getSingleConfig('objectFit')}
+            defaultPlayerConfig={defaultPlayerConfig}
             maxPlayerTime={maxPlayerTime}
             events={playerEvents}
             mediaDataSource={mediaDataSource}

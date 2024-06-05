@@ -103,7 +103,7 @@ export const getCurrentStorage = (id: string, valKey: string) => {
 }
 
 // @ts-ignore
-export const ScreenConfigHelper = {
+export const ScreenConfigHelper: any = {
     id: '',
     getConfig: () => {
         return getLocalStorage(ScreenConfigHelper.id);

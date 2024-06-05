@@ -229,6 +229,7 @@ const RcMultiScreenPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef
                     <LayoutContent
                         layoutKey={_id}
                         hideAction={hideAction}
+                        defaultPlayerConfig={defaultPlayerConfig}
                         events={{
                             ...events,
                             onLoadStart: (e) => {

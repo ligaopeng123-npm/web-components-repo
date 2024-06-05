@@ -50,7 +50,8 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
     const changeObjectFit = (val: ObjectFit) => {
         const videoList: any = document.querySelector(`#${screenKey}`)?.querySelectorAll('video') || [];
         const multiPlayer = document.querySelectorAll('multi-player');
-        for (let i = 0; i < max(videoList.length, multiPlayer.length); i++) {
+        const hlsPlayer = document.querySelectorAll('hls-player');
+        for (let i = 0; i < max(videoList.length, multiPlayer.length, hlsPlayer.length); i++) {
             if (videoList[i]) {
                 // @ts-ignore
                 videoList[i].style['object-fit'] = val;
@@ -58,6 +59,10 @@ const MultiScreenDrawer: React.FC<MultiScreenDrawerProps> = (props) => {
             if (multiPlayer[i]) {
                 // @ts-ignore
                 multiPlayer[i].objectFit = val;
+            }
+            if (hlsPlayer[i]) {
+                // @ts-ignore
+                hlsPlayer[i].objectFit = val;
             }
         }
     }

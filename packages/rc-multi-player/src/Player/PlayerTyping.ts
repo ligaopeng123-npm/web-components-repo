@@ -158,6 +158,7 @@ export type RcMultiPlayerProps =
     {
         title?: string | ReactNode;
         defaultPlayerConfig?: PlayerConfig;
+        id?: string;
     }
     & { hideToolbarInFullScreen?: boolean, timeDrag?: ReactNode }
     & DomStyle
