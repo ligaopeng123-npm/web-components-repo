@@ -75,6 +75,7 @@ const RcMultiPlayerTest: React.FC<RcMultiPlayerTestProps> = (props) => {
                 </div>
                 <div style={{ flex: 3, height: 600 }}>
                     <RcMultiPlayer
+                        showAction={true}
                         events={{
                             onFullChange: (v) => {
                                 console.log(v);

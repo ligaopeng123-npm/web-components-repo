@@ -161,7 +161,7 @@ export type RcMultiPlayerProps =
         defaultPlayerConfig?: PlayerConfig;
         id?: string;
     }
-    & { hideToolbarInFullScreen?: boolean, timeDrag?: ReactNode }
+    & { hideToolbarInFullScreen?: boolean, showAction?: boolean }
     & DomStyle
     & RcFlvPlayerProps
     & PlayerConfig;

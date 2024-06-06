@@ -52,9 +52,9 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
         config,
         videoToolbar,
         hideToolbarInFullScreen,
-        timeDrag,
         defaultPlayerConfig,
-        id
+        id,
+        showAction
     } = props;
     const [divCurrent, setDivCurrent] = useState<HTMLDivElement>();
     const loadRef = useRef<any>(null);
@@ -266,7 +266,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
      * 协议等变更处理
      */
     useEffect(() => {
-        if (defaultPlayerConfig && _isMobile && configState[MultiStoreEnum.drawer] === false) {
+        if (defaultPlayerConfig && ( _isMobile || showAction) && configState[MultiStoreEnum.drawer] === false) {
             const currentConfig = screenConfig.getConfig()
             const oldConfig = configStateRef.current;
             for (const configKey in defaultPlayerConfig) {
@@ -316,7 +316,7 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                     </>}
                     right={
                         <>
-                            {_isMobile && defaultPlayerConfig &&
+                            {(_isMobile || showAction) && defaultPlayerConfig &&
                             <MultiScreenDrawerButton state={configState} dispatch={configDispatch}/>}
                             <HideFullScreen>
                                 {
@@ -430,8 +430,8 @@ const RcMultiPlayer: React.ForwardRefExoticComponent<RcMultiPlayerProps & React.
                         </HideFullScreen>
                     }
                 />
-                {_isMobile && defaultPlayerConfig && <MultiScreenDrawer
-                    anchor={_isMobile && _isFullscreen ? 'right' : 'bottom'}
+                {(_isMobile || showAction) && defaultPlayerConfig && <MultiScreenDrawer
+                    anchor={(_isMobile && _isFullscreen || !_isMobile) ? 'right' : 'bottom'}
                     screenKey={_id}
                     state={configState}
                     dispatch={configDispatch}/>}
