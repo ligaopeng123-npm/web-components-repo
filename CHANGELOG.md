@@ -1,3 +1,13 @@
+## [1.3.6-alpha.19](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.18...v1.3.6-alpha.19) (2024-06-06)
+
+
+### Bug Fixes
+
+* onReload参数透出 ([282f483](https://github.com/ligaopeng123-npm/web-components-repo/commit/282f483083c12a1a5bf4c2cc32d3c82056accc7c))
+* RcMultiplayer action pc端适配 ([d75a623](https://github.com/ligaopeng123-npm/web-components-repo/commit/d75a6237e9c0d922d8b9adb8bc11127d368fe145))
+
+
+
 ## [1.3.6-alpha.18](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.17...v1.3.6-alpha.18) (2024-06-05)
 
 
