@@ -1,5 +1,5 @@
 .title {
-    font-size: .8125rem;
+    font-size: 1rem;
     //font-weight: bold;
 }
 
@@ -10,6 +10,16 @@
 }
 
 .subTitle {
+    margin-left: 4px;
     font-size: .75rem;
     color: var(--multi-player-secondary-text-color);
+    vertical-align: middle;
+
+    &::before {
+        content: "(";
+    }
+
+    &::after {
+        content: ")";
+    }
 }

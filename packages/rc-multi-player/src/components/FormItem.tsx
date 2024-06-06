@@ -16,7 +16,6 @@ import ToggleButton from "@mui/material/ToggleButton";
 import { styled } from "@mui/material/styles";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Title from "./Title";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import styles from './styles.module.less';
 
 
@@ -73,9 +72,7 @@ const FormItem: React.FC<FormItemProps> = (props) => {
                     {label}
                 </Title>
                 {
-                    helpText ? <>
-                        <HelpOutlineIcon sx={{ fontSize: '.85rem', verticalAlign: 'sub', margin: '0px 2px' }}/>
-                        <Title className={styles.subTitle} ellipsis={true}>{helpText}</Title></> : null
+                    helpText ? <><Title className={styles.subTitle} ellipsis={true}>{helpText}</Title></> : null
                 }
             </Box>
             <Box component={'div'}>
