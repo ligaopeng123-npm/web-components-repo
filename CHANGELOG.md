@@ -1,3 +1,13 @@
+## [1.3.6-alpha.20](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.19...v1.3.6-alpha.20) (2024-06-11)
+
+
+### Bug Fixes
+
+* 微信小程序ios下自动播放 ([02ac1c6](https://github.com/ligaopeng123-npm/web-components-repo/commit/02ac1c63cf220e616976d01d8575ae629ccc2ff5))
+* 样式调整 ([55a1837](https://github.com/ligaopeng123-npm/web-components-repo/commit/55a1837790fca24fc5f374a0726946be0637ff5c))
+
+
+
 ## [1.3.6-alpha.19](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.18...v1.3.6-alpha.19) (2024-06-06)
 
 
