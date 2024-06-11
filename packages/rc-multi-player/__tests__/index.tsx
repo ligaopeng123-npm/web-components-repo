@@ -5,9 +5,10 @@ import RcMultiPlayerTest from "./RcMultiPlayerTest";
 import RcMultiScreenPlayerTest from "./RcMultiScreenPlayerTest";
 import { Link } from "@mui/material";
 import WebRTCPlayerTest from "./WebRTCPlayerTest";
+import RcMultiPlayerAutoPlayTest from "./RcMultiPlayerAutoPlayTest";
 
 const App = () => {
-    const [type, setType] = React.useState('RcMultiPlayer');
+    const [type, setType] = React.useState('RcMultiPlayerAutoPlayTest');
     const LinkText = ({ label, value }: any) => {
         return (
             <>
@@ -27,6 +28,7 @@ const App = () => {
     return (
         <div>
             <div>
+                <LinkText label={'RcMultiPlayerAutoPlayTest'}/>
                 <LinkText label={'RcMultiPlayer'}/>
                 <LinkText label={'RcMultiScreenPlayer'}/>
                 <LinkText label={'WebRTCPlayer'}/>
@@ -42,7 +44,7 @@ const App = () => {
                             case 'WebRTCPlayer':
                                 return <WebRTCPlayerTest/>
                             default:
-                                return null
+                                return <RcMultiPlayerAutoPlayTest/>
                         }
                     })()
                 }

@@ -1,7 +1,27 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV?.trimEnd();
+
+
+class AddTypeModulePlugin {
+    apply(compiler) {
+        compiler.hooks.compilation.tap('AddTypeModulePlugin', (compilation) => {
+            HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tapAsync(
+                'AddTypeModulePlugin',
+                (data, cb) => {
+                    data.headTags.forEach(tag => {
+                        if (tag.tagName === 'script') {
+                            tag.attributes.type = 'module';
+                        }
+                    });
+                    cb(null, data);
+                }
+            );
+        });
+    }
+}
 
 
 module.exports = function (dirname = __dirname) {
@@ -25,17 +45,17 @@ module.exports = function (dirname = __dirname) {
                         loader: 'babel-loader',
                         options: { // 用 babel-loader 需要把 es6 -> es5
                             presets: [
-                                // '@babel/preset-env', // 这里面就是把es6 -> es5的模块
+                                '@babel/preset-env', // 这里面就是把es6 -> es5的模块
                                 // 按需加载es版本
-                                ['@babel/env', {
-                                    modules: false,
-                                    useBuiltIns: false,
-                                    targets: {
-                                        browsers: [
-                                            'Chrome >= 88'
-                                        ]
-                                    }
-                                }]
+                                // ['@babel/env', {
+                                //     modules: false,
+                                //     useBuiltIns: false,
+                                //     targets: {
+                                //         browsers: [
+                                //             'Chrome >= 88'
+                                //         ]
+                                //     }
+                                // }]
                             ],
                             plugins: [
                                 [   // 支持类(class)的写法
@@ -77,10 +97,13 @@ module.exports = function (dirname = __dirname) {
             ]
         },
         plugins: [
+            new webpack.HotModuleReplacementPlugin(),
             new HtmlWebpackPlugin({
                 // title: '登录',
-                template: './__tests__/index.html'
+                template: './__tests__/index.html',
+                scriptLoading: 'defer',
             }),
+            new AddTypeModulePlugin(),
             new CopyPlugin({
                 patterns: [
                     {
@@ -101,18 +124,22 @@ module.exports = function (dirname = __dirname) {
         },
         target: 'web',
         devServer: {
-            contentBase: path.resolve(dirname, 'dist'),
+            static: {
+                directory: path.join(dirname, '__test__'),
+                publicPath: ['/'],
+            },
+            watchFiles: ['src/**/*', 'src/**/*'],
+            allowedHosts: 'auto',
+            hot: true,
             // 压缩代码 先注释
             compress: NODE_ENV == 'production',
-            // 端口
-            port: 5000,
             // 打开浏览器
             open: true,
-            proxy: {
-                '/api': {
-                    target: 'http://localhost:8000'
-                }
-            }
+            https: false,
+            client: {
+                webSocketURL: {hostname: undefined, pathname: undefined, port: undefined},
+                overlay: false
+            },
         }
     }
 }

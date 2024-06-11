@@ -146,15 +146,21 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
      * 获取当前视频
      */
     const getVideo = () => {
-        return videoRef.current.querySelector('#WebRTC-player');
+        return videoRef.current;
     }
 
     /**
      *  缓存sdk
      */
     useEffect(() => {
+        // weixin环境下处理自动播放
+        const onWeixinJSBridgeReady = ()=> {
+            getVideo()?.play();
+        };
+        document.addEventListener("WeixinJSBridgeReady", onWeixinJSBridgeReady, false);
         let sdk = initSdk();
         return () => {
+            document.removeEventListener("WeixinJSBridgeReady", onWeixinJSBridgeReady, false)
             closeSdk(sdk);
         }
     }, [mediaDataSource]);
@@ -206,6 +212,9 @@ const RcWebRTCPlayer: React.ForwardRefExoticComponent<React.PropsWithoutRef<WebR
             ref={videoRef}
             autoPlay={true}
             playsInline={true}
+            webkit-playsinline={true}
+            x5-playsinline={true}
+            x5-video-player-type='h5'
             muted={true}
             style={{
                 height: height || '100%',
