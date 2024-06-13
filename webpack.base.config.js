@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV?.trimEnd();
+const fs = require('fs');
 
 
 class AddTypeModulePlugin {
@@ -25,6 +26,27 @@ class AddTypeModulePlugin {
 
 
 module.exports = function (dirname = __dirname) {
+    const plugins = [
+        // new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            // title: '登录',
+            template: './__tests__/index.html',
+            scriptLoading: 'defer',
+        }),
+        new AddTypeModulePlugin()
+    ];
+    const dirPath = path.resolve(dirname, './__tests__/assets');
+    if (fs.existsSync(dirPath) && fs.readdirSync(dirPath).length > 0) {
+        plugins.push(new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(dirname, './__tests__/assets'),//想要复制的文件夹
+                    to: path.resolve(dirname, './dist/assets') //复制在哪个文件夹
+                }
+            ]
+        }));
+    }
+
     return {
         mode: 'development',// 环境管理
         devtool: 'eval-source-map',
@@ -60,7 +82,7 @@ module.exports = function (dirname = __dirname) {
                             plugins: [
                                 [   // 支持类(class)的写法
                                     '@babel/plugin-proposal-class-properties',
-                                    {'loose': true} // 宽松模式
+                                    { 'loose': true } // 宽松模式
                                 ]
                             ]
                         }
@@ -96,23 +118,7 @@ module.exports = function (dirname = __dirname) {
                 },
             ]
         },
-        plugins: [
-            new webpack.HotModuleReplacementPlugin(),
-            new HtmlWebpackPlugin({
-                // title: '登录',
-                template: './__tests__/index.html',
-                scriptLoading: 'defer',
-            }),
-            new AddTypeModulePlugin(),
-            new CopyPlugin({
-                patterns: [
-                    {
-                        from: path.resolve(dirname, './__tests__/assets'),//想要复制的文件夹
-                        to: path.resolve(dirname, './dist/assets') //复制在哪个文件夹
-                    }
-                ]
-            })
-        ],
+        plugins: plugins,
         experiments: {
             outputModule: true // 让模块可以使用import导入使用
         },
@@ -130,14 +136,14 @@ module.exports = function (dirname = __dirname) {
             },
             watchFiles: ['src/**/*', 'src/**/*'],
             allowedHosts: 'auto',
-            hot: true,
+            // hot: true,
             // 压缩代码 先注释
             compress: NODE_ENV == 'production',
             // 打开浏览器
             open: true,
             https: false,
             client: {
-                webSocketURL: {hostname: undefined, pathname: undefined, port: undefined},
+                webSocketURL: { hostname: undefined, pathname: undefined, port: undefined },
                 overlay: false
             },
         }

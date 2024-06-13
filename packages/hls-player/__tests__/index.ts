@@ -1,4 +1,3 @@
-import { HlsPlayer } from "../src";
 import "../src";
 
 window.onload = () => {
