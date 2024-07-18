@@ -77,12 +77,15 @@ export const template = (config: Config) => {
    
    
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-             opacity: 1;
-          }
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .body-collapse > .body-more::after {
@@ -93,7 +96,7 @@ export const template = (config: Config) => {
             top: 4px;
             min-height: 22px;
             min-width: 22px;
-            animation: fadeIn 0.5s forwards;
+            animation: fadeIn .3s forwards;
         }
 
         .body-expand > .body-more::after {
