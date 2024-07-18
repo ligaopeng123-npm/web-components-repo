@@ -48,10 +48,20 @@ export const template = (config: Config) => {
 
         }
         
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
         .body-collapse > .body-more {
             position: absolute;
             background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
             height: ${moreHeight}px;
+            animation: fadeIn .3s forwards;
         }
         
         .body-expand > .body-more {
@@ -74,19 +84,6 @@ export const template = (config: Config) => {
             box-shadow: 0 2px 8px var(--border-color, rgba(0, 0, 0, .09));
             transition: all .3s;
         }
-   
-   
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            20% {
-                opacity: .5;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
 
         .body-collapse > .body-more::after {
             content: var(--expand-text, '更多');
@@ -96,7 +93,6 @@ export const template = (config: Config) => {
             top: 4px;
             min-height: 22px;
             min-width: 22px;
-            animation: fadeIn .3s forwards;
         }
 
         .body-expand > .body-more::after {
