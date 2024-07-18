@@ -99,7 +99,7 @@ class CardEllipsis extends HTMLElement {
         this.observer.disconnect();
     }
 
-    get bodyMore() {
+    get bodyMore(): HTMLElement {
         return this.shadow.querySelector('.body-more');
     }
 
@@ -107,7 +107,7 @@ class CardEllipsis extends HTMLElement {
         return this.shadow.querySelector('slot')
     }
 
-    get body() {
+    get body(): HTMLElement {
         return this.shadow.querySelector('.body');
     }
 
@@ -131,7 +131,6 @@ class CardEllipsis extends HTMLElement {
 
     moreClick = () => {
         const body = this.body;
-        // @ts-ignore
         const bodyStyle = body.style;
         if (body.classList.contains('body-expand')) {
             body.classList.remove('body-expand');
@@ -168,9 +167,18 @@ class CardEllipsis extends HTMLElement {
     }
 
     setBodyMaxHeight() {
-        // @ts-ignore
-        const bodyStyle =  this.body.style;
-        bodyStyle.setProperty('height', this.config.mode === 'complex' ? 'auto' : addBoxSizeUnit(this.maxHeight));
+        const bodyStyle = this.body.style;
+        if (this.config.mode === 'complex') {
+            bodyStyle.setProperty('height', 'auto');
+            const { height } = this.body.getBoundingClientRect();
+            bodyStyle.setProperty('height', '0px');
+            bodyStyle.setProperty('height', addBoxSizeUnit(this.config["min-height"]));
+            this.body.offsetHeight;
+            bodyStyle.setProperty('height', `${height}px`);
+        } else {
+            bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
+        }
+
     }
 
     /**

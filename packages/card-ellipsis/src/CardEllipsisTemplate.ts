@@ -55,7 +55,6 @@ export const template = (config: Config) => {
         }
         
         .body-expand > .body-more {
-            
         }
 
         .body-more {
@@ -75,6 +74,16 @@ export const template = (config: Config) => {
             box-shadow: 0 2px 8px var(--border-color, rgba(0, 0, 0, .09));
             transition: all .3s;
         }
+   
+   
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+             opacity: 1;
+          }
+        }
 
         .body-collapse > .body-more::after {
             content: var(--expand-text, '更多');
@@ -84,6 +93,7 @@ export const template = (config: Config) => {
             top: 4px;
             min-height: 22px;
             min-width: 22px;
+            animation: fadeIn 0.5s forwards;
         }
 
         .body-expand > .body-more::after {
