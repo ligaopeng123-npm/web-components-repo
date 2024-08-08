@@ -394,7 +394,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/message': ^1.3.7-alpha.0
+      '@gaopeng123/message': ^1.3.7-alpha.1
       '@gaopeng123/utils.file': latest
       '@gaopeng123/utils.object': latest
       '@gaopeng123/utils.types': latest
@@ -562,7 +562,7 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@ffmpeg/core': ^0.10.0
       '@ffmpeg/ffmpeg': ^0.10.1
-      '@gaopeng123/message': ^1.3.7-alpha.0
+      '@gaopeng123/message': ^1.3.7-alpha.1
       '@gaopeng123/utils.function': latest
       '@gaopeng123/utils.string': latest
       '@size-limit/preset-small-lib': ^5.0.1
@@ -693,7 +693,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/card-ellipsis': ^1.3.7-alpha.0
+      '@gaopeng123/card-ellipsis': ^1.3.7-alpha.1
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
@@ -762,7 +762,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/image-upload': ^1.3.7-alpha.0
+      '@gaopeng123/image-upload': ^1.3.7-alpha.1
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -901,8 +901,8 @@ importers:
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
       '@gaopeng123/fetch': ^0.3.2
-      '@gaopeng123/login-module': ^1.3.7-alpha.0
-      '@gaopeng123/rc-login-module': ^1.3.7-alpha.0
+      '@gaopeng123/login-module': ^1.3.7-alpha.1
+      '@gaopeng123/rc-login-module': ^1.3.7-alpha.1
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
@@ -973,7 +973,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
-      '@gaopeng123/login-module': ^1.3.7-alpha.0
+      '@gaopeng123/login-module': ^1.3.7-alpha.1
       '@gaopeng123/utils': latest
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/react': ^17.0.39
@@ -1044,11 +1044,11 @@ importers:
       '@babel/preset-env': ^7.14.4
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
-      '@gaopeng123/hls-player': ^1.3.7-alpha.0
+      '@gaopeng123/hls-player': ^1.3.7-alpha.1
       '@gaopeng123/hooks': latest
-      '@gaopeng123/multi-player': ^1.3.7-alpha.0
+      '@gaopeng123/multi-player': ^1.3.7-alpha.1
       '@gaopeng123/utils': 1.1.16-alpha.3
-      '@gaopeng123/video-progress-bar': ^1.3.7-alpha.0
+      '@gaopeng123/video-progress-bar': ^1.3.7-alpha.1
       '@mui/icons-material': ^5.10.9
       '@mui/material': ^5.10.10
       '@rollup/plugin-image': ^2.1.1
@@ -1345,7 +1345,7 @@ importers:
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
       '@floating-ui/dom': ^1.4.5
-      '@gaopeng123/message': ^1.3.7-alpha.0
+      '@gaopeng123/message': ^1.3.7-alpha.1
       '@gaopeng123/utils': ^1.1.5
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
@@ -1616,7 +1616,7 @@ importers:
       '@babel/core': ^7.14.6
       '@babel/preset-env': ^7.14.7
       '@babel/preset-typescript': ^7.14.5
-      '@gaopeng123/image-upload': ^1.3.7-alpha.0
+      '@gaopeng123/image-upload': ^1.3.7-alpha.1
       '@rollup/plugin-alias': ^3.1.2
       '@rollup/plugin-babel': ^5.3.0
       '@rollup/plugin-commonjs': ^14.0.0
@@ -4844,15 +4844,6 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.file/1.1.15:
-    resolution: {integrity: sha512-YzYKDAUSNvSzJXM8VA55bleAbF/38atnhZsrkVEHWksNUqMpI+h3Nd37kYd52ZB+2JowxkAdViDsN2w2EfqMGQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.object': 1.1.16
-      '@gaopeng123/utils.string': 1.1.16
-      '@gaopeng123/utils.types': 1.1.15
-    dev: false
-
   /@gaopeng123/utils.file/1.1.16:
     resolution: {integrity: sha512-shcuafv6Nt0CL+XehcruAzoUPzN3BW4FM9Td993Spx5jjsNhqYGXCOdbXVGEF5pJedICxu1xc10BTD1Oh4BCFg==}
     engines: {node: '>=10'}
@@ -4861,27 +4852,11 @@ packages:
       '@gaopeng123/utils.string': 1.1.16
       '@gaopeng123/utils.types': 1.1.16-alpha.4
 
-  /@gaopeng123/utils.file/1.1.16-alpha.4:
-    resolution: {integrity: sha512-RVWbIMLR2SE8y50fr/0iqOTFczKZcg3Nja2EInBq92n/utMX9okCfd/OyhnYTWKWfnc3+zgimTS6ySn8NU8fuw==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.object': 1.1.16
-      '@gaopeng123/utils.string': 1.1.16
-      '@gaopeng123/utils.types': 1.1.16-alpha.4
-    dev: false
-
   /@gaopeng123/utils.function/0.6.1:
     resolution: {integrity: sha512-qF4g/fo4mEQe2JpL/FMprDgkSxCWlvLv2JmI/aj/+mbzuFB4DYhIfg7p4fcxHJU24FTvqlmKb+55ZwEBFqo4YQ==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.types': 0.6.1
-    dev: false
-
-  /@gaopeng123/utils.function/1.1.15:
-    resolution: {integrity: sha512-qPo3GRmaSLRSLU5jSQY2Z+7aKmuM4VfJs8YDXs0VhClWixDNHYI4D44E+u0rM0QfLXubH9DWQrjLM/pcYgcc/w==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.types': 1.1.15
     dev: false
 
   /@gaopeng123/utils.function/1.1.16:
@@ -4939,14 +4914,6 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.object/1.1.15:
-    resolution: {integrity: sha512-x04fiEecuMaQ0Fr/P5nKkoBGnxxnqrcpdmyyhxd0rYFQFeXLuV560Qp66TdZbkSors+4cx3BaGQddwmMBMpHbA==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 1.1.16
-      '@gaopeng123/utils.types': 1.1.15
-    dev: false
-
   /@gaopeng123/utils.object/1.1.16:
     resolution: {integrity: sha512-RvRngF0OETixmhIkJ81QW9lcA5tL1iy1flXsBREV1orkNlo0utbDc1a46wGoUwGhdp+M7ogMYRUcv5q/lGNrXA==}
     engines: {node: '>=10'}
@@ -4954,15 +4921,6 @@ packages:
       '@gaopeng123/utils.function': 1.1.16
       '@gaopeng123/utils.string': 1.1.16-alpha.4
       '@gaopeng123/utils.types': 1.1.16-alpha.4
-
-  /@gaopeng123/utils.object/1.1.16-alpha.4:
-    resolution: {integrity: sha512-+wBL4D2JZ8hcLDF+OV6Kmp1ff0MtwlSQOUW1HihsfvbYg+viwM4fz0B8lA/s48YH/JyRad0gL3zs5agcvA6Vzg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 1.1.16
-      '@gaopeng123/utils.string': 1.1.16-alpha.3
-      '@gaopeng123/utils.types': 1.1.16-alpha.4
-    dev: false
 
   /@gaopeng123/utils.string/0.6.1:
     resolution: {integrity: sha512-O1q8J5PZPEA1A0cXjLdGTcQzAD9vXYfIhaFcNMPFyjweIKrR/luuQtilvGRYc8HAj78GgqLfPtW3bFbR/RGY8g==}
@@ -4972,28 +4930,12 @@ packages:
       '@gaopeng123/utils.types': 0.6.1
     dev: false
 
-  /@gaopeng123/utils.string/1.1.15:
-    resolution: {integrity: sha512-lQNlzH2+1IrIjpKtj6ca2cgTz8GW1DvCM+nmSTgDD6t6efkEF4iyHVxnowiIDs9FtxyZ1bkU4nDgpHEQLbLp/w==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 1.1.16
-      '@gaopeng123/utils.types': 1.1.15
-    dev: false
-
   /@gaopeng123/utils.string/1.1.16:
     resolution: {integrity: sha512-ls8rFHCGkSlgJp1MJboEddmJCKs5vapzpnLS+A6glEQTJ90a7cMyoDA7Uo0MGoIP4hy0aaMYzAybheS6As66WA==}
     engines: {node: '>=10'}
     dependencies:
       '@gaopeng123/utils.function': 1.1.16
       '@gaopeng123/utils.types': 1.1.16-alpha.4
-
-  /@gaopeng123/utils.string/1.1.16-alpha.3:
-    resolution: {integrity: sha512-BJYgeM75sZ8CsahJBnZq5pbsRIOyA3ti7I71MZ9Ha7vf3QM7TkQNQdY8y6OAeDBf+4LXRqAhf5+B/FFFJrP6aA==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@gaopeng123/utils.function': 1.1.16
-      '@gaopeng123/utils.types': 1.1.16-alpha.4
-    dev: false
 
   /@gaopeng123/utils.string/1.1.16-alpha.4:
     resolution: {integrity: sha512-bxyt+L7sVQfx49UjT3z59ISXegjhiY2jdrNMcplx4f4UnaF26BXQtknAbR57Lq4agZxQcbnCtbO7wDMjzfcGog==}
@@ -5049,12 +4991,12 @@ packages:
     dependencies:
       '@gaopeng123/utils.array': 1.1.15
       '@gaopeng123/utils.date': 1.1.15
-      '@gaopeng123/utils.file': 1.1.15
-      '@gaopeng123/utils.function': 1.1.15
+      '@gaopeng123/utils.file': 1.1.16
+      '@gaopeng123/utils.function': 1.1.16
       '@gaopeng123/utils.log': 1.1.15
       '@gaopeng123/utils.number': 1.1.15
-      '@gaopeng123/utils.object': 1.1.15
-      '@gaopeng123/utils.string': 1.1.15
+      '@gaopeng123/utils.object': 1.1.16
+      '@gaopeng123/utils.string': 1.1.16
       '@gaopeng123/utils.types': 1.1.15
     dev: false
 
@@ -5079,12 +5021,12 @@ packages:
     dependencies:
       '@gaopeng123/utils.array': 1.1.16-alpha.4
       '@gaopeng123/utils.date': 1.1.16-alpha.4
-      '@gaopeng123/utils.file': 1.1.16-alpha.4
+      '@gaopeng123/utils.file': 1.1.16
       '@gaopeng123/utils.function': 1.1.16-alpha.4
       '@gaopeng123/utils.log': 1.1.16-alpha.4
       '@gaopeng123/utils.number': 1.1.16-alpha.4
-      '@gaopeng123/utils.object': 1.1.16-alpha.4
-      '@gaopeng123/utils.string': 1.1.16-alpha.4
+      '@gaopeng123/utils.object': 1.1.16
+      '@gaopeng123/utils.string': 1.1.16
       '@gaopeng123/utils.types': 1.1.16-alpha.4
     dev: false
 
