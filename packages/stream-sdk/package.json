@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/stream-sdk",
-    "version": "1.3.6",
+    "version": "1.3.7-alpha.0",
     "description": "流媒体对应的sdk",
     "keywords": [],
     "author": "ligaopeng123 <1170234932@qq.com>",
