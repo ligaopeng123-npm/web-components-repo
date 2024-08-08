@@ -1,6 +1,6 @@
 # card-flip
 
-`翻转动画`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/docs/example-cardflip--props)  
+`翻转动画`[在线demo](https://ligaopeng123-npm.github.io/web-components-repo/?path=/story/example-cardflip--props)  
 
 ## Usage
 
