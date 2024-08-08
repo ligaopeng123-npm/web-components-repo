@@ -1,3 +1,29 @@
+## [1.3.7-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.0...v1.3.7-alpha.1) (2024-08-08)
+
+
+
+## [1.3.7-alpha.0](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6...v1.3.7-alpha.0) (2024-08-08)
+
+
+
+## [1.3.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.20...v1.3.6) (2024-08-08)
+
+
+### Bug Fixes
+
+* 隐藏webrtc播放器安卓web-view下默认的poster ([b805a70](https://github.com/ligaopeng123-npm/web-components-repo/commit/b805a70875e64c2ba321bc38e9314d6d81c67143))
+
+
+### Features
+
+* add card-flip ([a0c9eab](https://github.com/ligaopeng123-npm/web-components-repo/commit/a0c9eabc1b03b50c181376d34f1347498025c3be))
+* card-ellipsis动画显示 ([d52ceac](https://github.com/ligaopeng123-npm/web-components-repo/commit/d52ceaceef424240f4048203aad8ff6c3ba0591c))
+* card-ellipsis动画显示优化 ([9d9604b](https://github.com/ligaopeng123-npm/web-components-repo/commit/9d9604b28f6f848b044b2271370f37dca7366909))
+* card-ellipsis动画显示优化 ([e3c4294](https://github.com/ligaopeng123-npm/web-components-repo/commit/e3c4294e53fa87b4e9997b512b95fb97e69aa6b2))
+* webpack统一升级 ([d8d0d9b](https://github.com/ligaopeng123-npm/web-components-repo/commit/d8d0d9b091bf9a0c70cbd2791530aad50bfc9166))
+
+
+
 ## [1.3.6-alpha.20](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.6-alpha.19...v1.3.6-alpha.20) (2024-06-11)
 
 
