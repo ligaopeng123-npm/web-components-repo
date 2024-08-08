@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <div class="card-filp">
+        <div class="back"></div>
+        <div class="front"></div>
+    </div>
+
+    <style>
+        .card-filp {
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        .front,
+        .back {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            transition: 1s;
+        }
+
+        .front {
+            backface-visibility: hidden;
+            background-image: url(https://picsum.photos/200/300?k=1);
+            transform: rotateX(0deg);
+        }
+
+        .back {
+            background-image: url(https://picsum.photos/200/300?k=2);
+            transform: rotateX(180deg);
+        }
+
+        .card-filp:hover .front {
+            transform: rotateX(180deg);
+            backface-visibility: hidden;
+        }
+
+        .card-filp:hover .back {
+            transform: rotateX(0deg);
+            backface-visibility: 1;
+        }
+    </style>
+</body>

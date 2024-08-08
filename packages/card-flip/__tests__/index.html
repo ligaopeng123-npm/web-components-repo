@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>card-flip</title>
+    <style>
+        #front {
+            height: 100%;
+            background-image: url(https://picsum.photos/200/300?k=1);
+        }
+
+        #back {
+            height: 100%;
+            background-image: url(https://picsum.photos/200/300?k=2);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../src/index.tx"></script>
+    <card-flip height="300" width="200">
+        <div slot="front" id="front"> front</div>
+        <div slot="back" id="back"> back</div>
+    </card-flip>
+</body>
+
+</html>

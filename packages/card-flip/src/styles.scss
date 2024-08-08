@@ -1,0 +1,67 @@
+.container {
+    height: 200px;
+    width: 200px;
+    position: relative;
+
+    &:hover {
+        .front {
+            backface-visibility: hidden;
+        }
+
+        .front-y {
+            transform: rotateX(180deg);
+        }
+
+        .front-x {
+            transform: rotateY(180deg);
+        }
+
+        .back {
+            backface-visibility: 1;
+        }
+
+        .back-y {
+            transform: rotateX(0deg);
+        }
+
+        .back-x {
+            transform: rotateY(0deg);
+        }
+    }
+}
+// 公共样式
+.item {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.front {
+    // background-image: url(https://picsum.photos/200/300?k=1);
+    backface-visibility: 1;
+}
+
+.front-y {
+    transform: rotateX(0deg);
+}
+
+.front-x {
+    transform: rotateY(0deg);
+}
+
+.back {
+    // background-image: url(https://picsum.photos/200/300?k=2);
+    backface-visibility: hidden;
+}
+
+.back-y {
+    transform: rotateX(180deg);
+}
+
+.back-x {
+    transform: rotateY(180deg);
+}

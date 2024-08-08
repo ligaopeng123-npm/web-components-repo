@@ -3,7 +3,7 @@ import "../src";
 
 
 window.onload = function () {
-    document.querySelector('card-ellipsis').addEventListener('onChange', (e)=> {
+    document.querySelector('card-ellipsis')?.addEventListener('onChange', (e)=> {
         console.log('onChange', e);
     });
     // setTimeout(()=> {
