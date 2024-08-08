@@ -75,5 +75,6 @@
     "dependencies": {
         "@gaopeng123/utils": "1.1.16-alpha.3",
         "hls.js": "^1.5.8"
-    }
+    },
+    "gitHead": "2a3cee12b8c025542b3248b37e631e465e4bd4b9"
 }

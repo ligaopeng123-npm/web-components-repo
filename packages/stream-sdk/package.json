@@ -66,5 +66,6 @@
     },
     "dependencies": {
         "@gaopeng123/fetch": "^0.3.4"
-    }
+    },
+    "gitHead": "2a3cee12b8c025542b3248b37e631e465e4bd4b9"
 }

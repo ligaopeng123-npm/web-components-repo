@@ -76,6 +76,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/card-ellipsis": "workspace:^1.3.6"
-    }
+        "@gaopeng123/card-ellipsis": "^1.3.5"
+    },
+    "gitHead": "2a3cee12b8c025542b3248b37e631e465e4bd4b9"
 }
