@@ -70,5 +70,8 @@
     },
     "bugs": {
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
+    },
+    "dependencies": {
+        "@gaopeng123/utils": "^1.1.16"
     }
 }

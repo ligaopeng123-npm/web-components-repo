@@ -13,8 +13,17 @@
 
 <body>
     <script src="./dist/matrix-bg.umd.development.js"></script>
-    <div style="width: 100vw;height: 100vh;">
-        <matrix-bg></matrix-bg>
+    <script>
+        window.__test = function() {
+            const e = new EyeDropper();
+            e.open().then((e)=> {
+                console.log(e)
+            })
+        }
+        
+    </script>
+    <div style="width: 100vw;height: 100vh;" onclick="__test()">
+        <matrix-bg background-color="#ffffff" text-color="#b7eb8f"></matrix-bg>
     </div>
 </body>
 

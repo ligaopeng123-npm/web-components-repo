@@ -524,6 +524,7 @@ importers:
       '@babel/core': ^7.14.3
       '@babel/plugin-proposal-class-properties': ^7.13.0
       '@babel/preset-env': ^7.14.4
+      '@gaopeng123/utils': ^1.1.16
       '@rollup/plugin-babel': ^5.3.0
       '@rollup/plugin-image': ^2.1.1
       '@size-limit/preset-small-lib': ^7.0.8
@@ -552,6 +553,8 @@ importers:
       webpack-cli: ^4.7.0
       webpack-dev-server: ^4.15.2
       webpack-merge: ^5.8.0
+    dependencies:
+      '@gaopeng123/utils': 1.1.16
     devDependencies:
       '@babel/core': 7.24.7
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.24.7

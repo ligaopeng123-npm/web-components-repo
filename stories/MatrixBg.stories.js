@@ -21,31 +21,25 @@ export default {
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        // data: { control: 'array' },
-        // type: {
-        //     options: ['x', 'y'],
-        //     control: { type: 'select' },
-        // },
-        // height: {
-        //     control: 'number'
-        // },
-        // width: {
-        //     control: 'number'
-        // }
+        'text-color': {
+            type: 'color', presetColors: ['#00ff00', '#b7eb8f']
+        },
+        'background-color': {
+            type: 'color', presetColors: ['#000000', '#ffffff']
+        }
     },
 };
 
 
 export const props = {
     args: {
-        // 'height': 300,
-        // 'width': 200,
-        // 'type': 'x'
+        'text-color': "#00ff00",
+        'background-color': "#000000",
     },
     render: (props) => {
         // props = args
         return <div style={{height: '100vh', width: '100vw', margin: 0}}>
-            <matrix-bg></matrix-bg>
+            <matrix-bg {...props}></matrix-bg>
         </div>
     }
 };

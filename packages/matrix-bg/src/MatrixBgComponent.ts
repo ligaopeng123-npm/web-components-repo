@@ -11,6 +11,13 @@
  **********************************************************************/
 
 import { Config, template } from "./MatrixBgTemplate";
+import { addOpacity, hyphen2hump } from "@gaopeng123/utils";
+
+interface Window {
+    requestIdleCallback: (callback: any, options?: any) => number;
+    cancelIdleCallback: (handle: number) => void;
+}
+
 
 class MatrixBg extends HTMLElement {
     shadow: ShadowRoot = null;
@@ -43,8 +50,8 @@ class MatrixBg extends HTMLElement {
     //转为数组
     txts = "0123456789abcdefghigklmgopqrstuvwxyz".split("");
 
-    resizeTimmer: number;
-    requestAnimationFrameTimmer: number;
+    resizeTimmer: ReturnType<typeof setTimeout>;
+    requestAnimationFrameTimmer: ReturnType<typeof setTimeout>;
 
     constructor() {
         super();
@@ -81,6 +88,7 @@ class MatrixBg extends HTMLElement {
      */
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (oldValue !== newValue) {
+            this.__config[hyphen2hump(name) as keyof Config] = newValue;
         }
     }
 
@@ -114,7 +122,7 @@ class MatrixBg extends HTMLElement {
         }
         if (begin) {
             this.ctx.beginPath();
-            this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            this.ctx.fillStyle = addOpacity(this.config.backgroundColor, 0.7);;
             this.ctx.fillRect(0, 0, this.matrix.width, this.matrix.height);
             this.ctx.stroke();
         }
@@ -128,11 +136,11 @@ class MatrixBg extends HTMLElement {
         const txts = this.txts;
         ctx.beginPath();
         //让背景逐渐由透明到不透明
-        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillStyle = addOpacity(this.config.backgroundColor, 0.1);
         ctx.fillRect(0, 0, c.width, c.height);
         ctx.stroke();
         ctx.beginPath();
-        ctx.fillStyle = "#0F0"; //文字颜色
+        ctx.fillStyle = this.config.textColor; //文字颜色
         ctx.font = font_size + "px arial";
         //逐行输出文字
         for (let i = 0; i < drops.length; i++) {
@@ -158,9 +166,15 @@ class MatrixBg extends HTMLElement {
     }
 
     loop = () => {
+        clearTimeout(this.requestAnimationFrameTimmer);
         this.requestAnimationFrameTimmer = setTimeout(() => {
-            requestAnimationFrame(() => this.draw());
-        }, 32);
+            requestAnimationFrame(() => {
+                // @ts-ignore
+                window.requestIdleCallback(() => {
+                    this.draw();
+                });
+            });
+        }, 16.6 * 3);
     }
 
     onResize = () => {
@@ -169,7 +183,7 @@ class MatrixBg extends HTMLElement {
         this.resizeTimmer = setTimeout(() => {
             this.init();
             this.loop();
-        }, 50)
+        }, 100)
     }
 }
 
