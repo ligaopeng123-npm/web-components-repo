@@ -1,3 +1,12 @@
+## [1.3.7-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.1...v1.3.7-alpha.2) (2024-08-10)
+
+
+### Features
+
+* add matrix-bg ([0b36ef1](https://github.com/ligaopeng123-npm/web-components-repo/commit/0b36ef16d67b7e9d062c511b8efce66769394567))
+
+
+
 ## [1.3.7-alpha.1](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.0...v1.3.7-alpha.1) (2024-08-08)
 
 
@@ -209,10 +218,10 @@
 
 ### Features
 
+* 删除冗余依赖 ([afad236](https://github.com/ligaopeng123-npm/web-components-repo/commit/afad2366acfa75c0f374802e755e53d3455776af))
 * component-loading转suss ([5c36835](https://github.com/ligaopeng123-npm/web-components-repo/commit/5c36835f19cb27ef1f928c1b991d745edd05305c))
 * login add slot name="footer" ([8f6de41](https://github.com/ligaopeng123-npm/web-components-repo/commit/8f6de41ede9f10383915869715d473013da5379d))
 * styles 错误监听 ([73e1f8b](https://github.com/ligaopeng123-npm/web-components-repo/commit/73e1f8b7e0719110977f963170ce59f0ef5ab5ac))
-* 删除冗余依赖 ([afad236](https://github.com/ligaopeng123-npm/web-components-repo/commit/afad2366acfa75c0f374802e755e53d3455776af))
 
 
 
@@ -424,10 +433,10 @@
 
 ### Features
 
-* stream sdk ([5b22154](https://github.com/ligaopeng123-npm/web-components-repo/commit/5b221549ce4ffb92d1096d0d88277623bd1d118d))
-* stream-sdk 添加类型 ([ee7078e](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee7078e2742f7e4fd5ead94c8d9ee20059df182b))
 * 分辨率切换 ([abd66a8](https://github.com/ligaopeng123-npm/web-components-repo/commit/abd66a8ab78359ed2403e908cdd9a5bb570615a1))
 * 分辨率切换 版本问题处理 ([66f4db7](https://github.com/ligaopeng123-npm/web-components-repo/commit/66f4db76bc0964ddf7f0965306380f1ae10b14c2))
+* stream sdk ([5b22154](https://github.com/ligaopeng123-npm/web-components-repo/commit/5b221549ce4ffb92d1096d0d88277623bd1d118d))
+* stream-sdk 添加类型 ([ee7078e](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee7078e2742f7e4fd5ead94c8d9ee20059df182b))
 
 
 
@@ -509,8 +518,8 @@
 
 ### Bug Fixes
 
-* CardEllipsis 内容动态改变后 高度处理异常问题 ([20b2de2](https://github.com/ligaopeng123-npm/web-components-repo/commit/20b2de291f12514551f4125c2d4465eb77bf331c))
 * CardEllipsis 解决展开后内容动态改变后 高度处理异常 ([267db87](https://github.com/ligaopeng123-npm/web-components-repo/commit/267db872cc12e1fe46ef585c00f1d999f6e7e799))
+* CardEllipsis 内容动态改变后 高度处理异常问题 ([20b2de2](https://github.com/ligaopeng123-npm/web-components-repo/commit/20b2de291f12514551f4125c2d4465eb77bf331c))
 
 
 
@@ -975,11 +984,11 @@
 
 ### Features
 
-* data值处理 ([7671002](https://github.com/ligaopeng123-npm/web-components-repo/commit/767100262279304c35910d0af8286cc726b9ef9e))
-* 值获取处理 ([0a1c14a](https://github.com/ligaopeng123-npm/web-components-repo/commit/0a1c14a2b7327692886fb8a0793b1ea5800c98d6))
 * 复制功能完善 ([19379ae](https://github.com/ligaopeng123-npm/web-components-repo/commit/19379ae56901fa0cc1dca729b6523c4dbe819b49))
-* 添加PeriodTip ([d523d52](https://github.com/ligaopeng123-npm/web-components-repo/commit/d523d52a8f8ca38d04db677ccac559cd5959d113))
 * 添加时间编辑 ([b5b3175](https://github.com/ligaopeng123-npm/web-components-repo/commit/b5b31759c633d0740077e84e7e44a3d9f350279a))
+* 添加PeriodTip ([d523d52](https://github.com/ligaopeng123-npm/web-components-repo/commit/d523d52a8f8ca38d04db677ccac559cd5959d113))
+* 值获取处理 ([0a1c14a](https://github.com/ligaopeng123-npm/web-components-repo/commit/0a1c14a2b7327692886fb8a0793b1ea5800c98d6))
+* data值处理 ([7671002](https://github.com/ligaopeng123-npm/web-components-repo/commit/767100262279304c35910d0af8286cc726b9ef9e))
 
 
 
@@ -1164,8 +1173,8 @@
 
 ### Features
 
-* config配置及playerConfig不及时问题处理 ([9c009dc](https://github.com/ligaopeng123-npm/web-components-repo/commit/9c009dc60db6a94c9ef89432342febcfa3665cc9))
 * 弃用layerX使用offsetX ([e3ce4f0](https://github.com/ligaopeng123-npm/web-components-repo/commit/e3ce4f0d98655e84e2756633a4d2a3b113dc6cbf))
+* config配置及playerConfig不及时问题处理 ([9c009dc](https://github.com/ligaopeng123-npm/web-components-repo/commit/9c009dc60db6a94c9ef89432342febcfa3665cc9))
 
 
 
@@ -1258,8 +1267,8 @@
 
 ### Features
 
-* video-bar问题修改 ([a09450d](https://github.com/ligaopeng123-npm/web-components-repo/commit/a09450d093bc3428fd39925e84d9824383e39b93))
 * 服务协议处理 ([553e1a5](https://github.com/ligaopeng123-npm/web-components-repo/commit/553e1a5009f33c33453444869c34c35c720bc810))
+* video-bar问题修改 ([a09450d](https://github.com/ligaopeng123-npm/web-components-repo/commit/a09450d093bc3428fd39925e84d9824383e39b93))
 
 
 
@@ -1317,11 +1326,11 @@
 
 ### Features
 
+* 回放组件开发2 ([02b7e5f](https://github.com/ligaopeng123-npm/web-components-repo/commit/02b7e5fc5ac614e69d164d3d8ea163d2137ba319))
+* 回放组件开发3 ([c29c61d](https://github.com/ligaopeng123-npm/web-components-repo/commit/c29c61d2f2e66315425ed27b342c096e44b46842))
 * publish删除 ([14a3fd1](https://github.com/ligaopeng123-npm/web-components-repo/commit/14a3fd141ce7b453cfe6ea8b155787c133754867))
 * publish删除 ([48edb52](https://github.com/ligaopeng123-npm/web-components-repo/commit/48edb5292577a5dabcb39d68c86a45b3574cf05d))
 * publish删除 ([ee8dc78](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee8dc787c3595f03b5408bc3da0be92abe0e8c53))
-* 回放组件开发2 ([02b7e5f](https://github.com/ligaopeng123-npm/web-components-repo/commit/02b7e5fc5ac614e69d164d3d8ea163d2137ba319))
-* 回放组件开发3 ([c29c61d](https://github.com/ligaopeng123-npm/web-components-repo/commit/c29c61d2f2e66315425ed27b342c096e44b46842))
 
 
 
@@ -1359,10 +1368,10 @@
 
 ### Bug Fixes
 
-* webRtc播放问题迭代 ([597bd68](https://github.com/ligaopeng123-npm/web-components-repo/commit/597bd68cc62f0d06afd8ca877c44b7c4b14cf282))
-* 主题配置变更 ([06dce7a](https://github.com/ligaopeng123-npm/web-components-repo/commit/06dce7aac0fa5bbe2c01fe8bfa4a2a334347cd95))
 * 开发环境配置 ([d65a29a](https://github.com/ligaopeng123-npm/web-components-repo/commit/d65a29a1399dc758783e754193589c2094f47844))
 * 开发环境配置 ([a3b1ca3](https://github.com/ligaopeng123-npm/web-components-repo/commit/a3b1ca39183b834e9c60360b30e064bfb6f372a9))
+* 主题配置变更 ([06dce7a](https://github.com/ligaopeng123-npm/web-components-repo/commit/06dce7aac0fa5bbe2c01fe8bfa4a2a334347cd95))
+* webRtc播放问题迭代 ([597bd68](https://github.com/ligaopeng123-npm/web-components-repo/commit/597bd68cc62f0d06afd8ca877c44b7c4b14cf282))
 
 
 ### Features
@@ -1436,9 +1445,9 @@
 
 ### Features
 
+* 新增变更日志 ([0dca806](https://github.com/ligaopeng123-npm/web-components-repo/commit/0dca806f79c046f5e0581e702db31a4bd964ca57))
 * scroll-nav ([7a06701](https://github.com/ligaopeng123-npm/web-components-repo/commit/7a06701b3304e68b4771972cb83458e1a4a721dc))
 * scroll-nav ([0040388](https://github.com/ligaopeng123-npm/web-components-repo/commit/0040388591e3cfe8239efccf63e9b7ad5b0dba23))
-* 新增变更日志 ([0dca806](https://github.com/ligaopeng123-npm/web-components-repo/commit/0dca806f79c046f5e0581e702db31a4bd964ca57))
 
 
 
