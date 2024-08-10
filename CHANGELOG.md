@@ -1,3 +1,12 @@
+## [1.3.7-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.2...v1.3.7-alpha.3) (2024-08-10)
+
+
+### Bug Fixes
+
+* 修复martix-bg resize后变快问题，优化tab页切换后的性能 ([51b9bf1](https://github.com/ligaopeng123-npm/web-components-repo/commit/51b9bf1797edfae57ac6a1ff7f2389e7dae29ed1))
+
+
+
 ## [1.3.7-alpha.2](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.1...v1.3.7-alpha.2) (2024-08-10)
 
 
