@@ -1,3 +1,12 @@
+## [1.3.7-alpha.4](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.3...v1.3.7-alpha.4) (2024-08-20)
+
+
+### Bug Fixes
+
+* requestIdleCallback兼容 ([ee734fb](https://github.com/ligaopeng123-npm/web-components-repo/commit/ee734fb8f36d96866bb291afaf2e144b2ea3619a))
+
+
+
 ## [1.3.7-alpha.3](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.2...v1.3.7-alpha.3) (2024-08-10)
 
 
