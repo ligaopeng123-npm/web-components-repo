@@ -169,10 +169,15 @@ class MatrixBg extends HTMLElement {
         clearTimeout(this.requestAnimationFrameTimmer);
         this.requestAnimationFrameTimmer = setTimeout(() => {
             requestAnimationFrame(() => {
-                // @ts-ignore
-                window.requestIdleCallback(() => {
+                 // @ts-ignore
+                const requestIdleCallback = window.requestIdleCallback;
+                if (requestIdleCallback) {
+                    requestIdleCallback(() => {
+                        this.draw();
+                    });
+                } else {
                     this.draw();
-                });
+                }
             });
         }, 16.6 * 3);
     }
