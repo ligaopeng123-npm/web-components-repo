@@ -171,10 +171,14 @@ class CardEllipsis extends HTMLElement {
         if (this.config.mode === 'complex') {
             bodyStyle.setProperty('height', 'auto');
             const { height } = this.body.getBoundingClientRect();
-            bodyStyle.setProperty('height', '0px');
+            // bodyStyle.setProperty('height', '0px'); // 不是从0开始变化 此处不需要设置为0
+            // 设置为初始高度 再设置为真实高度【以最后一次设置为准】 中间不会有动画， 因此需要强制让浏览器渲染一次 来达到过渡动画的效果
+            // 一种方案是this.body.offsetHeight读取 一种是requestAnimationFrame
             bodyStyle.setProperty('height', addBoxSizeUnit(this.config["min-height"]));
-            this.body.offsetHeight;
-            bodyStyle.setProperty('height', `${height}px`);
+            // this.body.offsetHeight;
+            requestAnimationFrame(() => {
+                bodyStyle.setProperty('height', `${height}px`);
+            });
         } else {
             bodyStyle.setProperty('height', addBoxSizeUnit(this.maxHeight));
         }
