@@ -1,3 +1,12 @@
+## [1.3.7-alpha.6](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.5...v1.3.7-alpha.6) (2024-09-19)
+
+
+### Bug Fixes
+
+* @gaopeng123/rc-scroll-nav适配 ([bfa0d4f](https://github.com/ligaopeng123-npm/web-components-repo/commit/bfa0d4f2dab96cdeb1fc415ace7a72dfc319b053))
+
+
+
 ## [1.3.7-alpha.5](https://github.com/ligaopeng123-npm/web-components-repo/compare/v1.3.7-alpha.4...v1.3.7-alpha.5) (2024-09-19)
 
 
