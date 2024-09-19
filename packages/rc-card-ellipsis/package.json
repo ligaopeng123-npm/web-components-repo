@@ -1,6 +1,6 @@
 {
     "name": "@gaopeng123/rc-card-ellipsis",
-    "version": "1.3.7-alpha.1",
+    "version": "1.3.7-alpha.5",
     "description": "卡片展开和收起",
     "keywords": [
         "ellipsis",
@@ -76,7 +76,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/card-ellipsis": "^1.3.7-alpha.1"
+        "@gaopeng123/card-ellipsis": "^1.3.7-alpha.5"
     },
     "gitHead": "adc18079baae9057b308e5f6599ad3537f6b497a"
 }
