@@ -11,13 +11,12 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-import { createScrollNavEvent } from "../src";
+import "../src";
 
 window.onload = function () {
-    console.log(createScrollNavEvent)
     const nav = document.querySelector('scroll-nav');
     nav.setAttribute('items', JSON.stringify([{label: 'Web1', value: 1},
-        {label: 'Web2', value: 'b'}, {label: 'Web3', value: 'c'}]));
+        {label: 'Web2', value: 'b'}, {label: 'Web3', value: 'c'}, {label: 'Web4', value: 'd'}, {label: 'Web5', value: 'f'}]));
     nav.addEventListener('onChange', ({detail}: any) => {
         console.log(detail);
     });

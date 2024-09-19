@@ -11,8 +11,7 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-
-import { ScrollNavProps } from "./typing";
+import type { ScrollNavProps } from "./utils";
 
 export const template = (config: ScrollNavProps) => {
     return `

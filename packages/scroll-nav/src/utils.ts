@@ -176,7 +176,7 @@ export const createScrollNavEvent = (
             }
         }
         // 滚动条到达底部就选中最后一个导航
-        if (top + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
+        if (Math.ceil(top + scrollContainer.clientHeight) >= scrollContainer.scrollHeight) {
             _onChange(navList[menuLength - 1]);
             return;
         }
