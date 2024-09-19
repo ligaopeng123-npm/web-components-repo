@@ -73,7 +73,7 @@
         "url": "https://github.com/ligaopeng123-npm/web-components-repo/issues"
     },
     "dependencies": {
-        "@gaopeng123/scroll-nav": "1.3.5"
+        "@gaopeng123/scroll-nav": "workspace:1.3.7-alpha.5"
     },
     "gitHead": "adc18079baae9057b308e5f6599ad3537f6b497a"
 }
